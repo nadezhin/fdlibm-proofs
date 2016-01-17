@@ -1,3 +1,4 @@
 *.FASL
 *.fasl
 *.lisp-temp
+/llvm2acl2/target/
