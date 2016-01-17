@@ -1,0 +1,15 @@
+-library LLVM-3.7
+-limitComments
+//-reification
+-publicRawBindings
+-f  // force overwrite
+-emptyStructsAsForwardDecls
+-mode Directory
+-package jdkproofs.llvm2acl2
+-o $(DIR)/src/main/java
+//-I$(LLVM_HOME)/include/llvm-c/
+
+/usr/lib/llvm-3.7/include/llvm-c/Core.h
+/usr/lib/llvm-3.7/include/llvm-c/BitReader.h
+/usr/lib/llvm-3.7/include/llvm-c/Support.h
+
