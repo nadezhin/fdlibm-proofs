@@ -1,0 +1,92 @@
+; ModuleID = '../netlib/s_frexp.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define double @frexp(double %x, i32* %eptr) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %3 = alloca i32*, align 8
+  %hx = alloca i32, align 4
+  %ix = alloca i32, align 4
+  %lx = alloca i32, align 4
+  store double %x, double* %2, align 8
+  store i32* %eptr, i32** %3, align 8
+  %4 = bitcast double* %2 to i32*
+  %5 = getelementptr inbounds i32, i32* %4, i64 1
+  %6 = load i32, i32* %5, align 4
+  store i32 %6, i32* %hx, align 4
+  %7 = load i32, i32* %hx, align 4
+  %8 = and i32 2147483647, %7
+  store i32 %8, i32* %ix, align 4
+  %9 = bitcast double* %2 to i32*
+  %10 = load i32, i32* %9, align 4
+  store i32 %10, i32* %lx, align 4
+  %11 = load i32*, i32** %3, align 8
+  store i32 0, i32* %11, align 4
+  %12 = load i32, i32* %ix, align 4
+  %13 = icmp sge i32 %12, 2146435072
+  br i1 %13, label %19, label %14
+
+; <label>:14                                      ; preds = %0
+  %15 = load i32, i32* %ix, align 4
+  %16 = load i32, i32* %lx, align 4
+  %17 = or i32 %15, %16
+  %18 = icmp eq i32 %17, 0
+  br i1 %18, label %19, label %21
+
+; <label>:19                                      ; preds = %14, %0
+  %20 = load double, double* %2, align 8
+  store double %20, double* %1
+  br label %47
+
+; <label>:21                                      ; preds = %14
+  %22 = load i32, i32* %ix, align 4
+  %23 = icmp slt i32 %22, 1048576
+  br i1 %23, label %24, label %33
+
+; <label>:24                                      ; preds = %21
+  %25 = load double, double* %2, align 8
+  %26 = fmul double %25, 0x4350000000000000
+  store double %26, double* %2, align 8
+  %27 = bitcast double* %2 to i32*
+  %28 = getelementptr inbounds i32, i32* %27, i64 1
+  %29 = load i32, i32* %28, align 4
+  store i32 %29, i32* %hx, align 4
+  %30 = load i32, i32* %hx, align 4
+  %31 = and i32 %30, 2147483647
+  store i32 %31, i32* %ix, align 4
+  %32 = load i32*, i32** %3, align 8
+  store i32 -54, i32* %32, align 4
+  br label %33
+
+; <label>:33                                      ; preds = %24, %21
+  %34 = load i32, i32* %ix, align 4
+  %35 = ashr i32 %34, 20
+  %36 = sub nsw i32 %35, 1022
+  %37 = load i32*, i32** %3, align 8
+  %38 = load i32, i32* %37, align 4
+  %39 = add nsw i32 %38, %36
+  store i32 %39, i32* %37, align 4
+  %40 = load i32, i32* %hx, align 4
+  %41 = and i32 %40, -2146435073
+  %42 = or i32 %41, 1071644672
+  store i32 %42, i32* %hx, align 4
+  %43 = load i32, i32* %hx, align 4
+  %44 = bitcast double* %2 to i32*
+  %45 = getelementptr inbounds i32, i32* %44, i64 1
+  store i32 %43, i32* %45, align 4
+  %46 = load double, double* %2, align 8
+  store double %46, double* %1
+  br label %47
+
+; <label>:47                                      ; preds = %33, %19
+  %48 = load double, double* %1
+  ret double %48
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

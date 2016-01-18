@@ -1,0 +1,1141 @@
+; ModuleID = '../jdk8/src/k_rem_pio2.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+@init_jk = internal constant [4 x i32] [i32 2, i32 3, i32 4, i32 6], align 16
+@PIo2 = internal constant [8 x double] [double 0x3FF921FB40000000, double 0x3E74442D00000000, double 0x3CF8469880000000, double 0x3B78CC5160000000, double 0x39F01B8380000000, double 0x387A252040000000, double 0x36E3822280000000, double 0x3569F31D00000000], align 16
+
+; Function Attrs: nounwind uwtable
+define i32 @__j__kernel_rem_pio2(double* %x, double* %y, i32 %e0, i32 %nx, i32 %prec, i32* %ipio2) #0 {
+  %1 = alloca double*, align 8
+  %2 = alloca double*, align 8
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  %6 = alloca i32*, align 8
+  %jz = alloca i32, align 4
+  %jx = alloca i32, align 4
+  %jv = alloca i32, align 4
+  %jp = alloca i32, align 4
+  %jk = alloca i32, align 4
+  %carry = alloca i32, align 4
+  %n = alloca i32, align 4
+  %iq = alloca [20 x i32], align 16
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
+  %k = alloca i32, align 4
+  %m = alloca i32, align 4
+  %q0 = alloca i32, align 4
+  %ih = alloca i32, align 4
+  %z = alloca double, align 8
+  %fw = alloca double, align 8
+  %f = alloca [20 x double], align 16
+  %fq = alloca [20 x double], align 16
+  %q = alloca [20 x double], align 16
+  store double* %x, double** %1, align 8
+  store double* %y, double** %2, align 8
+  store i32 %e0, i32* %3, align 4
+  store i32 %nx, i32* %4, align 4
+  store i32 %prec, i32* %5, align 4
+  store i32* %ipio2, i32** %6, align 8
+  %7 = load i32, i32* %5, align 4
+  %8 = sext i32 %7 to i64
+  %9 = getelementptr inbounds [4 x i32], [4 x i32]* @init_jk, i32 0, i64 %8
+  %10 = load i32, i32* %9, align 4
+  store i32 %10, i32* %jk, align 4
+  %11 = load i32, i32* %jk, align 4
+  store i32 %11, i32* %jp, align 4
+  %12 = load i32, i32* %4, align 4
+  %13 = sub nsw i32 %12, 1
+  store i32 %13, i32* %jx, align 4
+  %14 = load i32, i32* %3, align 4
+  %15 = sub nsw i32 %14, 3
+  %16 = sdiv i32 %15, 24
+  store i32 %16, i32* %jv, align 4
+  %17 = load i32, i32* %jv, align 4
+  %18 = icmp slt i32 %17, 0
+  br i1 %18, label %19, label %20
+
+; <label>:19                                      ; preds = %0
+  store i32 0, i32* %jv, align 4
+  br label %20
+
+; <label>:20                                      ; preds = %19, %0
+  %21 = load i32, i32* %3, align 4
+  %22 = load i32, i32* %jv, align 4
+  %23 = add nsw i32 %22, 1
+  %24 = mul nsw i32 24, %23
+  %25 = sub nsw i32 %21, %24
+  store i32 %25, i32* %q0, align 4
+  %26 = load i32, i32* %jv, align 4
+  %27 = load i32, i32* %jx, align 4
+  %28 = sub nsw i32 %26, %27
+  store i32 %28, i32* %j, align 4
+  %29 = load i32, i32* %jx, align 4
+  %30 = load i32, i32* %jk, align 4
+  %31 = add nsw i32 %29, %30
+  store i32 %31, i32* %m, align 4
+  store i32 0, i32* %i, align 4
+  br label %32
+
+; <label>:32                                      ; preds = %52, %20
+  %33 = load i32, i32* %i, align 4
+  %34 = load i32, i32* %m, align 4
+  %35 = icmp sle i32 %33, %34
+  br i1 %35, label %36, label %57
+
+; <label>:36                                      ; preds = %32
+  %37 = load i32, i32* %j, align 4
+  %38 = icmp slt i32 %37, 0
+  br i1 %38, label %39, label %40
+
+; <label>:39                                      ; preds = %36
+  br label %47
+
+; <label>:40                                      ; preds = %36
+  %41 = load i32, i32* %j, align 4
+  %42 = sext i32 %41 to i64
+  %43 = load i32*, i32** %6, align 8
+  %44 = getelementptr inbounds i32, i32* %43, i64 %42
+  %45 = load i32, i32* %44, align 4
+  %46 = sitofp i32 %45 to double
+  br label %47
+
+; <label>:47                                      ; preds = %40, %39
+  %48 = phi double [ 0.000000e+00, %39 ], [ %46, %40 ]
+  %49 = load i32, i32* %i, align 4
+  %50 = sext i32 %49 to i64
+  %51 = getelementptr inbounds [20 x double], [20 x double]* %f, i32 0, i64 %50
+  store double %48, double* %51, align 8
+  br label %52
+
+; <label>:52                                      ; preds = %47
+  %53 = load i32, i32* %i, align 4
+  %54 = add nsw i32 %53, 1
+  store i32 %54, i32* %i, align 4
+  %55 = load i32, i32* %j, align 4
+  %56 = add nsw i32 %55, 1
+  store i32 %56, i32* %j, align 4
+  br label %32
+
+; <label>:57                                      ; preds = %32
+  store i32 0, i32* %i, align 4
+  br label %58
+
+; <label>:58                                      ; preds = %92, %57
+  %59 = load i32, i32* %i, align 4
+  %60 = load i32, i32* %jk, align 4
+  %61 = icmp sle i32 %59, %60
+  br i1 %61, label %62, label %95
+
+; <label>:62                                      ; preds = %58
+  store i32 0, i32* %j, align 4
+  store double 0.000000e+00, double* %fw, align 8
+  br label %63
+
+; <label>:63                                      ; preds = %84, %62
+  %64 = load i32, i32* %j, align 4
+  %65 = load i32, i32* %jx, align 4
+  %66 = icmp sle i32 %64, %65
+  br i1 %66, label %67, label %87
+
+; <label>:67                                      ; preds = %63
+  %68 = load i32, i32* %j, align 4
+  %69 = sext i32 %68 to i64
+  %70 = load double*, double** %1, align 8
+  %71 = getelementptr inbounds double, double* %70, i64 %69
+  %72 = load double, double* %71, align 8
+  %73 = load i32, i32* %jx, align 4
+  %74 = load i32, i32* %i, align 4
+  %75 = add nsw i32 %73, %74
+  %76 = load i32, i32* %j, align 4
+  %77 = sub nsw i32 %75, %76
+  %78 = sext i32 %77 to i64
+  %79 = getelementptr inbounds [20 x double], [20 x double]* %f, i32 0, i64 %78
+  %80 = load double, double* %79, align 8
+  %81 = fmul double %72, %80
+  %82 = load double, double* %fw, align 8
+  %83 = fadd double %82, %81
+  store double %83, double* %fw, align 8
+  br label %84
+
+; <label>:84                                      ; preds = %67
+  %85 = load i32, i32* %j, align 4
+  %86 = add nsw i32 %85, 1
+  store i32 %86, i32* %j, align 4
+  br label %63
+
+; <label>:87                                      ; preds = %63
+  %88 = load double, double* %fw, align 8
+  %89 = load i32, i32* %i, align 4
+  %90 = sext i32 %89 to i64
+  %91 = getelementptr inbounds [20 x double], [20 x double]* %q, i32 0, i64 %90
+  store double %88, double* %91, align 8
+  br label %92
+
+; <label>:92                                      ; preds = %87
+  %93 = load i32, i32* %i, align 4
+  %94 = add nsw i32 %93, 1
+  store i32 %94, i32* %i, align 4
+  br label %58
+
+; <label>:95                                      ; preds = %58
+  %96 = load i32, i32* %jk, align 4
+  store i32 %96, i32* %jz, align 4
+  br label %97
+
+; <label>:97                                      ; preds = %358, %95
+  store i32 0, i32* %i, align 4
+  %98 = load i32, i32* %jz, align 4
+  store i32 %98, i32* %j, align 4
+  %99 = load i32, i32* %jz, align 4
+  %100 = sext i32 %99 to i64
+  %101 = getelementptr inbounds [20 x double], [20 x double]* %q, i32 0, i64 %100
+  %102 = load double, double* %101, align 8
+  store double %102, double* %z, align 8
+  br label %103
+
+; <label>:103                                     ; preds = %126, %97
+  %104 = load i32, i32* %j, align 4
+  %105 = icmp sgt i32 %104, 0
+  br i1 %105, label %106, label %131
+
+; <label>:106                                     ; preds = %103
+  %107 = load double, double* %z, align 8
+  %108 = fmul double 0x3E70000000000000, %107
+  %109 = fptosi double %108 to i32
+  %110 = sitofp i32 %109 to double
+  store double %110, double* %fw, align 8
+  %111 = load double, double* %z, align 8
+  %112 = load double, double* %fw, align 8
+  %113 = fmul double 0x4170000000000000, %112
+  %114 = fsub double %111, %113
+  %115 = fptosi double %114 to i32
+  %116 = load i32, i32* %i, align 4
+  %117 = sext i32 %116 to i64
+  %118 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %117
+  store i32 %115, i32* %118, align 4
+  %119 = load i32, i32* %j, align 4
+  %120 = sub nsw i32 %119, 1
+  %121 = sext i32 %120 to i64
+  %122 = getelementptr inbounds [20 x double], [20 x double]* %q, i32 0, i64 %121
+  %123 = load double, double* %122, align 8
+  %124 = load double, double* %fw, align 8
+  %125 = fadd double %123, %124
+  store double %125, double* %z, align 8
+  br label %126
+
+; <label>:126                                     ; preds = %106
+  %127 = load i32, i32* %i, align 4
+  %128 = add nsw i32 %127, 1
+  store i32 %128, i32* %i, align 4
+  %129 = load i32, i32* %j, align 4
+  %130 = add nsw i32 %129, -1
+  store i32 %130, i32* %j, align 4
+  br label %103
+
+; <label>:131                                     ; preds = %103
+  %132 = load double, double* %z, align 8
+  %133 = load i32, i32* %q0, align 4
+  %134 = call double @scalbn(double %132, i32 %133) #3
+  store double %134, double* %z, align 8
+  %135 = load double, double* %z, align 8
+  %136 = fmul double %135, 1.250000e-01
+  %137 = call double @jfloor(double %136)
+  %138 = fmul double 8.000000e+00, %137
+  %139 = load double, double* %z, align 8
+  %140 = fsub double %139, %138
+  store double %140, double* %z, align 8
+  %141 = load double, double* %z, align 8
+  %142 = fptosi double %141 to i32
+  store i32 %142, i32* %n, align 4
+  %143 = load i32, i32* %n, align 4
+  %144 = sitofp i32 %143 to double
+  %145 = load double, double* %z, align 8
+  %146 = fsub double %145, %144
+  store double %146, double* %z, align 8
+  store i32 0, i32* %ih, align 4
+  %147 = load i32, i32* %q0, align 4
+  %148 = icmp sgt i32 %147, 0
+  br i1 %148, label %149, label %179
+
+; <label>:149                                     ; preds = %131
+  %150 = load i32, i32* %jz, align 4
+  %151 = sub nsw i32 %150, 1
+  %152 = sext i32 %151 to i64
+  %153 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %152
+  %154 = load i32, i32* %153, align 4
+  %155 = load i32, i32* %q0, align 4
+  %156 = sub nsw i32 24, %155
+  %157 = ashr i32 %154, %156
+  store i32 %157, i32* %i, align 4
+  %158 = load i32, i32* %i, align 4
+  %159 = load i32, i32* %n, align 4
+  %160 = add nsw i32 %159, %158
+  store i32 %160, i32* %n, align 4
+  %161 = load i32, i32* %i, align 4
+  %162 = load i32, i32* %q0, align 4
+  %163 = sub nsw i32 24, %162
+  %164 = shl i32 %161, %163
+  %165 = load i32, i32* %jz, align 4
+  %166 = sub nsw i32 %165, 1
+  %167 = sext i32 %166 to i64
+  %168 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %167
+  %169 = load i32, i32* %168, align 4
+  %170 = sub nsw i32 %169, %164
+  store i32 %170, i32* %168, align 4
+  %171 = load i32, i32* %jz, align 4
+  %172 = sub nsw i32 %171, 1
+  %173 = sext i32 %172 to i64
+  %174 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %173
+  %175 = load i32, i32* %174, align 4
+  %176 = load i32, i32* %q0, align 4
+  %177 = sub nsw i32 23, %176
+  %178 = ashr i32 %175, %177
+  store i32 %178, i32* %ih, align 4
+  br label %195
+
+; <label>:179                                     ; preds = %131
+  %180 = load i32, i32* %q0, align 4
+  %181 = icmp eq i32 %180, 0
+  br i1 %181, label %182, label %189
+
+; <label>:182                                     ; preds = %179
+  %183 = load i32, i32* %jz, align 4
+  %184 = sub nsw i32 %183, 1
+  %185 = sext i32 %184 to i64
+  %186 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %185
+  %187 = load i32, i32* %186, align 4
+  %188 = ashr i32 %187, 23
+  store i32 %188, i32* %ih, align 4
+  br label %194
+
+; <label>:189                                     ; preds = %179
+  %190 = load double, double* %z, align 8
+  %191 = fcmp oge double %190, 5.000000e-01
+  br i1 %191, label %192, label %193
+
+; <label>:192                                     ; preds = %189
+  store i32 2, i32* %ih, align 4
+  br label %193
+
+; <label>:193                                     ; preds = %192, %189
+  br label %194
+
+; <label>:194                                     ; preds = %193, %182
+  br label %195
+
+; <label>:195                                     ; preds = %194, %149
+  %196 = load i32, i32* %ih, align 4
+  %197 = icmp sgt i32 %196, 0
+  br i1 %197, label %198, label %267
+
+; <label>:198                                     ; preds = %195
+  %199 = load i32, i32* %n, align 4
+  %200 = add nsw i32 %199, 1
+  store i32 %200, i32* %n, align 4
+  store i32 0, i32* %carry, align 4
+  store i32 0, i32* %i, align 4
+  br label %201
+
+; <label>:201                                     ; preds = %229, %198
+  %202 = load i32, i32* %i, align 4
+  %203 = load i32, i32* %jz, align 4
+  %204 = icmp slt i32 %202, %203
+  br i1 %204, label %205, label %232
+
+; <label>:205                                     ; preds = %201
+  %206 = load i32, i32* %i, align 4
+  %207 = sext i32 %206 to i64
+  %208 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %207
+  %209 = load i32, i32* %208, align 4
+  store i32 %209, i32* %j, align 4
+  %210 = load i32, i32* %carry, align 4
+  %211 = icmp eq i32 %210, 0
+  br i1 %211, label %212, label %222
+
+; <label>:212                                     ; preds = %205
+  %213 = load i32, i32* %j, align 4
+  %214 = icmp ne i32 %213, 0
+  br i1 %214, label %215, label %221
+
+; <label>:215                                     ; preds = %212
+  store i32 1, i32* %carry, align 4
+  %216 = load i32, i32* %j, align 4
+  %217 = sub nsw i32 16777216, %216
+  %218 = load i32, i32* %i, align 4
+  %219 = sext i32 %218 to i64
+  %220 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %219
+  store i32 %217, i32* %220, align 4
+  br label %221
+
+; <label>:221                                     ; preds = %215, %212
+  br label %228
+
+; <label>:222                                     ; preds = %205
+  %223 = load i32, i32* %j, align 4
+  %224 = sub nsw i32 16777215, %223
+  %225 = load i32, i32* %i, align 4
+  %226 = sext i32 %225 to i64
+  %227 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %226
+  store i32 %224, i32* %227, align 4
+  br label %228
+
+; <label>:228                                     ; preds = %222, %221
+  br label %229
+
+; <label>:229                                     ; preds = %228
+  %230 = load i32, i32* %i, align 4
+  %231 = add nsw i32 %230, 1
+  store i32 %231, i32* %i, align 4
+  br label %201
+
+; <label>:232                                     ; preds = %201
+  %233 = load i32, i32* %q0, align 4
+  %234 = icmp sgt i32 %233, 0
+  br i1 %234, label %235, label %252
+
+; <label>:235                                     ; preds = %232
+  %236 = load i32, i32* %q0, align 4
+  switch i32 %236, label %251 [
+    i32 1, label %237
+    i32 2, label %244
+  ]
+
+; <label>:237                                     ; preds = %235
+  %238 = load i32, i32* %jz, align 4
+  %239 = sub nsw i32 %238, 1
+  %240 = sext i32 %239 to i64
+  %241 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %240
+  %242 = load i32, i32* %241, align 4
+  %243 = and i32 %242, 8388607
+  store i32 %243, i32* %241, align 4
+  br label %251
+
+; <label>:244                                     ; preds = %235
+  %245 = load i32, i32* %jz, align 4
+  %246 = sub nsw i32 %245, 1
+  %247 = sext i32 %246 to i64
+  %248 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %247
+  %249 = load i32, i32* %248, align 4
+  %250 = and i32 %249, 4194303
+  store i32 %250, i32* %248, align 4
+  br label %251
+
+; <label>:251                                     ; preds = %235, %244, %237
+  br label %252
+
+; <label>:252                                     ; preds = %251, %232
+  %253 = load i32, i32* %ih, align 4
+  %254 = icmp eq i32 %253, 2
+  br i1 %254, label %255, label %266
+
+; <label>:255                                     ; preds = %252
+  %256 = load double, double* %z, align 8
+  %257 = fsub double 1.000000e+00, %256
+  store double %257, double* %z, align 8
+  %258 = load i32, i32* %carry, align 4
+  %259 = icmp ne i32 %258, 0
+  br i1 %259, label %260, label %265
+
+; <label>:260                                     ; preds = %255
+  %261 = load i32, i32* %q0, align 4
+  %262 = call double @scalbn(double 1.000000e+00, i32 %261) #3
+  %263 = load double, double* %z, align 8
+  %264 = fsub double %263, %262
+  store double %264, double* %z, align 8
+  br label %265
+
+; <label>:265                                     ; preds = %260, %255
+  br label %266
+
+; <label>:266                                     ; preds = %265, %252
+  br label %267
+
+; <label>:267                                     ; preds = %266, %195
+  %268 = load double, double* %z, align 8
+  %269 = fcmp oeq double %268, 0.000000e+00
+  br i1 %269, label %270, label %363
+
+; <label>:270                                     ; preds = %267
+  store i32 0, i32* %j, align 4
+  %271 = load i32, i32* %jz, align 4
+  %272 = sub nsw i32 %271, 1
+  store i32 %272, i32* %i, align 4
+  br label %273
+
+; <label>:273                                     ; preds = %284, %270
+  %274 = load i32, i32* %i, align 4
+  %275 = load i32, i32* %jk, align 4
+  %276 = icmp sge i32 %274, %275
+  br i1 %276, label %277, label %287
+
+; <label>:277                                     ; preds = %273
+  %278 = load i32, i32* %i, align 4
+  %279 = sext i32 %278 to i64
+  %280 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %279
+  %281 = load i32, i32* %280, align 4
+  %282 = load i32, i32* %j, align 4
+  %283 = or i32 %282, %281
+  store i32 %283, i32* %j, align 4
+  br label %284
+
+; <label>:284                                     ; preds = %277
+  %285 = load i32, i32* %i, align 4
+  %286 = add nsw i32 %285, -1
+  store i32 %286, i32* %i, align 4
+  br label %273
+
+; <label>:287                                     ; preds = %273
+  %288 = load i32, i32* %j, align 4
+  %289 = icmp eq i32 %288, 0
+  br i1 %289, label %290, label %362
+
+; <label>:290                                     ; preds = %287
+  store i32 1, i32* %k, align 4
+  br label %291
+
+; <label>:291                                     ; preds = %300, %290
+  %292 = load i32, i32* %jk, align 4
+  %293 = load i32, i32* %k, align 4
+  %294 = sub nsw i32 %292, %293
+  %295 = sext i32 %294 to i64
+  %296 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %295
+  %297 = load i32, i32* %296, align 4
+  %298 = icmp eq i32 %297, 0
+  br i1 %298, label %299, label %303
+
+; <label>:299                                     ; preds = %291
+  br label %300
+
+; <label>:300                                     ; preds = %299
+  %301 = load i32, i32* %k, align 4
+  %302 = add nsw i32 %301, 1
+  store i32 %302, i32* %k, align 4
+  br label %291
+
+; <label>:303                                     ; preds = %291
+  %304 = load i32, i32* %jz, align 4
+  %305 = add nsw i32 %304, 1
+  store i32 %305, i32* %i, align 4
+  br label %306
+
+; <label>:306                                     ; preds = %355, %303
+  %307 = load i32, i32* %i, align 4
+  %308 = load i32, i32* %jz, align 4
+  %309 = load i32, i32* %k, align 4
+  %310 = add nsw i32 %308, %309
+  %311 = icmp sle i32 %307, %310
+  br i1 %311, label %312, label %358
+
+; <label>:312                                     ; preds = %306
+  %313 = load i32, i32* %jv, align 4
+  %314 = load i32, i32* %i, align 4
+  %315 = add nsw i32 %313, %314
+  %316 = sext i32 %315 to i64
+  %317 = load i32*, i32** %6, align 8
+  %318 = getelementptr inbounds i32, i32* %317, i64 %316
+  %319 = load i32, i32* %318, align 4
+  %320 = sitofp i32 %319 to double
+  %321 = load i32, i32* %jx, align 4
+  %322 = load i32, i32* %i, align 4
+  %323 = add nsw i32 %321, %322
+  %324 = sext i32 %323 to i64
+  %325 = getelementptr inbounds [20 x double], [20 x double]* %f, i32 0, i64 %324
+  store double %320, double* %325, align 8
+  store i32 0, i32* %j, align 4
+  store double 0.000000e+00, double* %fw, align 8
+  br label %326
+
+; <label>:326                                     ; preds = %347, %312
+  %327 = load i32, i32* %j, align 4
+  %328 = load i32, i32* %jx, align 4
+  %329 = icmp sle i32 %327, %328
+  br i1 %329, label %330, label %350
+
+; <label>:330                                     ; preds = %326
+  %331 = load i32, i32* %j, align 4
+  %332 = sext i32 %331 to i64
+  %333 = load double*, double** %1, align 8
+  %334 = getelementptr inbounds double, double* %333, i64 %332
+  %335 = load double, double* %334, align 8
+  %336 = load i32, i32* %jx, align 4
+  %337 = load i32, i32* %i, align 4
+  %338 = add nsw i32 %336, %337
+  %339 = load i32, i32* %j, align 4
+  %340 = sub nsw i32 %338, %339
+  %341 = sext i32 %340 to i64
+  %342 = getelementptr inbounds [20 x double], [20 x double]* %f, i32 0, i64 %341
+  %343 = load double, double* %342, align 8
+  %344 = fmul double %335, %343
+  %345 = load double, double* %fw, align 8
+  %346 = fadd double %345, %344
+  store double %346, double* %fw, align 8
+  br label %347
+
+; <label>:347                                     ; preds = %330
+  %348 = load i32, i32* %j, align 4
+  %349 = add nsw i32 %348, 1
+  store i32 %349, i32* %j, align 4
+  br label %326
+
+; <label>:350                                     ; preds = %326
+  %351 = load double, double* %fw, align 8
+  %352 = load i32, i32* %i, align 4
+  %353 = sext i32 %352 to i64
+  %354 = getelementptr inbounds [20 x double], [20 x double]* %q, i32 0, i64 %353
+  store double %351, double* %354, align 8
+  br label %355
+
+; <label>:355                                     ; preds = %350
+  %356 = load i32, i32* %i, align 4
+  %357 = add nsw i32 %356, 1
+  store i32 %357, i32* %i, align 4
+  br label %306
+
+; <label>:358                                     ; preds = %306
+  %359 = load i32, i32* %k, align 4
+  %360 = load i32, i32* %jz, align 4
+  %361 = add nsw i32 %360, %359
+  store i32 %361, i32* %jz, align 4
+  br label %97
+
+; <label>:362                                     ; preds = %287
+  br label %363
+
+; <label>:363                                     ; preds = %362, %267
+  %364 = load double, double* %z, align 8
+  %365 = fcmp oeq double %364, 0.000000e+00
+  br i1 %365, label %366, label %383
+
+; <label>:366                                     ; preds = %363
+  %367 = load i32, i32* %jz, align 4
+  %368 = sub nsw i32 %367, 1
+  store i32 %368, i32* %jz, align 4
+  %369 = load i32, i32* %q0, align 4
+  %370 = sub nsw i32 %369, 24
+  store i32 %370, i32* %q0, align 4
+  br label %371
+
+; <label>:371                                     ; preds = %377, %366
+  %372 = load i32, i32* %jz, align 4
+  %373 = sext i32 %372 to i64
+  %374 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %373
+  %375 = load i32, i32* %374, align 4
+  %376 = icmp eq i32 %375, 0
+  br i1 %376, label %377, label %382
+
+; <label>:377                                     ; preds = %371
+  %378 = load i32, i32* %jz, align 4
+  %379 = add nsw i32 %378, -1
+  store i32 %379, i32* %jz, align 4
+  %380 = load i32, i32* %q0, align 4
+  %381 = sub nsw i32 %380, 24
+  store i32 %381, i32* %q0, align 4
+  br label %371
+
+; <label>:382                                     ; preds = %371
+  br label %419
+
+; <label>:383                                     ; preds = %363
+  %384 = load double, double* %z, align 8
+  %385 = load i32, i32* %q0, align 4
+  %386 = sub nsw i32 0, %385
+  %387 = call double @scalbn(double %384, i32 %386) #3
+  store double %387, double* %z, align 8
+  %388 = load double, double* %z, align 8
+  %389 = fcmp oge double %388, 0x4170000000000000
+  br i1 %389, label %390, label %412
+
+; <label>:390                                     ; preds = %383
+  %391 = load double, double* %z, align 8
+  %392 = fmul double 0x3E70000000000000, %391
+  %393 = fptosi double %392 to i32
+  %394 = sitofp i32 %393 to double
+  store double %394, double* %fw, align 8
+  %395 = load double, double* %z, align 8
+  %396 = load double, double* %fw, align 8
+  %397 = fmul double 0x4170000000000000, %396
+  %398 = fsub double %395, %397
+  %399 = fptosi double %398 to i32
+  %400 = load i32, i32* %jz, align 4
+  %401 = sext i32 %400 to i64
+  %402 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %401
+  store i32 %399, i32* %402, align 4
+  %403 = load i32, i32* %jz, align 4
+  %404 = add nsw i32 %403, 1
+  store i32 %404, i32* %jz, align 4
+  %405 = load i32, i32* %q0, align 4
+  %406 = add nsw i32 %405, 24
+  store i32 %406, i32* %q0, align 4
+  %407 = load double, double* %fw, align 8
+  %408 = fptosi double %407 to i32
+  %409 = load i32, i32* %jz, align 4
+  %410 = sext i32 %409 to i64
+  %411 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %410
+  store i32 %408, i32* %411, align 4
+  br label %418
+
+; <label>:412                                     ; preds = %383
+  %413 = load double, double* %z, align 8
+  %414 = fptosi double %413 to i32
+  %415 = load i32, i32* %jz, align 4
+  %416 = sext i32 %415 to i64
+  %417 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %416
+  store i32 %414, i32* %417, align 4
+  br label %418
+
+; <label>:418                                     ; preds = %412, %390
+  br label %419
+
+; <label>:419                                     ; preds = %418, %382
+  %420 = load i32, i32* %q0, align 4
+  %421 = call double @scalbn(double 1.000000e+00, i32 %420) #3
+  store double %421, double* %fw, align 8
+  %422 = load i32, i32* %jz, align 4
+  store i32 %422, i32* %i, align 4
+  br label %423
+
+; <label>:423                                     ; preds = %439, %419
+  %424 = load i32, i32* %i, align 4
+  %425 = icmp sge i32 %424, 0
+  br i1 %425, label %426, label %442
+
+; <label>:426                                     ; preds = %423
+  %427 = load double, double* %fw, align 8
+  %428 = load i32, i32* %i, align 4
+  %429 = sext i32 %428 to i64
+  %430 = getelementptr inbounds [20 x i32], [20 x i32]* %iq, i32 0, i64 %429
+  %431 = load i32, i32* %430, align 4
+  %432 = sitofp i32 %431 to double
+  %433 = fmul double %427, %432
+  %434 = load i32, i32* %i, align 4
+  %435 = sext i32 %434 to i64
+  %436 = getelementptr inbounds [20 x double], [20 x double]* %q, i32 0, i64 %435
+  store double %433, double* %436, align 8
+  %437 = load double, double* %fw, align 8
+  %438 = fmul double %437, 0x3E70000000000000
+  store double %438, double* %fw, align 8
+  br label %439
+
+; <label>:439                                     ; preds = %426
+  %440 = load i32, i32* %i, align 4
+  %441 = add nsw i32 %440, -1
+  store i32 %441, i32* %i, align 4
+  br label %423
+
+; <label>:442                                     ; preds = %423
+  %443 = load i32, i32* %jz, align 4
+  store i32 %443, i32* %i, align 4
+  br label %444
+
+; <label>:444                                     ; preds = %484, %442
+  %445 = load i32, i32* %i, align 4
+  %446 = icmp sge i32 %445, 0
+  br i1 %446, label %447, label %487
+
+; <label>:447                                     ; preds = %444
+  store double 0.000000e+00, double* %fw, align 8
+  store i32 0, i32* %k, align 4
+  br label %448
+
+; <label>:448                                     ; preds = %474, %447
+  %449 = load i32, i32* %k, align 4
+  %450 = load i32, i32* %jp, align 4
+  %451 = icmp sle i32 %449, %450
+  br i1 %451, label %452, label %458
+
+; <label>:452                                     ; preds = %448
+  %453 = load i32, i32* %k, align 4
+  %454 = load i32, i32* %jz, align 4
+  %455 = load i32, i32* %i, align 4
+  %456 = sub nsw i32 %454, %455
+  %457 = icmp sle i32 %453, %456
+  br label %458
+
+; <label>:458                                     ; preds = %452, %448
+  %459 = phi i1 [ false, %448 ], [ %457, %452 ]
+  br i1 %459, label %460, label %477
+
+; <label>:460                                     ; preds = %458
+  %461 = load i32, i32* %k, align 4
+  %462 = sext i32 %461 to i64
+  %463 = getelementptr inbounds [8 x double], [8 x double]* @PIo2, i32 0, i64 %462
+  %464 = load double, double* %463, align 8
+  %465 = load i32, i32* %i, align 4
+  %466 = load i32, i32* %k, align 4
+  %467 = add nsw i32 %465, %466
+  %468 = sext i32 %467 to i64
+  %469 = getelementptr inbounds [20 x double], [20 x double]* %q, i32 0, i64 %468
+  %470 = load double, double* %469, align 8
+  %471 = fmul double %464, %470
+  %472 = load double, double* %fw, align 8
+  %473 = fadd double %472, %471
+  store double %473, double* %fw, align 8
+  br label %474
+
+; <label>:474                                     ; preds = %460
+  %475 = load i32, i32* %k, align 4
+  %476 = add nsw i32 %475, 1
+  store i32 %476, i32* %k, align 4
+  br label %448
+
+; <label>:477                                     ; preds = %458
+  %478 = load double, double* %fw, align 8
+  %479 = load i32, i32* %jz, align 4
+  %480 = load i32, i32* %i, align 4
+  %481 = sub nsw i32 %479, %480
+  %482 = sext i32 %481 to i64
+  %483 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %482
+  store double %478, double* %483, align 8
+  br label %484
+
+; <label>:484                                     ; preds = %477
+  %485 = load i32, i32* %i, align 4
+  %486 = add nsw i32 %485, -1
+  store i32 %486, i32* %i, align 4
+  br label %444
+
+; <label>:487                                     ; preds = %444
+  %488 = load i32, i32* %5, align 4
+  switch i32 %488, label %691 [
+    i32 0, label %489
+    i32 1, label %516
+    i32 2, label %516
+    i32 3, label %573
+  ]
+
+; <label>:489                                     ; preds = %487
+  store double 0.000000e+00, double* %fw, align 8
+  %490 = load i32, i32* %jz, align 4
+  store i32 %490, i32* %i, align 4
+  br label %491
+
+; <label>:491                                     ; preds = %501, %489
+  %492 = load i32, i32* %i, align 4
+  %493 = icmp sge i32 %492, 0
+  br i1 %493, label %494, label %504
+
+; <label>:494                                     ; preds = %491
+  %495 = load i32, i32* %i, align 4
+  %496 = sext i32 %495 to i64
+  %497 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %496
+  %498 = load double, double* %497, align 8
+  %499 = load double, double* %fw, align 8
+  %500 = fadd double %499, %498
+  store double %500, double* %fw, align 8
+  br label %501
+
+; <label>:501                                     ; preds = %494
+  %502 = load i32, i32* %i, align 4
+  %503 = add nsw i32 %502, -1
+  store i32 %503, i32* %i, align 4
+  br label %491
+
+; <label>:504                                     ; preds = %491
+  %505 = load i32, i32* %ih, align 4
+  %506 = icmp eq i32 %505, 0
+  br i1 %506, label %507, label %509
+
+; <label>:507                                     ; preds = %504
+  %508 = load double, double* %fw, align 8
+  br label %512
+
+; <label>:509                                     ; preds = %504
+  %510 = load double, double* %fw, align 8
+  %511 = fsub double -0.000000e+00, %510
+  br label %512
+
+; <label>:512                                     ; preds = %509, %507
+  %513 = phi double [ %508, %507 ], [ %511, %509 ]
+  %514 = load double*, double** %2, align 8
+  %515 = getelementptr inbounds double, double* %514, i64 0
+  store double %513, double* %515, align 8
+  br label %691
+
+; <label>:516                                     ; preds = %487, %487
+  store double 0.000000e+00, double* %fw, align 8
+  %517 = load i32, i32* %jz, align 4
+  store i32 %517, i32* %i, align 4
+  br label %518
+
+; <label>:518                                     ; preds = %528, %516
+  %519 = load i32, i32* %i, align 4
+  %520 = icmp sge i32 %519, 0
+  br i1 %520, label %521, label %531
+
+; <label>:521                                     ; preds = %518
+  %522 = load i32, i32* %i, align 4
+  %523 = sext i32 %522 to i64
+  %524 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %523
+  %525 = load double, double* %524, align 8
+  %526 = load double, double* %fw, align 8
+  %527 = fadd double %526, %525
+  store double %527, double* %fw, align 8
+  br label %528
+
+; <label>:528                                     ; preds = %521
+  %529 = load i32, i32* %i, align 4
+  %530 = add nsw i32 %529, -1
+  store i32 %530, i32* %i, align 4
+  br label %518
+
+; <label>:531                                     ; preds = %518
+  %532 = load i32, i32* %ih, align 4
+  %533 = icmp eq i32 %532, 0
+  br i1 %533, label %534, label %536
+
+; <label>:534                                     ; preds = %531
+  %535 = load double, double* %fw, align 8
+  br label %539
+
+; <label>:536                                     ; preds = %531
+  %537 = load double, double* %fw, align 8
+  %538 = fsub double -0.000000e+00, %537
+  br label %539
+
+; <label>:539                                     ; preds = %536, %534
+  %540 = phi double [ %535, %534 ], [ %538, %536 ]
+  %541 = load double*, double** %2, align 8
+  %542 = getelementptr inbounds double, double* %541, i64 0
+  store double %540, double* %542, align 8
+  %543 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 0
+  %544 = load double, double* %543, align 8
+  %545 = load double, double* %fw, align 8
+  %546 = fsub double %544, %545
+  store double %546, double* %fw, align 8
+  store i32 1, i32* %i, align 4
+  br label %547
+
+; <label>:547                                     ; preds = %558, %539
+  %548 = load i32, i32* %i, align 4
+  %549 = load i32, i32* %jz, align 4
+  %550 = icmp sle i32 %548, %549
+  br i1 %550, label %551, label %561
+
+; <label>:551                                     ; preds = %547
+  %552 = load i32, i32* %i, align 4
+  %553 = sext i32 %552 to i64
+  %554 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %553
+  %555 = load double, double* %554, align 8
+  %556 = load double, double* %fw, align 8
+  %557 = fadd double %556, %555
+  store double %557, double* %fw, align 8
+  br label %558
+
+; <label>:558                                     ; preds = %551
+  %559 = load i32, i32* %i, align 4
+  %560 = add nsw i32 %559, 1
+  store i32 %560, i32* %i, align 4
+  br label %547
+
+; <label>:561                                     ; preds = %547
+  %562 = load i32, i32* %ih, align 4
+  %563 = icmp eq i32 %562, 0
+  br i1 %563, label %564, label %566
+
+; <label>:564                                     ; preds = %561
+  %565 = load double, double* %fw, align 8
+  br label %569
+
+; <label>:566                                     ; preds = %561
+  %567 = load double, double* %fw, align 8
+  %568 = fsub double -0.000000e+00, %567
+  br label %569
+
+; <label>:569                                     ; preds = %566, %564
+  %570 = phi double [ %565, %564 ], [ %568, %566 ]
+  %571 = load double*, double** %2, align 8
+  %572 = getelementptr inbounds double, double* %571, i64 1
+  store double %570, double* %572, align 8
+  br label %691
+
+; <label>:573                                     ; preds = %487
+  %574 = load i32, i32* %jz, align 4
+  store i32 %574, i32* %i, align 4
+  br label %575
+
+; <label>:575                                     ; preds = %606, %573
+  %576 = load i32, i32* %i, align 4
+  %577 = icmp sgt i32 %576, 0
+  br i1 %577, label %578, label %609
+
+; <label>:578                                     ; preds = %575
+  %579 = load i32, i32* %i, align 4
+  %580 = sub nsw i32 %579, 1
+  %581 = sext i32 %580 to i64
+  %582 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %581
+  %583 = load double, double* %582, align 8
+  %584 = load i32, i32* %i, align 4
+  %585 = sext i32 %584 to i64
+  %586 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %585
+  %587 = load double, double* %586, align 8
+  %588 = fadd double %583, %587
+  store double %588, double* %fw, align 8
+  %589 = load i32, i32* %i, align 4
+  %590 = sub nsw i32 %589, 1
+  %591 = sext i32 %590 to i64
+  %592 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %591
+  %593 = load double, double* %592, align 8
+  %594 = load double, double* %fw, align 8
+  %595 = fsub double %593, %594
+  %596 = load i32, i32* %i, align 4
+  %597 = sext i32 %596 to i64
+  %598 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %597
+  %599 = load double, double* %598, align 8
+  %600 = fadd double %599, %595
+  store double %600, double* %598, align 8
+  %601 = load double, double* %fw, align 8
+  %602 = load i32, i32* %i, align 4
+  %603 = sub nsw i32 %602, 1
+  %604 = sext i32 %603 to i64
+  %605 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %604
+  store double %601, double* %605, align 8
+  br label %606
+
+; <label>:606                                     ; preds = %578
+  %607 = load i32, i32* %i, align 4
+  %608 = add nsw i32 %607, -1
+  store i32 %608, i32* %i, align 4
+  br label %575
+
+; <label>:609                                     ; preds = %575
+  %610 = load i32, i32* %jz, align 4
+  store i32 %610, i32* %i, align 4
+  br label %611
+
+; <label>:611                                     ; preds = %642, %609
+  %612 = load i32, i32* %i, align 4
+  %613 = icmp sgt i32 %612, 1
+  br i1 %613, label %614, label %645
+
+; <label>:614                                     ; preds = %611
+  %615 = load i32, i32* %i, align 4
+  %616 = sub nsw i32 %615, 1
+  %617 = sext i32 %616 to i64
+  %618 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %617
+  %619 = load double, double* %618, align 8
+  %620 = load i32, i32* %i, align 4
+  %621 = sext i32 %620 to i64
+  %622 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %621
+  %623 = load double, double* %622, align 8
+  %624 = fadd double %619, %623
+  store double %624, double* %fw, align 8
+  %625 = load i32, i32* %i, align 4
+  %626 = sub nsw i32 %625, 1
+  %627 = sext i32 %626 to i64
+  %628 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %627
+  %629 = load double, double* %628, align 8
+  %630 = load double, double* %fw, align 8
+  %631 = fsub double %629, %630
+  %632 = load i32, i32* %i, align 4
+  %633 = sext i32 %632 to i64
+  %634 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %633
+  %635 = load double, double* %634, align 8
+  %636 = fadd double %635, %631
+  store double %636, double* %634, align 8
+  %637 = load double, double* %fw, align 8
+  %638 = load i32, i32* %i, align 4
+  %639 = sub nsw i32 %638, 1
+  %640 = sext i32 %639 to i64
+  %641 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %640
+  store double %637, double* %641, align 8
+  br label %642
+
+; <label>:642                                     ; preds = %614
+  %643 = load i32, i32* %i, align 4
+  %644 = add nsw i32 %643, -1
+  store i32 %644, i32* %i, align 4
+  br label %611
+
+; <label>:645                                     ; preds = %611
+  store double 0.000000e+00, double* %fw, align 8
+  %646 = load i32, i32* %jz, align 4
+  store i32 %646, i32* %i, align 4
+  br label %647
+
+; <label>:647                                     ; preds = %657, %645
+  %648 = load i32, i32* %i, align 4
+  %649 = icmp sge i32 %648, 2
+  br i1 %649, label %650, label %660
+
+; <label>:650                                     ; preds = %647
+  %651 = load i32, i32* %i, align 4
+  %652 = sext i32 %651 to i64
+  %653 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 %652
+  %654 = load double, double* %653, align 8
+  %655 = load double, double* %fw, align 8
+  %656 = fadd double %655, %654
+  store double %656, double* %fw, align 8
+  br label %657
+
+; <label>:657                                     ; preds = %650
+  %658 = load i32, i32* %i, align 4
+  %659 = add nsw i32 %658, -1
+  store i32 %659, i32* %i, align 4
+  br label %647
+
+; <label>:660                                     ; preds = %647
+  %661 = load i32, i32* %ih, align 4
+  %662 = icmp eq i32 %661, 0
+  br i1 %662, label %663, label %675
+
+; <label>:663                                     ; preds = %660
+  %664 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 0
+  %665 = load double, double* %664, align 8
+  %666 = load double*, double** %2, align 8
+  %667 = getelementptr inbounds double, double* %666, i64 0
+  store double %665, double* %667, align 8
+  %668 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 1
+  %669 = load double, double* %668, align 8
+  %670 = load double*, double** %2, align 8
+  %671 = getelementptr inbounds double, double* %670, i64 1
+  store double %669, double* %671, align 8
+  %672 = load double, double* %fw, align 8
+  %673 = load double*, double** %2, align 8
+  %674 = getelementptr inbounds double, double* %673, i64 2
+  store double %672, double* %674, align 8
+  br label %690
+
+; <label>:675                                     ; preds = %660
+  %676 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 0
+  %677 = load double, double* %676, align 8
+  %678 = fsub double -0.000000e+00, %677
+  %679 = load double*, double** %2, align 8
+  %680 = getelementptr inbounds double, double* %679, i64 0
+  store double %678, double* %680, align 8
+  %681 = getelementptr inbounds [20 x double], [20 x double]* %fq, i32 0, i64 1
+  %682 = load double, double* %681, align 8
+  %683 = fsub double -0.000000e+00, %682
+  %684 = load double*, double** %2, align 8
+  %685 = getelementptr inbounds double, double* %684, i64 1
+  store double %683, double* %685, align 8
+  %686 = load double, double* %fw, align 8
+  %687 = fsub double -0.000000e+00, %686
+  %688 = load double*, double** %2, align 8
+  %689 = getelementptr inbounds double, double* %688, i64 2
+  store double %687, double* %689, align 8
+  br label %690
+
+; <label>:690                                     ; preds = %675, %663
+  br label %691
+
+; <label>:691                                     ; preds = %690, %487, %569, %512
+  %692 = load i32, i32* %n, align 4
+  %693 = and i32 %692, 7
+  ret i32 %693
+}
+
+; Function Attrs: nounwind
+declare double @scalbn(double, i32) #1
+
+declare double @jfloor(double) #2
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { nounwind "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { nounwind }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

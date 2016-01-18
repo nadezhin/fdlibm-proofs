@@ -1,0 +1,136 @@
+; ModuleID = '../netlib/e_log10.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+@zero = internal global double 0.000000e+00, align 8
+
+; Function Attrs: nounwind uwtable
+define double @__ieee754_log10(double %x) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %y = alloca double, align 8
+  %z = alloca double, align 8
+  %i = alloca i32, align 4
+  %k = alloca i32, align 4
+  %hx = alloca i32, align 4
+  %lx = alloca i32, align 4
+  store double %x, double* %2, align 8
+  %3 = bitcast double* %2 to i32*
+  %4 = getelementptr inbounds i32, i32* %3, i64 1
+  %5 = load i32, i32* %4, align 4
+  store i32 %5, i32* %hx, align 4
+  %6 = bitcast double* %2 to i32*
+  %7 = load i32, i32* %6, align 4
+  store i32 %7, i32* %lx, align 4
+  store i32 0, i32* %k, align 4
+  %8 = load i32, i32* %hx, align 4
+  %9 = icmp slt i32 %8, 1048576
+  br i1 %9, label %10, label %36
+
+; <label>:10                                      ; preds = %0
+  %11 = load i32, i32* %hx, align 4
+  %12 = and i32 %11, 2147483647
+  %13 = load i32, i32* %lx, align 4
+  %14 = or i32 %12, %13
+  %15 = icmp eq i32 %14, 0
+  br i1 %15, label %16, label %19
+
+; <label>:16                                      ; preds = %10
+  %17 = load double, double* @zero, align 8
+  %18 = fdiv double 0xC350000000000000, %17
+  store double %18, double* %1
+  br label %75
+
+; <label>:19                                      ; preds = %10
+  %20 = load i32, i32* %hx, align 4
+  %21 = icmp slt i32 %20, 0
+  br i1 %21, label %22, label %28
+
+; <label>:22                                      ; preds = %19
+  %23 = load double, double* %2, align 8
+  %24 = load double, double* %2, align 8
+  %25 = fsub double %23, %24
+  %26 = load double, double* @zero, align 8
+  %27 = fdiv double %25, %26
+  store double %27, double* %1
+  br label %75
+
+; <label>:28                                      ; preds = %19
+  %29 = load i32, i32* %k, align 4
+  %30 = sub nsw i32 %29, 54
+  store i32 %30, i32* %k, align 4
+  %31 = load double, double* %2, align 8
+  %32 = fmul double %31, 0x4350000000000000
+  store double %32, double* %2, align 8
+  %33 = bitcast double* %2 to i32*
+  %34 = getelementptr inbounds i32, i32* %33, i64 1
+  %35 = load i32, i32* %34, align 4
+  store i32 %35, i32* %hx, align 4
+  br label %36
+
+; <label>:36                                      ; preds = %28, %0
+  %37 = load i32, i32* %hx, align 4
+  %38 = icmp sge i32 %37, 2146435072
+  br i1 %38, label %39, label %43
+
+; <label>:39                                      ; preds = %36
+  %40 = load double, double* %2, align 8
+  %41 = load double, double* %2, align 8
+  %42 = fadd double %40, %41
+  store double %42, double* %1
+  br label %75
+
+; <label>:43                                      ; preds = %36
+  %44 = load i32, i32* %hx, align 4
+  %45 = ashr i32 %44, 20
+  %46 = sub nsw i32 %45, 1023
+  %47 = load i32, i32* %k, align 4
+  %48 = add nsw i32 %47, %46
+  store i32 %48, i32* %k, align 4
+  %49 = load i32, i32* %k, align 4
+  %50 = and i32 %49, -2147483648
+  %51 = lshr i32 %50, 31
+  store i32 %51, i32* %i, align 4
+  %52 = load i32, i32* %hx, align 4
+  %53 = and i32 %52, 1048575
+  %54 = load i32, i32* %i, align 4
+  %55 = sub nsw i32 1023, %54
+  %56 = shl i32 %55, 20
+  %57 = or i32 %53, %56
+  store i32 %57, i32* %hx, align 4
+  %58 = load i32, i32* %k, align 4
+  %59 = load i32, i32* %i, align 4
+  %60 = add nsw i32 %58, %59
+  %61 = sitofp i32 %60 to double
+  store double %61, double* %y, align 8
+  %62 = load i32, i32* %hx, align 4
+  %63 = bitcast double* %2 to i32*
+  %64 = getelementptr inbounds i32, i32* %63, i64 1
+  store i32 %62, i32* %64, align 4
+  %65 = load double, double* %y, align 8
+  %66 = fmul double %65, 0x3D59FEF311F12B36
+  %67 = load double, double* %2, align 8
+  %68 = call double @__ieee754_log(double %67)
+  %69 = fmul double 0x3FDBCB7B1526E50E, %68
+  %70 = fadd double %66, %69
+  store double %70, double* %z, align 8
+  %71 = load double, double* %z, align 8
+  %72 = load double, double* %y, align 8
+  %73 = fmul double %72, 0x3FD34413509F6000
+  %74 = fadd double %71, %73
+  store double %74, double* %1
+  br label %75
+
+; <label>:75                                      ; preds = %43, %39, %22, %16
+  %76 = load double, double* %1
+  ret double %76
+}
+
+declare double @__ieee754_log(double) #1
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

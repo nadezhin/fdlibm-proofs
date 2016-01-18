@@ -1,0 +1,74 @@
+; ModuleID = '../netlib/s_ldexp.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define double @ldexp(double %value, i32 %exp) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %3 = alloca i32, align 4
+  store double %value, double* %2, align 8
+  store i32 %exp, i32* %3, align 4
+  %4 = load double, double* %2, align 8
+  %5 = call i32 @finite(double %4)
+  %6 = icmp ne i32 %5, 0
+  br i1 %6, label %7, label %10
+
+; <label>:7                                       ; preds = %0
+  %8 = load double, double* %2, align 8
+  %9 = fcmp oeq double %8, 0.000000e+00
+  br i1 %9, label %10, label %12
+
+; <label>:10                                      ; preds = %7, %0
+  %11 = load double, double* %2, align 8
+  store double %11, double* %1
+  br label %26
+
+; <label>:12                                      ; preds = %7
+  %13 = load double, double* %2, align 8
+  %14 = load i32, i32* %3, align 4
+  %15 = call double @scalbn(double %13, i32 %14) #4
+  store double %15, double* %2, align 8
+  %16 = load double, double* %2, align 8
+  %17 = call i32 @finite(double %16)
+  %18 = icmp ne i32 %17, 0
+  br i1 %18, label %19, label %22
+
+; <label>:19                                      ; preds = %12
+  %20 = load double, double* %2, align 8
+  %21 = fcmp oeq double %20, 0.000000e+00
+  br i1 %21, label %22, label %24
+
+; <label>:22                                      ; preds = %19, %12
+  %23 = call i32* @__errno_location() #5
+  store i32 34, i32* %23, align 4
+  br label %24
+
+; <label>:24                                      ; preds = %22, %19
+  %25 = load double, double* %2, align 8
+  store double %25, double* %1
+  br label %26
+
+; <label>:26                                      ; preds = %24, %10
+  %27 = load double, double* %1
+  ret double %27
+}
+
+declare i32 @finite(double) #1
+
+; Function Attrs: nounwind
+declare double @scalbn(double, i32) #2
+
+; Function Attrs: nounwind readnone
+declare i32* @__errno_location() #3
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { nounwind "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { nounwind readnone "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #4 = { nounwind }
+attributes #5 = { nounwind readnone }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

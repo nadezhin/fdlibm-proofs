@@ -410,7 +410,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             String filename = filenames[0];
             String[] deps = Arrays.copyOfRange(filenames, 1, filenames.length);
             System.out.println(filename);
-            dumpFile("../../t/ole71/jvm/fdlibm/netlib.llvm/", filename, deps, "acl2/llvm/");
+            dumpFile("netlib.llvm/", filename, deps, "acl2/llvm/");
         }
     }
 }

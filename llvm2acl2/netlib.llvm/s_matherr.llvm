@@ -1,0 +1,41 @@
+; ModuleID = '../netlib/s_matherr.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+%struct.exception = type { i32, i8*, double, double, double }
+
+; Function Attrs: nounwind uwtable
+define i32 @matherr(%struct.exception* %x) #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca %struct.exception*, align 8
+  %n = alloca i32, align 4
+  store %struct.exception* %x, %struct.exception** %2, align 8
+  store i32 0, i32* %n, align 4
+  %3 = load %struct.exception*, %struct.exception** %2, align 8
+  %4 = getelementptr inbounds %struct.exception, %struct.exception* %3, i32 0, i32 2
+  %5 = load double, double* %4, align 8
+  %6 = load %struct.exception*, %struct.exception** %2, align 8
+  %7 = getelementptr inbounds %struct.exception, %struct.exception* %6, i32 0, i32 2
+  %8 = load double, double* %7, align 8
+  %9 = fcmp une double %5, %8
+  br i1 %9, label %10, label %11
+
+; <label>:10                                      ; preds = %0
+  store i32 0, i32* %1
+  br label %13
+
+; <label>:11                                      ; preds = %0
+  %12 = load i32, i32* %n, align 4
+  store i32 %12, i32* %1
+  br label %13
+
+; <label>:13                                      ; preds = %11, %10
+  %14 = load i32, i32* %1
+  ret i32 %14
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

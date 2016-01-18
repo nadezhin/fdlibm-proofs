@@ -1,0 +1,39 @@
+; ModuleID = '../netlib/s_isnan.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define i32 @isnan(double %x) #0 {
+  %1 = alloca double, align 8
+  %hx = alloca i32, align 4
+  %lx = alloca i32, align 4
+  store double %x, double* %1, align 8
+  %2 = bitcast double* %1 to i32*
+  %3 = getelementptr inbounds i32, i32* %2, i64 1
+  %4 = load i32, i32* %3, align 4
+  %5 = and i32 %4, 2147483647
+  store i32 %5, i32* %hx, align 4
+  %6 = bitcast double* %1 to i32*
+  %7 = load i32, i32* %6, align 4
+  store i32 %7, i32* %lx, align 4
+  %8 = load i32, i32* %lx, align 4
+  %9 = load i32, i32* %lx, align 4
+  %10 = sub nsw i32 0, %9
+  %11 = or i32 %8, %10
+  %12 = lshr i32 %11, 31
+  %13 = load i32, i32* %hx, align 4
+  %14 = or i32 %13, %12
+  store i32 %14, i32* %hx, align 4
+  %15 = load i32, i32* %hx, align 4
+  %16 = sub nsw i32 2146435072, %15
+  store i32 %16, i32* %hx, align 4
+  %17 = load i32, i32* %hx, align 4
+  %18 = lshr i32 %17, 31
+  ret i32 %18
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

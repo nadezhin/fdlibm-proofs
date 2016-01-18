@@ -1,0 +1,112 @@
+; ModuleID = '../jdk8/src/s_sin.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define double @jsin(double %x) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %y = alloca [2 x double], align 16
+  %z = alloca double, align 8
+  %n = alloca i32, align 4
+  %ix = alloca i32, align 4
+  store double %x, double* %2, align 8
+  store double 0.000000e+00, double* %z, align 8
+  %3 = bitcast double* %2 to i32*
+  %4 = getelementptr inbounds i32, i32* %3, i64 1
+  %5 = load i32, i32* %4, align 4
+  store i32 %5, i32* %ix, align 4
+  %6 = load i32, i32* %ix, align 4
+  %7 = and i32 %6, 2147483647
+  store i32 %7, i32* %ix, align 4
+  %8 = load i32, i32* %ix, align 4
+  %9 = icmp sle i32 %8, 1072243195
+  br i1 %9, label %10, label %14
+
+; <label>:10                                      ; preds = %0
+  %11 = load double, double* %2, align 8
+  %12 = load double, double* %z, align 8
+  %13 = call double @__j__kernel_sin(double %11, double %12, i32 0)
+  store double %13, double* %1
+  br label %53
+
+; <label>:14                                      ; preds = %0
+  %15 = load i32, i32* %ix, align 4
+  %16 = icmp sge i32 %15, 2146435072
+  br i1 %16, label %17, label %21
+
+; <label>:17                                      ; preds = %14
+  %18 = load double, double* %2, align 8
+  %19 = load double, double* %2, align 8
+  %20 = fsub double %18, %19
+  store double %20, double* %1
+  br label %53
+
+; <label>:21                                      ; preds = %14
+  %22 = load double, double* %2, align 8
+  %23 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i32 0
+  %24 = call i32 @__j__ieee754_rem_pio2(double %22, double* %23)
+  store i32 %24, i32* %n, align 4
+  %25 = load i32, i32* %n, align 4
+  %26 = and i32 %25, 3
+  switch i32 %26, label %46 [
+    i32 0, label %27
+    i32 1, label %33
+    i32 2, label %39
+  ]
+
+; <label>:27                                      ; preds = %21
+  %28 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 0
+  %29 = load double, double* %28, align 8
+  %30 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 1
+  %31 = load double, double* %30, align 8
+  %32 = call double @__j__kernel_sin(double %29, double %31, i32 1)
+  store double %32, double* %1
+  br label %53
+
+; <label>:33                                      ; preds = %21
+  %34 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 0
+  %35 = load double, double* %34, align 8
+  %36 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 1
+  %37 = load double, double* %36, align 8
+  %38 = call double @__j__kernel_cos(double %35, double %37)
+  store double %38, double* %1
+  br label %53
+
+; <label>:39                                      ; preds = %21
+  %40 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 0
+  %41 = load double, double* %40, align 8
+  %42 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 1
+  %43 = load double, double* %42, align 8
+  %44 = call double @__j__kernel_sin(double %41, double %43, i32 1)
+  %45 = fsub double -0.000000e+00, %44
+  store double %45, double* %1
+  br label %53
+
+; <label>:46                                      ; preds = %21
+  %47 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 0
+  %48 = load double, double* %47, align 8
+  %49 = getelementptr inbounds [2 x double], [2 x double]* %y, i32 0, i64 1
+  %50 = load double, double* %49, align 8
+  %51 = call double @__j__kernel_cos(double %48, double %50)
+  %52 = fsub double -0.000000e+00, %51
+  store double %52, double* %1
+  br label %53
+
+; <label>:53                                      ; preds = %46, %39, %33, %27, %17, %10
+  %54 = load double, double* %1
+  ret double %54
+}
+
+declare double @__j__kernel_sin(double, double, i32) #1
+
+declare i32 @__j__ieee754_rem_pio2(double, double*) #1
+
+declare double @__j__kernel_cos(double, double) #1
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

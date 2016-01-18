@@ -1,0 +1,125 @@
+; ModuleID = '../netlib/s_ilogb.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define i32 @ilogb(double %x) #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca double, align 8
+  %hx = alloca i32, align 4
+  %lx = alloca i32, align 4
+  %ix = alloca i32, align 4
+  store double %x, double* %2, align 8
+  %3 = bitcast double* %2 to i32*
+  %4 = getelementptr inbounds i32, i32* %3, i64 1
+  %5 = load i32, i32* %4, align 4
+  %6 = and i32 %5, 2147483647
+  store i32 %6, i32* %hx, align 4
+  %7 = load i32, i32* %hx, align 4
+  %8 = icmp slt i32 %7, 1048576
+  br i1 %8, label %9, label %47
+
+; <label>:9                                       ; preds = %0
+  %10 = bitcast double* %2 to i32*
+  %11 = load i32, i32* %10, align 4
+  store i32 %11, i32* %lx, align 4
+  %12 = load i32, i32* %hx, align 4
+  %13 = load i32, i32* %lx, align 4
+  %14 = or i32 %12, %13
+  %15 = icmp eq i32 %14, 0
+  br i1 %15, label %16, label %17
+
+; <label>:16                                      ; preds = %9
+  store i32 -2147483647, i32* %1
+  br label %55
+
+; <label>:17                                      ; preds = %9
+  %18 = load i32, i32* %hx, align 4
+  %19 = icmp eq i32 %18, 0
+  br i1 %19, label %20, label %31
+
+; <label>:20                                      ; preds = %17
+  store i32 -1043, i32* %ix, align 4
+  br label %21
+
+; <label>:21                                      ; preds = %27, %20
+  %22 = load i32, i32* %lx, align 4
+  %23 = icmp sgt i32 %22, 0
+  br i1 %23, label %24, label %30
+
+; <label>:24                                      ; preds = %21
+  %25 = load i32, i32* %ix, align 4
+  %26 = sub nsw i32 %25, 1
+  store i32 %26, i32* %ix, align 4
+  br label %27
+
+; <label>:27                                      ; preds = %24
+  %28 = load i32, i32* %lx, align 4
+  %29 = shl i32 %28, 1
+  store i32 %29, i32* %lx, align 4
+  br label %21
+
+; <label>:30                                      ; preds = %21
+  br label %44
+
+; <label>:31                                      ; preds = %17
+  store i32 -1022, i32* %ix, align 4
+  %32 = load i32, i32* %hx, align 4
+  %33 = shl i32 %32, 11
+  store i32 %33, i32* %hx, align 4
+  br label %34
+
+; <label>:34                                      ; preds = %40, %31
+  %35 = load i32, i32* %hx, align 4
+  %36 = icmp sgt i32 %35, 0
+  br i1 %36, label %37, label %43
+
+; <label>:37                                      ; preds = %34
+  %38 = load i32, i32* %ix, align 4
+  %39 = sub nsw i32 %38, 1
+  store i32 %39, i32* %ix, align 4
+  br label %40
+
+; <label>:40                                      ; preds = %37
+  %41 = load i32, i32* %hx, align 4
+  %42 = shl i32 %41, 1
+  store i32 %42, i32* %hx, align 4
+  br label %34
+
+; <label>:43                                      ; preds = %34
+  br label %44
+
+; <label>:44                                      ; preds = %43, %30
+  br label %45
+
+; <label>:45                                      ; preds = %44
+  %46 = load i32, i32* %ix, align 4
+  store i32 %46, i32* %1
+  br label %55
+
+; <label>:47                                      ; preds = %0
+  %48 = load i32, i32* %hx, align 4
+  %49 = icmp slt i32 %48, 2146435072
+  br i1 %49, label %50, label %54
+
+; <label>:50                                      ; preds = %47
+  %51 = load i32, i32* %hx, align 4
+  %52 = ashr i32 %51, 20
+  %53 = sub nsw i32 %52, 1023
+  store i32 %53, i32* %1
+  br label %55
+
+; <label>:54                                      ; preds = %47
+  store i32 2147483647, i32* %1
+  br label %55
+
+; <label>:55                                      ; preds = %54, %50, %45, %16
+  %56 = load i32, i32* %1
+  ret i32 %56
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

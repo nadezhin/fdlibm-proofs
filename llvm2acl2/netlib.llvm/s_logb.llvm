@@ -1,0 +1,77 @@
+; ModuleID = '../netlib/s_logb.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define double @logb(double %x) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %lx = alloca i32, align 4
+  %ix = alloca i32, align 4
+  store double %x, double* %2, align 8
+  %3 = bitcast double* %2 to i32*
+  %4 = getelementptr inbounds i32, i32* %3, i64 1
+  %5 = load i32, i32* %4, align 4
+  %6 = and i32 %5, 2147483647
+  store i32 %6, i32* %ix, align 4
+  %7 = bitcast double* %2 to i32*
+  %8 = load i32, i32* %7, align 4
+  store i32 %8, i32* %lx, align 4
+  %9 = load i32, i32* %ix, align 4
+  %10 = load i32, i32* %lx, align 4
+  %11 = or i32 %9, %10
+  %12 = icmp eq i32 %11, 0
+  br i1 %12, label %13, label %17
+
+; <label>:13                                      ; preds = %0
+  %14 = load double, double* %2, align 8
+  %15 = call double @fabs(double %14) #2
+  %16 = fdiv double -1.000000e+00, %15
+  store double %16, double* %1
+  br label %33
+
+; <label>:17                                      ; preds = %0
+  %18 = load i32, i32* %ix, align 4
+  %19 = icmp sge i32 %18, 2146435072
+  br i1 %19, label %20, label %24
+
+; <label>:20                                      ; preds = %17
+  %21 = load double, double* %2, align 8
+  %22 = load double, double* %2, align 8
+  %23 = fmul double %21, %22
+  store double %23, double* %1
+  br label %33
+
+; <label>:24                                      ; preds = %17
+  %25 = load i32, i32* %ix, align 4
+  %26 = ashr i32 %25, 20
+  store i32 %26, i32* %ix, align 4
+  %27 = icmp eq i32 %26, 0
+  br i1 %27, label %28, label %29
+
+; <label>:28                                      ; preds = %24
+  store double -1.022000e+03, double* %1
+  br label %33
+
+; <label>:29                                      ; preds = %24
+  %30 = load i32, i32* %ix, align 4
+  %31 = sub nsw i32 %30, 1023
+  %32 = sitofp i32 %31 to double
+  store double %32, double* %1
+  br label %33
+
+; <label>:33                                      ; preds = %29, %28, %20, %13
+  %34 = load double, double* %1
+  ret double %34
+}
+
+; Function Attrs: nounwind readnone
+declare double @fabs(double) #1
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { nounwind readnone "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { nounwind readnone }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

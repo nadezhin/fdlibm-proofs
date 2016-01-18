@@ -1,0 +1,139 @@
+; ModuleID = '../netlib/s_tanh.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define double @tanh(double %x) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %t = alloca double, align 8
+  %z = alloca double, align 8
+  %jx = alloca i32, align 4
+  %ix = alloca i32, align 4
+  store double %x, double* %2, align 8
+  %3 = bitcast double* %2 to i32*
+  %4 = getelementptr inbounds i32, i32* %3, i64 1
+  %5 = load i32, i32* %4, align 4
+  store i32 %5, i32* %jx, align 4
+  %6 = load i32, i32* %jx, align 4
+  %7 = and i32 %6, 2147483647
+  store i32 %7, i32* %ix, align 4
+  %8 = load i32, i32* %ix, align 4
+  %9 = icmp sge i32 %8, 2146435072
+  br i1 %9, label %10, label %21
+
+; <label>:10                                      ; preds = %0
+  %11 = load i32, i32* %jx, align 4
+  %12 = icmp sge i32 %11, 0
+  br i1 %12, label %13, label %17
+
+; <label>:13                                      ; preds = %10
+  %14 = load double, double* %2, align 8
+  %15 = fdiv double 1.000000e+00, %14
+  %16 = fadd double %15, 1.000000e+00
+  store double %16, double* %1
+  br label %66
+
+; <label>:17                                      ; preds = %10
+  %18 = load double, double* %2, align 8
+  %19 = fdiv double 1.000000e+00, %18
+  %20 = fsub double %19, 1.000000e+00
+  store double %20, double* %1
+  br label %66
+
+; <label>:21                                      ; preds = %0
+  %22 = load i32, i32* %ix, align 4
+  %23 = icmp slt i32 %22, 1077280768
+  br i1 %23, label %24, label %55
+
+; <label>:24                                      ; preds = %21
+  %25 = load i32, i32* %ix, align 4
+  %26 = icmp slt i32 %25, 1015021568
+  br i1 %26, label %27, label %32
+
+; <label>:27                                      ; preds = %24
+  %28 = load double, double* %2, align 8
+  %29 = load double, double* %2, align 8
+  %30 = fadd double 1.000000e+00, %29
+  %31 = fmul double %28, %30
+  store double %31, double* %1
+  br label %66
+
+; <label>:32                                      ; preds = %24
+  %33 = load i32, i32* %ix, align 4
+  %34 = icmp sge i32 %33, 1072693248
+  br i1 %34, label %35, label %44
+
+; <label>:35                                      ; preds = %32
+  %36 = load double, double* %2, align 8
+  %37 = call double @fabs(double %36) #3
+  %38 = fmul double 2.000000e+00, %37
+  %39 = call double @expm1(double %38) #4
+  store double %39, double* %t, align 8
+  %40 = load double, double* %t, align 8
+  %41 = fadd double %40, 2.000000e+00
+  %42 = fdiv double 2.000000e+00, %41
+  %43 = fsub double 1.000000e+00, %42
+  store double %43, double* %z, align 8
+  br label %54
+
+; <label>:44                                      ; preds = %32
+  %45 = load double, double* %2, align 8
+  %46 = call double @fabs(double %45) #3
+  %47 = fmul double -2.000000e+00, %46
+  %48 = call double @expm1(double %47) #4
+  store double %48, double* %t, align 8
+  %49 = load double, double* %t, align 8
+  %50 = fsub double -0.000000e+00, %49
+  %51 = load double, double* %t, align 8
+  %52 = fadd double %51, 2.000000e+00
+  %53 = fdiv double %50, %52
+  store double %53, double* %z, align 8
+  br label %54
+
+; <label>:54                                      ; preds = %44, %35
+  br label %56
+
+; <label>:55                                      ; preds = %21
+  store double 1.000000e+00, double* %z, align 8
+  br label %56
+
+; <label>:56                                      ; preds = %55, %54
+  %57 = load i32, i32* %jx, align 4
+  %58 = icmp sge i32 %57, 0
+  br i1 %58, label %59, label %61
+
+; <label>:59                                      ; preds = %56
+  %60 = load double, double* %z, align 8
+  br label %64
+
+; <label>:61                                      ; preds = %56
+  %62 = load double, double* %z, align 8
+  %63 = fsub double -0.000000e+00, %62
+  br label %64
+
+; <label>:64                                      ; preds = %61, %59
+  %65 = phi double [ %60, %59 ], [ %63, %61 ]
+  store double %65, double* %1
+  br label %66
+
+; <label>:66                                      ; preds = %64, %27, %17, %13
+  %67 = load double, double* %1
+  ret double %67
+}
+
+; Function Attrs: nounwind
+declare double @expm1(double) #1
+
+; Function Attrs: nounwind readnone
+declare double @fabs(double) #2
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { nounwind "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { nounwind readnone "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { nounwind readnone }
+attributes #4 = { nounwind }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

@@ -1,0 +1,330 @@
+; ModuleID = '../jdk8/src/e_log.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+@zero = internal global double 0.000000e+00, align 8
+
+; Function Attrs: nounwind uwtable
+define double @__j__ieee754_log(double %x) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %hfsq = alloca double, align 8
+  %f = alloca double, align 8
+  %s = alloca double, align 8
+  %z = alloca double, align 8
+  %R = alloca double, align 8
+  %w = alloca double, align 8
+  %t1 = alloca double, align 8
+  %t2 = alloca double, align 8
+  %dk = alloca double, align 8
+  %k = alloca i32, align 4
+  %hx = alloca i32, align 4
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
+  %lx = alloca i32, align 4
+  store double %x, double* %2, align 8
+  %3 = bitcast double* %2 to i32*
+  %4 = getelementptr inbounds i32, i32* %3, i64 1
+  %5 = load i32, i32* %4, align 4
+  store i32 %5, i32* %hx, align 4
+  %6 = bitcast double* %2 to i32*
+  %7 = load i32, i32* %6, align 4
+  store i32 %7, i32* %lx, align 4
+  store i32 0, i32* %k, align 4
+  %8 = load i32, i32* %hx, align 4
+  %9 = icmp slt i32 %8, 1048576
+  br i1 %9, label %10, label %36
+
+; <label>:10                                      ; preds = %0
+  %11 = load i32, i32* %hx, align 4
+  %12 = and i32 %11, 2147483647
+  %13 = load i32, i32* %lx, align 4
+  %14 = or i32 %12, %13
+  %15 = icmp eq i32 %14, 0
+  br i1 %15, label %16, label %19
+
+; <label>:16                                      ; preds = %10
+  %17 = load double, double* @zero, align 8
+  %18 = fdiv double 0xC350000000000000, %17
+  store double %18, double* %1
+  br label %215
+
+; <label>:19                                      ; preds = %10
+  %20 = load i32, i32* %hx, align 4
+  %21 = icmp slt i32 %20, 0
+  br i1 %21, label %22, label %28
+
+; <label>:22                                      ; preds = %19
+  %23 = load double, double* %2, align 8
+  %24 = load double, double* %2, align 8
+  %25 = fsub double %23, %24
+  %26 = load double, double* @zero, align 8
+  %27 = fdiv double %25, %26
+  store double %27, double* %1
+  br label %215
+
+; <label>:28                                      ; preds = %19
+  %29 = load i32, i32* %k, align 4
+  %30 = sub nsw i32 %29, 54
+  store i32 %30, i32* %k, align 4
+  %31 = load double, double* %2, align 8
+  %32 = fmul double %31, 0x4350000000000000
+  store double %32, double* %2, align 8
+  %33 = bitcast double* %2 to i32*
+  %34 = getelementptr inbounds i32, i32* %33, i64 1
+  %35 = load i32, i32* %34, align 4
+  store i32 %35, i32* %hx, align 4
+  br label %36
+
+; <label>:36                                      ; preds = %28, %0
+  %37 = load i32, i32* %hx, align 4
+  %38 = icmp sge i32 %37, 2146435072
+  br i1 %38, label %39, label %43
+
+; <label>:39                                      ; preds = %36
+  %40 = load double, double* %2, align 8
+  %41 = load double, double* %2, align 8
+  %42 = fadd double %40, %41
+  store double %42, double* %1
+  br label %215
+
+; <label>:43                                      ; preds = %36
+  %44 = load i32, i32* %hx, align 4
+  %45 = ashr i32 %44, 20
+  %46 = sub nsw i32 %45, 1023
+  %47 = load i32, i32* %k, align 4
+  %48 = add nsw i32 %47, %46
+  store i32 %48, i32* %k, align 4
+  %49 = load i32, i32* %hx, align 4
+  %50 = and i32 %49, 1048575
+  store i32 %50, i32* %hx, align 4
+  %51 = load i32, i32* %hx, align 4
+  %52 = add nsw i32 %51, 614244
+  %53 = and i32 %52, 1048576
+  store i32 %53, i32* %i, align 4
+  %54 = load i32, i32* %hx, align 4
+  %55 = load i32, i32* %i, align 4
+  %56 = xor i32 %55, 1072693248
+  %57 = or i32 %54, %56
+  %58 = bitcast double* %2 to i32*
+  %59 = getelementptr inbounds i32, i32* %58, i64 1
+  store i32 %57, i32* %59, align 4
+  %60 = load i32, i32* %i, align 4
+  %61 = ashr i32 %60, 20
+  %62 = load i32, i32* %k, align 4
+  %63 = add nsw i32 %62, %61
+  store i32 %63, i32* %k, align 4
+  %64 = load double, double* %2, align 8
+  %65 = fsub double %64, 1.000000e+00
+  store double %65, double* %f, align 8
+  %66 = load i32, i32* %hx, align 4
+  %67 = add nsw i32 2, %66
+  %68 = and i32 1048575, %67
+  %69 = icmp slt i32 %68, 3
+  br i1 %69, label %70, label %113
+
+; <label>:70                                      ; preds = %43
+  %71 = load double, double* %f, align 8
+  %72 = load double, double* @zero, align 8
+  %73 = fcmp oeq double %71, %72
+  br i1 %73, label %74, label %87
+
+; <label>:74                                      ; preds = %70
+  %75 = load i32, i32* %k, align 4
+  %76 = icmp eq i32 %75, 0
+  br i1 %76, label %77, label %79
+
+; <label>:77                                      ; preds = %74
+  %78 = load double, double* @zero, align 8
+  store double %78, double* %1
+  br label %215
+
+; <label>:79                                      ; preds = %74
+  %80 = load i32, i32* %k, align 4
+  %81 = sitofp i32 %80 to double
+  store double %81, double* %dk, align 8
+  %82 = load double, double* %dk, align 8
+  %83 = fmul double %82, 0x3FE62E42FEE00000
+  %84 = load double, double* %dk, align 8
+  %85 = fmul double %84, 0x3DEA39EF35793C76
+  %86 = fadd double %83, %85
+  store double %86, double* %1
+  br label %215
+
+; <label>:87                                      ; preds = %70
+  %88 = load double, double* %f, align 8
+  %89 = load double, double* %f, align 8
+  %90 = fmul double %88, %89
+  %91 = load double, double* %f, align 8
+  %92 = fmul double 0x3FD5555555555555, %91
+  %93 = fsub double 5.000000e-01, %92
+  %94 = fmul double %90, %93
+  store double %94, double* %R, align 8
+  %95 = load i32, i32* %k, align 4
+  %96 = icmp eq i32 %95, 0
+  br i1 %96, label %97, label %101
+
+; <label>:97                                      ; preds = %87
+  %98 = load double, double* %f, align 8
+  %99 = load double, double* %R, align 8
+  %100 = fsub double %98, %99
+  store double %100, double* %1
+  br label %215
+
+; <label>:101                                     ; preds = %87
+  %102 = load i32, i32* %k, align 4
+  %103 = sitofp i32 %102 to double
+  store double %103, double* %dk, align 8
+  %104 = load double, double* %dk, align 8
+  %105 = fmul double %104, 0x3FE62E42FEE00000
+  %106 = load double, double* %R, align 8
+  %107 = load double, double* %dk, align 8
+  %108 = fmul double %107, 0x3DEA39EF35793C76
+  %109 = fsub double %106, %108
+  %110 = load double, double* %f, align 8
+  %111 = fsub double %109, %110
+  %112 = fsub double %105, %111
+  store double %112, double* %1
+  br label %215
+
+; <label>:113                                     ; preds = %43
+  %114 = load double, double* %f, align 8
+  %115 = load double, double* %f, align 8
+  %116 = fadd double 2.000000e+00, %115
+  %117 = fdiv double %114, %116
+  store double %117, double* %s, align 8
+  %118 = load i32, i32* %k, align 4
+  %119 = sitofp i32 %118 to double
+  store double %119, double* %dk, align 8
+  %120 = load double, double* %s, align 8
+  %121 = load double, double* %s, align 8
+  %122 = fmul double %120, %121
+  store double %122, double* %z, align 8
+  %123 = load i32, i32* %hx, align 4
+  %124 = sub nsw i32 %123, 398458
+  store i32 %124, i32* %i, align 4
+  %125 = load double, double* %z, align 8
+  %126 = load double, double* %z, align 8
+  %127 = fmul double %125, %126
+  store double %127, double* %w, align 8
+  %128 = load i32, i32* %hx, align 4
+  %129 = sub nsw i32 440401, %128
+  store i32 %129, i32* %j, align 4
+  %130 = load double, double* %w, align 8
+  %131 = load double, double* %w, align 8
+  %132 = load double, double* %w, align 8
+  %133 = fmul double %132, 0x3FC39A09D078C69F
+  %134 = fadd double 0x3FCC71C51D8E78AF, %133
+  %135 = fmul double %131, %134
+  %136 = fadd double 0x3FD999999997FA04, %135
+  %137 = fmul double %130, %136
+  store double %137, double* %t1, align 8
+  %138 = load double, double* %z, align 8
+  %139 = load double, double* %w, align 8
+  %140 = load double, double* %w, align 8
+  %141 = load double, double* %w, align 8
+  %142 = fmul double %141, 0x3FC2F112DF3E5244
+  %143 = fadd double 0x3FC7466496CB03DE, %142
+  %144 = fmul double %140, %143
+  %145 = fadd double 0x3FD2492494229359, %144
+  %146 = fmul double %139, %145
+  %147 = fadd double 0x3FE5555555555593, %146
+  %148 = fmul double %138, %147
+  store double %148, double* %t2, align 8
+  %149 = load i32, i32* %j, align 4
+  %150 = load i32, i32* %i, align 4
+  %151 = or i32 %150, %149
+  store i32 %151, i32* %i, align 4
+  %152 = load double, double* %t2, align 8
+  %153 = load double, double* %t1, align 8
+  %154 = fadd double %152, %153
+  store double %154, double* %R, align 8
+  %155 = load i32, i32* %i, align 4
+  %156 = icmp sgt i32 %155, 0
+  br i1 %156, label %157, label %190
+
+; <label>:157                                     ; preds = %113
+  %158 = load double, double* %f, align 8
+  %159 = fmul double 5.000000e-01, %158
+  %160 = load double, double* %f, align 8
+  %161 = fmul double %159, %160
+  store double %161, double* %hfsq, align 8
+  %162 = load i32, i32* %k, align 4
+  %163 = icmp eq i32 %162, 0
+  br i1 %163, label %164, label %174
+
+; <label>:164                                     ; preds = %157
+  %165 = load double, double* %f, align 8
+  %166 = load double, double* %hfsq, align 8
+  %167 = load double, double* %s, align 8
+  %168 = load double, double* %hfsq, align 8
+  %169 = load double, double* %R, align 8
+  %170 = fadd double %168, %169
+  %171 = fmul double %167, %170
+  %172 = fsub double %166, %171
+  %173 = fsub double %165, %172
+  store double %173, double* %1
+  br label %215
+
+; <label>:174                                     ; preds = %157
+  %175 = load double, double* %dk, align 8
+  %176 = fmul double %175, 0x3FE62E42FEE00000
+  %177 = load double, double* %hfsq, align 8
+  %178 = load double, double* %s, align 8
+  %179 = load double, double* %hfsq, align 8
+  %180 = load double, double* %R, align 8
+  %181 = fadd double %179, %180
+  %182 = fmul double %178, %181
+  %183 = load double, double* %dk, align 8
+  %184 = fmul double %183, 0x3DEA39EF35793C76
+  %185 = fadd double %182, %184
+  %186 = fsub double %177, %185
+  %187 = load double, double* %f, align 8
+  %188 = fsub double %186, %187
+  %189 = fsub double %176, %188
+  store double %189, double* %1
+  br label %215
+
+; <label>:190                                     ; preds = %113
+  %191 = load i32, i32* %k, align 4
+  %192 = icmp eq i32 %191, 0
+  br i1 %192, label %193, label %201
+
+; <label>:193                                     ; preds = %190
+  %194 = load double, double* %f, align 8
+  %195 = load double, double* %s, align 8
+  %196 = load double, double* %f, align 8
+  %197 = load double, double* %R, align 8
+  %198 = fsub double %196, %197
+  %199 = fmul double %195, %198
+  %200 = fsub double %194, %199
+  store double %200, double* %1
+  br label %215
+
+; <label>:201                                     ; preds = %190
+  %202 = load double, double* %dk, align 8
+  %203 = fmul double %202, 0x3FE62E42FEE00000
+  %204 = load double, double* %s, align 8
+  %205 = load double, double* %f, align 8
+  %206 = load double, double* %R, align 8
+  %207 = fsub double %205, %206
+  %208 = fmul double %204, %207
+  %209 = load double, double* %dk, align 8
+  %210 = fmul double %209, 0x3DEA39EF35793C76
+  %211 = fsub double %208, %210
+  %212 = load double, double* %f, align 8
+  %213 = fsub double %211, %212
+  %214 = fsub double %203, %213
+  store double %214, double* %1
+  br label %215
+
+; <label>:215                                     ; preds = %201, %193, %174, %164, %101, %97, %79, %77, %39, %22, %16
+  %216 = load double, double* %1
+  ret double %216
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}

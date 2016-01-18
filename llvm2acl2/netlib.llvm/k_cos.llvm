@@ -1,0 +1,133 @@
+; ModuleID = '../netlib/k_cos.c'
+target datalayout = "e-m:e-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-pc-linux-gnu"
+
+; Function Attrs: nounwind uwtable
+define double @__kernel_cos(double %x, double %y) #0 {
+  %1 = alloca double, align 8
+  %2 = alloca double, align 8
+  %3 = alloca double, align 8
+  %a = alloca double, align 8
+  %hz = alloca double, align 8
+  %z = alloca double, align 8
+  %r = alloca double, align 8
+  %qx = alloca double, align 8
+  %ix = alloca i32, align 4
+  store double %x, double* %2, align 8
+  store double %y, double* %3, align 8
+  %4 = bitcast double* %2 to i32*
+  %5 = getelementptr inbounds i32, i32* %4, i64 1
+  %6 = load i32, i32* %5, align 4
+  %7 = and i32 %6, 2147483647
+  store i32 %7, i32* %ix, align 4
+  %8 = load i32, i32* %ix, align 4
+  %9 = icmp slt i32 %8, 1044381696
+  br i1 %9, label %10, label %16
+
+; <label>:10                                      ; preds = %0
+  %11 = load double, double* %2, align 8
+  %12 = fptosi double %11 to i32
+  %13 = icmp eq i32 %12, 0
+  br i1 %13, label %14, label %15
+
+; <label>:14                                      ; preds = %10
+  store double 1.000000e+00, double* %1
+  br label %79
+
+; <label>:15                                      ; preds = %10
+  br label %16
+
+; <label>:16                                      ; preds = %15, %0
+  %17 = load double, double* %2, align 8
+  %18 = load double, double* %2, align 8
+  %19 = fmul double %17, %18
+  store double %19, double* %z, align 8
+  %20 = load double, double* %z, align 8
+  %21 = load double, double* %z, align 8
+  %22 = load double, double* %z, align 8
+  %23 = load double, double* %z, align 8
+  %24 = load double, double* %z, align 8
+  %25 = load double, double* %z, align 8
+  %26 = fmul double %25, 0xBDA8FAE9BE8838D4
+  %27 = fadd double 0x3E21EE9EBDB4B1C4, %26
+  %28 = fmul double %24, %27
+  %29 = fadd double 0xBE927E4F809C52AD, %28
+  %30 = fmul double %23, %29
+  %31 = fadd double 0x3EFA01A019CB1590, %30
+  %32 = fmul double %22, %31
+  %33 = fadd double 0xBF56C16C16C15177, %32
+  %34 = fmul double %21, %33
+  %35 = fadd double 0x3FA555555555554C, %34
+  %36 = fmul double %20, %35
+  store double %36, double* %r, align 8
+  %37 = load i32, i32* %ix, align 4
+  %38 = icmp slt i32 %37, 1070805811
+  br i1 %38, label %39, label %51
+
+; <label>:39                                      ; preds = %16
+  %40 = load double, double* %z, align 8
+  %41 = fmul double 5.000000e-01, %40
+  %42 = load double, double* %z, align 8
+  %43 = load double, double* %r, align 8
+  %44 = fmul double %42, %43
+  %45 = load double, double* %2, align 8
+  %46 = load double, double* %3, align 8
+  %47 = fmul double %45, %46
+  %48 = fsub double %44, %47
+  %49 = fsub double %41, %48
+  %50 = fsub double 1.000000e+00, %49
+  store double %50, double* %1
+  br label %79
+
+; <label>:51                                      ; preds = %16
+  %52 = load i32, i32* %ix, align 4
+  %53 = icmp sgt i32 %52, 1072234496
+  br i1 %53, label %54, label %55
+
+; <label>:54                                      ; preds = %51
+  store double 2.812500e-01, double* %qx, align 8
+  br label %61
+
+; <label>:55                                      ; preds = %51
+  %56 = load i32, i32* %ix, align 4
+  %57 = sub nsw i32 %56, 2097152
+  %58 = bitcast double* %qx to i32*
+  %59 = getelementptr inbounds i32, i32* %58, i64 1
+  store i32 %57, i32* %59, align 4
+  %60 = bitcast double* %qx to i32*
+  store i32 0, i32* %60, align 4
+  br label %61
+
+; <label>:61                                      ; preds = %55, %54
+  %62 = load double, double* %z, align 8
+  %63 = fmul double 5.000000e-01, %62
+  %64 = load double, double* %qx, align 8
+  %65 = fsub double %63, %64
+  store double %65, double* %hz, align 8
+  %66 = load double, double* %qx, align 8
+  %67 = fsub double 1.000000e+00, %66
+  store double %67, double* %a, align 8
+  %68 = load double, double* %a, align 8
+  %69 = load double, double* %hz, align 8
+  %70 = load double, double* %z, align 8
+  %71 = load double, double* %r, align 8
+  %72 = fmul double %70, %71
+  %73 = load double, double* %2, align 8
+  %74 = load double, double* %3, align 8
+  %75 = fmul double %73, %74
+  %76 = fsub double %72, %75
+  %77 = fsub double %69, %76
+  %78 = fsub double %68, %77
+  store double %78, double* %1
+  br label %79
+
+; <label>:79                                      ; preds = %61, %39, %14
+  %80 = load double, double* %1
+  ret double %80
+}
+
+attributes #0 = { nounwind uwtable "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+sse,+sse2" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.ident = !{!0}
+
+!0 = !{!"Ubuntu clang version 3.7.0-2ubuntu1 (tags/RELEASE_370/final) (based on LLVM 3.7.0)"}
