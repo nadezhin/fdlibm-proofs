@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_asin")
 
+(defconst *asin-globals* '())
+
 (defund @asin-%0 (mem %x)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -11,4 +13,4 @@
   %3))
 
 (defund @asin (%x)
-  (@asin-%0 () %x))
+  (@asin-%0 *asin-globals* %x))

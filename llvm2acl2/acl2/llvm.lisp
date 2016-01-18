@@ -21,6 +21,11 @@
        (<= (- (expt 2 31)) x)
        (< x (expt 2 31))))
 
+(defund i64p (x)
+  (and (integerp x)
+       (<= (- (expt 2 63)) x)
+       (< x (expt 2 63))))
+
 (defund get-lo-i32 (x)
   (m5::uint-fix x))
 
@@ -85,13 +90,27 @@
          (w0 (nth ofs val)))
     (and (wordp w0) (make-i32 w0))))
 
+(defund getelementptr-double (a i)
+  (and (addressp a)
+       (i64p i)
+       (cons (car a) (+ (cdr a) (* 2 i)))))
+
 (defund getelementptr-i32 (a i)
   (and (addressp a)
-       (i32p i)
+       (i64p i)
        (cons (car a) (+ (cdr a) i))))
 
 (defund bitcast-double*-to-i32* (a)
   (and (addressp a) a))
+
+(defund sext-i32-to-i64 (x)
+  (and (i32p x) x))
+
+(defund fptosi-double-to-i32 (x)
+  (and (doublep x) (m5::fp2int x (rtl::dp) 32)))
+
+(defund sitofp-i32-to-double (x)
+  (and (i32p x) (m5::int2fp x (rtl::dp))))
 
 (defund fadd-double (x y)
   (and (doublep x) (doublep y) (m5::fpadd x y (rtl::dp))))
@@ -105,8 +124,17 @@
 (defund fdiv-double (x y)
   (and (doublep x) (doublep y) (m5::fpdiv x y (rtl::dp))))
 
+(defund fcmp-ogt-double (x y)
+  (and (doublep x) (doublep y) (if (equal (m5::fpcmp x y (rtl::dp) -1) +1) -1 0)))
+
+(defund fcmp-olt-double (x y)
+  (and (doublep x) (doublep y) (if (equal (m5::fpcmp x y (rtl::dp) +1) -1) -1 0)))
+
 (defund add-i32 (x y)
   (and (i32p x) (i32p y) (m5::int-fix (+ x y))))
+
+(defund sub-i32 (x y)
+  (and (i32p x) (i32p y) (m5::int-fix (- x y))))
 
 (defund sdiv-i32 (x y)
   (and (i32p x) (i32p y) (not (= y 0)) (m5::int-fix (truncate x y))))
@@ -120,14 +148,32 @@
 (defund xor-i32 (x y)
   (and (i32p x) (i32p y) (logxor x y)))
 
+(defund shl-i32 (x y)
+  (and (i32p x) (i32p y) (m5::shl x (m5::5-bit-fix y))))
+
+(defund lshr-i32 (x y)
+  (and (i32p x) (i32p y) (m5::int-fix (m5::shr (m5::uint-fix x) (m5::5-bit-fix y)))))
+
 (defund icmp-eq-i32 (x y)
   (and (i32p x) (i32p y) (if (= x y) -1 0)))
+
+(defund icmp-ne-i32 (x y)
+  (and (i32p x) (i32p y) (if (not (= x y)) -1 0)))
 
 (defund icmp-slt-i32 (x y)
   (and (i32p x) (i32p y) (if (< x y) -1 0)))
 
 (defund icmp-sge-i32 (x y)
   (and (i32p x) (i32p y) (if (>= x y) -1 0)))
+
+(defund icmp-ult-i32 (x y)
+  (and (i32p x) (i32p y) (if (< (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
+
+(defund icmp-ugt-i32 (x y)
+  (and (i32p x) (i32p y) (if (> (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
+
+(defund icmp-uge-i32 (x y)
+  (and (i32p x) (i32p y) (if (>= (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
 
 ;--------
 

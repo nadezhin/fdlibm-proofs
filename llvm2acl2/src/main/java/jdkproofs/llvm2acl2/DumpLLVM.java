@@ -674,11 +674,11 @@ public class DumpLLVM {
     };
     
     public static void main(String[] args) throws IOException {
-//        dumpDir("../../t/ole71/jvm/fdlibm/netlib.llvm/", "../netlib/");
-//        dumpDir("../../t/ole71/jvm/fdlibm/jdk8.llvm/", "../jdk8/src");
+//        dumpDir("netlib.llvm/", "../netlib/");
+        dumpDir("jdk8.llvm/", "../jdk8/src/");
         
-//        dumpFiles("../../t/ole71/jvm/fdlibm/netlib.llvm/", "../netlib/", interestingFiles);
-//        dumpFiles("../../t/ole71/jvm/fdlibm/jdk8.llvm/", "../jdk8/src", w_files);
-        dumpFiles("../../t/ole71/jvm/fdlibm/jdk8.llvm/", "../jdk/src", interestingFiles);
+//        dumpFiles("netlib.llvm/", "../netlib/", interestingFiles);
+//        dumpFiles("jdk8.llvm/", "../jdk8/src/", w_files);
+//        dumpFiles("jdk8.llvm/", "../jdk8/src/", interestingFiles);
     }
 }

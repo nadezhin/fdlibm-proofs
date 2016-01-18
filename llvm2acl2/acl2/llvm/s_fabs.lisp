@@ -1,6 +1,8 @@
 (in-package "ACL2")
 (include-book "../llvm")
 
+(defconst *fabs-globals* '())
+
 (defund @fabs-%0 (mem %x)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -14,4 +16,4 @@
   %6))
 
 (defund @fabs (%x)
-  (@fabs-%0 () %x))
+  (@fabs-%0 *fabs-globals* %x))

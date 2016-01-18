@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_acos")
 
+(defconst *acos-globals* '())
+
 (defund @acos-%0 (mem %x)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -11,4 +13,4 @@
   %3))
 
 (defund @acos (%x)
-  (@acos-%0 () %x))
+  (@acos-%0 *acos-globals* %x))

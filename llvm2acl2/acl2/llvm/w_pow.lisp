@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_pow")
 
+(defconst *pow-globals* '())
+
 (defund @pow-%0 (mem %x %y)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -14,4 +16,4 @@
   %5))
 
 (defund @pow (%x %y)
-  (@pow-%0 () %x %y))
+  (@pow-%0 *pow-globals* %x %y))

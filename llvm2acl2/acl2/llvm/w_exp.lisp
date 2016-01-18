@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_exp")
 
+(defconst *exp-globals* '())
+
 (defund @exp-%0 (mem %x)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -11,4 +13,4 @@
   %3))
 
 (defund @exp (%x)
-  (@exp-%0 () %x))
+  (@exp-%0 *exp-globals* %x))

@@ -15,6 +15,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
     private final PrintStream out;
     private int indent;
     private Function curFun;
+    private BasicBlock curBb;
 
     DumpACL2(PrintStream out) {
         this.out = out;
@@ -34,6 +35,15 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         for (String dep : deps) {
             nl("(include-book \"" + dep + "\")");
         }
+        String moduleName = module.funs.get(0).name;
+        nl("");
+        nl("(defconst *" + moduleName + "-globals* '(");
+        indent += 2;
+        for (Value global : module.globals) {
+            nl("(" + global.name + globalStr(global) + ")");
+        }
+        out.print("))");
+        indent -= 2;
         for (Function fun : module.funs) {
             if (fun.blocks.isEmpty()) {
                 continue;
@@ -48,13 +58,18 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
                 args += '%' + arg.name;
             }
             for (int i = fun.blocks.size() - 1; i >= 0; i--) {
-                BasicBlock bb = fun.blocks.get(i);
+                curBb = fun.blocks.get(i);
                 nl("");
-                nl("(defund @" + fun.name + "-%" + bb.label + " (mem " + bb.getUseArgs() + ")");
+                nl("(defund @" + fun.name + "-%" + curBb.label + " (mem " + curBb.getDefArgs() + ")");
                 nl("  (b* (");
                 indent += 4;
-                for (int j = 0; j < bb.insts.size() - 1; j++) {
-                    Instruction inst = bb.insts.get(j);
+                for (int j = 0; j < curBb.numPhi; j++) {
+                    Instruction inst = curBb.insts.get(j);
+                    nl("; ");
+                    inst.accept(this, null);
+                }
+                for (int j = curBb.numPhi; j < curBb.insts.size() - 1; j++) {
+                    Instruction inst = curBb.insts.get(j);
                     nl("(");
                     inst.accept(this, null);
                     out.print(')');
@@ -62,13 +77,13 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
                 out.print(")");
                 indent -= 2;
                 nl("");
-                bb.terminator.accept(this, null);
+                curBb.terminator.accept(this, null);
                 out.print("))");
                 indent -= 2;
             }
             nl("");
             nl("(defund @" + fun.name + " (" + args + ")");
-            nl("  (@" + fun.name + "-%0 () " + fun.blocks.get(0).getUseArgs() + "))");
+            nl("  (@" + fun.name + "-%0 *" + moduleName + "-globals* " + getUseArgs(fun.blocks.get(0), null) + "))");
         }
         nl("");
     }
@@ -114,6 +129,62 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         }
     }
 
+    private String globalStr(Value global) {
+        StringBuilder sb = new StringBuilder();
+        String rep = global.representation;
+        int indexEq = rep.indexOf('=');
+        rep = rep.substring(indexEq + 1).trim();
+        if (rep.startsWith("internal constant [2 x double] [")) {
+            rep = rep.substring("internal constant [2 x double] [".length());
+            int indexOfRBracket = rep.indexOf(']');
+            rep = rep.substring(0, indexOfRBracket);
+            String[] pieces = rep.split(", ");
+            for (String piece : pieces) {
+                assert piece.startsWith("double ");
+                piece = piece.substring("double ".length());
+                long bits;
+                if (piece.startsWith("0x")) {
+                    bits = Long.parseUnsignedLong(piece.substring(2), 16);
+                } else {
+                    bits = Double.doubleToLongBits(Double.parseDouble(piece));
+                }
+                sb.append(String.format(" #x%08x #x%08x", (bits & 0xFFFFFFFFL), (bits >>> 32)));
+            }
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return sb.toString();
+    }
+
+    private String getUseArgs(BasicBlock bb, BasicBlock predessor) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < bb.function.args.size(); i++) {
+            if (bb.useArgs.get(i)) {
+                if (sb.length() > 0) {
+                    sb.append(' ');
+                }
+                sb.append('%').append(bb.function.args.get(i).name);
+            }
+        }
+        for (Instruction inst : bb.useInstructions) {
+            if (sb.length() > 0) {
+                sb.append(' ');
+            }
+            if (inst instanceof Instruction.PHINode) {
+                Instruction.PHINode phi = (Instruction.PHINode) inst;
+                for (int i = 0; i < phi.incomingBlocks.length; i++) {
+                    if (phi.incomingBlocks[i] == predessor) {
+                        User value = phi.incomingValues[i];
+                        sb.append(operandStr(value));
+                    }
+                }
+            } else {
+                sb.append(inst.refName);
+            }
+        }
+        return sb.toString();
+    }
+
     private static String operandStr(Value operand) {
         if (operand instanceof Instruction) {
             return ((Instruction) operand).refName;
@@ -139,7 +210,15 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             }
         } else if (operand instanceof Constant.ConstantExpr) {
             if (operand.representation.startsWith("double* ")) {
-                return operand.representation.substring("double* ".length());
+                String s1a = "double* getelementptr inbounds ([2 x double], [2 x double]* @";
+                String s2a = ", i32 0, i64 0)";
+                if (operand.representation.startsWith(s1a)
+                        && operand.representation.endsWith(s2a)) {
+                    String s = operand.representation.substring(s1a.length(), operand.representation.length() - s2a.length());
+                    return "(getelementptr-double '(" + s + " . 0) 0)";
+                } else {
+                    throw new UnsupportedOperationException();
+                }
             } else if (operand.representation.startsWith("i32* ")) {
                 return operand.representation.substring("i32* ".length());
             } else {
@@ -148,7 +227,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         } else if (operand instanceof Constant.GlobalVariable) {
             int indAt = operand.representation.indexOf('@');
             int indSp = operand.representation.indexOf(' ', indAt);
-            return operand.representation.substring(indAt, indSp);
+            return "'(" + operand.representation.substring(indAt + 1, indSp) + " . 0)";
         } else if (operand instanceof BasicBlock) {
             return "label %" + ((BasicBlock) operand).label;
         } else if (operand instanceof Value.Argument) {
@@ -191,7 +270,16 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitFCmpInst(Instruction.CmpInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        String op1 = operandStr(inst.operands[1]);
+        String cmp = Utils.realPredicateOf(LLVMGetFCmpPredicate(inst.getPeer())).name();
+        cmp = cmp.substring("LLVMReal".length()).toLowerCase();
+        if (inst.typesMatch("i1", "double", "double")) {
+            out.print(inst.refName + " (fcmp-" + cmp + "-double " + op0 + " " + op1 + ")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
@@ -214,6 +302,13 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         String op1 = operandStr(inst.operands[1]);
         if (inst.typesMatch("i32*", "i32*", "i64")) {
             out.print(inst.refName + " (getelementptr-i32 " + op0 + " " + op1 + ")");
+        } else if (inst.typesMatch("double*", "[2 x double]*", "i32", "i64")) {
+            String op2 = operandStr(inst.operands[2]);
+            if (op1.equals("0")) {
+                out.print(inst.refName + " (getelementptr-double " + op0 + " " + op2 + ")");
+            } else {
+                throw new UnsupportedOperationException();
+            }
         } else {
             throw new UnsupportedOperationException();
         }
@@ -222,7 +317,30 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitPHINode(Instruction.PHINode inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (inst.type.typeStr.equals("double")) {
+            out.print(inst.refName + " = phi double ");
+            for (int i = 0; i < inst.incomingBlocks.length; i++) {
+                int label = inst.incomingBlocks[i].label;
+                String value = operandStr(inst.incomingValues[i]);
+                if (i > 0) {
+                    out.print(", ");
+                }
+                out.print("[ " + value + ", %" + label + " ]");
+            }
+        } else if (inst.type.typeStr.equals("i1")) {
+            out.print(inst.refName + " = phi i1 ");
+            for (int i = 0; i < inst.incomingBlocks.length; i++) {
+                int label = inst.incomingBlocks[i].label;
+                String value = operandStr(inst.incomingValues[i]);
+                if (i > 0) {
+                    out.print(", ");
+                }
+                out.print("[ " + value + ", %" + label + " ]");
+            }
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
@@ -292,17 +410,35 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitFPToSIInst(Instruction.FPToSIInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        if (inst.typesMatch("i32", "double")) {
+            out.print(inst.refName + " (fptosi-double-to-i32 " + op0 + ")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
     public Void visitSExtInst(Instruction.SExtInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        if (inst.typesMatch("i64", "i32")) {
+            out.print(inst.refName + " (sext-i32-to-i64 " + op0 + ")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
     public Void visitSIToFPInst(Instruction.SIToFPInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        if (inst.typesMatch("double", "i32")) {
+            out.print(inst.refName + " (sitofp-i32-to-double " + op0 + ")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
@@ -332,14 +468,14 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
     public Void visitBranchInst(TerminatorInst.BranchInst inst, Void p) {
         if (inst.typesMatch("void", "label")) {
             BasicBlock bb0 = (BasicBlock) inst.operands[0];
-            out.print("(@" + curFun.name + "-%" + bb0.label + " mem " + bb0.getUseArgs() + ")");
+            out.print("(@" + curFun.name + "-%" + bb0.label + " mem " + getUseArgs(bb0, curBb) + ")");
         } else if (inst.typesMatch("void", "i1", "label", "label")) {
             String op0 = operandStr(inst.operands[0]);
             BasicBlock bb1 = (BasicBlock) inst.operands[1];
             BasicBlock bb2 = (BasicBlock) inst.operands[2];
             out.print("(case " + op0);
-            nl("  (-1  (@" + curFun.name + "-%" + bb2.label + " mem " + bb2.getUseArgs() + "))");
-            nl("  (0 (@" + curFun.name + "-%" + bb1.label + " mem " + bb1.getUseArgs() + ")))");
+            nl("  (-1  (@" + curFun.name + "-%" + bb2.label + " mem " + getUseArgs(bb2, curBb) + "))");
+            nl("  (0 (@" + curFun.name + "-%" + bb1.label + " mem " + getUseArgs(bb1, curBb) + ")))");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -379,7 +515,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         {"w_cosh.bc", "e_cosh"},
         //        "e_cosh.bc",
         {"w_exp.bc", "e_exp"},
-        //        "e_exp.bc",
+        {"e_exp.bc"},
         //        "s_expm1.bc", 
         {"s_fabs.bc"},
         //        "s_floor.bc",

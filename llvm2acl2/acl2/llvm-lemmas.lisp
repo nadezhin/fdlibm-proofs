@@ -247,9 +247,9 @@
 
 (defrule getelementptr-i32-type
   (implies (and (addressp a)
-                (i32p i))
+                (i64p i))
            (addressp (getelementptr-i32 a i)))
-  :enable (addressp i32p getelementptr-i32))
+  :enable (addressp i64p getelementptr-i32))
 
 (defrule bitcast-double*-to-i32*-type
   (implies (addressp a)

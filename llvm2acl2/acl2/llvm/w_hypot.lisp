@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_hypot")
 
+(defconst *hypot-globals* '())
+
 (defund @hypot-%0 (mem %x %y)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -14,4 +16,4 @@
   %5))
 
 (defund @hypot (%x %y)
-  (@hypot-%0 () %x %y))
+  (@hypot-%0 *hypot-globals* %x %y))

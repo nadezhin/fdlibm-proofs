@@ -21,6 +21,7 @@ public class BasicBlock extends Value {
     public final int label;
     public final Constant.BlockAddress addr;
     public final List<Instruction> insts;
+    public final int numPhi;
     public final TerminatorInst terminator;
     public String preds;
     public Map<Integer, BasicBlock> inLoops = new TreeMap<>();
@@ -52,9 +53,16 @@ public class BasicBlock extends Value {
         }
         assert LLVMGetLastInstruction(peer) == prevInstRef;
         assert LLVMGetBasicBlockTerminator(peer) == prevInstRef;
+        int numPhi = 0;
         for (int i = 0; i < insts.size() - 1; i++) {
-            assert !(insts.get(i) instanceof TerminatorInst);
+            Instruction instr = insts.get(i);
+            assert !(instr instanceof TerminatorInst);
+            if (instr instanceof Instruction.PHINode) {
+                assert i == numPhi;
+                numPhi++;
+            }
         }
+        this.numPhi = numPhi;
         this.insts = Collections.unmodifiableList(insts);
         terminator = (TerminatorInst) insts.get(insts.size() - 1);
     }
@@ -75,17 +83,36 @@ public class BasicBlock extends Value {
     void updateUse() {
         for (BasicBlock succ : terminator.successors) {
             useArgs.or(succ.useArgs);
-            useInstructions.addAll(succ.useInstructions);
+            for (Instruction inst : succ.useInstructions) {
+                if (inst instanceof Instruction.PHINode) {
+                    Instruction.PHINode phi = (Instruction.PHINode) inst;
+                    for (int i = 0; i < phi.incomingBlocks.length; i++) {
+                        if (phi.incomingBlocks[i] == this) {
+                            User value = phi.incomingValues[i];
+                            if (value instanceof Instruction) {
+                                assert ((Instruction) value).refName != null;
+                                useInstructions.add((Instruction) value);
+                            }
+                        }
+                    }
+                } else {
+                    useInstructions.add(inst);
+                }
+            }
         }
         for (int i = insts.size() - 1; i >= 0; i--) {
             Instruction inst = insts.get(i);
+            if (inst instanceof Instruction.PHINode) {
+                assert useInstructions.contains(inst);
+                continue;
+            }
             if (inst.refName != null) {
                 useInstructions.remove(inst);
             }
             for (Value operand : inst.operands) {
                 if (operand instanceof Argument) {
                     useArgs.set(function.args.indexOf(operand));
-                } else if (operand instanceof Instruction.PHINode) {
+//                } else if (operand instanceof Instruction.PHINode) {
                 } else if (operand instanceof Instruction) {
                     Instruction operandI = (Instruction) operand;
                     assert operandI.refName != null;
@@ -98,7 +125,7 @@ public class BasicBlock extends Value {
         }
     }
 
-    String getUseArgs() {
+    String getDefArgs() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < function.args.size(); i++) {
             if (useArgs.get(i)) {

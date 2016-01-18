@@ -1,6 +1,8 @@
 (in-package "ACL2")
 (include-book "../llvm")
 
+(defconst *copysign-globals* '())
+
 (defund @copysign-%0 (mem %x %y)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -23,4 +25,4 @@
   %14))
 
 (defund @copysign (%x %y)
-  (@copysign-%0 () %x %y))
+  (@copysign-%0 *copysign-globals* %x %y))

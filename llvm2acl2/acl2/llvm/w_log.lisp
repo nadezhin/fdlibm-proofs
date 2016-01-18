@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_log")
 
+(defconst *log-globals* '())
+
 (defund @log-%0 (mem %x)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -11,4 +13,4 @@
   %3))
 
 (defund @log (%x)
-  (@log-%0 () %x))
+  (@log-%0 *log-globals* %x))

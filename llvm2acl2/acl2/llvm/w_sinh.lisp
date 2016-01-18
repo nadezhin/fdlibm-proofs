@@ -2,6 +2,8 @@
 (include-book "../llvm")
 (include-book "e_sinh")
 
+(defconst *sinh-globals* '())
+
 (defund @sinh-%0 (mem %x)
   (b* (
     ((mv %1 mem) (alloca-double-1 'ret mem))
@@ -11,4 +13,4 @@
   %3))
 
 (defund @sinh (%x)
-  (@sinh-%0 () %x))
+  (@sinh-%0 *sinh-globals* %x))

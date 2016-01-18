@@ -1,6 +1,8 @@
 (in-package "ACL2")
 (include-book "../llvm")
 
+(defconst *cbrt-globals* '())
+
 (defund @cbrt-%101 (mem %1)
   (b* (
     (%102 (load-double %1 mem)))
@@ -168,4 +170,4 @@
     (0 (@cbrt-%17 mem %hx %r %s %sign %t %w %1 %2)))))
 
 (defund @cbrt (%x)
-  (@cbrt-%0 () %x))
+  (@cbrt-%0 *cbrt-globals* %x))
