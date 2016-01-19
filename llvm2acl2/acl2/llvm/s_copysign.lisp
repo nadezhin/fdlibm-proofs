@@ -5,8 +5,8 @@
 
 (defund @copysign-%0 (mem %x %y)
   (b* (
-    ((mv %1 mem) (alloca-double-1 'ret mem))
-    ((mv %2 mem) (alloca-double-1 'x mem))
+    ((mv %1 mem) (alloca-double 'ret 1 mem))
+    ((mv %2 mem) (alloca-double 'x 1 mem))
     (mem (store-double %x %1 mem))
     (mem (store-double %y %2 mem))
     (%3 (bitcast-double*-to-i32* %1))

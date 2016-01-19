@@ -44,13 +44,11 @@
 (defund make-double (w1 w0)
   (and (wordp w1) (wordp w0) (rtl::cat w1 32 w0 32)))
 
-(defund alloca-double-1 (var mem)
-  (mv (cons var 0) (m5::bind var '(nil nil) mem)))
-;  (mv (cons var 0) (s var '(nil nil) mem)))
+(defund alloca-double (var n mem)
+  (mv (cons var 0) (m5::bind var (make-list (* 2 n)) mem)))
 
-(defund alloca-i32-1 (var mem)
-  (mv (cons var 0) (m5::bind var '(nil) mem)))
-;  (mv (cons var 0) (s var '(nil) mem)))
+(defund alloca-i32 (var n mem)
+  (mv (cons var 0) (m5::bind var (make-list n) mem)))
 
 (defund store-double (d a mem)
   (let* ((var (car a))
@@ -106,6 +104,9 @@
 (defund sext-i32-to-i64 (x)
   (and (i32p x) x))
 
+(defund zext-i32-to-i64 (x)
+  (and (i32p x) (m5::ulong-fix x)))
+
 (defund fptosi-double-to-i32 (x)
   (and (doublep x) (m5::fp2int x (rtl::dp) 32)))
 
@@ -124,8 +125,17 @@
 (defund fdiv-double (x y)
   (and (doublep x) (doublep y) (m5::fpdiv x y (rtl::dp))))
 
+(defund fcmp-oeq-double (x y)
+  (and (doublep x) (doublep y) (if (= (m5::fpcmp x y (rtl::dp) -1) 0) -1 0)))
+
+(defund fcmp-oge-double (x y)
+  (and (doublep x) (doublep y) (if (>= (m5::fpcmp x y (rtl::dp) -1) 0) -1 0)))
+
 (defund fcmp-ogt-double (x y)
   (and (doublep x) (doublep y) (if (equal (m5::fpcmp x y (rtl::dp) -1) +1) -1 0)))
+
+(defund fcmp-ole-double (x y)
+  (and (doublep x) (doublep y) (if (<= (m5::fpcmp x y (rtl::dp) +1) 0) -1 0)))
 
 (defund fcmp-olt-double (x y)
   (and (doublep x) (doublep y) (if (equal (m5::fpcmp x y (rtl::dp) +1) -1) -1 0)))
@@ -154,6 +164,9 @@
 (defund lshr-i32 (x y)
   (and (i32p x) (i32p y) (m5::int-fix (m5::shr (m5::uint-fix x) (m5::5-bit-fix y)))))
 
+(defund ashr-i32 (x y)
+  (and (i32p x) (i32p y) (m5::shr x (m5::5-bit-fix y))))
+
 (defund icmp-eq-i32 (x y)
   (and (i32p x) (i32p y) (if (= x y) -1 0)))
 
@@ -163,17 +176,29 @@
 (defund icmp-slt-i32 (x y)
   (and (i32p x) (i32p y) (if (< x y) -1 0)))
 
+(defund icmp-sle-i32 (x y)
+  (and (i32p x) (i32p y) (if (<= x y) -1 0)))
+
+(defund icmp-sgt-i32 (x y)
+  (and (i32p x) (i32p y) (if (> x y) -1 0)))
+
 (defund icmp-sge-i32 (x y)
   (and (i32p x) (i32p y) (if (>= x y) -1 0)))
 
 (defund icmp-ult-i32 (x y)
   (and (i32p x) (i32p y) (if (< (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
 
+(defund icmp-ule-i32 (x y)
+  (and (i32p x) (i32p y) (if (<= (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
+
 (defund icmp-ugt-i32 (x y)
   (and (i32p x) (i32p y) (if (> (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
 
 (defund icmp-uge-i32 (x y)
   (and (i32p x) (i32p y) (if (>= (m5::uint-fix x) (m5::uint-fix y)) -1 0)))
+
+(defund select-double (x y z)
+  (and (i1p x) (doublep y) (doublep z) (if (not (= x 0)) y z)))
 
 ;--------
 

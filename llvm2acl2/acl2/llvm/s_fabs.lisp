@@ -5,7 +5,7 @@
 
 (defund @fabs-%0 (mem %x)
   (b* (
-    ((mv %1 mem) (alloca-double-1 'ret mem))
+    ((mv %1 mem) (alloca-double 'ret 1 mem))
     (mem (store-double %x %1 mem))
     (%2 (bitcast-double*-to-i32* %1))
     (%3 (getelementptr-i32 %2 1))

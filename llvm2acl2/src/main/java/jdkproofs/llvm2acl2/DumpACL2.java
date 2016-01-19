@@ -129,26 +129,57 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         }
     }
 
-    private String globalStr(Value global) {
+    private static void appendDoublePiece(StringBuilder sb, String piece) {
+        assert piece.startsWith("double ");
+        piece = piece.substring("double ".length());
+        long bits;
+        if (piece.startsWith("0x")) {
+            bits = Long.parseUnsignedLong(piece.substring(2), 16);
+        } else {
+            bits = Double.doubleToLongBits(Double.parseDouble(piece));
+        }
+        sb.append(String.format(" #x%08x #x%08x", (bits & 0xFFFFFFFFL), (bits >>> 32)));
+    }
+
+    private static String globalStr(Value global) {
         StringBuilder sb = new StringBuilder();
         String rep = global.representation;
         int indexEq = rep.indexOf('=');
-        rep = rep.substring(indexEq + 1).trim();
-        if (rep.startsWith("internal constant [2 x double] [")) {
+        rep = rep.substring(indexEq + 1);
+        int indexOfAlign = rep.indexOf(", align");
+        if (indexOfAlign >= 0) {
+            rep = rep.substring(0, indexOfAlign);
+        }
+        rep = rep.trim();
+        if (rep.startsWith("internal global double ")) {
+            rep = rep.substring("internal global ".length());
+            appendDoublePiece(sb, rep);
+        } else if (rep.startsWith("internal constant double ")) {
+            rep = rep.substring("internal constant ".length());
+            appendDoublePiece(sb, rep);
+        } else if (rep.startsWith("internal constant [2 x double] [")) {
             rep = rep.substring("internal constant [2 x double] [".length());
             int indexOfRBracket = rep.indexOf(']');
             rep = rep.substring(0, indexOfRBracket);
             String[] pieces = rep.split(", ");
             for (String piece : pieces) {
-                assert piece.startsWith("double ");
-                piece = piece.substring("double ".length());
-                long bits;
-                if (piece.startsWith("0x")) {
-                    bits = Long.parseUnsignedLong(piece.substring(2), 16);
-                } else {
-                    bits = Double.doubleToLongBits(Double.parseDouble(piece));
-                }
-                sb.append(String.format(" #x%08x #x%08x", (bits & 0xFFFFFFFFL), (bits >>> 32)));
+                appendDoublePiece(sb, piece);
+            }
+        } else if (rep.startsWith("internal constant [4 x double] [")) {
+            rep = rep.substring("internal constant [4 x double] [".length());
+            int indexOfRBracket = rep.indexOf(']');
+            rep = rep.substring(0, indexOfRBracket);
+            String[] pieces = rep.split(", ");
+            for (String piece : pieces) {
+                appendDoublePiece(sb, piece);
+            }
+        } else if (rep.startsWith("internal constant [11 x double] [")) {
+            rep = rep.substring("internal constant [11 x double] [".length());
+            int indexOfRBracket = rep.indexOf(']');
+            rep = rep.substring(0, indexOfRBracket);
+            String[] pieces = rep.split(", ");
+            for (String piece : pieces) {
+                appendDoublePiece(sb, piece);
             }
         } else {
             throw new UnsupportedOperationException();
@@ -210,17 +241,36 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             }
         } else if (operand instanceof Constant.ConstantExpr) {
             if (operand.representation.startsWith("double* ")) {
-                String s1a = "double* getelementptr inbounds ([2 x double], [2 x double]* @";
-                String s2a = ", i32 0, i64 0)";
+                String[] ss1 = {
+                    "double* getelementptr inbounds ([2 x double], [2 x double]* @",
+                    "double* getelementptr inbounds ([4 x double], [4 x double]* @",
+                    "double* getelementptr inbounds ([11 x double], [11 x double]* @",};
+                String s2 = ", i32 0, i64 ";
+                String s3 = ")";
+                int indexOfS2 = operand.representation.indexOf(s2);
+                if (indexOfS2 >= 0 && operand.representation.endsWith(s3)) {
+                    String offsetStr = operand.representation.substring(
+                            indexOfS2 + s2.length(),
+                            operand.representation.length() - s3.length());
+                    int offset = Integer.valueOf(offsetStr);
+                    for (String s1 : ss1) {
+                        if (operand.representation.startsWith(s1)) {
+                            String nameStr = operand.representation.substring(s1.length(), indexOfS2);
+                            return "(getelementptr-double '(" + nameStr + " . 0) " + offset + ")";
+                        }
+                    }
+                }
+                throw new UnsupportedOperationException();
+            } else if (operand.representation.startsWith("i32* ")) {
+                String s1a = "i32* bitcast (double* @";
+                String s2a = " to i32*)";
                 if (operand.representation.startsWith(s1a)
                         && operand.representation.endsWith(s2a)) {
                     String s = operand.representation.substring(s1a.length(), operand.representation.length() - s2a.length());
-                    return "(getelementptr-double '(" + s + " . 0) 0)";
+                    return "'(" + s + " . 0)";
                 } else {
                     throw new UnsupportedOperationException();
                 }
-            } else if (operand.representation.startsWith("i32* ")) {
-                return operand.representation.substring("i32* ".length());
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -257,6 +307,12 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         Function fn = (Function) inst.operands[inst.operands.length - 1];
         assert fn.args.size() == inst.operands.length - 1;
         if (inst.type.typeStr.equals("double")) {
+            out.print(inst.refName + " (@" + fn.name);
+            for (int i = 0; i < fn.args.size(); i++) {
+                out.print(" " + operandStr(inst.operands[i]));
+            }
+            out.print(")");
+        } else if (inst.type.typeStr.equals("i32")) {
             out.print(inst.refName + " (@" + fn.name);
             for (int i = 0; i < fn.args.size(); i++) {
                 out.print(" " + operandStr(inst.operands[i]));
@@ -309,6 +365,20 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             } else {
                 throw new UnsupportedOperationException();
             }
+        } else if (inst.typesMatch("double*", "[2 x double]*", "i32", "i32")) {
+            String op2 = operandStr(inst.operands[2]);
+            if (op1.equals("0")) {
+                out.print(inst.refName + " (getelementptr-double " + op0 + " " + op2 + ")");
+            } else {
+                throw new UnsupportedOperationException();
+            }
+        } else if (inst.typesMatch("double*", "[4 x double]*", "i32", "i64")) {
+            String op2 = operandStr(inst.operands[2]);
+            if (op1.equals("0")) {
+                out.print(inst.refName + " (getelementptr-double " + op0 + " " + op2 + ")");
+            } else {
+                throw new UnsupportedOperationException();
+            }
         } else {
             throw new UnsupportedOperationException();
         }
@@ -345,7 +415,15 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitSelectInst(Instruction.SelectInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        String op1 = operandStr(inst.operands[1]);
+        String op2 = operandStr(inst.operands[2]);
+        if (inst.typesMatch("double", "i1", "double", "double")) {
+            out.print(inst.refName + " (select-double " + op0 + " " + op1 + " " + op2 + ")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
@@ -376,13 +454,19 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         }
         if (inst.typesMatch("double*", "i32")) {
             if (op0.equals("1")) {
-                out.print("(mv " + inst.refName + " mem) (alloca-double-1 '" + nm + " mem)");
+                out.print("(mv " + inst.refName + " mem) (alloca-double '" + nm + " 1 mem)");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32*", "i32")) {
             if (op0.equals("1")) {
-                out.print("(mv " + inst.refName + " mem) (alloca-i32-1 '" + nm + " mem)");
+                out.print("(mv " + inst.refName + " mem) (alloca-i32 '" + nm + " 1 mem)");
+            } else {
+                throw new UnsupportedOperationException();
+            }
+        } else if (inst.typesMatch("[2 x double]*", "i32")) {
+            if (op0.equals("1")) {
+                out.print("(mv " + inst.refName + " mem) (alloca-double '" + nm + " 2 mem)");
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -448,7 +532,13 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitZExtInst(Instruction.ZExtInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        if (inst.typesMatch("i64", "i32")) {
+            out.print(inst.refName + " (zext-i32-to-i64 " + op0 + ")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     @Override
@@ -497,48 +587,64 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitSwitchInst(TerminatorInst.SwitchInst inst, Void p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String op0 = operandStr(inst.operands[0]);
+        BasicBlock defaultLabel = (BasicBlock) inst.operands[1];
+        if (inst.operands[0].type.typeStr.equals("i32")) {
+            int numCases = inst.operands.length / 2 - 1;
+            out.print("(case " + op0);
+            for (int i = 0; i < numCases; i++) {
+                String tag = operandStr(inst.operands[i * 2 + 2]);
+                BasicBlock label = (BasicBlock) inst.operands[i * 2 + 3];
+                nl("  (" + tag + " (@" + curFun.name + "-%" + label.label + " mem " + getUseArgs(label, curBb) + "))");
+            }
+            nl("  (otherwise  (@" + curFun.name + "-%" + defaultLabel.label + " mem " + getUseArgs(defaultLabel, curBb) + "))");
+            out.print(")");
+        } else {
+            throw new UnsupportedOperationException();
+        }
+        return null;
     }
 
     private static final String[][] sortedFiles = {
         {"w_acos.bc", "e_acos"},
-        //        "e_acos.bc",
+        {"e_acos.bc", "w_sqrt"},
         {"w_asin.bc", "e_asin"},
-        //        "e_asin.bc",
-        //        "s_atan.bc",
+        {"e_asin.bc", "s_fabs", "w_sqrt"},
+        {"s_atan.bc", "s_fabs"},
         {"w_atan2.bc", "e_atan2"},
-        //        "e_atan2.bc",
+        {"e_atan2.bc", "s_fabs", "s_atan"},
         {"s_cbrt.bc"},
         {"s_copysign.bc"},
-        //        "s_cos.bc",
+        {"s_cos.bc", "k_cos", "k_sin", "e_rem_pio2"},
         //        "k_cos.bc",
         {"w_cosh.bc", "e_cosh"},
-        //        "e_cosh.bc",
+        {"e_cosh.bc", "s_fabs", "s_expm1", "e_exp"},
         {"w_exp.bc", "e_exp"},
         {"e_exp.bc"},
-        //        "s_expm1.bc", 
+        {"s_expm1.bc"},
         {"s_fabs.bc"},
-        //        "s_floor.bc",
+        {"s_floor.bc"},
         {"w_hypot.bc", "e_hypot"},
-        //        "e_hypot.bc", 
+        {"e_hypot.bc", "w_sqrt"},
         {"w_log.bc", "e_log"},
-        //        "e_log.bc", 
+        {"e_log.bc"},
         {"w_log10.bc", "e_log10"},
-        //        "e_log10.bc",
-        //        "s_log1p.bc",
+        {"e_log10.bc", "e_log"},
+        {"s_log1p.bc"},
         {"w_pow.bc", "e_pow"},
-        //        "e_pow.bc",
+        {"e_pow.bc", "w_sqrt", "s_fabs", "s_scalbn"},
         //        "e_rem_pio2.bc",
         //        "k_rem_pio2.bc",
-        //        "s_scalbn.bc",
-        //        "s_sin.bc",
+        {"s_scalbn.bc", "s_copysign"},
+        {"s_sin.bc", "k_sin", "k_cos", "e_rem_pio2"},
         //        "k_sin.bc",
         {"w_sinh.bc", "e_sinh"},
-        //        "e_sinh.bc",
-        {"w_sqrt.bc", "e_sqrt"}, //        "e_sqrt.bc", 
-    //        "s_tan.bc",
-    //        "k_tan.bc",
-    //        "s_tanh.bc"
+        {"e_sinh.bc", "s_fabs", "s_expm1", "e_exp"},
+        {"w_sqrt.bc", "e_sqrt"},
+        //        "e_sqrt.bc", 
+        {"s_tan.bc", "k_tan", "e_rem_pio2"},
+        //        "k_tan.bc",
+        {"s_tanh.bc", "s_fabs", "s_expm1"}
     };
 
     public static void main(String[] args) throws IOException {

@@ -6,8 +6,8 @@
 
 (defund @atan2-%0 (mem %y %x)
   (b* (
-    ((mv %1 mem) (alloca-double-1 'ret mem))
-    ((mv %2 mem) (alloca-double-1 'y mem))
+    ((mv %1 mem) (alloca-double 'ret 1 mem))
+    ((mv %2 mem) (alloca-double 'y 1 mem))
     (mem (store-double %y %1 mem))
     (mem (store-double %x %2 mem))
     (%3 (load-double %1 mem))
