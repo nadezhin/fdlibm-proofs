@@ -138,7 +138,14 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         } else {
             bits = Double.doubleToLongBits(Double.parseDouble(piece));
         }
-        sb.append(String.format(" #x%08x #x%08x", (bits & 0xFFFFFFFFL), (bits >>> 32)));
+        sb.append(String.format(" #x%08x #x%08x", bits & 0xFFFFFFFFL, bits >>> 32));
+    }
+
+    private static void appendI32Piece(StringBuilder sb, String piece) {
+        assert piece.startsWith("i32 ");
+        piece = piece.substring("i32 ".length());
+        int bits = Integer.parseInt(piece);
+        sb.append(String.format(" #x%08x", bits & 0xFFFFFFFFL));
     }
 
     private static String globalStr(Value global) {
@@ -180,6 +187,30 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             String[] pieces = rep.split(", ");
             for (String piece : pieces) {
                 appendDoublePiece(sb, piece);
+            }
+        } else if (rep.startsWith("internal constant [16 x double] [")) {
+            rep = rep.substring("internal constant [16 x double] [".length());
+            int indexOfRBracket = rep.indexOf(']');
+            rep = rep.substring(0, indexOfRBracket);
+            String[] pieces = rep.split(", ");
+            for (String piece : pieces) {
+                appendDoublePiece(sb, piece);
+            }
+        } else if (rep.startsWith("internal constant [32 x i32] [")) {
+            rep = rep.substring("internal constant [32 x i32] [".length());
+            int indexOfRBracket = rep.indexOf(']');
+            rep = rep.substring(0, indexOfRBracket);
+            String[] pieces = rep.split(", ");
+            for (String piece : pieces) {
+                appendI32Piece(sb, piece);
+            }
+        } else if (rep.startsWith("internal constant [66 x i32] [")) {
+            rep = rep.substring("internal constant [66 x i32] [".length());
+            int indexOfRBracket = rep.indexOf(']');
+            rep = rep.substring(0, indexOfRBracket);
+            String[] pieces = rep.split(", ");
+            for (String piece : pieces) {
+                appendI32Piece(sb, piece);
             }
         } else {
             throw new UnsupportedOperationException();
@@ -244,7 +275,8 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
                 String[] ss1 = {
                     "double* getelementptr inbounds ([2 x double], [2 x double]* @",
                     "double* getelementptr inbounds ([4 x double], [4 x double]* @",
-                    "double* getelementptr inbounds ([11 x double], [11 x double]* @",};
+                    "double* getelementptr inbounds ([11 x double], [11 x double]* @",
+                    "double* getelementptr inbounds ([16 x double], [16 x double]* @",};
                 String s2 = ", i32 0, i64 ";
                 String s3 = ")";
                 int indexOfS2 = operand.representation.indexOf(s2);
@@ -616,7 +648,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         {"s_cbrt.bc"},
         {"s_copysign.bc"},
         {"s_cos.bc", "k_cos", "k_sin", "e_rem_pio2"},
-        //        "k_cos.bc",
+        {"k_cos.bc"},
         {"w_cosh.bc", "e_cosh"},
         {"e_cosh.bc", "s_fabs", "s_expm1", "e_exp"},
         {"w_exp.bc", "e_exp"},
@@ -633,17 +665,17 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         {"s_log1p.bc"},
         {"w_pow.bc", "e_pow"},
         {"e_pow.bc", "w_sqrt", "s_fabs", "s_scalbn"},
-        //        "e_rem_pio2.bc",
+        //{"e_rem_pio2.bc"},
         //        "k_rem_pio2.bc",
         {"s_scalbn.bc", "s_copysign"},
         {"s_sin.bc", "k_sin", "k_cos", "e_rem_pio2"},
-        //        "k_sin.bc",
+        {"k_sin.bc"},
         {"w_sinh.bc", "e_sinh"},
         {"e_sinh.bc", "s_fabs", "s_expm1", "e_exp"},
         {"w_sqrt.bc", "e_sqrt"},
         //        "e_sqrt.bc", 
         {"s_tan.bc", "k_tan", "e_rem_pio2"},
-        //        "k_tan.bc",
+        {"k_tan.bc", "s_fabs"},
         {"s_tanh.bc", "s_fabs", "s_expm1"}
     };
 
