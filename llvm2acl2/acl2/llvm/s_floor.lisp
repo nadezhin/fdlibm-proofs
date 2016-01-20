@@ -67,7 +67,7 @@
     (%107 (load-i32 %i1 mem))
     (%108 (icmp-ult-i32 %106 %107)))
   (case %108
-    (-1  (@floor-%109 mem %i %i0 %i1 %j %1 %2))
+    (-1 (@floor-%109 mem %i %i0 %i1 %j %1 %2))
     (0 (@floor-%112 mem %i %i0 %i1 %j %1 %2)))))
 
 (defund @floor-%97 (mem %i %i0 %i1 %1 %2)
@@ -82,7 +82,7 @@
     (%95 (load-i32 %j0 mem))
     (%96 (icmp-eq-i32 %95 20)))
   (case %96
-    (-1  (@floor-%97 mem %i %i0 %i1 %1 %2))
+    (-1 (@floor-%97 mem %i %i0 %i1 %1 %2))
     (0 (@floor-%100 mem %i %i0 %i1 %j %j0 %1 %2)))))
 
 (defund @floor-%91 (mem %i %i0 %i1 %j %j0 %1 %2)
@@ -90,7 +90,7 @@
     (%92 (load-i32 %i0 mem))
     (%93 (icmp-slt-i32 %92 0)))
   (case %93
-    (-1  (@floor-%94 mem %i %i0 %i1 %j %j0 %1 %2))
+    (-1 (@floor-%94 mem %i %i0 %i1 %j %j0 %1 %2))
     (0 (@floor-%115 mem %i %i0 %i1 %1 %2)))))
 
 (defund @floor-%87 (mem %i %i0 %i1 %j %j0 %1 %2)
@@ -99,7 +99,7 @@
     (%89 (fadd-double #x7e37e43c8800759c %88))
     (%90 (fcmp-ogt-double %89 #x0000000000000000)))
   (case %90
-    (-1  (@floor-%91 mem %i %i0 %i1 %j %j0 %1 %2))
+    (-1 (@floor-%91 mem %i %i0 %i1 %j %j0 %1 %2))
     (0 (@floor-%120 mem %i0 %i1 %1 %2)))))
 
 (defund @floor-%85 (mem %1 %2)
@@ -119,7 +119,7 @@
     (%83 (and-i32 %81 %82))
     (%84 (icmp-eq-i32 %83 0)))
   (case %84
-    (-1  (@floor-%85 mem %1 %2))
+    (-1 (@floor-%85 mem %1 %2))
     (0 (@floor-%87 mem %i %i0 %i1 %j %j0 %1 %2)))))
 
 (defund @floor-%75 (mem %1 %2)
@@ -141,7 +141,7 @@
     (%69 (load-i32 %j0 mem))
     (%70 (icmp-eq-i32 %69 1024)))
   (case %70
-    (-1  (@floor-%71 mem %1 %2))
+    (-1 (@floor-%71 mem %1 %2))
     (0 (@floor-%75 mem %1 %2)))))
 
 (defund @floor-%65 (mem %i %i0 %i1 %j %j0 %1 %2)
@@ -149,7 +149,7 @@
     (%66 (load-i32 %j0 mem))
     (%67 (icmp-sgt-i32 %66 51)))
   (case %67
-    (-1  (@floor-%68 mem %j0 %1 %2))
+    (-1 (@floor-%68 mem %j0 %1 %2))
     (0 (@floor-%77 mem %i %i0 %i1 %j %j0 %1 %2)))))
 
 (defund @floor-%64 (mem %i0 %i1 %1 %2)
@@ -184,7 +184,7 @@
     (%51 (load-i32 %i0 mem))
     (%52 (icmp-slt-i32 %51 0)))
   (case %52
-    (-1  (@floor-%53 mem %i %i0 %i1 %j0 %1 %2))
+    (-1 (@floor-%53 mem %i %i0 %i1 %j0 %1 %2))
     (0 (@floor-%58 mem %i %i0 %i1 %1 %2)))))
 
 (defund @floor-%46 (mem %i %i0 %i1 %j0 %1 %2)
@@ -193,7 +193,7 @@
     (%48 (fadd-double #x7e37e43c8800759c %47))
     (%49 (fcmp-ogt-double %48 #x0000000000000000)))
   (case %49
-    (-1  (@floor-%50 mem %i %i0 %i1 %j0 %1 %2))
+    (-1 (@floor-%50 mem %i %i0 %i1 %j0 %1 %2))
     (0 (@floor-%63 mem %i0 %i1 %1 %2)))))
 
 (defund @floor-%44 (mem %1 %2)
@@ -214,7 +214,7 @@
     (%42 (or-i32 %40 %41))
     (%43 (icmp-eq-i32 %42 0)))
   (case %43
-    (-1  (@floor-%44 mem %1 %2))
+    (-1 (@floor-%44 mem %1 %2))
     (0 (@floor-%46 mem %i %i0 %i1 %j0 %1 %2)))))
 
 (defund @floor-%34 (mem %i0 %i1 %1 %2)
@@ -243,7 +243,7 @@
     (%29 (or-i32 %27 %28))
     (%30 (icmp-ne-i32 %29 0)))
   (case %30
-    (-1  (@floor-%31 mem %i0 %i1 %1 %2))
+    (-1 (@floor-%31 mem %i0 %i1 %1 %2))
     (0 (@floor-%32 mem %i0 %i1 %1 %2)))))
 
 (defund @floor-%24 (mem %i0 %i1 %1 %2)
@@ -257,7 +257,7 @@
     (%22 (load-i32 %i0 mem))
     (%23 (icmp-sge-i32 %22 0)))
   (case %23
-    (-1  (@floor-%24 mem %i0 %i1 %1 %2))
+    (-1 (@floor-%24 mem %i0 %i1 %1 %2))
     (0 (@floor-%25 mem %i0 %i1 %1 %2)))))
 
 (defund @floor-%17 (mem %i0 %i1 %1 %2)
@@ -266,7 +266,7 @@
     (%19 (fadd-double #x7e37e43c8800759c %18))
     (%20 (fcmp-ogt-double %19 #x0000000000000000)))
   (case %20
-    (-1  (@floor-%21 mem %i0 %i1 %1 %2))
+    (-1 (@floor-%21 mem %i0 %i1 %1 %2))
     (0 (@floor-%34 mem %i0 %i1 %1 %2)))))
 
 (defund @floor-%14 (mem %i %i0 %i1 %j0 %1 %2)
@@ -274,7 +274,7 @@
     (%15 (load-i32 %j0 mem))
     (%16 (icmp-slt-i32 %15 0)))
   (case %16
-    (-1  (@floor-%17 mem %i0 %i1 %1 %2))
+    (-1 (@floor-%17 mem %i0 %i1 %1 %2))
     (0 (@floor-%35 mem %i %i0 %i1 %j0 %1 %2)))))
 
 (defund @floor-%0 (mem %x)
@@ -302,7 +302,7 @@
     (%12 (load-i32 %j0 mem))
     (%13 (icmp-slt-i32 %12 20)))
   (case %13
-    (-1  (@floor-%14 mem %i %i0 %i1 %j0 %1 %2))
+    (-1 (@floor-%14 mem %i %i0 %i1 %j0 %1 %2))
     (0 (@floor-%65 mem %i %i0 %i1 %j %j0 %1 %2)))))
 
 (defund @floor (%x)

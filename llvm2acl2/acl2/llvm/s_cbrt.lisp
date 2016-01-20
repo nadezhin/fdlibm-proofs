@@ -112,7 +112,7 @@
     (%29 (load-i32 %hx mem))
     (%30 (icmp-slt-i32 %29 1048576)))
   (case %30
-    (-1  (@cbrt-%31 mem %r %s %sign %t %w %1 %2))
+    (-1 (@cbrt-%31 mem %r %s %sign %t %w %1 %2))
     (0 (@cbrt-%44 mem %hx %r %s %sign %t %w %1 %2)))))
 
 (defund @cbrt-%23 (mem %1 %2)
@@ -129,7 +129,7 @@
     (%21 (or-i32 %18 %20))
     (%22 (icmp-eq-i32 %21 0)))
   (case %22
-    (-1  (@cbrt-%23 mem %1 %2))
+    (-1 (@cbrt-%23 mem %1 %2))
     (0 (@cbrt-%25 mem %hx %r %s %sign %t %w %1 %2)))))
 
 (defund @cbrt-%13 (mem %1 %2)
@@ -166,7 +166,7 @@
     (%11 (load-i32 %hx mem))
     (%12 (icmp-sge-i32 %11 2146435072)))
   (case %12
-    (-1  (@cbrt-%13 mem %1 %2))
+    (-1 (@cbrt-%13 mem %1 %2))
     (0 (@cbrt-%17 mem %hx %r %s %sign %t %w %1 %2)))))
 
 (defund @cbrt (%x)

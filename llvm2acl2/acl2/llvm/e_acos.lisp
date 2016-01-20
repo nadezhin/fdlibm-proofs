@@ -142,7 +142,7 @@
     (%81 (load-i32 %hx mem))
     (%82 (icmp-slt-i32 %81 0)))
   (case %82
-    (-1  (@__ieee754_acos-%83 mem %p %q %r %s %w %z %1 %2))
+    (-1 (@__ieee754_acos-%83 mem %p %q %r %s %w %z %1 %2))
     (0 (@__ieee754_acos-%130 mem %c %df %p %q %r %s %w %z %1 %2)))))
 
 (defund @__ieee754_acos-%37 (mem %p %q %r %z %1 %2)
@@ -206,7 +206,7 @@
     (%34 (load-i32 %ix mem))
     (%35 (icmp-sle-i32 %34 1012924416)))
   (case %35
-    (-1  (@__ieee754_acos-%36 mem %1))
+    (-1 (@__ieee754_acos-%36 mem %1))
     (0 (@__ieee754_acos-%37 mem %p %q %r %z %1 %2)))))
 
 (defund @__ieee754_acos-%30 (mem %c %df %hx %ix %p %q %r %s %w %z %1 %2)
@@ -214,7 +214,7 @@
     (%31 (load-i32 %ix mem))
     (%32 (icmp-slt-i32 %31 1071644672)))
   (case %32
-    (-1  (@__ieee754_acos-%33 mem %ix %p %q %r %z %1 %2))
+    (-1 (@__ieee754_acos-%33 mem %ix %p %q %r %z %1 %2))
     (0 (@__ieee754_acos-%80 mem %c %df %hx %p %q %r %s %w %z %1 %2)))))
 
 (defund @__ieee754_acos-%22 (mem %1 %2)
@@ -244,7 +244,7 @@
     (%18 (load-i32 %hx mem))
     (%19 (icmp-sgt-i32 %18 0)))
   (case %19
-    (-1  (@__ieee754_acos-%20 mem %1))
+    (-1 (@__ieee754_acos-%20 mem %1))
     (0 (@__ieee754_acos-%21 mem %1)))))
 
 (defund @__ieee754_acos-%10 (mem %hx %ix %1 %2)
@@ -256,7 +256,7 @@
     (%15 (or-i32 %12 %14))
     (%16 (icmp-eq-i32 %15 0)))
   (case %16
-    (-1  (@__ieee754_acos-%17 mem %hx %1))
+    (-1 (@__ieee754_acos-%17 mem %hx %1))
     (0 (@__ieee754_acos-%22 mem %1 %2)))))
 
 (defund @__ieee754_acos-%0 (mem %x)
@@ -284,7 +284,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-sge-i32 %8 1072693248)))
   (case %9
-    (-1  (@__ieee754_acos-%10 mem %hx %ix %1 %2))
+    (-1 (@__ieee754_acos-%10 mem %hx %ix %1 %2))
     (0 (@__ieee754_acos-%30 mem %c %df %hx %ix %p %q %r %s %w %z %1 %2)))))
 
 (defund @__ieee754_acos (%x)

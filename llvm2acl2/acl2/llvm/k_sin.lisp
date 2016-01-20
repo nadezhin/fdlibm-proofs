@@ -67,7 +67,7 @@
     (%37 (load-i32 %4 mem))
     (%38 (icmp-eq-i32 %37 0)))
   (case %38
-    (-1  (@__kernel_sin-%39 mem %r %v %z %1 %2))
+    (-1 (@__kernel_sin-%39 mem %r %v %z %1 %2))
     (0 (@__kernel_sin-%48 mem %r %v %z %1 %2 %3)))))
 
 (defund @__kernel_sin-%17 (mem %r %v %z %1 %2 %3 %4)
@@ -86,7 +86,7 @@
     (%13 (fptosi-double-to-i32 %12))
     (%14 (icmp-eq-i32 %13 0)))
   (case %14
-    (-1  (@__kernel_sin-%15 mem %1 %2))
+    (-1 (@__kernel_sin-%15 mem %1 %2))
     (0 (@__kernel_sin-%17 mem %r %v %z %1 %2 %3 %4)))))
 
 (defund @__kernel_sin-%0 (mem %x %y %iy)
@@ -110,7 +110,7 @@
     (%9 (load-i32 %ix mem))
     (%10 (icmp-slt-i32 %9 1044381696)))
   (case %10
-    (-1  (@__kernel_sin-%11 mem %r %v %z %1 %2 %3 %4))
+    (-1 (@__kernel_sin-%11 mem %r %v %z %1 %2 %3 %4))
     (0 (@__kernel_sin-%18 mem %r %v %z %1 %2 %3 %4)))))
 
 (defund @__kernel_sin (%x %y %iy)

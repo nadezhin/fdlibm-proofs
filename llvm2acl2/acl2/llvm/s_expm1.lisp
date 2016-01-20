@@ -73,7 +73,7 @@
     (%217 (load-i32 %k mem))
     (%218 (icmp-slt-i32 %217 20)))
   (case %218
-    (-1  (@expm1-%219 mem %e %k %t %y %1 %2))
+    (-1 (@expm1-%219 mem %e %k %t %y %1 %2))
     (0 (@expm1-%236 mem %e %k %t %y %1 %2)))))
 
 (defund @expm1-%203 (mem %e %k %y %1 %2)
@@ -100,7 +100,7 @@
     (%201 (load-i32 %k mem))
     (%202 (icmp-sgt-i32 %201 56)))
   (case %202
-    (-1  (@expm1-%203 mem %e %k %y %1 %2))
+    (-1 (@expm1-%203 mem %e %k %y %1 %2))
     (0 (@expm1-%216 mem %e %k %t %y %1 %2)))))
 
 (defund @expm1-%197 (mem %e %k %t %y %1 %2)
@@ -108,7 +108,7 @@
     (%198 (load-i32 %k mem))
     (%199 (icmp-sle-i32 %198 -2)))
   (case %199
-    (-1  (@expm1-%203 mem %e %k %y %1 %2))
+    (-1 (@expm1-%203 mem %e %k %y %1 %2))
     (0 (@expm1-%200 mem %e %k %t %y %1 %2)))))
 
 (defund @expm1-%191 (mem %e %1 %2)
@@ -136,7 +136,7 @@
     (%183 (load-double %2 mem))
     (%184 (fcmp-olt-double %183 #xbfd0000000000000)))
   (case %184
-    (-1  (@expm1-%185 mem %e %1 %2))
+    (-1 (@expm1-%185 mem %e %1 %2))
     (0 (@expm1-%191 mem %e %1 %2)))))
 
 (defund @expm1-%179 (mem %e %k %t %y %1 %2)
@@ -144,7 +144,7 @@
     (%180 (load-i32 %k mem))
     (%181 (icmp-eq-i32 %180 1)))
   (case %181
-    (-1  (@expm1-%182 mem %e %1 %2))
+    (-1 (@expm1-%182 mem %e %1 %2))
     (0 (@expm1-%197 mem %e %k %t %y %1 %2)))))
 
 (defund @expm1-%173 (mem %e %1 %2)
@@ -174,7 +174,7 @@
     (%171 (load-i32 %k mem))
     (%172 (icmp-eq-i32 %171 -1)))
   (case %172
-    (-1  (@expm1-%173 mem %e %1 %2))
+    (-1 (@expm1-%173 mem %e %1 %2))
     (0 (@expm1-%179 mem %e %k %t %y %1 %2)))))
 
 (defund @expm1-%152 (mem %e %hxs %1 %2)
@@ -233,7 +233,7 @@
     (%150 (load-i32 %k mem))
     (%151 (icmp-eq-i32 %150 0)))
   (case %151
-    (-1  (@expm1-%152 mem %e %hxs %1 %2))
+    (-1 (@expm1-%152 mem %e %hxs %1 %2))
     (0 (@expm1-%160 mem %c %e %hxs %k %t %y %1 %2)))))
 
 (defund @expm1-%114 (mem %c %e %hfx %hxs %k %r1 %t %y %1 %2)
@@ -264,7 +264,7 @@
     (%102 (load-i32 %hx mem))
     (%103 (icmp-ult-i32 %102 1016070144)))
   (case %103
-    (-1  (@expm1-%104 mem %t %1 %2))
+    (-1 (@expm1-%104 mem %t %1 %2))
     (0 (@expm1-%113 mem %c %e %hfx %hxs %k %r1 %t %y %1 %2)))))
 
 (defund @expm1-%92 (mem %c %e %hfx %hi %hxs %k %lo %r1 %t %y %1 %2)
@@ -331,7 +331,7 @@
     (%67 (load-i32 %xsb mem))
     (%68 (icmp-eq-i32 %67 0)))
   (case %68
-    (-1  (@expm1-%69 mem %c %e %hfx %hi %hxs %k %lo %r1 %t %y %1 %2))
+    (-1 (@expm1-%69 mem %c %e %hfx %hi %hxs %k %lo %r1 %t %y %1 %2))
     (0 (@expm1-%72 mem %c %e %hfx %hi %hxs %k %lo %r1 %t %y %1 %2)))))
 
 (defund @expm1-%63 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -339,7 +339,7 @@
     (%64 (load-i32 %hx mem))
     (%65 (icmp-ult-i32 %64 1072734898)))
   (case %65
-    (-1  (@expm1-%66 mem %c %e %hfx %hi %hxs %k %lo %r1 %t %xsb %y %1 %2))
+    (-1 (@expm1-%66 mem %c %e %hfx %hi %hxs %k %lo %r1 %t %xsb %y %1 %2))
     (0 (@expm1-%76 mem %c %e %hfx %hi %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%60 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -347,7 +347,7 @@
     (%61 (load-i32 %hx mem))
     (%62 (icmp-ugt-i32 %61 1071001154)))
   (case %62
-    (-1  (@expm1-%63 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
+    (-1 (@expm1-%63 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
     (0 (@expm1-%101 mem %c %e %hfx %hx %hxs %k %r1 %t %y %1 %2)))))
 
 (defund @expm1-%59 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -369,7 +369,7 @@
     (%55 (fadd-double %54 #x01a56e1fc2f8f359))
     (%56 (fcmp-olt-double %55 #x0000000000000000)))
   (case %56
-    (-1  (@expm1-%57 mem %1))
+    (-1 (@expm1-%57 mem %1))
     (0 (@expm1-%58 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%50 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -377,7 +377,7 @@
     (%51 (load-i32 %xsb mem))
     (%52 (icmp-ne-i32 %51 0)))
   (case %52
-    (-1  (@expm1-%53 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
+    (-1 (@expm1-%53 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
     (0 (@expm1-%59 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%49 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -394,7 +394,7 @@
     (%46 (load-double %2 mem))
     (%47 (fcmp-ogt-double %46 #x40862E42FEFA39EF)))
   (case %47
-    (-1  (@expm1-%48 mem %1))
+    (-1 (@expm1-%48 mem %1))
     (0 (@expm1-%49 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%43 (mem %1 %44)
@@ -417,7 +417,7 @@
     (%38 (load-i32 %xsb mem))
     (%39 (icmp-eq-i32 %38 0)))
   (case %39
-    (-1  (@expm1-%40 mem %1 %2))
+    (-1 (@expm1-%40 mem %1 %2))
     (0 (@expm1-%42 mem %1)))))
 
 (defund @expm1-%33 (mem %1 %2)
@@ -437,7 +437,7 @@
     (%31 (or-i32 %28 %30))
     (%32 (icmp-ne-i32 %31 0)))
   (case %32
-    (-1  (@expm1-%33 mem %1 %2))
+    (-1 (@expm1-%33 mem %1 %2))
     (0 (@expm1-%37 mem %xsb %1 %2)))))
 
 (defund @expm1-%23 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -445,7 +445,7 @@
     (%24 (load-i32 %hx mem))
     (%25 (icmp-uge-i32 %24 2146435072)))
   (case %25
-    (-1  (@expm1-%26 mem %hx %xsb %1 %2))
+    (-1 (@expm1-%26 mem %hx %xsb %1 %2))
     (0 (@expm1-%45 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%20 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -453,7 +453,7 @@
     (%21 (load-i32 %hx mem))
     (%22 (icmp-uge-i32 %21 1082535490)))
   (case %22
-    (-1  (@expm1-%23 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
+    (-1 (@expm1-%23 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
     (0 (@expm1-%50 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%15 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -464,7 +464,7 @@
     (%18 (load-i32 %hx mem))
     (%19 (icmp-uge-i32 %18 1078159482)))
   (case %19
-    (-1  (@expm1-%20 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
+    (-1 (@expm1-%20 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
     (0 (@expm1-%60 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1-%12 (mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)
@@ -507,7 +507,7 @@
     (%8 (load-i32 %xsb mem))
     (%9 (icmp-eq-i32 %8 0)))
   (case %9
-    (-1  (@expm1-%10 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
+    (-1 (@expm1-%10 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2))
     (0 (@expm1-%12 mem %c %e %hfx %hi %hx %hxs %k %lo %r1 %t %xsb %y %1 %2)))))
 
 (defund @expm1 (%x)

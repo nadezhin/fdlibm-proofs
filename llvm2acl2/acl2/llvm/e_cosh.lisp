@@ -38,7 +38,7 @@
     (%69 (load-i32 %lx mem))
     (%70 (icmp-ule-i32 %69 -1883637635)))
   (case %70
-    (-1  (@__ieee754_cosh-%71 mem %t %w %1 %2))
+    (-1 (@__ieee754_cosh-%71 mem %t %w %1 %2))
     (0 (@__ieee754_cosh-%81 mem %1)))))
 
 (defund @__ieee754_cosh-%65 (mem %ix %lx %t %w %1 %2)
@@ -46,7 +46,7 @@
     (%66 (load-i32 %ix mem))
     (%67 (icmp-eq-i32 %66 1082536910)))
   (case %67
-    (-1  (@__ieee754_cosh-%68 mem %lx %t %w %1 %2))
+    (-1 (@__ieee754_cosh-%68 mem %lx %t %w %1 %2))
     (0 (@__ieee754_cosh-%81 mem %1)))))
 
 (defund @__ieee754_cosh-%56 (mem %ix %lx %t %w %1 %2)
@@ -61,7 +61,7 @@
     (%63 (load-i32 %ix mem))
     (%64 (icmp-slt-i32 %63 1082536910)))
   (case %64
-    (-1  (@__ieee754_cosh-%71 mem %t %w %1 %2))
+    (-1 (@__ieee754_cosh-%71 mem %t %w %1 %2))
     (0 (@__ieee754_cosh-%65 mem %ix %lx %t %w %1 %2)))))
 
 (defund @__ieee754_cosh-%51 (mem %1 %2)
@@ -78,7 +78,7 @@
     (%49 (load-i32 %ix mem))
     (%50 (icmp-slt-i32 %49 1082535490)))
   (case %50
-    (-1  (@__ieee754_cosh-%51 mem %1 %2))
+    (-1 (@__ieee754_cosh-%51 mem %1 %2))
     (0 (@__ieee754_cosh-%56 mem %ix %lx %t %w %1 %2)))))
 
 (defund @__ieee754_cosh-%39 (mem %t %1 %2)
@@ -100,7 +100,7 @@
     (%37 (load-i32 %ix mem))
     (%38 (icmp-slt-i32 %37 1077280768)))
   (case %38
-    (-1  (@__ieee754_cosh-%39 mem %t %1 %2))
+    (-1 (@__ieee754_cosh-%39 mem %t %1 %2))
     (0 (@__ieee754_cosh-%48 mem %ix %lx %t %w %1 %2)))))
 
 (defund @__ieee754_cosh-%27 (mem %t %w %1)
@@ -134,7 +134,7 @@
     (%23 (load-i32 %ix mem))
     (%24 (icmp-slt-i32 %23 1015021568)))
   (case %24
-    (-1  (@__ieee754_cosh-%25 mem %w %1))
+    (-1 (@__ieee754_cosh-%25 mem %w %1))
     (0 (@__ieee754_cosh-%27 mem %t %w %1)))))
 
 (defund @__ieee754_cosh-%14 (mem %ix %lx %t %w %1 %2)
@@ -142,7 +142,7 @@
     (%15 (load-i32 %ix mem))
     (%16 (icmp-slt-i32 %15 1071001155)))
   (case %16
-    (-1  (@__ieee754_cosh-%17 mem %ix %t %w %1 %2))
+    (-1 (@__ieee754_cosh-%17 mem %ix %t %w %1 %2))
     (0 (@__ieee754_cosh-%36 mem %ix %lx %t %w %1 %2)))))
 
 (defund @__ieee754_cosh-%10 (mem %1 %2)
@@ -172,7 +172,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-sge-i32 %8 2146435072)))
   (case %9
-    (-1  (@__ieee754_cosh-%10 mem %1 %2))
+    (-1 (@__ieee754_cosh-%10 mem %1 %2))
     (0 (@__ieee754_cosh-%14 mem %ix %lx %t %w %1 %2)))))
 
 (defund @__ieee754_cosh (%x)

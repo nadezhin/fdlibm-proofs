@@ -32,7 +32,7 @@
     (%57 (load-i32 %jx mem))
     (%58 (icmp-sge-i32 %57 0)))
   (case %58
-    (-1  (@tanh-%59 mem %z %1))
+    (-1 (@tanh-%59 mem %z %1))
     (0 (@tanh-%61 mem %z %1)))))
 
 (defund @tanh-%55 (mem %jx %z %1)
@@ -78,7 +78,7 @@
     (%33 (load-i32 %ix mem))
     (%34 (icmp-sge-i32 %33 1072693248)))
   (case %34
-    (-1  (@tanh-%35 mem %jx %t %z %1 %2))
+    (-1 (@tanh-%35 mem %jx %t %z %1 %2))
     (0 (@tanh-%44 mem %jx %t %z %1 %2)))))
 
 (defund @tanh-%27 (mem %1 %2)
@@ -95,7 +95,7 @@
     (%25 (load-i32 %ix mem))
     (%26 (icmp-slt-i32 %25 1015021568)))
   (case %26
-    (-1  (@tanh-%27 mem %1 %2))
+    (-1 (@tanh-%27 mem %1 %2))
     (0 (@tanh-%32 mem %ix %jx %t %z %1 %2)))))
 
 (defund @tanh-%21 (mem %ix %jx %t %z %1 %2)
@@ -103,7 +103,7 @@
     (%22 (load-i32 %ix mem))
     (%23 (icmp-slt-i32 %22 1077280768)))
   (case %23
-    (-1  (@tanh-%24 mem %ix %jx %t %z %1 %2))
+    (-1 (@tanh-%24 mem %ix %jx %t %z %1 %2))
     (0 (@tanh-%55 mem %jx %z %1)))))
 
 (defund @tanh-%17 (mem %1 %2)
@@ -127,7 +127,7 @@
     (%11 (load-i32 %jx mem))
     (%12 (icmp-sge-i32 %11 0)))
   (case %12
-    (-1  (@tanh-%13 mem %1 %2))
+    (-1 (@tanh-%13 mem %1 %2))
     (0 (@tanh-%17 mem %1 %2)))))
 
 (defund @tanh-%0 (mem %x)
@@ -149,7 +149,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-sge-i32 %8 2146435072)))
   (case %9
-    (-1  (@tanh-%10 mem %jx %1 %2))
+    (-1 (@tanh-%10 mem %jx %1 %2))
     (0 (@tanh-%21 mem %ix %jx %t %z %1 %2)))))
 
 (defund @tanh (%x)

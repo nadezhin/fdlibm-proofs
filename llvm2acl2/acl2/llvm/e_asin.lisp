@@ -28,7 +28,7 @@
     (%169 (load-i32 %hx mem))
     (%170 (icmp-sgt-i32 %169 0)))
   (case %170
-    (-1  (@__ieee754_asin-%171 mem %t %1))
+    (-1 (@__ieee754_asin-%171 mem %t %1))
     (0 (@__ieee754_asin-%173 mem %t %1)))))
 
 (defund @__ieee754_asin-%138 (mem %c %hx %p %q %r %s %t %w %1)
@@ -134,7 +134,7 @@
     (%124 (load-i32 %ix mem))
     (%125 (icmp-sge-i32 %124 1072640819)))
   (case %125
-    (-1  (@__ieee754_asin-%126 mem %hx %p %q %s %t %w %1))
+    (-1 (@__ieee754_asin-%126 mem %hx %p %q %s %t %w %1))
     (0 (@__ieee754_asin-%138 mem %c %hx %p %q %r %s %t %w %1)))))
 
 (defund @__ieee754_asin-%86 (mem %c %hx %ix %p %q %r %s %t %w %1 %2)
@@ -210,7 +210,7 @@
     (%39 (fadd-double #x7e37e43c8800759c %38))
     (%40 (fcmp-ogt-double %39 #x3ff0000000000000)))
   (case %40
-    (-1  (@__ieee754_asin-%41 mem %1 %2))
+    (-1 (@__ieee754_asin-%41 mem %1 %2))
     (0 (@__ieee754_asin-%43 mem %p %q %t %w %1 %2)))))
 
 (defund @__ieee754_asin-%34 (mem %ix %p %q %t %w %1 %2)
@@ -218,7 +218,7 @@
     (%35 (load-i32 %ix mem))
     (%36 (icmp-slt-i32 %35 1044381696)))
   (case %36
-    (-1  (@__ieee754_asin-%37 mem %p %q %t %w %1 %2))
+    (-1 (@__ieee754_asin-%37 mem %p %q %t %w %1 %2))
     (0 (@__ieee754_asin-%44 mem %p %q %t %w %1 %2)))))
 
 (defund @__ieee754_asin-%31 (mem %c %hx %ix %p %q %r %s %t %w %1 %2)
@@ -226,7 +226,7 @@
     (%32 (load-i32 %ix mem))
     (%33 (icmp-slt-i32 %32 1071644672)))
   (case %33
-    (-1  (@__ieee754_asin-%34 mem %ix %p %q %t %w %1 %2))
+    (-1 (@__ieee754_asin-%34 mem %ix %p %q %t %w %1 %2))
     (0 (@__ieee754_asin-%86 mem %c %hx %ix %p %q %r %s %t %w %1 %2)))))
 
 (defund @__ieee754_asin-%23 (mem %1 %2)
@@ -260,7 +260,7 @@
     (%15 (or-i32 %12 %14))
     (%16 (icmp-eq-i32 %15 0)))
   (case %16
-    (-1  (@__ieee754_asin-%17 mem %1 %2))
+    (-1 (@__ieee754_asin-%17 mem %1 %2))
     (0 (@__ieee754_asin-%23 mem %1 %2)))))
 
 (defund @__ieee754_asin-%0 (mem %x)
@@ -287,7 +287,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-sge-i32 %8 1072693248)))
   (case %9
-    (-1  (@__ieee754_asin-%10 mem %ix %1 %2))
+    (-1 (@__ieee754_asin-%10 mem %ix %1 %2))
     (0 (@__ieee754_asin-%31 mem %c %hx %ix %p %q %r %s %t %w %1 %2)))))
 
 (defund @__ieee754_asin (%x)

@@ -56,7 +56,7 @@
     (%185 (load-i32 %4 mem))
     (%186 (icmp-eq-i32 %185 1)))
   (case %186
-    (-1  (@__kernel_tan-%187 mem %w %1))
+    (-1 (@__kernel_tan-%187 mem %w %1))
     (0 (@__kernel_tan-%189 mem %a1 %r %s %t2 %v %w %z %1 %2)))))
 
 (defund @__kernel_tan-%161 (mem %hx %r %v %w %1 %2 %4)
@@ -172,7 +172,7 @@
     (%159 (load-i32 %ix mem))
     (%160 (icmp-sge-i32 %159 1072010280)))
   (case %160
-    (-1  (@__kernel_tan-%161 mem %hx %r %v %w %1 %2 %4))
+    (-1 (@__kernel_tan-%161 mem %hx %r %v %w %1 %2 %4))
     (0 (@__kernel_tan-%184 mem %a1 %r %s %t2 %v %w %z %1 %2 %4)))))
 
 (defund @__kernel_tan-%76 (mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)
@@ -207,7 +207,7 @@
     (%69 (load-i32 %hx mem))
     (%70 (icmp-slt-i32 %69 0)))
   (case %70
-    (-1  (@__kernel_tan-%71 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4))
+    (-1 (@__kernel_tan-%71 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4))
     (0 (@__kernel_tan-%76 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)))))
 
 (defund @__kernel_tan-%65 (mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)
@@ -215,7 +215,7 @@
     (%66 (load-i32 %ix mem))
     (%67 (icmp-sge-i32 %66 1072010280)))
   (case %67
-    (-1  (@__kernel_tan-%68 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4))
+    (-1 (@__kernel_tan-%68 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4))
     (0 (@__kernel_tan-%86 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)))))
 
 (defund @__kernel_tan-%64 (mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)
@@ -274,7 +274,7 @@
     (%31 (load-i32 %4 mem))
     (%32 (icmp-eq-i32 %31 1)))
   (case %32
-    (-1  (@__kernel_tan-%33 mem %1 %2))
+    (-1 (@__kernel_tan-%33 mem %1 %2))
     (0 (@__kernel_tan-%35 mem %a %s %t %v %w %z %1 %2 %3)))))
 
 (defund @__kernel_tan-%25 (mem %1 %2)
@@ -297,7 +297,7 @@
     (%23 (or-i32 %20 %22))
     (%24 (icmp-eq-i32 %23 0)))
   (case %24
-    (-1  (@__kernel_tan-%25 mem %1 %2))
+    (-1 (@__kernel_tan-%25 mem %1 %2))
     (0 (@__kernel_tan-%30 mem %a %s %t %v %w %z %1 %2 %3 %4)))))
 
 (defund @__kernel_tan-%12 (mem %a %a1 %hx %ix %r %s %t %t2 %v %w %z %1 %2 %3 %4)
@@ -306,7 +306,7 @@
     (%14 (fptosi-double-to-i32 %13))
     (%15 (icmp-eq-i32 %14 0)))
   (case %15
-    (-1  (@__kernel_tan-%16 mem %a %ix %s %t %v %w %z %1 %2 %3 %4))
+    (-1 (@__kernel_tan-%16 mem %a %ix %s %t %v %w %z %1 %2 %3 %4))
     (0 (@__kernel_tan-%64 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)))))
 
 (defund @__kernel_tan-%0 (mem %x %y %iy)
@@ -339,7 +339,7 @@
     (%10 (load-i32 %ix mem))
     (%11 (icmp-slt-i32 %10 1043333120)))
   (case %11
-    (-1  (@__kernel_tan-%12 mem %a %a1 %hx %ix %r %s %t %t2 %v %w %z %1 %2 %3 %4))
+    (-1 (@__kernel_tan-%12 mem %a %a1 %hx %ix %r %s %t %t2 %v %w %z %1 %2 %3 %4))
     (0 (@__kernel_tan-%65 mem %a1 %hx %ix %r %s %t2 %v %w %z %1 %2 %3 %4)))))
 
 (defund @__kernel_tan (%x %y %iy)

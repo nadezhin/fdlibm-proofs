@@ -52,7 +52,7 @@
     (%164 (load-i32 %hx mem))
     (%165 (icmp-slt-i32 %164 0)))
   (case %165
-    (-1  (@atan-%166 mem %z %1))
+    (-1 (@atan-%166 mem %z %1))
     (0 (@atan-%169 mem %z %1)))))
 
 (defund @atan-%138 (mem %s1 %s2 %1 %2)
@@ -124,7 +124,7 @@
     (%136 (load-i32 %id mem))
     (%137 (icmp-slt-i32 %136 0)))
   (case %137
-    (-1  (@atan-%138 mem %s1 %s2 %1 %2))
+    (-1 (@atan-%138 mem %s1 %s2 %1 %2))
     (0 (@atan-%146 mem %hx %id %s1 %s2 %z %1 %2)))))
 
 (defund @atan-%86 (mem %hx %id %s1 %s2 %w %z %1 %2)
@@ -160,7 +160,7 @@
     (%73 (load-i32 %ix mem))
     (%74 (icmp-slt-i32 %73 1073971200)))
   (case %74
-    (-1  (@atan-%75 mem %hx %id %s1 %s2 %w %z %1 %2))
+    (-1 (@atan-%75 mem %hx %id %s1 %s2 %w %z %1 %2))
     (0 (@atan-%82 mem %hx %id %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan-%71 (mem %hx %id %s1 %s2 %w %z %1 %2)
@@ -195,7 +195,7 @@
     (%56 (load-i32 %ix mem))
     (%57 (icmp-slt-i32 %56 1072037888)))
   (case %57
-    (-1  (@atan-%58 mem %hx %id %s1 %s2 %w %z %1 %2))
+    (-1 (@atan-%58 mem %hx %id %s1 %s2 %w %z %1 %2))
     (0 (@atan-%65 mem %hx %id %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan-%50 (mem %hx %id %ix %s1 %s2 %w %z %1 %2)
@@ -206,7 +206,7 @@
     (%53 (load-i32 %ix mem))
     (%54 (icmp-slt-i32 %53 1072889856)))
   (case %54
-    (-1  (@atan-%55 mem %hx %id %ix %s1 %s2 %w %z %1 %2))
+    (-1 (@atan-%55 mem %hx %id %ix %s1 %s2 %w %z %1 %2))
     (0 (@atan-%72 mem %hx %id %ix %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan-%49 (mem %hx %id %s1 %s2 %w %z %1 %2)
@@ -230,7 +230,7 @@
     (%44 (fadd-double #x7e37e43c8800759c %43))
     (%45 (fcmp-ogt-double %44 #x3ff0000000000000)))
   (case %45
-    (-1  (@atan-%46 mem %1 %2))
+    (-1 (@atan-%46 mem %1 %2))
     (0 (@atan-%48 mem %hx %id %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan-%39 (mem %hx %id %ix %s1 %s2 %w %z %1 %2)
@@ -238,7 +238,7 @@
     (%40 (load-i32 %ix mem))
     (%41 (icmp-slt-i32 %40 1042284544)))
   (case %41
-    (-1  (@atan-%42 mem %hx %id %s1 %s2 %w %z %1 %2))
+    (-1 (@atan-%42 mem %hx %id %s1 %s2 %w %z %1 %2))
     (0 (@atan-%49 mem %hx %id %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan-%36 (mem %hx %id %ix %s1 %s2 %w %z %1 %2)
@@ -246,7 +246,7 @@
     (%37 (load-i32 %ix mem))
     (%38 (icmp-slt-i32 %37 1071382528)))
   (case %38
-    (-1  (@atan-%39 mem %hx %id %ix %s1 %s2 %w %z %1 %2))
+    (-1 (@atan-%39 mem %hx %id %ix %s1 %s2 %w %z %1 %2))
     (0 (@atan-%50 mem %hx %id %ix %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan-%31 (mem %1)
@@ -271,7 +271,7 @@
     (%25 (load-i32 %hx mem))
     (%26 (icmp-sgt-i32 %25 0)))
   (case %26
-    (-1  (@atan-%27 mem %1))
+    (-1 (@atan-%27 mem %1))
     (0 (@atan-%31 mem %1)))))
 
 (defund @atan-%20 (mem %1 %2)
@@ -288,7 +288,7 @@
     (%18 (load-i32 %17 mem))
     (%19 (icmp-ne-i32 %18 0)))
   (case %19
-    (-1  (@atan-%20 mem %1 %2))
+    (-1 (@atan-%20 mem %1 %2))
     (0 (@atan-%24 mem %hx %1)))))
 
 (defund @atan-%13 (mem %hx %ix %1 %2)
@@ -296,7 +296,7 @@
     (%14 (load-i32 %ix mem))
     (%15 (icmp-eq-i32 %14 2146435072)))
   (case %15
-    (-1  (@atan-%16 mem %hx %1 %2))
+    (-1 (@atan-%16 mem %hx %1 %2))
     (0 (@atan-%24 mem %hx %1)))))
 
 (defund @atan-%10 (mem %hx %ix %1 %2)
@@ -304,7 +304,7 @@
     (%11 (load-i32 %ix mem))
     (%12 (icmp-sgt-i32 %11 2146435072)))
   (case %12
-    (-1  (@atan-%20 mem %1 %2))
+    (-1 (@atan-%20 mem %1 %2))
     (0 (@atan-%13 mem %hx %ix %1 %2)))))
 
 (defund @atan-%0 (mem %x)
@@ -329,7 +329,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-sge-i32 %8 1141899264)))
   (case %9
-    (-1  (@atan-%10 mem %hx %ix %1 %2))
+    (-1 (@atan-%10 mem %hx %ix %1 %2))
     (0 (@atan-%36 mem %hx %id %ix %s1 %s2 %w %z %1 %2)))))
 
 (defund @atan (%x)

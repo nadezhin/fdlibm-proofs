@@ -76,7 +76,7 @@
     (%116 (load-i32 %k mem))
     (%117 (icmp-slt-i32 %116 -60)))
   (case %117
-    (-1  (@__ieee754_atan2-%118 mem %m %z %1))
+    (-1 (@__ieee754_atan2-%118 mem %m %z %1))
     (0 (@__ieee754_atan2-%119 mem %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%112 (mem %hx %k %m %z %1 %2 %3)
@@ -84,7 +84,7 @@
     (%113 (load-i32 %hx mem))
     (%114 (icmp-slt-i32 %113 0)))
   (case %114
-    (-1  (@__ieee754_atan2-%115 mem %k %m %z %1 %2 %3))
+    (-1 (@__ieee754_atan2-%115 mem %k %m %z %1 %2 %3))
     (0 (@__ieee754_atan2-%119 mem %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%111 (mem %m %z %1)
@@ -102,7 +102,7 @@
     (%109 (load-i32 %k mem))
     (%110 (icmp-sgt-i32 %109 60)))
   (case %110
-    (-1  (@__ieee754_atan2-%111 mem %m %z %1))
+    (-1 (@__ieee754_atan2-%111 mem %m %z %1))
     (0 (@__ieee754_atan2-%112 mem %hx %k %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%100 (mem %hy %1)
@@ -118,7 +118,7 @@
     (%98 (load-i32 %iy mem))
     (%99 (icmp-eq-i32 %98 2146435072)))
   (case %99
-    (-1  (@__ieee754_atan2-%100 mem %hy %1))
+    (-1 (@__ieee754_atan2-%100 mem %hy %1))
     (0 (@__ieee754_atan2-%104 mem %hx %ix %iy %k %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%96 (mem %hx %hy %ix %iy %k %m %z %1 %2 %3)
@@ -198,7 +198,7 @@
     (%80 (load-i32 %iy mem))
     (%81 (icmp-eq-i32 %80 2146435072)))
   (case %81
-    (-1  (@__ieee754_atan2-%82 mem %hx %hy %ix %iy %k %m %z %1 %2 %3))
+    (-1 (@__ieee754_atan2-%82 mem %hx %hy %ix %iy %k %m %z %1 %2 %3))
     (0 (@__ieee754_atan2-%89 mem %hx %hy %ix %iy %k %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%76 (mem %hx %hy %ix %iy %k %m %z %1 %2 %3)
@@ -206,7 +206,7 @@
     (%77 (load-i32 %ix mem))
     (%78 (icmp-eq-i32 %77 2146435072)))
   (case %78
-    (-1  (@__ieee754_atan2-%79 mem %hx %hy %ix %iy %k %m %z %1 %2 %3))
+    (-1 (@__ieee754_atan2-%79 mem %hx %hy %ix %iy %k %m %z %1 %2 %3))
     (0 (@__ieee754_atan2-%97 mem %hx %hy %ix %iy %k %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%72 (mem %hy %1)
@@ -224,7 +224,7 @@
     (%70 (or-i32 %68 %69))
     (%71 (icmp-eq-i32 %70 0)))
   (case %71
-    (-1  (@__ieee754_atan2-%72 mem %hy %1))
+    (-1 (@__ieee754_atan2-%72 mem %hy %1))
     (0 (@__ieee754_atan2-%76 mem %hx %hy %ix %iy %k %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%66 (mem %hx %hy %ix %iy %k %lx %m %z %1 %2 %3)
@@ -272,7 +272,7 @@
     (%58 (or-i32 %56 %57))
     (%59 (icmp-eq-i32 %58 0)))
   (case %59
-    (-1  (@__ieee754_atan2-%60 mem %hx %hy %ix %iy %k %lx %m %z %1 %2 %3))
+    (-1 (@__ieee754_atan2-%60 mem %hx %hy %ix %iy %k %lx %m %z %1 %2 %3))
     (0 (@__ieee754_atan2-%67 mem %hx %hy %ix %iy %k %lx %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%45 (mem %1 %2)
@@ -290,7 +290,7 @@
     (%43 (or-i32 %41 %42))
     (%44 (icmp-eq-i32 %43 0)))
   (case %44
-    (-1  (@__ieee754_atan2-%45 mem %1 %2))
+    (-1 (@__ieee754_atan2-%45 mem %1 %2))
     (0 (@__ieee754_atan2-%48 mem %hx %hy %ix %iy %k %lx %ly %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%35 (mem %1 %2 %3)
@@ -312,7 +312,7 @@
     (%33 (or-i32 %27 %32))
     (%34 (icmp-ugt-i32 %33 2146435072)))
   (case %34
-    (-1  (@__ieee754_atan2-%35 mem %1 %2 %3))
+    (-1 (@__ieee754_atan2-%35 mem %1 %2 %3))
     (0 (@__ieee754_atan2-%39 mem %hx %hy %ix %iy %k %lx %ly %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2-%0 (mem %y %x)
@@ -360,7 +360,7 @@
     (%24 (or-i32 %18 %23))
     (%25 (icmp-ugt-i32 %24 2146435072)))
   (case %25
-    (-1  (@__ieee754_atan2-%35 mem %1 %2 %3))
+    (-1 (@__ieee754_atan2-%35 mem %1 %2 %3))
     (0 (@__ieee754_atan2-%26 mem %hx %hy %ix %iy %k %lx %ly %m %z %1 %2 %3)))))
 
 (defund @__ieee754_atan2 (%y %x)

@@ -36,7 +36,7 @@
     (%186 (load-i32 %k mem))
     (%187 (icmp-ne-i32 %186 0)))
   (case %187
-    (-1  (@__ieee754_hypot-%188 mem %k %t1 %w %1))
+    (-1 (@__ieee754_hypot-%188 mem %k %t1 %w %1))
     (0 (@__ieee754_hypot-%198 mem %w %1)))))
 
 (defund @__ieee754_hypot-%151 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -123,7 +123,7 @@
     (%127 (load-double %b mem))
     (%128 (fcmp-ogt-double %126 %127)))
   (case %128
-    (-1  (@__ieee754_hypot-%129 mem %a %b %ha %k %t1 %t2 %w %1))
+    (-1 (@__ieee754_hypot-%129 mem %a %b %ha %k %t1 %t2 %w %1))
     (0 (@__ieee754_hypot-%151 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%121 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -184,7 +184,7 @@
     (%93 (or-i32 %90 %92))
     (%94 (icmp-eq-i32 %93 0)))
   (case %94
-    (-1  (@__ieee754_hypot-%95 mem %a %1))
+    (-1 (@__ieee754_hypot-%95 mem %a %1))
     (0 (@__ieee754_hypot-%97 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%86 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -192,7 +192,7 @@
     (%87 (load-i32 %hb mem))
     (%88 (icmp-sle-i32 %87 1048575)))
   (case %88
-    (-1  (@__ieee754_hypot-%89 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1))
+    (-1 (@__ieee754_hypot-%89 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1))
     (0 (@__ieee754_hypot-%108 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%83 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -200,7 +200,7 @@
     (%84 (load-i32 %hb mem))
     (%85 (icmp-slt-i32 %84 548405248)))
   (case %85
-    (-1  (@__ieee754_hypot-%86 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1))
+    (-1 (@__ieee754_hypot-%86 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1))
     (0 (@__ieee754_hypot-%122 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%70 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -245,7 +245,7 @@
     (%64 (or-i32 %61 %63))
     (%65 (icmp-eq-i32 %64 0)))
   (case %65
-    (-1  (@__ieee754_hypot-%66 mem %b %w %1))
+    (-1 (@__ieee754_hypot-%66 mem %b %w %1))
     (0 (@__ieee754_hypot-%68 mem %w %1)))))
 
 (defund @__ieee754_hypot-%57 (mem %a %b %hb %w %1)
@@ -267,7 +267,7 @@
     (%55 (or-i32 %52 %54))
     (%56 (icmp-eq-i32 %55 0)))
   (case %56
-    (-1  (@__ieee754_hypot-%57 mem %a %b %hb %w %1))
+    (-1 (@__ieee754_hypot-%57 mem %a %b %hb %w %1))
     (0 (@__ieee754_hypot-%59 mem %b %hb %w %1)))))
 
 (defund @__ieee754_hypot-%44 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -275,7 +275,7 @@
     (%45 (load-i32 %ha mem))
     (%46 (icmp-sge-i32 %45 2146435072)))
   (case %46
-    (-1  (@__ieee754_hypot-%47 mem %a %b %ha %hb %w %1))
+    (-1 (@__ieee754_hypot-%47 mem %a %b %ha %hb %w %1))
     (0 (@__ieee754_hypot-%70 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%41 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)
@@ -284,7 +284,7 @@
     (%42 (load-i32 %ha mem))
     (%43 (icmp-sgt-i32 %42 1596981248)))
   (case %43
-    (-1  (@__ieee754_hypot-%44 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1))
+    (-1 (@__ieee754_hypot-%44 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1))
     (0 (@__ieee754_hypot-%83 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%37 (mem %a %b %1)
@@ -310,7 +310,7 @@
     (%35 (sub-i32 %33 %34))
     (%36 (icmp-sgt-i32 %35 62914560)))
   (case %36
-    (-1  (@__ieee754_hypot-%37 mem %a %b %1))
+    (-1 (@__ieee754_hypot-%37 mem %a %b %1))
     (0 (@__ieee754_hypot-%41 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1)))))
 
 (defund @__ieee754_hypot-%23 (mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1 %2 %3)
@@ -371,7 +371,7 @@
     (%15 (load-i32 %ha mem))
     (%16 (icmp-sgt-i32 %14 %15)))
   (case %16
-    (-1  (@__ieee754_hypot-%17 mem %a %b %ha %hb %j %k %t1 %t2 %w %y1 %y2 %1 %2 %3))
+    (-1 (@__ieee754_hypot-%17 mem %a %b %ha %hb %j %k %t1 %t2 %w %y1 %y2 %1 %2 %3))
     (0 (@__ieee754_hypot-%23 mem %a %b %ha %hb %k %t1 %t2 %w %y1 %y2 %1 %2 %3)))))
 
 (defund @__ieee754_hypot (%x %y)

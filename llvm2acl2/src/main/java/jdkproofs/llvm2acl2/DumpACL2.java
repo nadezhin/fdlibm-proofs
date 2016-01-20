@@ -596,7 +596,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             BasicBlock bb1 = (BasicBlock) inst.operands[1];
             BasicBlock bb2 = (BasicBlock) inst.operands[2];
             out.print("(case " + op0);
-            nl("  (-1  (@" + curFun.name + "-%" + bb2.label + " mem " + getUseArgs(bb2, curBb) + "))");
+            nl("  (-1 (@" + curFun.name + "-%" + bb2.label + " mem " + getUseArgs(bb2, curBb) + "))");
             nl("  (0 (@" + curFun.name + "-%" + bb1.label + " mem " + getUseArgs(bb1, curBb) + ")))");
         } else {
             throw new UnsupportedOperationException();
@@ -673,7 +673,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         {"w_sinh.bc", "e_sinh"},
         {"e_sinh.bc", "s_fabs", "s_expm1", "e_exp"},
         {"w_sqrt.bc", "e_sqrt"},
-        //        "e_sqrt.bc", 
+        //{"e_sqrt.bc"}, 
         {"s_tan.bc", "k_tan", "e_rem_pio2"},
         {"k_tan.bc", "s_fabs"},
         {"s_tanh.bc", "s_fabs", "s_expm1"}

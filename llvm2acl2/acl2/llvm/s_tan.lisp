@@ -41,7 +41,7 @@
     (%15 (load-i32 %ix mem))
     (%16 (icmp-sge-i32 %15 2146435072)))
   (case %16
-    (-1  (@tan-%17 mem %1 %2))
+    (-1 (@tan-%17 mem %1 %2))
     (0 (@tan-%21 mem %n %y %1 %2)))))
 
 (defund @tan-%10 (mem %z %1 %2)
@@ -72,7 +72,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-sle-i32 %8 1072243195)))
   (case %9
-    (-1  (@tan-%10 mem %z %1 %2))
+    (-1 (@tan-%10 mem %z %1 %2))
     (0 (@tan-%14 mem %ix %n %y %1 %2)))))
 
 (defund @tan (%x)

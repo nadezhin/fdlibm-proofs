@@ -48,7 +48,7 @@
     (%71 (load-i32 %3 mem))
     (%72 (icmp-sgt-i32 %71 50000)))
   (case %72
-    (-1  (@scalbn-%73 mem %1 %2))
+    (-1 (@scalbn-%73 mem %1 %2))
     (0 (@scalbn-%77 mem %1 %2)))))
 
 (defund @scalbn-%67 (mem %hx %k %1 %2 %3)
@@ -56,7 +56,7 @@
     (%68 (load-i32 %k mem))
     (%69 (icmp-sle-i32 %68 -54)))
   (case %69
-    (-1  (@scalbn-%70 mem %1 %2 %3))
+    (-1 (@scalbn-%70 mem %1 %2 %3))
     (0 (@scalbn-%81 mem %hx %k %1 %2)))))
 
 (defund @scalbn-%58 (mem %hx %k %1 %2)
@@ -78,7 +78,7 @@
     (%56 (load-i32 %k mem))
     (%57 (icmp-sgt-i32 %56 0)))
   (case %57
-    (-1  (@scalbn-%58 mem %hx %k %1 %2))
+    (-1 (@scalbn-%58 mem %hx %k %1 %2))
     (0 (@scalbn-%67 mem %hx %k %1 %2 %3)))))
 
 (defund @scalbn-%51 (mem %1 %2)
@@ -98,7 +98,7 @@
     (%49 (load-i32 %k mem))
     (%50 (icmp-sgt-i32 %49 2046)))
   (case %50
-    (-1  (@scalbn-%51 mem %1 %2))
+    (-1 (@scalbn-%51 mem %1 %2))
     (0 (@scalbn-%55 mem %hx %k %1 %2 %3)))))
 
 (defund @scalbn-%41 (mem %1 %2)
@@ -114,7 +114,7 @@
     (%39 (load-i32 %k mem))
     (%40 (icmp-eq-i32 %39 2047)))
   (case %40
-    (-1  (@scalbn-%41 mem %1 %2))
+    (-1 (@scalbn-%41 mem %1 %2))
     (0 (@scalbn-%45 mem %hx %k %1 %2 %3)))))
 
 (defund @scalbn-%37 (mem %hx %k %1 %2 %3)
@@ -145,7 +145,7 @@
     (%32 (load-i32 %3 mem))
     (%33 (icmp-slt-i32 %32 -50000)))
   (case %33
-    (-1  (@scalbn-%34 mem %1 %2))
+    (-1 (@scalbn-%34 mem %1 %2))
     (0 (@scalbn-%37 mem %hx %k %1 %2 %3)))))
 
 (defund @scalbn-%20 (mem %1 %2)
@@ -162,7 +162,7 @@
     (%18 (or-i32 %15 %17))
     (%19 (icmp-eq-i32 %18 0)))
   (case %19
-    (-1  (@scalbn-%20 mem %1 %2))
+    (-1 (@scalbn-%20 mem %1 %2))
     (0 (@scalbn-%22 mem %hx %k %1 %2 %3)))))
 
 (defund @scalbn-%0 (mem %x %n)
@@ -189,7 +189,7 @@
     (%12 (load-i32 %k mem))
     (%13 (icmp-eq-i32 %12 0)))
   (case %13
-    (-1  (@scalbn-%14 mem %hx %k %lx %1 %2 %3))
+    (-1 (@scalbn-%14 mem %hx %k %lx %1 %2 %3))
     (0 (@scalbn-%38 mem %hx %k %1 %2 %3)))))
 
 (defund @scalbn (%x %n)

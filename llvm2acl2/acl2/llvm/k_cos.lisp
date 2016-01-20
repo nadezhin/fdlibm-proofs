@@ -53,7 +53,7 @@
     (%52 (load-i32 %ix mem))
     (%53 (icmp-sgt-i32 %52 1072234496)))
   (case %53
-    (-1  (@__kernel_cos-%54 mem %a %hz %qx %r %z %1 %2 %3))
+    (-1 (@__kernel_cos-%54 mem %a %hz %qx %r %z %1 %2 %3))
     (0 (@__kernel_cos-%55 mem %a %hz %ix %qx %r %z %1 %2 %3)))))
 
 (defund @__kernel_cos-%39 (mem %r %z %1 %2 %3)
@@ -99,7 +99,7 @@
     (%37 (load-i32 %ix mem))
     (%38 (icmp-slt-i32 %37 1070805811)))
   (case %38
-    (-1  (@__kernel_cos-%39 mem %r %z %1 %2 %3))
+    (-1 (@__kernel_cos-%39 mem %r %z %1 %2 %3))
     (0 (@__kernel_cos-%51 mem %a %hz %ix %qx %r %z %1 %2 %3)))))
 
 (defund @__kernel_cos-%15 (mem %a %hz %ix %qx %r %z %1 %2 %3)
@@ -117,7 +117,7 @@
     (%12 (fptosi-double-to-i32 %11))
     (%13 (icmp-eq-i32 %12 0)))
   (case %13
-    (-1  (@__kernel_cos-%14 mem %1))
+    (-1 (@__kernel_cos-%14 mem %1))
     (0 (@__kernel_cos-%15 mem %a %hz %ix %qx %r %z %1 %2 %3)))))
 
 (defund @__kernel_cos-%0 (mem %x %y)
@@ -141,7 +141,7 @@
     (%8 (load-i32 %ix mem))
     (%9 (icmp-slt-i32 %8 1044381696)))
   (case %9
-    (-1  (@__kernel_cos-%10 mem %a %hz %ix %qx %r %z %1 %2 %3))
+    (-1 (@__kernel_cos-%10 mem %a %hz %ix %qx %r %z %1 %2 %3))
     (0 (@__kernel_cos-%16 mem %a %hz %ix %qx %r %z %1 %2 %3)))))
 
 (defund @__kernel_cos (%x %y)

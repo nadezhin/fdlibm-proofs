@@ -82,7 +82,7 @@
     (%207 (load-i32 %k mem))
     (%208 (icmp-eq-i32 %207 0)))
   (case %208
-    (-1  (@log1p-%209 mem %R %f %hfsq %s %1))
+    (-1 (@log1p-%209 mem %R %f %hfsq %s %1))
     (0 (@log1p-%219 mem %R %c %f %hfsq %k %s %1)))))
 
 (defund @log1p-%165 (mem %R %c %f %k %1)
@@ -122,7 +122,7 @@
     (%159 (load-i32 %k mem))
     (%160 (icmp-eq-i32 %159 0)))
   (case %160
-    (-1  (@log1p-%161 mem %R %f %1))
+    (-1 (@log1p-%161 mem %R %f %1))
     (0 (@log1p-%165 mem %R %c %f %k %1)))))
 
 (defund @log1p-%142 (mem %c %k %1)
@@ -152,7 +152,7 @@
     (%138 (load-i32 %k mem))
     (%139 (icmp-eq-i32 %138 0)))
   (case %139
-    (-1  (@log1p-%140 mem %1))
+    (-1 (@log1p-%140 mem %1))
     (0 (@log1p-%142 mem %c %k %1)))))
 
 (defund @log1p-%133 (mem %R %c %f %hfsq %k %1)
@@ -161,7 +161,7 @@
     (%135 (load-double '(zero . 0) mem))
     (%136 (fcmp-oeq-double %134 %135)))
   (case %136
-    (-1  (@log1p-%137 mem %c %k %1))
+    (-1 (@log1p-%137 mem %c %k %1))
     (0 (@log1p-%153 mem %R %c %f %hfsq %k %1)))))
 
 (defund @log1p-%126 (mem %R %c %f %hfsq %hu %k %s %z %1)
@@ -174,7 +174,7 @@
     (%131 (load-i32 %hu mem))
     (%132 (icmp-eq-i32 %131 0)))
   (case %132
-    (-1  (@log1p-%133 mem %R %c %f %hfsq %k %1))
+    (-1 (@log1p-%133 mem %R %c %f %hfsq %k %1))
     (0 (@log1p-%179 mem %R %c %f %hfsq %k %s %z %1)))))
 
 (defund @log1p-%123 (mem %R %c %f %hfsq %hu %k %s %u %z %1)
@@ -217,7 +217,7 @@
     (%106 (load-i32 %hu mem))
     (%107 (icmp-slt-i32 %106 434334)))
   (case %107
-    (-1  (@log1p-%108 mem %R %c %f %hfsq %hu %k %s %u %z %1))
+    (-1 (@log1p-%108 mem %R %c %f %hfsq %hu %k %s %u %z %1))
     (0 (@log1p-%113 mem %R %c %f %hfsq %hu %k %s %u %z %1)))))
 
 (defund @log1p-%95 (mem %R %c %f %hfsq %hu %k %s %u %z %1 %2)
@@ -277,7 +277,7 @@
     (%78 (load-i32 %k mem))
     (%79 (icmp-sgt-i32 %78 0)))
   (case %79
-    (-1  (@log1p-%80 mem %R %c %f %hfsq %hu %k %s %u %z %1 %2))
+    (-1 (@log1p-%80 mem %R %c %f %hfsq %hu %k %s %u %z %1 %2))
     (0 (@log1p-%85 mem %R %c %f %hfsq %hu %k %s %u %z %1 %2)))))
 
 (defund @log1p-%66 (mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)
@@ -285,7 +285,7 @@
     (%67 (load-i32 %hx mem))
     (%68 (icmp-slt-i32 %67 1128267776)))
   (case %68
-    (-1  (@log1p-%69 mem %R %c %f %hfsq %hu %k %s %u %z %1 %2))
+    (-1 (@log1p-%69 mem %R %c %f %hfsq %hu %k %s %u %z %1 %2))
     (0 (@log1p-%95 mem %R %c %f %hfsq %hu %k %s %u %z %1 %2)))))
 
 (defund @log1p-%63 (mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)
@@ -293,7 +293,7 @@
     (%64 (load-i32 %k mem))
     (%65 (icmp-ne-i32 %64 0)))
   (case %65
-    (-1  (@log1p-%66 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
+    (-1 (@log1p-%66 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
     (0 (@log1p-%126 mem %R %c %f %hfsq %hu %k %s %z %1)))))
 
 (defund @log1p-%59 (mem %1 %2)
@@ -309,7 +309,7 @@
     (%57 (load-i32 %hx mem))
     (%58 (icmp-sge-i32 %57 2146435072)))
   (case %58
-    (-1  (@log1p-%59 mem %1 %2))
+    (-1 (@log1p-%59 mem %1 %2))
     (0 (@log1p-%63 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)))))
 
 (defund @log1p-%55 (mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)
@@ -329,7 +329,7 @@
     (%51 (load-i32 %hx mem))
     (%52 (icmp-sle-i32 %51 -1076707645)))
   (case %52
-    (-1  (@log1p-%53 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
+    (-1 (@log1p-%53 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
     (0 (@log1p-%55 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)))))
 
 (defund @log1p-%47 (mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)
@@ -337,7 +337,7 @@
     (%48 (load-i32 %hx mem))
     (%49 (icmp-sgt-i32 %48 0)))
   (case %49
-    (-1  (@log1p-%53 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
+    (-1 (@log1p-%53 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
     (0 (@log1p-%50 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)))))
 
 (defund @log1p-%40 (mem %1 %2)
@@ -362,7 +362,7 @@
     (%36 (load-i32 %ax mem))
     (%37 (icmp-slt-i32 %36 1016070144)))
   (case %37
-    (-1  (@log1p-%38 mem %1 %2))
+    (-1 (@log1p-%38 mem %1 %2))
     (0 (@log1p-%40 mem %1 %2)))))
 
 (defund @log1p-%30 (mem %ax %1 %2)
@@ -372,7 +372,7 @@
     (%33 (load-double '(zero . 0) mem))
     (%34 (fcmp-ogt-double %32 %33)))
   (case %34
-    (-1  (@log1p-%35 mem %ax %1 %2))
+    (-1 (@log1p-%35 mem %ax %1 %2))
     (0 (@log1p-%40 mem %1 %2)))))
 
 (defund @log1p-%27 (mem %R %ax %c %f %hfsq %hu %hx %k %s %u %z %1 %2)
@@ -380,7 +380,7 @@
     (%28 (load-i32 %ax mem))
     (%29 (icmp-slt-i32 %28 1042284544)))
   (case %29
-    (-1  (@log1p-%30 mem %ax %1 %2))
+    (-1 (@log1p-%30 mem %ax %1 %2))
     (0 (@log1p-%47 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)))))
 
 (defund @log1p-%19 (mem %1 %2)
@@ -407,7 +407,7 @@
     (%14 (load-double %2 mem))
     (%15 (fcmp-oeq-double %14 #xbff0000000000000)))
   (case %15
-    (-1  (@log1p-%16 mem %1))
+    (-1 (@log1p-%16 mem %1))
     (0 (@log1p-%19 mem %1 %2)))))
 
 (defund @log1p-%10 (mem %R %ax %c %f %hfsq %hu %hx %k %s %u %z %1 %2)
@@ -415,7 +415,7 @@
     (%11 (load-i32 %ax mem))
     (%12 (icmp-sge-i32 %11 1072693248)))
   (case %12
-    (-1  (@log1p-%13 mem %1 %2))
+    (-1 (@log1p-%13 mem %1 %2))
     (0 (@log1p-%27 mem %R %ax %c %f %hfsq %hu %hx %k %s %u %z %1 %2)))))
 
 (defund @log1p-%0 (mem %x)
@@ -445,7 +445,7 @@
     (%8 (load-i32 %hx mem))
     (%9 (icmp-slt-i32 %8 1071284858)))
   (case %9
-    (-1  (@log1p-%10 mem %R %ax %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
+    (-1 (@log1p-%10 mem %R %ax %c %f %hfsq %hu %hx %k %s %u %z %1 %2))
     (0 (@log1p-%56 mem %R %c %f %hfsq %hu %hx %k %s %u %z %1 %2)))))
 
 (defund @log1p (%x)
