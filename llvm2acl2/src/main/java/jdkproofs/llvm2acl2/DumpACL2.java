@@ -60,7 +60,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
             for (int i = fun.blocks.size() - 1; i >= 0; i--) {
                 curBb = fun.blocks.get(i);
                 nl("");
-                nl("(defund @" + fun.name + "-%" + curBb.label + " (mem " + curBb.getDefArgs() + ")");
+                nl("(defund @" + fun.name + "-%" + curBb.label + " (mem" + curBb.getDefArgs() + ")");
                 nl("  (b* (");
                 indent += 4;
                 for (int j = 0; j < curBb.numPhi; j++) {
@@ -222,16 +222,14 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < bb.function.args.size(); i++) {
             if (bb.useArgs.get(i)) {
-                if (sb.length() > 0) {
-                    sb.append(' ');
-                }
-                sb.append('%').append(bb.function.args.get(i).name);
+                sb.append(" %").append(bb.function.args.get(i).name);
             }
         }
         for (Instruction inst : bb.useInstructions) {
-            if (sb.length() > 0) {
-                sb.append(' ');
+            if (inst instanceof Instruction.AllocaInst) {
+                continue;
             }
+            sb.append(' ');
             if (inst instanceof Instruction.PHINode) {
                 Instruction.PHINode phi = (Instruction.PHINode) inst;
                 for (int i = 0; i < phi.incomingBlocks.length; i++) {
@@ -247,8 +245,18 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         return sb.toString();
     }
 
-    private static String operandStr(Value operand) {
-        if (operand instanceof Instruction) {
+    private String operandStr(Value operand) {
+        if (operand instanceof Instruction.AllocaInst) {
+            String nm = ((Instruction) operand).refName;
+            assert nm.charAt(0) == '%';
+            nm = nm.substring(1);
+            try {
+                int ind = Integer.valueOf(nm);
+                nm = ind == 1 ? "ret" : curFun.args.get(ind - 2).name;
+            } catch (NumberFormatException e) {
+            }
+            return "'(" + nm + " . 0)";
+        } else if (operand instanceof Instruction) {
             return ((Instruction) operand).refName;
         } else if (operand instanceof Constant.ConstantInt) {
             if (operand.representation.startsWith("i32 ")
@@ -486,19 +494,19 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         }
         if (inst.typesMatch("double*", "i32")) {
             if (op0.equals("1")) {
-                out.print("(mv " + inst.refName + " mem) (alloca-double '" + nm + " 1 mem)");
+                out.print("mem (alloca-double '" + nm + " 1 mem)");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32*", "i32")) {
             if (op0.equals("1")) {
-                out.print("(mv " + inst.refName + " mem) (alloca-i32 '" + nm + " 1 mem)");
+                out.print("mem (alloca-i32 '" + nm + " 1 mem)");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("[2 x double]*", "i32")) {
             if (op0.equals("1")) {
-                out.print("(mv " + inst.refName + " mem) (alloca-double '" + nm + " 2 mem)");
+                out.print("mem (alloca-double '" + nm + " 2 mem)");
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -590,14 +598,14 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
     public Void visitBranchInst(TerminatorInst.BranchInst inst, Void p) {
         if (inst.typesMatch("void", "label")) {
             BasicBlock bb0 = (BasicBlock) inst.operands[0];
-            out.print("(@" + curFun.name + "-%" + bb0.label + " mem " + getUseArgs(bb0, curBb) + ")");
+            out.print("(@" + curFun.name + "-%" + bb0.label + " mem" + getUseArgs(bb0, curBb) + ")");
         } else if (inst.typesMatch("void", "i1", "label", "label")) {
             String op0 = operandStr(inst.operands[0]);
             BasicBlock bb1 = (BasicBlock) inst.operands[1];
             BasicBlock bb2 = (BasicBlock) inst.operands[2];
             out.print("(case " + op0);
-            nl("  (-1 (@" + curFun.name + "-%" + bb2.label + " mem " + getUseArgs(bb2, curBb) + "))");
-            nl("  (0 (@" + curFun.name + "-%" + bb1.label + " mem " + getUseArgs(bb1, curBb) + ")))");
+            nl("  (-1 (@" + curFun.name + "-%" + bb2.label + " mem" + getUseArgs(bb2, curBb) + "))");
+            nl("  (0 (@" + curFun.name + "-%" + bb1.label + " mem" + getUseArgs(bb1, curBb) + ")))");
         } else {
             throw new UnsupportedOperationException();
         }

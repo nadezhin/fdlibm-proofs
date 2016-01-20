@@ -6,11 +6,11 @@
 
 (defund @acos-%0 (mem %x)
   (b* (
-    ((mv %1 mem) (alloca-double 'ret 1 mem))
-    (mem (store-double %x %1 mem))
-    (%2 (load-double %1 mem))
+    (mem (alloca-double 'ret 1 mem))
+    (mem (store-double %x '(ret . 0) mem))
+    (%2 (load-double '(ret . 0) mem))
     (%3 (@__ieee754_acos %2)))
   %3))
 
 (defund @acos (%x)
-  (@acos-%0 *acos-globals* %x))
+  (@acos-%0 *acos-globals*  %x))

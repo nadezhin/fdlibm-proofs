@@ -291,6 +291,13 @@
   :enable add-i32
   :disable m5::int-fix)
 
+(defrule sub-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i32p (sub-i32 x y)))
+  :enable sub-i32
+  :disable m5::int-fix)
+
 (defrule sdiv-i32-type
   (implies (and (i32p x)
                 (i32p y)
@@ -317,11 +324,38 @@
            (i32p (xor-i32 x y)))
   :enable (i32p-as-signed-byte-p xor-i32))
 
+(defrule shl-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i32p (shl-i32 x y)))
+  :enable shl-i32
+  :disable m5::int-fix)
+
+(defrule lshr-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i32p (lshr-i32 x y)))
+  :enable lshr-i32
+  :disable m5::int-fix)
+
+(defrule ashr-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i32p (ashr-i32 x y)))
+  :enable ashr-i32
+  :disable m5::int-fix)
+
 (defrule icmp-eq-i32-type
   (implies (and (i32p x)
                 (i32p y))
            (i1p (icmp-eq-i32 x y)))
   :enable icmp-eq-i32)
+
+(defrule icmp-ne-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-ne-i32 x y)))
+  :enable icmp-ne-i32)
 
 (defrule icmp-slt-i32-type
   (implies (and (i32p x)
@@ -329,11 +363,47 @@
            (i1p (icmp-slt-i32 x y)))
   :enable icmp-slt-i32)
 
+(defrule icmp-sle-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-sle-i32 x y)))
+  :enable icmp-sle-i32)
+
+(defrule icmp-sgt-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-sgt-i32 x y)))
+  :enable icmp-sgt-i32)
+
 (defrule icmp-sge-i32-type
   (implies (and (i32p x)
                 (i32p y))
            (i1p (icmp-sge-i32 x y)))
   :enable icmp-sge-i32)
+
+(defrule icmp-ult-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-ult-i32 x y)))
+  :enable icmp-ult-i32)
+
+(defrule icmp-ule-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-ule-i32 x y)))
+  :enable icmp-ule-i32)
+
+(defrule icmp-ugt-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-ugt-i32 x y)))
+  :enable icmp-ugt-i32)
+
+(defrule icmp-uge-i32-type
+  (implies (and (i32p x)
+                (i32p y))
+           (i1p (icmp-uge-i32 x y)))
+  :enable icmp-uge-i32)
 
 (defruled i1p=-1
   (implies (i1p x)

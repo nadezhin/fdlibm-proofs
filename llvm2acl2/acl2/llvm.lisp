@@ -45,10 +45,10 @@
   (and (wordp w1) (wordp w0) (rtl::cat w1 32 w0 32)))
 
 (defund alloca-double (var n mem)
-  (mv (cons var 0) (m5::bind var (make-list (* 2 n)) mem)))
+  (m5::bind var (make-list (* 2 n)) mem))
 
 (defund alloca-i32 (var n mem)
-  (mv (cons var 0) (m5::bind var (make-list n) mem)))
+  (m5::bind var (make-list n) mem))
 
 (defund store-double (d a mem)
   (let* ((var (car a))
@@ -159,13 +159,13 @@
   (and (i32p x) (i32p y) (logxor x y)))
 
 (defund shl-i32 (x y)
-  (and (i32p x) (i32p y) (m5::shl x (m5::5-bit-fix y))))
+  (and (i32p x) (i32p y) (m5::int-fix (m5::shl x (m5::5-bit-fix y)))))
 
 (defund lshr-i32 (x y)
   (and (i32p x) (i32p y) (m5::int-fix (m5::shr (m5::uint-fix x) (m5::5-bit-fix y)))))
 
 (defund ashr-i32 (x y)
-  (and (i32p x) (i32p y) (m5::shr x (m5::5-bit-fix y))))
+  (and (i32p x) (i32p y) (m5::int-fix (m5::shr x (m5::5-bit-fix y)))))
 
 (defund icmp-eq-i32 (x y)
   (and (i32p x) (i32p y) (if (= x y) -1 0)))

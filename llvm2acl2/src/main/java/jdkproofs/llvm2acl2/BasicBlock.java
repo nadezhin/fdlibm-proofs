@@ -129,17 +129,14 @@ public class BasicBlock extends Value {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < function.args.size(); i++) {
             if (useArgs.get(i)) {
-                if (sb.length() > 0) {
-                    sb.append(' ');
-                }
-                sb.append('%').append(function.args.get(i).name);
+                sb.append(" %").append(function.args.get(i).name);
             }
         }
         for (Instruction inst : useInstructions) {
-            if (sb.length() > 0) {
-                sb.append(' ');
+            if (inst instanceof Instruction.AllocaInst) {
+                continue;
             }
-            sb.append(inst.refName);
+            sb.append(' ').append(inst.refName);
         }
         return sb.toString();
     }
