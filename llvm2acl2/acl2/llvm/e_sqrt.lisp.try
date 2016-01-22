@@ -1,0 +1,760 @@
+(in-package "ACL2")
+(include-book "../llvm")
+(include-book "../llvm-lemmas")
+
+(include-book "tools/with-arith5-help" :dir :system)
+(local (acl2::allow-arith5-help))
+(local (in-theory (acl2::enable-arith5)))
+
+(defconst *__ieee754_sqrt-globals* '())
+
+(defund @__ieee754_sqrt-%282 (mem)
+  (b* (
+    (%283 (load-double '(ret . 0) mem)))
+  %283))
+
+(defund @__ieee754_sqrt-%271 (mem)
+  (b* (
+    (%272 (load-i32 '(m . 0) mem))
+    (%273 (shl-i32 %272 20))
+    (%274 (load-i32 '(ix0 . 0) mem))
+    (%275 (add-i32 %274 %273))
+    (mem (store-i32 %275 '(ix0 . 0) mem))
+    (%276 (load-i32 '(ix0 . 0) mem))
+    (%277 (bitcast-double*-to-i32* '(z . 0)))
+    (%278 (getelementptr-i32 %277 1))
+    (mem (store-i32 %276 %278 mem))
+    (%279 (load-i32 '(ix1 . 0) mem))
+    (%280 (bitcast-double*-to-i32* '(z . 0)))
+    (mem (store-i32 %279 %280 mem))
+    (%281 (load-double '(z . 0) mem))
+    (mem (store-double %281 '(ret . 0) mem)))
+  (@__ieee754_sqrt-%282 mem)))
+
+(defund @__ieee754_sqrt-%267 (mem)
+  (b* (
+    (%268 (load-i32 '(sign . 0) mem))
+    (%269 (load-i32 '(ix1 . 0) mem))
+    (%270 (or-i32 %269 %268))
+    (mem (store-i32 %270 '(ix1 . 0) mem)))
+  (@__ieee754_sqrt-%271 mem)))
+
+(defund @__ieee754_sqrt-%258 (mem)
+  (b* (
+    (%259 (load-i32 '(q . 0) mem))
+    (%260 (ashr-i32 %259 1))
+    (%261 (add-i32 %260 1071644672))
+    (mem (store-i32 %261 '(ix0 . 0) mem))
+    (%262 (load-i32 '(q1 . 0) mem))
+    (%263 (lshr-i32 %262 1))
+    (mem (store-i32 %263 '(ix1 . 0) mem))
+    (%264 (load-i32 '(q . 0) mem))
+    (%265 (and-i32 %264 1))
+    (%266 (icmp-eq-i32 %265 1)))
+  (case %266
+    (-1 (@__ieee754_sqrt-%267 mem))
+    (0 (@__ieee754_sqrt-%271 mem)))))
+
+(defund @__ieee754_sqrt-%257 (mem)
+  (b* ()
+  (@__ieee754_sqrt-%258 mem)))
+
+(defund @__ieee754_sqrt-%256 (mem)
+  (b* ()
+  (@__ieee754_sqrt-%257 mem)))
+
+(defund @__ieee754_sqrt-%255 (mem)
+  (b* ()
+  (@__ieee754_sqrt-%256 mem)))
+
+(defund @__ieee754_sqrt-%250 (mem)
+  (b* (
+    (%251 (load-i32 '(q1 . 0) mem))
+    (%252 (and-i32 %251 1))
+    (%253 (load-i32 '(q1 . 0) mem))
+    (%254 (add-i32 %253 %252))
+    (mem (store-i32 %254 '(q1 . 0) mem)))
+  (@__ieee754_sqrt-%255 mem)))
+
+(defund @__ieee754_sqrt-%247 (mem)
+  (b* (
+    (%248 (load-i32 '(q1 . 0) mem))
+    (%249 (add-i32 %248 2))
+    (mem (store-i32 %249 '(q1 . 0) mem)))
+  (@__ieee754_sqrt-%255 mem)))
+
+(defund @__ieee754_sqrt-%244 (mem)
+  (b* (
+    (%245 (load-i32 '(q . 0) mem))
+    (%246 (add-i32 %245 1))
+    (mem (store-i32 %246 '(q . 0) mem)))
+  (@__ieee754_sqrt-%247 mem)))
+
+(defund @__ieee754_sqrt-%241 (mem)
+  (b* (
+    (%242 (load-i32 '(q1 . 0) mem))
+    (%243 (icmp-eq-i32 %242 -2)))
+  (case %243
+    (-1 (@__ieee754_sqrt-%244 mem))
+    (0 (@__ieee754_sqrt-%247 mem)))))
+
+(defund @__ieee754_sqrt-%238 (mem)
+  (b* (
+    (%239 (load-double '(z . 0) mem))
+    (%240 (fcmp-ogt-double %239 #x3ff0000000000000)))
+  (case %240
+    (-1 (@__ieee754_sqrt-%241 mem))
+    (0 (@__ieee754_sqrt-%250 mem)))))
+
+(defund @__ieee754_sqrt-%235 (mem)
+  (b* (
+    (mem (store-i32 0 '(q1 . 0) mem))
+    (%236 (load-i32 '(q . 0) mem))
+    (%237 (add-i32 %236 1))
+    (mem (store-i32 %237 '(q . 0) mem)))
+  (@__ieee754_sqrt-%256 mem)))
+
+(defund @__ieee754_sqrt-%232 (mem)
+  (b* (
+    (mem (store-double #x3ff0000000000000 '(z . 0) mem))
+    (%233 (load-i32 '(q1 . 0) mem))
+    (%234 (icmp-eq-i32 %233 -1)))
+  (case %234
+    (-1 (@__ieee754_sqrt-%235 mem))
+    (0 (@__ieee754_sqrt-%238 mem)))))
+
+(defund @__ieee754_sqrt-%229 (mem)
+  (b* (
+    (mem (store-double #x3ff0000000000000 '(z . 0) mem))
+    (%230 (load-double '(z . 0) mem))
+    (%231 (fcmp-oge-double %230 #x3ff0000000000000)))
+  (case %231
+    (-1 (@__ieee754_sqrt-%232 mem))
+    (0 (@__ieee754_sqrt-%257 mem)))))
+
+(defund @__ieee754_sqrt-%224 (mem)
+  (b* (
+    (%225 (load-i32 '(ix0 . 0) mem))
+    (%226 (load-i32 '(ix1 . 0) mem))
+    (%227 (or-i32 %225 %226))
+    (%228 (icmp-ne-i32 %227 0)))
+  (case %228
+    (-1 (@__ieee754_sqrt-%229 mem))
+    (0 (@__ieee754_sqrt-%258 mem)))))
+
+(defund @__ieee754_sqrt-%210 (mem)
+  (b* (
+    (%211 (load-i32 '(ix0 . 0) mem))
+    (%212 (load-i32 '(ix1 . 0) mem))
+    (%213 (load-i32 '(sign . 0) mem))
+    (%214 (and-i32 %212 %213))
+    (%215 (lshr-i32 %214 31))
+    (%216 (add-i32 %211 %215))
+    (%217 (load-i32 '(ix0 . 0) mem))
+    (%218 (add-i32 %217 %216))
+    (mem (store-i32 %218 '(ix0 . 0) mem))
+    (%219 (load-i32 '(ix1 . 0) mem))
+    (%220 (load-i32 '(ix1 . 0) mem))
+    (%221 (add-i32 %220 %219))
+    (mem (store-i32 %221 '(ix1 . 0) mem))
+    (%222 (load-i32 '(r . 0) mem))
+    (%223 (lshr-i32 %222 1))
+    (mem (store-i32 %223 '(r . 0) mem)))
+  (list '@__ieee754_sqrt-%157 mem)))
+;  (@__ieee754_sqrt-%157 mem)))
+
+(defrule assoc-equal-bind
+  (equal (assoc-equal key1 (m5::bind key2 val alist))
+         (if (equal key1 key2)
+             (cons key1 val)
+           (assoc-equal key1 alist))))
+
+(defrule ttt210
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%210 mem)))
+    (implies (wordp r-w0)
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%210 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%203 (mem)
+  (b* (
+    (%204 (load-i32 '(t1 . 0) mem))
+    (%205 (load-i32 '(ix1 . 0) mem))
+    (%206 (sub-i32 %205 %204))
+    (mem (store-i32 %206 '(ix1 . 0) mem))
+    (%207 (load-i32 '(r . 0) mem))
+    (%208 (load-i32 '(q1 . 0) mem))
+    (%209 (add-i32 %208 %207))
+    (mem (store-i32 %209 '(q1 . 0) mem)))
+  (@__ieee754_sqrt-%210 mem)))
+
+(defrule ttt203
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%203 mem)))
+    (implies (wordp r-w0)
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%203 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%200 (mem)
+  (b* (
+    (%201 (load-i32 '(ix0 . 0) mem))
+    (%202 (sub-i32 %201 1))
+    (mem (store-i32 %202 '(ix0 . 0) mem)))
+  (@__ieee754_sqrt-%203 mem)))
+
+(defrule ttt200
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%200 mem)))
+    (implies (wordp r-w0)
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%200 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%193 (mem)
+  (b* (
+    (%194 (load-i32 '(t . 0) mem))
+    (%195 (load-i32 '(ix0 . 0) mem))
+    (%196 (sub-i32 %195 %194))
+    (mem (store-i32 %196 '(ix0 . 0) mem))
+    (%197 (load-i32 '(ix1 . 0) mem))
+    (%198 (load-i32 '(t1 . 0) mem))
+    (%199 (icmp-ult-i32 %197 %198)))
+  (case %199
+    (-1 (@__ieee754_sqrt-%200 mem))
+    (0 (@__ieee754_sqrt-%203 mem)))))
+
+(defrule ttt193
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%193 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%193 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%190 (mem)
+  (b* (
+    (%191 (load-i32 '(s0 . 0) mem))
+    (%192 (add-i32 %191 1))
+    (mem (store-i32 %192 '(s0 . 0) mem)))
+  (@__ieee754_sqrt-%193 mem)))
+
+(defrule ttt190
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%190 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%190 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%185 (mem)
+  (b* (
+    (%186 (load-i32 '(s1 . 0) mem))
+    (%187 (load-i32 '(sign . 0) mem))
+    (%188 (and-i32 %186 %187))
+    (%189 (icmp-eq-i32 %188 0)))
+  (case %189
+    (-1 (@__ieee754_sqrt-%190 mem))
+    (0 (@__ieee754_sqrt-%193 mem)))))
+
+(defrule ttt185
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%185 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%185 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%176 (mem)
+  (b* (
+    (%177 (load-i32 '(t1 . 0) mem))
+    (%178 (load-i32 '(r . 0) mem))
+    (%179 (add-i32 %177 %178))
+    (mem (store-i32 %179 '(s1 . 0) mem))
+    (%180 (load-i32 '(t1 . 0) mem))
+    (%181 (load-i32 '(sign . 0) mem))
+    (%182 (and-i32 %180 %181))
+    (%183 (load-i32 '(sign . 0) mem))
+    (%184 (icmp-eq-i32 %182 %183)))
+  (case %184
+    (-1 (@__ieee754_sqrt-%185 mem))
+    (0 (@__ieee754_sqrt-%193 mem)))))
+
+(defrule ttt176
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%176 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%176 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%172 (mem)
+  (b* (
+    (%173 (load-i32 '(t1 . 0) mem))
+    (%174 (load-i32 '(ix1 . 0) mem))
+    (%175 (icmp-ule-i32 %173 %174)))
+  (case %175
+    (-1 (@__ieee754_sqrt-%176 mem))
+    (0 (@__ieee754_sqrt-%210 mem)))))
+
+(defrule ttt172
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%172 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%172 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%168 (mem)
+  (b* (
+    (%169 (load-i32 '(t . 0) mem))
+    (%170 (load-i32 '(ix0 . 0) mem))
+    (%171 (icmp-eq-i32 %169 %170)))
+  (case %171
+    (-1 (@__ieee754_sqrt-%172 mem))
+    (0 (@__ieee754_sqrt-%210 mem)))))
+
+(defrule ttt168
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%168 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%168 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%160 (mem)
+  (b* (
+    (%161 (load-i32 '(s1 . 0) mem))
+    (%162 (load-i32 '(r . 0) mem))
+    (%163 (add-i32 %161 %162))
+    (mem (store-i32 %163 '(t1 . 0) mem))
+    (%164 (load-i32 '(s0 . 0) mem))
+    (mem (store-i32 %164 '(t . 0) mem))
+    (%165 (load-i32 '(t . 0) mem))
+    (%166 (load-i32 '(ix0 . 0) mem))
+    (%167 (icmp-slt-i32 %165 %166)))
+  (case %167
+    (-1 (@__ieee754_sqrt-%176 mem))
+    (0 (@__ieee754_sqrt-%168 mem)))))
+
+(defrule ttt160
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%160 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%160 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%157-step (mem)
+  (b* (
+    (%158 (load-i32 '(r . 0) mem))
+    (%159 (icmp-ne-i32 %158 0)))
+  (case %159
+    (-1 (@__ieee754_sqrt-%160 mem))
+    (0 (list nil (@__ieee754_sqrt-%224 mem))))))
+
+(defrule ttt157-step
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%157-step mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%157))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%157-step store-i32 load-i32))
+
+(defrule lemma000
+  (implies (and (wordp x)
+                (> x 0))
+           (< (get-lo-i32 (lshr-i32 (make-i32 x) 1)) x))
+  :enable (make-i32 lshr-i32 get-lo-i32))
+
+(defund measure-r (mem)
+  (let ((r-w0 (cadr (assoc-equal 'r mem))))
+    (if (wordp r-w0) r-w0 0)))
+
+(defrule o-p-measure-r
+  (o-p (measure-r mem))
+  :enable (measure-r wordp))
+
+(defrule ttt157-step-1
+  (let ((step-result (@__ieee754_sqrt-%157-step mem)))
+    (implies (equal (car step-result) '@__ieee754_sqrt-%157)
+             (o< (measure-r (cadr step-result)) (measure-r mem))))
+  :enable (measure-r @__ieee754_sqrt-%157-step wordp load-i32)
+  :use (:instance lemma000 (x (cadr (assoc-equal 'r mem)))))
+
+(defund @__ieee754_sqrt-%157 (mem)
+  (declare (xargs :measure (measure-r mem)))
+  (b* (
+    (step-result (@__ieee754_sqrt-%157-step mem))
+    (label (car step-result)))
+    (case label
+      (nil (cadr step-result))
+      (@__ieee754_sqrt-%157 (@__ieee754_sqrt-%157 (cadr step-result))))))
+
+(defund @__ieee754_sqrt-%155 (mem)
+  (b* (
+    (%156 (load-i32 '(sign . 0) mem))
+    (mem (store-i32 %156 '(r . 0) mem)))
+  (@__ieee754_sqrt-%157 mem)))
+
+(defund @__ieee754_sqrt-%141 (mem)
+  (b* (
+    (%142 (load-i32 '(ix0 . 0) mem))
+    (%143 (load-i32 '(ix1 . 0) mem))
+    (%144 (load-i32 '(sign . 0) mem))
+    (%145 (and-i32 %143 %144))
+    (%146 (lshr-i32 %145 31))
+    (%147 (add-i32 %142 %146))
+    (%148 (load-i32 '(ix0 . 0) mem))
+    (%149 (add-i32 %148 %147))
+    (mem (store-i32 %149 '(ix0 . 0) mem))
+    (%150 (load-i32 '(ix1 . 0) mem))
+    (%151 (load-i32 '(ix1 . 0) mem))
+    (%152 (add-i32 %151 %150))
+    (mem (store-i32 %152 '(ix1 . 0) mem))
+    (%153 (load-i32 '(r . 0) mem))
+    (%154 (lshr-i32 %153 1))
+    (mem (store-i32 %154 '(r . 0) mem)))
+  (list '@__ieee754_sqrt-%121 mem)))
+;  (@__ieee754_sqrt-%121 mem)))
+
+(defrule ttt141
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%141 mem)))
+    (implies (wordp r-w0)
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%141 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%131 (mem)
+  (b* (
+    (%132 (load-i32 '(t . 0) mem))
+    (%133 (load-i32 '(r . 0) mem))
+    (%134 (add-i32 %132 %133))
+    (mem (store-i32 %134 '(s0 . 0) mem))
+    (%135 (load-i32 '(t . 0) mem))
+    (%136 (load-i32 '(ix0 . 0) mem))
+    (%137 (sub-i32 %136 %135))
+    (mem (store-i32 %137 '(ix0 . 0) mem))
+    (%138 (load-i32 '(r . 0) mem))
+    (%139 (load-i32 '(q . 0) mem))
+    (%140 (add-i32 %139 %138))
+    (mem (store-i32 %140 '(q . 0) mem)))
+  (@__ieee754_sqrt-%141 mem)))
+
+(defrule ttt131
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%131 mem)))
+    (implies (wordp r-w0)
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%131 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%124 (mem)
+  (b* (
+    (%125 (load-i32 '(s0 . 0) mem))
+    (%126 (load-i32 '(r . 0) mem))
+    (%127 (add-i32 %125 %126))
+    (mem (store-i32 %127 '(t . 0) mem))
+    (%128 (load-i32 '(t . 0) mem))
+    (%129 (load-i32 '(ix0 . 0) mem))
+    (%130 (icmp-sle-i32 %128 %129)))
+  (case %130
+    (-1 (@__ieee754_sqrt-%131 mem))
+    (0 (@__ieee754_sqrt-%141 mem)))))
+
+(defrule ttt124
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%124 mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%121))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%124 store-i32 load-i32))
+
+(defund @__ieee754_sqrt-%121-step (mem)
+  (b* (
+    (%122 (load-i32 '(r . 0) mem))
+    (%123 (icmp-ne-i32 %122 0)))
+  (case %123
+    (-1 (@__ieee754_sqrt-%124 mem))
+    (0 (list nil (@__ieee754_sqrt-%155 mem))))))
+
+(defrule ttt121-step
+  (let ((r-w0 (cadr (assoc-equal 'r mem)))
+        (step-result (@__ieee754_sqrt-%121-step mem)))
+    (implies (and (wordp r-w0)
+                  (equal (car step-result) '@__ieee754_sqrt-%121))
+             (equal (cadr (assoc-equal 'r (cadr step-result)))
+                    (get-lo-i32 (lshr-i32 (make-i32 r-w0) 1)))))
+  :enable (@__ieee754_sqrt-%121-step store-i32 load-i32))
+
+(defrule ttt121-step-1
+  (let ((step-result (@__ieee754_sqrt-%121-step mem)))
+    (implies (equal (car step-result) '@__ieee754_sqrt-%121)
+             (o< (measure-r (cadr step-result)) (measure-r mem))))
+  :enable (measure-r @__ieee754_sqrt-%121-step wordp load-i32)
+  :use (:instance lemma000 (x (cadr (assoc-equal 'r mem)))))
+
+(defund @__ieee754_sqrt-%121 (mem)
+  (declare (xargs :measure (measure-r mem)))
+  (b* (
+    (step-result (@__ieee754_sqrt-%121-step mem))
+    (label (car step-result)))
+    (case label
+      (nil (cadr step-result))
+      (@__ieee754_sqrt-%121 (@__ieee754_sqrt-%121 (cadr step-result))))))
+
+(defund @__ieee754_sqrt-%107 (mem)
+  (b* (
+    (%108 (load-i32 '(m . 0) mem))
+    (%109 (ashr-i32 %108 1))
+    (mem (store-i32 %109 '(m . 0) mem))
+    (%110 (load-i32 '(ix0 . 0) mem))
+    (%111 (load-i32 '(ix1 . 0) mem))
+    (%112 (load-i32 '(sign . 0) mem))
+    (%113 (and-i32 %111 %112))
+    (%114 (lshr-i32 %113 31))
+    (%115 (add-i32 %110 %114))
+    (%116 (load-i32 '(ix0 . 0) mem))
+    (%117 (add-i32 %116 %115))
+    (mem (store-i32 %117 '(ix0 . 0) mem))
+    (%118 (load-i32 '(ix1 . 0) mem))
+    (%119 (load-i32 '(ix1 . 0) mem))
+    (%120 (add-i32 %119 %118))
+    (mem (store-i32 %120 '(ix1 . 0) mem))
+    (mem (store-i32 0 '(s1 . 0) mem))
+    (mem (store-i32 0 '(s0 . 0) mem))
+    (mem (store-i32 0 '(q1 . 0) mem))
+    (mem (store-i32 0 '(q . 0) mem))
+    (mem (store-i32 2097152 '(r . 0) mem)))
+  (@__ieee754_sqrt-%121 mem)))
+
+(defund @__ieee754_sqrt-%95 (mem)
+  (b* (
+    (%96 (load-i32 '(ix0 . 0) mem))
+    (%97 (load-i32 '(ix1 . 0) mem))
+    (%98 (load-i32 '(sign . 0) mem))
+    (%99 (and-i32 %97 %98))
+    (%100 (lshr-i32 %99 31))
+    (%101 (add-i32 %96 %100))
+    (%102 (load-i32 '(ix0 . 0) mem))
+    (%103 (add-i32 %102 %101))
+    (mem (store-i32 %103 '(ix0 . 0) mem))
+    (%104 (load-i32 '(ix1 . 0) mem))
+    (%105 (load-i32 '(ix1 . 0) mem))
+    (%106 (add-i32 %105 %104))
+    (mem (store-i32 %106 '(ix1 . 0) mem)))
+  (@__ieee754_sqrt-%107 mem)))
+
+(defund @__ieee754_sqrt-%86 (mem)
+  (b* (
+    (%87 (load-i32 '(m . 0) mem))
+    (%88 (sub-i32 %87 1023))
+    (mem (store-i32 %88 '(m . 0) mem))
+    (%89 (load-i32 '(ix0 . 0) mem))
+    (%90 (and-i32 %89 1048575))
+    (%91 (or-i32 %90 1048576))
+    (mem (store-i32 %91 '(ix0 . 0) mem))
+    (%92 (load-i32 '(m . 0) mem))
+    (%93 (and-i32 %92 1))
+    (%94 (icmp-ne-i32 %93 0)))
+  (case %94
+    (-1 (@__ieee754_sqrt-%95 mem))
+    (0 (@__ieee754_sqrt-%107 mem)))))
+
+(defund @__ieee754_sqrt-%72 (mem)
+  (b* (
+    (%73 (load-i32 '(i . 0) mem))
+    (%74 (sub-i32 %73 1))
+    (%75 (load-i32 '(m . 0) mem))
+    (%76 (sub-i32 %75 %74))
+    (mem (store-i32 %76 '(m . 0) mem))
+    (%77 (load-i32 '(ix1 . 0) mem))
+    (%78 (load-i32 '(i . 0) mem))
+    (%79 (sub-i32 32 %78))
+    (%80 (lshr-i32 %77 %79))
+    (%81 (load-i32 '(ix0 . 0) mem))
+    (%82 (or-i32 %81 %80))
+    (mem (store-i32 %82 '(ix0 . 0) mem))
+    (%83 (load-i32 '(i . 0) mem))
+    (%84 (load-i32 '(ix1 . 0) mem))
+    (%85 (shl-i32 %84 %83))
+    (mem (store-i32 %85 '(ix1 . 0) mem)))
+  (@__ieee754_sqrt-%86 mem)))
+
+(defund @__ieee754_sqrt-%69 (mem)
+  (b* (
+    (%70 (load-i32 '(i . 0) mem))
+    (%71 (add-i32 %70 1))
+    (mem (store-i32 %71 '(i . 0) mem)))
+  (@__ieee754_sqrt-%62 mem)))
+
+(defund @__ieee754_sqrt-%66 (mem)
+  (b* (
+    (%67 (load-i32 '(ix0 . 0) mem))
+    (%68 (shl-i32 %67 1))
+    (mem (store-i32 %68 '(ix0 . 0) mem)))
+  (@__ieee754_sqrt-%69 mem)))
+
+(defund @__ieee754_sqrt-%62 (mem)
+  (b* (
+    (%63 (load-i32 '(ix0 . 0) mem))
+    (%64 (and-i32 %63 1048576))
+    (%65 (icmp-eq-i32 %64 0)))
+  (case %65
+    (-1 (@__ieee754_sqrt-%66 mem))
+    (0 (@__ieee754_sqrt-%72 mem)))))
+
+(defund @__ieee754_sqrt-%61 (mem)
+  (b* (
+    (mem (store-i32 0 '(i . 0) mem)))
+  (@__ieee754_sqrt-%62 mem)))
+
+(defund @__ieee754_sqrt-%52 (mem)
+  (b* (
+    (%53 (load-i32 '(m . 0) mem))
+    (%54 (sub-i32 %53 21))
+    (mem (store-i32 %54 '(m . 0) mem))
+    (%55 (load-i32 '(ix1 . 0) mem))
+    (%56 (lshr-i32 %55 11))
+    (%57 (load-i32 '(ix0 . 0) mem))
+    (%58 (or-i32 %57 %56))
+    (mem (store-i32 %58 '(ix0 . 0) mem))
+    (%59 (load-i32 '(ix1 . 0) mem))
+    (%60 (shl-i32 %59 21))
+    (mem (store-i32 %60 '(ix1 . 0) mem)))
+  (@__ieee754_sqrt-%49 mem)))
+
+(defund @__ieee754_sqrt-%49 (mem)
+  (b* (
+    (%50 (load-i32 '(ix0 . 0) mem))
+    (%51 (icmp-eq-i32 %50 0)))
+  (case %51
+    (-1 (@__ieee754_sqrt-%52 mem))
+    (0 (@__ieee754_sqrt-%61 mem)))))
+
+(defund @__ieee754_sqrt-%48 (mem)
+  (b* ()
+  (@__ieee754_sqrt-%49 mem)))
+
+(defund @__ieee754_sqrt-%43 (mem)
+  (b* (
+    (%44 (load-i32 '(ix0 . 0) mem))
+    (%45 (ashr-i32 %44 20))
+    (mem (store-i32 %45 '(m . 0) mem))
+    (%46 (load-i32 '(m . 0) mem))
+    (%47 (icmp-eq-i32 %46 0)))
+  (case %47
+    (-1 (@__ieee754_sqrt-%48 mem))
+    (0 (@__ieee754_sqrt-%86 mem)))))
+
+(defund @__ieee754_sqrt-%42 (mem)
+  (b* ()
+  (@__ieee754_sqrt-%43 mem)))
+
+(defund @__ieee754_sqrt-%41 (mem)
+  (b* ()
+  (@__ieee754_sqrt-%42 mem)))
+
+(defund @__ieee754_sqrt-%33 (mem)
+  (b* (
+    (%34 (load-double '(x . 0) mem))
+    (%35 (load-double '(x . 0) mem))
+    (%36 (fsub-double %34 %35))
+    (%37 (load-double '(x . 0) mem))
+    (%38 (load-double '(x . 0) mem))
+    (%39 (fsub-double %37 %38))
+    (%40 (fdiv-double %36 %39))
+    (mem (store-double %40 '(ret . 0) mem)))
+  (@__ieee754_sqrt-%282 mem)))
+
+(defund @__ieee754_sqrt-%30 (mem)
+  (b* (
+    (%31 (load-i32 '(ix0 . 0) mem))
+    (%32 (icmp-slt-i32 %31 0)))
+  (case %32
+    (-1 (@__ieee754_sqrt-%33 mem))
+    (0 (@__ieee754_sqrt-%41 mem)))))
+
+(defund @__ieee754_sqrt-%28 (mem)
+  (b* (
+    (%29 (load-double '(x . 0) mem))
+    (mem (store-double %29 '(ret . 0) mem)))
+  (@__ieee754_sqrt-%282 mem)))
+
+(defund @__ieee754_sqrt-%20 (mem)
+  (b* (
+    (%21 (load-i32 '(ix0 . 0) mem))
+    (%22 (load-i32 '(sign . 0) mem))
+    (%23 (xor-i32 %22 -1))
+    (%24 (and-i32 %21 %23))
+    (%25 (load-i32 '(ix1 . 0) mem))
+    (%26 (or-i32 %24 %25))
+    (%27 (icmp-eq-i32 %26 0)))
+  (case %27
+    (-1 (@__ieee754_sqrt-%28 mem))
+    (0 (@__ieee754_sqrt-%30 mem)))))
+
+(defund @__ieee754_sqrt-%17 (mem)
+  (b* (
+    (%18 (load-i32 '(ix0 . 0) mem))
+    (%19 (icmp-sle-i32 %18 0)))
+  (case %19
+    (-1 (@__ieee754_sqrt-%20 mem))
+    (0 (@__ieee754_sqrt-%43 mem)))))
+
+(defund @__ieee754_sqrt-%11 (mem)
+  (b* (
+    (%12 (load-double '(x . 0) mem))
+    (%13 (load-double '(x . 0) mem))
+    (%14 (fmul-double %12 %13))
+    (%15 (load-double '(x . 0) mem))
+    (%16 (fadd-double %14 %15))
+    (mem (store-double %16 '(ret . 0) mem)))
+  (@__ieee754_sqrt-%282 mem)))
+
+(defund @__ieee754_sqrt-%0 (mem %x)
+  (b* (
+    (mem (alloca-double 'ret 1 mem))
+    (mem (alloca-double 'x 1 mem))
+    (mem (alloca-double 'z 1 mem))
+    (mem (alloca-i32 'sign 1 mem))
+    (mem (alloca-i32 'r 1 mem))
+    (mem (alloca-i32 't1 1 mem))
+    (mem (alloca-i32 's1 1 mem))
+    (mem (alloca-i32 'ix1 1 mem))
+    (mem (alloca-i32 'q1 1 mem))
+    (mem (alloca-i32 'ix0 1 mem))
+    (mem (alloca-i32 's0 1 mem))
+    (mem (alloca-i32 'q 1 mem))
+    (mem (alloca-i32 'm 1 mem))
+    (mem (alloca-i32 't 1 mem))
+    (mem (alloca-i32 'i 1 mem))
+    (mem (store-double %x '(x . 0) mem))
+    (mem (store-i32 -2147483648 '(sign . 0) mem))
+    (%3 (bitcast-double*-to-i32* '(x . 0)))
+    (%4 (getelementptr-i32 %3 1))
+    (%5 (load-i32 %4 mem))
+    (mem (store-i32 %5 '(ix0 . 0) mem))
+    (%6 (bitcast-double*-to-i32* '(x . 0)))
+    (%7 (load-i32 %6 mem))
+    (mem (store-i32 %7 '(ix1 . 0) mem))
+    (%8 (load-i32 '(ix0 . 0) mem))
+    (%9 (and-i32 %8 2146435072))
+    (%10 (icmp-eq-i32 %9 2146435072)))
+  (case %10
+    (-1 (@__ieee754_sqrt-%11 mem))
+    (0 (@__ieee754_sqrt-%17 mem)))))
+
+(defund @__ieee754_sqrt (%x)
+  (@__ieee754_sqrt-%0 *__ieee754_sqrt-globals*  %x))
