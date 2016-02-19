@@ -7,226 +7,227 @@
     (make-class-decl
      "FdlibmTranslit$Pow"
      '("java/lang/Object")
-     '()
-     '(
-      "bp:[D"
-      "dp_h:[D"
-      "dp_l:[D"
-      "zero:D"
-      "one:D"
-      "two:D"
-      "two53:D"
-      "huge:D"
-      "tiny:D"
-      "L1:D"
-      "L2:D"
-      "L3:D"
-      "L4:D"
-      "L5:D"
-      "L6:D"
-      "P1:D"
-      "P2:D"
-      "P3:D"
-      "P4:D"
-      "P5:D"
-      "lg2:D"
-      "lg2_h:D"
-      "lg2_l:D"
-      "ovt:D"
-      "cp:D"
-      "cp_h:D"
-      "cp_l:D"
-      "ivln2:D"
-      "ivln2_h:D"
-      "ivln2_l:D")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (methodref "FdlibmTranslit" "access$100:(D)I" 2)        ; 3
-       (integer 2147483647)                                    ; 4
-       (class (ref -1) "FdlibmTranslit$Pow")                   ; 5
-       (integer 2146435072)                                    ; 6
-       (integer 1128267776)                                    ; 7
-       (integer 1072693248)                                    ; 8
-       (integer 1073741824)                                    ; 9
-       (integer 1071644672)                                    ; 10
-       (methodref "FdlibmTranslit$Sqrt" "compute:(D)D" 2)      ; 11
-       (methodref "FdlibmTranslit$Fabs" "compute:(D)D" 2)      ; 12
-       (double #xbff0000000000000) ; -0x1.0p0 -1.0             ; 13
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (methodref "FdlibmTranslit" "access$100:(D)I" 2)         ; 3
+       (integer 2147483647)                                     ; 4
+       (class (ref -1) "FdlibmTranslit$Pow")                    ; 5
+       (integer 2146435072)                                     ; 6
+       (integer 1128267776)                                     ; 7
+       (integer 1072693248)                                     ; 8
+       (integer 1073741824)                                     ; 9
+       (integer 1071644672)                                     ; 10
+       (methodref "FdlibmTranslit$Sqrt" "compute:(D)D" 2)       ; 11
+       (methodref "FdlibmTranslit$Fabs" "compute:(D)D" 2)       ; 12
+       (double #xbff0000000000000) ; -0x1.0p0 -1.0              ; 13
        nil
-       (integer 1105199104)                                    ; 15
-       (integer 1139802112)                                    ; 16
-       (integer 1072693247)                                    ; 17
-       (double #x7ff0000000000000) ; Infinity Infinity         ; 18
+       (integer 1105199104)                                     ; 15
+       (integer 1139802112)                                     ; 16
+       (integer 1072693247)                                     ; 17
+       (double #x7ff0000000000000) ; Infinity Infinity          ; 18
        nil
-       (double #x7e37e43c8800759c) ; 0x1.7e43c8800759cp996 1.0E300     ; 20
+       (double #x7e37e43c8800759c) ; 0x1.7e43c8800759cp996 1.0E300      ; 20
        nil
-       (double #x01a56e1fc2f8f359) ; 0x1.56e1fc2f8f359p-997 1.0E-300   ; 22
+       (double #x01a56e1fc2f8f359) ; 0x1.56e1fc2f8f359p-997 1.0E-300    ; 22
        nil
-       (double #x3fe0000000000000) ; 0x1.0p-1 0.5              ; 24
+       (double #x3fe0000000000000) ; 0x1.0p-1 0.5               ; 24
        nil
-       (double #x3fd5555555555555) ; 0x1.5555555555555p-2 0.3333333333333333   ; 26
+       (double #x3fd5555555555555) ; 0x1.5555555555555p-2 0.3333333333333333    ; 26
        nil
-       (double #x3fd0000000000000) ; 0x1.0p-2 0.25             ; 28
+       (double #x3fd0000000000000) ; 0x1.0p-2 0.25              ; 28
        nil
-       (double #x3ff7154760000000) ; 0x1.715476p0 1.4426950216293335   ; 30
+       (double #x3ff7154760000000) ; 0x1.715476p0 1.4426950216293335    ; 30
        nil
-       (double #x3e54ae0bf85ddf44) ; 0x1.4ae0bf85ddf44p-26 1.9259629911266175E-8       ; 32
+       (double #x3e54ae0bf85ddf44) ; 0x1.4ae0bf85ddf44p-26 1.9259629911266175E-8        ; 32
        nil
-       (double #x3ff71547652b82fe) ; 0x1.71547652b82fep0 1.4426950408889634    ; 34
+       (double #x3ff71547652b82fe) ; 0x1.71547652b82fep0 1.4426950408889634     ; 34
        nil
-       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)       ; 36
-       (integer 1048576)                                       ; 37
-       (double #x4340000000000000) ; 0x1.0p53 9.007199254740992E15     ; 38
+       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)        ; 36
+       (integer 1048576)                                        ; 37
+       (double #x4340000000000000) ; 0x1.0p53 9.007199254740992E15      ; 38
        nil
-       (integer 1048575)                                       ; 40
-       (integer 235662)                                        ; 41
-       (integer 767610)                                        ; 42
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)       ; 43
-       (fieldref "FdlibmTranslit$Pow" "bp:[D" 1)               ; 44
-       (integer 536870912)                                     ; 45
-       (integer 524288)                                        ; 46
-       (double #x3fe3333333333303) ; 0x1.3333333333303p-1 0.5999999999999946   ; 47
+       (integer 1048575)                                        ; 40
+       (integer 235662)                                         ; 41
+       (integer 767610)                                         ; 42
+       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 43
+       (fieldref "FdlibmTranslit$Pow" "bp:[D" 1)                ; 44
+       (integer 536870912)                                      ; 45
+       (integer 524288)                                         ; 46
+       (double #x3fe3333333333303) ; 0x1.3333333333303p-1 0.5999999999999946    ; 47
        nil
-       (double #x3fdb6db6db6fabff) ; 0x1.b6db6db6fabffp-2 0.4285714285785502   ; 49
+       (double #x3fdb6db6db6fabff) ; 0x1.b6db6db6fabffp-2 0.4285714285785502    ; 49
        nil
-       (double #x3fd55555518f264d) ; 0x1.55555518f264dp-2 0.33333332981837743  ; 51
+       (double #x3fd55555518f264d) ; 0x1.55555518f264dp-2 0.33333332981837743   ; 51
        nil
-       (double #x3fd17460a91d4101) ; 0x1.17460a91d4101p-2 0.272728123808534    ; 53
+       (double #x3fd17460a91d4101) ; 0x1.17460a91d4101p-2 0.272728123808534     ; 53
        nil
-       (double #x3fcd864a93c9db65) ; 0x1.d864a93c9db65p-3 0.23066074577556175  ; 55
+       (double #x3fcd864a93c9db65) ; 0x1.d864a93c9db65p-3 0.23066074577556175   ; 55
        nil
-       (double #x3fca7e284a454eef) ; 0x1.a7e284a454eefp-3 0.20697501780033842  ; 57
+       (double #x3fca7e284a454eef) ; 0x1.a7e284a454eefp-3 0.20697501780033842   ; 57
        nil
-       (double #x4008000000000000) ; 0x1.8p1 3.0               ; 59
+       (double #x4008000000000000) ; 0x1.8p1 3.0                ; 59
        nil
-       (double #x3feec709e0000000) ; 0x1.ec709ep-1 0.9617967009544373  ; 61
+       (double #x3feec709e0000000) ; 0x1.ec709ep-1 0.9617967009544373   ; 61
        nil
-       (double #xbe3e2fe0145b01f5) ; -0x1.e2fe0145b01f5p-28 -7.028461650952758E-9      ; 63
+       (double #xbe3e2fe0145b01f5) ; -0x1.e2fe0145b01f5p-28 -7.028461650952758E-9       ; 63
        nil
-       (double #x3feec709dc3a03fd) ; 0x1.ec709dc3a03fdp-1 0.9617966939259756   ; 65
+       (double #x3feec709dc3a03fd) ; 0x1.ec709dc3a03fdp-1 0.9617966939259756    ; 65
        nil
-       (fieldref "FdlibmTranslit$Pow" "dp_l:[D" 1)             ; 67
-       (fieldref "FdlibmTranslit$Pow" "dp_h:[D" 1)             ; 68
-       (integer 1083179008)                                    ; 69
-       (double #x3c971547652b82fe) ; 0x1.71547652b82fep-54 8.008566259537294E-17       ; 70
+       (fieldref "FdlibmTranslit$Pow" "dp_l:[D" 1)              ; 67
+       (fieldref "FdlibmTranslit$Pow" "dp_h:[D" 1)              ; 68
+       (integer 1083179008)                                     ; 69
+       (double #x3c971547652b82fe) ; 0x1.71547652b82fep-54 8.008566259537294E-17        ; 70
        nil
-       (integer 1083231232)                                    ; 72
-       (integer -1064252416)                                   ; 73
-       (double #x3fe62e4300000000) ; 0x1.62e43p-1 0.6931471824645996   ; 74
+       (integer 1083231232)                                     ; 72
+       (integer -1064252416)                                    ; 73
+       (double #x3fe62e4300000000) ; 0x1.62e43p-1 0.6931471824645996    ; 74
        nil
-       (double #x3fe62e42fefa39ef) ; 0x1.62e42fefa39efp-1 0.6931471805599453   ; 76
+       (double #x3fe62e42fefa39ef) ; 0x1.62e42fefa39efp-1 0.6931471805599453    ; 76
        nil
-       (double #xbe205c610ca86c39) ; -0x1.05c610ca86c39p-29 -1.904654299957768E-9      ; 78
+       (double #xbe205c610ca86c39) ; -0x1.05c610ca86c39p-29 -1.904654299957768E-9       ; 78
        nil
-       (double #x3fc555555555553e) ; 0x1.555555555553ep-3 0.16666666666666602  ; 80
+       (double #x3fc555555555553e) ; 0x1.555555555553ep-3 0.16666666666666602   ; 80
        nil
-       (double #xbf66c16c16bebd93) ; -0x1.6c16c16bebd93p-9 -0.0027777777777015593      ; 82
+       (double #xbf66c16c16bebd93) ; -0x1.6c16c16bebd93p-9 -0.0027777777777015593       ; 82
        nil
-       (double #x3f11566aaf25de2c) ; 0x1.1566aaf25de2cp-14 6.613756321437934E-5        ; 84
+       (double #x3f11566aaf25de2c) ; 0x1.1566aaf25de2cp-14 6.613756321437934E-5 ; 84
        nil
-       (double #xbebbbd41c5d26bf1) ; -0x1.bbd41c5d26bf1p-20 -1.6533902205465252E-6     ; 86
+       (double #xbebbbd41c5d26bf1) ; -0x1.bbd41c5d26bf1p-20 -1.6533902205465252E-6      ; 86
        nil
-       (double #x3e66376972bea4d0) ; 0x1.6376972bea4dp-25 4.1381367970572385E-8        ; 88
+       (double #x3e66376972bea4d0) ; 0x1.6376972bea4dp-25 4.1381367970572385E-8 ; 88
        nil
-       (double #x4000000000000000) ; 0x1.0p1 2.0               ; 90
+       (double #x4000000000000000) ; 0x1.0p1 2.0                ; 90
        nil
-       (methodref "FdlibmTranslit$Scalbn" "compute:(DI)D" 3)   ; 92
-       (double #x3ff8000000000000) ; 0x1.8p0 1.5               ; 93
+       (methodref "FdlibmTranslit$Scalbn" "compute:(DI)D" 3)    ; 92
+       (double #x3ff8000000000000) ; 0x1.8p0 1.5                ; 93
        nil
-       (double #x3fe2b80340000000) ; 0x1.2b8034p-1 0.5849624872207642  ; 95
+       (double #x3fe2b80340000000) ; 0x1.2b8034p-1 0.5849624872207642   ; 95
        nil
-       (double #x3e4cfdeb43cfd006) ; 0x1.cfdeb43cfd006p-27 1.350039202129749E-8        ; 97
+       (double #x3e4cfdeb43cfd006) ; 0x1.cfdeb43cfd006p-27 1.350039202129749E-8 ; 97
        nil
-       (class (ref -1) "java/lang/Object")                     ; 99
-       (utf8)                                                  ; 100
-       (utf8)                                                  ; 101
-       (utf8)                                                  ; 102
-       (utf8)                                                  ; 103
-       (utf8)                                                  ; 104
-       (utf8)                                                  ; 105
-       (utf8)                                                  ; 106
-       (double #x0000000000000000) ; 0x0.0p0 0.0               ; 107
+       (class (ref -1) "java/lang/Object")                      ; 99
+       (utf8)                                                   ; 100
+       (utf8)                                                   ; 101
+       (utf8)                                                   ; 102
+       (utf8)                                                   ; 103
+       (utf8)                                                   ; 104
+       (utf8)                                                   ; 105
+       (utf8)                                                   ; 106
+       (double #x0000000000000000) ; 0x0.0p0 0.0                ; 107
        nil
-       (utf8)                                                  ; 109
-       (double #x3ff0000000000000) ; 0x1.0p0 1.0               ; 110
+       (utf8)                                                   ; 109
+       (double #x3ff0000000000000) ; 0x1.0p0 1.0                ; 110
        nil
-       (utf8)                                                  ; 112
-       (utf8)                                                  ; 113
-       (utf8)                                                  ; 114
-       (utf8)                                                  ; 115
-       (utf8)                                                  ; 116
-       (utf8)                                                  ; 117
-       (utf8)                                                  ; 118
-       (utf8)                                                  ; 119
-       (utf8)                                                  ; 120
-       (utf8)                                                  ; 121
-       (utf8)                                                  ; 122
-       (utf8)                                                  ; 123
-       (utf8)                                                  ; 124
-       (utf8)                                                  ; 125
-       (utf8)                                                  ; 126
-       (utf8)                                                  ; 127
-       (utf8)                                                  ; 128
-       (utf8)                                                  ; 129
-       (utf8)                                                  ; 130
-       (utf8)                                                  ; 131
-       (utf8)                                                  ; 132
-       (utf8)                                                  ; 133
-       (utf8)                                                  ; 134
-       (utf8)                                                  ; 135
-       (utf8)                                                  ; 136
-       (utf8)                                                  ; 137
-       (utf8)                                                  ; 138
-       (utf8)                                                  ; 139
-       (utf8)                                                  ; 140
-       (utf8)                                                  ; 141
-       (utf8)                                                  ; 142
-       (utf8)                                                  ; 143
-       (utf8)                                                  ; 144
-       (utf8)                                                  ; 145
-       (utf8)                                                  ; 146
-       (name-and-type "<init>:()V")                            ; 147
-       (class (ref -1) "FdlibmTranslit")                       ; 148
-       (name-and-type "access$000:(D)I")                       ; 149
-       (name-and-type "access$100:(D)I")                       ; 150
-       (utf8)                                                  ; 151
-       (utf8)                                                  ; 152
-       (utf8)                                                  ; 153
-       (class (ref -1) "FdlibmTranslit$Sqrt")                  ; 154
-       (name-and-type "compute:(D)D")                          ; 155
-       (class (ref -1) "FdlibmTranslit$Fabs")                  ; 156
-       (name-and-type "access$200:(DI)D")                      ; 157
-       (name-and-type "access$400:(DI)D")                      ; 158
-       (name-and-type "bp:[D")                                 ; 159
-       (name-and-type "dp_l:[D")                               ; 160
-       (name-and-type "dp_h:[D")                               ; 161
-       (class (ref -1) "FdlibmTranslit$Scalbn")                ; 162
-       (name-and-type "compute:(DI)D")                         ; 163
-       (utf8)                                                  ; 164
-       (utf8)                                                  ; 165
-       (utf8)                                                  ; 166
-       (utf8)                                                  ; 167
-       (utf8)                                                  ; 168
-       (utf8)                                                  ; 169
-       (utf8)                                                  ; 170
-       (utf8)                                                  ; 171
-       (utf8)                                                  ; 172
-       (utf8)                                                  ; 173
-       (utf8)                                                  ; 174
-       (utf8)                                                  ; 175
-       (utf8)                                                  ; 176
-       (utf8)                                                  ; 177
-       (utf8)                                                  ; 178
+       (utf8)                                                   ; 112
+       (utf8)                                                   ; 113
+       (utf8)                                                   ; 114
+       (utf8)                                                   ; 115
+       (utf8)                                                   ; 116
+       (utf8)                                                   ; 117
+       (utf8)                                                   ; 118
+       (utf8)                                                   ; 119
+       (utf8)                                                   ; 120
+       (utf8)                                                   ; 121
+       (utf8)                                                   ; 122
+       (utf8)                                                   ; 123
+       (utf8)                                                   ; 124
+       (utf8)                                                   ; 125
+       (utf8)                                                   ; 126
+       (utf8)                                                   ; 127
+       (utf8)                                                   ; 128
+       (utf8)                                                   ; 129
+       (utf8)                                                   ; 130
+       (utf8)                                                   ; 131
+       (utf8)                                                   ; 132
+       (utf8)                                                   ; 133
+       (utf8)                                                   ; 134
+       (utf8)                                                   ; 135
+       (utf8)                                                   ; 136
+       (utf8)                                                   ; 137
+       (utf8)                                                   ; 138
+       (utf8)                                                   ; 139
+       (utf8)                                                   ; 140
+       (utf8)                                                   ; 141
+       (utf8)                                                   ; 142
+       (utf8)                                                   ; 143
+       (utf8)                                                   ; 144
+       (utf8)                                                   ; 145
+       (utf8)                                                   ; 146
+       (name-and-type "<init>:()V")                             ; 147
+       (class (ref -1) "FdlibmTranslit")                        ; 148
+       (name-and-type "access$000:(D)I")                        ; 149
+       (name-and-type "access$100:(D)I")                        ; 150
+       (utf8)                                                   ; 151
+       (utf8)                                                   ; 152
+       (utf8)                                                   ; 153
+       (class (ref -1) "FdlibmTranslit$Sqrt")                   ; 154
+       (name-and-type "compute:(D)D")                           ; 155
+       (class (ref -1) "FdlibmTranslit$Fabs")                   ; 156
+       (name-and-type "access$200:(DI)D")                       ; 157
+       (name-and-type "access$400:(DI)D")                       ; 158
+       (name-and-type "bp:[D")                                  ; 159
+       (name-and-type "dp_l:[D")                                ; 160
+       (name-and-type "dp_h:[D")                                ; 161
+       (class (ref -1) "FdlibmTranslit$Scalbn")                 ; 162
+       (name-and-type "compute:(DI)D")                          ; 163
+       (utf8)                                                   ; 164
+       (utf8)                                                   ; 165
+       (utf8)                                                   ; 166
+       (utf8)                                                   ; 167
+       (utf8)                                                   ; 168
+       (utf8)                                                   ; 169
+       (utf8)                                                   ; 170
+       (utf8)                                                   ; 171
+       (utf8)                                                   ; 172
+       (utf8)                                                   ; 173
+       (utf8)                                                   ; 174
+       (utf8)                                                   ; 175
+       (utf8)                                                   ; 176
+       (utf8)                                                   ; 177
+       (utf8)                                                   ; 178
+      )
+     #x00000020                                                 ; SUPER
+     '(
+       ("bp:[D" #x0000001a)                                     ; PRIVATE STATIC FINAL
+       ("dp_h:[D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("dp_l:[D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("zero:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("one:D" #x0000001a)                                     ; PRIVATE STATIC FINAL
+       ("two:D" #x0000001a)                                     ; PRIVATE STATIC FINAL
+       ("two53:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("huge:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("tiny:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("L1:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("L2:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("L3:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("L4:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("L5:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("L6:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("P1:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("P2:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("P3:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("P4:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("P5:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("lg2:D" #x0000001a)                                     ; PRIVATE STATIC FINAL
+       ("lg2_h:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("lg2_l:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("ovt:D" #x0000001a)                                     ; PRIVATE STATIC FINAL
+       ("cp:D" #x0000001a)                                      ; PRIVATE STATIC FINAL
+       ("cp_h:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("cp_l:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("ivln2:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("ivln2_h:D" #x0000001a)                                 ; PRIVATE STATIC FINAL
+       ("ivln2_l:D" #x0000001a)                                 ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #1895
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(DD)D" nil
+      '("compute:(DD)D" #x00000808                              ; STATIC STRICT
         ; line_number #1939
         (dload_0)                                               ; 0
         (invokestatic 2)                                        ; 1 FdlibmTranslit.access$000:(D)I
@@ -1238,7 +1239,7 @@
         (dmul)                                                  ; 1555
         (dreturn)                                               ; 1556
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #1898
         (iconst_2)                                              ; 0
         (newarray T_DOUBLE)                                     ; 1

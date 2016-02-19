@@ -7,61 +7,62 @@
     (make-class-decl
      "FdlibmTranslit$Floor"
      '("java/lang/Object")
-     '()
-     '(
-      "huge:D")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (methodref "FdlibmTranslit" "access$100:(D)I" 2)        ; 3
-       (class (ref -1) "FdlibmTranslit$Floor")                 ; 4
-       (double #x7e37e43c8800759c) ; 0x1.7e43c8800759cp996 1.0E300     ; 5
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (methodref "FdlibmTranslit" "access$100:(D)I" 2)         ; 3
+       (class (ref -1) "FdlibmTranslit$Floor")                  ; 4
+       (double #x7e37e43c8800759c) ; 0x1.7e43c8800759cp996 1.0E300      ; 5
        nil
-       (integer 2147483647)                                    ; 7
-       (integer -1074790400)                                   ; 8
-       (integer 1048575)                                       ; 9
-       (integer 1048576)                                       ; 10
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)       ; 11
-       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)       ; 12
-       (class (ref -1) "java/lang/Object")                     ; 13
-       (utf8)                                                  ; 14
-       (utf8)                                                  ; 15
-       (utf8)                                                  ; 16
-       (utf8)                                                  ; 17
-       (utf8)                                                  ; 18
-       (utf8)                                                  ; 19
-       (utf8)                                                  ; 20
-       (utf8)                                                  ; 21
-       (utf8)                                                  ; 22
-       (utf8)                                                  ; 23
-       (utf8)                                                  ; 24
-       (utf8)                                                  ; 25
-       (name-and-type "<init>:()V")                            ; 26
-       (class (ref -1) "FdlibmTranslit")                       ; 27
-       (name-and-type "access$000:(D)I")                       ; 28
-       (name-and-type "access$100:(D)I")                       ; 29
-       (utf8)                                                  ; 30
-       (utf8)                                                  ; 31
-       (utf8)                                                  ; 32
-       (name-and-type "access$400:(DI)D")                      ; 33
-       (name-and-type "access$200:(DI)D")                      ; 34
-       (utf8)                                                  ; 35
-       (utf8)                                                  ; 36
-       (utf8)                                                  ; 37
-       (utf8)                                                  ; 38
-       (utf8)                                                  ; 39
-       (utf8)                                                  ; 40
-       (utf8)                                                  ; 41
-       (utf8)                                                  ; 42
+       (integer 2147483647)                                     ; 7
+       (integer -1074790400)                                    ; 8
+       (integer 1048575)                                        ; 9
+       (integer 1048576)                                        ; 10
+       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 11
+       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)        ; 12
+       (class (ref -1) "java/lang/Object")                      ; 13
+       (utf8)                                                   ; 14
+       (utf8)                                                   ; 15
+       (utf8)                                                   ; 16
+       (utf8)                                                   ; 17
+       (utf8)                                                   ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (utf8)                                                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (name-and-type "<init>:()V")                             ; 26
+       (class (ref -1) "FdlibmTranslit")                        ; 27
+       (name-and-type "access$000:(D)I")                        ; 28
+       (name-and-type "access$100:(D)I")                        ; 29
+       (utf8)                                                   ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (name-and-type "access$400:(DI)D")                       ; 33
+       (name-and-type "access$200:(DI)D")                       ; 34
+       (utf8)                                                   ; 35
+       (utf8)                                                   ; 36
+       (utf8)                                                   ; 37
+       (utf8)                                                   ; 38
+       (utf8)                                                   ; 39
+       (utf8)                                                   ; 40
+       (utf8)                                                   ; 41
+       (utf8)                                                   ; 42
+      )
+     #x00000020                                                 ; SUPER
+     '(
+       ("huge:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #1276
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(D)D" nil
+      '("compute:(D)D" #x00000808                               ; STATIC STRICT
         ; line_number #1283
         (dload_0)                                               ; 0
         (invokestatic 2)                                        ; 1 FdlibmTranslit.access$000:(D)I

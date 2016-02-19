@@ -7,45 +7,46 @@
     (make-class-decl
      "FdlibmTranslit$Fabs"
      '("java/lang/Object")
-     '()
-     '()
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (integer 2147483647)                                    ; 3
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)       ; 4
-       (class (ref -1) "FdlibmTranslit$Fabs")                  ; 5
-       (class (ref -1) "java/lang/Object")                     ; 6
-       (utf8)                                                  ; 7
-       (utf8)                                                  ; 8
-       (utf8)                                                  ; 9
-       (utf8)                                                  ; 10
-       (utf8)                                                  ; 11
-       (utf8)                                                  ; 12
-       (utf8)                                                  ; 13
-       (utf8)                                                  ; 14
-       (name-and-type "<init>:()V")                            ; 15
-       (class (ref -1) "FdlibmTranslit")                       ; 16
-       (name-and-type "access$000:(D)I")                       ; 17
-       (name-and-type "access$400:(DI)D")                      ; 18
-       (utf8)                                                  ; 19
-       (utf8)                                                  ; 20
-       (utf8)                                                  ; 21
-       (utf8)                                                  ; 22
-       (utf8)                                                  ; 23
-       (utf8)                                                  ; 24
-       (utf8)                                                  ; 25
-       (utf8)                                                  ; 26
-       (utf8)                                                  ; 27
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (integer 2147483647)                                     ; 3
+       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 4
+       (class (ref -1) "FdlibmTranslit$Fabs")                   ; 5
+       (class (ref -1) "java/lang/Object")                      ; 6
+       (utf8)                                                   ; 7
+       (utf8)                                                   ; 8
+       (utf8)                                                   ; 9
+       (utf8)                                                   ; 10
+       (utf8)                                                   ; 11
+       (utf8)                                                   ; 12
+       (utf8)                                                   ; 13
+       (utf8)                                                   ; 14
+       (name-and-type "<init>:()V")                             ; 15
+       (class (ref -1) "FdlibmTranslit")                        ; 16
+       (name-and-type "access$000:(D)I")                        ; 17
+       (name-and-type "access$400:(DI)D")                       ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (utf8)                                                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (utf8)                                                   ; 26
+       (utf8)                                                   ; 27
+      )
+     #x00000020                                                 ; SUPER
+     '(
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #1260
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(D)D" nil
+      '("compute:(D)D" #x00000808                               ; STATIC STRICT
         ; line_number #1263
         (dload_0)                                               ; 0
         (dload_0)                                               ; 1

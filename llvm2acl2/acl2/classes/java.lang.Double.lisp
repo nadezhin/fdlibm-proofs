@@ -7,267 +7,268 @@
     (make-class-decl
      "java/lang/Double"
      '("java/lang/Number")
-     '(
-      "value:D")
-     '(
-      "POSITIVE_INFINITY:D"
-      "NEGATIVE_INFINITY:D"
-      "NaN:D"
-      "MAX_VALUE:D"
-      "MIN_NORMAL:D"
-      "MIN_VALUE:D"
-      "MAX_EXPONENT:I"
-      "MIN_EXPONENT:I"
-      "SIZE:I"
-      "BYTES:I"
-      "TYPE:Ljava/lang/Class;"
-      "serialVersionUID:J")
      '(nil
-       (class (ref -1) "java/lang/Double")                     ; 1
-       (class (ref -1) "java/lang/Byte")                       ; 2
-       (methodref "jdk/internal/math/FloatingDecimal" "toJavaFormatString:(D)Ljava/lang/String;" 2)    ; 3
-       (methodref "java/lang/Double" "isFinite:(D)Z" 2)        ; 4
-       (methodref "java/lang/Double" "toString:(D)Ljava/lang/String;" 2)       ; 5
-       (class (ref -1) "java/lang/StringBuilder")              ; 6
-       (methodref "java/lang/StringBuilder" "<init>:(I)V" 1)   ; 7
-       (methodref "java/lang/Math" "copySign:(DD)D" 4)         ; 8
-       (double #xbff0000000000000) ; -0x1.0p0 -1.0             ; 9
+       (class (ref -1) "java/lang/Double")                      ; 1
+       (class (ref -1) "java/lang/Byte")                        ; 2
+       (methodref "jdk/internal/math/FloatingDecimal" "toJavaFormatString:(D)Ljava/lang/String;" 2)     ; 3
+       (methodref "java/lang/Double" "isFinite:(D)Z" 2)         ; 4
+       (methodref "java/lang/Double" "toString:(D)Ljava/lang/String;" 2)        ; 5
+       (class (ref -1) "java/lang/StringBuilder")               ; 6
+       (methodref "java/lang/StringBuilder" "<init>:(I)V" 1)    ; 7
+       (methodref "java/lang/Math" "copySign:(DD)D" 4)          ; 8
+       (double #xbff0000000000000) ; -0x1.0p0 -1.0              ; 9
        nil
        (string (ref -1) ; "-"
-          45)                                                  ; 11
-       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)  ; 12
+          45)                                                   ; 11
+       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)   ; 12
        (string (ref -1) ; "0x"
-          48 120)                                              ; 13
-       (methodref "java/lang/Math" "abs:(D)D" 2)               ; 14
+          48 120)                                               ; 13
+       (methodref "java/lang/Math" "abs:(D)D" 2)                ; 14
        (string (ref -1) ; "0.0p0"
-          48 46 48 112 48)                                     ; 15
-       (class (ref -1) "jdk/internal/math/DoubleConsts")       ; 16
-       (double #x0010000000000000) ; 0x1.0p-1022 2.2250738585072014E-308       ; 17
+          48 46 48 112 48)                                      ; 15
+       (class (ref -1) "jdk/internal/math/DoubleConsts")        ; 16
+       (double #x0010000000000000) ; 0x1.0p-1022 2.2250738585072014E-308        ; 17
        nil
-       (methodref "java/lang/Double" "doubleToLongBits:(D)J" 2)        ; 19
-       (long 4503599627370495)                                 ; 20
+       (methodref "java/lang/Double" "doubleToLongBits:(D)J" 2) ; 19
+       (long 4503599627370495)                                  ; 20
        nil
-       (long 1152921504606846976)                              ; 22
+       (long 1152921504606846976)                               ; 22
        nil
        (string (ref -1) ; "0."
-          48 46)                                               ; 24
+          48 46)                                                ; 24
        (string (ref -1) ; "1."
-          49 46)                                               ; 25
-       (methodref "java/lang/Long" "toHexString:(J)Ljava/lang/String;" 2)      ; 26
-       (methodref "java/lang/String" "substring:(II)Ljava/lang/String;" 2)     ; 27
+          49 46)                                                ; 25
+       (methodref "java/lang/Long" "toHexString:(J)Ljava/lang/String;" 2)       ; 26
+       (methodref "java/lang/String" "substring:(II)Ljava/lang/String;" 2)      ; 27
        (string (ref -1) ; "0000000000000"
-          48 48 48 48 48 48 48 48 48 48 48 48 48)              ; 28
-       (methodref "java/lang/String" "equals:(Ljava/lang/Object;)Z" 1) ; 29
+          48 48 48 48 48 48 48 48 48 48 48 48 48)               ; 28
+       (methodref "java/lang/String" "equals:(Ljava/lang/Object;)Z" 1)  ; 29
        (string (ref -1) ; "0"
-          48)                                                  ; 30
+          48)                                                   ; 30
        (string (ref -1) ; "0{1,12}$"
-          48 123 49 44 49 50 125 36)                           ; 31
+          48 123 49 44 49 50 125 36)                            ; 31
        (string (ref -1) ; ""
-         )                                                     ; 32
-       (methodref "java/lang/String" "replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" 2)        ; 33
-       (methodref "java/lang/StringBuilder" "append:(C)Ljava/lang/StringBuilder;" 1)   ; 34
-       (methodref "java/lang/Math" "getExponent:(D)I" 2)       ; 35
-       (methodref "java/lang/StringBuilder" "append:(I)Ljava/lang/StringBuilder;" 1)   ; 36
-       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0) ; 37
-       (methodref "java/lang/Double" "parseDouble:(Ljava/lang/String;)D" 1)    ; 38
-       (methodref "java/lang/Double" "<init>:(D)V" 2)          ; 39
-       (methodref "jdk/internal/math/FloatingDecimal" "parseDouble:(Ljava/lang/String;)D" 1)   ; 40
-       (double #x7ff0000000000000) ; Infinity Infinity         ; 41
+         )                                                      ; 32
+       (methodref "java/lang/String" "replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" 2) ; 33
+       (methodref "java/lang/StringBuilder" "append:(C)Ljava/lang/StringBuilder;" 1)    ; 34
+       (methodref "java/lang/Math" "getExponent:(D)I" 2)        ; 35
+       (methodref "java/lang/StringBuilder" "append:(I)Ljava/lang/StringBuilder;" 1)    ; 36
+       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0)  ; 37
+       (methodref "java/lang/Double" "parseDouble:(Ljava/lang/String;)D" 1)     ; 38
+       (methodref "java/lang/Double" "<init>:(D)V" 2)           ; 39
+       (methodref "jdk/internal/math/FloatingDecimal" "parseDouble:(Ljava/lang/String;)D" 1)    ; 40
+       (double #x7ff0000000000000) ; Infinity Infinity          ; 41
        nil
-       (double #xfff0000000000000) ; -Infinity -Infinity       ; 43
+       (double #xfff0000000000000) ; -Infinity -Infinity        ; 43
        nil
-       (double #x7fefffffffffffff) ; 0x1.fffffffffffffp1023 1.7976931348623157E308     ; 45
+       (double #x7fefffffffffffff) ; 0x1.fffffffffffffp1023 1.7976931348623157E308      ; 45
        nil
-       (methodref "java/lang/Number" "<init>:()V" 0)           ; 47
-       (fieldref "java/lang/Double" "value:D" 2)               ; 48
-       (methodref "java/lang/Double" "isNaN:(D)Z" 2)           ; 49
-       (methodref "java/lang/Double" "isInfinite:(D)Z" 2)      ; 50
-       (methodref "java/lang/Double" "hashCode:(D)I" 2)        ; 51
-       (methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2)     ; 52
-       (long 9221120237041090560)                              ; 53
+       (methodref "java/lang/Number" "<init>:()V" 0)            ; 47
+       (fieldref "java/lang/Double" "value:D" 2)                ; 48
+       (methodref "java/lang/Double" "isNaN:(D)Z" 2)            ; 49
+       (methodref "java/lang/Double" "isInfinite:(D)Z" 2)       ; 50
+       (methodref "java/lang/Double" "hashCode:(D)I" 2)         ; 51
+       (methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2)      ; 52
+       (long 9221120237041090560)                               ; 53
        nil
-       (methodref "java/lang/Double" "compare:(DD)I" 4)        ; 55
-       (methodref "java/lang/Math" "max:(DD)D" 4)              ; 56
-       (methodref "java/lang/Math" "min:(DD)D" 4)              ; 57
-       (methodref "java/lang/Double" "compareTo:(Ljava/lang/Double;)I" 1)      ; 58
+       (methodref "java/lang/Double" "compare:(DD)I" 4)         ; 55
+       (methodref "java/lang/Math" "max:(DD)D" 4)               ; 56
+       (methodref "java/lang/Math" "min:(DD)D" 4)               ; 57
+       (methodref "java/lang/Double" "compareTo:(Ljava/lang/Double;)I" 1)       ; 58
        (string (ref -1) ; "double"
-          100 111 117 98 108 101)                              ; 59
-       (methodref "java/lang/Class" "getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;" 1)       ; 60
-       (fieldref "java/lang/Double" "TYPE:Ljava/lang/Class;" 1)        ; 61
-       (class (ref -1) "java/lang/Number")                     ; 62
-       (class (ref -1) "java/lang/Comparable")                 ; 63
-       (utf8)                                                  ; 64
-       (utf8)                                                  ; 65
-       (utf8)                                                  ; 66
-       (utf8)                                                  ; 67
-       (utf8)                                                  ; 68
-       (double #x7ff8000000000000) ; NaN NaN                   ; 69
+          100 111 117 98 108 101)                               ; 59
+       (methodref "java/lang/Class" "getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;" 1)        ; 60
+       (fieldref "java/lang/Double" "TYPE:Ljava/lang/Class;" 1) ; 61
+       (class (ref -1) "java/lang/Number")                      ; 62
+       (class (ref -1) "java/lang/Comparable")                  ; 63
+       (utf8)                                                   ; 64
+       (utf8)                                                   ; 65
+       (utf8)                                                   ; 66
+       (utf8)                                                   ; 67
+       (utf8)                                                   ; 68
+       (double #x7ff8000000000000) ; NaN NaN                    ; 69
        nil
-       (utf8)                                                  ; 71
-       (utf8)                                                  ; 72
-       (utf8)                                                  ; 73
-       (double #x0000000000000001) ; 0x0.0000000000001p-1022 4.9E-324  ; 74
+       (utf8)                                                   ; 71
+       (utf8)                                                   ; 72
+       (utf8)                                                   ; 73
+       (double #x0000000000000001) ; 0x0.0000000000001p-1022 4.9E-324   ; 74
        nil
-       (utf8)                                                  ; 76
-       (utf8)                                                  ; 77
-       (integer 1023)                                          ; 78
-       (utf8)                                                  ; 79
-       (integer -1022)                                         ; 80
-       (utf8)                                                  ; 81
-       (integer 64)                                            ; 82
-       (utf8)                                                  ; 83
-       (integer 8)                                             ; 84
-       (utf8)                                                  ; 85
-       (utf8)                                                  ; 86
-       (utf8)                                                  ; 87
-       (utf8)                                                  ; 88
-       (utf8)                                                  ; 89
-       (utf8)                                                  ; 90
-       (utf8)                                                  ; 91
-       (long -9172774392245257468)                             ; 92
+       (utf8)                                                   ; 76
+       (utf8)                                                   ; 77
+       (integer 1023)                                           ; 78
+       (utf8)                                                   ; 79
+       (integer -1022)                                          ; 80
+       (utf8)                                                   ; 81
+       (integer 64)                                             ; 82
+       (utf8)                                                   ; 83
+       (integer 8)                                              ; 84
+       (utf8)                                                   ; 85
+       (utf8)                                                   ; 86
+       (utf8)                                                   ; 87
+       (utf8)                                                   ; 88
+       (utf8)                                                   ; 89
+       (utf8)                                                   ; 90
+       (utf8)                                                   ; 91
+       (long -9172774392245257468)                              ; 92
        nil
-       (utf8)                                                  ; 94
-       (utf8)                                                  ; 95
-       (utf8)                                                  ; 96
-       (utf8)                                                  ; 97
-       (utf8)                                                  ; 98
-       (utf8)                                                  ; 99
-       (class (ref -1) "java/lang/String")                     ; 100
-       (utf8)                                                  ; 101
-       (utf8)                                                  ; 102
-       (utf8)                                                  ; 103
-       (class (ref -1) "java/lang/NumberFormatException")      ; 104
-       (utf8)                                                  ; 105
-       (utf8)                                                  ; 106
-       (utf8)                                                  ; 107
-       (utf8)                                                  ; 108
-       (utf8)                                                  ; 109
-       (utf8)                                                  ; 110
-       (utf8)                                                  ; 111
-       (utf8)                                                  ; 112
-       (utf8)                                                  ; 113
-       (utf8)                                                  ; 114
-       (utf8)                                                  ; 115
-       (utf8)                                                  ; 116
-       (utf8)                                                  ; 117
-       (utf8)                                                  ; 118
-       (utf8)                                                  ; 119
-       (utf8)                                                  ; 120
-       (utf8)                                                  ; 121
-       (utf8)                                                  ; 122
-       (utf8)                                                  ; 123
-       (utf8)                                                  ; 124
-       (utf8)                                                  ; 125
-       (utf8)                                                  ; 126
-       (utf8)                                                  ; 127
-       (utf8)                                                  ; 128
-       (utf8)                                                  ; 129
-       (utf8)                                                  ; 130
-       (utf8)                                                  ; 131
-       (utf8)                                                  ; 132
-       (utf8)                                                  ; 133
-       (utf8)                                                  ; 134
-       (utf8)                                                  ; 135
-       (utf8)                                                  ; 136
-       (utf8)                                                  ; 137
-       (utf8)                                                  ; 138
-       (utf8)                                                  ; 139
-       (utf8)                                                  ; 140
-       (utf8)                                                  ; 141
-       (utf8)                                                  ; 142
-       (utf8)                                                  ; 143
-       (utf8)                                                  ; 144
-       (utf8)                                                  ; 145
-       (utf8)                                                  ; 146
-       (utf8)                                                  ; 147
-       (utf8)                                                  ; 148
-       (utf8)                                                  ; 149
-       (utf8)                                                  ; 150
-       (utf8)                                                  ; 151
-       (utf8)                                                  ; 152
-       (utf8)                                                  ; 153
-       (utf8)                                                  ; 154
-       (utf8)                                                  ; 155
-       (class (ref -1) "jdk/internal/math/FloatingDecimal")    ; 156
-       (name-and-type "toJavaFormatString:(D)Ljava/lang/String;")      ; 157
-       (name-and-type "isFinite:(D)Z")                         ; 158
-       (name-and-type "toString:(D)Ljava/lang/String;")        ; 159
-       (utf8)                                                  ; 160
-       (name-and-type "<init>:(I)V")                           ; 161
-       (class (ref -1) "java/lang/Math")                       ; 162
-       (name-and-type "copySign:(DD)D")                        ; 163
-       (utf8)                                                  ; 164
-       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")  ; 165
-       (utf8)                                                  ; 166
-       (name-and-type "abs:(D)D")                              ; 167
-       (utf8)                                                  ; 168
-       (utf8)                                                  ; 169
-       (name-and-type "doubleToLongBits:(D)J")                 ; 170
-       (utf8)                                                  ; 171
-       (utf8)                                                  ; 172
-       (class (ref -1) "java/lang/Long")                       ; 173
-       (name-and-type "toHexString:(J)Ljava/lang/String;")     ; 174
-       (name-and-type "substring:(II)Ljava/lang/String;")      ; 175
-       (utf8)                                                  ; 176
-       (name-and-type "equals:(Ljava/lang/Object;)Z")          ; 177
-       (utf8)                                                  ; 178
-       (utf8)                                                  ; 179
-       (utf8)                                                  ; 180
-       (name-and-type "replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;") ; 181
-       (name-and-type "append:(C)Ljava/lang/StringBuilder;")   ; 182
-       (name-and-type "getExponent:(D)I")                      ; 183
-       (name-and-type "append:(I)Ljava/lang/StringBuilder;")   ; 184
-       (name-and-type "toString:()Ljava/lang/String;")         ; 185
-       (name-and-type "parseDouble:(Ljava/lang/String;)D")     ; 186
-       (name-and-type "<init>:(D)V")                           ; 187
-       (name-and-type "<init>:()V")                            ; 188
-       (name-and-type "value:D")                               ; 189
-       (name-and-type "isNaN:(D)Z")                            ; 190
-       (name-and-type "isInfinite:(D)Z")                       ; 191
-       (name-and-type "hashCode:(D)I")                         ; 192
-       (name-and-type "doubleToRawLongBits:(D)J")              ; 193
-       (name-and-type "compare:(DD)I")                         ; 194
-       (name-and-type "max:(DD)D")                             ; 195
-       (name-and-type "min:(DD)D")                             ; 196
-       (name-and-type "compareTo:(Ljava/lang/Double;)I")       ; 197
-       (utf8)                                                  ; 198
-       (class (ref -1) "java/lang/Class")                      ; 199
-       (name-and-type "getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;")       ; 200
-       (name-and-type "TYPE:Ljava/lang/Class;")                ; 201
-       (utf8)                                                  ; 202
-       (utf8)                                                  ; 203
-       (utf8)                                                  ; 204
-       (utf8)                                                  ; 205
-       (utf8)                                                  ; 206
-       (utf8)                                                  ; 207
-       (utf8)                                                  ; 208
-       (utf8)                                                  ; 209
-       (utf8)                                                  ; 210
-       (utf8)                                                  ; 211
-       (utf8)                                                  ; 212
-       (utf8)                                                  ; 213
-       (utf8)                                                  ; 214
-       (utf8)                                                  ; 215
-       (utf8)                                                  ; 216
-       (utf8)                                                  ; 217
-       (utf8)                                                  ; 218
-       (utf8)                                                  ; 219
-       (utf8)                                                  ; 220
-       (utf8)                                                  ; 221
-       (utf8)                                                  ; 222
-       (utf8)                                                  ; 223
-       (utf8)                                                  ; 224
-       (utf8)                                                  ; 225
-       (utf8)                                                  ; 226
+       (utf8)                                                   ; 94
+       (utf8)                                                   ; 95
+       (utf8)                                                   ; 96
+       (utf8)                                                   ; 97
+       (utf8)                                                   ; 98
+       (utf8)                                                   ; 99
+       (class (ref -1) "java/lang/String")                      ; 100
+       (utf8)                                                   ; 101
+       (utf8)                                                   ; 102
+       (utf8)                                                   ; 103
+       (class (ref -1) "java/lang/NumberFormatException")       ; 104
+       (utf8)                                                   ; 105
+       (utf8)                                                   ; 106
+       (utf8)                                                   ; 107
+       (utf8)                                                   ; 108
+       (utf8)                                                   ; 109
+       (utf8)                                                   ; 110
+       (utf8)                                                   ; 111
+       (utf8)                                                   ; 112
+       (utf8)                                                   ; 113
+       (utf8)                                                   ; 114
+       (utf8)                                                   ; 115
+       (utf8)                                                   ; 116
+       (utf8)                                                   ; 117
+       (utf8)                                                   ; 118
+       (utf8)                                                   ; 119
+       (utf8)                                                   ; 120
+       (utf8)                                                   ; 121
+       (utf8)                                                   ; 122
+       (utf8)                                                   ; 123
+       (utf8)                                                   ; 124
+       (utf8)                                                   ; 125
+       (utf8)                                                   ; 126
+       (utf8)                                                   ; 127
+       (utf8)                                                   ; 128
+       (utf8)                                                   ; 129
+       (utf8)                                                   ; 130
+       (utf8)                                                   ; 131
+       (utf8)                                                   ; 132
+       (utf8)                                                   ; 133
+       (utf8)                                                   ; 134
+       (utf8)                                                   ; 135
+       (utf8)                                                   ; 136
+       (utf8)                                                   ; 137
+       (utf8)                                                   ; 138
+       (utf8)                                                   ; 139
+       (utf8)                                                   ; 140
+       (utf8)                                                   ; 141
+       (utf8)                                                   ; 142
+       (utf8)                                                   ; 143
+       (utf8)                                                   ; 144
+       (utf8)                                                   ; 145
+       (utf8)                                                   ; 146
+       (utf8)                                                   ; 147
+       (utf8)                                                   ; 148
+       (utf8)                                                   ; 149
+       (utf8)                                                   ; 150
+       (utf8)                                                   ; 151
+       (utf8)                                                   ; 152
+       (utf8)                                                   ; 153
+       (utf8)                                                   ; 154
+       (utf8)                                                   ; 155
+       (class (ref -1) "jdk/internal/math/FloatingDecimal")     ; 156
+       (name-and-type "toJavaFormatString:(D)Ljava/lang/String;")       ; 157
+       (name-and-type "isFinite:(D)Z")                          ; 158
+       (name-and-type "toString:(D)Ljava/lang/String;")         ; 159
+       (utf8)                                                   ; 160
+       (name-and-type "<init>:(I)V")                            ; 161
+       (class (ref -1) "java/lang/Math")                        ; 162
+       (name-and-type "copySign:(DD)D")                         ; 163
+       (utf8)                                                   ; 164
+       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")   ; 165
+       (utf8)                                                   ; 166
+       (name-and-type "abs:(D)D")                               ; 167
+       (utf8)                                                   ; 168
+       (utf8)                                                   ; 169
+       (name-and-type "doubleToLongBits:(D)J")                  ; 170
+       (utf8)                                                   ; 171
+       (utf8)                                                   ; 172
+       (class (ref -1) "java/lang/Long")                        ; 173
+       (name-and-type "toHexString:(J)Ljava/lang/String;")      ; 174
+       (name-and-type "substring:(II)Ljava/lang/String;")       ; 175
+       (utf8)                                                   ; 176
+       (name-and-type "equals:(Ljava/lang/Object;)Z")           ; 177
+       (utf8)                                                   ; 178
+       (utf8)                                                   ; 179
+       (utf8)                                                   ; 180
+       (name-and-type "replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;")  ; 181
+       (name-and-type "append:(C)Ljava/lang/StringBuilder;")    ; 182
+       (name-and-type "getExponent:(D)I")                       ; 183
+       (name-and-type "append:(I)Ljava/lang/StringBuilder;")    ; 184
+       (name-and-type "toString:()Ljava/lang/String;")          ; 185
+       (name-and-type "parseDouble:(Ljava/lang/String;)D")      ; 186
+       (name-and-type "<init>:(D)V")                            ; 187
+       (name-and-type "<init>:()V")                             ; 188
+       (name-and-type "value:D")                                ; 189
+       (name-and-type "isNaN:(D)Z")                             ; 190
+       (name-and-type "isInfinite:(D)Z")                        ; 191
+       (name-and-type "hashCode:(D)I")                          ; 192
+       (name-and-type "doubleToRawLongBits:(D)J")               ; 193
+       (name-and-type "compare:(DD)I")                          ; 194
+       (name-and-type "max:(DD)D")                              ; 195
+       (name-and-type "min:(DD)D")                              ; 196
+       (name-and-type "compareTo:(Ljava/lang/Double;)I")        ; 197
+       (utf8)                                                   ; 198
+       (class (ref -1) "java/lang/Class")                       ; 199
+       (name-and-type "getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;")        ; 200
+       (name-and-type "TYPE:Ljava/lang/Class;")                 ; 201
+       (utf8)                                                   ; 202
+       (utf8)                                                   ; 203
+       (utf8)                                                   ; 204
+       (utf8)                                                   ; 205
+       (utf8)                                                   ; 206
+       (utf8)                                                   ; 207
+       (utf8)                                                   ; 208
+       (utf8)                                                   ; 209
+       (utf8)                                                   ; 210
+       (utf8)                                                   ; 211
+       (utf8)                                                   ; 212
+       (utf8)                                                   ; 213
+       (utf8)                                                   ; 214
+       (utf8)                                                   ; 215
+       (utf8)                                                   ; 216
+       (utf8)                                                   ; 217
+       (utf8)                                                   ; 218
+       (utf8)                                                   ; 219
+       (utf8)                                                   ; 220
+       (utf8)                                                   ; 221
+       (utf8)                                                   ; 222
+       (utf8)                                                   ; 223
+       (utf8)                                                   ; 224
+       (utf8)                                                   ; 225
+       (utf8)                                                   ; 226
+      )
+     #x00000031                                                 ; PUBLIC FINAL SUPER
+     '(
+       ("POSITIVE_INFINITY:D" #x00000019)                       ; PUBLIC STATIC FINAL
+       ("NEGATIVE_INFINITY:D" #x00000019)                       ; PUBLIC STATIC FINAL
+       ("NaN:D" #x00000019)                                     ; PUBLIC STATIC FINAL
+       ("MAX_VALUE:D" #x00000019)                               ; PUBLIC STATIC FINAL
+       ("MIN_NORMAL:D" #x00000019)                              ; PUBLIC STATIC FINAL
+       ("MIN_VALUE:D" #x00000019)                               ; PUBLIC STATIC FINAL
+       ("MAX_EXPONENT:I" #x00000019)                            ; PUBLIC STATIC FINAL
+       ("MIN_EXPONENT:I" #x00000019)                            ; PUBLIC STATIC FINAL
+       ("SIZE:I" #x00000019)                                    ; PUBLIC STATIC FINAL
+       ("BYTES:I" #x00000019)                                   ; PUBLIC STATIC FINAL
+       ("TYPE:Ljava/lang/Class;" #x00000019)                    ; PUBLIC STATIC FINAL
+       ("value:D" #x00000012)                                   ; PRIVATE FINAL
+       ("serialVersionUID:J" #x0000001a)                        ; PRIVATE STATIC FINAL
       )
      (list
-      '("toString:(D)Ljava/lang/String;" nil
+      '("toString:(D)Ljava/lang/String;" #x00000009             ; PUBLIC STATIC
         ; line_number #204
         (dload_0)                                               ; 0
         (invokestatic 3)                                        ; 1 jdk.internal.math.FloatingDecimal.toJavaFormatString:(D)Ljava/lang/String;
         (areturn)                                               ; 4
        )
-      '("toHexString:(D)Ljava/lang/String;" nil
+      '("toHexString:(D)Ljava/lang/String;" #x00000009          ; PUBLIC STATIC
         ; line_number #287
         (dload_0)                                               ; 0
         (invokestatic 4)                                        ; 1 java.lang.Double.isFinite:(D)Z
@@ -387,7 +388,7 @@
         (invokevirtual 37)                                      ; 182 java.lang.StringBuilder.toString:()Ljava/lang/String;
         (areturn)                                               ; 185
        )
-      '("valueOf:(Ljava/lang/String;)Ljava/lang/Double;" nil
+      '("valueOf:(Ljava/lang/String;)Ljava/lang/Double;" #x00000009     ; PUBLIC STATIC
         ; line_number #502
         (new 1)                                                 ; 0 class java.lang.Double
         (dup)                                                   ; 3
@@ -396,7 +397,7 @@
         (invokespecial 39)                                      ; 8 java.lang.Double.<init>:(D)V
         (areturn)                                               ; 11
        )
-      '("valueOf:(D)Ljava/lang/Double;" nil
+      '("valueOf:(D)Ljava/lang/Double;" #x00000009              ; PUBLIC STATIC
         ; line_number #520
         (new 1)                                                 ; 0 class java.lang.Double
         (dup)                                                   ; 3
@@ -404,13 +405,13 @@
         (invokespecial 39)                                      ; 5 java.lang.Double.<init>:(D)V
         (areturn)                                               ; 8
        )
-      '("parseDouble:(Ljava/lang/String;)D" nil
+      '("parseDouble:(Ljava/lang/String;)D" #x00000009          ; PUBLIC STATIC
         ; line_number #539
         (aload_0)                                               ; 0
         (invokestatic 40)                                       ; 1 jdk.internal.math.FloatingDecimal.parseDouble:(Ljava/lang/String;)D
         (dreturn)                                               ; 4
        )
-      '("isNaN:(D)Z" nil
+      '("isNaN:(D)Z" #x00000009                                 ; PUBLIC STATIC
         ; line_number #551
         (dload_0)                                               ; 0
         (dload_0)                                               ; 1
@@ -421,7 +422,7 @@
         (iconst_0)                                              ; 10
         (ireturn)                                               ; 11
        )
-      '("isInfinite:(D)Z" nil
+      '("isInfinite:(D)Z" #x00000009                            ; PUBLIC STATIC
         ; line_number #563
         (dload_0)                                               ; 0
         (ldc2_w 41)                                             ; 1 Infinityd
@@ -436,7 +437,7 @@
         (iconst_0)                                              ; 20
         (ireturn)                                               ; 21
        )
-      '("isFinite:(D)Z" nil
+      '("isFinite:(D)Z" #x00000009                              ; PUBLIC STATIC
         ; line_number #577
         (dload_0)                                               ; 0
         (invokestatic 14)                                       ; 1 java.lang.Math.abs:(D)D
@@ -448,7 +449,7 @@
         (iconst_0)                                              ; 15
         (ireturn)                                               ; 16
        )
-      '("<init>:(D)V" nil
+      '("<init>:(D)V" #x00000001                                ; PUBLIC
         ; line_number #593
         (aload_0)                                               ; 0
         (invokespecial 47)                                      ; 1 java.lang.Number.<init>:()V
@@ -459,7 +460,7 @@
         ; line_number #595
         (return)                                                ; 9
        )
-      '("<init>:(Ljava/lang/String;)V" nil
+      '("<init>:(Ljava/lang/String;)V" #x00000001               ; PUBLIC
         ; line_number #608
         (aload_0)                                               ; 0
         (invokespecial 47)                                      ; 1 java.lang.Number.<init>:()V
@@ -471,28 +472,28 @@
         ; line_number #610
         (return)                                                ; 12
        )
-      '("isNaN:()Z" nil
+      '("isNaN:()Z" #x00000001                                  ; PUBLIC
         ; line_number #620
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (invokestatic 49)                                       ; 4 java.lang.Double.isNaN:(D)Z
         (ireturn)                                               ; 7
        )
-      '("isInfinite:()Z" nil
+      '("isInfinite:()Z" #x00000001                             ; PUBLIC
         ; line_number #632
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (invokestatic 50)                                       ; 4 java.lang.Double.isInfinite:(D)Z
         (ireturn)                                               ; 7
        )
-      '("toString:()Ljava/lang/String;" nil
+      '("toString:()Ljava/lang/String;" #x00000001              ; PUBLIC
         ; line_number #645
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (invokestatic 5)                                        ; 4 java.lang.Double.toString:(D)Ljava/lang/String;
         (areturn)                                               ; 7
        )
-      '("byteValue:()B" nil
+      '("byteValue:()B" #x00000001                              ; PUBLIC
         ; line_number #658
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
@@ -500,7 +501,7 @@
         (i2b)                                                   ; 5
         (ireturn)                                               ; 6
        )
-      '("shortValue:()S" nil
+      '("shortValue:()S" #x00000001                             ; PUBLIC
         ; line_number #671
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
@@ -508,41 +509,41 @@
         (i2s)                                                   ; 5
         (ireturn)                                               ; 6
        )
-      '("intValue:()I" nil
+      '("intValue:()I" #x00000001                               ; PUBLIC
         ; line_number #683
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (d2i)                                                   ; 4
         (ireturn)                                               ; 5
        )
-      '("longValue:()J" nil
+      '("longValue:()J" #x00000001                              ; PUBLIC
         ; line_number #695
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (d2l)                                                   ; 4
         (lreturn)                                               ; 5
        )
-      '("floatValue:()F" nil
+      '("floatValue:()F" #x00000001                             ; PUBLIC
         ; line_number #708
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (d2f)                                                   ; 4
         (freturn)                                               ; 5
        )
-      '("doubleValue:()D" nil
+      '("doubleValue:()D" #x00000001                            ; PUBLIC
         ; line_number #718
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (dreturn)                                               ; 4
        )
-      '("hashCode:()I" nil
+      '("hashCode:()I" #x00000001                               ; PUBLIC
         ; line_number #744
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
         (invokestatic 51)                                       ; 4 java.lang.Double.hashCode:(D)I
         (ireturn)                                               ; 7
        )
-      '("hashCode:(D)I" nil
+      '("hashCode:(D)I" #x00000009                              ; PUBLIC STATIC
         ; line_number #756
         (dload_0)                                               ; 0
         (invokestatic 19)                                       ; 1 java.lang.Double.doubleToLongBits:(D)J
@@ -556,7 +557,7 @@
         (l2i)                                                   ; 11
         (ireturn)                                               ; 12
        )
-      '("equals:(Ljava/lang/Object;)Z" nil
+      '("equals:(Ljava/lang/Object;)Z" #x00000001               ; PUBLIC
         ; line_number #800
         (aload_1)                                               ; 0
         (instanceof 1)                                          ; 1 class java.lang.Double
@@ -578,7 +579,7 @@
         ; line_number #800
         (ireturn)                                               ; 33
        )
-      '("doubleToLongBits:(D)J" nil
+      '("doubleToLongBits:(D)J" #x00000009                      ; PUBLIC STATIC
         ; line_number #839
         (dload_0)                                               ; 0
         (invokestatic 49)                                       ; 1 java.lang.Double.isNaN:(D)Z
@@ -591,13 +592,11 @@
         (ldc2_w 53)                                             ; 12 9221120237041090560l
         (lreturn)                                               ; 15
        )
-      '("doubleToRawLongBits:(D)J" nil
-        ; native method
+      '("doubleToRawLongBits:(D)J" #x00000109                   ; PUBLIC STATIC NATIVE
        )
-      '("longBitsToDouble:(J)D" nil
-        ; native method
+      '("longBitsToDouble:(J)D" #x00000109                      ; PUBLIC STATIC NATIVE
        )
-      '("compareTo:(Ljava/lang/Double;)I" nil
+      '("compareTo:(Ljava/lang/Double;)I" #x00000001            ; PUBLIC
         ; line_number #979
         (aload_0)                                               ; 0
         (getfield 48)                                           ; 1 java.lang.Double.value:D
@@ -606,7 +605,7 @@
         (invokestatic 55)                                       ; 8 java.lang.Double.compare:(DD)I
         (ireturn)                                               ; 11
        )
-      '("compare:(DD)I" nil
+      '("compare:(DD)I" #x00000009                              ; PUBLIC STATIC
         ; line_number #1001
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
@@ -650,28 +649,28 @@
         ; line_number #1010
         (ireturn)                                               ; 53
        )
-      '("sum:(DD)D" nil
+      '("sum:(DD)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1026
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (dadd)                                                  ; 2
         (dreturn)                                               ; 3
        )
-      '("max:(DD)D" nil
+      '("max:(DD)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1040
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 56)                                       ; 2 java.lang.Math.max:(DD)D
         (dreturn)                                               ; 5
        )
-      '("min:(DD)D" nil
+      '("min:(DD)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1054
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 57)                                       ; 2 java.lang.Math.min:(DD)D
         (dreturn)                                               ; 5
        )
-      '("compareTo:(Ljava/lang/Object;)I" nil
+      '("compareTo:(Ljava/lang/Object;)I" #x00001041            ; PUBLIC BRIDGE SYNTHETIC
         ; line_number #49
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -679,7 +678,7 @@
         (invokevirtual 58)                                      ; 5 java.lang.Double.compareTo:(Ljava/lang/Double;)I
         (ireturn)                                               ; 8
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #139
         (ldc 59)                                                ; 0 "double"
         (invokestatic 60)                                       ; 2 java.lang.Class.getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;

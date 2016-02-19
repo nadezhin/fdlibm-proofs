@@ -7,107 +7,105 @@
     (make-class-decl
      "java/lang/Object"
      ()
-     '()
-     '()
      '(nil
-       (class (ref -1) "java/lang/StringBuilder")              ; 1
-       (methodref "java/lang/StringBuilder" "<init>:()V" 0)    ; 2
-       (methodref "java/lang/Object" "getClass:()Ljava/lang/Class;" 0) ; 3
-       (methodref "java/lang/Class" "getName:()Ljava/lang/String;" 0)  ; 4
-       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)  ; 5
+       (class (ref -1) "java/lang/StringBuilder")               ; 1
+       (methodref "java/lang/StringBuilder" "<init>:()V" 0)     ; 2
+       (methodref "java/lang/Object" "getClass:()Ljava/lang/Class;" 0)  ; 3
+       (methodref "java/lang/Class" "getName:()Ljava/lang/String;" 0)   ; 4
+       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)   ; 5
        (string (ref -1) ; "@"
-          64)                                                  ; 6
-       (methodref "java/lang/Object" "hashCode:()I" 0)         ; 7
-       (methodref "java/lang/Integer" "toHexString:(I)Ljava/lang/String;" 1)   ; 8
-       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0) ; 9
-       (class (ref -1) "java/lang/IllegalArgumentException")   ; 10
+          64)                                                   ; 6
+       (methodref "java/lang/Object" "hashCode:()I" 0)          ; 7
+       (methodref "java/lang/Integer" "toHexString:(I)Ljava/lang/String;" 1)    ; 8
+       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0)  ; 9
+       (class (ref -1) "java/lang/IllegalArgumentException")    ; 10
        (string (ref -1) ; "timeout value is negative"
-          116 105 109 101 111 117 116 32 118 97 108 117 101 32 105 115 32 110 101 103 97 116 105 118 101)      ; 11
-       (methodref "java/lang/IllegalArgumentException" "<init>:(Ljava/lang/String;)V" 1)       ; 12
-       (integer 999999)                                        ; 13
+          116 105 109 101 111 117 116 32 118 97 108 117 101 32 105 115 32 110 101 103 97 116 105 118 101)       ; 11
+       (methodref "java/lang/IllegalArgumentException" "<init>:(Ljava/lang/String;)V" 1)        ; 12
+       (integer 999999)                                         ; 13
        (string (ref -1) ; "nanosecond timeout value out of range"
-          110 97 110 111 115 101 99 111 110 100 32 116 105 109 101 111 117 116 32 118 97 108 117 101 32 111 117 116 32 111 102 32 114 97 110 103 101)  ; 14
-       (methodref "java/lang/Object" "wait:(J)V" 2)            ; 15
-       (methodref "java/lang/Object" "registerNatives:()V" 0)  ; 16
-       (class (ref -1) "java/lang/Object")                     ; 17
-       (utf8)                                                  ; 18
-       (utf8)                                                  ; 19
-       (utf8)                                                  ; 20
-       (utf8)                                                  ; 21
-       (utf8)                                                  ; 22
-       (utf8)                                                  ; 23
-       (utf8)                                                  ; 24
-       (utf8)                                                  ; 25
-       (utf8)                                                  ; 26
-       (utf8)                                                  ; 27
-       (utf8)                                                  ; 28
-       (utf8)                                                  ; 29
-       (utf8)                                                  ; 30
-       (utf8)                                                  ; 31
-       (utf8)                                                  ; 32
-       (utf8)                                                  ; 33
-       (utf8)                                                  ; 34
-       (utf8)                                                  ; 35
-       (utf8)                                                  ; 36
-       (class (ref -1) "java/lang/CloneNotSupportedException") ; 37
-       (utf8)                                                  ; 38
-       (utf8)                                                  ; 39
-       (utf8)                                                  ; 40
-       (utf8)                                                  ; 41
-       (utf8)                                                  ; 42
-       (utf8)                                                  ; 43
-       (class (ref -1) "java/lang/InterruptedException")       ; 44
-       (utf8)                                                  ; 45
-       (utf8)                                                  ; 46
-       (class (ref -1) "java/lang/Throwable")                  ; 47
-       (utf8)                                                  ; 48
-       (utf8)                                                  ; 49
-       (utf8)                                                  ; 50
-       (utf8)                                                  ; 51
-       (name-and-type "<init>:()V")                            ; 52
-       (name-and-type "getClass:()Ljava/lang/Class;")          ; 53
-       (class (ref -1) "java/lang/Class")                      ; 54
-       (name-and-type "getName:()Ljava/lang/String;")          ; 55
-       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")  ; 56
-       (utf8)                                                  ; 57
-       (name-and-type "hashCode:()I")                          ; 58
-       (class (ref -1) "java/lang/Integer")                    ; 59
-       (name-and-type "toHexString:(I)Ljava/lang/String;")     ; 60
-       (name-and-type "toString:()Ljava/lang/String;")         ; 61
-       (utf8)                                                  ; 62
-       (utf8)                                                  ; 63
-       (name-and-type "<init>:(Ljava/lang/String;)V")          ; 64
-       (utf8)                                                  ; 65
-       (name-and-type "wait:(J)V")                             ; 66
-       (name-and-type "registerNatives:()V")                   ; 67
-       (utf8)                                                  ; 68
-       (utf8)                                                  ; 69
-       (utf8)                                                  ; 70
-       (utf8)                                                  ; 71
-       (utf8)                                                  ; 72
-       (utf8)                                                  ; 73
-       (utf8)                                                  ; 74
-       (utf8)                                                  ; 75
-       (utf8)                                                  ; 76
-       (utf8)                                                  ; 77
-       (utf8)                                                  ; 78
-       (utf8)                                                  ; 79
+          110 97 110 111 115 101 99 111 110 100 32 116 105 109 101 111 117 116 32 118 97 108 117 101 32 111 117 116 32 111 102 32 114 97 110 103 101)   ; 14
+       (methodref "java/lang/Object" "wait:(J)V" 2)             ; 15
+       (methodref "java/lang/Object" "registerNatives:()V" 0)   ; 16
+       (class (ref -1) "java/lang/Object")                      ; 17
+       (utf8)                                                   ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (utf8)                                                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (utf8)                                                   ; 26
+       (utf8)                                                   ; 27
+       (utf8)                                                   ; 28
+       (utf8)                                                   ; 29
+       (utf8)                                                   ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (utf8)                                                   ; 33
+       (utf8)                                                   ; 34
+       (utf8)                                                   ; 35
+       (utf8)                                                   ; 36
+       (class (ref -1) "java/lang/CloneNotSupportedException")  ; 37
+       (utf8)                                                   ; 38
+       (utf8)                                                   ; 39
+       (utf8)                                                   ; 40
+       (utf8)                                                   ; 41
+       (utf8)                                                   ; 42
+       (utf8)                                                   ; 43
+       (class (ref -1) "java/lang/InterruptedException")        ; 44
+       (utf8)                                                   ; 45
+       (utf8)                                                   ; 46
+       (class (ref -1) "java/lang/Throwable")                   ; 47
+       (utf8)                                                   ; 48
+       (utf8)                                                   ; 49
+       (utf8)                                                   ; 50
+       (utf8)                                                   ; 51
+       (name-and-type "<init>:()V")                             ; 52
+       (name-and-type "getClass:()Ljava/lang/Class;")           ; 53
+       (class (ref -1) "java/lang/Class")                       ; 54
+       (name-and-type "getName:()Ljava/lang/String;")           ; 55
+       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")   ; 56
+       (utf8)                                                   ; 57
+       (name-and-type "hashCode:()I")                           ; 58
+       (class (ref -1) "java/lang/Integer")                     ; 59
+       (name-and-type "toHexString:(I)Ljava/lang/String;")      ; 60
+       (name-and-type "toString:()Ljava/lang/String;")          ; 61
+       (utf8)                                                   ; 62
+       (utf8)                                                   ; 63
+       (name-and-type "<init>:(Ljava/lang/String;)V")           ; 64
+       (utf8)                                                   ; 65
+       (name-and-type "wait:(J)V")                              ; 66
+       (name-and-type "registerNatives:()V")                    ; 67
+       (utf8)                                                   ; 68
+       (utf8)                                                   ; 69
+       (utf8)                                                   ; 70
+       (utf8)                                                   ; 71
+       (utf8)                                                   ; 72
+       (utf8)                                                   ; 73
+       (utf8)                                                   ; 74
+       (utf8)                                                   ; 75
+       (utf8)                                                   ; 76
+       (utf8)                                                   ; 77
+       (utf8)                                                   ; 78
+       (utf8)                                                   ; 79
+      )
+     #x00000021                                                 ; PUBLIC SUPER
+     '(
       )
      (list
-      '("registerNatives:()V" nil
-        ; native method
+      '("registerNatives:()V" #x0000010a                        ; PRIVATE STATIC NATIVE
        )
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000001                                 ; PUBLIC
         ; line_number #50
         (return)                                                ; 0
        )
-      '("getClass:()Ljava/lang/Class;" nil
-        ; native method
+      '("getClass:()Ljava/lang/Class;" #x00000111               ; PUBLIC FINAL NATIVE
        )
-      '("hashCode:()I" nil
-        ; native method
+      '("hashCode:()I" #x00000101                               ; PUBLIC NATIVE
        )
-      '("equals:(Ljava/lang/Object;)Z" nil
+      '("equals:(Ljava/lang/Object;)Z" #x00000001               ; PUBLIC
         ; line_number #158
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -117,10 +115,9 @@
         (iconst_0)                                              ; 9
         (ireturn)                                               ; 10
        )
-      '("clone:()Ljava/lang/Object;" nil
-        ; native method
+      '("clone:()Ljava/lang/Object;" #x00000104                 ; PROTECTED NATIVE
        )
-      '("toString:()Ljava/lang/String;" nil
+      '("toString:()Ljava/lang/String;" #x00000001              ; PUBLIC
         ; line_number #246
         (new 1)                                                 ; 0 class java.lang.StringBuilder
         (dup)                                                   ; 3
@@ -138,16 +135,13 @@
         (invokevirtual 9)                                       ; 32 java.lang.StringBuilder.toString:()Ljava/lang/String;
         (areturn)                                               ; 35
        )
-      '("notify:()V" nil
-        ; native method
+      '("notify:()V" #x00000111                                 ; PUBLIC FINAL NATIVE
        )
-      '("notifyAll:()V" nil
-        ; native method
+      '("notifyAll:()V" #x00000111                              ; PUBLIC FINAL NATIVE
        )
-      '("wait:(J)V" nil
-        ; native method
+      '("wait:(J)V" #x00000111                                  ; PUBLIC FINAL NATIVE
        )
-      '("wait:(JI)V" nil
+      '("wait:(JI)V" #x00000011                                 ; PUBLIC FINAL
         ; line_number #461
         (lload_1)                                               ; 0
         (lconst_0)                                              ; 1
@@ -186,7 +180,7 @@
         ; line_number #475
         (return)                                                ; 49
        )
-      '("wait:()V" nil
+      '("wait:()V" #x00000011                                   ; PUBLIC FINAL
         ; line_number #516
         (aload_0)                                               ; 0
         (lconst_0)                                              ; 1
@@ -194,11 +188,11 @@
         ; line_number #517
         (return)                                                ; 5
        )
-      '("finalize:()V" nil
+      '("finalize:()V" #x00000004                               ; PROTECTED
         ; line_number #569
         (return)                                                ; 0
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #43
         (invokestatic 16)                                       ; 0 java.lang.Object.registerNatives:()V
         ; line_number #44

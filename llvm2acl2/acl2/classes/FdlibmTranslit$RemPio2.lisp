@@ -7,224 +7,225 @@
     (make-class-decl
      "FdlibmTranslit$RemPio2"
      '("java/lang/Object")
-     '()
-     '(
-      "two_over_pi:[I"
-      "npio2_hw:[I"
-      "zero:D"
-      "half:D"
-      "two24:D"
-      "invpio2:D"
-      "pio2_1:D"
-      "pio2_1t:D"
-      "pio2_2:D"
-      "pio2_2t:D"
-      "pio2_3:D"
-      "pio2_3t:D")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$300:()D" 0)         ; 2
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 3
-       (integer 2147483647)                                    ; 4
-       (integer 1072243195)                                    ; 5
-       (integer 1073928572)                                    ; 6
-       (class (ref -1) "FdlibmTranslit$RemPio2")               ; 7
-       (double #x3ff921fb54400000) ; 0x1.921fb544p0 1.5707963267341256 ; 8
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$300:()D" 0)          ; 2
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 3
+       (integer 2147483647)                                     ; 4
+       (integer 1072243195)                                     ; 5
+       (integer 1073928572)                                     ; 6
+       (class (ref -1) "FdlibmTranslit$RemPio2")                ; 7
+       (double #x3ff921fb54400000) ; 0x1.921fb544p0 1.5707963267341256  ; 8
        nil
-       (integer 1073291771)                                    ; 10
-       (double #x3dd0b4611a626331) ; 0x1.0b4611a626331p-34 6.077100506506192E-11       ; 11
+       (integer 1073291771)                                     ; 10
+       (double #x3dd0b4611a626331) ; 0x1.0b4611a626331p-34 6.077100506506192E-11        ; 11
        nil
-       (double #x3dd0b4611a600000) ; 0x1.0b4611a6p-34 6.077100506303966E-11    ; 13
+       (double #x3dd0b4611a600000) ; 0x1.0b4611a6p-34 6.077100506303966E-11     ; 13
        nil
-       (double #x3ba3198a2e037073) ; 0x1.3198a2e037073p-69 2.0222662487959506E-21      ; 15
+       (double #x3ba3198a2e037073) ; 0x1.3198a2e037073p-69 2.0222662487959506E-21       ; 15
        nil
-       (integer 1094263291)                                    ; 17
-       (methodref "FdlibmTranslit$Fabs" "compute:(D)D" 2)      ; 18
-       (double #x3fe45f306dc9c883) ; 0x1.45f306dc9c883p-1 0.6366197723675814   ; 19
+       (integer 1094263291)                                     ; 17
+       (methodref "FdlibmTranslit$Fabs" "compute:(D)D" 2)       ; 18
+       (double #x3fe45f306dc9c883) ; 0x1.45f306dc9c883p-1 0.6366197723675814    ; 19
        nil
-       (double #x3fe0000000000000) ; 0x1.0p-1 0.5              ; 21
+       (double #x3fe0000000000000) ; 0x1.0p-1 0.5               ; 21
        nil
-       (fieldref "FdlibmTranslit$RemPio2" "npio2_hw:[I" 1)     ; 23
-       (double #x3ba3198a2e000000) ; 0x1.3198a2ep-69 2.0222662487111665E-21    ; 24
+       (fieldref "FdlibmTranslit$RemPio2" "npio2_hw:[I" 1)      ; 23
+       (double #x3ba3198a2e000000) ; 0x1.3198a2ep-69 2.0222662487111665E-21     ; 24
        nil
-       (double #x397b839a252049c1) ; 0x1.b839a252049c1p-104 8.4784276603689E-32        ; 26
+       (double #x397b839a252049c1) ; 0x1.b839a252049c1p-104 8.4784276603689E-32 ; 26
        nil
-       (integer 2146435072)                                    ; 28
-       (methodref "FdlibmTranslit" "access$100:(D)I" 2)        ; 29
-       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)       ; 30
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)       ; 31
-       (double #x4170000000000000) ; 0x1.0p24 1.6777216E7      ; 32
+       (integer 2146435072)                                     ; 28
+       (methodref "FdlibmTranslit" "access$100:(D)I" 2)         ; 29
+       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)        ; 30
+       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 31
+       (double #x4170000000000000) ; 0x1.0p24 1.6777216E7       ; 32
        nil
-       (fieldref "FdlibmTranslit$RemPio2" "two_over_pi:[I" 1)  ; 34
-       (methodref "FdlibmTranslit$KernelRemPio2" "compute:([D[DIII[I)I" 6)     ; 35
-       (integer 10680707)                                      ; 36
-       (integer 7228996)                                       ; 37
-       (integer 1387004)                                       ; 38
-       (integer 2578385)                                       ; 39
-       (integer 16069853)                                      ; 40
-       (integer 12639074)                                      ; 41
-       (integer 9804092)                                       ; 42
-       (integer 4427841)                                       ; 43
-       (integer 16666979)                                      ; 44
-       (integer 11263675)                                      ; 45
-       (integer 12935607)                                      ; 46
-       (integer 2387514)                                       ; 47
-       (integer 4345298)                                       ; 48
-       (integer 14681673)                                      ; 49
-       (integer 3074569)                                       ; 50
-       (integer 13734428)                                      ; 51
-       (integer 16653803)                                      ; 52
-       (integer 1880361)                                       ; 53
-       (integer 10960616)                                      ; 54
-       (integer 8533493)                                       ; 55
-       (integer 3062596)                                       ; 56
-       (integer 8710556)                                       ; 57
-       (integer 7349940)                                       ; 58
-       (integer 6258241)                                       ; 59
-       (integer 3772886)                                       ; 60
-       (integer 3769171)                                       ; 61
-       (integer 3798172)                                       ; 62
-       (integer 8675211)                                       ; 63
-       (integer 12450088)                                      ; 64
-       (integer 3874808)                                       ; 65
-       (integer 9961438)                                       ; 66
-       (integer 366607)                                        ; 67
-       (integer 15675153)                                      ; 68
-       (integer 9132554)                                       ; 69
-       (integer 7151469)                                       ; 70
-       (integer 3571407)                                       ; 71
-       (integer 2607881)                                       ; 72
-       (integer 12013382)                                      ; 73
-       (integer 4155038)                                       ; 74
-       (integer 6285869)                                       ; 75
-       (integer 7677882)                                       ; 76
-       (integer 13102053)                                      ; 77
-       (integer 15825725)                                      ; 78
-       (integer 473591)                                        ; 79
-       (integer 9065106)                                       ; 80
-       (integer 15363067)                                      ; 81
-       (integer 6271263)                                       ; 82
-       (integer 9264392)                                       ; 83
-       (integer 5636912)                                       ; 84
-       (integer 4652155)                                       ; 85
-       (integer 7056368)                                       ; 86
-       (integer 13614112)                                      ; 87
-       (integer 10155062)                                      ; 88
-       (integer 1944035)                                       ; 89
-       (integer 9527646)                                       ; 90
-       (integer 15080200)                                      ; 91
-       (integer 6658437)                                       ; 92
-       (integer 6231200)                                       ; 93
-       (integer 6832269)                                       ; 94
-       (integer 16767104)                                      ; 95
-       (integer 5075751)                                       ; 96
-       (integer 3212806)                                       ; 97
-       (integer 1398474)                                       ; 98
-       (integer 7579849)                                       ; 99
-       (integer 6349435)                                       ; 100
-       (integer 12618859)                                      ; 101
-       (integer 1074340347)                                    ; 102
-       (integer 1074977148)                                    ; 103
-       (integer 1075388923)                                    ; 104
-       (integer 1075800698)                                    ; 105
-       (integer 1076025724)                                    ; 106
-       (integer 1076231611)                                    ; 107
-       (integer 1076437499)                                    ; 108
-       (integer 1076643386)                                    ; 109
-       (integer 1076849274)                                    ; 110
-       (integer 1076971356)                                    ; 111
-       (integer 1077074300)                                    ; 112
-       (integer 1077177244)                                    ; 113
-       (integer 1077280187)                                    ; 114
-       (integer 1077383131)                                    ; 115
-       (integer 1077486075)                                    ; 116
-       (integer 1077589019)                                    ; 117
-       (integer 1077691962)                                    ; 118
-       (integer 1077794906)                                    ; 119
-       (integer 1077897850)                                    ; 120
-       (integer 1077968460)                                    ; 121
-       (integer 1078019932)                                    ; 122
-       (integer 1078071404)                                    ; 123
-       (integer 1078122876)                                    ; 124
-       (integer 1078174348)                                    ; 125
-       (integer 1078225820)                                    ; 126
-       (integer 1078277292)                                    ; 127
-       (integer 1078328763)                                    ; 128
-       (integer 1078380235)                                    ; 129
-       (integer 1078431707)                                    ; 130
-       (integer 1078483179)                                    ; 131
-       (integer 1078534651)                                    ; 132
-       (class (ref -1) "java/lang/Object")                     ; 133
-       (utf8)                                                  ; 134
-       (utf8)                                                  ; 135
-       (utf8)                                                  ; 136
-       (utf8)                                                  ; 137
-       (utf8)                                                  ; 138
-       (utf8)                                                  ; 139
-       (double #x0000000000000000) ; 0x0.0p0 0.0               ; 140
+       (fieldref "FdlibmTranslit$RemPio2" "two_over_pi:[I" 1)   ; 34
+       (methodref "FdlibmTranslit$KernelRemPio2" "compute:([D[DIII[I)I" 6)      ; 35
+       (integer 10680707)                                       ; 36
+       (integer 7228996)                                        ; 37
+       (integer 1387004)                                        ; 38
+       (integer 2578385)                                        ; 39
+       (integer 16069853)                                       ; 40
+       (integer 12639074)                                       ; 41
+       (integer 9804092)                                        ; 42
+       (integer 4427841)                                        ; 43
+       (integer 16666979)                                       ; 44
+       (integer 11263675)                                       ; 45
+       (integer 12935607)                                       ; 46
+       (integer 2387514)                                        ; 47
+       (integer 4345298)                                        ; 48
+       (integer 14681673)                                       ; 49
+       (integer 3074569)                                        ; 50
+       (integer 13734428)                                       ; 51
+       (integer 16653803)                                       ; 52
+       (integer 1880361)                                        ; 53
+       (integer 10960616)                                       ; 54
+       (integer 8533493)                                        ; 55
+       (integer 3062596)                                        ; 56
+       (integer 8710556)                                        ; 57
+       (integer 7349940)                                        ; 58
+       (integer 6258241)                                        ; 59
+       (integer 3772886)                                        ; 60
+       (integer 3769171)                                        ; 61
+       (integer 3798172)                                        ; 62
+       (integer 8675211)                                        ; 63
+       (integer 12450088)                                       ; 64
+       (integer 3874808)                                        ; 65
+       (integer 9961438)                                        ; 66
+       (integer 366607)                                         ; 67
+       (integer 15675153)                                       ; 68
+       (integer 9132554)                                        ; 69
+       (integer 7151469)                                        ; 70
+       (integer 3571407)                                        ; 71
+       (integer 2607881)                                        ; 72
+       (integer 12013382)                                       ; 73
+       (integer 4155038)                                        ; 74
+       (integer 6285869)                                        ; 75
+       (integer 7677882)                                        ; 76
+       (integer 13102053)                                       ; 77
+       (integer 15825725)                                       ; 78
+       (integer 473591)                                         ; 79
+       (integer 9065106)                                        ; 80
+       (integer 15363067)                                       ; 81
+       (integer 6271263)                                        ; 82
+       (integer 9264392)                                        ; 83
+       (integer 5636912)                                        ; 84
+       (integer 4652155)                                        ; 85
+       (integer 7056368)                                        ; 86
+       (integer 13614112)                                       ; 87
+       (integer 10155062)                                       ; 88
+       (integer 1944035)                                        ; 89
+       (integer 9527646)                                        ; 90
+       (integer 15080200)                                       ; 91
+       (integer 6658437)                                        ; 92
+       (integer 6231200)                                        ; 93
+       (integer 6832269)                                        ; 94
+       (integer 16767104)                                       ; 95
+       (integer 5075751)                                        ; 96
+       (integer 3212806)                                        ; 97
+       (integer 1398474)                                        ; 98
+       (integer 7579849)                                        ; 99
+       (integer 6349435)                                        ; 100
+       (integer 12618859)                                       ; 101
+       (integer 1074340347)                                     ; 102
+       (integer 1074977148)                                     ; 103
+       (integer 1075388923)                                     ; 104
+       (integer 1075800698)                                     ; 105
+       (integer 1076025724)                                     ; 106
+       (integer 1076231611)                                     ; 107
+       (integer 1076437499)                                     ; 108
+       (integer 1076643386)                                     ; 109
+       (integer 1076849274)                                     ; 110
+       (integer 1076971356)                                     ; 111
+       (integer 1077074300)                                     ; 112
+       (integer 1077177244)                                     ; 113
+       (integer 1077280187)                                     ; 114
+       (integer 1077383131)                                     ; 115
+       (integer 1077486075)                                     ; 116
+       (integer 1077589019)                                     ; 117
+       (integer 1077691962)                                     ; 118
+       (integer 1077794906)                                     ; 119
+       (integer 1077897850)                                     ; 120
+       (integer 1077968460)                                     ; 121
+       (integer 1078019932)                                     ; 122
+       (integer 1078071404)                                     ; 123
+       (integer 1078122876)                                     ; 124
+       (integer 1078174348)                                     ; 125
+       (integer 1078225820)                                     ; 126
+       (integer 1078277292)                                     ; 127
+       (integer 1078328763)                                     ; 128
+       (integer 1078380235)                                     ; 129
+       (integer 1078431707)                                     ; 130
+       (integer 1078483179)                                     ; 131
+       (integer 1078534651)                                     ; 132
+       (class (ref -1) "java/lang/Object")                      ; 133
+       (utf8)                                                   ; 134
+       (utf8)                                                   ; 135
+       (utf8)                                                   ; 136
+       (utf8)                                                   ; 137
+       (utf8)                                                   ; 138
+       (utf8)                                                   ; 139
+       (double #x0000000000000000) ; 0x0.0p0 0.0                ; 140
        nil
-       (utf8)                                                  ; 142
-       (utf8)                                                  ; 143
-       (utf8)                                                  ; 144
-       (utf8)                                                  ; 145
-       (utf8)                                                  ; 146
-       (utf8)                                                  ; 147
-       (utf8)                                                  ; 148
-       (utf8)                                                  ; 149
-       (utf8)                                                  ; 150
-       (utf8)                                                  ; 151
-       (utf8)                                                  ; 152
-       (utf8)                                                  ; 153
-       (utf8)                                                  ; 154
-       (utf8)                                                  ; 155
-       (utf8)                                                  ; 156
-       (utf8)                                                  ; 157
-       (class (ref -1) "[D")                                   ; 158
-       (utf8)                                                  ; 159
-       (utf8)                                                  ; 160
-       (utf8)                                                  ; 161
-       (name-and-type "<init>:()V")                            ; 162
-       (class (ref -1) "FdlibmTranslit")                       ; 163
-       (name-and-type "access$300:()D")                        ; 164
-       (name-and-type "access$000:(D)I")                       ; 165
-       (utf8)                                                  ; 166
-       (utf8)                                                  ; 167
-       (utf8)                                                  ; 168
-       (class (ref -1) "FdlibmTranslit$Fabs")                  ; 169
-       (name-and-type "compute:(D)D")                          ; 170
-       (name-and-type "npio2_hw:[I")                           ; 171
-       (name-and-type "access$100:(D)I")                       ; 172
-       (name-and-type "access$200:(DI)D")                      ; 173
-       (name-and-type "access$400:(DI)D")                      ; 174
-       (name-and-type "two_over_pi:[I")                        ; 175
-       (class (ref -1) "FdlibmTranslit$KernelRemPio2")         ; 176
-       (name-and-type "compute:([D[DIII[I)I")                  ; 177
-       (utf8)                                                  ; 178
-       (utf8)                                                  ; 179
-       (utf8)                                                  ; 180
-       (utf8)                                                  ; 181
-       (utf8)                                                  ; 182
-       (utf8)                                                  ; 183
-       (utf8)                                                  ; 184
-       (utf8)                                                  ; 185
-       (utf8)                                                  ; 186
-       (utf8)                                                  ; 187
-       (utf8)                                                  ; 188
-       (utf8)                                                  ; 189
-       (utf8)                                                  ; 190
-       (utf8)                                                  ; 191
-       (utf8)                                                  ; 192
-       (utf8)                                                  ; 193
-       (utf8)                                                  ; 194
+       (utf8)                                                   ; 142
+       (utf8)                                                   ; 143
+       (utf8)                                                   ; 144
+       (utf8)                                                   ; 145
+       (utf8)                                                   ; 146
+       (utf8)                                                   ; 147
+       (utf8)                                                   ; 148
+       (utf8)                                                   ; 149
+       (utf8)                                                   ; 150
+       (utf8)                                                   ; 151
+       (utf8)                                                   ; 152
+       (utf8)                                                   ; 153
+       (utf8)                                                   ; 154
+       (utf8)                                                   ; 155
+       (utf8)                                                   ; 156
+       (utf8)                                                   ; 157
+       (class (ref -1) "[D")                                    ; 158
+       (utf8)                                                   ; 159
+       (utf8)                                                   ; 160
+       (utf8)                                                   ; 161
+       (name-and-type "<init>:()V")                             ; 162
+       (class (ref -1) "FdlibmTranslit")                        ; 163
+       (name-and-type "access$300:()D")                         ; 164
+       (name-and-type "access$000:(D)I")                        ; 165
+       (utf8)                                                   ; 166
+       (utf8)                                                   ; 167
+       (utf8)                                                   ; 168
+       (class (ref -1) "FdlibmTranslit$Fabs")                   ; 169
+       (name-and-type "compute:(D)D")                           ; 170
+       (name-and-type "npio2_hw:[I")                            ; 171
+       (name-and-type "access$100:(D)I")                        ; 172
+       (name-and-type "access$200:(DI)D")                       ; 173
+       (name-and-type "access$400:(DI)D")                       ; 174
+       (name-and-type "two_over_pi:[I")                         ; 175
+       (class (ref -1) "FdlibmTranslit$KernelRemPio2")          ; 176
+       (name-and-type "compute:([D[DIII[I)I")                   ; 177
+       (utf8)                                                   ; 178
+       (utf8)                                                   ; 179
+       (utf8)                                                   ; 180
+       (utf8)                                                   ; 181
+       (utf8)                                                   ; 182
+       (utf8)                                                   ; 183
+       (utf8)                                                   ; 184
+       (utf8)                                                   ; 185
+       (utf8)                                                   ; 186
+       (utf8)                                                   ; 187
+       (utf8)                                                   ; 188
+       (utf8)                                                   ; 189
+       (utf8)                                                   ; 190
+       (utf8)                                                   ; 191
+       (utf8)                                                   ; 192
+       (utf8)                                                   ; 193
+       (utf8)                                                   ; 194
+      )
+     #x00000020                                                 ; SUPER
+     '(
+       ("two_over_pi:[I" #x0000001a)                            ; PRIVATE STATIC FINAL
+       ("npio2_hw:[I" #x0000001a)                               ; PRIVATE STATIC FINAL
+       ("zero:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("half:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("two24:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("invpio2:D" #x0000001a)                                 ; PRIVATE STATIC FINAL
+       ("pio2_1:D" #x0000001a)                                  ; PRIVATE STATIC FINAL
+       ("pio2_1t:D" #x0000001a)                                 ; PRIVATE STATIC FINAL
+       ("pio2_2:D" #x0000001a)                                  ; PRIVATE STATIC FINAL
+       ("pio2_2t:D" #x0000001a)                                 ; PRIVATE STATIC FINAL
+       ("pio2_3:D" #x0000001a)                                  ; PRIVATE STATIC FINAL
+       ("pio2_3t:D" #x0000001a)                                 ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #2208
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(D[D)I" nil
+      '("compute:(D[D)I" #x00000808                             ; STATIC STRICT
         ; line_number #2255
         (invokestatic 2)                                        ; 0 FdlibmTranslit.access$300:()D
         (dstore_3)                                              ; 3
@@ -688,7 +689,7 @@
         (iload 18)                                              ; 603
         (ireturn)                                               ; 605
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #2210
         (bipush 66)                                             ; 0
         (newarray T_INT)                                        ; 2

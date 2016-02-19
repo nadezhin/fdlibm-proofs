@@ -27,7 +27,7 @@
        (< x (expt 2 63))))
 
 (defund get-lo-i32 (x)
-  (m5::uint-fix x))
+  (and (i32p x) (m5::uint-fix x)))
 
 (defund make-i32 (w0)
   (and (wordp w0) (m5::int-fix w0)))
@@ -36,10 +36,10 @@
   (rtl::encodingp x (rtl::dp)))
 
 (defund get-lo-double (d)
-  (m5::uint-fix d))
+  (and (doublep d) (m5::uint-fix d)))
 
 (defund get-hi-double (d)
-  (m5::uint-fix (m5::shr (ifix d) 32)))
+  (and (doublep d) (m5::uint-fix (m5::shr (ifix d) 32))))
 
 (defund make-double (w1 w0)
   (and (wordp w1) (wordp w0) (rtl::cat w1 32 w0 32)))

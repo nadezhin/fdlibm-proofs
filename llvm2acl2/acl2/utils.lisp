@@ -341,7 +341,7 @@
                       (if (>= sfix 0) sfix (+ (expt 2 n) sfix))))))
   :enable u-fix-as-s-fix-if
   :disable (m5::u-fix m5::s-fix))
-
+#|
 (defrule get-lo-double-double-fix
   (equal (get-lo-double (m5::double-fix x))
          (get-lo-double x))
@@ -351,14 +351,17 @@
 (with-arith5-help  ; TODO remove
  (defrule get-hi-double-double-fix
    (equal (get-hi-double (m5::double-fix x))
-          (get-hi-double x))
-   :enable (get-hi-double m5::double-fix)))
+          (get-hi-double (ifix x)))
+   :enable (get-hi-double m5::double-fix)
+ ;  :cases ((integerp x))
+   ))
 
 (with-arith5-help ; TODO remove
  (defrule get-hi-double-ulong-fix
   (equal (get-hi-double (m5::ulong-fix x))
          (get-hi-double x))
   :enable get-hi-double))
+|#
 #|
 (defrule make-double-1-long-fix
   (equal (make-double (m5::long-fix hi) lo)
@@ -455,7 +458,7 @@
 
 (defruled get-lo-double-as-bits
   (equal (get-lo-double d)
-         (rtl::bits (ifix d) 31 0))
+         (and (doublep d) (rtl::bits (ifix d) 31 0)))
   :enable (get-lo-double uint-fix-as-bits)
   :disable m5::uint-fix)
 
@@ -472,7 +475,7 @@
 
 (defruled get-hi-double-as-bits
   (equal (get-hi-double d)
-         (rtl::bits (ifix d) 63 32))
+         (and (doublep d) (rtl::bits (ifix d) 63 32)))
   :enable (get-hi-double uint-fix-as-bits bits-shr)
   :disable (m5::uint-fix m5::shr))
 #|

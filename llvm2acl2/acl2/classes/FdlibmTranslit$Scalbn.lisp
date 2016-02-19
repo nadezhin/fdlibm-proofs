@@ -7,76 +7,77 @@
     (make-class-decl
      "FdlibmTranslit$Scalbn"
      '("java/lang/Object")
-     '()
-     '(
-      "two54:D"
-      "twom54:D"
-      "huge:D"
-      "tiny:D")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (methodref "FdlibmTranslit" "access$100:(D)I" 2)        ; 3
-       (integer 2146435072)                                    ; 4
-       (integer 2147483647)                                    ; 5
-       (class (ref -1) "FdlibmTranslit$Scalbn")                ; 6
-       (double #x4350000000000000) ; 0x1.0p54 1.8014398509481984E16    ; 7
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (methodref "FdlibmTranslit" "access$100:(D)I" 2)         ; 3
+       (integer 2146435072)                                     ; 4
+       (integer 2147483647)                                     ; 5
+       (class (ref -1) "FdlibmTranslit$Scalbn")                 ; 6
+       (double #x4350000000000000) ; 0x1.0p54 1.8014398509481984E16     ; 7
        nil
-       (integer -50000)                                        ; 9
-       (double #x01a56e1fc2f8f359) ; 0x1.56e1fc2f8f359p-997 1.0E-300   ; 10
+       (integer -50000)                                         ; 9
+       (double #x01a56e1fc2f8f359) ; 0x1.56e1fc2f8f359p-997 1.0E-300    ; 10
        nil
-       (double #x7e37e43c8800759c) ; 0x1.7e43c8800759cp996 1.0E300     ; 12
+       (double #x7e37e43c8800759c) ; 0x1.7e43c8800759cp996 1.0E300      ; 12
        nil
-       (methodref "FdlibmTranslit$Copysign" "compute:(DD)D" 4) ; 14
-       (integer -2146435073)                                   ; 15
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)       ; 16
-       (integer 50000)                                         ; 17
-       (double #x3c90000000000000) ; 0x1.0p-54 5.551115123125783E-17   ; 18
+       (methodref "FdlibmTranslit$Copysign" "compute:(DD)D" 4)  ; 14
+       (integer -2146435073)                                    ; 15
+       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 16
+       (integer 50000)                                          ; 17
+       (double #x3c90000000000000) ; 0x1.0p-54 5.551115123125783E-17    ; 18
        nil
-       (class (ref -1) "java/lang/Object")                     ; 20
-       (utf8)                                                  ; 21
-       (utf8)                                                  ; 22
-       (utf8)                                                  ; 23
-       (utf8)                                                  ; 24
-       (utf8)                                                  ; 25
-       (utf8)                                                  ; 26
-       (utf8)                                                  ; 27
-       (utf8)                                                  ; 28
-       (utf8)                                                  ; 29
-       (utf8)                                                  ; 30
-       (utf8)                                                  ; 31
-       (utf8)                                                  ; 32
-       (utf8)                                                  ; 33
-       (utf8)                                                  ; 34
-       (utf8)                                                  ; 35
-       (name-and-type "<init>:()V")                            ; 36
-       (class (ref -1) "FdlibmTranslit")                       ; 37
-       (name-and-type "access$000:(D)I")                       ; 38
-       (name-and-type "access$100:(D)I")                       ; 39
-       (utf8)                                                  ; 40
-       (utf8)                                                  ; 41
-       (utf8)                                                  ; 42
-       (class (ref -1) "FdlibmTranslit$Copysign")              ; 43
-       (name-and-type "compute:(DD)D")                         ; 44
-       (name-and-type "access$400:(DI)D")                      ; 45
-       (utf8)                                                  ; 46
-       (utf8)                                                  ; 47
-       (utf8)                                                  ; 48
-       (utf8)                                                  ; 49
-       (utf8)                                                  ; 50
-       (utf8)                                                  ; 51
-       (utf8)                                                  ; 52
-       (utf8)                                                  ; 53
-       (utf8)                                                  ; 54
+       (class (ref -1) "java/lang/Object")                      ; 20
+       (utf8)                                                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (utf8)                                                   ; 26
+       (utf8)                                                   ; 27
+       (utf8)                                                   ; 28
+       (utf8)                                                   ; 29
+       (utf8)                                                   ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (utf8)                                                   ; 33
+       (utf8)                                                   ; 34
+       (utf8)                                                   ; 35
+       (name-and-type "<init>:()V")                             ; 36
+       (class (ref -1) "FdlibmTranslit")                        ; 37
+       (name-and-type "access$000:(D)I")                        ; 38
+       (name-and-type "access$100:(D)I")                        ; 39
+       (utf8)                                                   ; 40
+       (utf8)                                                   ; 41
+       (utf8)                                                   ; 42
+       (class (ref -1) "FdlibmTranslit$Copysign")               ; 43
+       (name-and-type "compute:(DD)D")                          ; 44
+       (name-and-type "access$400:(DI)D")                       ; 45
+       (utf8)                                                   ; 46
+       (utf8)                                                   ; 47
+       (utf8)                                                   ; 48
+       (utf8)                                                   ; 49
+       (utf8)                                                   ; 50
+       (utf8)                                                   ; 51
+       (utf8)                                                   ; 52
+       (utf8)                                                   ; 53
+       (utf8)                                                   ; 54
+      )
+     #x00000020                                                 ; SUPER
+     '(
+       ("two54:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("twom54:D" #x0000001a)                                  ; PRIVATE STATIC FINAL
+       ("huge:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("tiny:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #2714
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(DI)D" nil
+      '("compute:(DI)D" #x00000808                              ; STATIC STRICT
         ; line_number #2723
         (dload_0)                                               ; 0
         (invokestatic 2)                                        ; 1 FdlibmTranslit.access$000:(D)I

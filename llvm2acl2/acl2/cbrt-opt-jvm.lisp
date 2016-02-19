@@ -184,7 +184,7 @@
 (defund ret-double (th s d)
   (m5::modify
    th s
-   :stack (m5::push 0 (m5::push d (m5::stack (m5::top-frame th s))))))
+   :stack (m5::push2 d (m5::stack (m5::top-frame th s)))))
 
 (defruled ret-thm
   (implies
@@ -198,7 +198,7 @@
                th s
                :status 'jvm::scheduled
                :call-stack (m5::push frame (m5::call-stack th s))))
-    (ret-double th s (m5::top (m5::pop (m5::stack frame))))))
+    (ret-double th s (m5::top2 (m5::stack frame)))))
   :enable ret-double
   :disable m5::bound?)
 
@@ -548,11 +548,9 @@
     (m5::modify
      th s
      :pc (+ 3 (m5::pc (m5::top-frame th s)))
-     :stack (m5::push
-             0
-             (m5::push
-              (@cbrt-opt (m5::top (m5::pop (m5::stack (m5::top-frame th s)))))
-              (m5::pop (m5::pop (m5::stack (m5::top-frame th s)))))))))
+     :stack (m5::push2
+             (@cbrt-opt (m5::top2 (m5::stack (m5::top-frame th s))))
+             (m5::pop2 (m5::stack (m5::top-frame th s)))))))
   :enable (sched_cbrt poised-to-invoke-cbrt-compute ret-double @cbrt-opt)
   :disable m5::bound?
   :use (:instance thm-0
@@ -560,7 +558,7 @@
          (s (m5::modify
              th s
              :pc (+ 3 (m5::pc (m5::top-frame th s)))
-             :stack (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))
+             :stack (m5::pop2 (m5::stack (m5::top-frame th s)))))
          (program *cbrt-compute-program*)))
 
 #|

@@ -7,64 +7,65 @@
     (make-class-decl
      "FdlibmTranslit$Sin"
      '("java/lang/Object")
-     '()
-     '()
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (integer 2147483647)                                    ; 3
-       (integer 1072243195)                                    ; 4
-       (methodref "FdlibmTranslit$KernelSin" "compute:(DDI)D" 5)       ; 5
-       (integer 2146435072)                                    ; 6
-       (methodref "FdlibmTranslit$RemPio2" "compute:(D[D)I" 3) ; 7
-       (methodref "FdlibmTranslit$KernelCos" "compute:(DD)D" 4)        ; 8
-       (class (ref -1) "FdlibmTranslit$Sin")                   ; 9
-       (class (ref -1) "java/lang/Object")                     ; 10
-       (utf8)                                                  ; 11
-       (utf8)                                                  ; 12
-       (utf8)                                                  ; 13
-       (utf8)                                                  ; 14
-       (utf8)                                                  ; 15
-       (utf8)                                                  ; 16
-       (utf8)                                                  ; 17
-       (class (ref -1) "[D")                                   ; 18
-       (utf8)                                                  ; 19
-       (utf8)                                                  ; 20
-       (name-and-type "<init>:()V")                            ; 21
-       (class (ref -1) "FdlibmTranslit")                       ; 22
-       (name-and-type "access$000:(D)I")                       ; 23
-       (class (ref -1) "FdlibmTranslit$KernelSin")             ; 24
-       (name-and-type "compute:(DDI)D")                        ; 25
-       (class (ref -1) "FdlibmTranslit$RemPio2")               ; 26
-       (name-and-type "compute:(D[D)I")                        ; 27
-       (class (ref -1) "FdlibmTranslit$KernelCos")             ; 28
-       (name-and-type "compute:(DD)D")                         ; 29
-       (utf8)                                                  ; 30
-       (utf8)                                                  ; 31
-       (utf8)                                                  ; 32
-       (utf8)                                                  ; 33
-       (utf8)                                                  ; 34
-       (utf8)                                                  ; 35
-       (utf8)                                                  ; 36
-       (utf8)                                                  ; 37
-       (utf8)                                                  ; 38
-       (utf8)                                                  ; 39
-       (utf8)                                                  ; 40
-       (utf8)                                                  ; 41
-       (utf8)                                                  ; 42
-       (utf8)                                                  ; 43
-       (utf8)                                                  ; 44
-       (utf8)                                                  ; 45
-       (utf8)                                                  ; 46
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (integer 2147483647)                                     ; 3
+       (integer 1072243195)                                     ; 4
+       (methodref "FdlibmTranslit$KernelSin" "compute:(DDI)D" 5)        ; 5
+       (integer 2146435072)                                     ; 6
+       (methodref "FdlibmTranslit$RemPio2" "compute:(D[D)I" 3)  ; 7
+       (methodref "FdlibmTranslit$KernelCos" "compute:(DD)D" 4) ; 8
+       (class (ref -1) "FdlibmTranslit$Sin")                    ; 9
+       (class (ref -1) "java/lang/Object")                      ; 10
+       (utf8)                                                   ; 11
+       (utf8)                                                   ; 12
+       (utf8)                                                   ; 13
+       (utf8)                                                   ; 14
+       (utf8)                                                   ; 15
+       (utf8)                                                   ; 16
+       (utf8)                                                   ; 17
+       (class (ref -1) "[D")                                    ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (name-and-type "<init>:()V")                             ; 21
+       (class (ref -1) "FdlibmTranslit")                        ; 22
+       (name-and-type "access$000:(D)I")                        ; 23
+       (class (ref -1) "FdlibmTranslit$KernelSin")              ; 24
+       (name-and-type "compute:(DDI)D")                         ; 25
+       (class (ref -1) "FdlibmTranslit$RemPio2")                ; 26
+       (name-and-type "compute:(D[D)I")                         ; 27
+       (class (ref -1) "FdlibmTranslit$KernelCos")              ; 28
+       (name-and-type "compute:(DD)D")                          ; 29
+       (utf8)                                                   ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (utf8)                                                   ; 33
+       (utf8)                                                   ; 34
+       (utf8)                                                   ; 35
+       (utf8)                                                   ; 36
+       (utf8)                                                   ; 37
+       (utf8)                                                   ; 38
+       (utf8)                                                   ; 39
+       (utf8)                                                   ; 40
+       (utf8)                                                   ; 41
+       (utf8)                                                   ; 42
+       (utf8)                                                   ; 43
+       (utf8)                                                   ; 44
+       (utf8)                                                   ; 45
+       (utf8)                                                   ; 46
+      )
+     #x00000020                                                 ; SUPER
+     '(
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #2794
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(D)D" nil
+      '("compute:(D)D" #x00000808                               ; STATIC STRICT
         ; line_number #2797
         (iconst_2)                                              ; 0
         (newarray T_DOUBLE)                                     ; 1

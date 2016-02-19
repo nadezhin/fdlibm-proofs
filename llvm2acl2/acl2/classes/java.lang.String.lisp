@@ -7,724 +7,725 @@
     (make-class-decl
      "java/lang/String"
      '("java/lang/Object")
-     '(
-      "value:[B"
-      "coder:B"
-      "hash:I")
-     '(
-      "serialVersionUID:J"
-      "COMPACT_STRINGS:Z"
-      "serialPersistentFields:[Ljava/io/ObjectStreamField;"
-      "CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;"
-      "LATIN1:B"
-      "UTF16:B")
      '(nil
-       (methodref "java/lang/String" "isLatin1:()Z" 0)         ; 1
-       (fieldref "java/lang/String" "value:[B" 1)              ; 2
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 3
+       (methodref "java/lang/String" "isLatin1:()Z" 0)          ; 1
+       (fieldref "java/lang/String" "value:[B" 1)               ; 2
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 3
        (string (ref -1) ; ""
-         )                                                     ; 4
-       (fieldref "java/lang/String" "coder:B" 1)               ; 5
-       (fieldref "java/lang/String" "hash:I" 1)                ; 6
-       (methodref "java/lang/String" "<init>:([CIILjava/lang/Void;)V" 4)       ; 7
-       (methodref "java/lang/String" "rangeCheck:([CII)Ljava/lang/Void;" 3)    ; 8
-       (methodref "java/lang/String" "checkBoundsOffCount:(III)V" 3)   ; 9
-       (fieldref "java/lang/String" "COMPACT_STRINGS:Z" 1)     ; 10
-       (methodref "java/lang/StringLatin1" "toBytes:([III)[B" 3)       ; 11
-       (class (ref -1) "java/lang/String")                     ; 12
-       (methodref "java/lang/StringUTF16" "toBytes:([III)[B" 3)        ; 13
-       (methodref "java/util/Arrays" "copyOfRange:([BII)[B" 3) ; 14
-       (methodref "java/lang/StringUTF16" "newBytesFor:(I)[B" 1)       ; 15
-       (methodref "java/lang/StringUTF16" "putChar:([BII)V" 3) ; 16
-       (methodref "java/lang/String" "<init>:([BIII)V" 4)      ; 17
-       (class (ref -1) "java/lang/NullPointerException")       ; 18
+         )                                                      ; 4
+       (fieldref "java/lang/String" "coder:B" 1)                ; 5
+       (fieldref "java/lang/String" "hash:I" 1)                 ; 6
+       (methodref "java/lang/String" "<init>:([CIILjava/lang/Void;)V" 4)        ; 7
+       (methodref "java/lang/String" "rangeCheck:([CII)Ljava/lang/Void;" 3)     ; 8
+       (methodref "java/lang/String" "checkBoundsOffCount:(III)V" 3)    ; 9
+       (fieldref "java/lang/String" "COMPACT_STRINGS:Z" 1)      ; 10
+       (methodref "java/lang/StringLatin1" "toBytes:([III)[B" 3)        ; 11
+       (class (ref -1) "java/lang/String")                      ; 12
+       (methodref "java/lang/StringUTF16" "toBytes:([III)[B" 3) ; 13
+       (methodref "java/util/Arrays" "copyOfRange:([BII)[B" 3)  ; 14
+       (methodref "java/lang/StringUTF16" "newBytesFor:(I)[B" 1)        ; 15
+       (methodref "java/lang/StringUTF16" "putChar:([BII)V" 3)  ; 16
+       (methodref "java/lang/String" "<init>:([BIII)V" 4)       ; 17
+       (class (ref -1) "java/lang/NullPointerException")        ; 18
        (string (ref -1) ; "charsetName"
-          99 104 97 114 115 101 116 78 97 109 101)             ; 19
-       (methodref "java/lang/NullPointerException" "<init>:(Ljava/lang/String;)V" 1)   ; 20
-       (methodref "java/lang/StringCoding" "decode:(Ljava/lang/String;[BII)Ljava/lang/StringCoding$Result;" 4) ; 21
-       (fieldref "java/lang/StringCoding$Result" "value:[B" 1) ; 22
-       (fieldref "java/lang/StringCoding$Result" "coder:B" 1)  ; 23
+          99 104 97 114 115 101 116 78 97 109 101)              ; 19
+       (methodref "java/lang/NullPointerException" "<init>:(Ljava/lang/String;)V" 1)    ; 20
+       (methodref "java/lang/StringCoding" "decode:(Ljava/lang/String;[BII)Ljava/lang/StringCoding$Result;" 4)  ; 21
+       (fieldref "java/lang/StringCoding$Result" "value:[B" 1)  ; 22
+       (fieldref "java/lang/StringCoding$Result" "coder:B" 1)   ; 23
        (string (ref -1) ; "charset"
-          99 104 97 114 115 101 116)                           ; 24
-       (methodref "java/lang/StringCoding" "decode:(Ljava/nio/charset/Charset;[BII)Ljava/lang/StringCoding$Result;" 4) ; 25
-       (methodref "java/lang/String" "<init>:([BIILjava/lang/String;)V" 4)     ; 26
-       (methodref "java/lang/String" "<init>:([BIILjava/nio/charset/Charset;)V" 4)     ; 27
-       (methodref "java/lang/StringCoding" "decode:([BII)Ljava/lang/StringCoding$Result;" 3)   ; 28
-       (methodref "java/lang/String" "<init>:([BII)V" 3)       ; 29
-       (methodref "java/lang/StringBuffer" "toString:()Ljava/lang/String;" 0)  ; 30
-       (methodref "java/lang/String" "<init>:(Ljava/lang/String;)V" 1) ; 31
-       (methodref "java/lang/String" "<init>:(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V" 2)  ; 32
-       (methodref "java/lang/String" "coder:()B" 0)            ; 33
-       (methodref "java/lang/StringLatin1" "charAt:([BI)C" 2)  ; 34
-       (methodref "java/lang/StringUTF16" "charAt:([BI)C" 2)   ; 35
-       (methodref "java/lang/String" "checkIndex:(II)V" 2)     ; 36
-       (methodref "java/lang/StringUTF16" "codePointAt:([BII)I" 3)     ; 37
-       (methodref "java/lang/String" "length:()I" 0)           ; 38
-       (class (ref -1) "java/lang/StringIndexOutOfBoundsException")    ; 39
-       (methodref "java/lang/StringIndexOutOfBoundsException" "<init>:(I)V" 1) ; 40
-       (methodref "java/lang/StringUTF16" "codePointBefore:([BI)I" 2)  ; 41
-       (class (ref -1) "java/lang/IndexOutOfBoundsException")  ; 42
-       (methodref "java/lang/IndexOutOfBoundsException" "<init>:()V" 0)        ; 43
-       (methodref "java/lang/StringUTF16" "codePointCount:([BII)I" 3)  ; 44
-       (methodref "java/lang/Character" "offsetByCodePoints:(Ljava/lang/CharSequence;II)I" 3)  ; 45
-       (methodref "java/lang/String" "checkBoundsBeginEnd:(III)V" 3)   ; 46
-       (methodref "java/lang/StringLatin1" "getChars:([BII[CI)V" 5)    ; 47
-       (methodref "java/lang/StringUTF16" "getChars:([BII[CI)V" 5)     ; 48
-       (methodref "java/util/Objects" "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;" 1)       ; 49
-       (methodref "java/lang/StringLatin1" "getBytes:([BII[BI)V" 5)    ; 50
-       (methodref "java/lang/StringUTF16" "getBytes:([BII[BI)V" 5)     ; 51
-       (methodref "java/lang/NullPointerException" "<init>:()V" 0)     ; 52
-       (methodref "java/lang/StringCoding" "encode:(Ljava/lang/String;B[B)[B" 3)       ; 53
-       (methodref "java/lang/StringCoding" "encode:(Ljava/nio/charset/Charset;B[B)[B" 3)       ; 54
-       (methodref "java/lang/StringCoding" "encode:(B[B)[B" 2) ; 55
-       (methodref "java/lang/StringLatin1" "equals:([B[B)Z" 2) ; 56
-       (methodref "java/lang/StringUTF16" "equals:([B[B)Z" 2)  ; 57
-       (methodref "java/lang/String" "contentEquals:(Ljava/lang/CharSequence;)Z" 1)    ; 58
-       (methodref "java/lang/AbstractStringBuilder" "length:()I" 0)    ; 59
-       (methodref "java/lang/AbstractStringBuilder" "getValue:()[B" 0) ; 60
-       (methodref "java/lang/AbstractStringBuilder" "getCoder:()B" 0)  ; 61
-       (methodref "java/lang/StringUTF16" "getChar:([BI)C" 2)  ; 62
-       (class (ref -1) "java/lang/AbstractStringBuilder")      ; 63
-       (class (ref -1) "java/lang/StringBuffer")               ; 64
-       (methodref "java/lang/String" "nonSyncContentEquals:(Ljava/lang/AbstractStringBuilder;)Z" 1)    ; 65
-       (methodref "java/lang/String" "equals:(Ljava/lang/Object;)Z" 1) ; 66
-       (interface-methodref "java/lang/CharSequence" "length:()I" 0)   ; 67
-       (interface-methodref "java/lang/CharSequence" "charAt:(I)C" 1)  ; 68
-       (methodref "java/lang/String" "regionMatches:(ZILjava/lang/String;II)Z" 5)      ; 69
-       (methodref "java/lang/StringLatin1" "compareTo:([B[B)I" 2)      ; 70
-       (methodref "java/lang/StringUTF16" "compareTo:([B[B)I" 2)       ; 71
-       (methodref "java/lang/StringLatin1" "compareToUTF16:([B[B)I" 2) ; 72
-       (methodref "java/lang/StringUTF16" "compareToLatin1:([B[B)I" 2) ; 73
-       (fieldref "java/lang/String" "CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;" 1) ; 74
-       (interface-methodref "java/util/Comparator" "compare:(Ljava/lang/Object;Ljava/lang/Object;)I" 2)        ; 75
-       (methodref "java/lang/StringLatin1" "getChar:([BI)C" 2) ; 76
-       (methodref "java/lang/String" "regionMatches:(ILjava/lang/String;II)Z" 4)       ; 77
-       (methodref "java/lang/StringLatin1" "regionMatchesCI:([BI[BII)Z" 5)     ; 78
-       (methodref "java/lang/StringUTF16" "regionMatchesCI:([BI[BII)Z" 5)      ; 79
-       (methodref "java/lang/StringLatin1" "regionMatchesCI_UTF16:([BI[BII)Z" 5)       ; 80
-       (methodref "java/lang/StringUTF16" "regionMatchesCI_Latin1:([BI[BII)Z" 5)       ; 81
-       (methodref "java/lang/String" "startsWith:(Ljava/lang/String;I)Z" 2)    ; 82
-       (methodref "java/lang/StringLatin1" "hashCode:([B)I" 1) ; 83
-       (methodref "java/lang/StringUTF16" "hashCode:([B)I" 1)  ; 84
-       (methodref "java/lang/String" "indexOf:(II)I" 2)        ; 85
-       (methodref "java/lang/StringLatin1" "indexOf:([BII)I" 3)        ; 86
-       (methodref "java/lang/StringUTF16" "indexOf:([BII)I" 3) ; 87
-       (methodref "java/lang/String" "lastIndexOf:(II)I" 2)    ; 88
-       (methodref "java/lang/StringLatin1" "lastIndexOf:([BII)I" 3)    ; 89
-       (methodref "java/lang/StringUTF16" "lastIndexOf:([BII)I" 3)     ; 90
-       (methodref "java/lang/StringLatin1" "indexOf:([B[B)I" 2)        ; 91
-       (methodref "java/lang/StringUTF16" "indexOf:([B[B)I" 2) ; 92
-       (methodref "java/lang/StringUTF16" "indexOfLatin1:([B[B)I" 2)   ; 93
-       (methodref "java/lang/String" "indexOf:([BBILjava/lang/String;I)I" 5)   ; 94
-       (methodref "java/lang/StringLatin1" "indexOf:([BI[BII)I" 5)     ; 95
-       (methodref "java/lang/StringUTF16" "indexOf:([BI[BII)I" 5)      ; 96
-       (methodref "java/lang/StringUTF16" "indexOfLatin1:([BI[BII)I" 5)        ; 97
-       (methodref "java/lang/String" "lastIndexOf:(Ljava/lang/String;I)I" 2)   ; 98
-       (methodref "java/lang/String" "lastIndexOf:([BBILjava/lang/String;I)I" 5)       ; 99
-       (methodref "java/lang/StringLatin1" "lastIndexOf:([BI[BII)I" 5) ; 100
-       (methodref "java/lang/StringUTF16" "lastIndexOf:([BI[BII)I" 5)  ; 101
-       (methodref "java/lang/StringLatin1" "newString:([BII)Ljava/lang/String;" 3)     ; 102
-       (methodref "java/lang/StringUTF16" "newString:([BII)Ljava/lang/String;" 3)      ; 103
-       (methodref "java/lang/String" "substring:(II)Ljava/lang/String;" 2)     ; 104
-       (methodref "java/util/Arrays" "copyOf:([BI)[B" 2)       ; 105
-       (methodref "java/lang/System" "arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V" 5) ; 106
-       (methodref "java/lang/String" "<init>:([BB)V" 2)        ; 107
-       (methodref "java/lang/String" "getBytes:([BIB)V" 3)     ; 108
-       (methodref "java/lang/StringLatin1" "replace:([BCC)Ljava/lang/String;" 3)       ; 109
-       (methodref "java/lang/StringUTF16" "replace:([BCC)Ljava/lang/String;" 3)        ; 110
-       (methodref "java/util/regex/Pattern" "matches:(Ljava/lang/String;Ljava/lang/CharSequence;)Z" 2) ; 111
-       (interface-methodref "java/lang/CharSequence" "toString:()Ljava/lang/String;" 0)        ; 112
-       (methodref "java/lang/String" "indexOf:(Ljava/lang/String;)I" 1)        ; 113
-       (methodref "java/util/regex/Pattern" "compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;" 1) ; 114
-       (methodref "java/util/regex/Pattern" "matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;" 1)   ; 115
-       (methodref "java/util/regex/Matcher" "replaceFirst:(Ljava/lang/String;)Ljava/lang/String;" 1)   ; 116
-       (methodref "java/util/regex/Matcher" "replaceAll:(Ljava/lang/String;)Ljava/lang/String;" 1)     ; 117
-       (methodref "java/lang/Math" "max:(II)I" 2)              ; 118
-       (class (ref -1) "java/lang/OutOfMemoryError")           ; 119
-       (methodref "java/lang/OutOfMemoryError" "<init>:()V" 0) ; 120
-       (class (ref -1) "java/lang/StringBuilder")              ; 121
-       (methodref "java/lang/StringBuilder" "<init>:(I)V" 1)   ; 122
-       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/CharSequence;II)Ljava/lang/StringBuilder;" 3)  ; 123
-       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)  ; 124
-       (methodref "java/lang/String" "indexOf:(Ljava/lang/String;I)I" 2)       ; 125
-       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0) ; 126
+          99 104 97 114 115 101 116)                            ; 24
+       (methodref "java/lang/StringCoding" "decode:(Ljava/nio/charset/Charset;[BII)Ljava/lang/StringCoding$Result;" 4)  ; 25
+       (methodref "java/lang/String" "<init>:([BIILjava/lang/String;)V" 4)      ; 26
+       (methodref "java/lang/String" "<init>:([BIILjava/nio/charset/Charset;)V" 4)      ; 27
+       (methodref "java/lang/StringCoding" "decode:([BII)Ljava/lang/StringCoding$Result;" 3)    ; 28
+       (methodref "java/lang/String" "<init>:([BII)V" 3)        ; 29
+       (methodref "java/lang/StringBuffer" "toString:()Ljava/lang/String;" 0)   ; 30
+       (methodref "java/lang/String" "<init>:(Ljava/lang/String;)V" 1)  ; 31
+       (methodref "java/lang/String" "<init>:(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V" 2)   ; 32
+       (methodref "java/lang/String" "coder:()B" 0)             ; 33
+       (methodref "java/lang/StringLatin1" "charAt:([BI)C" 2)   ; 34
+       (methodref "java/lang/StringUTF16" "charAt:([BI)C" 2)    ; 35
+       (methodref "java/lang/String" "checkIndex:(II)V" 2)      ; 36
+       (methodref "java/lang/StringUTF16" "codePointAt:([BII)I" 3)      ; 37
+       (methodref "java/lang/String" "length:()I" 0)            ; 38
+       (class (ref -1) "java/lang/StringIndexOutOfBoundsException")     ; 39
+       (methodref "java/lang/StringIndexOutOfBoundsException" "<init>:(I)V" 1)  ; 40
+       (methodref "java/lang/StringUTF16" "codePointBefore:([BI)I" 2)   ; 41
+       (class (ref -1) "java/lang/IndexOutOfBoundsException")   ; 42
+       (methodref "java/lang/IndexOutOfBoundsException" "<init>:()V" 0) ; 43
+       (methodref "java/lang/StringUTF16" "codePointCount:([BII)I" 3)   ; 44
+       (methodref "java/lang/Character" "offsetByCodePoints:(Ljava/lang/CharSequence;II)I" 3)   ; 45
+       (methodref "java/lang/String" "checkBoundsBeginEnd:(III)V" 3)    ; 46
+       (methodref "java/lang/StringLatin1" "getChars:([BII[CI)V" 5)     ; 47
+       (methodref "java/lang/StringUTF16" "getChars:([BII[CI)V" 5)      ; 48
+       (methodref "java/util/Objects" "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;" 1)        ; 49
+       (methodref "java/lang/StringLatin1" "getBytes:([BII[BI)V" 5)     ; 50
+       (methodref "java/lang/StringUTF16" "getBytes:([BII[BI)V" 5)      ; 51
+       (methodref "java/lang/NullPointerException" "<init>:()V" 0)      ; 52
+       (methodref "java/lang/StringCoding" "encode:(Ljava/lang/String;B[B)[B" 3)        ; 53
+       (methodref "java/lang/StringCoding" "encode:(Ljava/nio/charset/Charset;B[B)[B" 3)        ; 54
+       (methodref "java/lang/StringCoding" "encode:(B[B)[B" 2)  ; 55
+       (methodref "java/lang/StringLatin1" "equals:([B[B)Z" 2)  ; 56
+       (methodref "java/lang/StringUTF16" "equals:([B[B)Z" 2)   ; 57
+       (methodref "java/lang/String" "contentEquals:(Ljava/lang/CharSequence;)Z" 1)     ; 58
+       (methodref "java/lang/AbstractStringBuilder" "length:()I" 0)     ; 59
+       (methodref "java/lang/AbstractStringBuilder" "getValue:()[B" 0)  ; 60
+       (methodref "java/lang/AbstractStringBuilder" "getCoder:()B" 0)   ; 61
+       (methodref "java/lang/StringUTF16" "getChar:([BI)C" 2)   ; 62
+       (class (ref -1) "java/lang/AbstractStringBuilder")       ; 63
+       (class (ref -1) "java/lang/StringBuffer")                ; 64
+       (methodref "java/lang/String" "nonSyncContentEquals:(Ljava/lang/AbstractStringBuilder;)Z" 1)     ; 65
+       (methodref "java/lang/String" "equals:(Ljava/lang/Object;)Z" 1)  ; 66
+       (interface-methodref "java/lang/CharSequence" "length:()I" 0)    ; 67
+       (interface-methodref "java/lang/CharSequence" "charAt:(I)C" 1)   ; 68
+       (methodref "java/lang/String" "regionMatches:(ZILjava/lang/String;II)Z" 5)       ; 69
+       (methodref "java/lang/StringLatin1" "compareTo:([B[B)I" 2)       ; 70
+       (methodref "java/lang/StringUTF16" "compareTo:([B[B)I" 2)        ; 71
+       (methodref "java/lang/StringLatin1" "compareToUTF16:([B[B)I" 2)  ; 72
+       (methodref "java/lang/StringUTF16" "compareToLatin1:([B[B)I" 2)  ; 73
+       (fieldref "java/lang/String" "CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;" 1)  ; 74
+       (interface-methodref "java/util/Comparator" "compare:(Ljava/lang/Object;Ljava/lang/Object;)I" 2) ; 75
+       (methodref "java/lang/StringLatin1" "getChar:([BI)C" 2)  ; 76
+       (methodref "java/lang/String" "regionMatches:(ILjava/lang/String;II)Z" 4)        ; 77
+       (methodref "java/lang/StringLatin1" "regionMatchesCI:([BI[BII)Z" 5)      ; 78
+       (methodref "java/lang/StringUTF16" "regionMatchesCI:([BI[BII)Z" 5)       ; 79
+       (methodref "java/lang/StringLatin1" "regionMatchesCI_UTF16:([BI[BII)Z" 5)        ; 80
+       (methodref "java/lang/StringUTF16" "regionMatchesCI_Latin1:([BI[BII)Z" 5)        ; 81
+       (methodref "java/lang/String" "startsWith:(Ljava/lang/String;I)Z" 2)     ; 82
+       (methodref "java/lang/StringLatin1" "hashCode:([B)I" 1)  ; 83
+       (methodref "java/lang/StringUTF16" "hashCode:([B)I" 1)   ; 84
+       (methodref "java/lang/String" "indexOf:(II)I" 2)         ; 85
+       (methodref "java/lang/StringLatin1" "indexOf:([BII)I" 3) ; 86
+       (methodref "java/lang/StringUTF16" "indexOf:([BII)I" 3)  ; 87
+       (methodref "java/lang/String" "lastIndexOf:(II)I" 2)     ; 88
+       (methodref "java/lang/StringLatin1" "lastIndexOf:([BII)I" 3)     ; 89
+       (methodref "java/lang/StringUTF16" "lastIndexOf:([BII)I" 3)      ; 90
+       (methodref "java/lang/StringLatin1" "indexOf:([B[B)I" 2) ; 91
+       (methodref "java/lang/StringUTF16" "indexOf:([B[B)I" 2)  ; 92
+       (methodref "java/lang/StringUTF16" "indexOfLatin1:([B[B)I" 2)    ; 93
+       (methodref "java/lang/String" "indexOf:([BBILjava/lang/String;I)I" 5)    ; 94
+       (methodref "java/lang/StringLatin1" "indexOf:([BI[BII)I" 5)      ; 95
+       (methodref "java/lang/StringUTF16" "indexOf:([BI[BII)I" 5)       ; 96
+       (methodref "java/lang/StringUTF16" "indexOfLatin1:([BI[BII)I" 5) ; 97
+       (methodref "java/lang/String" "lastIndexOf:(Ljava/lang/String;I)I" 2)    ; 98
+       (methodref "java/lang/String" "lastIndexOf:([BBILjava/lang/String;I)I" 5)        ; 99
+       (methodref "java/lang/StringLatin1" "lastIndexOf:([BI[BII)I" 5)  ; 100
+       (methodref "java/lang/StringUTF16" "lastIndexOf:([BI[BII)I" 5)   ; 101
+       (methodref "java/lang/StringLatin1" "newString:([BII)Ljava/lang/String;" 3)      ; 102
+       (methodref "java/lang/StringUTF16" "newString:([BII)Ljava/lang/String;" 3)       ; 103
+       (methodref "java/lang/String" "substring:(II)Ljava/lang/String;" 2)      ; 104
+       (methodref "java/util/Arrays" "copyOf:([BI)[B" 2)        ; 105
+       (methodref "java/lang/System" "arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V" 5)  ; 106
+       (methodref "java/lang/String" "<init>:([BB)V" 2)         ; 107
+       (methodref "java/lang/String" "getBytes:([BIB)V" 3)      ; 108
+       (methodref "java/lang/StringLatin1" "replace:([BCC)Ljava/lang/String;" 3)        ; 109
+       (methodref "java/lang/StringUTF16" "replace:([BCC)Ljava/lang/String;" 3) ; 110
+       (methodref "java/util/regex/Pattern" "matches:(Ljava/lang/String;Ljava/lang/CharSequence;)Z" 2)  ; 111
+       (interface-methodref "java/lang/CharSequence" "toString:()Ljava/lang/String;" 0) ; 112
+       (methodref "java/lang/String" "indexOf:(Ljava/lang/String;)I" 1) ; 113
+       (methodref "java/util/regex/Pattern" "compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;" 1)  ; 114
+       (methodref "java/util/regex/Pattern" "matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;" 1)    ; 115
+       (methodref "java/util/regex/Matcher" "replaceFirst:(Ljava/lang/String;)Ljava/lang/String;" 1)    ; 116
+       (methodref "java/util/regex/Matcher" "replaceAll:(Ljava/lang/String;)Ljava/lang/String;" 1)      ; 117
+       (methodref "java/lang/Math" "max:(II)I" 2)               ; 118
+       (class (ref -1) "java/lang/OutOfMemoryError")            ; 119
+       (methodref "java/lang/OutOfMemoryError" "<init>:()V" 0)  ; 120
+       (class (ref -1) "java/lang/StringBuilder")               ; 121
+       (methodref "java/lang/StringBuilder" "<init>:(I)V" 1)    ; 122
+       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/CharSequence;II)Ljava/lang/StringBuilder;" 3)   ; 123
+       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)   ; 124
+       (methodref "java/lang/String" "indexOf:(Ljava/lang/String;I)I" 2)        ; 125
+       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0)  ; 126
        (string (ref -1) ; ".$|()[{^?*+\\"
-          46 36 124 40 41 91 123 94 63 42 43 92)               ; 127
-       (methodref "java/lang/String" "charAt:(I)C" 1)          ; 128
-       (methodref "java/lang/String" "indexOf:(I)I" 1)         ; 129
-       (class (ref -1) "java/lang/Character")                  ; 130
-       (integer 55296)                                         ; 131
-       (integer 57343)                                         ; 132
-       (class (ref -1) "java/util/ArrayList")                  ; 133
-       (methodref "java/util/ArrayList" "<init>:()V" 0)        ; 134
-       (methodref "java/util/ArrayList" "size:()I" 0)          ; 135
-       (methodref "java/util/ArrayList" "add:(Ljava/lang/Object;)Z" 1) ; 136
-       (methodref "java/util/ArrayList" "get:(I)Ljava/lang/Object;" 1) ; 137
-       (methodref "java/util/ArrayList" "subList:(II)Ljava/util/List;" 2)      ; 138
-       (interface-methodref "java/util/List" "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;" 1)     ; 139
-       (class (ref -1) "[Ljava/lang/String;")                  ; 140
-       (methodref "java/util/regex/Pattern" "split:(Ljava/lang/CharSequence;I)[Ljava/lang/String;" 2)  ; 141
-       (methodref "java/lang/String" "split:(Ljava/lang/String;I)[Ljava/lang/String;" 2)       ; 142
-       (class (ref -1) "java/util/StringJoiner")               ; 143
-       (methodref "java/util/StringJoiner" "<init>:(Ljava/lang/CharSequence;)V" 1)     ; 144
-       (methodref "java/util/StringJoiner" "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;" 1) ; 145
-       (methodref "java/util/StringJoiner" "toString:()Ljava/lang/String;" 0)  ; 146
-       (interface-methodref "java/lang/Iterable" "iterator:()Ljava/util/Iterator;" 0)  ; 147
-       (interface-methodref "java/util/Iterator" "hasNext:()Z" 0)      ; 148
-       (interface-methodref "java/util/Iterator" "next:()Ljava/lang/Object;" 0)        ; 149
-       (class (ref -1) "java/lang/CharSequence")               ; 150
-       (methodref "java/lang/StringLatin1" "toLowerCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3) ; 151
-       (methodref "java/lang/StringUTF16" "toLowerCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3)  ; 152
-       (methodref "java/util/Locale" "getDefault:()Ljava/util/Locale;" 0)      ; 153
-       (methodref "java/lang/String" "toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;" 1)   ; 154
-       (methodref "java/lang/StringLatin1" "toUpperCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3) ; 155
-       (methodref "java/lang/StringUTF16" "toUpperCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3)  ; 156
-       (methodref "java/lang/String" "toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;" 1)   ; 157
-       (methodref "java/lang/StringLatin1" "trim:([B)Ljava/lang/String;" 1)    ; 158
-       (methodref "java/lang/StringUTF16" "trim:([B)Ljava/lang/String;" 1)     ; 159
-       (class (ref -1) "java/lang/StringLatin1$CharsSpliterator")      ; 160
-       (class (ref -1) "java/util/Spliterator")                ; 161
-       (methodref "java/lang/StringLatin1$CharsSpliterator" "<init>:([BI)V" 2) ; 162
-       (class (ref -1) "java/lang/StringUTF16$CharsSpliterator")       ; 163
-       (methodref "java/lang/StringUTF16$CharsSpliterator" "<init>:([BI)V" 2)  ; 164
-       (methodref "java/util/stream/StreamSupport" "intStream:(Ljava/util/Spliterator$OfInt;Z)Ljava/util/stream/IntStream;" 2) ; 165
-       (class (ref -1) "java/lang/StringUTF16$CodePointsSpliterator")  ; 166
-       (methodref "java/lang/StringUTF16$CodePointsSpliterator" "<init>:([BI)V" 2)     ; 167
-       (methodref "java/lang/StringLatin1" "toChars:([B)[C" 1) ; 168
-       (methodref "java/lang/StringUTF16" "toChars:([B)[C" 1)  ; 169
-       (class (ref -1) "java/util/Formatter")                  ; 170
-       (methodref "java/util/Formatter" "<init>:()V" 0)        ; 171
-       (methodref "java/util/Formatter" "format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/util/Formatter;" 2)       ; 172
-       (methodref "java/util/Formatter" "toString:()Ljava/lang/String;" 0)     ; 173
-       (methodref "java/util/Formatter" "<init>:(Ljava/util/Locale;)V" 1)      ; 174
+          46 36 124 40 41 91 123 94 63 42 43 92)                ; 127
+       (methodref "java/lang/String" "charAt:(I)C" 1)           ; 128
+       (methodref "java/lang/String" "indexOf:(I)I" 1)          ; 129
+       (class (ref -1) "java/lang/Character")                   ; 130
+       (integer 55296)                                          ; 131
+       (integer 57343)                                          ; 132
+       (class (ref -1) "java/util/ArrayList")                   ; 133
+       (methodref "java/util/ArrayList" "<init>:()V" 0)         ; 134
+       (methodref "java/util/ArrayList" "size:()I" 0)           ; 135
+       (methodref "java/util/ArrayList" "add:(Ljava/lang/Object;)Z" 1)  ; 136
+       (methodref "java/util/ArrayList" "get:(I)Ljava/lang/Object;" 1)  ; 137
+       (methodref "java/util/ArrayList" "subList:(II)Ljava/util/List;" 2)       ; 138
+       (interface-methodref "java/util/List" "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;" 1)      ; 139
+       (class (ref -1) "[Ljava/lang/String;")                   ; 140
+       (methodref "java/util/regex/Pattern" "split:(Ljava/lang/CharSequence;I)[Ljava/lang/String;" 2)   ; 141
+       (methodref "java/lang/String" "split:(Ljava/lang/String;I)[Ljava/lang/String;" 2)        ; 142
+       (class (ref -1) "java/util/StringJoiner")                ; 143
+       (methodref "java/util/StringJoiner" "<init>:(Ljava/lang/CharSequence;)V" 1)      ; 144
+       (methodref "java/util/StringJoiner" "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;" 1)  ; 145
+       (methodref "java/util/StringJoiner" "toString:()Ljava/lang/String;" 0)   ; 146
+       (interface-methodref "java/lang/Iterable" "iterator:()Ljava/util/Iterator;" 0)   ; 147
+       (interface-methodref "java/util/Iterator" "hasNext:()Z" 0)       ; 148
+       (interface-methodref "java/util/Iterator" "next:()Ljava/lang/Object;" 0) ; 149
+       (class (ref -1) "java/lang/CharSequence")                ; 150
+       (methodref "java/lang/StringLatin1" "toLowerCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3)  ; 151
+       (methodref "java/lang/StringUTF16" "toLowerCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3)   ; 152
+       (methodref "java/util/Locale" "getDefault:()Ljava/util/Locale;" 0)       ; 153
+       (methodref "java/lang/String" "toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;" 1)    ; 154
+       (methodref "java/lang/StringLatin1" "toUpperCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3)  ; 155
+       (methodref "java/lang/StringUTF16" "toUpperCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;" 3)   ; 156
+       (methodref "java/lang/String" "toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;" 1)    ; 157
+       (methodref "java/lang/StringLatin1" "trim:([B)Ljava/lang/String;" 1)     ; 158
+       (methodref "java/lang/StringUTF16" "trim:([B)Ljava/lang/String;" 1)      ; 159
+       (class (ref -1) "java/lang/StringLatin1$CharsSpliterator")       ; 160
+       (class (ref -1) "java/util/Spliterator")                 ; 161
+       (methodref "java/lang/StringLatin1$CharsSpliterator" "<init>:([BI)V" 2)  ; 162
+       (class (ref -1) "java/lang/StringUTF16$CharsSpliterator")        ; 163
+       (methodref "java/lang/StringUTF16$CharsSpliterator" "<init>:([BI)V" 2)   ; 164
+       (methodref "java/util/stream/StreamSupport" "intStream:(Ljava/util/Spliterator$OfInt;Z)Ljava/util/stream/IntStream;" 2)  ; 165
+       (class (ref -1) "java/lang/StringUTF16$CodePointsSpliterator")   ; 166
+       (methodref "java/lang/StringUTF16$CodePointsSpliterator" "<init>:([BI)V" 2)      ; 167
+       (methodref "java/lang/StringLatin1" "toChars:([B)[C" 1)  ; 168
+       (methodref "java/lang/StringUTF16" "toChars:([B)[C" 1)   ; 169
+       (class (ref -1) "java/util/Formatter")                   ; 170
+       (methodref "java/util/Formatter" "<init>:()V" 0)         ; 171
+       (methodref "java/util/Formatter" "format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/util/Formatter;" 2)        ; 172
+       (methodref "java/util/Formatter" "toString:()Ljava/lang/String;" 0)      ; 173
+       (methodref "java/util/Formatter" "<init>:(Ljava/util/Locale;)V" 1)       ; 174
        (string (ref -1) ; "null"
-          110 117 108 108)                                     ; 175
-       (methodref "java/lang/Object" "toString:()Ljava/lang/String;" 0)        ; 176
-       (methodref "java/lang/String" "<init>:([C)V" 1)         ; 177
-       (methodref "java/lang/String" "<init>:([CII)V" 3)       ; 178
+          110 117 108 108)                                      ; 175
+       (methodref "java/lang/Object" "toString:()Ljava/lang/String;" 0) ; 176
+       (methodref "java/lang/String" "<init>:([C)V" 1)          ; 177
+       (methodref "java/lang/String" "<init>:([CII)V" 3)        ; 178
        (string (ref -1) ; "true"
-          116 114 117 101)                                     ; 179
+          116 114 117 101)                                      ; 179
        (string (ref -1) ; "false"
-          102 97 108 115 101)                                  ; 180
-       (methodref "java/lang/StringLatin1" "canEncode:(I)Z" 1) ; 181
-       (methodref "java/lang/StringLatin1" "toBytes:(C)[B" 1)  ; 182
-       (methodref "java/lang/StringUTF16" "toBytes:(C)[B" 1)   ; 183
-       (methodref "java/lang/Integer" "toString:(I)Ljava/lang/String;" 1)      ; 184
-       (methodref "java/lang/Long" "toString:(J)Ljava/lang/String;" 2) ; 185
-       (methodref "java/lang/Float" "toString:(F)Ljava/lang/String;" 1)        ; 186
-       (methodref "java/lang/Double" "toString:(D)Ljava/lang/String;" 2)       ; 187
-       (methodref "java/lang/StringLatin1" "inflate:([BI[BII)V" 5)     ; 188
-       (methodref "java/lang/StringUTF16" "compress:([CII)[B" 3)       ; 189
-       (methodref "java/lang/StringUTF16" "toBytes:([CII)[B" 3)        ; 190
-       (methodref "java/lang/AbstractStringBuilder" "isLatin1:()Z" 0)  ; 191
-       (methodref "java/lang/StringUTF16" "compress:([BII)[B" 3)       ; 192
-       (methodref "java/lang/StringBuilder" "<init>:()V" 0)    ; 193
+          102 97 108 115 101)                                   ; 180
+       (methodref "java/lang/StringLatin1" "canEncode:(I)Z" 1)  ; 181
+       (methodref "java/lang/StringLatin1" "toBytes:(C)[B" 1)   ; 182
+       (methodref "java/lang/StringUTF16" "toBytes:(C)[B" 1)    ; 183
+       (methodref "java/lang/Integer" "toString:(I)Ljava/lang/String;" 1)       ; 184
+       (methodref "java/lang/Long" "toString:(J)Ljava/lang/String;" 2)  ; 185
+       (methodref "java/lang/Float" "toString:(F)Ljava/lang/String;" 1) ; 186
+       (methodref "java/lang/Double" "toString:(D)Ljava/lang/String;" 2)        ; 187
+       (methodref "java/lang/StringLatin1" "inflate:([BI[BII)V" 5)      ; 188
+       (methodref "java/lang/StringUTF16" "compress:([CII)[B" 3)        ; 189
+       (methodref "java/lang/StringUTF16" "toBytes:([CII)[B" 3) ; 190
+       (methodref "java/lang/AbstractStringBuilder" "isLatin1:()Z" 0)   ; 191
+       (methodref "java/lang/StringUTF16" "compress:([BII)[B" 3)        ; 192
+       (methodref "java/lang/StringBuilder" "<init>:()V" 0)     ; 193
        (string (ref -1) ; "index "
-          105 110 100 101 120 32)                              ; 194
-       (methodref "java/lang/StringBuilder" "append:(I)Ljava/lang/StringBuilder;" 1)   ; 195
-       (methodref "java/lang/StringIndexOutOfBoundsException" "<init>:(Ljava/lang/String;)V" 1)        ; 196
+          105 110 100 101 120 32)                               ; 194
+       (methodref "java/lang/StringBuilder" "append:(I)Ljava/lang/StringBuilder;" 1)    ; 195
+       (methodref "java/lang/StringIndexOutOfBoundsException" "<init>:(Ljava/lang/String;)V" 1) ; 196
        (string (ref -1) ; "offset "
-          111 102 102 115 101 116 32)                          ; 197
+          111 102 102 115 101 116 32)                           ; 197
        (string (ref -1) ; ",length "
-          44 108 101 110 103 116 104 32)                       ; 198
+          44 108 101 110 103 116 104 32)                        ; 198
        (string (ref -1) ; ", count "
-          44 32 99 111 117 110 116 32)                         ; 199
+          44 32 99 111 117 110 116 32)                          ; 199
        (string (ref -1) ; ", length "
-          44 32 108 101 110 103 116 104 32)                    ; 200
+          44 32 108 101 110 103 116 104 32)                     ; 200
        (string (ref -1) ; "begin "
-          98 101 103 105 110 32)                               ; 201
+          98 101 103 105 110 32)                                ; 201
        (string (ref -1) ; ", end "
-          44 32 101 110 100 32)                                ; 202
-       (methodref "java/lang/String" "compareTo:(Ljava/lang/String;)I" 1)      ; 203
-       (class (ref -1) "java/io/ObjectStreamField")            ; 204
-       (fieldref "java/lang/String" "serialPersistentFields:[Ljava/io/ObjectStreamField;" 1)   ; 205
-       (class (ref -1) "java/lang/String$CaseInsensitiveComparator")   ; 206
-       (methodref "java/lang/String$CaseInsensitiveComparator" "<init>:(Ljava/lang/String$1;)V" 1)     ; 207
-       (class (ref -1) "java/lang/Object")                     ; 208
-       (class (ref -1) "java/io/Serializable")                 ; 209
-       (class (ref -1) "java/lang/Comparable")                 ; 210
-       (class (ref -1) "java/lang/String$1")                   ; 211
-       (utf8)                                                  ; 212
-       (utf8)                                                  ; 213
-       (utf8)                                                  ; 214
-       (utf8)                                                  ; 215
-       (utf8)                                                  ; 216
-       (utf8)                                                  ; 217
-       (utf8)                                                  ; 218
-       (utf8)                                                  ; 219
-       (utf8)                                                  ; 220
-       (utf8)                                                  ; 221
-       (utf8)                                                  ; 222
-       (long -6849794470754667710)                             ; 223
+          44 32 101 110 100 32)                                 ; 202
+       (methodref "java/lang/String" "compareTo:(Ljava/lang/String;)I" 1)       ; 203
+       (class (ref -1) "java/io/ObjectStreamField")             ; 204
+       (fieldref "java/lang/String" "serialPersistentFields:[Ljava/io/ObjectStreamField;" 1)    ; 205
+       (class (ref -1) "java/lang/String$CaseInsensitiveComparator")    ; 206
+       (methodref "java/lang/String$CaseInsensitiveComparator" "<init>:(Ljava/lang/String$1;)V" 1)      ; 207
+       (class (ref -1) "java/lang/Object")                      ; 208
+       (class (ref -1) "java/io/Serializable")                  ; 209
+       (class (ref -1) "java/lang/Comparable")                  ; 210
+       (class (ref -1) "java/lang/String$1")                    ; 211
+       (utf8)                                                   ; 212
+       (utf8)                                                   ; 213
+       (utf8)                                                   ; 214
+       (utf8)                                                   ; 215
+       (utf8)                                                   ; 216
+       (utf8)                                                   ; 217
+       (utf8)                                                   ; 218
+       (utf8)                                                   ; 219
+       (utf8)                                                   ; 220
+       (utf8)                                                   ; 221
+       (utf8)                                                   ; 222
+       (long -6849794470754667710)                              ; 223
        nil
-       (utf8)                                                  ; 225
-       (utf8)                                                  ; 226
-       (utf8)                                                  ; 227
-       (utf8)                                                  ; 228
-       (utf8)                                                  ; 229
-       (utf8)                                                  ; 230
-       (utf8)                                                  ; 231
-       (utf8)                                                  ; 232
-       (utf8)                                                  ; 233
-       (integer 0)                                             ; 234
-       (utf8)                                                  ; 235
-       (integer 1)                                             ; 236
-       (utf8)                                                  ; 237
-       (utf8)                                                  ; 238
-       (utf8)                                                  ; 239
-       (utf8)                                                  ; 240
-       (utf8)                                                  ; 241
-       (utf8)                                                  ; 242
-       (utf8)                                                  ; 243
-       (utf8)                                                  ; 244
-       (utf8)                                                  ; 245
-       (utf8)                                                  ; 246
-       (utf8)                                                  ; 247
-       (utf8)                                                  ; 248
-       (utf8)                                                  ; 249
-       (class (ref -1) "[I")                                   ; 250
-       (utf8)                                                  ; 251
-       (class (ref -1) "[B")                                   ; 252
-       (utf8)                                                  ; 253
-       (utf8)                                                  ; 254
-       (utf8)                                                  ; 255
-       (utf8)                                                  ; 256
-       (utf8)                                                  ; 257
-       (class (ref -1) "java/io/UnsupportedEncodingException") ; 258
-       (utf8)                                                  ; 259
-       (class (ref -1) "java/nio/charset/Charset")             ; 260
-       (utf8)                                                  ; 261
-       (utf8)                                                  ; 262
-       (utf8)                                                  ; 263
-       (utf8)                                                  ; 264
-       (utf8)                                                  ; 265
-       (utf8)                                                  ; 266
-       (utf8)                                                  ; 267
-       (utf8)                                                  ; 268
-       (utf8)                                                  ; 269
-       (utf8)                                                  ; 270
-       (utf8)                                                  ; 271
-       (utf8)                                                  ; 272
-       (utf8)                                                  ; 273
-       (utf8)                                                  ; 274
-       (utf8)                                                  ; 275
-       (utf8)                                                  ; 276
-       (utf8)                                                  ; 277
-       (utf8)                                                  ; 278
-       (utf8)                                                  ; 279
-       (utf8)                                                  ; 280
-       (utf8)                                                  ; 281
-       (utf8)                                                  ; 282
-       (utf8)                                                  ; 283
-       (utf8)                                                  ; 284
-       (utf8)                                                  ; 285
-       (utf8)                                                  ; 286
-       (utf8)                                                  ; 287
-       (utf8)                                                  ; 288
-       (utf8)                                                  ; 289
-       (utf8)                                                  ; 290
-       (utf8)                                                  ; 291
-       (utf8)                                                  ; 292
-       (utf8)                                                  ; 293
-       (class (ref -1) "java/lang/Throwable")                  ; 294
-       (utf8)                                                  ; 295
-       (utf8)                                                  ; 296
-       (utf8)                                                  ; 297
-       (utf8)                                                  ; 298
-       (utf8)                                                  ; 299
-       (utf8)                                                  ; 300
-       (utf8)                                                  ; 301
-       (utf8)                                                  ; 302
-       (utf8)                                                  ; 303
-       (utf8)                                                  ; 304
-       (utf8)                                                  ; 305
-       (utf8)                                                  ; 306
-       (utf8)                                                  ; 307
-       (utf8)                                                  ; 308
-       (utf8)                                                  ; 309
-       (utf8)                                                  ; 310
-       (utf8)                                                  ; 311
-       (utf8)                                                  ; 312
-       (utf8)                                                  ; 313
-       (utf8)                                                  ; 314
-       (utf8)                                                  ; 315
-       (utf8)                                                  ; 316
-       (utf8)                                                  ; 317
-       (utf8)                                                  ; 318
-       (utf8)                                                  ; 319
-       (utf8)                                                  ; 320
-       (utf8)                                                  ; 321
-       (utf8)                                                  ; 322
-       (utf8)                                                  ; 323
-       (utf8)                                                  ; 324
-       (utf8)                                                  ; 325
-       (utf8)                                                  ; 326
-       (utf8)                                                  ; 327
-       (utf8)                                                  ; 328
-       (utf8)                                                  ; 329
-       (utf8)                                                  ; 330
-       (class (ref -1) "[Ljava/lang/CharSequence;")            ; 331
-       (utf8)                                                  ; 332
-       (class (ref -1) "java/util/Iterator")                   ; 333
-       (utf8)                                                  ; 334
-       (utf8)                                                  ; 335
-       (utf8)                                                  ; 336
-       (utf8)                                                  ; 337
-       (utf8)                                                  ; 338
-       (utf8)                                                  ; 339
-       (utf8)                                                  ; 340
-       (utf8)                                                  ; 341
-       (utf8)                                                  ; 342
-       (class (ref -1) "java/util/Spliterator$OfInt")          ; 343
-       (utf8)                                                  ; 344
-       (utf8)                                                  ; 345
-       (utf8)                                                  ; 346
-       (class (ref -1) "[C")                                   ; 347
-       (utf8)                                                  ; 348
-       (utf8)                                                  ; 349
-       (utf8)                                                  ; 350
-       (utf8)                                                  ; 351
-       (utf8)                                                  ; 352
-       (utf8)                                                  ; 353
-       (utf8)                                                  ; 354
-       (utf8)                                                  ; 355
-       (utf8)                                                  ; 356
-       (utf8)                                                  ; 357
-       (utf8)                                                  ; 358
-       (utf8)                                                  ; 359
-       (utf8)                                                  ; 360
-       (utf8)                                                  ; 361
-       (utf8)                                                  ; 362
-       (utf8)                                                  ; 363
-       (class (ref -1) "java/lang/Void")                       ; 364
-       (utf8)                                                  ; 365
-       (utf8)                                                  ; 366
-       (utf8)                                                  ; 367
-       (utf8)                                                  ; 368
-       (utf8)                                                  ; 369
-       (utf8)                                                  ; 370
-       (utf8)                                                  ; 371
-       (utf8)                                                  ; 372
-       (utf8)                                                  ; 373
-       (utf8)                                                  ; 374
-       (utf8)                                                  ; 375
-       (utf8)                                                  ; 376
-       (utf8)                                                  ; 377
-       (utf8)                                                  ; 378
-       (utf8)                                                  ; 379
-       (utf8)                                                  ; 380
-       (utf8)                                                  ; 381
-       (name-and-type "isLatin1:()Z")                          ; 382
-       (name-and-type "value:[B")                              ; 383
-       (name-and-type "<init>:()V")                            ; 384
-       (utf8)                                                  ; 385
-       (name-and-type "coder:B")                               ; 386
-       (name-and-type "hash:I")                                ; 387
-       (name-and-type "<init>:([CIILjava/lang/Void;)V")        ; 388
-       (name-and-type "rangeCheck:([CII)Ljava/lang/Void;")     ; 389
-       (name-and-type "checkBoundsOffCount:(III)V")            ; 390
-       (name-and-type "COMPACT_STRINGS:Z")                     ; 391
-       (class (ref -1) "java/lang/StringLatin1")               ; 392
-       (name-and-type "toBytes:([III)[B")                      ; 393
-       (utf8)                                                  ; 394
-       (class (ref -1) "java/lang/StringUTF16")                ; 395
-       (class (ref -1) "java/util/Arrays")                     ; 396
-       (name-and-type "copyOfRange:([BII)[B")                  ; 397
-       (name-and-type "newBytesFor:(I)[B")                     ; 398
-       (name-and-type "putChar:([BII)V")                       ; 399
-       (name-and-type "<init>:([BIII)V")                       ; 400
-       (utf8)                                                  ; 401
-       (utf8)                                                  ; 402
-       (name-and-type "<init>:(Ljava/lang/String;)V")          ; 403
-       (class (ref -1) "java/lang/StringCoding")               ; 404
-       (name-and-type "decode:(Ljava/lang/String;[BII)Ljava/lang/StringCoding$Result;")        ; 405
-       (class (ref -1) "java/lang/StringCoding$Result")        ; 406
-       (utf8)                                                  ; 407
-       (name-and-type "decode:(Ljava/nio/charset/Charset;[BII)Ljava/lang/StringCoding$Result;")        ; 408
-       (name-and-type "<init>:([BIILjava/lang/String;)V")      ; 409
-       (name-and-type "<init>:([BIILjava/nio/charset/Charset;)V")      ; 410
-       (name-and-type "decode:([BII)Ljava/lang/StringCoding$Result;")  ; 411
-       (name-and-type "<init>:([BII)V")                        ; 412
-       (name-and-type "toString:()Ljava/lang/String;")         ; 413
-       (name-and-type "<init>:(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V")   ; 414
-       (name-and-type "coder:()B")                             ; 415
-       (name-and-type "charAt:([BI)C")                         ; 416
-       (name-and-type "checkIndex:(II)V")                      ; 417
-       (name-and-type "codePointAt:([BII)I")                   ; 418
-       (name-and-type "length:()I")                            ; 419
-       (utf8)                                                  ; 420
-       (name-and-type "<init>:(I)V")                           ; 421
-       (name-and-type "codePointBefore:([BI)I")                ; 422
-       (utf8)                                                  ; 423
-       (name-and-type "codePointCount:([BII)I")                ; 424
-       (name-and-type "offsetByCodePoints:(Ljava/lang/CharSequence;II)I")      ; 425
-       (name-and-type "checkBoundsBeginEnd:(III)V")            ; 426
-       (name-and-type "getChars:([BII[CI)V")                   ; 427
-       (class (ref -1) "java/util/Objects")                    ; 428
-       (name-and-type "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;") ; 429
-       (name-and-type "getBytes:([BII[BI)V")                   ; 430
-       (name-and-type "encode:(Ljava/lang/String;B[B)[B")      ; 431
-       (name-and-type "encode:(Ljava/nio/charset/Charset;B[B)[B")      ; 432
-       (name-and-type "encode:(B[B)[B")                        ; 433
-       (name-and-type "equals:([B[B)Z")                        ; 434
-       (name-and-type "contentEquals:(Ljava/lang/CharSequence;)Z")     ; 435
-       (name-and-type "getValue:()[B")                         ; 436
-       (name-and-type "getCoder:()B")                          ; 437
-       (name-and-type "getChar:([BI)C")                        ; 438
-       (utf8)                                                  ; 439
-       (utf8)                                                  ; 440
-       (name-and-type "nonSyncContentEquals:(Ljava/lang/AbstractStringBuilder;)Z")     ; 441
-       (name-and-type "equals:(Ljava/lang/Object;)Z")          ; 442
-       (name-and-type "charAt:(I)C")                           ; 443
-       (name-and-type "regionMatches:(ZILjava/lang/String;II)Z")       ; 444
-       (name-and-type "compareTo:([B[B)I")                     ; 445
-       (name-and-type "compareToUTF16:([B[B)I")                ; 446
-       (name-and-type "compareToLatin1:([B[B)I")               ; 447
-       (name-and-type "CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;") ; 448
-       (class (ref -1) "java/util/Comparator")                 ; 449
-       (name-and-type "compare:(Ljava/lang/Object;Ljava/lang/Object;)I")       ; 450
-       (name-and-type "regionMatches:(ILjava/lang/String;II)Z")        ; 451
-       (name-and-type "regionMatchesCI:([BI[BII)Z")            ; 452
-       (name-and-type "regionMatchesCI_UTF16:([BI[BII)Z")      ; 453
-       (name-and-type "regionMatchesCI_Latin1:([BI[BII)Z")     ; 454
-       (name-and-type "startsWith:(Ljava/lang/String;I)Z")     ; 455
-       (name-and-type "hashCode:([B)I")                        ; 456
-       (name-and-type "indexOf:(II)I")                         ; 457
-       (name-and-type "indexOf:([BII)I")                       ; 458
-       (name-and-type "lastIndexOf:(II)I")                     ; 459
-       (name-and-type "lastIndexOf:([BII)I")                   ; 460
-       (name-and-type "indexOf:([B[B)I")                       ; 461
-       (name-and-type "indexOfLatin1:([B[B)I")                 ; 462
-       (name-and-type "indexOf:([BBILjava/lang/String;I)I")    ; 463
-       (name-and-type "indexOf:([BI[BII)I")                    ; 464
-       (name-and-type "indexOfLatin1:([BI[BII)I")              ; 465
-       (name-and-type "lastIndexOf:(Ljava/lang/String;I)I")    ; 466
-       (name-and-type "lastIndexOf:([BBILjava/lang/String;I)I")        ; 467
-       (name-and-type "lastIndexOf:([BI[BII)I")                ; 468
-       (name-and-type "newString:([BII)Ljava/lang/String;")    ; 469
-       (name-and-type "substring:(II)Ljava/lang/String;")      ; 470
-       (name-and-type "copyOf:([BI)[B")                        ; 471
-       (class (ref -1) "java/lang/System")                     ; 472
-       (name-and-type "arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V")  ; 473
-       (name-and-type "<init>:([BB)V")                         ; 474
-       (name-and-type "getBytes:([BIB)V")                      ; 475
-       (name-and-type "replace:([BCC)Ljava/lang/String;")      ; 476
-       (class (ref -1) "java/util/regex/Pattern")              ; 477
-       (name-and-type "matches:(Ljava/lang/String;Ljava/lang/CharSequence;)Z") ; 478
-       (name-and-type "indexOf:(Ljava/lang/String;)I")         ; 479
-       (name-and-type "compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;") ; 480
-       (name-and-type "matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;")   ; 481
-       (class (ref -1) "java/util/regex/Matcher")              ; 482
-       (name-and-type "replaceFirst:(Ljava/lang/String;)Ljava/lang/String;")   ; 483
-       (name-and-type "replaceAll:(Ljava/lang/String;)Ljava/lang/String;")     ; 484
-       (class (ref -1) "java/lang/Math")                       ; 485
-       (name-and-type "max:(II)I")                             ; 486
-       (utf8)                                                  ; 487
-       (utf8)                                                  ; 488
-       (name-and-type "append:(Ljava/lang/CharSequence;II)Ljava/lang/StringBuilder;")  ; 489
-       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")  ; 490
-       (name-and-type "indexOf:(Ljava/lang/String;I)I")        ; 491
-       (utf8)                                                  ; 492
-       (name-and-type "indexOf:(I)I")                          ; 493
-       (utf8)                                                  ; 494
-       (utf8)                                                  ; 495
-       (name-and-type "size:()I")                              ; 496
-       (name-and-type "add:(Ljava/lang/Object;)Z")             ; 497
-       (name-and-type "get:(I)Ljava/lang/Object;")             ; 498
-       (name-and-type "subList:(II)Ljava/util/List;")          ; 499
-       (class (ref -1) "java/util/List")                       ; 500
-       (name-and-type "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;")      ; 501
-       (utf8)                                                  ; 502
-       (name-and-type "split:(Ljava/lang/CharSequence;I)[Ljava/lang/String;")  ; 503
-       (name-and-type "split:(Ljava/lang/String;I)[Ljava/lang/String;")        ; 504
-       (utf8)                                                  ; 505
-       (name-and-type "<init>:(Ljava/lang/CharSequence;)V")    ; 506
-       (name-and-type "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;")        ; 507
-       (class (ref -1) "java/lang/Iterable")                   ; 508
-       (name-and-type "iterator:()Ljava/util/Iterator;")       ; 509
-       (name-and-type "hasNext:()Z")                           ; 510
-       (name-and-type "next:()Ljava/lang/Object;")             ; 511
-       (utf8)                                                  ; 512
-       (name-and-type "toLowerCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;")        ; 513
-       (class (ref -1) "java/util/Locale")                     ; 514
-       (name-and-type "getDefault:()Ljava/util/Locale;")       ; 515
-       (name-and-type "toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;")    ; 516
-       (name-and-type "toUpperCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;")        ; 517
-       (name-and-type "toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;")    ; 518
-       (name-and-type "trim:([B)Ljava/lang/String;")           ; 519
-       (utf8)                                                  ; 520
-       (utf8)                                                  ; 521
-       (utf8)                                                  ; 522
-       (name-and-type "<init>:([BI)V")                         ; 523
-       (utf8)                                                  ; 524
-       (class (ref -1) "java/util/stream/StreamSupport")       ; 525
-       (name-and-type "intStream:(Ljava/util/Spliterator$OfInt;Z)Ljava/util/stream/IntStream;")        ; 526
-       (utf8)                                                  ; 527
-       (utf8)                                                  ; 528
-       (name-and-type "toChars:([B)[C")                        ; 529
-       (utf8)                                                  ; 530
-       (name-and-type "format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/util/Formatter;")   ; 531
-       (name-and-type "<init>:(Ljava/util/Locale;)V")          ; 532
-       (utf8)                                                  ; 533
-       (name-and-type "<init>:([C)V")                          ; 534
-       (name-and-type "<init>:([CII)V")                        ; 535
-       (utf8)                                                  ; 536
-       (utf8)                                                  ; 537
-       (name-and-type "canEncode:(I)Z")                        ; 538
-       (name-and-type "toBytes:(C)[B")                         ; 539
-       (class (ref -1) "java/lang/Integer")                    ; 540
-       (name-and-type "toString:(I)Ljava/lang/String;")        ; 541
-       (class (ref -1) "java/lang/Long")                       ; 542
-       (name-and-type "toString:(J)Ljava/lang/String;")        ; 543
-       (class (ref -1) "java/lang/Float")                      ; 544
-       (name-and-type "toString:(F)Ljava/lang/String;")        ; 545
-       (class (ref -1) "java/lang/Double")                     ; 546
-       (name-and-type "toString:(D)Ljava/lang/String;")        ; 547
-       (name-and-type "inflate:([BI[BII)V")                    ; 548
-       (name-and-type "compress:([CII)[B")                     ; 549
-       (name-and-type "toBytes:([CII)[B")                      ; 550
-       (name-and-type "compress:([BII)[B")                     ; 551
-       (utf8)                                                  ; 552
-       (name-and-type "append:(I)Ljava/lang/StringBuilder;")   ; 553
-       (utf8)                                                  ; 554
-       (utf8)                                                  ; 555
-       (utf8)                                                  ; 556
-       (utf8)                                                  ; 557
-       (utf8)                                                  ; 558
-       (utf8)                                                  ; 559
-       (name-and-type "compareTo:(Ljava/lang/String;)I")       ; 560
-       (utf8)                                                  ; 561
-       (name-and-type "serialPersistentFields:[Ljava/io/ObjectStreamField;")   ; 562
-       (utf8)                                                  ; 563
-       (name-and-type "<init>:(Ljava/lang/String$1;)V")        ; 564
-       (utf8)                                                  ; 565
-       (utf8)                                                  ; 566
-       (utf8)                                                  ; 567
-       (utf8)                                                  ; 568
-       (utf8)                                                  ; 569
-       (utf8)                                                  ; 570
-       (utf8)                                                  ; 571
-       (utf8)                                                  ; 572
-       (utf8)                                                  ; 573
-       (utf8)                                                  ; 574
-       (utf8)                                                  ; 575
-       (utf8)                                                  ; 576
-       (utf8)                                                  ; 577
-       (utf8)                                                  ; 578
-       (utf8)                                                  ; 579
-       (utf8)                                                  ; 580
-       (utf8)                                                  ; 581
-       (utf8)                                                  ; 582
-       (utf8)                                                  ; 583
-       (utf8)                                                  ; 584
-       (utf8)                                                  ; 585
-       (utf8)                                                  ; 586
-       (utf8)                                                  ; 587
-       (utf8)                                                  ; 588
-       (utf8)                                                  ; 589
-       (utf8)                                                  ; 590
-       (utf8)                                                  ; 591
-       (utf8)                                                  ; 592
-       (utf8)                                                  ; 593
-       (utf8)                                                  ; 594
-       (utf8)                                                  ; 595
-       (utf8)                                                  ; 596
-       (utf8)                                                  ; 597
-       (utf8)                                                  ; 598
-       (utf8)                                                  ; 599
-       (utf8)                                                  ; 600
-       (utf8)                                                  ; 601
-       (utf8)                                                  ; 602
-       (utf8)                                                  ; 603
-       (utf8)                                                  ; 604
-       (utf8)                                                  ; 605
-       (utf8)                                                  ; 606
-       (utf8)                                                  ; 607
-       (utf8)                                                  ; 608
-       (utf8)                                                  ; 609
-       (utf8)                                                  ; 610
-       (utf8)                                                  ; 611
-       (utf8)                                                  ; 612
-       (utf8)                                                  ; 613
-       (utf8)                                                  ; 614
-       (utf8)                                                  ; 615
-       (utf8)                                                  ; 616
-       (utf8)                                                  ; 617
-       (utf8)                                                  ; 618
-       (utf8)                                                  ; 619
-       (utf8)                                                  ; 620
-       (utf8)                                                  ; 621
-       (utf8)                                                  ; 622
-       (utf8)                                                  ; 623
-       (utf8)                                                  ; 624
-       (utf8)                                                  ; 625
-       (utf8)                                                  ; 626
-       (utf8)                                                  ; 627
-       (utf8)                                                  ; 628
-       (utf8)                                                  ; 629
-       (utf8)                                                  ; 630
-       (utf8)                                                  ; 631
-       (utf8)                                                  ; 632
-       (utf8)                                                  ; 633
-       (utf8)                                                  ; 634
-       (utf8)                                                  ; 635
-       (utf8)                                                  ; 636
-       (utf8)                                                  ; 637
-       (utf8)                                                  ; 638
-       (utf8)                                                  ; 639
-       (utf8)                                                  ; 640
-       (utf8)                                                  ; 641
-       (utf8)                                                  ; 642
-       (utf8)                                                  ; 643
-       (utf8)                                                  ; 644
-       (utf8)                                                  ; 645
-       (utf8)                                                  ; 646
-       (utf8)                                                  ; 647
-       (utf8)                                                  ; 648
-       (utf8)                                                  ; 649
-       (utf8)                                                  ; 650
-       (utf8)                                                  ; 651
-       (utf8)                                                  ; 652
-       (utf8)                                                  ; 653
-       (utf8)                                                  ; 654
-       (utf8)                                                  ; 655
-       (utf8)                                                  ; 656
-       (utf8)                                                  ; 657
-       (utf8)                                                  ; 658
-       (utf8)                                                  ; 659
-       (utf8)                                                  ; 660
-       (utf8)                                                  ; 661
-       (utf8)                                                  ; 662
-       (utf8)                                                  ; 663
-       (utf8)                                                  ; 664
-       (utf8)                                                  ; 665
-       (utf8)                                                  ; 666
-       (utf8)                                                  ; 667
-       (utf8)                                                  ; 668
-       (utf8)                                                  ; 669
-       (utf8)                                                  ; 670
-       (utf8)                                                  ; 671
-       (utf8)                                                  ; 672
-       (utf8)                                                  ; 673
-       (utf8)                                                  ; 674
-       (utf8)                                                  ; 675
-       (utf8)                                                  ; 676
-       (utf8)                                                  ; 677
-       (utf8)                                                  ; 678
-       (utf8)                                                  ; 679
-       (utf8)                                                  ; 680
-       (utf8)                                                  ; 681
-       (utf8)                                                  ; 682
-       (utf8)                                                  ; 683
-       (utf8)                                                  ; 684
-       (utf8)                                                  ; 685
-       (utf8)                                                  ; 686
-       (utf8)                                                  ; 687
-       (utf8)                                                  ; 688
-       (utf8)                                                  ; 689
+       (utf8)                                                   ; 225
+       (utf8)                                                   ; 226
+       (utf8)                                                   ; 227
+       (utf8)                                                   ; 228
+       (utf8)                                                   ; 229
+       (utf8)                                                   ; 230
+       (utf8)                                                   ; 231
+       (utf8)                                                   ; 232
+       (utf8)                                                   ; 233
+       (integer 0)                                              ; 234
+       (utf8)                                                   ; 235
+       (integer 1)                                              ; 236
+       (utf8)                                                   ; 237
+       (utf8)                                                   ; 238
+       (utf8)                                                   ; 239
+       (utf8)                                                   ; 240
+       (utf8)                                                   ; 241
+       (utf8)                                                   ; 242
+       (utf8)                                                   ; 243
+       (utf8)                                                   ; 244
+       (utf8)                                                   ; 245
+       (utf8)                                                   ; 246
+       (utf8)                                                   ; 247
+       (utf8)                                                   ; 248
+       (utf8)                                                   ; 249
+       (class (ref -1) "[I")                                    ; 250
+       (utf8)                                                   ; 251
+       (class (ref -1) "[B")                                    ; 252
+       (utf8)                                                   ; 253
+       (utf8)                                                   ; 254
+       (utf8)                                                   ; 255
+       (utf8)                                                   ; 256
+       (utf8)                                                   ; 257
+       (class (ref -1) "java/io/UnsupportedEncodingException")  ; 258
+       (utf8)                                                   ; 259
+       (class (ref -1) "java/nio/charset/Charset")              ; 260
+       (utf8)                                                   ; 261
+       (utf8)                                                   ; 262
+       (utf8)                                                   ; 263
+       (utf8)                                                   ; 264
+       (utf8)                                                   ; 265
+       (utf8)                                                   ; 266
+       (utf8)                                                   ; 267
+       (utf8)                                                   ; 268
+       (utf8)                                                   ; 269
+       (utf8)                                                   ; 270
+       (utf8)                                                   ; 271
+       (utf8)                                                   ; 272
+       (utf8)                                                   ; 273
+       (utf8)                                                   ; 274
+       (utf8)                                                   ; 275
+       (utf8)                                                   ; 276
+       (utf8)                                                   ; 277
+       (utf8)                                                   ; 278
+       (utf8)                                                   ; 279
+       (utf8)                                                   ; 280
+       (utf8)                                                   ; 281
+       (utf8)                                                   ; 282
+       (utf8)                                                   ; 283
+       (utf8)                                                   ; 284
+       (utf8)                                                   ; 285
+       (utf8)                                                   ; 286
+       (utf8)                                                   ; 287
+       (utf8)                                                   ; 288
+       (utf8)                                                   ; 289
+       (utf8)                                                   ; 290
+       (utf8)                                                   ; 291
+       (utf8)                                                   ; 292
+       (utf8)                                                   ; 293
+       (class (ref -1) "java/lang/Throwable")                   ; 294
+       (utf8)                                                   ; 295
+       (utf8)                                                   ; 296
+       (utf8)                                                   ; 297
+       (utf8)                                                   ; 298
+       (utf8)                                                   ; 299
+       (utf8)                                                   ; 300
+       (utf8)                                                   ; 301
+       (utf8)                                                   ; 302
+       (utf8)                                                   ; 303
+       (utf8)                                                   ; 304
+       (utf8)                                                   ; 305
+       (utf8)                                                   ; 306
+       (utf8)                                                   ; 307
+       (utf8)                                                   ; 308
+       (utf8)                                                   ; 309
+       (utf8)                                                   ; 310
+       (utf8)                                                   ; 311
+       (utf8)                                                   ; 312
+       (utf8)                                                   ; 313
+       (utf8)                                                   ; 314
+       (utf8)                                                   ; 315
+       (utf8)                                                   ; 316
+       (utf8)                                                   ; 317
+       (utf8)                                                   ; 318
+       (utf8)                                                   ; 319
+       (utf8)                                                   ; 320
+       (utf8)                                                   ; 321
+       (utf8)                                                   ; 322
+       (utf8)                                                   ; 323
+       (utf8)                                                   ; 324
+       (utf8)                                                   ; 325
+       (utf8)                                                   ; 326
+       (utf8)                                                   ; 327
+       (utf8)                                                   ; 328
+       (utf8)                                                   ; 329
+       (utf8)                                                   ; 330
+       (class (ref -1) "[Ljava/lang/CharSequence;")             ; 331
+       (utf8)                                                   ; 332
+       (class (ref -1) "java/util/Iterator")                    ; 333
+       (utf8)                                                   ; 334
+       (utf8)                                                   ; 335
+       (utf8)                                                   ; 336
+       (utf8)                                                   ; 337
+       (utf8)                                                   ; 338
+       (utf8)                                                   ; 339
+       (utf8)                                                   ; 340
+       (utf8)                                                   ; 341
+       (utf8)                                                   ; 342
+       (class (ref -1) "java/util/Spliterator$OfInt")           ; 343
+       (utf8)                                                   ; 344
+       (utf8)                                                   ; 345
+       (utf8)                                                   ; 346
+       (class (ref -1) "[C")                                    ; 347
+       (utf8)                                                   ; 348
+       (utf8)                                                   ; 349
+       (utf8)                                                   ; 350
+       (utf8)                                                   ; 351
+       (utf8)                                                   ; 352
+       (utf8)                                                   ; 353
+       (utf8)                                                   ; 354
+       (utf8)                                                   ; 355
+       (utf8)                                                   ; 356
+       (utf8)                                                   ; 357
+       (utf8)                                                   ; 358
+       (utf8)                                                   ; 359
+       (utf8)                                                   ; 360
+       (utf8)                                                   ; 361
+       (utf8)                                                   ; 362
+       (utf8)                                                   ; 363
+       (class (ref -1) "java/lang/Void")                        ; 364
+       (utf8)                                                   ; 365
+       (utf8)                                                   ; 366
+       (utf8)                                                   ; 367
+       (utf8)                                                   ; 368
+       (utf8)                                                   ; 369
+       (utf8)                                                   ; 370
+       (utf8)                                                   ; 371
+       (utf8)                                                   ; 372
+       (utf8)                                                   ; 373
+       (utf8)                                                   ; 374
+       (utf8)                                                   ; 375
+       (utf8)                                                   ; 376
+       (utf8)                                                   ; 377
+       (utf8)                                                   ; 378
+       (utf8)                                                   ; 379
+       (utf8)                                                   ; 380
+       (utf8)                                                   ; 381
+       (name-and-type "isLatin1:()Z")                           ; 382
+       (name-and-type "value:[B")                               ; 383
+       (name-and-type "<init>:()V")                             ; 384
+       (utf8)                                                   ; 385
+       (name-and-type "coder:B")                                ; 386
+       (name-and-type "hash:I")                                 ; 387
+       (name-and-type "<init>:([CIILjava/lang/Void;)V")         ; 388
+       (name-and-type "rangeCheck:([CII)Ljava/lang/Void;")      ; 389
+       (name-and-type "checkBoundsOffCount:(III)V")             ; 390
+       (name-and-type "COMPACT_STRINGS:Z")                      ; 391
+       (class (ref -1) "java/lang/StringLatin1")                ; 392
+       (name-and-type "toBytes:([III)[B")                       ; 393
+       (utf8)                                                   ; 394
+       (class (ref -1) "java/lang/StringUTF16")                 ; 395
+       (class (ref -1) "java/util/Arrays")                      ; 396
+       (name-and-type "copyOfRange:([BII)[B")                   ; 397
+       (name-and-type "newBytesFor:(I)[B")                      ; 398
+       (name-and-type "putChar:([BII)V")                        ; 399
+       (name-and-type "<init>:([BIII)V")                        ; 400
+       (utf8)                                                   ; 401
+       (utf8)                                                   ; 402
+       (name-and-type "<init>:(Ljava/lang/String;)V")           ; 403
+       (class (ref -1) "java/lang/StringCoding")                ; 404
+       (name-and-type "decode:(Ljava/lang/String;[BII)Ljava/lang/StringCoding$Result;") ; 405
+       (class (ref -1) "java/lang/StringCoding$Result")         ; 406
+       (utf8)                                                   ; 407
+       (name-and-type "decode:(Ljava/nio/charset/Charset;[BII)Ljava/lang/StringCoding$Result;") ; 408
+       (name-and-type "<init>:([BIILjava/lang/String;)V")       ; 409
+       (name-and-type "<init>:([BIILjava/nio/charset/Charset;)V")       ; 410
+       (name-and-type "decode:([BII)Ljava/lang/StringCoding$Result;")   ; 411
+       (name-and-type "<init>:([BII)V")                         ; 412
+       (name-and-type "toString:()Ljava/lang/String;")          ; 413
+       (name-and-type "<init>:(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V")    ; 414
+       (name-and-type "coder:()B")                              ; 415
+       (name-and-type "charAt:([BI)C")                          ; 416
+       (name-and-type "checkIndex:(II)V")                       ; 417
+       (name-and-type "codePointAt:([BII)I")                    ; 418
+       (name-and-type "length:()I")                             ; 419
+       (utf8)                                                   ; 420
+       (name-and-type "<init>:(I)V")                            ; 421
+       (name-and-type "codePointBefore:([BI)I")                 ; 422
+       (utf8)                                                   ; 423
+       (name-and-type "codePointCount:([BII)I")                 ; 424
+       (name-and-type "offsetByCodePoints:(Ljava/lang/CharSequence;II)I")       ; 425
+       (name-and-type "checkBoundsBeginEnd:(III)V")             ; 426
+       (name-and-type "getChars:([BII[CI)V")                    ; 427
+       (class (ref -1) "java/util/Objects")                     ; 428
+       (name-and-type "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;")  ; 429
+       (name-and-type "getBytes:([BII[BI)V")                    ; 430
+       (name-and-type "encode:(Ljava/lang/String;B[B)[B")       ; 431
+       (name-and-type "encode:(Ljava/nio/charset/Charset;B[B)[B")       ; 432
+       (name-and-type "encode:(B[B)[B")                         ; 433
+       (name-and-type "equals:([B[B)Z")                         ; 434
+       (name-and-type "contentEquals:(Ljava/lang/CharSequence;)Z")      ; 435
+       (name-and-type "getValue:()[B")                          ; 436
+       (name-and-type "getCoder:()B")                           ; 437
+       (name-and-type "getChar:([BI)C")                         ; 438
+       (utf8)                                                   ; 439
+       (utf8)                                                   ; 440
+       (name-and-type "nonSyncContentEquals:(Ljava/lang/AbstractStringBuilder;)Z")      ; 441
+       (name-and-type "equals:(Ljava/lang/Object;)Z")           ; 442
+       (name-and-type "charAt:(I)C")                            ; 443
+       (name-and-type "regionMatches:(ZILjava/lang/String;II)Z")        ; 444
+       (name-and-type "compareTo:([B[B)I")                      ; 445
+       (name-and-type "compareToUTF16:([B[B)I")                 ; 446
+       (name-and-type "compareToLatin1:([B[B)I")                ; 447
+       (name-and-type "CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;")  ; 448
+       (class (ref -1) "java/util/Comparator")                  ; 449
+       (name-and-type "compare:(Ljava/lang/Object;Ljava/lang/Object;)I")        ; 450
+       (name-and-type "regionMatches:(ILjava/lang/String;II)Z") ; 451
+       (name-and-type "regionMatchesCI:([BI[BII)Z")             ; 452
+       (name-and-type "regionMatchesCI_UTF16:([BI[BII)Z")       ; 453
+       (name-and-type "regionMatchesCI_Latin1:([BI[BII)Z")      ; 454
+       (name-and-type "startsWith:(Ljava/lang/String;I)Z")      ; 455
+       (name-and-type "hashCode:([B)I")                         ; 456
+       (name-and-type "indexOf:(II)I")                          ; 457
+       (name-and-type "indexOf:([BII)I")                        ; 458
+       (name-and-type "lastIndexOf:(II)I")                      ; 459
+       (name-and-type "lastIndexOf:([BII)I")                    ; 460
+       (name-and-type "indexOf:([B[B)I")                        ; 461
+       (name-and-type "indexOfLatin1:([B[B)I")                  ; 462
+       (name-and-type "indexOf:([BBILjava/lang/String;I)I")     ; 463
+       (name-and-type "indexOf:([BI[BII)I")                     ; 464
+       (name-and-type "indexOfLatin1:([BI[BII)I")               ; 465
+       (name-and-type "lastIndexOf:(Ljava/lang/String;I)I")     ; 466
+       (name-and-type "lastIndexOf:([BBILjava/lang/String;I)I") ; 467
+       (name-and-type "lastIndexOf:([BI[BII)I")                 ; 468
+       (name-and-type "newString:([BII)Ljava/lang/String;")     ; 469
+       (name-and-type "substring:(II)Ljava/lang/String;")       ; 470
+       (name-and-type "copyOf:([BI)[B")                         ; 471
+       (class (ref -1) "java/lang/System")                      ; 472
+       (name-and-type "arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V")   ; 473
+       (name-and-type "<init>:([BB)V")                          ; 474
+       (name-and-type "getBytes:([BIB)V")                       ; 475
+       (name-and-type "replace:([BCC)Ljava/lang/String;")       ; 476
+       (class (ref -1) "java/util/regex/Pattern")               ; 477
+       (name-and-type "matches:(Ljava/lang/String;Ljava/lang/CharSequence;)Z")  ; 478
+       (name-and-type "indexOf:(Ljava/lang/String;)I")          ; 479
+       (name-and-type "compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;")  ; 480
+       (name-and-type "matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;")    ; 481
+       (class (ref -1) "java/util/regex/Matcher")               ; 482
+       (name-and-type "replaceFirst:(Ljava/lang/String;)Ljava/lang/String;")    ; 483
+       (name-and-type "replaceAll:(Ljava/lang/String;)Ljava/lang/String;")      ; 484
+       (class (ref -1) "java/lang/Math")                        ; 485
+       (name-and-type "max:(II)I")                              ; 486
+       (utf8)                                                   ; 487
+       (utf8)                                                   ; 488
+       (name-and-type "append:(Ljava/lang/CharSequence;II)Ljava/lang/StringBuilder;")   ; 489
+       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")   ; 490
+       (name-and-type "indexOf:(Ljava/lang/String;I)I")         ; 491
+       (utf8)                                                   ; 492
+       (name-and-type "indexOf:(I)I")                           ; 493
+       (utf8)                                                   ; 494
+       (utf8)                                                   ; 495
+       (name-and-type "size:()I")                               ; 496
+       (name-and-type "add:(Ljava/lang/Object;)Z")              ; 497
+       (name-and-type "get:(I)Ljava/lang/Object;")              ; 498
+       (name-and-type "subList:(II)Ljava/util/List;")           ; 499
+       (class (ref -1) "java/util/List")                        ; 500
+       (name-and-type "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;")       ; 501
+       (utf8)                                                   ; 502
+       (name-and-type "split:(Ljava/lang/CharSequence;I)[Ljava/lang/String;")   ; 503
+       (name-and-type "split:(Ljava/lang/String;I)[Ljava/lang/String;") ; 504
+       (utf8)                                                   ; 505
+       (name-and-type "<init>:(Ljava/lang/CharSequence;)V")     ; 506
+       (name-and-type "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;") ; 507
+       (class (ref -1) "java/lang/Iterable")                    ; 508
+       (name-and-type "iterator:()Ljava/util/Iterator;")        ; 509
+       (name-and-type "hasNext:()Z")                            ; 510
+       (name-and-type "next:()Ljava/lang/Object;")              ; 511
+       (utf8)                                                   ; 512
+       (name-and-type "toLowerCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;") ; 513
+       (class (ref -1) "java/util/Locale")                      ; 514
+       (name-and-type "getDefault:()Ljava/util/Locale;")        ; 515
+       (name-and-type "toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;")     ; 516
+       (name-and-type "toUpperCase:(Ljava/lang/String;[BLjava/util/Locale;)Ljava/lang/String;") ; 517
+       (name-and-type "toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;")     ; 518
+       (name-and-type "trim:([B)Ljava/lang/String;")            ; 519
+       (utf8)                                                   ; 520
+       (utf8)                                                   ; 521
+       (utf8)                                                   ; 522
+       (name-and-type "<init>:([BI)V")                          ; 523
+       (utf8)                                                   ; 524
+       (class (ref -1) "java/util/stream/StreamSupport")        ; 525
+       (name-and-type "intStream:(Ljava/util/Spliterator$OfInt;Z)Ljava/util/stream/IntStream;") ; 526
+       (utf8)                                                   ; 527
+       (utf8)                                                   ; 528
+       (name-and-type "toChars:([B)[C")                         ; 529
+       (utf8)                                                   ; 530
+       (name-and-type "format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/util/Formatter;")    ; 531
+       (name-and-type "<init>:(Ljava/util/Locale;)V")           ; 532
+       (utf8)                                                   ; 533
+       (name-and-type "<init>:([C)V")                           ; 534
+       (name-and-type "<init>:([CII)V")                         ; 535
+       (utf8)                                                   ; 536
+       (utf8)                                                   ; 537
+       (name-and-type "canEncode:(I)Z")                         ; 538
+       (name-and-type "toBytes:(C)[B")                          ; 539
+       (class (ref -1) "java/lang/Integer")                     ; 540
+       (name-and-type "toString:(I)Ljava/lang/String;")         ; 541
+       (class (ref -1) "java/lang/Long")                        ; 542
+       (name-and-type "toString:(J)Ljava/lang/String;")         ; 543
+       (class (ref -1) "java/lang/Float")                       ; 544
+       (name-and-type "toString:(F)Ljava/lang/String;")         ; 545
+       (class (ref -1) "java/lang/Double")                      ; 546
+       (name-and-type "toString:(D)Ljava/lang/String;")         ; 547
+       (name-and-type "inflate:([BI[BII)V")                     ; 548
+       (name-and-type "compress:([CII)[B")                      ; 549
+       (name-and-type "toBytes:([CII)[B")                       ; 550
+       (name-and-type "compress:([BII)[B")                      ; 551
+       (utf8)                                                   ; 552
+       (name-and-type "append:(I)Ljava/lang/StringBuilder;")    ; 553
+       (utf8)                                                   ; 554
+       (utf8)                                                   ; 555
+       (utf8)                                                   ; 556
+       (utf8)                                                   ; 557
+       (utf8)                                                   ; 558
+       (utf8)                                                   ; 559
+       (name-and-type "compareTo:(Ljava/lang/String;)I")        ; 560
+       (utf8)                                                   ; 561
+       (name-and-type "serialPersistentFields:[Ljava/io/ObjectStreamField;")    ; 562
+       (utf8)                                                   ; 563
+       (name-and-type "<init>:(Ljava/lang/String$1;)V")         ; 564
+       (utf8)                                                   ; 565
+       (utf8)                                                   ; 566
+       (utf8)                                                   ; 567
+       (utf8)                                                   ; 568
+       (utf8)                                                   ; 569
+       (utf8)                                                   ; 570
+       (utf8)                                                   ; 571
+       (utf8)                                                   ; 572
+       (utf8)                                                   ; 573
+       (utf8)                                                   ; 574
+       (utf8)                                                   ; 575
+       (utf8)                                                   ; 576
+       (utf8)                                                   ; 577
+       (utf8)                                                   ; 578
+       (utf8)                                                   ; 579
+       (utf8)                                                   ; 580
+       (utf8)                                                   ; 581
+       (utf8)                                                   ; 582
+       (utf8)                                                   ; 583
+       (utf8)                                                   ; 584
+       (utf8)                                                   ; 585
+       (utf8)                                                   ; 586
+       (utf8)                                                   ; 587
+       (utf8)                                                   ; 588
+       (utf8)                                                   ; 589
+       (utf8)                                                   ; 590
+       (utf8)                                                   ; 591
+       (utf8)                                                   ; 592
+       (utf8)                                                   ; 593
+       (utf8)                                                   ; 594
+       (utf8)                                                   ; 595
+       (utf8)                                                   ; 596
+       (utf8)                                                   ; 597
+       (utf8)                                                   ; 598
+       (utf8)                                                   ; 599
+       (utf8)                                                   ; 600
+       (utf8)                                                   ; 601
+       (utf8)                                                   ; 602
+       (utf8)                                                   ; 603
+       (utf8)                                                   ; 604
+       (utf8)                                                   ; 605
+       (utf8)                                                   ; 606
+       (utf8)                                                   ; 607
+       (utf8)                                                   ; 608
+       (utf8)                                                   ; 609
+       (utf8)                                                   ; 610
+       (utf8)                                                   ; 611
+       (utf8)                                                   ; 612
+       (utf8)                                                   ; 613
+       (utf8)                                                   ; 614
+       (utf8)                                                   ; 615
+       (utf8)                                                   ; 616
+       (utf8)                                                   ; 617
+       (utf8)                                                   ; 618
+       (utf8)                                                   ; 619
+       (utf8)                                                   ; 620
+       (utf8)                                                   ; 621
+       (utf8)                                                   ; 622
+       (utf8)                                                   ; 623
+       (utf8)                                                   ; 624
+       (utf8)                                                   ; 625
+       (utf8)                                                   ; 626
+       (utf8)                                                   ; 627
+       (utf8)                                                   ; 628
+       (utf8)                                                   ; 629
+       (utf8)                                                   ; 630
+       (utf8)                                                   ; 631
+       (utf8)                                                   ; 632
+       (utf8)                                                   ; 633
+       (utf8)                                                   ; 634
+       (utf8)                                                   ; 635
+       (utf8)                                                   ; 636
+       (utf8)                                                   ; 637
+       (utf8)                                                   ; 638
+       (utf8)                                                   ; 639
+       (utf8)                                                   ; 640
+       (utf8)                                                   ; 641
+       (utf8)                                                   ; 642
+       (utf8)                                                   ; 643
+       (utf8)                                                   ; 644
+       (utf8)                                                   ; 645
+       (utf8)                                                   ; 646
+       (utf8)                                                   ; 647
+       (utf8)                                                   ; 648
+       (utf8)                                                   ; 649
+       (utf8)                                                   ; 650
+       (utf8)                                                   ; 651
+       (utf8)                                                   ; 652
+       (utf8)                                                   ; 653
+       (utf8)                                                   ; 654
+       (utf8)                                                   ; 655
+       (utf8)                                                   ; 656
+       (utf8)                                                   ; 657
+       (utf8)                                                   ; 658
+       (utf8)                                                   ; 659
+       (utf8)                                                   ; 660
+       (utf8)                                                   ; 661
+       (utf8)                                                   ; 662
+       (utf8)                                                   ; 663
+       (utf8)                                                   ; 664
+       (utf8)                                                   ; 665
+       (utf8)                                                   ; 666
+       (utf8)                                                   ; 667
+       (utf8)                                                   ; 668
+       (utf8)                                                   ; 669
+       (utf8)                                                   ; 670
+       (utf8)                                                   ; 671
+       (utf8)                                                   ; 672
+       (utf8)                                                   ; 673
+       (utf8)                                                   ; 674
+       (utf8)                                                   ; 675
+       (utf8)                                                   ; 676
+       (utf8)                                                   ; 677
+       (utf8)                                                   ; 678
+       (utf8)                                                   ; 679
+       (utf8)                                                   ; 680
+       (utf8)                                                   ; 681
+       (utf8)                                                   ; 682
+       (utf8)                                                   ; 683
+       (utf8)                                                   ; 684
+       (utf8)                                                   ; 685
+       (utf8)                                                   ; 686
+       (utf8)                                                   ; 687
+       (utf8)                                                   ; 688
+       (utf8)                                                   ; 689
+      )
+     #x00000031                                                 ; PUBLIC FINAL SUPER
+     '(
+       ("value:[B" #x00000012)                                  ; PRIVATE FINAL
+       ("coder:B" #x00000012)                                   ; PRIVATE FINAL
+       ("hash:I" #x00000002)                                    ; PRIVATE
+       ("serialVersionUID:J" #x0000001a)                        ; PRIVATE STATIC FINAL
+       ("COMPACT_STRINGS:Z" #x00000018)                         ; STATIC FINAL
+       ("serialPersistentFields:[Ljava/io/ObjectStreamField;" #x0000001a)       ; PRIVATE STATIC FINAL
+       ("CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;" #x00000019)     ; PUBLIC STATIC FINAL
+       ("LATIN1:B" #x00000018)                                  ; STATIC FINAL
+       ("UTF16:B" #x00000018)                                   ; STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000001                                 ; PUBLIC
         ; line_number #199
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -741,7 +742,7 @@
         ; line_number #202
         (return)                                                ; 22
        )
-      '("<init>:(Ljava/lang/String;)V" nil
+      '("<init>:(Ljava/lang/String;)V" #x00000001               ; PUBLIC
         ; line_number #215
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -763,7 +764,7 @@
         ; line_number #219
         (return)                                                ; 28
        )
-      '("<init>:([C)V" nil
+      '("<init>:([C)V" #x00000001                               ; PUBLIC
         ; line_number #231
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -775,7 +776,7 @@
         ; line_number #232
         (return)                                                ; 9
        )
-      '("<init>:([CII)V" nil
+      '("<init>:([CII)V" #x00000001                             ; PUBLIC
         ; line_number #256
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -789,7 +790,7 @@
         ; line_number #257
         (return)                                                ; 13
        )
-      '("rangeCheck:([CII)Ljava/lang/Void;" nil
+      '("rangeCheck:([CII)Ljava/lang/Void;" #x0000000a          ; PRIVATE STATIC
         ; line_number #260
         (iload_1)                                               ; 0
         (iload_2)                                               ; 1
@@ -800,7 +801,7 @@
         (aconst_null)                                           ; 7
         (areturn)                                               ; 8
        )
-      '("<init>:([III)V" nil
+      '("<init>:([III)V" #x00000001                             ; PUBLIC
         ; line_number #292
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -861,7 +862,7 @@
         ; line_number #309
         (return)                                                ; 80
        )
-      '("<init>:([BIII)V" nil
+      '("<init>:([BIII)V" #x00000001                            ; PUBLIC
         ; line_number #352
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -947,7 +948,7 @@
         ; line_number #371
         (return)                                                ; 126
        )
-      '("<init>:([BI)V" nil
+      '("<init>:([BI)V" #x00000001                              ; PUBLIC
         ; line_number #405
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -959,7 +960,7 @@
         ; line_number #406
         (return)                                                ; 9
        )
-      '("<init>:([BIILjava/lang/String;)V" nil
+      '("<init>:([BIILjava/lang/String;)V" #x00000001           ; PUBLIC
         ; line_number #442
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -999,7 +1000,7 @@
         ; line_number #450
         (return)                                                ; 54
        )
-      '("<init>:([BIILjava/nio/charset/Charset;)V" nil
+      '("<init>:([BIILjava/nio/charset/Charset;)V" #x00000001   ; PUBLIC
         ; line_number #482
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -1039,7 +1040,7 @@
         ; line_number #490
         (return)                                                ; 54
        )
-      '("<init>:([BLjava/lang/String;)V" nil
+      '("<init>:([BLjava/lang/String;)V" #x00000001             ; PUBLIC
         ; line_number #517
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1051,7 +1052,7 @@
         ; line_number #518
         (return)                                                ; 9
        )
-      '("<init>:([BLjava/nio/charset/Charset;)V" nil
+      '("<init>:([BLjava/nio/charset/Charset;)V" #x00000001     ; PUBLIC
         ; line_number #541
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1063,7 +1064,7 @@
         ; line_number #542
         (return)                                                ; 9
        )
-      '("<init>:([BII)V" nil
+      '("<init>:([BII)V" #x00000001                             ; PUBLIC
         ; line_number #570
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -1092,7 +1093,7 @@
         ; line_number #575
         (return)                                                ; 37
        )
-      '("<init>:([B)V" nil
+      '("<init>:([B)V" #x00000001                               ; PUBLIC
         ; line_number #594
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1103,7 +1104,7 @@
         ; line_number #595
         (return)                                                ; 8
        )
-      '("<init>:(Ljava/lang/StringBuffer;)V" nil
+      '("<init>:(Ljava/lang/StringBuffer;)V" #x00000001         ; PUBLIC
         ; line_number #607
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1112,7 +1113,7 @@
         ; line_number #608
         (return)                                                ; 8
        )
-      '("<init>:(Ljava/lang/StringBuilder;)V" nil
+      '("<init>:(Ljava/lang/StringBuilder;)V" #x00000001        ; PUBLIC
         ; line_number #626
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1121,7 +1122,7 @@
         ; line_number #627
         (return)                                                ; 6
        )
-      '("<init>:([CZ)V" nil
+      '("<init>:([CZ)V" #x00000000                              ; 
         ; line_number #639
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1133,7 +1134,7 @@
         ; line_number #640
         (return)                                                ; 9
        )
-      '("length:()I" nil
+      '("length:()I" #x00000001                                 ; PUBLIC
         ; line_number #651
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -1143,7 +1144,7 @@
         (ishr)                                                  ; 9
         (ireturn)                                               ; 10
        )
-      '("isEmpty:()Z" nil
+      '("isEmpty:()Z" #x00000001                                ; PUBLIC
         ; line_number #663
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -1154,7 +1155,7 @@
         (iconst_0)                                              ; 12
         (ireturn)                                               ; 13
        )
-      '("charAt:(I)C" nil
+      '("charAt:(I)C" #x00000001                                ; PUBLIC
         ; line_number #685
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -1172,7 +1173,7 @@
         (invokestatic 35)                                       ; 21 java.lang.StringUTF16.charAt:([BI)C
         (ireturn)                                               ; 24
        )
-      '("codePointAt:(I)I" nil
+      '("codePointAt:(I)I" #x00000001                           ; PUBLIC
         ; line_number #715
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -1210,7 +1211,7 @@
         (invokestatic 37)                                       ; 46 java.lang.StringUTF16.codePointAt:([BII)I
         (ireturn)                                               ; 49
        )
-      '("codePointBefore:(I)I" nil
+      '("codePointBefore:(I)I" #x00000001                       ; PUBLIC
         ; line_number #747
         (iload_1)                                               ; 0
         (iconst_1)                                              ; 1
@@ -1248,7 +1249,7 @@
         (invokestatic 41)                                       ; 48 java.lang.StringUTF16.codePointBefore:([BI)I
         (ireturn)                                               ; 51
        )
-      '("codePointCount:(II)I" nil
+      '("codePointCount:(II)I" #x00000001                       ; PUBLIC
         ; line_number #779
         (iload_1)                                               ; 0
         (iflt 16)                                               ; 1
@@ -1282,7 +1283,7 @@
         (invokestatic 44)                                       ; 42 java.lang.StringUTF16.codePointCount:([BII)I
         (ireturn)                                               ; 45
        )
-      '("offsetByCodePoints:(II)I" nil
+      '("offsetByCodePoints:(II)I" #x00000001                   ; PUBLIC
         ; line_number #810
         (iload_1)                                               ; 0
         (iflt 11)                                               ; 1
@@ -1302,7 +1303,7 @@
         (invokestatic 45)                                       ; 23 java.lang.Character.offsetByCodePoints:(Ljava/lang/CharSequence;II)I
         (ireturn)                                               ; 26
        )
-      '("getChars:(II[CI)V" nil
+      '("getChars:(II[CI)V" #x00000001                          ; PUBLIC
         ; line_number #847
         (iload_1)                                               ; 0
         (iload_2)                                               ; 1
@@ -1341,7 +1342,7 @@
         ; line_number #854
         (return)                                                ; 53
        )
-      '("getBytes:(II[BI)V" nil
+      '("getBytes:(II[BI)V" #x00000001                          ; PUBLIC
         ; line_number #901
         (iload_1)                                               ; 0
         (iload_2)                                               ; 1
@@ -1384,7 +1385,7 @@
         ; line_number #909
         (return)                                                ; 58
        )
-      '("getBytes:(Ljava/lang/String;)[B" nil
+      '("getBytes:(Ljava/lang/String;)[B" #x00000001            ; PUBLIC
         ; line_number #933
         (aload_1)                                               ; 0
         (ifnonnull 11)                                          ; 1
@@ -1401,7 +1402,7 @@
         (invokestatic 53)                                       ; 21 java.lang.StringCoding.encode:(Ljava/lang/String;B[B)[B
         (areturn)                                               ; 24
        )
-      '("getBytes:(Ljava/nio/charset/Charset;)[B" nil
+      '("getBytes:(Ljava/nio/charset/Charset;)[B" #x00000001    ; PUBLIC
         ; line_number #956
         (aload_1)                                               ; 0
         (ifnonnull 11)                                          ; 1
@@ -1418,7 +1419,7 @@
         (invokestatic 54)                                       ; 21 java.lang.StringCoding.encode:(Ljava/nio/charset/Charset;B[B)[B
         (areturn)                                               ; 24
        )
-      '("getBytes:()[B" nil
+      '("getBytes:()[B" #x00000001                              ; PUBLIC
         ; line_number #974
         (aload_0)                                               ; 0
         (invokevirtual 33)                                      ; 1 java.lang.String.coder:()B
@@ -1427,7 +1428,7 @@
         (invokestatic 55)                                       ; 8 java.lang.StringCoding.encode:(B[B)[B
         (areturn)                                               ; 11
        )
-      '("equals:(Ljava/lang/Object;)Z" nil
+      '("equals:(Ljava/lang/Object;)Z" #x00000001               ; PUBLIC
         ; line_number #996
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1471,14 +1472,14 @@
         (iconst_0)                                              ; 63
         (ireturn)                                               ; 64
        )
-      '("contentEquals:(Ljava/lang/StringBuffer;)Z" nil
+      '("contentEquals:(Ljava/lang/StringBuffer;)Z" #x00000001  ; PUBLIC
         ; line_number #1028
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
         (invokevirtual 58)                                      ; 2 java.lang.String.contentEquals:(Ljava/lang/CharSequence;)Z
         (ireturn)                                               ; 5
        )
-      '("nonSyncContentEquals:(Ljava/lang/AbstractStringBuilder;)Z" nil
+      '("nonSyncContentEquals:(Ljava/lang/AbstractStringBuilder;)Z" #x00000002  ; PRIVATE
         ; line_number #1032
         (aload_0)                                               ; 0
         (invokevirtual 38)                                      ; 1 java.lang.String.length:()I
@@ -1565,7 +1566,7 @@
         (iconst_1)                                              ; 119
         (ireturn)                                               ; 120
        )
-      '("contentEquals:(Ljava/lang/CharSequence;)Z" nil
+      '("contentEquals:(Ljava/lang/CharSequence;)Z" #x00000001  ; PUBLIC
         ; line_number #1079
         (aload_1)                                               ; 0
         (instanceof 63)                                         ; 1 class java.lang.AbstractStringBuilder
@@ -1675,7 +1676,7 @@
         (iconst_1)                                              ; 158
         (ireturn)                                               ; 159
        )
-      '("equalsIgnoreCase:(Ljava/lang/String;)Z" nil
+      '("equalsIgnoreCase:(Ljava/lang/String;)Z" #x00000001     ; PUBLIC
         ; line_number #1143
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -1707,7 +1708,7 @@
         ; line_number #1143
         (ireturn)                                               ; 44
        )
-      '("compareTo:(Ljava/lang/String;)I" nil
+      '("compareTo:(Ljava/lang/String;)I" #x00000001            ; PUBLIC
         ; line_number #1194
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -1751,7 +1752,7 @@
         ; line_number #1200
         (ireturn)                                               ; 62
        )
-      '("compareToIgnoreCase:(Ljava/lang/String;)I" nil
+      '("compareToIgnoreCase:(Ljava/lang/String;)I" #x00000001  ; PUBLIC
         ; line_number #1275
         (getstatic 74)                                          ; 0 java.lang.String.CASE_INSENSITIVE_ORDER:Ljava/util/Comparator;
         (aload_0)                                               ; 3
@@ -1759,7 +1760,7 @@
         (invokeinterface 75 3)                                  ; 5 java.util.Comparator.compare:(Ljava/lang/Object;Ljava/lang/Object;)I
         (ireturn)                                               ; 10
        )
-      '("regionMatches:(ILjava/lang/String;II)Z" nil
+      '("regionMatches:(ILjava/lang/String;II)Z" #x00000001     ; PUBLIC
         ; line_number #1314
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -1886,7 +1887,7 @@
         (iconst_1)                                              ; 185
         (ireturn)                                               ; 186
        )
-      '("regionMatches:(ZILjava/lang/String;II)Z" nil
+      '("regionMatches:(ZILjava/lang/String;II)Z" #x00000001    ; PUBLIC
         ; line_number #1405
         (iload_1)                                               ; 0
         (ifne 14)                                               ; 1
@@ -1985,7 +1986,7 @@
         ; line_number #1421
         (ireturn)                                               ; 149
        )
-      '("startsWith:(Ljava/lang/String;I)Z" nil
+      '("startsWith:(Ljava/lang/String;I)Z" #x00000001          ; PUBLIC
         ; line_number #1445
         (iload_2)                                               ; 0
         (iflt 16)                                               ; 1
@@ -2079,7 +2080,7 @@
         (iconst_1)                                              ; 136
         (ireturn)                                               ; 137
        )
-      '("startsWith:(Ljava/lang/String;)Z" nil
+      '("startsWith:(Ljava/lang/String;)Z" #x00000001           ; PUBLIC
         ; line_number #1487
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -2087,7 +2088,7 @@
         (invokevirtual 82)                                      ; 3 java.lang.String.startsWith:(Ljava/lang/String;I)Z
         (ireturn)                                               ; 6
        )
-      '("endsWith:(Ljava/lang/String;)Z" nil
+      '("endsWith:(Ljava/lang/String;)Z" #x00000001             ; PUBLIC
         ; line_number #1502
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -2099,7 +2100,7 @@
         (invokevirtual 82)                                      ; 11 java.lang.String.startsWith:(Ljava/lang/String;I)Z
         (ireturn)                                               ; 14
        )
-      '("hashCode:()I" nil
+      '("hashCode:()I" #x00000001                               ; PUBLIC
         ; line_number #1519
         (aload_0)                                               ; 0
         (getfield 6)                                            ; 1 java.lang.String.hash:I
@@ -2127,7 +2128,7 @@
         (getfield 6)                                            ; 44 java.lang.String.hash:I
         (ireturn)                                               ; 47
        )
-      '("indexOf:(I)I" nil
+      '("indexOf:(I)I" #x00000001                               ; PUBLIC
         ; line_number #1551
         (aload_0)                                               ; 0
         (iload_1)                                               ; 1
@@ -2135,7 +2136,7 @@
         (invokevirtual 85)                                      ; 3 java.lang.String.indexOf:(II)I
         (ireturn)                                               ; 6
        )
-      '("indexOf:(II)I" nil
+      '("indexOf:(II)I" #x00000001                              ; PUBLIC
         ; line_number #1594
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -2155,7 +2156,7 @@
         ; line_number #1594
         (ireturn)                                               ; 28
        )
-      '("lastIndexOf:(I)I" nil
+      '("lastIndexOf:(I)I" #x00000001                           ; PUBLIC
         ; line_number #1622
         (aload_0)                                               ; 0
         (iload_1)                                               ; 1
@@ -2166,7 +2167,7 @@
         (invokevirtual 88)                                      ; 8 java.lang.String.lastIndexOf:(II)I
         (ireturn)                                               ; 11
        )
-      '("lastIndexOf:(II)I" nil
+      '("lastIndexOf:(II)I" #x00000001                          ; PUBLIC
         ; line_number #1660
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -2186,7 +2187,7 @@
         ; line_number #1660
         (ireturn)                                               ; 28
        )
-      '("indexOf:(Ljava/lang/String;)I" nil
+      '("indexOf:(Ljava/lang/String;)I" #x00000001              ; PUBLIC
         ; line_number #1679
         (aload_0)                                               ; 0
         (invokevirtual 33)                                      ; 1 java.lang.String.coder:()B
@@ -2226,7 +2227,7 @@
         (invokestatic 93)                                       ; 61 java.lang.StringUTF16.indexOfLatin1:([B[B)I
         (ireturn)                                               ; 64
        )
-      '("indexOf:(Ljava/lang/String;I)I" nil
+      '("indexOf:(Ljava/lang/String;I)I" #x00000001             ; PUBLIC
         ; line_number #1707
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -2239,7 +2240,7 @@
         (invokestatic 94)                                       ; 14 java.lang.String.indexOf:([BBILjava/lang/String;I)I
         (ireturn)                                               ; 17
        )
-      '("indexOf:([BBILjava/lang/String;I)I" nil
+      '("indexOf:([BBILjava/lang/String;I)I" #x00000008         ; STATIC
         ; line_number #1723
         (aload_3)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -2314,7 +2315,7 @@
         (invokestatic 97)                                       ; 101 java.lang.StringUTF16.indexOfLatin1:([BI[BII)I
         (ireturn)                                               ; 104
        )
-      '("lastIndexOf:(Ljava/lang/String;)I" nil
+      '("lastIndexOf:(Ljava/lang/String;)I" #x00000001          ; PUBLIC
         ; line_number #1764
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -2323,7 +2324,7 @@
         (invokevirtual 98)                                      ; 6 java.lang.String.lastIndexOf:(Ljava/lang/String;I)I
         (ireturn)                                               ; 9
        )
-      '("lastIndexOf:(Ljava/lang/String;I)I" nil
+      '("lastIndexOf:(Ljava/lang/String;I)I" #x00000001         ; PUBLIC
         ; line_number #1785
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -2336,7 +2337,7 @@
         (invokestatic 99)                                       ; 14 java.lang.String.lastIndexOf:([BBILjava/lang/String;I)I
         (ireturn)                                               ; 17
        )
-      '("lastIndexOf:([BBILjava/lang/String;I)I" nil
+      '("lastIndexOf:([BBILjava/lang/String;I)I" #x00000008     ; STATIC
         ; line_number #1801
         (aload_3)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
@@ -2486,7 +2487,7 @@
         (iadd)                                                  ; 215
         (ireturn)                                               ; 216
        )
-      '("substring:(I)Ljava/lang/String;" nil
+      '("substring:(I)Ljava/lang/String;" #x00000001            ; PUBLIC
         ; line_number #1872
         (iload_1)                                               ; 0
         (ifge 12)                                               ; 1
@@ -2536,7 +2537,7 @@
         ; line_number #1882
         (areturn)                                               ; 67
        )
-      '("substring:(II)Ljava/lang/String;" nil
+      '("substring:(II)Ljava/lang/String;" #x00000001           ; PUBLIC
         ; line_number #1909
         (aload_0)                                               ; 0
         (invokevirtual 38)                                      ; 1 java.lang.String.length:()I
@@ -2579,7 +2580,7 @@
         ; line_number #1915
         (areturn)                                               ; 57
        )
-      '("subSequence:(II)Ljava/lang/CharSequence;" nil
+      '("subSequence:(II)Ljava/lang/CharSequence;" #x00000001   ; PUBLIC
         ; line_number #1949
         (aload_0)                                               ; 0
         (iload_1)                                               ; 1
@@ -2587,7 +2588,7 @@
         (invokevirtual 104)                                     ; 3 java.lang.String.substring:(II)Ljava/lang/String;
         (areturn)                                               ; 6
        )
-      '("concat:(Ljava/lang/String;)Ljava/lang/String;" nil
+      '("concat:(Ljava/lang/String;)Ljava/lang/String;" #x00000001      ; PUBLIC
         ; line_number #1973
         (aload_1)                                               ; 0
         (invokevirtual 38)                                      ; 1 java.lang.String.length:()I
@@ -2671,7 +2672,7 @@
         (invokespecial 107)                                     ; 112 java.lang.String.<init>:([BB)V
         (areturn)                                               ; 115
        )
-      '("replace:(CC)Ljava/lang/String;" nil
+      '("replace:(CC)Ljava/lang/String;" #x00000001             ; PUBLIC
         ; line_number #2022
         (iload_1)                                               ; 0
         (iload_2)                                               ; 1
@@ -2703,14 +2704,14 @@
         (aload_0)                                               ; 40
         (areturn)                                               ; 41
        )
-      '("matches:(Ljava/lang/String;)Z" nil
+      '("matches:(Ljava/lang/String;)Z" #x00000001              ; PUBLIC
         ; line_number #2060
         (aload_1)                                               ; 0
         (aload_0)                                               ; 1
         (invokestatic 111)                                      ; 2 java.util.regex.Pattern.matches:(Ljava/lang/String;Ljava/lang/CharSequence;)Z
         (ireturn)                                               ; 5
        )
-      '("contains:(Ljava/lang/CharSequence;)Z" nil
+      '("contains:(Ljava/lang/CharSequence;)Z" #x00000001       ; PUBLIC
         ; line_number #2072
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -2722,7 +2723,7 @@
         (iconst_0)                                              ; 17
         (ireturn)                                               ; 18
        )
-      '("replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" nil
+      '("replaceFirst:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" #x00000001      ; PUBLIC
         ; line_number #2117
         (aload_1)                                               ; 0
         (invokestatic 114)                                      ; 1 java.util.regex.Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
@@ -2732,7 +2733,7 @@
         (invokevirtual 116)                                     ; 9 java.util.regex.Matcher.replaceFirst:(Ljava/lang/String;)Ljava/lang/String;
         (areturn)                                               ; 12
        )
-      '("replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" nil
+      '("replaceAll:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" #x00000001        ; PUBLIC
         ; line_number #2162
         (aload_1)                                               ; 0
         (invokestatic 114)                                      ; 1 java.util.regex.Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
@@ -2742,7 +2743,7 @@
         (invokevirtual 117)                                     ; 9 java.util.regex.Matcher.replaceAll:(Ljava/lang/String;)Ljava/lang/String;
         (areturn)                                               ; 12
        )
-      '("replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;" nil
+      '("replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;" #x00000001       ; PUBLIC
         ; line_number #2178
         (aload_1)                                               ; 0
         (invokeinterface 112 1)                                 ; 1 java.lang.CharSequence.toString:()Ljava/lang/String;
@@ -2836,7 +2837,7 @@
         (invokevirtual 126)                                     ; 145 java.lang.StringBuilder.toString:()Ljava/lang/String;
         (areturn)                                               ; 148
        )
-      '("split:(Ljava/lang/String;I)[Ljava/lang/String;" nil
+      '("split:(Ljava/lang/String;I)[Ljava/lang/String;" #x00000001     ; PUBLIC
         ; line_number #2294
         (iconst_0)                                              ; 0
         (istore_3)                                              ; 1
@@ -3037,7 +3038,7 @@
         (invokevirtual 141)                                     ; 320 java.util.regex.Pattern.split:(Ljava/lang/CharSequence;I)[Ljava/lang/String;
         (areturn)                                               ; 323
        )
-      '("split:(Ljava/lang/String;)[Ljava/lang/String;" nil
+      '("split:(Ljava/lang/String;)[Ljava/lang/String;" #x00000001      ; PUBLIC
         ; line_number #2381
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -3045,7 +3046,7 @@
         (invokevirtual 142)                                     ; 3 java.lang.String.split:(Ljava/lang/String;I)[Ljava/lang/String;
         (areturn)                                               ; 6
        )
-      '("join:(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;" nil
+      '("join:(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;" #x00000089 ; PUBLIC STATIC VARARGS
         ; line_number #2410
         (aload_0)                                               ; 0
         (invokestatic 49)                                       ; 1 java.util.Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -3088,7 +3089,7 @@
         (invokevirtual 146)                                     ; 55 java.util.StringJoiner.toString:()Ljava/lang/String;
         (areturn)                                               ; 58
        )
-      '("join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;" nil
+      '("join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;" #x00000009      ; PUBLIC STATIC
         ; line_number #2459
         (aload_0)                                               ; 0
         (invokestatic 49)                                       ; 1 java.util.Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -3126,7 +3127,7 @@
         (invokevirtual 146)                                     ; 57 java.util.StringJoiner.toString:()Ljava/lang/String;
         (areturn)                                               ; 60
        )
-      '("toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;" nil
+      '("toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;" #x00000001 ; PUBLIC
         ; line_number #2521
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -3146,14 +3147,14 @@
         ; line_number #2521
         (areturn)                                               ; 28
        )
-      '("toLowerCase:()Ljava/lang/String;" nil
+      '("toLowerCase:()Ljava/lang/String;" #x00000001           ; PUBLIC
         ; line_number #2545
         (aload_0)                                               ; 0
         (invokestatic 153)                                      ; 1 java.util.Locale.getDefault:()Ljava/util/Locale;
         (invokevirtual 154)                                     ; 4 java.lang.String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
         (areturn)                                               ; 7
        )
-      '("toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;" nil
+      '("toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;" #x00000001 ; PUBLIC
         ; line_number #2597
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -3173,14 +3174,14 @@
         ; line_number #2597
         (areturn)                                               ; 28
        )
-      '("toUpperCase:()Ljava/lang/String;" nil
+      '("toUpperCase:()Ljava/lang/String;" #x00000001           ; PUBLIC
         ; line_number #2621
         (aload_0)                                               ; 0
         (invokestatic 153)                                      ; 1 java.util.Locale.getDefault:()Ljava/util/Locale;
         (invokevirtual 157)                                     ; 4 java.lang.String.toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
         (areturn)                                               ; 7
        )
-      '("trim:()Ljava/lang/String;" nil
+      '("trim:()Ljava/lang/String;" #x00000001                  ; PUBLIC
         ; line_number #2656
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -3202,12 +3203,12 @@
         (aload_1)                                               ; 33
         (areturn)                                               ; 34
        )
-      '("toString:()Ljava/lang/String;" nil
+      '("toString:()Ljava/lang/String;" #x00000001              ; PUBLIC
         ; line_number #2667
         (aload_0)                                               ; 0
         (areturn)                                               ; 1
        )
-      '("chars:()Ljava/util/stream/IntStream;" nil
+      '("chars:()Ljava/util/stream/IntStream;" #x00000001       ; PUBLIC
         ; line_number #2681
         (aload_0)                                               ; 0
         ; line_number #2682
@@ -3232,7 +3233,7 @@
         (invokestatic 165)                                      ; 39 java.util.stream.StreamSupport.intStream:(Ljava/util/Spliterator$OfInt;Z)Ljava/util/stream/IntStream;
         (areturn)                                               ; 42
        )
-      '("codePoints:()Ljava/util/stream/IntStream;" nil
+      '("codePoints:()Ljava/util/stream/IntStream;" #x00000001  ; PUBLIC
         ; line_number #2701
         (aload_0)                                               ; 0
         ; line_number #2702
@@ -3257,7 +3258,7 @@
         (invokestatic 165)                                      ; 39 java.util.stream.StreamSupport.intStream:(Ljava/util/Spliterator$OfInt;Z)Ljava/util/stream/IntStream;
         (areturn)                                               ; 42
        )
-      '("toCharArray:()[C" nil
+      '("toCharArray:()[C" #x00000001                           ; PUBLIC
         ; line_number #2715
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
@@ -3273,7 +3274,7 @@
         ; line_number #2715
         (areturn)                                               ; 24
        )
-      '("format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;" nil
+      '("format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;" #x00000089   ; PUBLIC STATIC VARARGS
         ; line_number #2755
         (new 170)                                               ; 0 class java.util.Formatter
         (dup)                                                   ; 3
@@ -3284,7 +3285,7 @@
         (invokevirtual 173)                                     ; 12 java.util.Formatter.toString:()Ljava/lang/String;
         (areturn)                                               ; 15
        )
-      '("format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;" nil
+      '("format:(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;" #x00000089 ; PUBLIC STATIC VARARGS
         ; line_number #2796
         (new 170)                                               ; 0 class java.util.Formatter
         (dup)                                                   ; 3
@@ -3296,7 +3297,7 @@
         (invokevirtual 173)                                     ; 13 java.util.Formatter.toString:()Ljava/lang/String;
         (areturn)                                               ; 16
        )
-      '("valueOf:(Ljava/lang/Object;)Ljava/lang/String;" nil
+      '("valueOf:(Ljava/lang/Object;)Ljava/lang/String;" #x00000009     ; PUBLIC STATIC
         ; line_number #2809
         (aload_0)                                               ; 0
         (ifnonnull 8)                                           ; 1
@@ -3306,7 +3307,7 @@
         (invokevirtual 176)                                     ; 10 java.lang.Object.toString:()Ljava/lang/String;
         (areturn)                                               ; 13
        )
-      '("valueOf:([C)Ljava/lang/String;" nil
+      '("valueOf:([C)Ljava/lang/String;" #x00000009             ; PUBLIC STATIC
         ; line_number #2823
         (new 12)                                                ; 0 class java.lang.String
         (dup)                                                   ; 3
@@ -3314,7 +3315,7 @@
         (invokespecial 177)                                     ; 5 java.lang.String.<init>:([C)V
         (areturn)                                               ; 8
        )
-      '("valueOf:([CII)Ljava/lang/String;" nil
+      '("valueOf:([CII)Ljava/lang/String;" #x00000009           ; PUBLIC STATIC
         ; line_number #2847
         (new 12)                                                ; 0 class java.lang.String
         (dup)                                                   ; 3
@@ -3324,7 +3325,7 @@
         (invokespecial 178)                                     ; 7 java.lang.String.<init>:([CII)V
         (areturn)                                               ; 10
        )
-      '("copyValueOf:([CII)Ljava/lang/String;" nil
+      '("copyValueOf:([CII)Ljava/lang/String;" #x00000009       ; PUBLIC STATIC
         ; line_number #2864
         (new 12)                                                ; 0 class java.lang.String
         (dup)                                                   ; 3
@@ -3334,7 +3335,7 @@
         (invokespecial 178)                                     ; 7 java.lang.String.<init>:([CII)V
         (areturn)                                               ; 10
        )
-      '("copyValueOf:([C)Ljava/lang/String;" nil
+      '("copyValueOf:([C)Ljava/lang/String;" #x00000009         ; PUBLIC STATIC
         ; line_number #2875
         (new 12)                                                ; 0 class java.lang.String
         (dup)                                                   ; 3
@@ -3342,7 +3343,7 @@
         (invokespecial 177)                                     ; 5 java.lang.String.<init>:([C)V
         (areturn)                                               ; 8
        )
-      '("valueOf:(Z)Ljava/lang/String;" nil
+      '("valueOf:(Z)Ljava/lang/String;" #x00000009              ; PUBLIC STATIC
         ; line_number #2887
         (iload_0)                                               ; 0
         (ifeq 8)                                                ; 1
@@ -3351,7 +3352,7 @@
         (ldc 180)                                               ; 9 "false"
         (areturn)                                               ; 11
        )
-      '("valueOf:(C)Ljava/lang/String;" nil
+      '("valueOf:(C)Ljava/lang/String;" #x00000009              ; PUBLIC STATIC
         ; line_number #2899
         (getstatic 10)                                          ; 0 java.lang.String.COMPACT_STRINGS:Z
         (ifeq 23)                                               ; 3
@@ -3375,34 +3376,33 @@
         (invokespecial 107)                                     ; 35 java.lang.String.<init>:([BB)V
         (areturn)                                               ; 38
        )
-      '("valueOf:(I)Ljava/lang/String;" nil
+      '("valueOf:(I)Ljava/lang/String;" #x00000009              ; PUBLIC STATIC
         ; line_number #2916
         (iload_0)                                               ; 0
         (invokestatic 184)                                      ; 1 java.lang.Integer.toString:(I)Ljava/lang/String;
         (areturn)                                               ; 4
        )
-      '("valueOf:(J)Ljava/lang/String;" nil
+      '("valueOf:(J)Ljava/lang/String;" #x00000009              ; PUBLIC STATIC
         ; line_number #2930
         (lload_0)                                               ; 0
         (invokestatic 185)                                      ; 1 java.lang.Long.toString:(J)Ljava/lang/String;
         (areturn)                                               ; 4
        )
-      '("valueOf:(F)Ljava/lang/String;" nil
+      '("valueOf:(F)Ljava/lang/String;" #x00000009              ; PUBLIC STATIC
         ; line_number #2944
         (fload_0)                                               ; 0
         (invokestatic 186)                                      ; 1 java.lang.Float.toString:(F)Ljava/lang/String;
         (areturn)                                               ; 4
        )
-      '("valueOf:(D)Ljava/lang/String;" nil
+      '("valueOf:(D)Ljava/lang/String;" #x00000009              ; PUBLIC STATIC
         ; line_number #2958
         (dload_0)                                               ; 0
         (invokestatic 187)                                      ; 1 java.lang.Double.toString:(D)Ljava/lang/String;
         (areturn)                                               ; 4
        )
-      '("intern:()Ljava/lang/String;" nil
-        ; native method
+      '("intern:()Ljava/lang/String;" #x00000101                ; PUBLIC NATIVE
        )
-      '("getBytes:([BIB)V" nil
+      '("getBytes:([BIB)V" #x00000000                           ; 
         ; line_number #2999
         (aload_0)                                               ; 0
         (invokevirtual 33)                                      ; 1 java.lang.String.coder:()B
@@ -3434,7 +3434,7 @@
         ; line_number #3004
         (return)                                                ; 43
        )
-      '("<init>:([CIILjava/lang/Void;)V" nil
+      '("<init>:([CIILjava/lang/Void;)V" #x00000000             ; 
         ; line_number #3015
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -3489,7 +3489,7 @@
         ; line_number #3031
         (return)                                                ; 73
        )
-      '("<init>:(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V" nil
+      '("<init>:(Ljava/lang/AbstractStringBuilder;Ljava/lang/Void;)V" #x00000000        ; 
         ; line_number #3037
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -3555,7 +3555,7 @@
         ; line_number #3055
         (return)                                                ; 91
        )
-      '("<init>:([BB)V" nil
+      '("<init>:([BB)V" #x00000000                              ; 
         ; line_number #3060
         (aload_0)                                               ; 0
         (invokespecial 3)                                       ; 1 java.lang.Object.<init>:()V
@@ -3570,7 +3570,7 @@
         ; line_number #3063
         (return)                                                ; 14
        )
-      '("coder:()B" nil
+      '("coder:()B" #x00000000                                  ; 
         ; line_number #3066
         (getstatic 10)                                          ; 0 java.lang.String.COMPACT_STRINGS:Z
         (ifeq 10)                                               ; 3
@@ -3580,7 +3580,7 @@
         (iconst_1)                                              ; 13
         (ireturn)                                               ; 14
        )
-      '("isLatin1:()Z" nil
+      '("isLatin1:()Z" #x00000002                               ; PRIVATE
         ; line_number #3070
         (getstatic 10)                                          ; 0 java.lang.String.COMPACT_STRINGS:Z
         (ifeq 14)                                               ; 3
@@ -3592,7 +3592,7 @@
         (iconst_0)                                              ; 17
         (ireturn)                                               ; 18
        )
-      '("checkIndex:(II)V" nil
+      '("checkIndex:(II)V" #x00000008                           ; STATIC
         ; line_number #3081
         (iload_0)                                               ; 0
         (iflt 8)                                                ; 1
@@ -3615,7 +3615,7 @@
         ; line_number #3084
         (return)                                                ; 36
        )
-      '("checkOffset:(II)V" nil
+      '("checkOffset:(II)V" #x00000008                          ; STATIC
         ; line_number #3091
         (iload_0)                                               ; 0
         (iflt 8)                                                ; 1
@@ -3642,7 +3642,7 @@
         ; line_number #3095
         (return)                                                ; 45
        )
-      '("checkBoundsOffCount:(III)V" nil
+      '("checkBoundsOffCount:(III)V" #x00000008                 ; STATIC
         ; line_number #3106
         (iload_0)                                               ; 0
         (iflt 14)                                               ; 1
@@ -3677,7 +3677,7 @@
         ; line_number #3110
         (return)                                                ; 60
        )
-      '("checkBoundsBeginEnd:(III)V" nil
+      '("checkBoundsBeginEnd:(III)V" #x0000000a                 ; PRIVATE STATIC
         ; line_number #3121
         (iload_0)                                               ; 0
         (iflt 13)                                               ; 1
@@ -3711,7 +3711,7 @@
         ; line_number #3125
         (return)                                                ; 59
        )
-      '("compareTo:(Ljava/lang/Object;)I" nil
+      '("compareTo:(Ljava/lang/Object;)I" #x00001041            ; PUBLIC BRIDGE SYNTHETIC
         ; line_number #119
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -3719,19 +3719,19 @@
         (invokevirtual 203)                                     ; 5 java.lang.String.compareTo:(Ljava/lang/String;)I
         (ireturn)                                               ; 8
        )
-      '("access$100:(Ljava/lang/String;)[B" nil
+      '("access$100:(Ljava/lang/String;)[B" #x00001008          ; STATIC SYNTHETIC
         ; line_number #119
         (aload_0)                                               ; 0
         (getfield 2)                                            ; 1 java.lang.String.value:[B
         (areturn)                                               ; 4
        )
-      '("access$200:(Ljava/lang/String;)Z" nil
+      '("access$200:(Ljava/lang/String;)Z" #x00001008           ; STATIC SYNTHETIC
         ; line_number #119
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.String.isLatin1:()Z
         (ireturn)                                               ; 4
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #181
         (iconst_1)                                              ; 0
         (putstatic 10)                                          ; 1 java.lang.String.COMPACT_STRINGS:Z

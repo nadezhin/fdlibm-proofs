@@ -140,12 +140,12 @@
   (implies (wordp w0)
            (equal (get-lo-i32 (make-i32 w0))
                   w0))
-  :enable (get-lo-i32 make-i32 wordp))
+  :enable (get-lo-i32 make-i32 wordp i32p))
 
 (local
  (defruled get-lo-double-as-bits
    (equal (get-lo-double d)
-          (rtl::bits (ifix d) 31 0))
+          (and (doublep d) (rtl::bits (ifix d) 31 0)))
    :enable (get-lo-double uint-fix-as-bits)
    :disable m5::uint-fix))
 
@@ -164,7 +164,7 @@
 (local
  (defruled get-hi-double-as-bits
    (equal (get-hi-double d)
-          (rtl::bits (ifix d) 63 32))
+          (and (doublep d) (rtl::bits (ifix d) 63 32)))
    :enable (get-hi-double uint-fix-as-bits bits-shr)
    :disable (m5::uint-fix m5::shr)))
 
@@ -179,17 +179,25 @@
   (("subgoal 2" :in-theory (enable wordp get-lo-double get-hi-double))
    ("subgoal 1" :in-theory (enable get-hi-double-as-bits get-lo-double-as-bits))))
 
+(defrule make-double-type
+  (implies (and (wordp w0)
+                (wordp w1))
+           (doublep (make-double w1 w0)))
+  :enable (doublep make-double rtl::encodingp rtl::dp))
+
 (defrule get-hi-double-make-double
   (implies (and (wordp w1) (wordp w0))
            (equal (get-hi-double (make-double w1 w0))
                   w1))
-  :enable (make-double get-hi-double-as-bits wordp rtl::bits rtl::fl))
+  :enable (make-double get-hi-double-as-bits wordp rtl::bits rtl::fl)
+  :use make-double-type)
 
 (defrule get-lo-double-make-double
   (implies (and (wordp w1) (wordp w0))
            (equal (get-lo-double (make-double w1 w0))
                   w0))
-  :enable (make-double get-lo-double-as-bits wordp rtl::bits rtl::fl))
+  :enable (make-double get-lo-double-as-bits wordp rtl::bits rtl::fl)
+  :use make-double-type)
 
 ;----------
 

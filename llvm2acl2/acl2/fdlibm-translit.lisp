@@ -47,18 +47,18 @@
    (cons (m5::make-class-decl
           "Test"
           '("java/lang/Object")
-          ()
-          ()
           `(nil (m5::methodref ,class ,method ,(len args)))
+          #x00000020                                                 ; SUPER
+          ()
           ()
           '(m5::ref -1))
          (m5::class-table s))))
 
 (defconst *doubleToRawLongBits-def*
-  '#!jvm("doubleToRawLongBits:(D)J" nil)) ; native method
+  '#!jvm("doubleToRawLongBits:(D)J" #x00000109)) ; PUBLIC STATIC NATIVE
 
 (defconst *longBitsToDouble-def*
-  '#!jvm("longBitsToDouble:(J)D" nil)) ; native method
+  '#!jvm("longBitsToDouble:(J)D" #x00000109)) ; PUBLIC STATIC NATIVE
 
 (defruled shr-for-gl1
   (equal (m5::shr x n)
@@ -73,7 +73,7 @@
 
 (defund poised-to-invoke-get-lo-p (th s)
   (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$100:(D)I" 2)
-       (doublep (m5::top (m5::pop (m5::stack (m5::top-frame th s)))))
+       (doublep (m5::top2 (m5::stack (m5::top-frame th s))))
        (equal (m5::class-decl-methods
                (m5::bound? "FdlibmTranslit"
                            (m5::class-table s)))
@@ -94,10 +94,11 @@
    *FdlibmTranslit-initial-state*
    "FdlibmTranslit"
    "access$100:(D)I"
-   (m5::push 0 (m5::push x ()))))
+   (m5::push2 x ())))
 
 (defrule |poised-to-invoke-get-lo-p test-get-lo|
-  (poised-to-invoke-get-lo-p 0 (test-get-lo x))
+  (implies (doublep x)
+           (poised-to-invoke-get-lo-p 0 (test-get-lo x)))
   :enable (poised-to-invoke-get-lo-p
            m5::make-thread m5::call-stack m5::status))
  |#
@@ -107,9 +108,8 @@
                   (m5::modify
                    th s
                    :pc (+ 3 (m5::pc (m5::top-frame th s)))
-                   :stack (m5::push (get-lo (m5::top (m5::pop (m5::stack (m5::top-frame th s)))))
-                                    (m5::pop (m5::pop (m5::stack (m5::top-frame
-                                                                  th s))))))))
+                   :stack (m5::push (get-lo (m5::top2 (m5::stack (m5::top-frame th s))))
+                                    (m5::pop2 (m5::stack (m5::top-frame th s)))))))
   :prep-lemmas (
     (defrule lemma
       (implies (doublep x)
@@ -149,9 +149,8 @@
                   (m5::modify
                    th s
                    :pc (+ 3 (m5::pc (m5::top-frame th s)))
-                   :stack (m5::push (get-hi (m5::top (m5::pop (m5::stack (m5::top-frame th s)))))
-                                    (m5::pop (m5::pop (m5::stack (m5::top-frame
-                                                                  th s))))))))
+                   :stack (m5::push (get-hi (m5::top2 (m5::stack (m5::top-frame th s))))
+                                    (m5::pop2 (m5::stack (m5::top-frame th s)))))))
   :prep-lemmas (
     (gl::set-preferred-def m5::shr shr-for-gl1)
     (gl::def-gl-rule lemma
@@ -164,43 +163,13 @@
             m5::deref
             m5::shr
             m5::bind-formals))
-#|
-(defund suppress-double-snan (d)
-  (m5::bits2fp d (rtl::dp)))
 
-(defund set-lo (d lo)
-  (suppress-double-snan (make-double (git-hi d) lo)))
-
-(defrule set-lo-1-long-fix
-  (equal (set-lo (m5::long-fix d) lo)
-         (set-lo d lo))
-  :enable set-lo
-  :disable m5::long-fix)
-
-(defrule set-lo-2-long-fix
-  (equal (set-lo d (m5::long-fix lo))
-         (set-lo d lo))
-  :enable (set-lo int-fix-long-fix)
-  :disable m5::long-fix)
-
-(defund set-hi (d hi)
-  (suppress-double-snan (make-double hi (git-lo d))))
-|#
-#|
-  (let ((hi (logand #x7fffffff (get-hi d))))
-    (make-double
-     (if (or (and (= hi #x7ff00000) (not (= (m5::int-fix lo) 0)))
-             (and (> hi #x7ff00000) (< hi #x7ff80000)))
-         (+ #x00080000 (get-hi d))
-       (get-hi d))
-     lo)))
-|#
 (defund set-lo-schedule (th)
   (m5::repeat th 18))
 
 (defund poised-to-invoke-set-lo-p (th s)
   (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$200:(DI)D" 3)
-       (doublep (m5::top (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))
+       (doublep (m5::top2 (m5::pop (m5::stack (m5::top-frame th s)))))
        (i32p (m5::top (m5::stack (m5::top-frame th s))))
        (equal (m5::class-decl-methods
                (m5::bound? "FdlibmTranslit"
@@ -233,13 +202,10 @@
                   (m5::modify
                    th s
                    :pc (+ 3 (m5::pc (m5::top-frame th s)))
-                   :stack (m5::push
-                           0
-                           (m5::push
-                            (set-lo (m5::top (m5::pop (m5::pop (m5::stack
-                                                                (m5::top-frame th s)))))
+                   :stack (m5::push2
+                            (set-lo (m5::top2 (m5::pop (m5::stack (m5::top-frame th s))))
                                     (m5::top (m5::stack (m5::top-frame th s))))
-                            (m5::pop (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))))))
+                            (m5::pop2 (m5::pop (m5::stack (m5::top-frame th s))))))))
   :prep-lemmas (
     (gl::set-preferred-def m5::shr shr-for-gl1)
     (gl::def-gl-rule lemma
@@ -267,7 +233,7 @@
 
 (defund poised-to-invoke-set-hi-p (th s)
   (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$400:(DI)D" 3)
-       (doublep (m5::top (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))
+       (doublep (m5::top2 (m5::pop (m5::stack (m5::top-frame th s)))))
        (i32p (m5::top (m5::stack (m5::top-frame th s))))
        (equal (m5::class-decl-methods
                (m5::bound? "FdlibmTranslit"
@@ -300,13 +266,10 @@
                   (m5::modify
                    th s
                    :pc (+ 3 (m5::pc (m5::top-frame th s)))
-                   :stack (m5::push
-                           0
-                           (m5::push
-                            (set-hi (m5::top (m5::pop (m5::pop (m5::stack
-                                                                (m5::top-frame th s)))))
-                                    (m5::top (m5::stack (m5::top-frame th s))))
-                            (m5::pop (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))))))
+                   :stack (m5::push2
+                           (set-hi (m5::top2 (m5::pop (m5::stack (m5::top-frame th s))))
+                                   (m5::top (m5::stack (m5::top-frame th s))))
+                           (m5::pop2 (m5::pop (m5::stack (m5::top-frame th s))))))))
   :prep-lemmas (
     (gl::set-preferred-def m5::shr shr-for-gl1)
     (gl::def-gl-rule lemma

@@ -7,106 +7,107 @@
     (make-class-decl
      "FdlibmTranslit$KernelRemPio2"
      '("java/lang/Object")
-     '()
-     '(
-      "init_jk:[I"
-      "PIo2:[D"
-      "zero:D"
-      "one:D"
-      "two24:D"
-      "twon24:D")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (fieldref "FdlibmTranslit$KernelRemPio2" "init_jk:[I" 1)        ; 2
-       (class (ref -1) "FdlibmTranslit$KernelRemPio2")         ; 3
-       (double #x3e70000000000000) ; 0x1.0p-24 5.9604644775390625E-8   ; 4
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (fieldref "FdlibmTranslit$KernelRemPio2" "init_jk:[I" 1) ; 2
+       (class (ref -1) "FdlibmTranslit$KernelRemPio2")          ; 3
+       (double #x3e70000000000000) ; 0x1.0p-24 5.9604644775390625E-8    ; 4
        nil
-       (double #x4170000000000000) ; 0x1.0p24 1.6777216E7      ; 6
+       (double #x4170000000000000) ; 0x1.0p24 1.6777216E7       ; 6
        nil
-       (methodref "FdlibmTranslit$Scalbn" "compute:(DI)D" 3)   ; 8
-       (double #x4020000000000000) ; 0x1.0p3 8.0               ; 9
+       (methodref "FdlibmTranslit$Scalbn" "compute:(DI)D" 3)    ; 8
+       (double #x4020000000000000) ; 0x1.0p3 8.0                ; 9
        nil
-       (double #x3fc0000000000000) ; 0x1.0p-3 0.125            ; 11
+       (double #x3fc0000000000000) ; 0x1.0p-3 0.125             ; 11
        nil
-       (methodref "FdlibmTranslit$Floor" "compute:(D)D" 2)     ; 13
-       (double #x3fe0000000000000) ; 0x1.0p-1 0.5              ; 14
+       (methodref "FdlibmTranslit$Floor" "compute:(D)D" 2)      ; 13
+       (double #x3fe0000000000000) ; 0x1.0p-1 0.5               ; 14
        nil
-       (integer 16777216)                                      ; 16
-       (integer 16777215)                                      ; 17
-       (integer 8388607)                                       ; 18
-       (integer 4194303)                                       ; 19
-       (fieldref "FdlibmTranslit$KernelRemPio2" "PIo2:[D" 1)   ; 20
-       (double #x3ff921fb40000000) ; 0x1.921fb4p0 1.570796251296997    ; 21
+       (integer 16777216)                                       ; 16
+       (integer 16777215)                                       ; 17
+       (integer 8388607)                                        ; 18
+       (integer 4194303)                                        ; 19
+       (fieldref "FdlibmTranslit$KernelRemPio2" "PIo2:[D" 1)    ; 20
+       (double #x3ff921fb40000000) ; 0x1.921fb4p0 1.570796251296997     ; 21
        nil
-       (double #x3e74442d00000000) ; 0x1.4442dp-24 7.549789415861596E-8        ; 23
+       (double #x3e74442d00000000) ; 0x1.4442dp-24 7.549789415861596E-8 ; 23
        nil
-       (double #x3cf8469880000000) ; 0x1.846988p-48 5.390302529957765E-15      ; 25
+       (double #x3cf8469880000000) ; 0x1.846988p-48 5.390302529957765E-15       ; 25
        nil
-       (double #x3b78cc5160000000) ; 0x1.8cc516p-72 3.282003415807913E-22      ; 27
+       (double #x3b78cc5160000000) ; 0x1.8cc516p-72 3.282003415807913E-22       ; 27
        nil
-       (double #x39f01b8380000000) ; 0x1.01b838p-96 1.270655753080676E-29      ; 29
+       (double #x39f01b8380000000) ; 0x1.01b838p-96 1.270655753080676E-29       ; 29
        nil
-       (double #x387a252040000000) ; 0x1.a25204p-120 1.2293330898111133E-36    ; 31
+       (double #x387a252040000000) ; 0x1.a25204p-120 1.2293330898111133E-36     ; 31
        nil
-       (double #x36e3822280000000) ; 0x1.382228p-145 2.7337005381646456E-44    ; 33
+       (double #x36e3822280000000) ; 0x1.382228p-145 2.7337005381646456E-44     ; 33
        nil
-       (double #x3569f31d00000000) ; 0x1.9f31dp-169 2.1674168387780482E-51     ; 35
+       (double #x3569f31d00000000) ; 0x1.9f31dp-169 2.1674168387780482E-51      ; 35
        nil
-       (class (ref -1) "java/lang/Object")                     ; 37
-       (utf8)                                                  ; 38
-       (utf8)                                                  ; 39
-       (utf8)                                                  ; 40
-       (utf8)                                                  ; 41
-       (utf8)                                                  ; 42
-       (utf8)                                                  ; 43
-       (utf8)                                                  ; 44
-       (double #x0000000000000000) ; 0x0.0p0 0.0               ; 45
+       (class (ref -1) "java/lang/Object")                      ; 37
+       (utf8)                                                   ; 38
+       (utf8)                                                   ; 39
+       (utf8)                                                   ; 40
+       (utf8)                                                   ; 41
+       (utf8)                                                   ; 42
+       (utf8)                                                   ; 43
+       (utf8)                                                   ; 44
+       (double #x0000000000000000) ; 0x0.0p0 0.0                ; 45
        nil
-       (utf8)                                                  ; 47
-       (double #x3ff0000000000000) ; 0x1.0p0 1.0               ; 48
+       (utf8)                                                   ; 47
+       (double #x3ff0000000000000) ; 0x1.0p0 1.0                ; 48
        nil
-       (utf8)                                                  ; 50
-       (utf8)                                                  ; 51
-       (utf8)                                                  ; 52
-       (utf8)                                                  ; 53
-       (utf8)                                                  ; 54
-       (utf8)                                                  ; 55
-       (utf8)                                                  ; 56
-       (utf8)                                                  ; 57
-       (utf8)                                                  ; 58
-       (class (ref -1) "[D")                                   ; 59
-       (class (ref -1) "[I")                                   ; 60
-       (utf8)                                                  ; 61
-       (utf8)                                                  ; 62
-       (utf8)                                                  ; 63
-       (name-and-type "<init>:()V")                            ; 64
-       (name-and-type "init_jk:[I")                            ; 65
-       (class (ref -1) "FdlibmTranslit")                       ; 66
-       (utf8)                                                  ; 67
-       (utf8)                                                  ; 68
-       (utf8)                                                  ; 69
-       (class (ref -1) "FdlibmTranslit$Scalbn")                ; 70
-       (name-and-type "compute:(DI)D")                         ; 71
-       (class (ref -1) "FdlibmTranslit$Floor")                 ; 72
-       (name-and-type "compute:(D)D")                          ; 73
-       (name-and-type "PIo2:[D")                               ; 74
-       (utf8)                                                  ; 75
-       (utf8)                                                  ; 76
-       (utf8)                                                  ; 77
-       (utf8)                                                  ; 78
-       (utf8)                                                  ; 79
-       (utf8)                                                  ; 80
-       (utf8)                                                  ; 81
-       (utf8)                                                  ; 82
+       (utf8)                                                   ; 50
+       (utf8)                                                   ; 51
+       (utf8)                                                   ; 52
+       (utf8)                                                   ; 53
+       (utf8)                                                   ; 54
+       (utf8)                                                   ; 55
+       (utf8)                                                   ; 56
+       (utf8)                                                   ; 57
+       (utf8)                                                   ; 58
+       (class (ref -1) "[D")                                    ; 59
+       (class (ref -1) "[I")                                    ; 60
+       (utf8)                                                   ; 61
+       (utf8)                                                   ; 62
+       (utf8)                                                   ; 63
+       (name-and-type "<init>:()V")                             ; 64
+       (name-and-type "init_jk:[I")                             ; 65
+       (class (ref -1) "FdlibmTranslit")                        ; 66
+       (utf8)                                                   ; 67
+       (utf8)                                                   ; 68
+       (utf8)                                                   ; 69
+       (class (ref -1) "FdlibmTranslit$Scalbn")                 ; 70
+       (name-and-type "compute:(DI)D")                          ; 71
+       (class (ref -1) "FdlibmTranslit$Floor")                  ; 72
+       (name-and-type "compute:(D)D")                           ; 73
+       (name-and-type "PIo2:[D")                                ; 74
+       (utf8)                                                   ; 75
+       (utf8)                                                   ; 76
+       (utf8)                                                   ; 77
+       (utf8)                                                   ; 78
+       (utf8)                                                   ; 79
+       (utf8)                                                   ; 80
+       (utf8)                                                   ; 81
+       (utf8)                                                   ; 82
+      )
+     #x00000020                                                 ; SUPER
+     '(
+       ("init_jk:[I" #x0000001a)                                ; PRIVATE STATIC FINAL
+       ("PIo2:[D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("zero:D" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("one:D" #x0000001a)                                     ; PRIVATE STATIC FINAL
+       ("two24:D" #x0000001a)                                   ; PRIVATE STATIC FINAL
+       ("twon24:D" #x0000001a)                                  ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #2479
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:([D[DIII[I)I" nil
+      '("compute:([D[DIII[I)I" #x00000808                       ; STATIC STRICT
         ; line_number #2499
         (bipush 20)                                             ; 0
         (newarray T_INT)                                        ; 2
@@ -944,7 +945,7 @@
         (iand)                                                  ; 1302
         (ireturn)                                               ; 1303
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #2481
         (iconst_4)                                              ; 0
         (newarray T_INT)                                        ; 1

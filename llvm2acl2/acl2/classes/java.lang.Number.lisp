@@ -7,67 +7,68 @@
     (make-class-decl
      "java/lang/Number"
      '("java/lang/Object")
-     '()
-     '(
-      "serialVersionUID:J")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "java/lang/Number" "intValue:()I" 0)         ; 2
-       (class (ref -1) "java/lang/Number")                     ; 3
-       (class (ref -1) "java/lang/Object")                     ; 4
-       (class (ref -1) "java/io/Serializable")                 ; 5
-       (utf8)                                                  ; 6
-       (utf8)                                                  ; 7
-       (utf8)                                                  ; 8
-       (long -8742448824652078965)                             ; 9
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "java/lang/Number" "intValue:()I" 0)          ; 2
+       (class (ref -1) "java/lang/Number")                      ; 3
+       (class (ref -1) "java/lang/Object")                      ; 4
+       (class (ref -1) "java/io/Serializable")                  ; 5
+       (utf8)                                                   ; 6
+       (utf8)                                                   ; 7
+       (utf8)                                                   ; 8
+       (long -8742448824652078965)                              ; 9
        nil
-       (utf8)                                                  ; 11
-       (utf8)                                                  ; 12
-       (utf8)                                                  ; 13
-       (utf8)                                                  ; 14
-       (utf8)                                                  ; 15
-       (utf8)                                                  ; 16
-       (utf8)                                                  ; 17
-       (utf8)                                                  ; 18
-       (utf8)                                                  ; 19
-       (utf8)                                                  ; 20
-       (utf8)                                                  ; 21
-       (utf8)                                                  ; 22
-       (utf8)                                                  ; 23
-       (utf8)                                                  ; 24
-       (utf8)                                                  ; 25
-       (utf8)                                                  ; 26
-       (utf8)                                                  ; 27
-       (utf8)                                                  ; 28
-       (name-and-type "<init>:()V")                            ; 29
-       (name-and-type "intValue:()I")                          ; 30
-       (utf8)                                                  ; 31
-       (utf8)                                                  ; 32
-       (utf8)                                                  ; 33
+       (utf8)                                                   ; 11
+       (utf8)                                                   ; 12
+       (utf8)                                                   ; 13
+       (utf8)                                                   ; 14
+       (utf8)                                                   ; 15
+       (utf8)                                                   ; 16
+       (utf8)                                                   ; 17
+       (utf8)                                                   ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (utf8)                                                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (utf8)                                                   ; 26
+       (utf8)                                                   ; 27
+       (utf8)                                                   ; 28
+       (name-and-type "<init>:()V")                             ; 29
+       (name-and-type "intValue:()I")                           ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (utf8)                                                   ; 33
+      )
+     #x00000421                                                 ; PUBLIC SUPER ABSTRACT
+     '(
+       ("serialVersionUID:J" #x0000001a)                        ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000001                                 ; PUBLIC
         ; line_number #55
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("intValue:()I" nil
+      '("intValue:()I" #x00000401                               ; PUBLIC ABSTRACT
        )
-      '("longValue:()J" nil
+      '("longValue:()J" #x00000401                              ; PUBLIC ABSTRACT
        )
-      '("floatValue:()F" nil
+      '("floatValue:()F" #x00000401                             ; PUBLIC ABSTRACT
        )
-      '("doubleValue:()D" nil
+      '("doubleValue:()D" #x00000401                            ; PUBLIC ABSTRACT
        )
-      '("byteValue:()B" nil
+      '("byteValue:()B" #x00000001                              ; PUBLIC
         ; line_number #99
         (aload_0)                                               ; 0
         (invokevirtual 2)                                       ; 1 java.lang.Number.intValue:()I
         (i2b)                                                   ; 4
         (ireturn)                                               ; 5
        )
-      '("shortValue:()S" nil
+      '("shortValue:()S" #x00000001                             ; PUBLIC
         ; line_number #113
         (aload_0)                                               ; 0
         (invokevirtual 2)                                       ; 1 java.lang.Number.intValue:()I

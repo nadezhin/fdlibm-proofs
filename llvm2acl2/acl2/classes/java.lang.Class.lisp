@@ -7,1258 +7,1258 @@
     (make-class-decl
      "java/lang/Class"
      '("java/lang/Object")
-     '(
-      "cachedConstructor:Ljava/lang/reflect/Constructor;"
-      "newInstanceCallerCache:Ljava/lang/Class;"
-      "name:Ljava/lang/String;"
-      "classLoader:Ljava/lang/ClassLoader;"
-      "componentType:Ljava/lang/Class;"
-      "reflectionData:Ljava/lang/ref/SoftReference;"
-      "classRedefinedCount:I"
-      "genericInfo:Lsun/reflect/generics/repository/ClassRepository;"
-      "enumConstants:[Ljava/lang/Object;"
-      "enumConstantDirectory:Ljava/util/Map;"
-      "annotationData:Ljava/lang/Class$AnnotationData;"
-      "annotationType:Lsun/reflect/annotation/AnnotationType;"
-      "classValueMap:Ljava/lang/ClassValue$ClassValueMap;")
-     '(
-      "ANNOTATION:I"
-      "ENUM:I"
-      "SYNTHETIC:I"
-      "allPermDomain:Ljava/security/ProtectionDomain;"
-      "useCaches:Z"
-      "serialVersionUID:J"
-      "serialPersistentFields:[Ljava/io/ObjectStreamField;"
-      "reflectionFactory:Lsun/reflect/ReflectionFactory;"
-      "initted:Z")
      '(nil
-       (fieldref "java/lang/Class" "initted:Z" 1)              ; 1
-       (fieldref "java/lang/Class" "useCaches:Z" 1)            ; 2
-       (methodref "java/lang/Class" "arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z" 2)     ; 3
-       (methodref "java/lang/Class" "searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;" 2)  ; 4
-       (methodref "java/lang/Class" "getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;" 1)      ; 5
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 6
-       (fieldref "java/lang/Class" "classLoader:Ljava/lang/ClassLoader;" 1)    ; 7
-       (fieldref "java/lang/Class" "componentType:Ljava/lang/Class;" 1)        ; 8
-       (class (ref -1) "java/lang/StringBuilder")              ; 9
-       (methodref "java/lang/StringBuilder" "<init>:()V" 0)    ; 10
-       (methodref "java/lang/Class" "isInterface:()Z" 0)       ; 11
+       (fieldref "java/lang/Class" "initted:Z" 1)               ; 1
+       (fieldref "java/lang/Class" "useCaches:Z" 1)             ; 2
+       (methodref "java/lang/Class" "arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z" 2)      ; 3
+       (methodref "java/lang/Class" "searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;" 2)   ; 4
+       (methodref "java/lang/Class" "getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;" 1)       ; 5
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 6
+       (fieldref "java/lang/Class" "classLoader:Ljava/lang/ClassLoader;" 1)     ; 7
+       (fieldref "java/lang/Class" "componentType:Ljava/lang/Class;" 1) ; 8
+       (class (ref -1) "java/lang/StringBuilder")               ; 9
+       (methodref "java/lang/StringBuilder" "<init>:()V" 0)     ; 10
+       (methodref "java/lang/Class" "isInterface:()Z" 0)        ; 11
        (string (ref -1) ; "interface "
-          105 110 116 101 114 102 97 99 101 32)                ; 12
-       (methodref "java/lang/Class" "isPrimitive:()Z" 0)       ; 13
+          105 110 116 101 114 102 97 99 101 32)                 ; 12
+       (methodref "java/lang/Class" "isPrimitive:()Z" 0)        ; 13
        (string (ref -1) ; ""
-         )                                                     ; 14
+         )                                                      ; 14
        (string (ref -1) ; "class "
-          99 108 97 115 115 32)                                ; 15
-       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)  ; 16
-       (methodref "java/lang/Class" "getName:()Ljava/lang/String;" 0)  ; 17
-       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0) ; 18
-       (methodref "java/lang/Class" "toString:()Ljava/lang/String;" 0) ; 19
-       (methodref "java/lang/Class" "isArray:()Z" 0)           ; 20
-       (methodref "java/lang/Class" "getComponentType:()Ljava/lang/Class;" 0)  ; 21
-       (methodref "java/lang/Class" "getModifiers:()I" 0)      ; 22
-       (methodref "java/lang/reflect/Modifier" "classModifiers:()I" 0) ; 23
-       (methodref "java/lang/reflect/Modifier" "toString:(I)Ljava/lang/String;" 1)     ; 24
-       (methodref "java/lang/StringBuilder" "append:(C)Ljava/lang/StringBuilder;" 1)   ; 25
-       (methodref "java/lang/Class" "isAnnotation:()Z" 0)      ; 26
+          99 108 97 115 115 32)                                 ; 15
+       (methodref "java/lang/StringBuilder" "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;" 1)   ; 16
+       (methodref "java/lang/Class" "getName:()Ljava/lang/String;" 0)   ; 17
+       (methodref "java/lang/StringBuilder" "toString:()Ljava/lang/String;" 0)  ; 18
+       (methodref "java/lang/Class" "toString:()Ljava/lang/String;" 0)  ; 19
+       (methodref "java/lang/Class" "isArray:()Z" 0)            ; 20
+       (methodref "java/lang/Class" "getComponentType:()Ljava/lang/Class;" 0)   ; 21
+       (methodref "java/lang/Class" "getModifiers:()I" 0)       ; 22
+       (methodref "java/lang/reflect/Modifier" "classModifiers:()I" 0)  ; 23
+       (methodref "java/lang/reflect/Modifier" "toString:(I)Ljava/lang/String;" 1)      ; 24
+       (methodref "java/lang/StringBuilder" "append:(C)Ljava/lang/StringBuilder;" 1)    ; 25
+       (methodref "java/lang/Class" "isAnnotation:()Z" 0)       ; 26
        (string (ref -1) ; "interface"
-          105 110 116 101 114 102 97 99 101)                   ; 27
-       (methodref "java/lang/Class" "isEnum:()Z" 0)            ; 28
+          105 110 116 101 114 102 97 99 101)                    ; 27
+       (methodref "java/lang/Class" "isEnum:()Z" 0)             ; 28
        (string (ref -1) ; "enum"
-          101 110 117 109)                                     ; 29
+          101 110 117 109)                                      ; 29
        (string (ref -1) ; "class"
-          99 108 97 115 115)                                   ; 30
-       (methodref "java/lang/Class" "getTypeParameters:()[Ljava/lang/reflect/TypeVariable;" 0) ; 31
-       (interface-methodref "java/lang/reflect/TypeVariable" "getTypeName:()Ljava/lang/String;" 0)     ; 32
+          99 108 97 115 115)                                    ; 30
+       (methodref "java/lang/Class" "getTypeParameters:()[Ljava/lang/reflect/TypeVariable;" 0)  ; 31
+       (interface-methodref "java/lang/reflect/TypeVariable" "getTypeName:()Ljava/lang/String;" 0)      ; 32
        (string (ref -1) ; "[]"
-          91 93)                                               ; 33
-       (methodref "sun/reflect/Reflection" "getCallerClass:()Ljava/lang/Class;" 0)     ; 34
-       (methodref "java/lang/ClassLoader" "getClassLoader:(Ljava/lang/Class;)Ljava/lang/ClassLoader;" 1)       ; 35
-       (methodref "java/lang/Class" "forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;" 4)       ; 36
-       (methodref "java/lang/System" "getSecurityManager:()Ljava/lang/SecurityManager;" 0)     ; 37
-       (methodref "jdk/internal/misc/VM" "isSystemDomainLoader:(Ljava/lang/ClassLoader;)Z" 1)  ; 38
-       (fieldref "sun/security/util/SecurityConstants" "GET_CLASSLOADER_PERMISSION:Ljava/lang/RuntimePermission;" 1)   ; 39
-       (methodref "java/lang/SecurityManager" "checkPermission:(Ljava/security/Permission;)V" 1)       ; 40
-       (class (ref -1) "java/lang/reflect/Member")             ; 41
-       (methodref "java/lang/Class" "checkMemberAccess:(ILjava/lang/Class;Z)V" 3)      ; 42
-       (fieldref "java/lang/Class" "cachedConstructor:Ljava/lang/reflect/Constructor;" 1)      ; 43
-       (class (ref -1) "java/lang/Class")                      ; 44
-       (class (ref -1) "java/lang/IllegalAccessException")     ; 45
+          91 93)                                                ; 33
+       (methodref "sun/reflect/Reflection" "getCallerClass:()Ljava/lang/Class;" 0)      ; 34
+       (methodref "java/lang/ClassLoader" "getClassLoader:(Ljava/lang/Class;)Ljava/lang/ClassLoader;" 1)        ; 35
+       (methodref "java/lang/Class" "forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;" 4)        ; 36
+       (methodref "java/lang/System" "getSecurityManager:()Ljava/lang/SecurityManager;" 0)      ; 37
+       (methodref "jdk/internal/misc/VM" "isSystemDomainLoader:(Ljava/lang/ClassLoader;)Z" 1)   ; 38
+       (fieldref "sun/security/util/SecurityConstants" "GET_CLASSLOADER_PERMISSION:Ljava/lang/RuntimePermission;" 1)    ; 39
+       (methodref "java/lang/SecurityManager" "checkPermission:(Ljava/security/Permission;)V" 1)        ; 40
+       (class (ref -1) "java/lang/reflect/Member")              ; 41
+       (methodref "java/lang/Class" "checkMemberAccess:(ILjava/lang/Class;Z)V" 3)       ; 42
+       (fieldref "java/lang/Class" "cachedConstructor:Ljava/lang/reflect/Constructor;" 1)       ; 43
+       (class (ref -1) "java/lang/Class")                       ; 44
+       (class (ref -1) "java/lang/IllegalAccessException")      ; 45
        (string (ref -1) ; "Can not call newInstance() on the Class for java.lang.Class"
-          67 97 110 32 110 111 116 32 99 97 108 108 32 110 101 119 73 110 115 116 97 110 99 101 40 41 32 111 110 32 116 104 101 32 67 108 97 115 115 32 102 111 114 32 106 97 118 97 46 108 97 110 103 46 67 108 97 115 115)   ; 46
-       (methodref "java/lang/IllegalAccessException" "<init>:(Ljava/lang/String;)V" 1) ; 47
-       (methodref "java/lang/Class" "getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;" 2)  ; 48
-       (class (ref -1) "java/lang/Class$1")                    ; 49
-       (methodref "java/lang/Class$1" "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Constructor;)V" 2)  ; 50
-       (methodref "java/security/AccessController" "doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;" 1)      ; 51
-       (class (ref -1) "java/lang/NoSuchMethodException")      ; 52
-       (class (ref -1) "java/lang/InstantiationException")     ; 53
-       (methodref "java/lang/InstantiationException" "<init>:(Ljava/lang/String;)V" 1) ; 54
-       (methodref "java/lang/InstantiationException" "initCause:(Ljava/lang/Throwable;)Ljava/lang/Throwable;" 1)       ; 55
-       (methodref "java/lang/reflect/Constructor" "getModifiers:()I" 0)        ; 56
-       (methodref "sun/reflect/Reflection" "quickCheckMemberAccess:(Ljava/lang/Class;I)Z" 2)   ; 57
-       (fieldref "java/lang/Class" "newInstanceCallerCache:Ljava/lang/Class;" 1)       ; 58
-       (methodref "sun/reflect/Reflection" "ensureMemberAccess:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Object;I)V" 4)    ; 59
-       (class (ref -1) "[Ljava/lang/Object;")                  ; 60
-       (methodref "java/lang/reflect/Constructor" "newInstance:([Ljava/lang/Object;)Ljava/lang/Object;" 1)     ; 61
-       (class (ref -1) "java/lang/reflect/InvocationTargetException")  ; 62
-       (methodref "jdk/internal/misc/Unsafe" "getUnsafe:()Ljdk/internal/misc/Unsafe;" 0)       ; 63
-       (methodref "java/lang/reflect/InvocationTargetException" "getTargetException:()Ljava/lang/Throwable;" 0)        ; 64
-       (methodref "jdk/internal/misc/Unsafe" "throwException:(Ljava/lang/Throwable;)V" 1)      ; 65
-       (fieldref "java/lang/Class" "name:Ljava/lang/String;" 1)        ; 66
-       (methodref "java/lang/Class" "getName0:()Ljava/lang/String;" 0) ; 67
-       (methodref "java/lang/Class" "getClassLoader0:()Ljava/lang/ClassLoader;" 0)     ; 68
-       (methodref "java/lang/ClassLoader" "checkClassLoaderPermission:(Ljava/lang/ClassLoader;Ljava/lang/Class;)V" 2)  ; 69
-       (methodref "java/lang/Class" "getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;" 0)    ; 70
-       (methodref "sun/reflect/generics/repository/ClassRepository" "getTypeParameters:()[Ljava/lang/reflect/TypeVariable;" 0) ; 71
-       (class (ref -1) "java/lang/reflect/TypeVariable")       ; 72
-       (methodref "java/lang/Class" "getSuperclass:()Ljava/lang/Class;" 0)     ; 73
-       (methodref "sun/reflect/generics/repository/ClassRepository" "getSuperclass:()Ljava/lang/reflect/Type;" 0)      ; 74
-       (methodref "java/lang/Package" "getPackage:(Ljava/lang/Class;)Ljava/lang/Package;" 1)   ; 75
-       (methodref "java/lang/Class" "reflectionData:()Ljava/lang/Class$ReflectionData;" 0)     ; 76
-       (methodref "java/lang/Class" "getInterfaces0:()[Ljava/lang/Class;" 0)   ; 77
-       (fieldref "java/lang/Class$ReflectionData" "interfaces:[Ljava/lang/Class;" 1)   ; 78
-       (methodref "[Ljava/lang/Class;" "clone:()Ljava/lang/Object;" 0) ; 79
-       (class (ref -1) "[Ljava/lang/Class;")                   ; 80
-       (methodref "java/lang/Class" "getInterfaces:()[Ljava/lang/Class;" 0)    ; 81
-       (methodref "sun/reflect/generics/repository/ClassRepository" "getSuperInterfaces:()[Ljava/lang/reflect/Type;" 0)        ; 82
-       (methodref "java/lang/Class" "getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;" 0)        ; 83
-       (methodref "java/lang/Class$EnclosingMethodInfo" "isMethod:()Z" 0)      ; 84
-       (methodref "java/lang/Class$EnclosingMethodInfo" "getDescriptor:()Ljava/lang/String;" 0)        ; 85
-       (methodref "java/lang/Class" "getFactory:()Lsun/reflect/generics/factory/GenericsFactory;" 0)   ; 86
-       (methodref "sun/reflect/generics/repository/MethodRepository" "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/MethodRepository;" 2)    ; 87
-       (methodref "sun/reflect/generics/repository/MethodRepository" "getReturnType:()Ljava/lang/reflect/Type;" 0)     ; 88
-       (methodref "java/lang/Class" "toClass:(Ljava/lang/reflect/Type;)Ljava/lang/Class;" 1)   ; 89
-       (methodref "sun/reflect/generics/repository/MethodRepository" "getParameterTypes:()[Ljava/lang/reflect/Type;" 0)        ; 90
-       (methodref "java/lang/Class$EnclosingMethodInfo" "getEnclosingClass:()Ljava/lang/Class;" 0)     ; 91
-       (class (ref -1) "java/lang/Class$2")                    ; 92
-       (methodref "java/lang/Class$2" "<init>:(Ljava/lang/Class;Ljava/lang/Class;)V" 2)        ; 93
-       (class (ref -1) "[Ljava/lang/reflect/Method;")          ; 94
-       (methodref "java/lang/reflect/Method" "getName:()Ljava/lang/String;" 0) ; 95
-       (methodref "java/lang/Class$EnclosingMethodInfo" "getName:()Ljava/lang/String;" 0)      ; 96
-       (methodref "java/lang/String" "equals:(Ljava/lang/Object;)Z" 1) ; 97
-       (methodref "java/lang/reflect/Method" "getParameterTypes:()[Ljava/lang/Class;" 0)       ; 98
-       (methodref "java/lang/Object" "equals:(Ljava/lang/Object;)Z" 1) ; 99
-       (methodref "java/lang/reflect/Method" "getReturnType:()Ljava/lang/Class;" 0)    ; 100
-       (class (ref -1) "java/lang/InternalError")              ; 101
+          67 97 110 32 110 111 116 32 99 97 108 108 32 110 101 119 73 110 115 116 97 110 99 101 40 41 32 111 110 32 116 104 101 32 67 108 97 115 115 32 102 111 114 32 106 97 118 97 46 108 97 110 103 46 67 108 97 115 115)    ; 46
+       (methodref "java/lang/IllegalAccessException" "<init>:(Ljava/lang/String;)V" 1)  ; 47
+       (methodref "java/lang/Class" "getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;" 2)   ; 48
+       (class (ref -1) "java/lang/Class$1")                     ; 49
+       (methodref "java/lang/Class$1" "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Constructor;)V" 2)   ; 50
+       (methodref "java/security/AccessController" "doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;" 1)       ; 51
+       (class (ref -1) "java/lang/NoSuchMethodException")       ; 52
+       (class (ref -1) "java/lang/InstantiationException")      ; 53
+       (methodref "java/lang/InstantiationException" "<init>:(Ljava/lang/String;)V" 1)  ; 54
+       (methodref "java/lang/InstantiationException" "initCause:(Ljava/lang/Throwable;)Ljava/lang/Throwable;" 1)        ; 55
+       (methodref "java/lang/reflect/Constructor" "getModifiers:()I" 0) ; 56
+       (methodref "sun/reflect/Reflection" "quickCheckMemberAccess:(Ljava/lang/Class;I)Z" 2)    ; 57
+       (fieldref "java/lang/Class" "newInstanceCallerCache:Ljava/lang/Class;" 1)        ; 58
+       (methodref "sun/reflect/Reflection" "ensureMemberAccess:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Object;I)V" 4)     ; 59
+       (class (ref -1) "[Ljava/lang/Object;")                   ; 60
+       (methodref "java/lang/reflect/Constructor" "newInstance:([Ljava/lang/Object;)Ljava/lang/Object;" 1)      ; 61
+       (class (ref -1) "java/lang/reflect/InvocationTargetException")   ; 62
+       (methodref "jdk/internal/misc/Unsafe" "getUnsafe:()Ljdk/internal/misc/Unsafe;" 0)        ; 63
+       (methodref "java/lang/reflect/InvocationTargetException" "getTargetException:()Ljava/lang/Throwable;" 0) ; 64
+       (methodref "jdk/internal/misc/Unsafe" "throwException:(Ljava/lang/Throwable;)V" 1)       ; 65
+       (fieldref "java/lang/Class" "name:Ljava/lang/String;" 1) ; 66
+       (methodref "java/lang/Class" "getName0:()Ljava/lang/String;" 0)  ; 67
+       (methodref "java/lang/Class" "getClassLoader0:()Ljava/lang/ClassLoader;" 0)      ; 68
+       (methodref "java/lang/ClassLoader" "checkClassLoaderPermission:(Ljava/lang/ClassLoader;Ljava/lang/Class;)V" 2)   ; 69
+       (methodref "java/lang/Class" "getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;" 0)     ; 70
+       (methodref "sun/reflect/generics/repository/ClassRepository" "getTypeParameters:()[Ljava/lang/reflect/TypeVariable;" 0)  ; 71
+       (class (ref -1) "java/lang/reflect/TypeVariable")        ; 72
+       (methodref "java/lang/Class" "getSuperclass:()Ljava/lang/Class;" 0)      ; 73
+       (methodref "sun/reflect/generics/repository/ClassRepository" "getSuperclass:()Ljava/lang/reflect/Type;" 0)       ; 74
+       (methodref "java/lang/Package" "getPackage:(Ljava/lang/Class;)Ljava/lang/Package;" 1)    ; 75
+       (methodref "java/lang/Class" "reflectionData:()Ljava/lang/Class$ReflectionData;" 0)      ; 76
+       (methodref "java/lang/Class" "getInterfaces0:()[Ljava/lang/Class;" 0)    ; 77
+       (fieldref "java/lang/Class$ReflectionData" "interfaces:[Ljava/lang/Class;" 1)    ; 78
+       (methodref "[Ljava/lang/Class;" "clone:()Ljava/lang/Object;" 0)  ; 79
+       (class (ref -1) "[Ljava/lang/Class;")                    ; 80
+       (methodref "java/lang/Class" "getInterfaces:()[Ljava/lang/Class;" 0)     ; 81
+       (methodref "sun/reflect/generics/repository/ClassRepository" "getSuperInterfaces:()[Ljava/lang/reflect/Type;" 0) ; 82
+       (methodref "java/lang/Class" "getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;" 0) ; 83
+       (methodref "java/lang/Class$EnclosingMethodInfo" "isMethod:()Z" 0)       ; 84
+       (methodref "java/lang/Class$EnclosingMethodInfo" "getDescriptor:()Ljava/lang/String;" 0) ; 85
+       (methodref "java/lang/Class" "getFactory:()Lsun/reflect/generics/factory/GenericsFactory;" 0)    ; 86
+       (methodref "sun/reflect/generics/repository/MethodRepository" "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/MethodRepository;" 2)     ; 87
+       (methodref "sun/reflect/generics/repository/MethodRepository" "getReturnType:()Ljava/lang/reflect/Type;" 0)      ; 88
+       (methodref "java/lang/Class" "toClass:(Ljava/lang/reflect/Type;)Ljava/lang/Class;" 1)    ; 89
+       (methodref "sun/reflect/generics/repository/MethodRepository" "getParameterTypes:()[Ljava/lang/reflect/Type;" 0) ; 90
+       (methodref "java/lang/Class$EnclosingMethodInfo" "getEnclosingClass:()Ljava/lang/Class;" 0)      ; 91
+       (class (ref -1) "java/lang/Class$2")                     ; 92
+       (methodref "java/lang/Class$2" "<init>:(Ljava/lang/Class;Ljava/lang/Class;)V" 2) ; 93
+       (class (ref -1) "[Ljava/lang/reflect/Method;")           ; 94
+       (methodref "java/lang/reflect/Method" "getName:()Ljava/lang/String;" 0)  ; 95
+       (methodref "java/lang/Class$EnclosingMethodInfo" "getName:()Ljava/lang/String;" 0)       ; 96
+       (methodref "java/lang/String" "equals:(Ljava/lang/Object;)Z" 1)  ; 97
+       (methodref "java/lang/reflect/Method" "getParameterTypes:()[Ljava/lang/Class;" 0)        ; 98
+       (methodref "java/lang/Object" "equals:(Ljava/lang/Object;)Z" 1)  ; 99
+       (methodref "java/lang/reflect/Method" "getReturnType:()Ljava/lang/Class;" 0)     ; 100
+       (class (ref -1) "java/lang/InternalError")               ; 101
        (string (ref -1) ; "Enclosing method not found"
-          69 110 99 108 111 115 105 110 103 32 109 101 116 104 111 100 32 110 111 116 32 102 111 117 110 100)  ; 102
-       (methodref "java/lang/InternalError" "<init>:(Ljava/lang/String;)V" 1)  ; 103
-       (methodref "java/lang/Class" "getEnclosingMethod0:()[Ljava/lang/Object;" 0)     ; 104
-       (class (ref -1) "java/lang/Class$EnclosingMethodInfo")  ; 105
-       (methodref "java/lang/Class$EnclosingMethodInfo" "<init>:([Ljava/lang/Object;Ljava/lang/Class$1;)V" 2)  ; 106
-       (class (ref -1) "java/lang/reflect/GenericArrayType")   ; 107
-       (interface-methodref "java/lang/reflect/GenericArrayType" "getGenericComponentType:()Ljava/lang/reflect/Type;" 0)       ; 108
-       (methodref "java/lang/reflect/Array" "newInstance:(Ljava/lang/Class;I)Ljava/lang/Object;" 2)    ; 109
-       (methodref "java/lang/Object" "getClass:()Ljava/lang/Class;" 0) ; 110
-       (methodref "java/lang/Class$EnclosingMethodInfo" "isConstructor:()Z" 0) ; 111
-       (methodref "sun/reflect/generics/repository/ConstructorRepository" "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ConstructorRepository;" 2)  ; 112
-       (methodref "sun/reflect/generics/repository/ConstructorRepository" "getParameterTypes:()[Ljava/lang/reflect/Type;" 0)   ; 113
-       (class (ref -1) "java/lang/Class$3")                    ; 114
-       (methodref "java/lang/Class$3" "<init>:(Ljava/lang/Class;Ljava/lang/Class;)V" 2)        ; 115
-       (class (ref -1) "[Ljava/lang/reflect/Constructor;")     ; 116
-       (methodref "java/lang/reflect/Constructor" "getParameterTypes:()[Ljava/lang/Class;" 0)  ; 117
+          69 110 99 108 111 115 105 110 103 32 109 101 116 104 111 100 32 110 111 116 32 102 111 117 110 100)   ; 102
+       (methodref "java/lang/InternalError" "<init>:(Ljava/lang/String;)V" 1)   ; 103
+       (methodref "java/lang/Class" "getEnclosingMethod0:()[Ljava/lang/Object;" 0)      ; 104
+       (class (ref -1) "java/lang/Class$EnclosingMethodInfo")   ; 105
+       (methodref "java/lang/Class$EnclosingMethodInfo" "<init>:([Ljava/lang/Object;Ljava/lang/Class$1;)V" 2)   ; 106
+       (class (ref -1) "java/lang/reflect/GenericArrayType")    ; 107
+       (interface-methodref "java/lang/reflect/GenericArrayType" "getGenericComponentType:()Ljava/lang/reflect/Type;" 0)        ; 108
+       (methodref "java/lang/reflect/Array" "newInstance:(Ljava/lang/Class;I)Ljava/lang/Object;" 2)     ; 109
+       (methodref "java/lang/Object" "getClass:()Ljava/lang/Class;" 0)  ; 110
+       (methodref "java/lang/Class$EnclosingMethodInfo" "isConstructor:()Z" 0)  ; 111
+       (methodref "sun/reflect/generics/repository/ConstructorRepository" "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ConstructorRepository;" 2)   ; 112
+       (methodref "sun/reflect/generics/repository/ConstructorRepository" "getParameterTypes:()[Ljava/lang/reflect/Type;" 0)    ; 113
+       (class (ref -1) "java/lang/Class$3")                     ; 114
+       (methodref "java/lang/Class$3" "<init>:(Ljava/lang/Class;Ljava/lang/Class;)V" 2) ; 115
+       (class (ref -1) "[Ljava/lang/reflect/Constructor;")      ; 116
+       (methodref "java/lang/reflect/Constructor" "getParameterTypes:()[Ljava/lang/Class;" 0)   ; 117
        (string (ref -1) ; "Enclosing constructor not found"
-          69 110 99 108 111 115 105 110 103 32 99 111 110 115 116 114 117 99 116 111 114 32 110 111 116 32 102 111 117 110 100)        ; 118
-       (methodref "java/lang/Class" "getDeclaringClass0:()Ljava/lang/Class;" 0)        ; 119
-       (methodref "java/lang/Class" "checkPackageAccess:(Ljava/lang/ClassLoader;Z)V" 2)        ; 120
-       (methodref "java/lang/Class" "getDeclaringClass:()Ljava/lang/Class;" 0) ; 121
+          69 110 99 108 111 115 105 110 103 32 99 111 110 115 116 114 117 99 116 111 114 32 110 111 116 32 102 111 117 110 100) ; 118
+       (methodref "java/lang/Class" "getDeclaringClass0:()Ljava/lang/Class;" 0) ; 119
+       (methodref "java/lang/Class" "checkPackageAccess:(Ljava/lang/ClassLoader;Z)V" 2) ; 120
+       (methodref "java/lang/Class" "getDeclaringClass:()Ljava/lang/Class;" 0)  ; 121
        (string (ref -1) ; "Malformed enclosing method information"
-          77 97 108 102 111 114 109 101 100 32 101 110 99 108 111 115 105 110 103 32 109 101 116 104 111 100 32 105 110 102 111 114 109 97 116 105 111 110)    ; 122
-       (methodref "java/lang/Class" "getSimpleName:()Ljava/lang/String;" 0)    ; 123
-       (methodref "java/lang/Class" "getSimpleBinaryName:()Ljava/lang/String;" 0)      ; 124
-       (methodref "java/lang/String" "lastIndexOf:(I)I" 1)     ; 125
-       (methodref "java/lang/String" "substring:(I)Ljava/lang/String;" 1)      ; 126
-       (class (ref -1) "java/lang/Throwable")                  ; 127
-       (methodref "java/lang/Class" "getCanonicalName:()Ljava/lang/String;" 0) ; 128
-       (methodref "java/lang/Class" "isLocalOrAnonymousClass:()Z" 0)   ; 129
-       (methodref "java/lang/Class" "getEnclosingClass:()Ljava/lang/Class;" 0) ; 130
+          77 97 108 102 111 114 109 101 100 32 101 110 99 108 111 115 105 110 103 32 109 101 116 104 111 100 32 105 110 102 111 114 109 97 116 105 111 110)     ; 122
+       (methodref "java/lang/Class" "getSimpleName:()Ljava/lang/String;" 0)     ; 123
+       (methodref "java/lang/Class" "getSimpleBinaryName:()Ljava/lang/String;" 0)       ; 124
+       (methodref "java/lang/String" "lastIndexOf:(I)I" 1)      ; 125
+       (methodref "java/lang/String" "substring:(I)Ljava/lang/String;" 1)       ; 126
+       (class (ref -1) "java/lang/Throwable")                   ; 127
+       (methodref "java/lang/Class" "getCanonicalName:()Ljava/lang/String;" 0)  ; 128
+       (methodref "java/lang/Class" "isLocalOrAnonymousClass:()Z" 0)    ; 129
+       (methodref "java/lang/Class" "getEnclosingClass:()Ljava/lang/Class;" 0)  ; 130
        (string (ref -1) ; "."
-          46)                                                  ; 131
-       (methodref "java/lang/Class" "isAnonymousClass:()Z" 0)  ; 132
-       (methodref "java/lang/Class" "getSimpleBinaryName0:()Ljava/lang/String;" 0)     ; 133
-       (class (ref -1) "java/lang/Class$4")                    ; 134
-       (methodref "java/lang/Class$4" "<init>:(Ljava/lang/Class;)V" 1) ; 135
-       (methodref "java/lang/Class" "privateGetPublicFields:(Ljava/util/Set;)[Ljava/lang/reflect/Field;" 1)    ; 136
-       (methodref "java/lang/Class" "copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;" 1)     ; 137
-       (methodref "java/lang/Class" "privateGetPublicMethods:()[Ljava/lang/reflect/Method;" 0) ; 138
-       (methodref "java/lang/Class" "copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;" 1)  ; 139
-       (methodref "java/lang/Class" "privateGetDeclaredConstructors:(Z)[Ljava/lang/reflect/Constructor;" 1)    ; 140
-       (methodref "java/lang/Class" "copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;" 1)   ; 141
-       (methodref "java/lang/Class" "getField0:(Ljava/lang/String;)Ljava/lang/reflect/Field;" 1)       ; 142
-       (class (ref -1) "java/lang/NoSuchFieldException")       ; 143
-       (methodref "java/lang/NoSuchFieldException" "<init>:(Ljava/lang/String;)V" 1)   ; 144
-       (methodref "java/lang/Class" "getMethod0:(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/reflect/Method;" 3)  ; 145
-       (methodref "java/lang/Class" "argumentTypesToString:([Ljava/lang/Class;)Ljava/lang/String;" 1)  ; 146
-       (methodref "java/lang/NoSuchMethodException" "<init>:(Ljava/lang/String;)V" 1)  ; 147
-       (methodref "java/lang/Class" "getDeclaredClasses0:()[Ljava/lang/Class;" 0)      ; 148
-       (methodref "java/lang/Class" "privateGetDeclaredFields:(Z)[Ljava/lang/reflect/Field;" 1)        ; 149
-       (methodref "java/lang/Class" "privateGetDeclaredMethods:(Z)[Ljava/lang/reflect/Method;" 1)      ; 150
-       (methodref "java/lang/Class" "searchMethods:([Ljava/lang/reflect/Method;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" 3)     ; 151
-       (methodref "java/lang/Class" "resolveName:(Ljava/lang/String;)Ljava/lang/String;" 1)    ; 152
-       (methodref "java/lang/ClassLoader" "getSystemResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;" 1)     ; 153
-       (methodref "java/lang/ClassLoader" "getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;" 1)   ; 154
-       (methodref "java/lang/ClassLoader" "getSystemResource:(Ljava/lang/String;)Ljava/net/URL;" 1)    ; 155
-       (methodref "java/lang/ClassLoader" "getResource:(Ljava/lang/String;)Ljava/net/URL;" 1)  ; 156
-       (fieldref "sun/security/util/SecurityConstants" "GET_PD_PERMISSION:Ljava/lang/RuntimePermission;" 1)    ; 157
-       (methodref "java/lang/Class" "getProtectionDomain0:()Ljava/security/ProtectionDomain;" 0)       ; 158
-       (fieldref "java/lang/Class" "allPermDomain:Ljava/security/ProtectionDomain;" 1) ; 159
-       (class (ref -1) "java/security/Permissions")            ; 160
-       (methodref "java/security/Permissions" "<init>:()V" 0)  ; 161
-       (fieldref "sun/security/util/SecurityConstants" "ALL_PERMISSION:Ljava/security/AllPermission;" 1)       ; 162
-       (methodref "java/security/Permissions" "add:(Ljava/security/Permission;)V" 1)   ; 163
-       (class (ref -1) "java/security/ProtectionDomain")       ; 164
-       (methodref "java/security/ProtectionDomain" "<init>:(Ljava/security/CodeSource;Ljava/security/PermissionCollection;)V" 2)       ; 165
-       (fieldref "sun/security/util/SecurityConstants" "CHECK_MEMBER_ACCESS_PERMISSION:Ljava/lang/RuntimePermission;" 1)       ; 166
-       (methodref "sun/reflect/misc/ReflectUtil" "needsPackageAccessCheck:(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z" 2)        ; 167
-       (methodref "java/lang/String" "substring:(II)Ljava/lang/String;" 2)     ; 168
-       (methodref "java/lang/reflect/Proxy" "isProxyClass:(Ljava/lang/Class;)Z" 1)     ; 169
-       (methodref "sun/reflect/misc/ReflectUtil" "isNonPublicProxyClass:(Ljava/lang/Class;)Z" 1)       ; 170
-       (methodref "java/lang/SecurityManager" "checkPackageAccess:(Ljava/lang/String;)V" 1)    ; 171
-       (methodref "sun/reflect/misc/ReflectUtil" "checkProxyPackageAccess:(Ljava/lang/ClassLoader;[Ljava/lang/Class;)V" 2)     ; 172
+          46)                                                   ; 131
+       (methodref "java/lang/Class" "isAnonymousClass:()Z" 0)   ; 132
+       (methodref "java/lang/Class" "getSimpleBinaryName0:()Ljava/lang/String;" 0)      ; 133
+       (class (ref -1) "java/lang/Class$4")                     ; 134
+       (methodref "java/lang/Class$4" "<init>:(Ljava/lang/Class;)V" 1)  ; 135
+       (methodref "java/lang/Class" "privateGetPublicFields:(Ljava/util/Set;)[Ljava/lang/reflect/Field;" 1)     ; 136
+       (methodref "java/lang/Class" "copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;" 1)      ; 137
+       (methodref "java/lang/Class" "privateGetPublicMethods:()[Ljava/lang/reflect/Method;" 0)  ; 138
+       (methodref "java/lang/Class" "copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;" 1)   ; 139
+       (methodref "java/lang/Class" "privateGetDeclaredConstructors:(Z)[Ljava/lang/reflect/Constructor;" 1)     ; 140
+       (methodref "java/lang/Class" "copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;" 1)    ; 141
+       (methodref "java/lang/Class" "getField0:(Ljava/lang/String;)Ljava/lang/reflect/Field;" 1)        ; 142
+       (class (ref -1) "java/lang/NoSuchFieldException")        ; 143
+       (methodref "java/lang/NoSuchFieldException" "<init>:(Ljava/lang/String;)V" 1)    ; 144
+       (methodref "java/lang/Class" "getMethod0:(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/reflect/Method;" 3)   ; 145
+       (methodref "java/lang/Class" "argumentTypesToString:([Ljava/lang/Class;)Ljava/lang/String;" 1)   ; 146
+       (methodref "java/lang/NoSuchMethodException" "<init>:(Ljava/lang/String;)V" 1)   ; 147
+       (methodref "java/lang/Class" "getDeclaredClasses0:()[Ljava/lang/Class;" 0)       ; 148
+       (methodref "java/lang/Class" "privateGetDeclaredFields:(Z)[Ljava/lang/reflect/Field;" 1) ; 149
+       (methodref "java/lang/Class" "privateGetDeclaredMethods:(Z)[Ljava/lang/reflect/Method;" 1)       ; 150
+       (methodref "java/lang/Class" "searchMethods:([Ljava/lang/reflect/Method;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" 3)      ; 151
+       (methodref "java/lang/Class" "resolveName:(Ljava/lang/String;)Ljava/lang/String;" 1)     ; 152
+       (methodref "java/lang/ClassLoader" "getSystemResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;" 1)      ; 153
+       (methodref "java/lang/ClassLoader" "getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;" 1)    ; 154
+       (methodref "java/lang/ClassLoader" "getSystemResource:(Ljava/lang/String;)Ljava/net/URL;" 1)     ; 155
+       (methodref "java/lang/ClassLoader" "getResource:(Ljava/lang/String;)Ljava/net/URL;" 1)   ; 156
+       (fieldref "sun/security/util/SecurityConstants" "GET_PD_PERMISSION:Ljava/lang/RuntimePermission;" 1)     ; 157
+       (methodref "java/lang/Class" "getProtectionDomain0:()Ljava/security/ProtectionDomain;" 0)        ; 158
+       (fieldref "java/lang/Class" "allPermDomain:Ljava/security/ProtectionDomain;" 1)  ; 159
+       (class (ref -1) "java/security/Permissions")             ; 160
+       (methodref "java/security/Permissions" "<init>:()V" 0)   ; 161
+       (fieldref "sun/security/util/SecurityConstants" "ALL_PERMISSION:Ljava/security/AllPermission;" 1)        ; 162
+       (methodref "java/security/Permissions" "add:(Ljava/security/Permission;)V" 1)    ; 163
+       (class (ref -1) "java/security/ProtectionDomain")        ; 164
+       (methodref "java/security/ProtectionDomain" "<init>:(Ljava/security/CodeSource;Ljava/security/PermissionCollection;)V" 2)        ; 165
+       (fieldref "sun/security/util/SecurityConstants" "CHECK_MEMBER_ACCESS_PERMISSION:Ljava/lang/RuntimePermission;" 1)        ; 166
+       (methodref "sun/reflect/misc/ReflectUtil" "needsPackageAccessCheck:(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z" 2) ; 167
+       (methodref "java/lang/String" "substring:(II)Ljava/lang/String;" 2)      ; 168
+       (methodref "java/lang/reflect/Proxy" "isProxyClass:(Ljava/lang/Class;)Z" 1)      ; 169
+       (methodref "sun/reflect/misc/ReflectUtil" "isNonPublicProxyClass:(Ljava/lang/Class;)Z" 1)        ; 170
+       (methodref "java/lang/SecurityManager" "checkPackageAccess:(Ljava/lang/String;)V" 1)     ; 171
+       (methodref "sun/reflect/misc/ReflectUtil" "checkProxyPackageAccess:(Ljava/lang/ClassLoader;[Ljava/lang/Class;)V" 2)      ; 172
        (string (ref -1) ; "/"
-          47)                                                  ; 173
-       (methodref "java/lang/String" "startsWith:(Ljava/lang/String;)Z" 1)     ; 174
-       (methodref "java/lang/String" "replace:(CC)Ljava/lang/String;" 2)       ; 175
-       (fieldref "java/lang/Class" "reflectionData:Ljava/lang/ref/SoftReference;" 1)   ; 176
-       (fieldref "java/lang/Class" "classRedefinedCount:I" 1)  ; 177
-       (methodref "java/lang/ref/SoftReference" "get:()Ljava/lang/Object;" 0)  ; 178
-       (class (ref -1) "java/lang/Class$ReflectionData")       ; 179
-       (fieldref "java/lang/Class$ReflectionData" "redefinedCount:I" 1)        ; 180
-       (methodref "java/lang/Class" "newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;" 2)    ; 181
-       (methodref "java/lang/Class$ReflectionData" "<init>:(I)V" 1)    ; 182
-       (class (ref -1) "java/lang/ref/SoftReference")          ; 183
-       (methodref "java/lang/ref/SoftReference" "<init>:(Ljava/lang/Object;)V" 1)      ; 184
-       (methodref "java/lang/Class$Atomic" "casReflectionData:(Ljava/lang/Class;Ljava/lang/ref/SoftReference;Ljava/lang/ref/SoftReference;)Z" 3)       ; 185
-       (methodref "sun/reflect/generics/scope/ClassScope" "make:(Ljava/lang/Class;)Lsun/reflect/generics/scope/ClassScope;" 1) ; 186
-       (methodref "sun/reflect/generics/factory/CoreReflectionFactory" "make:(Ljava/lang/reflect/GenericDeclaration;Lsun/reflect/generics/scope/Scope;)Lsun/reflect/generics/factory/CoreReflectionFactory;" 2)        ; 187
-       (fieldref "java/lang/Class" "genericInfo:Lsun/reflect/generics/repository/ClassRepository;" 1)  ; 188
-       (methodref "java/lang/Class" "getGenericSignature0:()Ljava/lang/String;" 0)     ; 189
-       (fieldref "sun/reflect/generics/repository/ClassRepository" "NONE:Lsun/reflect/generics/repository/ClassRepository;" 1) ; 190
-       (methodref "sun/reflect/generics/repository/ClassRepository" "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ClassRepository;" 2)      ; 191
-       (methodref "java/lang/Class" "getReflectionFactory:()Lsun/reflect/ReflectionFactory;" 0)        ; 192
-       (methodref "sun/reflect/ReflectionFactory" "getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B" 1)     ; 193
-       (methodref "java/lang/Class" "checkInitted:()V" 0)      ; 194
-       (fieldref "java/lang/Class$ReflectionData" "declaredPublicFields:[Ljava/lang/reflect/Field;" 1) ; 195
-       (fieldref "java/lang/Class$ReflectionData" "declaredFields:[Ljava/lang/reflect/Field;" 1)       ; 196
-       (methodref "sun/reflect/Reflection" "filterFields:(Ljava/lang/Class;[Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;" 2)   ; 197
-       (fieldref "java/lang/Class$ReflectionData" "publicFields:[Ljava/lang/reflect/Field;" 1) ; 198
-       (class (ref -1) "java/util/ArrayList")                  ; 199
-       (methodref "java/util/ArrayList" "<init>:()V" 0)        ; 200
-       (class (ref -1) "java/util/HashSet")                    ; 201
-       (methodref "java/util/HashSet" "<init>:()V" 0)          ; 202
-       (methodref "java/lang/Class" "addAll:(Ljava/util/Collection;[Ljava/lang/reflect/Field;)V" 2)    ; 203
-       (interface-methodref "java/util/Set" "contains:(Ljava/lang/Object;)Z" 1)        ; 204
-       (interface-methodref "java/util/Set" "add:(Ljava/lang/Object;)Z" 1)     ; 205
-       (interface-methodref "java/util/List" "size:()I" 0)     ; 206
-       (class (ref -1) "java/lang/reflect/Field")              ; 207
-       (interface-methodref "java/util/List" "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;" 1)     ; 208
-       (interface-methodref "java/util/Collection" "add:(Ljava/lang/Object;)Z" 1)      ; 209
-       (fieldref "java/lang/Class$ReflectionData" "publicConstructors:[Ljava/lang/reflect/Constructor;" 1)     ; 210
-       (fieldref "java/lang/Class$ReflectionData" "declaredConstructors:[Ljava/lang/reflect/Constructor;" 1)   ; 211
-       (class (ref -1) "java/lang/reflect/Constructor")        ; 212
-       (methodref "java/lang/Class" "getDeclaredConstructors0:(Z)[Ljava/lang/reflect/Constructor;" 1)  ; 213
-       (fieldref "java/lang/Class$ReflectionData" "declaredPublicMethods:[Ljava/lang/reflect/Method;" 1)       ; 214
-       (fieldref "java/lang/Class$ReflectionData" "declaredMethods:[Ljava/lang/reflect/Method;" 1)     ; 215
-       (methodref "java/lang/Class" "getDeclaredMethods0:(Z)[Ljava/lang/reflect/Method;" 1)    ; 216
-       (methodref "sun/reflect/Reflection" "filterMethods:(Ljava/lang/Class;[Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;" 2)        ; 217
-       (fieldref "java/lang/Class$ReflectionData" "publicMethods:[Ljava/lang/reflect/Method;" 1)       ; 218
-       (class (ref -1) "java/lang/Class$MethodArray")          ; 219
-       (methodref "java/lang/Class$MethodArray" "<init>:()V" 0)        ; 220
-       (methodref "java/lang/Class$MethodArray" "addAll:([Ljava/lang/reflect/Method;)V" 1)     ; 221
-       (methodref "java/lang/Class$MethodArray" "addInterfaceMethods:([Ljava/lang/reflect/Method;)V" 1)        ; 222
-       (methodref "java/lang/Class$MethodArray" "length:()I" 0)        ; 223
-       (methodref "java/lang/Class$MethodArray" "get:(I)Ljava/lang/reflect/Method;" 1) ; 224
-       (methodref "java/lang/reflect/Method" "getModifiers:()I" 0)     ; 225
-       (methodref "java/lang/reflect/Modifier" "isAbstract:(I)Z" 1)    ; 226
-       (methodref "java/lang/reflect/Method" "isDefault:()Z" 0)        ; 227
-       (methodref "java/lang/Class$MethodArray" "removeByNameAndDescriptor:(Ljava/lang/reflect/Method;)V" 1)   ; 228
-       (methodref "java/lang/Class$MethodArray" "addAll:(Ljava/lang/Class$MethodArray;)V" 1)   ; 229
-       (methodref "java/lang/Class$MethodArray" "addAllIfNotPresent:(Ljava/lang/Class$MethodArray;)V" 1)       ; 230
-       (methodref "java/lang/Class$MethodArray" "removeLessSpecifics:()V" 0)   ; 231
-       (methodref "java/lang/Class$MethodArray" "compactAndTrim:()V" 0)        ; 232
-       (methodref "java/lang/Class$MethodArray" "getArray:()[Ljava/lang/reflect/Method;" 0)    ; 233
-       (methodref "java/lang/String" "intern:()Ljava/lang/String;" 0)  ; 234
-       (methodref "java/lang/reflect/Field" "getName:()Ljava/lang/String;" 0)  ; 235
-       (methodref "sun/reflect/ReflectionFactory" "copyField:(Ljava/lang/reflect/Field;)Ljava/lang/reflect/Field;" 1)  ; 236
-       (methodref "java/lang/Class" "isAssignableFrom:(Ljava/lang/Class;)Z" 1) ; 237
-       (methodref "sun/reflect/ReflectionFactory" "copyMethod:(Ljava/lang/reflect/Method;)Ljava/lang/reflect/Method;" 1)       ; 238
-       (methodref "java/lang/Class$MethodArray" "<init>:(I)V" 1)       ; 239
-       (methodref "java/lang/Class" "privateGetMethodRecursive:(Ljava/lang/String;[Ljava/lang/Class;ZLjava/lang/Class$MethodArray;)Ljava/lang/reflect/Method;" 4)      ; 240
-       (methodref "java/lang/Class$MethodArray" "getFirst:()Ljava/lang/reflect/Method;" 0)     ; 241
-       (methodref "java/lang/reflect/Modifier" "isStatic:(I)Z" 1)      ; 242
-       (methodref "java/lang/Class$MethodArray" "add:(Ljava/lang/reflect/Method;)V" 1) ; 243
-       (methodref "sun/reflect/ReflectionFactory" "copyConstructor:(Ljava/lang/reflect/Constructor;)Ljava/lang/reflect/Constructor;" 1)        ; 244
+          47)                                                   ; 173
+       (methodref "java/lang/String" "startsWith:(Ljava/lang/String;)Z" 1)      ; 174
+       (methodref "java/lang/String" "replace:(CC)Ljava/lang/String;" 2)        ; 175
+       (fieldref "java/lang/Class" "reflectionData:Ljava/lang/ref/SoftReference;" 1)    ; 176
+       (fieldref "java/lang/Class" "classRedefinedCount:I" 1)   ; 177
+       (methodref "java/lang/ref/SoftReference" "get:()Ljava/lang/Object;" 0)   ; 178
+       (class (ref -1) "java/lang/Class$ReflectionData")        ; 179
+       (fieldref "java/lang/Class$ReflectionData" "redefinedCount:I" 1) ; 180
+       (methodref "java/lang/Class" "newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;" 2)     ; 181
+       (methodref "java/lang/Class$ReflectionData" "<init>:(I)V" 1)     ; 182
+       (class (ref -1) "java/lang/ref/SoftReference")           ; 183
+       (methodref "java/lang/ref/SoftReference" "<init>:(Ljava/lang/Object;)V" 1)       ; 184
+       (methodref "java/lang/Class$Atomic" "casReflectionData:(Ljava/lang/Class;Ljava/lang/ref/SoftReference;Ljava/lang/ref/SoftReference;)Z" 3)        ; 185
+       (methodref "sun/reflect/generics/scope/ClassScope" "make:(Ljava/lang/Class;)Lsun/reflect/generics/scope/ClassScope;" 1)  ; 186
+       (methodref "sun/reflect/generics/factory/CoreReflectionFactory" "make:(Ljava/lang/reflect/GenericDeclaration;Lsun/reflect/generics/scope/Scope;)Lsun/reflect/generics/factory/CoreReflectionFactory;" 2) ; 187
+       (fieldref "java/lang/Class" "genericInfo:Lsun/reflect/generics/repository/ClassRepository;" 1)   ; 188
+       (methodref "java/lang/Class" "getGenericSignature0:()Ljava/lang/String;" 0)      ; 189
+       (fieldref "sun/reflect/generics/repository/ClassRepository" "NONE:Lsun/reflect/generics/repository/ClassRepository;" 1)  ; 190
+       (methodref "sun/reflect/generics/repository/ClassRepository" "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ClassRepository;" 2)       ; 191
+       (methodref "java/lang/Class" "getReflectionFactory:()Lsun/reflect/ReflectionFactory;" 0) ; 192
+       (methodref "sun/reflect/ReflectionFactory" "getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B" 1)      ; 193
+       (methodref "java/lang/Class" "checkInitted:()V" 0)       ; 194
+       (fieldref "java/lang/Class$ReflectionData" "declaredPublicFields:[Ljava/lang/reflect/Field;" 1)  ; 195
+       (fieldref "java/lang/Class$ReflectionData" "declaredFields:[Ljava/lang/reflect/Field;" 1)        ; 196
+       (methodref "sun/reflect/Reflection" "filterFields:(Ljava/lang/Class;[Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;" 2)    ; 197
+       (fieldref "java/lang/Class$ReflectionData" "publicFields:[Ljava/lang/reflect/Field;" 1)  ; 198
+       (class (ref -1) "java/util/ArrayList")                   ; 199
+       (methodref "java/util/ArrayList" "<init>:()V" 0)         ; 200
+       (class (ref -1) "java/util/HashSet")                     ; 201
+       (methodref "java/util/HashSet" "<init>:()V" 0)           ; 202
+       (methodref "java/lang/Class" "addAll:(Ljava/util/Collection;[Ljava/lang/reflect/Field;)V" 2)     ; 203
+       (interface-methodref "java/util/Set" "contains:(Ljava/lang/Object;)Z" 1) ; 204
+       (interface-methodref "java/util/Set" "add:(Ljava/lang/Object;)Z" 1)      ; 205
+       (interface-methodref "java/util/List" "size:()I" 0)      ; 206
+       (class (ref -1) "java/lang/reflect/Field")               ; 207
+       (interface-methodref "java/util/List" "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;" 1)      ; 208
+       (interface-methodref "java/util/Collection" "add:(Ljava/lang/Object;)Z" 1)       ; 209
+       (fieldref "java/lang/Class$ReflectionData" "publicConstructors:[Ljava/lang/reflect/Constructor;" 1)      ; 210
+       (fieldref "java/lang/Class$ReflectionData" "declaredConstructors:[Ljava/lang/reflect/Constructor;" 1)    ; 211
+       (class (ref -1) "java/lang/reflect/Constructor")         ; 212
+       (methodref "java/lang/Class" "getDeclaredConstructors0:(Z)[Ljava/lang/reflect/Constructor;" 1)   ; 213
+       (fieldref "java/lang/Class$ReflectionData" "declaredPublicMethods:[Ljava/lang/reflect/Method;" 1)        ; 214
+       (fieldref "java/lang/Class$ReflectionData" "declaredMethods:[Ljava/lang/reflect/Method;" 1)      ; 215
+       (methodref "java/lang/Class" "getDeclaredMethods0:(Z)[Ljava/lang/reflect/Method;" 1)     ; 216
+       (methodref "sun/reflect/Reflection" "filterMethods:(Ljava/lang/Class;[Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;" 2) ; 217
+       (fieldref "java/lang/Class$ReflectionData" "publicMethods:[Ljava/lang/reflect/Method;" 1)        ; 218
+       (class (ref -1) "java/lang/Class$MethodArray")           ; 219
+       (methodref "java/lang/Class$MethodArray" "<init>:()V" 0) ; 220
+       (methodref "java/lang/Class$MethodArray" "addAll:([Ljava/lang/reflect/Method;)V" 1)      ; 221
+       (methodref "java/lang/Class$MethodArray" "addInterfaceMethods:([Ljava/lang/reflect/Method;)V" 1) ; 222
+       (methodref "java/lang/Class$MethodArray" "length:()I" 0) ; 223
+       (methodref "java/lang/Class$MethodArray" "get:(I)Ljava/lang/reflect/Method;" 1)  ; 224
+       (methodref "java/lang/reflect/Method" "getModifiers:()I" 0)      ; 225
+       (methodref "java/lang/reflect/Modifier" "isAbstract:(I)Z" 1)     ; 226
+       (methodref "java/lang/reflect/Method" "isDefault:()Z" 0) ; 227
+       (methodref "java/lang/Class$MethodArray" "removeByNameAndDescriptor:(Ljava/lang/reflect/Method;)V" 1)    ; 228
+       (methodref "java/lang/Class$MethodArray" "addAll:(Ljava/lang/Class$MethodArray;)V" 1)    ; 229
+       (methodref "java/lang/Class$MethodArray" "addAllIfNotPresent:(Ljava/lang/Class$MethodArray;)V" 1)        ; 230
+       (methodref "java/lang/Class$MethodArray" "removeLessSpecifics:()V" 0)    ; 231
+       (methodref "java/lang/Class$MethodArray" "compactAndTrim:()V" 0) ; 232
+       (methodref "java/lang/Class$MethodArray" "getArray:()[Ljava/lang/reflect/Method;" 0)     ; 233
+       (methodref "java/lang/String" "intern:()Ljava/lang/String;" 0)   ; 234
+       (methodref "java/lang/reflect/Field" "getName:()Ljava/lang/String;" 0)   ; 235
+       (methodref "sun/reflect/ReflectionFactory" "copyField:(Ljava/lang/reflect/Field;)Ljava/lang/reflect/Field;" 1)   ; 236
+       (methodref "java/lang/Class" "isAssignableFrom:(Ljava/lang/Class;)Z" 1)  ; 237
+       (methodref "sun/reflect/ReflectionFactory" "copyMethod:(Ljava/lang/reflect/Method;)Ljava/lang/reflect/Method;" 1)        ; 238
+       (methodref "java/lang/Class$MethodArray" "<init>:(I)V" 1)        ; 239
+       (methodref "java/lang/Class" "privateGetMethodRecursive:(Ljava/lang/String;[Ljava/lang/Class;ZLjava/lang/Class$MethodArray;)Ljava/lang/reflect/Method;" 4)       ; 240
+       (methodref "java/lang/Class$MethodArray" "getFirst:()Ljava/lang/reflect/Method;" 0)      ; 241
+       (methodref "java/lang/reflect/Modifier" "isStatic:(I)Z" 1)       ; 242
+       (methodref "java/lang/Class$MethodArray" "add:(Ljava/lang/reflect/Method;)V" 1)  ; 243
+       (methodref "sun/reflect/ReflectionFactory" "copyConstructor:(Ljava/lang/reflect/Constructor;)Ljava/lang/reflect/Constructor;" 1) ; 244
        (string (ref -1) ; ".<init>"
-          46 60 105 110 105 116 62)                            ; 245
-       (class (ref -1) "java/lang/reflect/Method")             ; 246
-       (methodref "[Ljava/lang/reflect/Constructor;" "clone:()Ljava/lang/Object;" 0)   ; 247
-       (class (ref -1) "java/util/StringJoiner")               ; 248
+          46 60 105 110 105 116 62)                             ; 245
+       (class (ref -1) "java/lang/reflect/Method")              ; 246
+       (methodref "[Ljava/lang/reflect/Constructor;" "clone:()Ljava/lang/Object;" 0)    ; 247
+       (class (ref -1) "java/util/StringJoiner")                ; 248
        (string (ref -1) ; ", "
-          44 32)                                               ; 249
+          44 32)                                                ; 249
        (string (ref -1) ; "("
-          40)                                                  ; 250
+          40)                                                   ; 250
        (string (ref -1) ; ")"
-          41)                                                  ; 251
-       (methodref "java/util/StringJoiner" "<init>:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)V" 3)     ; 252
+          41)                                                   ; 251
+       (methodref "java/util/StringJoiner" "<init>:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)V" 3)      ; 252
        (string (ref -1) ; "null"
-          110 117 108 108)                                     ; 253
-       (methodref "java/util/StringJoiner" "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;" 1) ; 254
-       (methodref "java/util/StringJoiner" "toString:()Ljava/lang/String;" 0)  ; 255
-       (methodref "java/lang/Class" "getClassLoader:()Ljava/lang/ClassLoader;" 0)      ; 256
-       (methodref "java/lang/Class" "desiredAssertionStatus0:(Ljava/lang/Class;)Z" 1)  ; 257
-       (fieldref "java/lang/ClassLoader" "assertionLock:Ljava/lang/Object;" 1) ; 258
-       (fieldref "java/lang/ClassLoader" "classAssertionStatus:Ljava/util/Map;" 1)     ; 259
-       (methodref "java/lang/ClassLoader" "desiredAssertionStatus:(Ljava/lang/String;)Z" 1)    ; 260
-       (class (ref -1) "java/lang/Enum")                       ; 261
-       (fieldref "java/lang/Class" "reflectionFactory:Lsun/reflect/ReflectionFactory;" 1)      ; 262
-       (class (ref -1) "sun/reflect/ReflectionFactory$GetReflectionFactoryAction")     ; 263
-       (methodref "sun/reflect/ReflectionFactory$GetReflectionFactoryAction" "<init>:()V" 0)   ; 264
-       (class (ref -1) "sun/reflect/ReflectionFactory")        ; 265
-       (class (ref -1) "java/lang/Class$5")                    ; 266
-       (methodref "java/lang/Class$5" "<init>:()V" 0)          ; 267
-       (methodref "java/lang/Class" "getEnumConstantsShared:()[Ljava/lang/Object;" 0)  ; 268
-       (methodref "[Ljava/lang/Object;" "clone:()Ljava/lang/Object;" 0)        ; 269
-       (fieldref "java/lang/Class" "enumConstants:[Ljava/lang/Object;" 1)      ; 270
+          110 117 108 108)                                      ; 253
+       (methodref "java/util/StringJoiner" "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;" 1)  ; 254
+       (methodref "java/util/StringJoiner" "toString:()Ljava/lang/String;" 0)   ; 255
+       (methodref "java/lang/Class" "getClassLoader:()Ljava/lang/ClassLoader;" 0)       ; 256
+       (methodref "java/lang/Class" "desiredAssertionStatus0:(Ljava/lang/Class;)Z" 1)   ; 257
+       (fieldref "java/lang/ClassLoader" "assertionLock:Ljava/lang/Object;" 1)  ; 258
+       (fieldref "java/lang/ClassLoader" "classAssertionStatus:Ljava/util/Map;" 1)      ; 259
+       (methodref "java/lang/ClassLoader" "desiredAssertionStatus:(Ljava/lang/String;)Z" 1)     ; 260
+       (class (ref -1) "java/lang/Enum")                        ; 261
+       (fieldref "java/lang/Class" "reflectionFactory:Lsun/reflect/ReflectionFactory;" 1)       ; 262
+       (class (ref -1) "sun/reflect/ReflectionFactory$GetReflectionFactoryAction")      ; 263
+       (methodref "sun/reflect/ReflectionFactory$GetReflectionFactoryAction" "<init>:()V" 0)    ; 264
+       (class (ref -1) "sun/reflect/ReflectionFactory")         ; 265
+       (class (ref -1) "java/lang/Class$5")                     ; 266
+       (methodref "java/lang/Class$5" "<init>:()V" 0)           ; 267
+       (methodref "java/lang/Class" "getEnumConstantsShared:()[Ljava/lang/Object;" 0)   ; 268
+       (methodref "[Ljava/lang/Object;" "clone:()Ljava/lang/Object;" 0) ; 269
+       (fieldref "java/lang/Class" "enumConstants:[Ljava/lang/Object;" 1)       ; 270
        (string (ref -1) ; "values"
-          118 97 108 117 101 115)                              ; 271
-       (methodref "java/lang/Class" "getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" 2)    ; 272
-       (class (ref -1) "java/lang/Class$6")                    ; 273
-       (methodref "java/lang/Class$6" "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Method;)V" 2)       ; 274
-       (class (ref -1) "java/lang/Object")                     ; 275
-       (methodref "java/lang/reflect/Method" "invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;" 2)     ; 276
-       (fieldref "java/lang/Class" "enumConstantDirectory:Ljava/util/Map;" 1)  ; 277
-       (class (ref -1) "java/lang/IllegalArgumentException")   ; 278
+          118 97 108 117 101 115)                               ; 271
+       (methodref "java/lang/Class" "getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" 2)     ; 272
+       (class (ref -1) "java/lang/Class$6")                     ; 273
+       (methodref "java/lang/Class$6" "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Method;)V" 2)        ; 274
+       (class (ref -1) "java/lang/Object")                      ; 275
+       (methodref "java/lang/reflect/Method" "invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;" 2)      ; 276
+       (fieldref "java/lang/Class" "enumConstantDirectory:Ljava/util/Map;" 1)   ; 277
+       (class (ref -1) "java/lang/IllegalArgumentException")    ; 278
        (string (ref -1) ; " is not an enum type"
-          32 105 115 32 110 111 116 32 97 110 32 101 110 117 109 32 116 121 112 101)   ; 279
-       (methodref "java/lang/IllegalArgumentException" "<init>:(Ljava/lang/String;)V" 1)       ; 280
-       (class (ref -1) "java/util/HashMap")                    ; 281
-       (methodref "java/util/HashMap" "<init>:(I)V" 1)         ; 282
-       (methodref "java/lang/Enum" "name:()Ljava/lang/String;" 0)      ; 283
-       (interface-methodref "java/util/Map" "put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" 2)  ; 284
-       (methodref "java/lang/Class" "isInstance:(Ljava/lang/Object;)Z" 1)      ; 285
-       (class (ref -1) "java/lang/ClassCastException")         ; 286
-       (methodref "java/lang/Class" "cannotCastMsg:(Ljava/lang/Object;)Ljava/lang/String;" 1)  ; 287
-       (methodref "java/lang/ClassCastException" "<init>:(Ljava/lang/String;)V" 1)     ; 288
+          32 105 115 32 110 111 116 32 97 110 32 101 110 117 109 32 116 121 112 101)    ; 279
+       (methodref "java/lang/IllegalArgumentException" "<init>:(Ljava/lang/String;)V" 1)        ; 280
+       (class (ref -1) "java/util/HashMap")                     ; 281
+       (methodref "java/util/HashMap" "<init>:(I)V" 1)          ; 282
+       (methodref "java/lang/Enum" "name:()Ljava/lang/String;" 0)       ; 283
+       (interface-methodref "java/util/Map" "put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;" 2)   ; 284
+       (methodref "java/lang/Class" "isInstance:(Ljava/lang/Object;)Z" 1)       ; 285
+       (class (ref -1) "java/lang/ClassCastException")          ; 286
+       (methodref "java/lang/Class" "cannotCastMsg:(Ljava/lang/Object;)Ljava/lang/String;" 1)   ; 287
+       (methodref "java/lang/ClassCastException" "<init>:(Ljava/lang/String;)V" 1)      ; 288
        (string (ref -1) ; "Cannot cast "
-          67 97 110 110 111 116 32 99 97 115 116 32)           ; 289
+          67 97 110 110 111 116 32 99 97 115 116 32)            ; 289
        (string (ref -1) ; " to "
-          32 116 111 32)                                       ; 290
-       (methodref "java/util/Objects" "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;" 1)       ; 291
-       (methodref "java/lang/Class" "annotationData:()Ljava/lang/Class$AnnotationData;" 0)     ; 292
-       (fieldref "java/lang/Class$AnnotationData" "annotations:Ljava/util/Map;" 1)     ; 293
-       (interface-methodref "java/util/Map" "get:(Ljava/lang/Object;)Ljava/lang/Object;" 1)    ; 294
-       (class (ref -1) "java/lang/annotation/Annotation")      ; 295
-       (interface-methodref "java/lang/reflect/GenericDeclaration" "isAnnotationPresent:(Ljava/lang/Class;)Z" 1)       ; 296
-       (fieldref "java/lang/Class$AnnotationData" "declaredAnnotations:Ljava/util/Map;" 1)     ; 297
-       (methodref "sun/reflect/annotation/AnnotationSupport" "getAssociatedAnnotations:(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" 3)       ; 298
-       (methodref "sun/reflect/annotation/AnnotationParser" "toArray:(Ljava/util/Map;)[Ljava/lang/annotation/Annotation;" 1)   ; 299
-       (methodref "sun/reflect/annotation/AnnotationSupport" "getDirectlyAndIndirectlyPresent:(Ljava/util/Map;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" 2) ; 300
-       (fieldref "java/lang/Class" "annotationData:Ljava/lang/Class$AnnotationData;" 1)        ; 301
-       (fieldref "java/lang/Class$AnnotationData" "redefinedCount:I" 1)        ; 302
-       (methodref "java/lang/Class" "createAnnotationData:(I)Ljava/lang/Class$AnnotationData;" 1)      ; 303
-       (methodref "java/lang/Class$Atomic" "casAnnotationData:(Ljava/lang/Class;Ljava/lang/Class$AnnotationData;Ljava/lang/Class$AnnotationData;)Z" 3) ; 304
-       (methodref "java/lang/Class" "getRawAnnotations:()[B" 0)        ; 305
-       (methodref "java/lang/Class" "getConstantPool:()Lsun/reflect/ConstantPool;" 0)  ; 306
-       (methodref "sun/reflect/annotation/AnnotationParser" "parseAnnotations:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/util/Map;" 3)       ; 307
-       (interface-methodref "java/util/Map" "entrySet:()Ljava/util/Set;" 0)    ; 308
-       (interface-methodref "java/util/Set" "iterator:()Ljava/util/Iterator;" 0)       ; 309
-       (interface-methodref "java/util/Iterator" "hasNext:()Z" 0)      ; 310
-       (interface-methodref "java/util/Iterator" "next:()Ljava/lang/Object;" 0)        ; 311
-       (class (ref -1) "java/util/Map$Entry")                  ; 312
-       (interface-methodref "java/util/Map$Entry" "getKey:()Ljava/lang/Object;" 0)     ; 313
-       (methodref "sun/reflect/annotation/AnnotationType" "getInstance:(Ljava/lang/Class;)Lsun/reflect/annotation/AnnotationType;" 1)  ; 314
-       (methodref "sun/reflect/annotation/AnnotationType" "isInherited:()Z" 0) ; 315
-       (class (ref -1) "java/util/LinkedHashMap")              ; 316
-       (interface-methodref "java/util/Map" "size:()I" 0)      ; 317
-       (methodref "java/lang/Math" "min:(II)I" 2)              ; 318
-       (methodref "java/lang/Math" "max:(II)I" 2)              ; 319
-       (methodref "java/util/LinkedHashMap" "<init>:(I)V" 1)   ; 320
-       (interface-methodref "java/util/Map$Entry" "getValue:()Ljava/lang/Object;" 0)   ; 321
-       (interface-methodref "java/util/Map" "putAll:(Ljava/util/Map;)V" 1)     ; 322
-       (class (ref -1) "java/lang/Class$AnnotationData")       ; 323
-       (methodref "java/lang/Class$AnnotationData" "<init>:(Ljava/util/Map;Ljava/util/Map;I)V" 3)      ; 324
-       (methodref "java/lang/Class$Atomic" "casAnnotationType:(Ljava/lang/Class;Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z" 3)   ; 325
-       (fieldref "java/lang/Class" "annotationType:Lsun/reflect/annotation/AnnotationType;" 1) ; 326
-       (fieldref "java/lang/Void" "TYPE:Ljava/lang/Class;" 1)  ; 327
-       (methodref "java/lang/Class" "getRawTypeAnnotations:()[B" 0)    ; 328
-       (methodref "sun/reflect/annotation/TypeAnnotationParser" "buildAnnotatedSuperclass:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/lang/reflect/AnnotatedType;" 3) ; 329
-       (methodref "sun/reflect/annotation/TypeAnnotationParser" "buildAnnotatedInterfaces:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)[Ljava/lang/reflect/AnnotatedType;" 3)        ; 330
-       (methodref "java/lang/Class" "registerNatives:()V" 0)   ; 331
-       (class (ref -1) "java/io/ObjectStreamField")            ; 332
-       (fieldref "java/lang/Class" "serialPersistentFields:[Ljava/io/ObjectStreamField;" 1)    ; 333
-       (class (ref -1) "java/io/Serializable")                 ; 334
-       (class (ref -1) "java/lang/reflect/GenericDeclaration") ; 335
-       (class (ref -1) "java/lang/reflect/Type")               ; 336
-       (class (ref -1) "java/lang/reflect/AnnotatedElement")   ; 337
-       (utf8)                                                  ; 338
-       (utf8)                                                  ; 339
-       (utf8)                                                  ; 340
-       (utf8)                                                  ; 341
-       (class (ref -1) "java/lang/Class$Atomic")               ; 342
-       (utf8)                                                  ; 343
-       (utf8)                                                  ; 344
-       (utf8)                                                  ; 345
-       (utf8)                                                  ; 346
-       (utf8)                                                  ; 347
-       (integer 8192)                                          ; 348
-       (utf8)                                                  ; 349
-       (integer 16384)                                         ; 350
-       (utf8)                                                  ; 351
-       (integer 4096)                                          ; 352
-       (utf8)                                                  ; 353
-       (utf8)                                                  ; 354
-       (utf8)                                                  ; 355
-       (utf8)                                                  ; 356
-       (utf8)                                                  ; 357
-       (utf8)                                                  ; 358
-       (utf8)                                                  ; 359
-       (utf8)                                                  ; 360
-       (utf8)                                                  ; 361
-       (utf8)                                                  ; 362
-       (utf8)                                                  ; 363
-       (utf8)                                                  ; 364
-       (utf8)                                                  ; 365
-       (utf8)                                                  ; 366
-       (utf8)                                                  ; 367
-       (utf8)                                                  ; 368
-       (utf8)                                                  ; 369
-       (utf8)                                                  ; 370
-       (utf8)                                                  ; 371
-       (utf8)                                                  ; 372
-       (utf8)                                                  ; 373
-       (utf8)                                                  ; 374
-       (utf8)                                                  ; 375
-       (utf8)                                                  ; 376
-       (long 3206093459760846163)                              ; 377
+          32 116 111 32)                                        ; 290
+       (methodref "java/util/Objects" "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;" 1)        ; 291
+       (methodref "java/lang/Class" "annotationData:()Ljava/lang/Class$AnnotationData;" 0)      ; 292
+       (fieldref "java/lang/Class$AnnotationData" "annotations:Ljava/util/Map;" 1)      ; 293
+       (interface-methodref "java/util/Map" "get:(Ljava/lang/Object;)Ljava/lang/Object;" 1)     ; 294
+       (class (ref -1) "java/lang/annotation/Annotation")       ; 295
+       (interface-methodref "java/lang/reflect/GenericDeclaration" "isAnnotationPresent:(Ljava/lang/Class;)Z" 1)        ; 296
+       (fieldref "java/lang/Class$AnnotationData" "declaredAnnotations:Ljava/util/Map;" 1)      ; 297
+       (methodref "sun/reflect/annotation/AnnotationSupport" "getAssociatedAnnotations:(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" 3)        ; 298
+       (methodref "sun/reflect/annotation/AnnotationParser" "toArray:(Ljava/util/Map;)[Ljava/lang/annotation/Annotation;" 1)    ; 299
+       (methodref "sun/reflect/annotation/AnnotationSupport" "getDirectlyAndIndirectlyPresent:(Ljava/util/Map;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" 2)  ; 300
+       (fieldref "java/lang/Class" "annotationData:Ljava/lang/Class$AnnotationData;" 1) ; 301
+       (fieldref "java/lang/Class$AnnotationData" "redefinedCount:I" 1) ; 302
+       (methodref "java/lang/Class" "createAnnotationData:(I)Ljava/lang/Class$AnnotationData;" 1)       ; 303
+       (methodref "java/lang/Class$Atomic" "casAnnotationData:(Ljava/lang/Class;Ljava/lang/Class$AnnotationData;Ljava/lang/Class$AnnotationData;)Z" 3)  ; 304
+       (methodref "java/lang/Class" "getRawAnnotations:()[B" 0) ; 305
+       (methodref "java/lang/Class" "getConstantPool:()Lsun/reflect/ConstantPool;" 0)   ; 306
+       (methodref "sun/reflect/annotation/AnnotationParser" "parseAnnotations:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/util/Map;" 3)        ; 307
+       (interface-methodref "java/util/Map" "entrySet:()Ljava/util/Set;" 0)     ; 308
+       (interface-methodref "java/util/Set" "iterator:()Ljava/util/Iterator;" 0)        ; 309
+       (interface-methodref "java/util/Iterator" "hasNext:()Z" 0)       ; 310
+       (interface-methodref "java/util/Iterator" "next:()Ljava/lang/Object;" 0) ; 311
+       (class (ref -1) "java/util/Map$Entry")                   ; 312
+       (interface-methodref "java/util/Map$Entry" "getKey:()Ljava/lang/Object;" 0)      ; 313
+       (methodref "sun/reflect/annotation/AnnotationType" "getInstance:(Ljava/lang/Class;)Lsun/reflect/annotation/AnnotationType;" 1)   ; 314
+       (methodref "sun/reflect/annotation/AnnotationType" "isInherited:()Z" 0)  ; 315
+       (class (ref -1) "java/util/LinkedHashMap")               ; 316
+       (interface-methodref "java/util/Map" "size:()I" 0)       ; 317
+       (methodref "java/lang/Math" "min:(II)I" 2)               ; 318
+       (methodref "java/lang/Math" "max:(II)I" 2)               ; 319
+       (methodref "java/util/LinkedHashMap" "<init>:(I)V" 1)    ; 320
+       (interface-methodref "java/util/Map$Entry" "getValue:()Ljava/lang/Object;" 0)    ; 321
+       (interface-methodref "java/util/Map" "putAll:(Ljava/util/Map;)V" 1)      ; 322
+       (class (ref -1) "java/lang/Class$AnnotationData")        ; 323
+       (methodref "java/lang/Class$AnnotationData" "<init>:(Ljava/util/Map;Ljava/util/Map;I)V" 3)       ; 324
+       (methodref "java/lang/Class$Atomic" "casAnnotationType:(Ljava/lang/Class;Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z" 3)    ; 325
+       (fieldref "java/lang/Class" "annotationType:Lsun/reflect/annotation/AnnotationType;" 1)  ; 326
+       (fieldref "java/lang/Void" "TYPE:Ljava/lang/Class;" 1)   ; 327
+       (methodref "java/lang/Class" "getRawTypeAnnotations:()[B" 0)     ; 328
+       (methodref "sun/reflect/annotation/TypeAnnotationParser" "buildAnnotatedSuperclass:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/lang/reflect/AnnotatedType;" 3)  ; 329
+       (methodref "sun/reflect/annotation/TypeAnnotationParser" "buildAnnotatedInterfaces:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)[Ljava/lang/reflect/AnnotatedType;" 3) ; 330
+       (methodref "java/lang/Class" "registerNatives:()V" 0)    ; 331
+       (class (ref -1) "java/io/ObjectStreamField")             ; 332
+       (fieldref "java/lang/Class" "serialPersistentFields:[Ljava/io/ObjectStreamField;" 1)     ; 333
+       (class (ref -1) "java/io/Serializable")                  ; 334
+       (class (ref -1) "java/lang/reflect/GenericDeclaration")  ; 335
+       (class (ref -1) "java/lang/reflect/Type")                ; 336
+       (class (ref -1) "java/lang/reflect/AnnotatedElement")    ; 337
+       (utf8)                                                   ; 338
+       (utf8)                                                   ; 339
+       (utf8)                                                   ; 340
+       (utf8)                                                   ; 341
+       (class (ref -1) "java/lang/Class$Atomic")                ; 342
+       (utf8)                                                   ; 343
+       (utf8)                                                   ; 344
+       (utf8)                                                   ; 345
+       (utf8)                                                   ; 346
+       (utf8)                                                   ; 347
+       (integer 8192)                                           ; 348
+       (utf8)                                                   ; 349
+       (integer 16384)                                          ; 350
+       (utf8)                                                   ; 351
+       (integer 4096)                                           ; 352
+       (utf8)                                                   ; 353
+       (utf8)                                                   ; 354
+       (utf8)                                                   ; 355
+       (utf8)                                                   ; 356
+       (utf8)                                                   ; 357
+       (utf8)                                                   ; 358
+       (utf8)                                                   ; 359
+       (utf8)                                                   ; 360
+       (utf8)                                                   ; 361
+       (utf8)                                                   ; 362
+       (utf8)                                                   ; 363
+       (utf8)                                                   ; 364
+       (utf8)                                                   ; 365
+       (utf8)                                                   ; 366
+       (utf8)                                                   ; 367
+       (utf8)                                                   ; 368
+       (utf8)                                                   ; 369
+       (utf8)                                                   ; 370
+       (utf8)                                                   ; 371
+       (utf8)                                                   ; 372
+       (utf8)                                                   ; 373
+       (utf8)                                                   ; 374
+       (utf8)                                                   ; 375
+       (utf8)                                                   ; 376
+       (long 3206093459760846163)                               ; 377
        nil
-       (utf8)                                                  ; 379
-       (utf8)                                                  ; 380
-       (utf8)                                                  ; 381
-       (utf8)                                                  ; 382
-       (utf8)                                                  ; 383
-       (utf8)                                                  ; 384
-       (utf8)                                                  ; 385
-       (utf8)                                                  ; 386
-       (utf8)                                                  ; 387
-       (utf8)                                                  ; 388
-       (utf8)                                                  ; 389
-       (utf8)                                                  ; 390
-       (utf8)                                                  ; 391
-       (utf8)                                                  ; 392
-       (utf8)                                                  ; 393
-       (utf8)                                                  ; 394
-       (class (ref -1) "java/lang/ClassValue$ClassValueMap")   ; 395
-       (utf8)                                                  ; 396
-       (utf8)                                                  ; 397
-       (utf8)                                                  ; 398
-       (utf8)                                                  ; 399
-       (utf8)                                                  ; 400
-       (utf8)                                                  ; 401
-       (utf8)                                                  ; 402
-       (utf8)                                                  ; 403
-       (utf8)                                                  ; 404
-       (utf8)                                                  ; 405
-       (utf8)                                                  ; 406
-       (utf8)                                                  ; 407
-       (class (ref -1) "java/lang/String")                     ; 408
-       (utf8)                                                  ; 409
-       (class (ref -1) "[Ljava/lang/reflect/TypeVariable;")    ; 410
-       (utf8)                                                  ; 411
-       (utf8)                                                  ; 412
-       (utf8)                                                  ; 413
-       (class (ref -1) "java/lang/ClassNotFoundException")     ; 414
-       (utf8)                                                  ; 415
-       (utf8)                                                  ; 416
-       (utf8)                                                  ; 417
-       (utf8)                                                  ; 418
-       (class (ref -1) "java/lang/SecurityManager")            ; 419
-       (utf8)                                                  ; 420
-       (utf8)                                                  ; 421
-       (utf8)                                                  ; 422
-       (utf8)                                                  ; 423
-       (utf8)                                                  ; 424
-       (utf8)                                                  ; 425
-       (utf8)                                                  ; 426
-       (utf8)                                                  ; 427
-       (utf8)                                                  ; 428
-       (utf8)                                                  ; 429
-       (utf8)                                                  ; 430
-       (utf8)                                                  ; 431
-       (utf8)                                                  ; 432
-       (utf8)                                                  ; 433
-       (utf8)                                                  ; 434
-       (utf8)                                                  ; 435
-       (utf8)                                                  ; 436
-       (utf8)                                                  ; 437
-       (utf8)                                                  ; 438
-       (utf8)                                                  ; 439
-       (utf8)                                                  ; 440
-       (utf8)                                                  ; 441
-       (utf8)                                                  ; 442
-       (class (ref -1) "java/lang/ClassLoader")                ; 443
-       (utf8)                                                  ; 444
-       (utf8)                                                  ; 445
-       (utf8)                                                  ; 446
-       (class (ref -1) "sun/reflect/generics/repository/ClassRepository")      ; 447
-       (utf8)                                                  ; 448
-       (utf8)                                                  ; 449
-       (utf8)                                                  ; 450
-       (utf8)                                                  ; 451
-       (utf8)                                                  ; 452
-       (utf8)                                                  ; 453
-       (utf8)                                                  ; 454
-       (utf8)                                                  ; 455
-       (utf8)                                                  ; 456
-       (utf8)                                                  ; 457
-       (utf8)                                                  ; 458
-       (utf8)                                                  ; 459
-       (utf8)                                                  ; 460
-       (utf8)                                                  ; 461
-       (class (ref -1) "[Ljava/lang/reflect/Type;")            ; 462
-       (utf8)                                                  ; 463
-       (utf8)                                                  ; 464
-       (utf8)                                                  ; 465
-       (utf8)                                                  ; 466
-       (utf8)                                                  ; 467
-       (utf8)                                                  ; 468
-       (utf8)                                                  ; 469
-       (utf8)                                                  ; 470
-       (utf8)                                                  ; 471
-       (utf8)                                                  ; 472
-       (class (ref -1) "sun/reflect/generics/repository/MethodRepository")     ; 473
-       (class (ref -1) "java/lang/SecurityException")          ; 474
-       (utf8)                                                  ; 475
-       (utf8)                                                  ; 476
-       (utf8)                                                  ; 477
-       (utf8)                                                  ; 478
-       (utf8)                                                  ; 479
-       (utf8)                                                  ; 480
-       (utf8)                                                  ; 481
-       (utf8)                                                  ; 482
-       (class (ref -1) "sun/reflect/generics/repository/ConstructorRepository")        ; 483
-       (utf8)                                                  ; 484
-       (utf8)                                                  ; 485
-       (utf8)                                                  ; 486
-       (utf8)                                                  ; 487
-       (utf8)                                                  ; 488
-       (utf8)                                                  ; 489
-       (utf8)                                                  ; 490
-       (utf8)                                                  ; 491
-       (utf8)                                                  ; 492
-       (utf8)                                                  ; 493
-       (utf8)                                                  ; 494
-       (utf8)                                                  ; 495
-       (utf8)                                                  ; 496
-       (utf8)                                                  ; 497
-       (utf8)                                                  ; 498
-       (utf8)                                                  ; 499
-       (utf8)                                                  ; 500
-       (utf8)                                                  ; 501
-       (utf8)                                                  ; 502
-       (utf8)                                                  ; 503
-       (utf8)                                                  ; 504
-       (utf8)                                                  ; 505
-       (utf8)                                                  ; 506
-       (utf8)                                                  ; 507
-       (utf8)                                                  ; 508
-       (utf8)                                                  ; 509
-       (utf8)                                                  ; 510
-       (utf8)                                                  ; 511
-       (utf8)                                                  ; 512
-       (utf8)                                                  ; 513
-       (utf8)                                                  ; 514
-       (utf8)                                                  ; 515
-       (utf8)                                                  ; 516
-       (utf8)                                                  ; 517
-       (utf8)                                                  ; 518
-       (utf8)                                                  ; 519
-       (utf8)                                                  ; 520
-       (utf8)                                                  ; 521
-       (utf8)                                                  ; 522
-       (utf8)                                                  ; 523
-       (utf8)                                                  ; 524
-       (utf8)                                                  ; 525
-       (utf8)                                                  ; 526
-       (utf8)                                                  ; 527
-       (utf8)                                                  ; 528
-       (utf8)                                                  ; 529
-       (utf8)                                                  ; 530
-       (utf8)                                                  ; 531
-       (utf8)                                                  ; 532
-       (utf8)                                                  ; 533
-       (utf8)                                                  ; 534
-       (utf8)                                                  ; 535
-       (utf8)                                                  ; 536
-       (utf8)                                                  ; 537
-       (utf8)                                                  ; 538
-       (utf8)                                                  ; 539
-       (utf8)                                                  ; 540
-       (utf8)                                                  ; 541
-       (utf8)                                                  ; 542
-       (utf8)                                                  ; 543
-       (utf8)                                                  ; 544
-       (utf8)                                                  ; 545
-       (utf8)                                                  ; 546
-       (utf8)                                                  ; 547
-       (utf8)                                                  ; 548
-       (utf8)                                                  ; 549
-       (utf8)                                                  ; 550
-       (utf8)                                                  ; 551
-       (utf8)                                                  ; 552
-       (utf8)                                                  ; 553
-       (utf8)                                                  ; 554
-       (utf8)                                                  ; 555
-       (class (ref -1) "[Ljava/lang/reflect/Field;")           ; 556
-       (utf8)                                                  ; 557
-       (utf8)                                                  ; 558
-       (class (ref -1) "java/util/List")                       ; 559
-       (class (ref -1) "java/util/Set")                        ; 560
-       (utf8)                                                  ; 561
-       (utf8)                                                  ; 562
-       (utf8)                                                  ; 563
-       (utf8)                                                  ; 564
-       (utf8)                                                  ; 565
-       (utf8)                                                  ; 566
-       (utf8)                                                  ; 567
-       (utf8)                                                  ; 568
-       (utf8)                                                  ; 569
-       (utf8)                                                  ; 570
-       (utf8)                                                  ; 571
-       (utf8)                                                  ; 572
-       (utf8)                                                  ; 573
-       (utf8)                                                  ; 574
-       (utf8)                                                  ; 575
-       (utf8)                                                  ; 576
-       (utf8)                                                  ; 577
-       (utf8)                                                  ; 578
-       (utf8)                                                  ; 579
-       (utf8)                                                  ; 580
-       (utf8)                                                  ; 581
-       (utf8)                                                  ; 582
-       (utf8)                                                  ; 583
-       (utf8)                                                  ; 584
-       (utf8)                                                  ; 585
-       (utf8)                                                  ; 586
-       (utf8)                                                  ; 587
-       (utf8)                                                  ; 588
-       (utf8)                                                  ; 589
-       (utf8)                                                  ; 590
-       (utf8)                                                  ; 591
-       (utf8)                                                  ; 592
-       (utf8)                                                  ; 593
-       (utf8)                                                  ; 594
-       (utf8)                                                  ; 595
-       (utf8)                                                  ; 596
-       (utf8)                                                  ; 597
-       (utf8)                                                  ; 598
-       (utf8)                                                  ; 599
-       (utf8)                                                  ; 600
-       (class (ref -1) "java/lang/CharSequence")               ; 601
-       (utf8)                                                  ; 602
-       (utf8)                                                  ; 603
-       (utf8)                                                  ; 604
-       (utf8)                                                  ; 605
-       (utf8)                                                  ; 606
-       (utf8)                                                  ; 607
-       (utf8)                                                  ; 608
-       (utf8)                                                  ; 609
-       (utf8)                                                  ; 610
-       (utf8)                                                  ; 611
-       (class (ref -1) "java/lang/ReflectiveOperationException")       ; 612
-       (utf8)                                                  ; 613
-       (class (ref -1) "java/util/Map")                        ; 614
-       (utf8)                                                  ; 615
-       (utf8)                                                  ; 616
-       (utf8)                                                  ; 617
-       (utf8)                                                  ; 618
-       (utf8)                                                  ; 619
-       (utf8)                                                  ; 620
-       (utf8)                                                  ; 621
-       (utf8)                                                  ; 622
-       (utf8)                                                  ; 623
-       (utf8)                                                  ; 624
-       (utf8)                                                  ; 625
-       (utf8)                                                  ; 626
-       (utf8)                                                  ; 627
-       (utf8)                                                  ; 628
-       (utf8)                                                  ; 629
-       (utf8)                                                  ; 630
-       (utf8)                                                  ; 631
-       (utf8)                                                  ; 632
-       (utf8)                                                  ; 633
-       (utf8)                                                  ; 634
-       (utf8)                                                  ; 635
-       (utf8)                                                  ; 636
-       (utf8)                                                  ; 637
-       (utf8)                                                  ; 638
-       (utf8)                                                  ; 639
-       (class (ref -1) "java/util/Iterator")                   ; 640
-       (utf8)                                                  ; 641
-       (utf8)                                                  ; 642
-       (utf8)                                                  ; 643
-       (utf8)                                                  ; 644
-       (utf8)                                                  ; 645
-       (utf8)                                                  ; 646
-       (utf8)                                                  ; 647
-       (utf8)                                                  ; 648
-       (utf8)                                                  ; 649
-       (utf8)                                                  ; 650
-       (utf8)                                                  ; 651
-       (utf8)                                                  ; 652
-       (utf8)                                                  ; 653
-       (utf8)                                                  ; 654
-       (utf8)                                                  ; 655
-       (utf8)                                                  ; 656
-       (utf8)                                                  ; 657
-       (utf8)                                                  ; 658
-       (utf8)                                                  ; 659
-       (utf8)                                                  ; 660
-       (utf8)                                                  ; 661
-       (name-and-type "initted:Z")                             ; 662
-       (name-and-type "useCaches:Z")                           ; 663
-       (name-and-type "arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z")     ; 664
-       (name-and-type "searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;")  ; 665
-       (name-and-type "getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;")      ; 666
-       (name-and-type "<init>:()V")                            ; 667
-       (name-and-type "classLoader:Ljava/lang/ClassLoader;")   ; 668
-       (name-and-type "componentType:Ljava/lang/Class;")       ; 669
-       (utf8)                                                  ; 670
-       (name-and-type "isInterface:()Z")                       ; 671
-       (utf8)                                                  ; 672
-       (name-and-type "isPrimitive:()Z")                       ; 673
-       (utf8)                                                  ; 674
-       (utf8)                                                  ; 675
-       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")  ; 676
-       (name-and-type "getName:()Ljava/lang/String;")          ; 677
-       (name-and-type "toString:()Ljava/lang/String;")         ; 678
-       (name-and-type "isArray:()Z")                           ; 679
-       (name-and-type "getComponentType:()Ljava/lang/Class;")  ; 680
-       (name-and-type "getModifiers:()I")                      ; 681
-       (class (ref -1) "java/lang/reflect/Modifier")           ; 682
-       (name-and-type "classModifiers:()I")                    ; 683
-       (name-and-type "toString:(I)Ljava/lang/String;")        ; 684
-       (name-and-type "append:(C)Ljava/lang/StringBuilder;")   ; 685
-       (name-and-type "isAnnotation:()Z")                      ; 686
-       (utf8)                                                  ; 687
-       (name-and-type "isEnum:()Z")                            ; 688
-       (utf8)                                                  ; 689
-       (utf8)                                                  ; 690
-       (name-and-type "getTypeParameters:()[Ljava/lang/reflect/TypeVariable;") ; 691
-       (name-and-type "getTypeName:()Ljava/lang/String;")      ; 692
-       (utf8)                                                  ; 693
-       (class (ref -1) "sun/reflect/Reflection")               ; 694
-       (name-and-type "getCallerClass:()Ljava/lang/Class;")    ; 695
-       (name-and-type "getClassLoader:(Ljava/lang/Class;)Ljava/lang/ClassLoader;")     ; 696
-       (name-and-type "forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;")       ; 697
-       (class (ref -1) "java/lang/System")                     ; 698
-       (name-and-type "getSecurityManager:()Ljava/lang/SecurityManager;")      ; 699
-       (class (ref -1) "jdk/internal/misc/VM")                 ; 700
-       (name-and-type "isSystemDomainLoader:(Ljava/lang/ClassLoader;)Z")       ; 701
-       (class (ref -1) "sun/security/util/SecurityConstants")  ; 702
-       (name-and-type "GET_CLASSLOADER_PERMISSION:Ljava/lang/RuntimePermission;")      ; 703
-       (name-and-type "checkPermission:(Ljava/security/Permission;)V") ; 704
-       (utf8)                                                  ; 705
-       (name-and-type "checkMemberAccess:(ILjava/lang/Class;Z)V")      ; 706
-       (name-and-type "cachedConstructor:Ljava/lang/reflect/Constructor;")     ; 707
-       (utf8)                                                  ; 708
-       (utf8)                                                  ; 709
-       (utf8)                                                  ; 710
-       (name-and-type "<init>:(Ljava/lang/String;)V")          ; 711
-       (name-and-type "getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;")  ; 712
-       (utf8)                                                  ; 713
-       (name-and-type "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Constructor;)V")    ; 714
-       (class (ref -1) "java/security/AccessController")       ; 715
-       (name-and-type "doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;")     ; 716
-       (utf8)                                                  ; 717
-       (utf8)                                                  ; 718
-       (name-and-type "initCause:(Ljava/lang/Throwable;)Ljava/lang/Throwable;")        ; 719
-       (name-and-type "quickCheckMemberAccess:(Ljava/lang/Class;I)Z")  ; 720
-       (name-and-type "newInstanceCallerCache:Ljava/lang/Class;")      ; 721
-       (name-and-type "ensureMemberAccess:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Object;I)V")   ; 722
-       (name-and-type "newInstance:([Ljava/lang/Object;)Ljava/lang/Object;")   ; 723
-       (utf8)                                                  ; 724
-       (class (ref -1) "jdk/internal/misc/Unsafe")             ; 725
-       (name-and-type "getUnsafe:()Ljdk/internal/misc/Unsafe;")        ; 726
-       (name-and-type "getTargetException:()Ljava/lang/Throwable;")    ; 727
-       (name-and-type "throwException:(Ljava/lang/Throwable;)V")       ; 728
-       (name-and-type "name:Ljava/lang/String;")               ; 729
-       (name-and-type "getName0:()Ljava/lang/String;")         ; 730
-       (name-and-type "getClassLoader0:()Ljava/lang/ClassLoader;")     ; 731
-       (name-and-type "checkClassLoaderPermission:(Ljava/lang/ClassLoader;Ljava/lang/Class;)V")        ; 732
-       (name-and-type "getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;")    ; 733
-       (utf8)                                                  ; 734
-       (name-and-type "getSuperclass:()Ljava/lang/Class;")     ; 735
-       (name-and-type "getSuperclass:()Ljava/lang/reflect/Type;")      ; 736
-       (class (ref -1) "java/lang/Package")                    ; 737
-       (name-and-type "getPackage:(Ljava/lang/Class;)Ljava/lang/Package;")     ; 738
-       (name-and-type "reflectionData:()Ljava/lang/Class$ReflectionData;")     ; 739
-       (name-and-type "getInterfaces0:()[Ljava/lang/Class;")   ; 740
-       (name-and-type "interfaces:[Ljava/lang/Class;")         ; 741
-       (class (ref -1) "[Ljava/lang/Class;")                   ; 742
-       (name-and-type "clone:()Ljava/lang/Object;")            ; 743
-       (utf8)                                                  ; 744
-       (name-and-type "getInterfaces:()[Ljava/lang/Class;")    ; 745
-       (name-and-type "getSuperInterfaces:()[Ljava/lang/reflect/Type;")        ; 746
-       (name-and-type "getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;")        ; 747
-       (name-and-type "isMethod:()Z")                          ; 748
-       (name-and-type "getDescriptor:()Ljava/lang/String;")    ; 749
-       (name-and-type "getFactory:()Lsun/reflect/generics/factory/GenericsFactory;")   ; 750
-       (name-and-type "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/MethodRepository;")     ; 751
-       (name-and-type "getReturnType:()Ljava/lang/reflect/Type;")      ; 752
-       (name-and-type "toClass:(Ljava/lang/reflect/Type;)Ljava/lang/Class;")   ; 753
-       (name-and-type "getParameterTypes:()[Ljava/lang/reflect/Type;") ; 754
-       (name-and-type "getEnclosingClass:()Ljava/lang/Class;") ; 755
-       (utf8)                                                  ; 756
-       (name-and-type "<init>:(Ljava/lang/Class;Ljava/lang/Class;)V")  ; 757
-       (utf8)                                                  ; 758
-       (name-and-type "equals:(Ljava/lang/Object;)Z")          ; 759
-       (name-and-type "getParameterTypes:()[Ljava/lang/Class;")        ; 760
-       (name-and-type "getReturnType:()Ljava/lang/Class;")     ; 761
-       (utf8)                                                  ; 762
-       (utf8)                                                  ; 763
-       (name-and-type "getEnclosingMethod0:()[Ljava/lang/Object;")     ; 764
-       (utf8)                                                  ; 765
-       (name-and-type "<init>:([Ljava/lang/Object;Ljava/lang/Class$1;)V")      ; 766
-       (utf8)                                                  ; 767
-       (name-and-type "getGenericComponentType:()Ljava/lang/reflect/Type;")    ; 768
-       (class (ref -1) "java/lang/reflect/Array")              ; 769
-       (name-and-type "newInstance:(Ljava/lang/Class;I)Ljava/lang/Object;")    ; 770
-       (name-and-type "getClass:()Ljava/lang/Class;")          ; 771
-       (name-and-type "isConstructor:()Z")                     ; 772
-       (name-and-type "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ConstructorRepository;")        ; 773
-       (utf8)                                                  ; 774
-       (utf8)                                                  ; 775
-       (utf8)                                                  ; 776
-       (name-and-type "getDeclaringClass0:()Ljava/lang/Class;")        ; 777
-       (name-and-type "checkPackageAccess:(Ljava/lang/ClassLoader;Z)V")        ; 778
-       (name-and-type "getDeclaringClass:()Ljava/lang/Class;") ; 779
-       (utf8)                                                  ; 780
-       (name-and-type "getSimpleName:()Ljava/lang/String;")    ; 781
-       (name-and-type "getSimpleBinaryName:()Ljava/lang/String;")      ; 782
-       (name-and-type "lastIndexOf:(I)I")                      ; 783
-       (name-and-type "substring:(I)Ljava/lang/String;")       ; 784
-       (utf8)                                                  ; 785
-       (name-and-type "getCanonicalName:()Ljava/lang/String;") ; 786
-       (name-and-type "isLocalOrAnonymousClass:()Z")           ; 787
-       (utf8)                                                  ; 788
-       (name-and-type "isAnonymousClass:()Z")                  ; 789
-       (name-and-type "getSimpleBinaryName0:()Ljava/lang/String;")     ; 790
-       (utf8)                                                  ; 791
-       (name-and-type "<init>:(Ljava/lang/Class;)V")           ; 792
-       (name-and-type "privateGetPublicFields:(Ljava/util/Set;)[Ljava/lang/reflect/Field;")    ; 793
-       (name-and-type "copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;")     ; 794
-       (name-and-type "privateGetPublicMethods:()[Ljava/lang/reflect/Method;") ; 795
-       (name-and-type "copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;")  ; 796
-       (name-and-type "privateGetDeclaredConstructors:(Z)[Ljava/lang/reflect/Constructor;")    ; 797
-       (name-and-type "copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;")   ; 798
-       (name-and-type "getField0:(Ljava/lang/String;)Ljava/lang/reflect/Field;")       ; 799
-       (utf8)                                                  ; 800
-       (name-and-type "getMethod0:(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/reflect/Method;")  ; 801
-       (name-and-type "argumentTypesToString:([Ljava/lang/Class;)Ljava/lang/String;")  ; 802
-       (name-and-type "getDeclaredClasses0:()[Ljava/lang/Class;")      ; 803
-       (name-and-type "privateGetDeclaredFields:(Z)[Ljava/lang/reflect/Field;")        ; 804
-       (name-and-type "privateGetDeclaredMethods:(Z)[Ljava/lang/reflect/Method;")      ; 805
-       (name-and-type "searchMethods:([Ljava/lang/reflect/Method;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;")     ; 806
-       (name-and-type "resolveName:(Ljava/lang/String;)Ljava/lang/String;")    ; 807
-       (name-and-type "getSystemResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;")   ; 808
-       (name-and-type "getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;") ; 809
-       (name-and-type "getSystemResource:(Ljava/lang/String;)Ljava/net/URL;")  ; 810
-       (name-and-type "getResource:(Ljava/lang/String;)Ljava/net/URL;")        ; 811
-       (name-and-type "GET_PD_PERMISSION:Ljava/lang/RuntimePermission;")       ; 812
-       (name-and-type "getProtectionDomain0:()Ljava/security/ProtectionDomain;")       ; 813
-       (name-and-type "allPermDomain:Ljava/security/ProtectionDomain;")        ; 814
-       (utf8)                                                  ; 815
-       (name-and-type "ALL_PERMISSION:Ljava/security/AllPermission;")  ; 816
-       (name-and-type "add:(Ljava/security/Permission;)V")     ; 817
-       (utf8)                                                  ; 818
-       (name-and-type "<init>:(Ljava/security/CodeSource;Ljava/security/PermissionCollection;)V")      ; 819
-       (name-and-type "CHECK_MEMBER_ACCESS_PERMISSION:Ljava/lang/RuntimePermission;")  ; 820
-       (class (ref -1) "sun/reflect/misc/ReflectUtil")         ; 821
-       (name-and-type "needsPackageAccessCheck:(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z")     ; 822
-       (name-and-type "substring:(II)Ljava/lang/String;")      ; 823
-       (class (ref -1) "java/lang/reflect/Proxy")              ; 824
-       (name-and-type "isProxyClass:(Ljava/lang/Class;)Z")     ; 825
-       (name-and-type "isNonPublicProxyClass:(Ljava/lang/Class;)Z")    ; 826
-       (name-and-type "checkPackageAccess:(Ljava/lang/String;)V")      ; 827
-       (name-and-type "checkProxyPackageAccess:(Ljava/lang/ClassLoader;[Ljava/lang/Class;)V")  ; 828
-       (utf8)                                                  ; 829
-       (name-and-type "startsWith:(Ljava/lang/String;)Z")      ; 830
-       (name-and-type "replace:(CC)Ljava/lang/String;")        ; 831
-       (name-and-type "reflectionData:Ljava/lang/ref/SoftReference;")  ; 832
-       (name-and-type "classRedefinedCount:I")                 ; 833
-       (name-and-type "get:()Ljava/lang/Object;")              ; 834
-       (utf8)                                                  ; 835
-       (name-and-type "redefinedCount:I")                      ; 836
-       (name-and-type "newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;")    ; 837
-       (name-and-type "<init>:(I)V")                           ; 838
-       (utf8)                                                  ; 839
-       (name-and-type "<init>:(Ljava/lang/Object;)V")          ; 840
-       (name-and-type "casReflectionData:(Ljava/lang/Class;Ljava/lang/ref/SoftReference;Ljava/lang/ref/SoftReference;)Z")      ; 841
-       (class (ref -1) "sun/reflect/generics/scope/ClassScope")        ; 842
-       (name-and-type "make:(Ljava/lang/Class;)Lsun/reflect/generics/scope/ClassScope;")       ; 843
-       (class (ref -1) "sun/reflect/generics/factory/CoreReflectionFactory")   ; 844
-       (name-and-type "make:(Ljava/lang/reflect/GenericDeclaration;Lsun/reflect/generics/scope/Scope;)Lsun/reflect/generics/factory/CoreReflectionFactory;")   ; 845
-       (name-and-type "genericInfo:Lsun/reflect/generics/repository/ClassRepository;") ; 846
-       (name-and-type "getGenericSignature0:()Ljava/lang/String;")     ; 847
-       (name-and-type "NONE:Lsun/reflect/generics/repository/ClassRepository;")        ; 848
-       (name-and-type "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ClassRepository;")      ; 849
-       (name-and-type "getReflectionFactory:()Lsun/reflect/ReflectionFactory;")        ; 850
-       (name-and-type "getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B")   ; 851
-       (name-and-type "checkInitted:()V")                      ; 852
-       (name-and-type "declaredPublicFields:[Ljava/lang/reflect/Field;")       ; 853
-       (name-and-type "declaredFields:[Ljava/lang/reflect/Field;")     ; 854
-       (name-and-type "filterFields:(Ljava/lang/Class;[Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;")  ; 855
-       (name-and-type "publicFields:[Ljava/lang/reflect/Field;")       ; 856
-       (utf8)                                                  ; 857
-       (utf8)                                                  ; 858
-       (name-and-type "addAll:(Ljava/util/Collection;[Ljava/lang/reflect/Field;)V")    ; 859
-       (name-and-type "contains:(Ljava/lang/Object;)Z")        ; 860
-       (name-and-type "add:(Ljava/lang/Object;)Z")             ; 861
-       (name-and-type "size:()I")                              ; 862
-       (utf8)                                                  ; 863
-       (name-and-type "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;")      ; 864
-       (class (ref -1) "java/util/Collection")                 ; 865
-       (name-and-type "publicConstructors:[Ljava/lang/reflect/Constructor;")   ; 866
-       (name-and-type "declaredConstructors:[Ljava/lang/reflect/Constructor;") ; 867
-       (utf8)                                                  ; 868
-       (name-and-type "getDeclaredConstructors0:(Z)[Ljava/lang/reflect/Constructor;")  ; 869
-       (name-and-type "declaredPublicMethods:[Ljava/lang/reflect/Method;")     ; 870
-       (name-and-type "declaredMethods:[Ljava/lang/reflect/Method;")   ; 871
-       (name-and-type "getDeclaredMethods0:(Z)[Ljava/lang/reflect/Method;")    ; 872
-       (name-and-type "filterMethods:(Ljava/lang/Class;[Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;")       ; 873
-       (name-and-type "publicMethods:[Ljava/lang/reflect/Method;")     ; 874
-       (utf8)                                                  ; 875
-       (name-and-type "addAll:([Ljava/lang/reflect/Method;)V") ; 876
-       (name-and-type "addInterfaceMethods:([Ljava/lang/reflect/Method;)V")    ; 877
-       (name-and-type "length:()I")                            ; 878
-       (name-and-type "get:(I)Ljava/lang/reflect/Method;")     ; 879
-       (name-and-type "isAbstract:(I)Z")                       ; 880
-       (name-and-type "isDefault:()Z")                         ; 881
-       (name-and-type "removeByNameAndDescriptor:(Ljava/lang/reflect/Method;)V")       ; 882
-       (name-and-type "addAll:(Ljava/lang/Class$MethodArray;)V")       ; 883
-       (name-and-type "addAllIfNotPresent:(Ljava/lang/Class$MethodArray;)V")   ; 884
-       (name-and-type "removeLessSpecifics:()V")               ; 885
-       (name-and-type "compactAndTrim:()V")                    ; 886
-       (name-and-type "getArray:()[Ljava/lang/reflect/Method;")        ; 887
-       (name-and-type "intern:()Ljava/lang/String;")           ; 888
-       (name-and-type "copyField:(Ljava/lang/reflect/Field;)Ljava/lang/reflect/Field;")        ; 889
-       (name-and-type "isAssignableFrom:(Ljava/lang/Class;)Z") ; 890
-       (name-and-type "copyMethod:(Ljava/lang/reflect/Method;)Ljava/lang/reflect/Method;")     ; 891
-       (name-and-type "privateGetMethodRecursive:(Ljava/lang/String;[Ljava/lang/Class;ZLjava/lang/Class$MethodArray;)Ljava/lang/reflect/Method;")      ; 892
-       (name-and-type "getFirst:()Ljava/lang/reflect/Method;") ; 893
-       (name-and-type "isStatic:(I)Z")                         ; 894
-       (name-and-type "add:(Ljava/lang/reflect/Method;)V")     ; 895
-       (name-and-type "copyConstructor:(Ljava/lang/reflect/Constructor;)Ljava/lang/reflect/Constructor;")      ; 896
-       (utf8)                                                  ; 897
-       (utf8)                                                  ; 898
-       (class (ref -1) "[Ljava/lang/reflect/Constructor;")     ; 899
-       (utf8)                                                  ; 900
-       (utf8)                                                  ; 901
-       (utf8)                                                  ; 902
-       (utf8)                                                  ; 903
-       (name-and-type "<init>:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)V")    ; 904
-       (utf8)                                                  ; 905
-       (name-and-type "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;")        ; 906
-       (name-and-type "getClassLoader:()Ljava/lang/ClassLoader;")      ; 907
-       (name-and-type "desiredAssertionStatus0:(Ljava/lang/Class;)Z")  ; 908
-       (name-and-type "assertionLock:Ljava/lang/Object;")      ; 909
-       (name-and-type "classAssertionStatus:Ljava/util/Map;")  ; 910
-       (name-and-type "desiredAssertionStatus:(Ljava/lang/String;)Z")  ; 911
-       (utf8)                                                  ; 912
-       (name-and-type "reflectionFactory:Lsun/reflect/ReflectionFactory;")     ; 913
-       (utf8)                                                  ; 914
-       (utf8)                                                  ; 915
-       (utf8)                                                  ; 916
-       (utf8)                                                  ; 917
-       (name-and-type "getEnumConstantsShared:()[Ljava/lang/Object;")  ; 918
-       (class (ref -1) "[Ljava/lang/Object;")                  ; 919
-       (name-and-type "enumConstants:[Ljava/lang/Object;")     ; 920
-       (utf8)                                                  ; 921
-       (name-and-type "getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;")    ; 922
-       (utf8)                                                  ; 923
-       (name-and-type "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Method;)V") ; 924
-       (utf8)                                                  ; 925
-       (name-and-type "invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;")      ; 926
-       (name-and-type "enumConstantDirectory:Ljava/util/Map;") ; 927
-       (utf8)                                                  ; 928
-       (utf8)                                                  ; 929
-       (utf8)                                                  ; 930
-       (name-and-type "name:()Ljava/lang/String;")             ; 931
-       (name-and-type "put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;")  ; 932
-       (name-and-type "isInstance:(Ljava/lang/Object;)Z")      ; 933
-       (utf8)                                                  ; 934
-       (name-and-type "cannotCastMsg:(Ljava/lang/Object;)Ljava/lang/String;")  ; 935
-       (utf8)                                                  ; 936
-       (utf8)                                                  ; 937
-       (class (ref -1) "java/util/Objects")                    ; 938
-       (name-and-type "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;") ; 939
-       (name-and-type "annotationData:()Ljava/lang/Class$AnnotationData;")     ; 940
-       (name-and-type "annotations:Ljava/util/Map;")           ; 941
-       (name-and-type "get:(Ljava/lang/Object;)Ljava/lang/Object;")    ; 942
-       (utf8)                                                  ; 943
-       (name-and-type "isAnnotationPresent:(Ljava/lang/Class;)Z")      ; 944
-       (name-and-type "declaredAnnotations:Ljava/util/Map;")   ; 945
-       (class (ref -1) "sun/reflect/annotation/AnnotationSupport")     ; 946
-       (name-and-type "getAssociatedAnnotations:(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;")        ; 947
-       (class (ref -1) "sun/reflect/annotation/AnnotationParser")      ; 948
-       (name-and-type "toArray:(Ljava/util/Map;)[Ljava/lang/annotation/Annotation;")   ; 949
-       (name-and-type "getDirectlyAndIndirectlyPresent:(Ljava/util/Map;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;")  ; 950
-       (name-and-type "annotationData:Ljava/lang/Class$AnnotationData;")       ; 951
-       (name-and-type "createAnnotationData:(I)Ljava/lang/Class$AnnotationData;")      ; 952
-       (name-and-type "casAnnotationData:(Ljava/lang/Class;Ljava/lang/Class$AnnotationData;Ljava/lang/Class$AnnotationData;)Z")        ; 953
-       (name-and-type "getRawAnnotations:()[B")                ; 954
-       (name-and-type "getConstantPool:()Lsun/reflect/ConstantPool;")  ; 955
-       (name-and-type "parseAnnotations:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/util/Map;")       ; 956
-       (name-and-type "entrySet:()Ljava/util/Set;")            ; 957
-       (name-and-type "iterator:()Ljava/util/Iterator;")       ; 958
-       (name-and-type "hasNext:()Z")                           ; 959
-       (name-and-type "next:()Ljava/lang/Object;")             ; 960
-       (utf8)                                                  ; 961
-       (utf8)                                                  ; 962
-       (name-and-type "getKey:()Ljava/lang/Object;")           ; 963
-       (class (ref -1) "sun/reflect/annotation/AnnotationType")        ; 964
-       (name-and-type "getInstance:(Ljava/lang/Class;)Lsun/reflect/annotation/AnnotationType;")        ; 965
-       (name-and-type "isInherited:()Z")                       ; 966
-       (utf8)                                                  ; 967
-       (class (ref -1) "java/lang/Math")                       ; 968
-       (name-and-type "min:(II)I")                             ; 969
-       (name-and-type "max:(II)I")                             ; 970
-       (name-and-type "getValue:()Ljava/lang/Object;")         ; 971
-       (name-and-type "putAll:(Ljava/util/Map;)V")             ; 972
-       (utf8)                                                  ; 973
-       (name-and-type "<init>:(Ljava/util/Map;Ljava/util/Map;I)V")     ; 974
-       (name-and-type "casAnnotationType:(Ljava/lang/Class;Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z")  ; 975
-       (name-and-type "annotationType:Lsun/reflect/annotation/AnnotationType;")        ; 976
-       (class (ref -1) "java/lang/Void")                       ; 977
-       (name-and-type "TYPE:Ljava/lang/Class;")                ; 978
-       (name-and-type "getRawTypeAnnotations:()[B")            ; 979
-       (class (ref -1) "sun/reflect/annotation/TypeAnnotationParser")  ; 980
-       (name-and-type "buildAnnotatedSuperclass:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/lang/reflect/AnnotatedType;")     ; 981
-       (name-and-type "buildAnnotatedInterfaces:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)[Ljava/lang/reflect/AnnotatedType;")    ; 982
-       (name-and-type "registerNatives:()V")                   ; 983
-       (utf8)                                                  ; 984
-       (name-and-type "serialPersistentFields:[Ljava/io/ObjectStreamField;")   ; 985
-       (utf8)                                                  ; 986
-       (utf8)                                                  ; 987
-       (utf8)                                                  ; 988
-       (utf8)                                                  ; 989
-       (utf8)                                                  ; 990
-       (class (ref -1) "java/lang/ClassValue")                 ; 991
-       (utf8)                                                  ; 992
-       (utf8)                                                  ; 993
-       (utf8)                                                  ; 994
-       (utf8)                                                  ; 995
-       (utf8)                                                  ; 996
-       (utf8)                                                  ; 997
-       (utf8)                                                  ; 998
-       (utf8)                                                  ; 999
-       (utf8)                                                  ; 1000
-       (utf8)                                                  ; 1001
-       (utf8)                                                  ; 1002
-       (utf8)                                                  ; 1003
-       (utf8)                                                  ; 1004
-       (utf8)                                                  ; 1005
-       (utf8)                                                  ; 1006
-       (utf8)                                                  ; 1007
-       (utf8)                                                  ; 1008
-       (utf8)                                                  ; 1009
-       (utf8)                                                  ; 1010
-       (utf8)                                                  ; 1011
-       (utf8)                                                  ; 1012
-       (utf8)                                                  ; 1013
-       (utf8)                                                  ; 1014
-       (utf8)                                                  ; 1015
-       (utf8)                                                  ; 1016
-       (utf8)                                                  ; 1017
-       (utf8)                                                  ; 1018
-       (utf8)                                                  ; 1019
-       (utf8)                                                  ; 1020
-       (utf8)                                                  ; 1021
-       (utf8)                                                  ; 1022
-       (utf8)                                                  ; 1023
-       (utf8)                                                  ; 1024
-       (utf8)                                                  ; 1025
-       (utf8)                                                  ; 1026
-       (utf8)                                                  ; 1027
-       (utf8)                                                  ; 1028
-       (utf8)                                                  ; 1029
-       (utf8)                                                  ; 1030
-       (utf8)                                                  ; 1031
-       (utf8)                                                  ; 1032
-       (utf8)                                                  ; 1033
-       (utf8)                                                  ; 1034
-       (utf8)                                                  ; 1035
-       (utf8)                                                  ; 1036
-       (utf8)                                                  ; 1037
-       (utf8)                                                  ; 1038
-       (utf8)                                                  ; 1039
-       (utf8)                                                  ; 1040
-       (utf8)                                                  ; 1041
-       (utf8)                                                  ; 1042
-       (utf8)                                                  ; 1043
-       (utf8)                                                  ; 1044
-       (utf8)                                                  ; 1045
-       (utf8)                                                  ; 1046
-       (utf8)                                                  ; 1047
-       (utf8)                                                  ; 1048
-       (utf8)                                                  ; 1049
-       (utf8)                                                  ; 1050
-       (utf8)                                                  ; 1051
-       (utf8)                                                  ; 1052
-       (utf8)                                                  ; 1053
-       (utf8)                                                  ; 1054
-       (utf8)                                                  ; 1055
-       (utf8)                                                  ; 1056
-       (utf8)                                                  ; 1057
-       (utf8)                                                  ; 1058
-       (utf8)                                                  ; 1059
-       (utf8)                                                  ; 1060
-       (utf8)                                                  ; 1061
-       (utf8)                                                  ; 1062
-       (utf8)                                                  ; 1063
-       (utf8)                                                  ; 1064
-       (utf8)                                                  ; 1065
-       (utf8)                                                  ; 1066
-       (utf8)                                                  ; 1067
-       (utf8)                                                  ; 1068
-       (utf8)                                                  ; 1069
-       (utf8)                                                  ; 1070
-       (utf8)                                                  ; 1071
-       (utf8)                                                  ; 1072
-       (utf8)                                                  ; 1073
-       (utf8)                                                  ; 1074
-       (utf8)                                                  ; 1075
-       (utf8)                                                  ; 1076
-       (utf8)                                                  ; 1077
-       (utf8)                                                  ; 1078
-       (utf8)                                                  ; 1079
-       (utf8)                                                  ; 1080
-       (utf8)                                                  ; 1081
-       (utf8)                                                  ; 1082
-       (utf8)                                                  ; 1083
-       (utf8)                                                  ; 1084
-       (utf8)                                                  ; 1085
-       (utf8)                                                  ; 1086
-       (utf8)                                                  ; 1087
-       (utf8)                                                  ; 1088
-       (utf8)                                                  ; 1089
-       (utf8)                                                  ; 1090
-       (utf8)                                                  ; 1091
-       (utf8)                                                  ; 1092
-       (utf8)                                                  ; 1093
-       (utf8)                                                  ; 1094
-       (utf8)                                                  ; 1095
-       (utf8)                                                  ; 1096
-       (utf8)                                                  ; 1097
-       (utf8)                                                  ; 1098
-       (utf8)                                                  ; 1099
-       (utf8)                                                  ; 1100
-       (utf8)                                                  ; 1101
-       (utf8)                                                  ; 1102
-       (utf8)                                                  ; 1103
-       (utf8)                                                  ; 1104
-       (utf8)                                                  ; 1105
-       (utf8)                                                  ; 1106
-       (utf8)                                                  ; 1107
-       (utf8)                                                  ; 1108
-       (utf8)                                                  ; 1109
-       (utf8)                                                  ; 1110
-       (utf8)                                                  ; 1111
-       (utf8)                                                  ; 1112
-       (utf8)                                                  ; 1113
-       (utf8)                                                  ; 1114
-       (utf8)                                                  ; 1115
-       (utf8)                                                  ; 1116
-       (utf8)                                                  ; 1117
-       (utf8)                                                  ; 1118
-       (utf8)                                                  ; 1119
-       (utf8)                                                  ; 1120
-       (utf8)                                                  ; 1121
-       (utf8)                                                  ; 1122
-       (utf8)                                                  ; 1123
-       (utf8)                                                  ; 1124
-       (utf8)                                                  ; 1125
-       (utf8)                                                  ; 1126
-       (utf8)                                                  ; 1127
-       (utf8)                                                  ; 1128
-       (utf8)                                                  ; 1129
-       (utf8)                                                  ; 1130
-       (utf8)                                                  ; 1131
-       (utf8)                                                  ; 1132
-       (utf8)                                                  ; 1133
-       (utf8)                                                  ; 1134
-       (utf8)                                                  ; 1135
-       (utf8)                                                  ; 1136
-       (utf8)                                                  ; 1137
-       (utf8)                                                  ; 1138
-       (utf8)                                                  ; 1139
-       (utf8)                                                  ; 1140
-       (utf8)                                                  ; 1141
-       (utf8)                                                  ; 1142
-       (utf8)                                                  ; 1143
-       (utf8)                                                  ; 1144
-       (utf8)                                                  ; 1145
-       (utf8)                                                  ; 1146
-       (utf8)                                                  ; 1147
-       (utf8)                                                  ; 1148
-       (utf8)                                                  ; 1149
-       (utf8)                                                  ; 1150
-       (utf8)                                                  ; 1151
-       (utf8)                                                  ; 1152
-       (utf8)                                                  ; 1153
-       (utf8)                                                  ; 1154
-       (utf8)                                                  ; 1155
-       (utf8)                                                  ; 1156
-       (utf8)                                                  ; 1157
-       (utf8)                                                  ; 1158
-       (utf8)                                                  ; 1159
-       (utf8)                                                  ; 1160
-       (utf8)                                                  ; 1161
-       (utf8)                                                  ; 1162
-       (utf8)                                                  ; 1163
-       (utf8)                                                  ; 1164
-       (utf8)                                                  ; 1165
-       (utf8)                                                  ; 1166
-       (utf8)                                                  ; 1167
-       (utf8)                                                  ; 1168
-       (utf8)                                                  ; 1169
-       (utf8)                                                  ; 1170
-       (utf8)                                                  ; 1171
-       (utf8)                                                  ; 1172
-       (utf8)                                                  ; 1173
-       (utf8)                                                  ; 1174
-       (utf8)                                                  ; 1175
-       (utf8)                                                  ; 1176
-       (utf8)                                                  ; 1177
-       (utf8)                                                  ; 1178
-       (utf8)                                                  ; 1179
-       (utf8)                                                  ; 1180
-       (utf8)                                                  ; 1181
-       (utf8)                                                  ; 1182
-       (utf8)                                                  ; 1183
-       (utf8)                                                  ; 1184
-       (utf8)                                                  ; 1185
-       (utf8)                                                  ; 1186
-       (utf8)                                                  ; 1187
-       (utf8)                                                  ; 1188
-       (utf8)                                                  ; 1189
-       (utf8)                                                  ; 1190
-       (utf8)                                                  ; 1191
-       (utf8)                                                  ; 1192
-       (utf8)                                                  ; 1193
-       (utf8)                                                  ; 1194
-       (utf8)                                                  ; 1195
-       (utf8)                                                  ; 1196
-       (utf8)                                                  ; 1197
-       (utf8)                                                  ; 1198
-       (utf8)                                                  ; 1199
+       (utf8)                                                   ; 379
+       (utf8)                                                   ; 380
+       (utf8)                                                   ; 381
+       (utf8)                                                   ; 382
+       (utf8)                                                   ; 383
+       (utf8)                                                   ; 384
+       (utf8)                                                   ; 385
+       (utf8)                                                   ; 386
+       (utf8)                                                   ; 387
+       (utf8)                                                   ; 388
+       (utf8)                                                   ; 389
+       (utf8)                                                   ; 390
+       (utf8)                                                   ; 391
+       (utf8)                                                   ; 392
+       (utf8)                                                   ; 393
+       (utf8)                                                   ; 394
+       (class (ref -1) "java/lang/ClassValue$ClassValueMap")    ; 395
+       (utf8)                                                   ; 396
+       (utf8)                                                   ; 397
+       (utf8)                                                   ; 398
+       (utf8)                                                   ; 399
+       (utf8)                                                   ; 400
+       (utf8)                                                   ; 401
+       (utf8)                                                   ; 402
+       (utf8)                                                   ; 403
+       (utf8)                                                   ; 404
+       (utf8)                                                   ; 405
+       (utf8)                                                   ; 406
+       (utf8)                                                   ; 407
+       (class (ref -1) "java/lang/String")                      ; 408
+       (utf8)                                                   ; 409
+       (class (ref -1) "[Ljava/lang/reflect/TypeVariable;")     ; 410
+       (utf8)                                                   ; 411
+       (utf8)                                                   ; 412
+       (utf8)                                                   ; 413
+       (class (ref -1) "java/lang/ClassNotFoundException")      ; 414
+       (utf8)                                                   ; 415
+       (utf8)                                                   ; 416
+       (utf8)                                                   ; 417
+       (utf8)                                                   ; 418
+       (class (ref -1) "java/lang/SecurityManager")             ; 419
+       (utf8)                                                   ; 420
+       (utf8)                                                   ; 421
+       (utf8)                                                   ; 422
+       (utf8)                                                   ; 423
+       (utf8)                                                   ; 424
+       (utf8)                                                   ; 425
+       (utf8)                                                   ; 426
+       (utf8)                                                   ; 427
+       (utf8)                                                   ; 428
+       (utf8)                                                   ; 429
+       (utf8)                                                   ; 430
+       (utf8)                                                   ; 431
+       (utf8)                                                   ; 432
+       (utf8)                                                   ; 433
+       (utf8)                                                   ; 434
+       (utf8)                                                   ; 435
+       (utf8)                                                   ; 436
+       (utf8)                                                   ; 437
+       (utf8)                                                   ; 438
+       (utf8)                                                   ; 439
+       (utf8)                                                   ; 440
+       (utf8)                                                   ; 441
+       (utf8)                                                   ; 442
+       (class (ref -1) "java/lang/ClassLoader")                 ; 443
+       (utf8)                                                   ; 444
+       (utf8)                                                   ; 445
+       (utf8)                                                   ; 446
+       (class (ref -1) "sun/reflect/generics/repository/ClassRepository")       ; 447
+       (utf8)                                                   ; 448
+       (utf8)                                                   ; 449
+       (utf8)                                                   ; 450
+       (utf8)                                                   ; 451
+       (utf8)                                                   ; 452
+       (utf8)                                                   ; 453
+       (utf8)                                                   ; 454
+       (utf8)                                                   ; 455
+       (utf8)                                                   ; 456
+       (utf8)                                                   ; 457
+       (utf8)                                                   ; 458
+       (utf8)                                                   ; 459
+       (utf8)                                                   ; 460
+       (utf8)                                                   ; 461
+       (class (ref -1) "[Ljava/lang/reflect/Type;")             ; 462
+       (utf8)                                                   ; 463
+       (utf8)                                                   ; 464
+       (utf8)                                                   ; 465
+       (utf8)                                                   ; 466
+       (utf8)                                                   ; 467
+       (utf8)                                                   ; 468
+       (utf8)                                                   ; 469
+       (utf8)                                                   ; 470
+       (utf8)                                                   ; 471
+       (utf8)                                                   ; 472
+       (class (ref -1) "sun/reflect/generics/repository/MethodRepository")      ; 473
+       (class (ref -1) "java/lang/SecurityException")           ; 474
+       (utf8)                                                   ; 475
+       (utf8)                                                   ; 476
+       (utf8)                                                   ; 477
+       (utf8)                                                   ; 478
+       (utf8)                                                   ; 479
+       (utf8)                                                   ; 480
+       (utf8)                                                   ; 481
+       (utf8)                                                   ; 482
+       (class (ref -1) "sun/reflect/generics/repository/ConstructorRepository") ; 483
+       (utf8)                                                   ; 484
+       (utf8)                                                   ; 485
+       (utf8)                                                   ; 486
+       (utf8)                                                   ; 487
+       (utf8)                                                   ; 488
+       (utf8)                                                   ; 489
+       (utf8)                                                   ; 490
+       (utf8)                                                   ; 491
+       (utf8)                                                   ; 492
+       (utf8)                                                   ; 493
+       (utf8)                                                   ; 494
+       (utf8)                                                   ; 495
+       (utf8)                                                   ; 496
+       (utf8)                                                   ; 497
+       (utf8)                                                   ; 498
+       (utf8)                                                   ; 499
+       (utf8)                                                   ; 500
+       (utf8)                                                   ; 501
+       (utf8)                                                   ; 502
+       (utf8)                                                   ; 503
+       (utf8)                                                   ; 504
+       (utf8)                                                   ; 505
+       (utf8)                                                   ; 506
+       (utf8)                                                   ; 507
+       (utf8)                                                   ; 508
+       (utf8)                                                   ; 509
+       (utf8)                                                   ; 510
+       (utf8)                                                   ; 511
+       (utf8)                                                   ; 512
+       (utf8)                                                   ; 513
+       (utf8)                                                   ; 514
+       (utf8)                                                   ; 515
+       (utf8)                                                   ; 516
+       (utf8)                                                   ; 517
+       (utf8)                                                   ; 518
+       (utf8)                                                   ; 519
+       (utf8)                                                   ; 520
+       (utf8)                                                   ; 521
+       (utf8)                                                   ; 522
+       (utf8)                                                   ; 523
+       (utf8)                                                   ; 524
+       (utf8)                                                   ; 525
+       (utf8)                                                   ; 526
+       (utf8)                                                   ; 527
+       (utf8)                                                   ; 528
+       (utf8)                                                   ; 529
+       (utf8)                                                   ; 530
+       (utf8)                                                   ; 531
+       (utf8)                                                   ; 532
+       (utf8)                                                   ; 533
+       (utf8)                                                   ; 534
+       (utf8)                                                   ; 535
+       (utf8)                                                   ; 536
+       (utf8)                                                   ; 537
+       (utf8)                                                   ; 538
+       (utf8)                                                   ; 539
+       (utf8)                                                   ; 540
+       (utf8)                                                   ; 541
+       (utf8)                                                   ; 542
+       (utf8)                                                   ; 543
+       (utf8)                                                   ; 544
+       (utf8)                                                   ; 545
+       (utf8)                                                   ; 546
+       (utf8)                                                   ; 547
+       (utf8)                                                   ; 548
+       (utf8)                                                   ; 549
+       (utf8)                                                   ; 550
+       (utf8)                                                   ; 551
+       (utf8)                                                   ; 552
+       (utf8)                                                   ; 553
+       (utf8)                                                   ; 554
+       (utf8)                                                   ; 555
+       (class (ref -1) "[Ljava/lang/reflect/Field;")            ; 556
+       (utf8)                                                   ; 557
+       (utf8)                                                   ; 558
+       (class (ref -1) "java/util/List")                        ; 559
+       (class (ref -1) "java/util/Set")                         ; 560
+       (utf8)                                                   ; 561
+       (utf8)                                                   ; 562
+       (utf8)                                                   ; 563
+       (utf8)                                                   ; 564
+       (utf8)                                                   ; 565
+       (utf8)                                                   ; 566
+       (utf8)                                                   ; 567
+       (utf8)                                                   ; 568
+       (utf8)                                                   ; 569
+       (utf8)                                                   ; 570
+       (utf8)                                                   ; 571
+       (utf8)                                                   ; 572
+       (utf8)                                                   ; 573
+       (utf8)                                                   ; 574
+       (utf8)                                                   ; 575
+       (utf8)                                                   ; 576
+       (utf8)                                                   ; 577
+       (utf8)                                                   ; 578
+       (utf8)                                                   ; 579
+       (utf8)                                                   ; 580
+       (utf8)                                                   ; 581
+       (utf8)                                                   ; 582
+       (utf8)                                                   ; 583
+       (utf8)                                                   ; 584
+       (utf8)                                                   ; 585
+       (utf8)                                                   ; 586
+       (utf8)                                                   ; 587
+       (utf8)                                                   ; 588
+       (utf8)                                                   ; 589
+       (utf8)                                                   ; 590
+       (utf8)                                                   ; 591
+       (utf8)                                                   ; 592
+       (utf8)                                                   ; 593
+       (utf8)                                                   ; 594
+       (utf8)                                                   ; 595
+       (utf8)                                                   ; 596
+       (utf8)                                                   ; 597
+       (utf8)                                                   ; 598
+       (utf8)                                                   ; 599
+       (utf8)                                                   ; 600
+       (class (ref -1) "java/lang/CharSequence")                ; 601
+       (utf8)                                                   ; 602
+       (utf8)                                                   ; 603
+       (utf8)                                                   ; 604
+       (utf8)                                                   ; 605
+       (utf8)                                                   ; 606
+       (utf8)                                                   ; 607
+       (utf8)                                                   ; 608
+       (utf8)                                                   ; 609
+       (utf8)                                                   ; 610
+       (utf8)                                                   ; 611
+       (class (ref -1) "java/lang/ReflectiveOperationException")        ; 612
+       (utf8)                                                   ; 613
+       (class (ref -1) "java/util/Map")                         ; 614
+       (utf8)                                                   ; 615
+       (utf8)                                                   ; 616
+       (utf8)                                                   ; 617
+       (utf8)                                                   ; 618
+       (utf8)                                                   ; 619
+       (utf8)                                                   ; 620
+       (utf8)                                                   ; 621
+       (utf8)                                                   ; 622
+       (utf8)                                                   ; 623
+       (utf8)                                                   ; 624
+       (utf8)                                                   ; 625
+       (utf8)                                                   ; 626
+       (utf8)                                                   ; 627
+       (utf8)                                                   ; 628
+       (utf8)                                                   ; 629
+       (utf8)                                                   ; 630
+       (utf8)                                                   ; 631
+       (utf8)                                                   ; 632
+       (utf8)                                                   ; 633
+       (utf8)                                                   ; 634
+       (utf8)                                                   ; 635
+       (utf8)                                                   ; 636
+       (utf8)                                                   ; 637
+       (utf8)                                                   ; 638
+       (utf8)                                                   ; 639
+       (class (ref -1) "java/util/Iterator")                    ; 640
+       (utf8)                                                   ; 641
+       (utf8)                                                   ; 642
+       (utf8)                                                   ; 643
+       (utf8)                                                   ; 644
+       (utf8)                                                   ; 645
+       (utf8)                                                   ; 646
+       (utf8)                                                   ; 647
+       (utf8)                                                   ; 648
+       (utf8)                                                   ; 649
+       (utf8)                                                   ; 650
+       (utf8)                                                   ; 651
+       (utf8)                                                   ; 652
+       (utf8)                                                   ; 653
+       (utf8)                                                   ; 654
+       (utf8)                                                   ; 655
+       (utf8)                                                   ; 656
+       (utf8)                                                   ; 657
+       (utf8)                                                   ; 658
+       (utf8)                                                   ; 659
+       (utf8)                                                   ; 660
+       (utf8)                                                   ; 661
+       (name-and-type "initted:Z")                              ; 662
+       (name-and-type "useCaches:Z")                            ; 663
+       (name-and-type "arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z")      ; 664
+       (name-and-type "searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;")   ; 665
+       (name-and-type "getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;")       ; 666
+       (name-and-type "<init>:()V")                             ; 667
+       (name-and-type "classLoader:Ljava/lang/ClassLoader;")    ; 668
+       (name-and-type "componentType:Ljava/lang/Class;")        ; 669
+       (utf8)                                                   ; 670
+       (name-and-type "isInterface:()Z")                        ; 671
+       (utf8)                                                   ; 672
+       (name-and-type "isPrimitive:()Z")                        ; 673
+       (utf8)                                                   ; 674
+       (utf8)                                                   ; 675
+       (name-and-type "append:(Ljava/lang/String;)Ljava/lang/StringBuilder;")   ; 676
+       (name-and-type "getName:()Ljava/lang/String;")           ; 677
+       (name-and-type "toString:()Ljava/lang/String;")          ; 678
+       (name-and-type "isArray:()Z")                            ; 679
+       (name-and-type "getComponentType:()Ljava/lang/Class;")   ; 680
+       (name-and-type "getModifiers:()I")                       ; 681
+       (class (ref -1) "java/lang/reflect/Modifier")            ; 682
+       (name-and-type "classModifiers:()I")                     ; 683
+       (name-and-type "toString:(I)Ljava/lang/String;")         ; 684
+       (name-and-type "append:(C)Ljava/lang/StringBuilder;")    ; 685
+       (name-and-type "isAnnotation:()Z")                       ; 686
+       (utf8)                                                   ; 687
+       (name-and-type "isEnum:()Z")                             ; 688
+       (utf8)                                                   ; 689
+       (utf8)                                                   ; 690
+       (name-and-type "getTypeParameters:()[Ljava/lang/reflect/TypeVariable;")  ; 691
+       (name-and-type "getTypeName:()Ljava/lang/String;")       ; 692
+       (utf8)                                                   ; 693
+       (class (ref -1) "sun/reflect/Reflection")                ; 694
+       (name-and-type "getCallerClass:()Ljava/lang/Class;")     ; 695
+       (name-and-type "getClassLoader:(Ljava/lang/Class;)Ljava/lang/ClassLoader;")      ; 696
+       (name-and-type "forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;")        ; 697
+       (class (ref -1) "java/lang/System")                      ; 698
+       (name-and-type "getSecurityManager:()Ljava/lang/SecurityManager;")       ; 699
+       (class (ref -1) "jdk/internal/misc/VM")                  ; 700
+       (name-and-type "isSystemDomainLoader:(Ljava/lang/ClassLoader;)Z")        ; 701
+       (class (ref -1) "sun/security/util/SecurityConstants")   ; 702
+       (name-and-type "GET_CLASSLOADER_PERMISSION:Ljava/lang/RuntimePermission;")       ; 703
+       (name-and-type "checkPermission:(Ljava/security/Permission;)V")  ; 704
+       (utf8)                                                   ; 705
+       (name-and-type "checkMemberAccess:(ILjava/lang/Class;Z)V")       ; 706
+       (name-and-type "cachedConstructor:Ljava/lang/reflect/Constructor;")      ; 707
+       (utf8)                                                   ; 708
+       (utf8)                                                   ; 709
+       (utf8)                                                   ; 710
+       (name-and-type "<init>:(Ljava/lang/String;)V")           ; 711
+       (name-and-type "getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;")   ; 712
+       (utf8)                                                   ; 713
+       (name-and-type "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Constructor;)V")     ; 714
+       (class (ref -1) "java/security/AccessController")        ; 715
+       (name-and-type "doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;")      ; 716
+       (utf8)                                                   ; 717
+       (utf8)                                                   ; 718
+       (name-and-type "initCause:(Ljava/lang/Throwable;)Ljava/lang/Throwable;") ; 719
+       (name-and-type "quickCheckMemberAccess:(Ljava/lang/Class;I)Z")   ; 720
+       (name-and-type "newInstanceCallerCache:Ljava/lang/Class;")       ; 721
+       (name-and-type "ensureMemberAccess:(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/Object;I)V")    ; 722
+       (name-and-type "newInstance:([Ljava/lang/Object;)Ljava/lang/Object;")    ; 723
+       (utf8)                                                   ; 724
+       (class (ref -1) "jdk/internal/misc/Unsafe")              ; 725
+       (name-and-type "getUnsafe:()Ljdk/internal/misc/Unsafe;") ; 726
+       (name-and-type "getTargetException:()Ljava/lang/Throwable;")     ; 727
+       (name-and-type "throwException:(Ljava/lang/Throwable;)V")        ; 728
+       (name-and-type "name:Ljava/lang/String;")                ; 729
+       (name-and-type "getName0:()Ljava/lang/String;")          ; 730
+       (name-and-type "getClassLoader0:()Ljava/lang/ClassLoader;")      ; 731
+       (name-and-type "checkClassLoaderPermission:(Ljava/lang/ClassLoader;Ljava/lang/Class;)V") ; 732
+       (name-and-type "getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;")     ; 733
+       (utf8)                                                   ; 734
+       (name-and-type "getSuperclass:()Ljava/lang/Class;")      ; 735
+       (name-and-type "getSuperclass:()Ljava/lang/reflect/Type;")       ; 736
+       (class (ref -1) "java/lang/Package")                     ; 737
+       (name-and-type "getPackage:(Ljava/lang/Class;)Ljava/lang/Package;")      ; 738
+       (name-and-type "reflectionData:()Ljava/lang/Class$ReflectionData;")      ; 739
+       (name-and-type "getInterfaces0:()[Ljava/lang/Class;")    ; 740
+       (name-and-type "interfaces:[Ljava/lang/Class;")          ; 741
+       (class (ref -1) "[Ljava/lang/Class;")                    ; 742
+       (name-and-type "clone:()Ljava/lang/Object;")             ; 743
+       (utf8)                                                   ; 744
+       (name-and-type "getInterfaces:()[Ljava/lang/Class;")     ; 745
+       (name-and-type "getSuperInterfaces:()[Ljava/lang/reflect/Type;") ; 746
+       (name-and-type "getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;") ; 747
+       (name-and-type "isMethod:()Z")                           ; 748
+       (name-and-type "getDescriptor:()Ljava/lang/String;")     ; 749
+       (name-and-type "getFactory:()Lsun/reflect/generics/factory/GenericsFactory;")    ; 750
+       (name-and-type "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/MethodRepository;")      ; 751
+       (name-and-type "getReturnType:()Ljava/lang/reflect/Type;")       ; 752
+       (name-and-type "toClass:(Ljava/lang/reflect/Type;)Ljava/lang/Class;")    ; 753
+       (name-and-type "getParameterTypes:()[Ljava/lang/reflect/Type;")  ; 754
+       (name-and-type "getEnclosingClass:()Ljava/lang/Class;")  ; 755
+       (utf8)                                                   ; 756
+       (name-and-type "<init>:(Ljava/lang/Class;Ljava/lang/Class;)V")   ; 757
+       (utf8)                                                   ; 758
+       (name-and-type "equals:(Ljava/lang/Object;)Z")           ; 759
+       (name-and-type "getParameterTypes:()[Ljava/lang/Class;") ; 760
+       (name-and-type "getReturnType:()Ljava/lang/Class;")      ; 761
+       (utf8)                                                   ; 762
+       (utf8)                                                   ; 763
+       (name-and-type "getEnclosingMethod0:()[Ljava/lang/Object;")      ; 764
+       (utf8)                                                   ; 765
+       (name-and-type "<init>:([Ljava/lang/Object;Ljava/lang/Class$1;)V")       ; 766
+       (utf8)                                                   ; 767
+       (name-and-type "getGenericComponentType:()Ljava/lang/reflect/Type;")     ; 768
+       (class (ref -1) "java/lang/reflect/Array")               ; 769
+       (name-and-type "newInstance:(Ljava/lang/Class;I)Ljava/lang/Object;")     ; 770
+       (name-and-type "getClass:()Ljava/lang/Class;")           ; 771
+       (name-and-type "isConstructor:()Z")                      ; 772
+       (name-and-type "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ConstructorRepository;") ; 773
+       (utf8)                                                   ; 774
+       (utf8)                                                   ; 775
+       (utf8)                                                   ; 776
+       (name-and-type "getDeclaringClass0:()Ljava/lang/Class;") ; 777
+       (name-and-type "checkPackageAccess:(Ljava/lang/ClassLoader;Z)V") ; 778
+       (name-and-type "getDeclaringClass:()Ljava/lang/Class;")  ; 779
+       (utf8)                                                   ; 780
+       (name-and-type "getSimpleName:()Ljava/lang/String;")     ; 781
+       (name-and-type "getSimpleBinaryName:()Ljava/lang/String;")       ; 782
+       (name-and-type "lastIndexOf:(I)I")                       ; 783
+       (name-and-type "substring:(I)Ljava/lang/String;")        ; 784
+       (utf8)                                                   ; 785
+       (name-and-type "getCanonicalName:()Ljava/lang/String;")  ; 786
+       (name-and-type "isLocalOrAnonymousClass:()Z")            ; 787
+       (utf8)                                                   ; 788
+       (name-and-type "isAnonymousClass:()Z")                   ; 789
+       (name-and-type "getSimpleBinaryName0:()Ljava/lang/String;")      ; 790
+       (utf8)                                                   ; 791
+       (name-and-type "<init>:(Ljava/lang/Class;)V")            ; 792
+       (name-and-type "privateGetPublicFields:(Ljava/util/Set;)[Ljava/lang/reflect/Field;")     ; 793
+       (name-and-type "copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;")      ; 794
+       (name-and-type "privateGetPublicMethods:()[Ljava/lang/reflect/Method;")  ; 795
+       (name-and-type "copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;")   ; 796
+       (name-and-type "privateGetDeclaredConstructors:(Z)[Ljava/lang/reflect/Constructor;")     ; 797
+       (name-and-type "copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;")    ; 798
+       (name-and-type "getField0:(Ljava/lang/String;)Ljava/lang/reflect/Field;")        ; 799
+       (utf8)                                                   ; 800
+       (name-and-type "getMethod0:(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/reflect/Method;")   ; 801
+       (name-and-type "argumentTypesToString:([Ljava/lang/Class;)Ljava/lang/String;")   ; 802
+       (name-and-type "getDeclaredClasses0:()[Ljava/lang/Class;")       ; 803
+       (name-and-type "privateGetDeclaredFields:(Z)[Ljava/lang/reflect/Field;") ; 804
+       (name-and-type "privateGetDeclaredMethods:(Z)[Ljava/lang/reflect/Method;")       ; 805
+       (name-and-type "searchMethods:([Ljava/lang/reflect/Method;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;")      ; 806
+       (name-and-type "resolveName:(Ljava/lang/String;)Ljava/lang/String;")     ; 807
+       (name-and-type "getSystemResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;")    ; 808
+       (name-and-type "getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;")  ; 809
+       (name-and-type "getSystemResource:(Ljava/lang/String;)Ljava/net/URL;")   ; 810
+       (name-and-type "getResource:(Ljava/lang/String;)Ljava/net/URL;") ; 811
+       (name-and-type "GET_PD_PERMISSION:Ljava/lang/RuntimePermission;")        ; 812
+       (name-and-type "getProtectionDomain0:()Ljava/security/ProtectionDomain;")        ; 813
+       (name-and-type "allPermDomain:Ljava/security/ProtectionDomain;") ; 814
+       (utf8)                                                   ; 815
+       (name-and-type "ALL_PERMISSION:Ljava/security/AllPermission;")   ; 816
+       (name-and-type "add:(Ljava/security/Permission;)V")      ; 817
+       (utf8)                                                   ; 818
+       (name-and-type "<init>:(Ljava/security/CodeSource;Ljava/security/PermissionCollection;)V")       ; 819
+       (name-and-type "CHECK_MEMBER_ACCESS_PERMISSION:Ljava/lang/RuntimePermission;")   ; 820
+       (class (ref -1) "sun/reflect/misc/ReflectUtil")          ; 821
+       (name-and-type "needsPackageAccessCheck:(Ljava/lang/ClassLoader;Ljava/lang/ClassLoader;)Z")      ; 822
+       (name-and-type "substring:(II)Ljava/lang/String;")       ; 823
+       (class (ref -1) "java/lang/reflect/Proxy")               ; 824
+       (name-and-type "isProxyClass:(Ljava/lang/Class;)Z")      ; 825
+       (name-and-type "isNonPublicProxyClass:(Ljava/lang/Class;)Z")     ; 826
+       (name-and-type "checkPackageAccess:(Ljava/lang/String;)V")       ; 827
+       (name-and-type "checkProxyPackageAccess:(Ljava/lang/ClassLoader;[Ljava/lang/Class;)V")   ; 828
+       (utf8)                                                   ; 829
+       (name-and-type "startsWith:(Ljava/lang/String;)Z")       ; 830
+       (name-and-type "replace:(CC)Ljava/lang/String;")         ; 831
+       (name-and-type "reflectionData:Ljava/lang/ref/SoftReference;")   ; 832
+       (name-and-type "classRedefinedCount:I")                  ; 833
+       (name-and-type "get:()Ljava/lang/Object;")               ; 834
+       (utf8)                                                   ; 835
+       (name-and-type "redefinedCount:I")                       ; 836
+       (name-and-type "newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;")     ; 837
+       (name-and-type "<init>:(I)V")                            ; 838
+       (utf8)                                                   ; 839
+       (name-and-type "<init>:(Ljava/lang/Object;)V")           ; 840
+       (name-and-type "casReflectionData:(Ljava/lang/Class;Ljava/lang/ref/SoftReference;Ljava/lang/ref/SoftReference;)Z")       ; 841
+       (class (ref -1) "sun/reflect/generics/scope/ClassScope") ; 842
+       (name-and-type "make:(Ljava/lang/Class;)Lsun/reflect/generics/scope/ClassScope;")        ; 843
+       (class (ref -1) "sun/reflect/generics/factory/CoreReflectionFactory")    ; 844
+       (name-and-type "make:(Ljava/lang/reflect/GenericDeclaration;Lsun/reflect/generics/scope/Scope;)Lsun/reflect/generics/factory/CoreReflectionFactory;")    ; 845
+       (name-and-type "genericInfo:Lsun/reflect/generics/repository/ClassRepository;")  ; 846
+       (name-and-type "getGenericSignature0:()Ljava/lang/String;")      ; 847
+       (name-and-type "NONE:Lsun/reflect/generics/repository/ClassRepository;") ; 848
+       (name-and-type "make:(Ljava/lang/String;Lsun/reflect/generics/factory/GenericsFactory;)Lsun/reflect/generics/repository/ClassRepository;")       ; 849
+       (name-and-type "getReflectionFactory:()Lsun/reflect/ReflectionFactory;") ; 850
+       (name-and-type "getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B")    ; 851
+       (name-and-type "checkInitted:()V")                       ; 852
+       (name-and-type "declaredPublicFields:[Ljava/lang/reflect/Field;")        ; 853
+       (name-and-type "declaredFields:[Ljava/lang/reflect/Field;")      ; 854
+       (name-and-type "filterFields:(Ljava/lang/Class;[Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;")   ; 855
+       (name-and-type "publicFields:[Ljava/lang/reflect/Field;")        ; 856
+       (utf8)                                                   ; 857
+       (utf8)                                                   ; 858
+       (name-and-type "addAll:(Ljava/util/Collection;[Ljava/lang/reflect/Field;)V")     ; 859
+       (name-and-type "contains:(Ljava/lang/Object;)Z")         ; 860
+       (name-and-type "add:(Ljava/lang/Object;)Z")              ; 861
+       (name-and-type "size:()I")                               ; 862
+       (utf8)                                                   ; 863
+       (name-and-type "toArray:([Ljava/lang/Object;)[Ljava/lang/Object;")       ; 864
+       (class (ref -1) "java/util/Collection")                  ; 865
+       (name-and-type "publicConstructors:[Ljava/lang/reflect/Constructor;")    ; 866
+       (name-and-type "declaredConstructors:[Ljava/lang/reflect/Constructor;")  ; 867
+       (utf8)                                                   ; 868
+       (name-and-type "getDeclaredConstructors0:(Z)[Ljava/lang/reflect/Constructor;")   ; 869
+       (name-and-type "declaredPublicMethods:[Ljava/lang/reflect/Method;")      ; 870
+       (name-and-type "declaredMethods:[Ljava/lang/reflect/Method;")    ; 871
+       (name-and-type "getDeclaredMethods0:(Z)[Ljava/lang/reflect/Method;")     ; 872
+       (name-and-type "filterMethods:(Ljava/lang/Class;[Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;")        ; 873
+       (name-and-type "publicMethods:[Ljava/lang/reflect/Method;")      ; 874
+       (utf8)                                                   ; 875
+       (name-and-type "addAll:([Ljava/lang/reflect/Method;)V")  ; 876
+       (name-and-type "addInterfaceMethods:([Ljava/lang/reflect/Method;)V")     ; 877
+       (name-and-type "length:()I")                             ; 878
+       (name-and-type "get:(I)Ljava/lang/reflect/Method;")      ; 879
+       (name-and-type "isAbstract:(I)Z")                        ; 880
+       (name-and-type "isDefault:()Z")                          ; 881
+       (name-and-type "removeByNameAndDescriptor:(Ljava/lang/reflect/Method;)V")        ; 882
+       (name-and-type "addAll:(Ljava/lang/Class$MethodArray;)V")        ; 883
+       (name-and-type "addAllIfNotPresent:(Ljava/lang/Class$MethodArray;)V")    ; 884
+       (name-and-type "removeLessSpecifics:()V")                ; 885
+       (name-and-type "compactAndTrim:()V")                     ; 886
+       (name-and-type "getArray:()[Ljava/lang/reflect/Method;") ; 887
+       (name-and-type "intern:()Ljava/lang/String;")            ; 888
+       (name-and-type "copyField:(Ljava/lang/reflect/Field;)Ljava/lang/reflect/Field;") ; 889
+       (name-and-type "isAssignableFrom:(Ljava/lang/Class;)Z")  ; 890
+       (name-and-type "copyMethod:(Ljava/lang/reflect/Method;)Ljava/lang/reflect/Method;")      ; 891
+       (name-and-type "privateGetMethodRecursive:(Ljava/lang/String;[Ljava/lang/Class;ZLjava/lang/Class$MethodArray;)Ljava/lang/reflect/Method;")       ; 892
+       (name-and-type "getFirst:()Ljava/lang/reflect/Method;")  ; 893
+       (name-and-type "isStatic:(I)Z")                          ; 894
+       (name-and-type "add:(Ljava/lang/reflect/Method;)V")      ; 895
+       (name-and-type "copyConstructor:(Ljava/lang/reflect/Constructor;)Ljava/lang/reflect/Constructor;")       ; 896
+       (utf8)                                                   ; 897
+       (utf8)                                                   ; 898
+       (class (ref -1) "[Ljava/lang/reflect/Constructor;")      ; 899
+       (utf8)                                                   ; 900
+       (utf8)                                                   ; 901
+       (utf8)                                                   ; 902
+       (utf8)                                                   ; 903
+       (name-and-type "<init>:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;)V")     ; 904
+       (utf8)                                                   ; 905
+       (name-and-type "add:(Ljava/lang/CharSequence;)Ljava/util/StringJoiner;") ; 906
+       (name-and-type "getClassLoader:()Ljava/lang/ClassLoader;")       ; 907
+       (name-and-type "desiredAssertionStatus0:(Ljava/lang/Class;)Z")   ; 908
+       (name-and-type "assertionLock:Ljava/lang/Object;")       ; 909
+       (name-and-type "classAssertionStatus:Ljava/util/Map;")   ; 910
+       (name-and-type "desiredAssertionStatus:(Ljava/lang/String;)Z")   ; 911
+       (utf8)                                                   ; 912
+       (name-and-type "reflectionFactory:Lsun/reflect/ReflectionFactory;")      ; 913
+       (utf8)                                                   ; 914
+       (utf8)                                                   ; 915
+       (utf8)                                                   ; 916
+       (utf8)                                                   ; 917
+       (name-and-type "getEnumConstantsShared:()[Ljava/lang/Object;")   ; 918
+       (class (ref -1) "[Ljava/lang/Object;")                   ; 919
+       (name-and-type "enumConstants:[Ljava/lang/Object;")      ; 920
+       (utf8)                                                   ; 921
+       (name-and-type "getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;")     ; 922
+       (utf8)                                                   ; 923
+       (name-and-type "<init>:(Ljava/lang/Class;Ljava/lang/reflect/Method;)V")  ; 924
+       (utf8)                                                   ; 925
+       (name-and-type "invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;")       ; 926
+       (name-and-type "enumConstantDirectory:Ljava/util/Map;")  ; 927
+       (utf8)                                                   ; 928
+       (utf8)                                                   ; 929
+       (utf8)                                                   ; 930
+       (name-and-type "name:()Ljava/lang/String;")              ; 931
+       (name-and-type "put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;")   ; 932
+       (name-and-type "isInstance:(Ljava/lang/Object;)Z")       ; 933
+       (utf8)                                                   ; 934
+       (name-and-type "cannotCastMsg:(Ljava/lang/Object;)Ljava/lang/String;")   ; 935
+       (utf8)                                                   ; 936
+       (utf8)                                                   ; 937
+       (class (ref -1) "java/util/Objects")                     ; 938
+       (name-and-type "requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;")  ; 939
+       (name-and-type "annotationData:()Ljava/lang/Class$AnnotationData;")      ; 940
+       (name-and-type "annotations:Ljava/util/Map;")            ; 941
+       (name-and-type "get:(Ljava/lang/Object;)Ljava/lang/Object;")     ; 942
+       (utf8)                                                   ; 943
+       (name-and-type "isAnnotationPresent:(Ljava/lang/Class;)Z")       ; 944
+       (name-and-type "declaredAnnotations:Ljava/util/Map;")    ; 945
+       (class (ref -1) "sun/reflect/annotation/AnnotationSupport")      ; 946
+       (name-and-type "getAssociatedAnnotations:(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;") ; 947
+       (class (ref -1) "sun/reflect/annotation/AnnotationParser")       ; 948
+       (name-and-type "toArray:(Ljava/util/Map;)[Ljava/lang/annotation/Annotation;")    ; 949
+       (name-and-type "getDirectlyAndIndirectlyPresent:(Ljava/util/Map;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;")   ; 950
+       (name-and-type "annotationData:Ljava/lang/Class$AnnotationData;")        ; 951
+       (name-and-type "createAnnotationData:(I)Ljava/lang/Class$AnnotationData;")       ; 952
+       (name-and-type "casAnnotationData:(Ljava/lang/Class;Ljava/lang/Class$AnnotationData;Ljava/lang/Class$AnnotationData;)Z") ; 953
+       (name-and-type "getRawAnnotations:()[B")                 ; 954
+       (name-and-type "getConstantPool:()Lsun/reflect/ConstantPool;")   ; 955
+       (name-and-type "parseAnnotations:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/util/Map;")        ; 956
+       (name-and-type "entrySet:()Ljava/util/Set;")             ; 957
+       (name-and-type "iterator:()Ljava/util/Iterator;")        ; 958
+       (name-and-type "hasNext:()Z")                            ; 959
+       (name-and-type "next:()Ljava/lang/Object;")              ; 960
+       (utf8)                                                   ; 961
+       (utf8)                                                   ; 962
+       (name-and-type "getKey:()Ljava/lang/Object;")            ; 963
+       (class (ref -1) "sun/reflect/annotation/AnnotationType") ; 964
+       (name-and-type "getInstance:(Ljava/lang/Class;)Lsun/reflect/annotation/AnnotationType;") ; 965
+       (name-and-type "isInherited:()Z")                        ; 966
+       (utf8)                                                   ; 967
+       (class (ref -1) "java/lang/Math")                        ; 968
+       (name-and-type "min:(II)I")                              ; 969
+       (name-and-type "max:(II)I")                              ; 970
+       (name-and-type "getValue:()Ljava/lang/Object;")          ; 971
+       (name-and-type "putAll:(Ljava/util/Map;)V")              ; 972
+       (utf8)                                                   ; 973
+       (name-and-type "<init>:(Ljava/util/Map;Ljava/util/Map;I)V")      ; 974
+       (name-and-type "casAnnotationType:(Ljava/lang/Class;Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z")   ; 975
+       (name-and-type "annotationType:Lsun/reflect/annotation/AnnotationType;") ; 976
+       (class (ref -1) "java/lang/Void")                        ; 977
+       (name-and-type "TYPE:Ljava/lang/Class;")                 ; 978
+       (name-and-type "getRawTypeAnnotations:()[B")             ; 979
+       (class (ref -1) "sun/reflect/annotation/TypeAnnotationParser")   ; 980
+       (name-and-type "buildAnnotatedSuperclass:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/lang/reflect/AnnotatedType;")      ; 981
+       (name-and-type "buildAnnotatedInterfaces:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)[Ljava/lang/reflect/AnnotatedType;")     ; 982
+       (name-and-type "registerNatives:()V")                    ; 983
+       (utf8)                                                   ; 984
+       (name-and-type "serialPersistentFields:[Ljava/io/ObjectStreamField;")    ; 985
+       (utf8)                                                   ; 986
+       (utf8)                                                   ; 987
+       (utf8)                                                   ; 988
+       (utf8)                                                   ; 989
+       (utf8)                                                   ; 990
+       (class (ref -1) "java/lang/ClassValue")                  ; 991
+       (utf8)                                                   ; 992
+       (utf8)                                                   ; 993
+       (utf8)                                                   ; 994
+       (utf8)                                                   ; 995
+       (utf8)                                                   ; 996
+       (utf8)                                                   ; 997
+       (utf8)                                                   ; 998
+       (utf8)                                                   ; 999
+       (utf8)                                                   ; 1000
+       (utf8)                                                   ; 1001
+       (utf8)                                                   ; 1002
+       (utf8)                                                   ; 1003
+       (utf8)                                                   ; 1004
+       (utf8)                                                   ; 1005
+       (utf8)                                                   ; 1006
+       (utf8)                                                   ; 1007
+       (utf8)                                                   ; 1008
+       (utf8)                                                   ; 1009
+       (utf8)                                                   ; 1010
+       (utf8)                                                   ; 1011
+       (utf8)                                                   ; 1012
+       (utf8)                                                   ; 1013
+       (utf8)                                                   ; 1014
+       (utf8)                                                   ; 1015
+       (utf8)                                                   ; 1016
+       (utf8)                                                   ; 1017
+       (utf8)                                                   ; 1018
+       (utf8)                                                   ; 1019
+       (utf8)                                                   ; 1020
+       (utf8)                                                   ; 1021
+       (utf8)                                                   ; 1022
+       (utf8)                                                   ; 1023
+       (utf8)                                                   ; 1024
+       (utf8)                                                   ; 1025
+       (utf8)                                                   ; 1026
+       (utf8)                                                   ; 1027
+       (utf8)                                                   ; 1028
+       (utf8)                                                   ; 1029
+       (utf8)                                                   ; 1030
+       (utf8)                                                   ; 1031
+       (utf8)                                                   ; 1032
+       (utf8)                                                   ; 1033
+       (utf8)                                                   ; 1034
+       (utf8)                                                   ; 1035
+       (utf8)                                                   ; 1036
+       (utf8)                                                   ; 1037
+       (utf8)                                                   ; 1038
+       (utf8)                                                   ; 1039
+       (utf8)                                                   ; 1040
+       (utf8)                                                   ; 1041
+       (utf8)                                                   ; 1042
+       (utf8)                                                   ; 1043
+       (utf8)                                                   ; 1044
+       (utf8)                                                   ; 1045
+       (utf8)                                                   ; 1046
+       (utf8)                                                   ; 1047
+       (utf8)                                                   ; 1048
+       (utf8)                                                   ; 1049
+       (utf8)                                                   ; 1050
+       (utf8)                                                   ; 1051
+       (utf8)                                                   ; 1052
+       (utf8)                                                   ; 1053
+       (utf8)                                                   ; 1054
+       (utf8)                                                   ; 1055
+       (utf8)                                                   ; 1056
+       (utf8)                                                   ; 1057
+       (utf8)                                                   ; 1058
+       (utf8)                                                   ; 1059
+       (utf8)                                                   ; 1060
+       (utf8)                                                   ; 1061
+       (utf8)                                                   ; 1062
+       (utf8)                                                   ; 1063
+       (utf8)                                                   ; 1064
+       (utf8)                                                   ; 1065
+       (utf8)                                                   ; 1066
+       (utf8)                                                   ; 1067
+       (utf8)                                                   ; 1068
+       (utf8)                                                   ; 1069
+       (utf8)                                                   ; 1070
+       (utf8)                                                   ; 1071
+       (utf8)                                                   ; 1072
+       (utf8)                                                   ; 1073
+       (utf8)                                                   ; 1074
+       (utf8)                                                   ; 1075
+       (utf8)                                                   ; 1076
+       (utf8)                                                   ; 1077
+       (utf8)                                                   ; 1078
+       (utf8)                                                   ; 1079
+       (utf8)                                                   ; 1080
+       (utf8)                                                   ; 1081
+       (utf8)                                                   ; 1082
+       (utf8)                                                   ; 1083
+       (utf8)                                                   ; 1084
+       (utf8)                                                   ; 1085
+       (utf8)                                                   ; 1086
+       (utf8)                                                   ; 1087
+       (utf8)                                                   ; 1088
+       (utf8)                                                   ; 1089
+       (utf8)                                                   ; 1090
+       (utf8)                                                   ; 1091
+       (utf8)                                                   ; 1092
+       (utf8)                                                   ; 1093
+       (utf8)                                                   ; 1094
+       (utf8)                                                   ; 1095
+       (utf8)                                                   ; 1096
+       (utf8)                                                   ; 1097
+       (utf8)                                                   ; 1098
+       (utf8)                                                   ; 1099
+       (utf8)                                                   ; 1100
+       (utf8)                                                   ; 1101
+       (utf8)                                                   ; 1102
+       (utf8)                                                   ; 1103
+       (utf8)                                                   ; 1104
+       (utf8)                                                   ; 1105
+       (utf8)                                                   ; 1106
+       (utf8)                                                   ; 1107
+       (utf8)                                                   ; 1108
+       (utf8)                                                   ; 1109
+       (utf8)                                                   ; 1110
+       (utf8)                                                   ; 1111
+       (utf8)                                                   ; 1112
+       (utf8)                                                   ; 1113
+       (utf8)                                                   ; 1114
+       (utf8)                                                   ; 1115
+       (utf8)                                                   ; 1116
+       (utf8)                                                   ; 1117
+       (utf8)                                                   ; 1118
+       (utf8)                                                   ; 1119
+       (utf8)                                                   ; 1120
+       (utf8)                                                   ; 1121
+       (utf8)                                                   ; 1122
+       (utf8)                                                   ; 1123
+       (utf8)                                                   ; 1124
+       (utf8)                                                   ; 1125
+       (utf8)                                                   ; 1126
+       (utf8)                                                   ; 1127
+       (utf8)                                                   ; 1128
+       (utf8)                                                   ; 1129
+       (utf8)                                                   ; 1130
+       (utf8)                                                   ; 1131
+       (utf8)                                                   ; 1132
+       (utf8)                                                   ; 1133
+       (utf8)                                                   ; 1134
+       (utf8)                                                   ; 1135
+       (utf8)                                                   ; 1136
+       (utf8)                                                   ; 1137
+       (utf8)                                                   ; 1138
+       (utf8)                                                   ; 1139
+       (utf8)                                                   ; 1140
+       (utf8)                                                   ; 1141
+       (utf8)                                                   ; 1142
+       (utf8)                                                   ; 1143
+       (utf8)                                                   ; 1144
+       (utf8)                                                   ; 1145
+       (utf8)                                                   ; 1146
+       (utf8)                                                   ; 1147
+       (utf8)                                                   ; 1148
+       (utf8)                                                   ; 1149
+       (utf8)                                                   ; 1150
+       (utf8)                                                   ; 1151
+       (utf8)                                                   ; 1152
+       (utf8)                                                   ; 1153
+       (utf8)                                                   ; 1154
+       (utf8)                                                   ; 1155
+       (utf8)                                                   ; 1156
+       (utf8)                                                   ; 1157
+       (utf8)                                                   ; 1158
+       (utf8)                                                   ; 1159
+       (utf8)                                                   ; 1160
+       (utf8)                                                   ; 1161
+       (utf8)                                                   ; 1162
+       (utf8)                                                   ; 1163
+       (utf8)                                                   ; 1164
+       (utf8)                                                   ; 1165
+       (utf8)                                                   ; 1166
+       (utf8)                                                   ; 1167
+       (utf8)                                                   ; 1168
+       (utf8)                                                   ; 1169
+       (utf8)                                                   ; 1170
+       (utf8)                                                   ; 1171
+       (utf8)                                                   ; 1172
+       (utf8)                                                   ; 1173
+       (utf8)                                                   ; 1174
+       (utf8)                                                   ; 1175
+       (utf8)                                                   ; 1176
+       (utf8)                                                   ; 1177
+       (utf8)                                                   ; 1178
+       (utf8)                                                   ; 1179
+       (utf8)                                                   ; 1180
+       (utf8)                                                   ; 1181
+       (utf8)                                                   ; 1182
+       (utf8)                                                   ; 1183
+       (utf8)                                                   ; 1184
+       (utf8)                                                   ; 1185
+       (utf8)                                                   ; 1186
+       (utf8)                                                   ; 1187
+       (utf8)                                                   ; 1188
+       (utf8)                                                   ; 1189
+       (utf8)                                                   ; 1190
+       (utf8)                                                   ; 1191
+       (utf8)                                                   ; 1192
+       (utf8)                                                   ; 1193
+       (utf8)                                                   ; 1194
+       (utf8)                                                   ; 1195
+       (utf8)                                                   ; 1196
+       (utf8)                                                   ; 1197
+       (utf8)                                                   ; 1198
+       (utf8)                                                   ; 1199
+      )
+     #x00000031                                                 ; PUBLIC FINAL SUPER
+     '(
+       ("ANNOTATION:I" #x0000001a)                              ; PRIVATE STATIC FINAL
+       ("ENUM:I" #x0000001a)                                    ; PRIVATE STATIC FINAL
+       ("SYNTHETIC:I" #x0000001a)                               ; PRIVATE STATIC FINAL
+       ("cachedConstructor:Ljava/lang/reflect/Constructor;" #x000000c2) ; PRIVATE VOLATILE TRANSIENT
+       ("newInstanceCallerCache:Ljava/lang/Class;" #x000000c2)  ; PRIVATE VOLATILE TRANSIENT
+       ("name:Ljava/lang/String;" #x00000082)                   ; PRIVATE TRANSIENT
+       ("classLoader:Ljava/lang/ClassLoader;" #x00000012)       ; PRIVATE FINAL
+       ("componentType:Ljava/lang/Class;" #x00000012)           ; PRIVATE FINAL
+       ("allPermDomain:Ljava/security/ProtectionDomain;" #x0000000a)    ; PRIVATE STATIC
+       ("useCaches:Z" #x0000000a)                               ; PRIVATE STATIC
+       ("reflectionData:Ljava/lang/ref/SoftReference;" #x000000c2)      ; PRIVATE VOLATILE TRANSIENT
+       ("classRedefinedCount:I" #x000000c2)                     ; PRIVATE VOLATILE TRANSIENT
+       ("genericInfo:Lsun/reflect/generics/repository/ClassRepository;" #x000000c2)     ; PRIVATE VOLATILE TRANSIENT
+       ("serialVersionUID:J" #x0000001a)                        ; PRIVATE STATIC FINAL
+       ("serialPersistentFields:[Ljava/io/ObjectStreamField;" #x0000001a)       ; PRIVATE STATIC FINAL
+       ("reflectionFactory:Lsun/reflect/ReflectionFactory;" #x0000000a) ; PRIVATE STATIC
+       ("initted:Z" #x0000000a)                                 ; PRIVATE STATIC
+       ("enumConstants:[Ljava/lang/Object;" #x000000c2)         ; PRIVATE VOLATILE TRANSIENT
+       ("enumConstantDirectory:Ljava/util/Map;" #x000000c2)     ; PRIVATE VOLATILE TRANSIENT
+       ("annotationData:Ljava/lang/Class$AnnotationData;" #x000000c2)   ; PRIVATE VOLATILE TRANSIENT
+       ("annotationType:Lsun/reflect/annotation/AnnotationType;" #x000000c2)    ; PRIVATE VOLATILE TRANSIENT
+       ("classValueMap:Ljava/lang/ClassValue$ClassValueMap;" #x00000080)        ; TRANSIENT
       )
      (list
-      '("registerNatives:()V" nil
-        ; native method
+      '("registerNatives:()V" #x0000010a                        ; PRIVATE STATIC NATIVE
        )
-      '("<init>:(Ljava/lang/ClassLoader;Ljava/lang/Class;)V" nil
+      '("<init>:(Ljava/lang/ClassLoader;Ljava/lang/Class;)V" #x00000002 ; PRIVATE
         ; line_number #140
         (aload_0)                                               ; 0
         (invokespecial 6)                                       ; 1 java.lang.Object.<init>:()V
@@ -1273,7 +1273,7 @@
         ; line_number #145
         (return)                                                ; 14
        )
-      '("toString:()Ljava/lang/String;" nil
+      '("toString:()Ljava/lang/String;" #x00000001              ; PUBLIC
         ; line_number #160
         (new 9)                                                 ; 0 class java.lang.StringBuilder
         (dup)                                                   ; 3
@@ -1298,7 +1298,7 @@
         ; line_number #160
         (areturn)                                               ; 46
        )
-      '("toGenericString:()Ljava/lang/String;" nil
+      '("toGenericString:()Ljava/lang/String;" #x00000001       ; PUBLIC
         ; line_number #197
         (aload_0)                                               ; 0
         (invokevirtual 13)                                      ; 1 java.lang.Class.isPrimitive:()Z
@@ -1479,7 +1479,7 @@
         (invokevirtual 18)                                      ; 272 java.lang.StringBuilder.toString:()Ljava/lang/String;
         (areturn)                                               ; 275
        )
-      '("forName:(Ljava/lang/String;)Ljava/lang/Class;" nil
+      '("forName:(Ljava/lang/String;)Ljava/lang/Class;" #x00000009      ; PUBLIC STATIC
         ; line_number #287
         (invokestatic 34)                                       ; 0 sun.reflect.Reflection.getCallerClass:()Ljava/lang/Class;
         (astore_1)                                              ; 3
@@ -1492,7 +1492,7 @@
         (invokestatic 36)                                       ; 11 java.lang.Class.forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;
         (areturn)                                               ; 14
        )
-      '("forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;" nil
+      '("forName:(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;" #x00000009      ; PUBLIC STATIC
         ; line_number #358
         (aconst_null)                                           ; 0
         (astore_3)                                              ; 1
@@ -1529,10 +1529,9 @@
         (invokestatic 36)                                       ; 49 java.lang.Class.forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;
         (areturn)                                               ; 52
        )
-      '("forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;" nil
-        ; native method
+      '("forName0:(Ljava/lang/String;ZLjava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Class;" #x0000010a    ; PRIVATE STATIC NATIVE
        )
-      '("newInstance:()Ljava/lang/Object;" nil
+      '("newInstance:()Ljava/lang/Object;" #x00000001           ; PUBLIC
         ; line_number #420
         (invokestatic 37)                                       ; 0 java.lang.System.getSecurityManager:()Ljava/lang/SecurityManager;
         (ifnull 12)                                             ; 3
@@ -1641,22 +1640,17 @@
         (aconst_null)                                           ; 153
         (areturn)                                               ; 154
        )
-      '("isInstance:(Ljava/lang/Object;)Z" nil
-        ; native method
+      '("isInstance:(Ljava/lang/Object;)Z" #x00000101           ; PUBLIC NATIVE
        )
-      '("isAssignableFrom:(Ljava/lang/Class;)Z" nil
-        ; native method
+      '("isAssignableFrom:(Ljava/lang/Class;)Z" #x00000101      ; PUBLIC NATIVE
        )
-      '("isInterface:()Z" nil
-        ; native method
+      '("isInterface:()Z" #x00000101                            ; PUBLIC NATIVE
        )
-      '("isArray:()Z" nil
-        ; native method
+      '("isArray:()Z" #x00000101                                ; PUBLIC NATIVE
        )
-      '("isPrimitive:()Z" nil
-        ; native method
+      '("isPrimitive:()Z" #x00000101                            ; PUBLIC NATIVE
        )
-      '("isAnnotation:()Z" nil
+      '("isAnnotation:()Z" #x00000001                           ; PUBLIC
         ; line_number #602
         (aload_0)                                               ; 0
         (invokevirtual 22)                                      ; 1 java.lang.Class.getModifiers:()I
@@ -1668,7 +1662,7 @@
         (iconst_0)                                              ; 15
         (ireturn)                                               ; 16
        )
-      '("isSynthetic:()Z" nil
+      '("isSynthetic:()Z" #x00000001                            ; PUBLIC
         ; line_number #614
         (aload_0)                                               ; 0
         (invokevirtual 22)                                      ; 1 java.lang.Class.getModifiers:()I
@@ -1680,7 +1674,7 @@
         (iconst_0)                                              ; 15
         (ireturn)                                               ; 16
        )
-      '("getName:()Ljava/lang/String;" nil
+      '("getName:()Ljava/lang/String;" #x00000001               ; PUBLIC
         ; line_number #669
         (aload_0)                                               ; 0
         (getfield 66)                                           ; 1 java.lang.Class.name:Ljava/lang/String;
@@ -1699,10 +1693,9 @@
         (aload_1)                                               ; 19
         (areturn)                                               ; 20
        )
-      '("getName0:()Ljava/lang/String;" nil
-        ; native method
+      '("getName0:()Ljava/lang/String;" #x00000102              ; PRIVATE NATIVE
        )
-      '("getClassLoader:()Ljava/lang/ClassLoader;" nil
+      '("getClassLoader:()Ljava/lang/ClassLoader;" #x00000001   ; PUBLIC
         ; line_number #707
         (aload_0)                                               ; 0
         (invokevirtual 68)                                      ; 1 java.lang.Class.getClassLoader0:()Ljava/lang/ClassLoader;
@@ -1727,13 +1720,13 @@
         (aload_1)                                               ; 26
         (areturn)                                               ; 27
        )
-      '("getClassLoader0:()Ljava/lang/ClassLoader;" nil
+      '("getClassLoader0:()Ljava/lang/ClassLoader;" #x00000000  ; 
         ; line_number #718
         (aload_0)                                               ; 0
         (getfield 7)                                            ; 1 java.lang.Class.classLoader:Ljava/lang/ClassLoader;
         (areturn)                                               ; 4
        )
-      '("getTypeParameters:()[Ljava/lang/reflect/TypeVariable;" nil
+      '("getTypeParameters:()[Ljava/lang/reflect/TypeVariable;" #x00000001      ; PUBLIC
         ; line_number #742
         (aload_0)                                               ; 0
         (invokespecial 70)                                      ; 1 java.lang.Class.getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;
@@ -1750,10 +1743,9 @@
         (anewarray 72)                                          ; 15 class java.lang.reflect.TypeVariable
         (areturn)                                               ; 18
        )
-      '("getSuperclass:()Ljava/lang/Class;" nil
-        ; native method
+      '("getSuperclass:()Ljava/lang/Class;" #x00000101          ; PUBLIC NATIVE
        )
-      '("getGenericSuperclass:()Ljava/lang/reflect/Type;" nil
+      '("getGenericSuperclass:()Ljava/lang/reflect/Type;" #x00000001    ; PUBLIC
         ; line_number #795
         (aload_0)                                               ; 0
         (invokespecial 70)                                      ; 1 java.lang.Class.getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;
@@ -1777,13 +1769,13 @@
         (invokevirtual 74)                                      ; 24 sun.reflect.generics.repository.ClassRepository.getSuperclass:()Ljava/lang/reflect/Type;
         (areturn)                                               ; 27
        )
-      '("getPackage:()Ljava/lang/Package;" nil
+      '("getPackage:()Ljava/lang/Package;" #x00000001           ; PUBLIC
         ; line_number #826
         (aload_0)                                               ; 0
         (invokestatic 75)                                       ; 1 java.lang.Package.getPackage:(Ljava/lang/Class;)Ljava/lang/Package;
         (areturn)                                               ; 4
        )
-      '("getInterfaces:()[Ljava/lang/Class;" nil
+      '("getInterfaces:()[Ljava/lang/Class;" #x00000001         ; PUBLIC
         ; line_number #875
         (aload_0)                                               ; 0
         (invokespecial 76)                                      ; 1 java.lang.Class.reflectionData:()Ljava/lang/Class$ReflectionData;
@@ -1816,10 +1808,9 @@
         (checkcast 80)                                          ; 37 class [Ljava.lang.Class;
         (areturn)                                               ; 40
        )
-      '("getInterfaces0:()[Ljava/lang/Class;" nil
-        ; native method
+      '("getInterfaces0:()[Ljava/lang/Class;" #x00000102        ; PRIVATE NATIVE
        )
-      '("getGenericInterfaces:()[Ljava/lang/reflect/Type;" nil
+      '("getGenericInterfaces:()[Ljava/lang/reflect/Type;" #x00000001   ; PUBLIC
         ; line_number #941
         (aload_0)                                               ; 0
         (invokespecial 70)                                      ; 1 java.lang.Class.getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;
@@ -1834,7 +1825,7 @@
         (invokevirtual 82)                                      ; 17 sun.reflect.generics.repository.ClassRepository.getSuperInterfaces:()[Ljava/lang/reflect/Type;
         (areturn)                                               ; 20
        )
-      '("getComponentType:()Ljava/lang/Class;" nil
+      '("getComponentType:()Ljava/lang/Class;" #x00000001       ; PUBLIC
         ; line_number #958
         (aload_0)                                               ; 0
         (invokevirtual 20)                                      ; 1 java.lang.Class.isArray:()Z
@@ -1847,16 +1838,13 @@
         (aconst_null)                                           ; 12
         (areturn)                                               ; 13
        )
-      '("getModifiers:()I" nil
-        ; native method
+      '("getModifiers:()I" #x00000101                           ; PUBLIC NATIVE
        )
-      '("getSigners:()[Ljava/lang/Object;" nil
-        ; native method
+      '("getSigners:()[Ljava/lang/Object;" #x00000101           ; PUBLIC NATIVE
        )
-      '("setSigners:([Ljava/lang/Object;)V" nil
-        ; native method
+      '("setSigners:([Ljava/lang/Object;)V" #x00000100          ; NATIVE
        )
-      '("getEnclosingMethod:()Ljava/lang/reflect/Method;" nil
+      '("getEnclosingMethod:()Ljava/lang/reflect/Method;" #x00000001    ; PUBLIC
         ; line_number #1054
         (aload_0)                                               ; 0
         (invokespecial 83)                                      ; 1 java.lang.Class.getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;
@@ -2017,10 +2005,9 @@
         (invokespecial 103)                                     ; 249 java.lang.InternalError.<init>:(Ljava/lang/String;)V
         (athrow)                                                ; 252
        )
-      '("getEnclosingMethod0:()[Ljava/lang/Object;" nil
-        ; native method
+      '("getEnclosingMethod0:()[Ljava/lang/Object;" #x00000102  ; PRIVATE NATIVE
        )
-      '("getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;" nil
+      '("getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;" #x00000002     ; PRIVATE
         ; line_number #1119
         (aload_0)                                               ; 0
         (invokespecial 104)                                     ; 1 java.lang.Class.getEnclosingMethod0:()[Ljava/lang/Object;
@@ -2039,7 +2026,7 @@
         (invokespecial 106)                                     ; 17 java.lang.Class$EnclosingMethodInfo.<init>:([Ljava/lang/Object;Ljava/lang/Class$1;)V
         (areturn)                                               ; 20
        )
-      '("toClass:(Ljava/lang/reflect/Type;)Ljava/lang/Class;" nil
+      '("toClass:(Ljava/lang/reflect/Type;)Ljava/lang/Class;" #x0000000a        ; PRIVATE STATIC
         ; line_number #1172
         (aload_0)                                               ; 0
         (instanceof 107)                                        ; 1 class java.lang.reflect.GenericArrayType
@@ -2060,7 +2047,7 @@
         (checkcast 44)                                          ; 28 class java.lang.Class
         (areturn)                                               ; 31
        )
-      '("getEnclosingConstructor:()Ljava/lang/reflect/Constructor;" nil
+      '("getEnclosingConstructor:()Ljava/lang/reflect/Constructor;" #x00000001  ; PUBLIC
         ; line_number #1215
         (aload_0)                                               ; 0
         (invokespecial 83)                                      ; 1 java.lang.Class.getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;
@@ -2203,7 +2190,7 @@
         (invokespecial 103)                                     ; 211 java.lang.InternalError.<init>:(Ljava/lang/String;)V
         (athrow)                                                ; 214
        )
-      '("getDeclaringClass:()Ljava/lang/Class;" nil
+      '("getDeclaringClass:()Ljava/lang/Class;" #x00000001      ; PUBLIC
         ; line_number #1290
         (aload_0)                                               ; 0
         (invokespecial 119)                                     ; 1 java.lang.Class.getDeclaringClass0:()Ljava/lang/Class;
@@ -2223,10 +2210,9 @@
         (aload_1)                                               ; 20
         (areturn)                                               ; 21
        )
-      '("getDeclaringClass0:()Ljava/lang/Class;" nil
-        ; native method
+      '("getDeclaringClass0:()Ljava/lang/Class;" #x00000102     ; PRIVATE NATIVE
        )
-      '("getEnclosingClass:()Ljava/lang/Class;" nil
+      '("getEnclosingClass:()Ljava/lang/Class;" #x00000001      ; PUBLIC
         ; line_number #1327
         (aload_0)                                               ; 0
         (invokespecial 83)                                      ; 1 java.lang.Class.getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;
@@ -2273,7 +2259,7 @@
         (aload_2)                                               ; 58
         (areturn)                                               ; 59
        )
-      '("getSimpleName:()Ljava/lang/String;" nil
+      '("getSimpleName:()Ljava/lang/String;" #x00000001         ; PUBLIC
         ; line_number #1361
         (aload_0)                                               ; 0
         (invokevirtual 20)                                      ; 1 java.lang.Class.isArray:()Z
@@ -2314,7 +2300,7 @@
         (aload_1)                                               ; 60
         (areturn)                                               ; 61
        )
-      '("getTypeName:()Ljava/lang/String;" nil
+      '("getTypeName:()Ljava/lang/String;" #x00000001           ; PUBLIC
         ; line_number #1379
         (aload_0)                                               ; 0
         (invokevirtual 20)                                      ; 1 java.lang.Class.isArray:()Z
@@ -2372,7 +2358,7 @@
         (invokevirtual 17)                                      ; 75 java.lang.Class.getName:()Ljava/lang/String;
         (areturn)                                               ; 78
        )
-      '("isAsciiDigit:(C)Z" nil
+      '("isAsciiDigit:(C)Z" #x0000000a                          ; PRIVATE STATIC
         ; line_number #1403
         (bipush 48)                                             ; 0
         (iload_0)                                               ; 2
@@ -2385,7 +2371,7 @@
         (iconst_0)                                              ; 16
         (ireturn)                                               ; 17
        )
-      '("getCanonicalName:()Ljava/lang/String;" nil
+      '("getCanonicalName:()Ljava/lang/String;" #x00000001      ; PUBLIC
         ; line_number #1417
         (aload_0)                                               ; 0
         (invokevirtual 20)                                      ; 1 java.lang.Class.isArray:()Z
@@ -2453,7 +2439,7 @@
         (invokevirtual 18)                                      ; 98 java.lang.StringBuilder.toString:()Ljava/lang/String;
         (areturn)                                               ; 101
        )
-      '("isAnonymousClass:()Z" nil
+      '("isAnonymousClass:()Z" #x00000001                       ; PUBLIC
         ; line_number #1445
         (ldc 14)                                                ; 0 ""
         (aload_0)                                               ; 2
@@ -2461,7 +2447,7 @@
         (invokevirtual 97)                                      ; 6 java.lang.String.equals:(Ljava/lang/Object;)Z
         (ireturn)                                               ; 9
        )
-      '("isLocalClass:()Z" nil
+      '("isLocalClass:()Z" #x00000001                           ; PUBLIC
         ; line_number #1456
         (aload_0)                                               ; 0
         (invokespecial 129)                                     ; 1 java.lang.Class.isLocalOrAnonymousClass:()Z
@@ -2474,7 +2460,7 @@
         (iconst_0)                                              ; 18
         (ireturn)                                               ; 19
        )
-      '("isMemberClass:()Z" nil
+      '("isMemberClass:()Z" #x00000001                          ; PUBLIC
         ; line_number #1467
         (aload_0)                                               ; 0
         (invokespecial 124)                                     ; 1 java.lang.Class.getSimpleBinaryName:()Ljava/lang/String;
@@ -2487,7 +2473,7 @@
         (iconst_0)                                              ; 18
         (ireturn)                                               ; 19
        )
-      '("getSimpleBinaryName:()Ljava/lang/String;" nil
+      '("getSimpleBinaryName:()Ljava/lang/String;" #x00000002   ; PRIVATE
         ; line_number #1477
         (aload_0)                                               ; 0
         (invokevirtual 130)                                     ; 1 java.lang.Class.getEnclosingClass:()Ljava/lang/Class;
@@ -2512,10 +2498,9 @@
         (aload_2)                                               ; 23
         (areturn)                                               ; 24
        )
-      '("getSimpleBinaryName0:()Ljava/lang/String;" nil
-        ; native method
+      '("getSimpleBinaryName0:()Ljava/lang/String;" #x00000102  ; PRIVATE NATIVE
        )
-      '("isLocalOrAnonymousClass:()Z" nil
+      '("isLocalOrAnonymousClass:()Z" #x00000002                ; PRIVATE
         ; line_number #1496
         (aload_0)                                               ; 0
         (invokespecial 83)                                      ; 1 java.lang.Class.getEnclosingMethodInfo:()Ljava/lang/Class$EnclosingMethodInfo;
@@ -2525,7 +2510,7 @@
         (iconst_0)                                              ; 11
         (ireturn)                                               ; 12
        )
-      '("getClasses:()[Ljava/lang/Class;" nil
+      '("getClasses:()[Ljava/lang/Class;" #x00000001            ; PUBLIC
         ; line_number #1524
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2541,7 +2526,7 @@
         (checkcast 80)                                          ; 20 class [Ljava.lang.Class;
         (areturn)                                               ; 23
        )
-      '("getFields:()[Ljava/lang/reflect/Field;" nil
+      '("getFields:()[Ljava/lang/reflect/Field;" #x00000001     ; PUBLIC
         ; line_number #1590
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2555,7 +2540,7 @@
         (invokestatic 137)                                      ; 14 java.lang.Class.copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;
         (areturn)                                               ; 17
        )
-      '("getMethods:()[Ljava/lang/reflect/Method;" nil
+      '("getMethods:()[Ljava/lang/reflect/Method;" #x00000001   ; PUBLIC
         ; line_number #1648
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2568,7 +2553,7 @@
         (invokestatic 139)                                      ; 13 java.lang.Class.copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;
         (areturn)                                               ; 16
        )
-      '("getConstructors:()[Ljava/lang/reflect/Constructor;" nil
+      '("getConstructors:()[Ljava/lang/reflect/Constructor;" #x00000001 ; PUBLIC
         ; line_number #1684
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2582,7 +2567,7 @@
         (invokestatic 141)                                      ; 14 java.lang.Class.copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;
         (areturn)                                               ; 17
        )
-      '("getField:(Ljava/lang/String;)Ljava/lang/reflect/Field;" nil
+      '("getField:(Ljava/lang/String;)Ljava/lang/reflect/Field;" #x00000001     ; PUBLIC
         ; line_number #1734
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2607,7 +2592,7 @@
         (aload_2)                                               ; 28
         (areturn)                                               ; 29
        )
-      '("getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" nil
+      '("getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" #x00000081 ; PUBLIC VARARGS
         ; line_number #1817
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2647,7 +2632,7 @@
         (aload_3)                                               ; 62
         (areturn)                                               ; 63
        )
-      '("getConstructor:([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" nil
+      '("getConstructor:([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" #x00000081 ; PUBLIC VARARGS
         ; line_number #1858
         (aload_0)                                               ; 0
         (iconst_0)                                              ; 1
@@ -2661,7 +2646,7 @@
         (invokespecial 48)                                      ; 12 java.lang.Class.getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;
         (areturn)                                               ; 15
        )
-      '("getDeclaredClasses:()[Ljava/lang/Class;" nil
+      '("getDeclaredClasses:()[Ljava/lang/Class;" #x00000001    ; PUBLIC
         ; line_number #1900
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2673,7 +2658,7 @@
         (invokespecial 148)                                     ; 10 java.lang.Class.getDeclaredClasses0:()[Ljava/lang/Class;
         (areturn)                                               ; 13
        )
-      '("getDeclaredFields:()[Ljava/lang/reflect/Field;" nil
+      '("getDeclaredFields:()[Ljava/lang/reflect/Field;" #x00000001     ; PUBLIC
         ; line_number #1949
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2687,7 +2672,7 @@
         (invokestatic 137)                                      ; 14 java.lang.Class.copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;
         (areturn)                                               ; 17
        )
-      '("getDeclaredMethods:()[Ljava/lang/reflect/Method;" nil
+      '("getDeclaredMethods:()[Ljava/lang/reflect/Method;" #x00000001   ; PUBLIC
         ; line_number #2008
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2701,7 +2686,7 @@
         (invokestatic 139)                                      ; 14 java.lang.Class.copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;
         (areturn)                                               ; 17
        )
-      '("getDeclaredConstructors:()[Ljava/lang/reflect/Constructor;" nil
+      '("getDeclaredConstructors:()[Ljava/lang/reflect/Constructor;" #x00000001 ; PUBLIC
         ; line_number #2053
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2715,7 +2700,7 @@
         (invokestatic 141)                                      ; 14 java.lang.Class.copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;
         (areturn)                                               ; 17
        )
-      '("getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;" nil
+      '("getDeclaredField:(Ljava/lang/String;)Ljava/lang/reflect/Field;" #x00000001     ; PUBLIC
         ; line_number #2101
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2742,7 +2727,7 @@
         (aload_2)                                               ; 32
         (areturn)                                               ; 33
        )
-      '("getDeclaredMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" nil
+      '("getDeclaredMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" #x00000081 ; PUBLIC VARARGS
         ; line_number #2161
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2783,7 +2768,7 @@
         (aload_3)                                               ; 65
         (areturn)                                               ; 66
        )
-      '("getDeclaredConstructor:([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" nil
+      '("getDeclaredConstructor:([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;" #x00000081 ; PUBLIC VARARGS
         ; line_number #2211
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -2797,7 +2782,7 @@
         (invokespecial 48)                                      ; 12 java.lang.Class.getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;
         (areturn)                                               ; 15
        )
-      '("getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;" nil
+      '("getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;" #x00000001      ; PUBLIC
         ; line_number #2251
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -2820,7 +2805,7 @@
         (invokevirtual 154)                                     ; 22 java.lang.ClassLoader.getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;
         (areturn)                                               ; 25
        )
-      '("getResource:(Ljava/lang/String;)Ljava/net/URL;" nil
+      '("getResource:(Ljava/lang/String;)Ljava/net/URL;" #x00000001     ; PUBLIC
         ; line_number #2295
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -2843,7 +2828,7 @@
         (invokevirtual 156)                                     ; 22 java.lang.ClassLoader.getResource:(Ljava/lang/String;)Ljava/net/URL;
         (areturn)                                               ; 25
        )
-      '("getProtectionDomain:()Ljava/security/ProtectionDomain;" nil
+      '("getProtectionDomain:()Ljava/security/ProtectionDomain;" #x00000001     ; PUBLIC
         ; line_number #2331
         (invokestatic 37)                                       ; 0 java.lang.System.getSecurityManager:()Ljava/lang/SecurityManager;
         (astore_1)                                              ; 3
@@ -2887,13 +2872,11 @@
         (aload_2)                                               ; 61
         (areturn)                                               ; 62
        )
-      '("getProtectionDomain0:()Ljava/security/ProtectionDomain;" nil
-        ; native method
+      '("getProtectionDomain0:()Ljava/security/ProtectionDomain;" #x00000102    ; PRIVATE NATIVE
        )
-      '("getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;" nil
-        ; native method
+      '("getPrimitiveClass:(Ljava/lang/String;)Ljava/lang/Class;" #x00000108    ; STATIC NATIVE
        )
-      '("checkMemberAccess:(ILjava/lang/Class;Z)V" nil
+      '("checkMemberAccess:(ILjava/lang/Class;Z)V" #x00000002   ; PRIVATE
         ; line_number #2371
         (invokestatic 37)                                       ; 0 java.lang.System.getSecurityManager:()Ljava/lang/SecurityManager;
         (astore 4)                                              ; 3
@@ -2927,7 +2910,7 @@
         ; line_number #2387
         (return)                                                ; 48
        )
-      '("checkPackageAccess:(Ljava/lang/ClassLoader;Z)V" nil
+      '("checkPackageAccess:(Ljava/lang/ClassLoader;Z)V" #x00000002     ; PRIVATE
         ; line_number #2395
         (invokestatic 37)                                       ; 0 java.lang.System.getSecurityManager:()Ljava/lang/SecurityManager;
         (astore_3)                                              ; 3
@@ -2987,7 +2970,7 @@
         ; line_number #2415
         (return)                                                ; 93
        )
-      '("resolveName:(Ljava/lang/String;)Ljava/lang/String;" nil
+      '("resolveName:(Ljava/lang/String;)Ljava/lang/String;" #x00000002 ; PRIVATE
         ; line_number #2422
         (aload_1)                                               ; 0
         (ifnonnull 5)                                           ; 1
@@ -3053,7 +3036,7 @@
         (aload_1)                                               ; 97
         (areturn)                                               ; 98
        )
-      '("reflectionData:()Ljava/lang/Class$ReflectionData;" nil
+      '("reflectionData:()Ljava/lang/Class$ReflectionData;" #x00000002  ; PRIVATE
         ; line_number #2526
         (aload_0)                                               ; 0
         (getfield 176)                                          ; 1 java.lang.Class.reflectionData:Ljava/lang/ref/SoftReference;
@@ -3088,7 +3071,7 @@
         (invokespecial 181)                                     ; 45 java.lang.Class.newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;
         (areturn)                                               ; 48
        )
-      '("newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;" nil
+      '("newReflectionData:(Ljava/lang/ref/SoftReference;I)Ljava/lang/Class$ReflectionData;" #x00000002 ; PRIVATE
         ; line_number #2542
         (getstatic 2)                                           ; 0 java.lang.Class.useCaches:Z
         (ifne 5)                                                ; 3
@@ -3140,10 +3123,9 @@
         ; line_number #2558
         (goto -63)                                              ; 71
        )
-      '("getGenericSignature0:()Ljava/lang/String;" nil
-        ; native method
+      '("getGenericSignature0:()Ljava/lang/String;" #x00000102  ; PRIVATE NATIVE
        )
-      '("getFactory:()Lsun/reflect/generics/factory/GenericsFactory;" nil
+      '("getFactory:()Lsun/reflect/generics/factory/GenericsFactory;" #x00000002        ; PRIVATE
         ; line_number #2570
         (aload_0)                                               ; 0
         (aload_0)                                               ; 1
@@ -3151,7 +3133,7 @@
         (invokestatic 187)                                      ; 5 sun.reflect.generics.factory.CoreReflectionFactory.make:(Ljava/lang/reflect/GenericDeclaration;Lsun/reflect/generics/scope/Scope;)Lsun/reflect/generics/factory/CoreReflectionFactory;
         (areturn)                                               ; 8
        )
-      '("getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;" nil
+      '("getGenericInfo:()Lsun/reflect/generics/repository/ClassRepository;" #x00000002 ; PRIVATE
         ; line_number #2576
         (aload_0)                                               ; 0
         (getfield 188)                                          ; 1 java.lang.Class.genericInfo:Lsun/reflect/generics/repository/ClassRepository;
@@ -3189,23 +3171,20 @@
         (aconst_null)                                           ; 50
         (areturn)                                               ; 51
        )
-      '("getRawAnnotations:()[B" nil
-        ; native method
+      '("getRawAnnotations:()[B" #x00000100                     ; NATIVE
        )
-      '("getRawTypeAnnotations:()[B" nil
-        ; native method
+      '("getRawTypeAnnotations:()[B" #x00000100                 ; NATIVE
        )
-      '("getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B" nil
+      '("getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B" #x00000008        ; STATIC
         ; line_number #2594
         (invokestatic 192)                                      ; 0 java.lang.Class.getReflectionFactory:()Lsun/reflect/ReflectionFactory;
         (aload_0)                                               ; 3
         (invokevirtual 193)                                     ; 4 sun.reflect.ReflectionFactory.getExecutableTypeAnnotationBytes:(Ljava/lang/reflect/Executable;)[B
         (areturn)                                               ; 7
        )
-      '("getConstantPool:()Lsun/reflect/ConstantPool;" nil
-        ; native method
+      '("getConstantPool:()Lsun/reflect/ConstantPool;" #x00000100       ; NATIVE
        )
-      '("privateGetDeclaredFields:(Z)[Ljava/lang/reflect/Field;" nil
+      '("privateGetDeclaredFields:(Z)[Ljava/lang/reflect/Field;" #x00000002     ; PRIVATE
         ; line_number #2609
         (invokestatic 194)                                      ; 0 java.lang.Class.checkInitted:()V
         ; line_number #2611
@@ -3255,7 +3234,7 @@
         (aload_2)                                               ; 65
         (areturn)                                               ; 66
        )
-      '("privateGetPublicFields:(Ljava/util/Set;)[Ljava/lang/reflect/Field;" nil
+      '("privateGetPublicFields:(Ljava/util/Set;)[Ljava/lang/reflect/Field;" #x00000002 ; PRIVATE
         ; line_number #2632
         (invokestatic 194)                                      ; 0 java.lang.Class.checkInitted:()V
         ; line_number #2634
@@ -3369,7 +3348,7 @@
         (aload_2)                                               ; 181
         (areturn)                                               ; 182
        )
-      '("addAll:(Ljava/util/Collection;[Ljava/lang/reflect/Field;)V" nil
+      '("addAll:(Ljava/util/Collection;[Ljava/lang/reflect/Field;)V" #x0000000a ; PRIVATE STATIC
         ; line_number #2676
         (aload_1)                                               ; 0
         (astore_2)                                              ; 1
@@ -3396,7 +3375,7 @@
         ; line_number #2679
         (return)                                                ; 35
        )
-      '("privateGetDeclaredConstructors:(Z)[Ljava/lang/reflect/Constructor;" nil
+      '("privateGetDeclaredConstructors:(Z)[Ljava/lang/reflect/Constructor;" #x00000002 ; PRIVATE
         ; line_number #2692
         (invokestatic 194)                                      ; 0 java.lang.Class.checkInitted:()V
         ; line_number #2694
@@ -3457,7 +3436,7 @@
         (aload_2)                                               ; 80
         (areturn)                                               ; 81
        )
-      '("privateGetDeclaredMethods:(Z)[Ljava/lang/reflect/Method;" nil
+      '("privateGetDeclaredMethods:(Z)[Ljava/lang/reflect/Method;" #x00000002   ; PRIVATE
         ; line_number #2727
         (invokestatic 194)                                      ; 0 java.lang.Class.checkInitted:()V
         ; line_number #2729
@@ -3507,7 +3486,7 @@
         (aload_2)                                               ; 65
         (areturn)                                               ; 66
        )
-      '("privateGetPublicMethods:()[Ljava/lang/reflect/Method;" nil
+      '("privateGetPublicMethods:()[Ljava/lang/reflect/Method;" #x00000002      ; PRIVATE
         ; line_number #2924
         (invokestatic 194)                                      ; 0 java.lang.Class.checkInitted:()V
         ; line_number #2926
@@ -3672,7 +3651,7 @@
         (aload_1)                                               ; 265
         (areturn)                                               ; 266
        )
-      '("searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;" nil
+      '("searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;" #x0000000a       ; PRIVATE STATIC
         ; line_number #2990
         (aload_1)                                               ; 0
         (invokevirtual 234)                                     ; 1 java.lang.String.intern:()Ljava/lang/String;
@@ -3709,7 +3688,7 @@
         (aconst_null)                                           ; 51
         (areturn)                                               ; 52
        )
-      '("getField0:(Ljava/lang/String;)Ljava/lang/reflect/Field;" nil
+      '("getField0:(Ljava/lang/String;)Ljava/lang/reflect/Field;" #x00000002    ; PRIVATE
         ; line_number #3009
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -3779,7 +3758,7 @@
         (aconst_null)                                           ; 96
         (areturn)                                               ; 97
        )
-      '("searchMethods:([Ljava/lang/reflect/Method;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" nil
+      '("searchMethods:([Ljava/lang/reflect/Method;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;" #x0000000a  ; PRIVATE STATIC
         ; line_number #3035
         (aconst_null)                                           ; 0
         (astore_3)                                              ; 1
@@ -3838,7 +3817,7 @@
         (invokevirtual 238)                                     ; 95 sun.reflect.ReflectionFactory.copyMethod:(Ljava/lang/reflect/Method;)Ljava/lang/reflect/Method;
         (areturn)                                               ; 98
        )
-      '("getMethod0:(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/reflect/Method;" nil
+      '("getMethod0:(Ljava/lang/String;[Ljava/lang/Class;Z)Ljava/lang/reflect/Method;" #x00000002       ; PRIVATE
         ; line_number #3049
         (new 219)                                               ; 0 class java.lang.Class$MethodArray
         (dup)                                                   ; 3
@@ -3867,7 +3846,7 @@
         (invokevirtual 241)                                     ; 36 java.lang.Class$MethodArray.getFirst:()Ljava/lang/reflect/Method;
         (areturn)                                               ; 39
        )
-      '("privateGetMethodRecursive:(Ljava/lang/String;[Ljava/lang/Class;ZLjava/lang/Class$MethodArray;)Ljava/lang/reflect/Method;" nil
+      '("privateGetMethodRecursive:(Ljava/lang/String;[Ljava/lang/Class;ZLjava/lang/Class$MethodArray;)Ljava/lang/reflect/Method;" #x00000002   ; PRIVATE
         ; line_number #3080
         (aload_0)                                               ; 0
         (iconst_1)                                              ; 1
@@ -3950,7 +3929,7 @@
         (aconst_null)                                           ; 128
         (areturn)                                               ; 129
        )
-      '("getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;" nil
+      '("getConstructor0:([Ljava/lang/Class;I)Ljava/lang/reflect/Constructor;" #x00000002       ; PRIVATE
         ; line_number #3107
         (aload_0)                                               ; 0
         (iload_2)                                               ; 1
@@ -4009,7 +3988,7 @@
         (invokespecial 147)                                     ; 99 java.lang.NoSuchMethodException.<init>:(Ljava/lang/String;)V
         (athrow)                                                ; 102
        )
-      '("arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z" nil
+      '("arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z" #x0000000a  ; PRIVATE STATIC
         ; line_number #3122
         (aload_0)                                               ; 0
         (ifnonnull 18)                                          ; 1
@@ -4068,7 +4047,7 @@
         (iconst_1)                                              ; 68
         (ireturn)                                               ; 69
        )
-      '("copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;" nil
+      '("copyFields:([Ljava/lang/reflect/Field;)[Ljava/lang/reflect/Field;" #x0000000a  ; PRIVATE STATIC
         ; line_number #3144
         (aload_0)                                               ; 0
         (arraylength)                                           ; 1
@@ -4100,7 +4079,7 @@
         (aload_1)                                               ; 34
         (areturn)                                               ; 35
        )
-      '("copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;" nil
+      '("copyMethods:([Ljava/lang/reflect/Method;)[Ljava/lang/reflect/Method;" #x0000000a       ; PRIVATE STATIC
         ; line_number #3153
         (aload_0)                                               ; 0
         (arraylength)                                           ; 1
@@ -4132,7 +4111,7 @@
         (aload_1)                                               ; 34
         (areturn)                                               ; 35
        )
-      '("copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;" nil
+      '("copyConstructors:([Ljava/lang/reflect/Constructor;)[Ljava/lang/reflect/Constructor;" #x0000000a        ; PRIVATE STATIC
         ; line_number #3162
         (aload_0)                                               ; 0
         (invokevirtual 247)                                     ; 1 [Ljava.lang.reflect.Constructor;.clone:()Ljava/lang/Object;
@@ -4164,19 +4143,15 @@
         (aload_1)                                               ; 36
         (areturn)                                               ; 37
        )
-      '("getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;" nil
-        ; native method
+      '("getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;" #x00000102   ; PRIVATE NATIVE
        )
-      '("getDeclaredMethods0:(Z)[Ljava/lang/reflect/Method;" nil
-        ; native method
+      '("getDeclaredMethods0:(Z)[Ljava/lang/reflect/Method;" #x00000102 ; PRIVATE NATIVE
        )
-      '("getDeclaredConstructors0:(Z)[Ljava/lang/reflect/Constructor;" nil
-        ; native method
+      '("getDeclaredConstructors0:(Z)[Ljava/lang/reflect/Constructor;" #x00000102       ; PRIVATE NATIVE
        )
-      '("getDeclaredClasses0:()[Ljava/lang/Class;" nil
-        ; native method
+      '("getDeclaredClasses0:()[Ljava/lang/Class;" #x00000102   ; PRIVATE NATIVE
        )
-      '("argumentTypesToString:([Ljava/lang/Class;)Ljava/lang/String;" nil
+      '("argumentTypesToString:([Ljava/lang/Class;)Ljava/lang/String;" #x0000000a       ; PRIVATE STATIC
         ; line_number #3176
         (new 248)                                               ; 0 class java.util.StringJoiner
         (dup)                                                   ; 3
@@ -4218,7 +4193,7 @@
         (invokevirtual 255)                                     ; 55 java.util.StringJoiner.toString:()Ljava/lang/String;
         (areturn)                                               ; 58
        )
-      '("desiredAssertionStatus:()Z" nil
+      '("desiredAssertionStatus:()Z" #x00000001                 ; PUBLIC
         ; line_number #3235
         (aload_0)                                               ; 0
         (invokevirtual 256)                                     ; 1 java.lang.Class.getClassLoader:()Ljava/lang/ClassLoader;
@@ -4262,10 +4237,9 @@
         (invokestatic 257)                                      ; 50 java.lang.Class.desiredAssertionStatus0:(Ljava/lang/Class;)Z
         (ireturn)                                               ; 53
        )
-      '("desiredAssertionStatus0:(Ljava/lang/Class;)Z" nil
-        ; native method
+      '("desiredAssertionStatus0:(Ljava/lang/Class;)Z" #x0000010a       ; PRIVATE STATIC NATIVE
        )
-      '("isEnum:()Z" nil
+      '("isEnum:()Z" #x00000001                                 ; PUBLIC
         ; line_number #3265
         (aload_0)                                               ; 0
         (invokevirtual 22)                                      ; 1 java.lang.Class.getModifiers:()I
@@ -4283,7 +4257,7 @@
         ; line_number #3265
         (ireturn)                                               ; 26
        )
-      '("getReflectionFactory:()Lsun/reflect/ReflectionFactory;" nil
+      '("getReflectionFactory:()Lsun/reflect/ReflectionFactory;" #x0000000a     ; PRIVATE STATIC
         ; line_number #3271
         (getstatic 262)                                         ; 0 java.lang.Class.reflectionFactory:Lsun/reflect/ReflectionFactory;
         (ifnonnull 19)                                          ; 3
@@ -4299,7 +4273,7 @@
         (getstatic 262)                                         ; 22 java.lang.Class.reflectionFactory:Lsun/reflect/ReflectionFactory;
         (areturn)                                               ; 25
        )
-      '("checkInitted:()V" nil
+      '("checkInitted:()V" #x0000000a                           ; PRIVATE STATIC
         ; line_number #3283
         (getstatic 1)                                           ; 0 java.lang.Class.initted:Z
         (ifeq 4)                                                ; 3
@@ -4313,7 +4287,7 @@
         ; line_number #3311
         (return)                                                ; 18
        )
-      '("getEnumConstants:()[Ljava/lang/Object;" nil
+      '("getEnumConstants:()[Ljava/lang/Object;" #x00000001     ; PUBLIC
         ; line_number #3324
         (aload_0)                                               ; 0
         (invokevirtual 268)                                     ; 1 java.lang.Class.getEnumConstantsShared:()[Ljava/lang/Object;
@@ -4328,7 +4302,7 @@
         (aconst_null)                                           ; 19
         (areturn)                                               ; 20
        )
-      '("getEnumConstantsShared:()[Ljava/lang/Object;" nil
+      '("getEnumConstantsShared:()[Ljava/lang/Object;" #x00000000       ; 
         ; line_number #3335
         (aload_0)                                               ; 0
         (getfield 270)                                          ; 1 java.lang.Class.enumConstants:[Ljava/lang/Object;
@@ -4382,7 +4356,7 @@
         (aload_1)                                               ; 69
         (areturn)                                               ; 70
        )
-      '("enumConstantDirectory:()Ljava/util/Map;" nil
+      '("enumConstantDirectory:()Ljava/util/Map;" #x00000000    ; 
         ; line_number #3368
         (aload_0)                                               ; 0
         (getfield 277)                                          ; 1 java.lang.Class.enumConstantDirectory:Ljava/util/Map;
@@ -4455,7 +4429,7 @@
         (aload_1)                                               ; 111
         (areturn)                                               ; 112
        )
-      '("cast:(Ljava/lang/Object;)Ljava/lang/Object;" nil
+      '("cast:(Ljava/lang/Object;)Ljava/lang/Object;" #x00000001        ; PUBLIC
         ; line_number #3399
         (aload_1)                                               ; 0
         (ifnull 24)                                             ; 1
@@ -4475,7 +4449,7 @@
         (aload_1)                                               ; 25
         (areturn)                                               ; 26
        )
-      '("cannotCastMsg:(Ljava/lang/Object;)Ljava/lang/String;" nil
+      '("cannotCastMsg:(Ljava/lang/Object;)Ljava/lang/String;" #x00000002       ; PRIVATE
         ; line_number #3405
         (new 9)                                                 ; 0 class java.lang.StringBuilder
         (dup)                                                   ; 3
@@ -4494,7 +4468,7 @@
         (invokevirtual 18)                                      ; 36 java.lang.StringBuilder.toString:()Ljava/lang/String;
         (areturn)                                               ; 39
        )
-      '("asSubclass:(Ljava/lang/Class;)Ljava/lang/Class;" nil
+      '("asSubclass:(Ljava/lang/Class;)Ljava/lang/Class;" #x00000001    ; PUBLIC
         ; line_number #3432
         (aload_1)                                               ; 0
         (aload_0)                                               ; 1
@@ -4511,7 +4485,7 @@
         (invokespecial 288)                                     ; 18 java.lang.ClassCastException.<init>:(Ljava/lang/String;)V
         (athrow)                                                ; 21
        )
-      '("getAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;" nil
+      '("getAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;" #x00000001 ; PUBLIC
         ; line_number #3444
         (aload_1)                                               ; 0
         (invokestatic 291)                                      ; 1 java.util.Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -4525,14 +4499,14 @@
         (checkcast 295)                                         ; 18 class java.lang.annotation.Annotation
         (areturn)                                               ; 21
        )
-      '("isAnnotationPresent:(Ljava/lang/Class;)Z" nil
+      '("isAnnotationPresent:(Ljava/lang/Class;)Z" #x00000001   ; PUBLIC
         ; line_number #3456
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
         (invokespecial 296)                                     ; 2 java.lang.reflect.GenericDeclaration.isAnnotationPresent:(Ljava/lang/Class;)Z
         (ireturn)                                               ; 5
        )
-      '("getAnnotationsByType:(Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" nil
+      '("getAnnotationsByType:(Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" #x00000001 ; PUBLIC
         ; line_number #3465
         (aload_1)                                               ; 0
         (invokestatic 291)                                      ; 1 java.util.Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -4549,7 +4523,7 @@
         (invokestatic 298)                                      ; 16 sun.reflect.annotation.AnnotationSupport.getAssociatedAnnotations:(Ljava/util/Map;Ljava/lang/Class;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;
         (areturn)                                               ; 19
        )
-      '("getAnnotations:()[Ljava/lang/annotation/Annotation;" nil
+      '("getAnnotations:()[Ljava/lang/annotation/Annotation;" #x00000001        ; PUBLIC
         ; line_number #3477
         (aload_0)                                               ; 0
         (invokespecial 292)                                     ; 1 java.lang.Class.annotationData:()Ljava/lang/Class$AnnotationData;
@@ -4557,7 +4531,7 @@
         (invokestatic 299)                                      ; 7 sun.reflect.annotation.AnnotationParser.toArray:(Ljava/util/Map;)[Ljava/lang/annotation/Annotation;
         (areturn)                                               ; 10
        )
-      '("getDeclaredAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;" nil
+      '("getDeclaredAnnotation:(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;" #x00000001 ; PUBLIC
         ; line_number #3487
         (aload_1)                                               ; 0
         (invokestatic 291)                                      ; 1 java.util.Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -4571,7 +4545,7 @@
         (checkcast 295)                                         ; 18 class java.lang.annotation.Annotation
         (areturn)                                               ; 21
        )
-      '("getDeclaredAnnotationsByType:(Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" nil
+      '("getDeclaredAnnotationsByType:(Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;" #x00000001 ; PUBLIC
         ; line_number #3498
         (aload_1)                                               ; 0
         (invokestatic 291)                                      ; 1 java.util.Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
@@ -4584,7 +4558,7 @@
         (invokestatic 300)                                      ; 13 sun.reflect.annotation.AnnotationSupport.getDirectlyAndIndirectlyPresent:(Ljava/util/Map;Ljava/lang/Class;)[Ljava/lang/annotation/Annotation;
         (areturn)                                               ; 16
        )
-      '("getDeclaredAnnotations:()[Ljava/lang/annotation/Annotation;" nil
+      '("getDeclaredAnnotations:()[Ljava/lang/annotation/Annotation;" #x00000001        ; PUBLIC
         ; line_number #3508
         (aload_0)                                               ; 0
         (invokespecial 292)                                     ; 1 java.lang.Class.annotationData:()Ljava/lang/Class$AnnotationData;
@@ -4592,7 +4566,7 @@
         (invokestatic 299)                                      ; 7 sun.reflect.annotation.AnnotationParser.toArray:(Ljava/util/Map;)[Ljava/lang/annotation/Annotation;
         (areturn)                                               ; 10
        )
-      '("annotationData:()Ljava/lang/Class$AnnotationData;" nil
+      '("annotationData:()Ljava/lang/Class$AnnotationData;" #x00000002  ; PRIVATE
         ; line_number #3534
         (aload_0)                                               ; 0
         (getfield 301)                                          ; 1 java.lang.Class.annotationData:Ljava/lang/Class$AnnotationData;
@@ -4628,7 +4602,7 @@
         ; line_number #3547
         (goto -41)                                              ; 41
        )
-      '("createAnnotationData:(I)Ljava/lang/Class$AnnotationData;" nil
+      '("createAnnotationData:(I)Ljava/lang/Class$AnnotationData;" #x00000002   ; PRIVATE
         ; line_number #3551
         (aload_0)                                               ; 0
         ; line_number #3552
@@ -4733,7 +4707,7 @@
         (invokespecial 324)                                     ; 191 java.lang.Class$AnnotationData.<init>:(Ljava/util/Map;Ljava/util/Map;I)V
         (areturn)                                               ; 194
        )
-      '("casAnnotationType:(Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z" nil
+      '("casAnnotationType:(Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z" #x00000000        ; 
         ; line_number #3588
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
@@ -4741,20 +4715,20 @@
         (invokestatic 325)                                      ; 3 java.lang.Class$Atomic.casAnnotationType:(Ljava/lang/Class;Lsun/reflect/annotation/AnnotationType;Lsun/reflect/annotation/AnnotationType;)Z
         (ireturn)                                               ; 6
        )
-      '("getAnnotationType:()Lsun/reflect/annotation/AnnotationType;" nil
+      '("getAnnotationType:()Lsun/reflect/annotation/AnnotationType;" #x00000000        ; 
         ; line_number #3592
         (aload_0)                                               ; 0
         (getfield 326)                                          ; 1 java.lang.Class.annotationType:Lsun/reflect/annotation/AnnotationType;
         (areturn)                                               ; 4
        )
-      '("getDeclaredAnnotationMap:()Ljava/util/Map;" nil
+      '("getDeclaredAnnotationMap:()Ljava/util/Map;" #x00000000 ; 
         ; line_number #3596
         (aload_0)                                               ; 0
         (invokespecial 292)                                     ; 1 java.lang.Class.annotationData:()Ljava/lang/Class$AnnotationData;
         (getfield 297)                                          ; 4 java.lang.Class$AnnotationData.declaredAnnotations:Ljava/util/Map;
         (areturn)                                               ; 7
        )
-      '("getAnnotatedSuperclass:()Ljava/lang/reflect/AnnotatedType;" nil
+      '("getAnnotatedSuperclass:()Ljava/lang/reflect/AnnotatedType;" #x00000001 ; PUBLIC
         ; line_number #3624
         (aload_0)                                               ; 0
         (ldc_w 275)                                             ; 1 class java.lang.Object
@@ -4786,7 +4760,7 @@
         (invokestatic 329)                                      ; 46 sun.reflect.annotation.TypeAnnotationParser.buildAnnotatedSuperclass:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)Ljava/lang/reflect/AnnotatedType;
         (areturn)                                               ; 49
        )
-      '("getAnnotatedInterfaces:()[Ljava/lang/reflect/AnnotatedType;" nil
+      '("getAnnotatedInterfaces:()[Ljava/lang/reflect/AnnotatedType;" #x00000001        ; PUBLIC
         ; line_number #3667
         (aload_0)                                               ; 0
         (invokevirtual 328)                                     ; 1 java.lang.Class.getRawTypeAnnotations:()[B
@@ -4796,42 +4770,42 @@
         (invokestatic 330)                                      ; 9 sun.reflect.annotation.TypeAnnotationParser.buildAnnotatedInterfaces:([BLsun/reflect/ConstantPool;Ljava/lang/Class;)[Ljava/lang/reflect/AnnotatedType;
         (areturn)                                               ; 12
        )
-      '("access$100:(Ljava/lang/Class;Z)[Ljava/lang/reflect/Field;" nil
+      '("access$100:(Ljava/lang/Class;Z)[Ljava/lang/reflect/Field;" #x00001008  ; STATIC SYNTHETIC
         ; line_number #122
         (aload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokespecial 5)                                       ; 2 java.lang.Class.getDeclaredFields0:(Z)[Ljava/lang/reflect/Field;
         (areturn)                                               ; 5
        )
-      '("access$200:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;" nil
+      '("access$200:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;" #x00001008 ; STATIC SYNTHETIC
         ; line_number #122
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
         (invokestatic 4)                                        ; 2 java.lang.Class.searchFields:([Ljava/lang/reflect/Field;Ljava/lang/String;)Ljava/lang/reflect/Field;
         (areturn)                                               ; 5
        )
-      '("access$300:([Ljava/lang/Object;[Ljava/lang/Object;)Z" nil
+      '("access$300:([Ljava/lang/Object;[Ljava/lang/Object;)Z" #x00001008       ; STATIC SYNTHETIC
         ; line_number #122
         (aload_0)                                               ; 0
         (aload_1)                                               ; 1
         (invokestatic 3)                                        ; 2 java.lang.Class.arrayContentsEq:([Ljava/lang/Object;[Ljava/lang/Object;)Z
         (ireturn)                                               ; 5
        )
-      '("access$402:(Z)Z" nil
+      '("access$402:(Z)Z" #x00001008                            ; STATIC SYNTHETIC
         ; line_number #122
         (iload_0)                                               ; 0
         (dup)                                                   ; 1
         (putstatic 2)                                           ; 2 java.lang.Class.useCaches:Z
         (ireturn)                                               ; 5
        )
-      '("access$502:(Z)Z" nil
+      '("access$502:(Z)Z" #x00001008                            ; STATIC SYNTHETIC
         ; line_number #122
         (iload_0)                                               ; 0
         (dup)                                                   ; 1
         (putstatic 1)                                           ; 2 java.lang.Class.initted:Z
         (ireturn)                                               ; 5
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #132
         (invokestatic 331)                                      ; 0 java.lang.Class.registerNatives:()V
         ; line_number #2495

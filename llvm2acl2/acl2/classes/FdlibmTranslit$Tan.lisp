@@ -7,58 +7,59 @@
     (make-class-decl
      "FdlibmTranslit$Tan"
      '("java/lang/Object")
-     '()
-     '()
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (integer 2147483647)                                    ; 3
-       (integer 1072243195)                                    ; 4
-       (methodref "FdlibmTranslit$KernelTan" "compute:(DDI)D" 5)       ; 5
-       (integer 2146435072)                                    ; 6
-       (methodref "FdlibmTranslit$RemPio2" "compute:(D[D)I" 3) ; 7
-       (class (ref -1) "FdlibmTranslit$Tan")                   ; 8
-       (class (ref -1) "java/lang/Object")                     ; 9
-       (utf8)                                                  ; 10
-       (utf8)                                                  ; 11
-       (utf8)                                                  ; 12
-       (utf8)                                                  ; 13
-       (utf8)                                                  ; 14
-       (utf8)                                                  ; 15
-       (utf8)                                                  ; 16
-       (class (ref -1) "[D")                                   ; 17
-       (utf8)                                                  ; 18
-       (utf8)                                                  ; 19
-       (name-and-type "<init>:()V")                            ; 20
-       (class (ref -1) "FdlibmTranslit")                       ; 21
-       (name-and-type "access$000:(D)I")                       ; 22
-       (class (ref -1) "FdlibmTranslit$KernelTan")             ; 23
-       (name-and-type "compute:(DDI)D")                        ; 24
-       (class (ref -1) "FdlibmTranslit$RemPio2")               ; 25
-       (name-and-type "compute:(D[D)I")                        ; 26
-       (utf8)                                                  ; 27
-       (utf8)                                                  ; 28
-       (utf8)                                                  ; 29
-       (utf8)                                                  ; 30
-       (utf8)                                                  ; 31
-       (utf8)                                                  ; 32
-       (utf8)                                                  ; 33
-       (utf8)                                                  ; 34
-       (utf8)                                                  ; 35
-       (utf8)                                                  ; 36
-       (utf8)                                                  ; 37
-       (utf8)                                                  ; 38
-       (utf8)                                                  ; 39
-       (utf8)                                                  ; 40
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (integer 2147483647)                                     ; 3
+       (integer 1072243195)                                     ; 4
+       (methodref "FdlibmTranslit$KernelTan" "compute:(DDI)D" 5)        ; 5
+       (integer 2146435072)                                     ; 6
+       (methodref "FdlibmTranslit$RemPio2" "compute:(D[D)I" 3)  ; 7
+       (class (ref -1) "FdlibmTranslit$Tan")                    ; 8
+       (class (ref -1) "java/lang/Object")                      ; 9
+       (utf8)                                                   ; 10
+       (utf8)                                                   ; 11
+       (utf8)                                                   ; 12
+       (utf8)                                                   ; 13
+       (utf8)                                                   ; 14
+       (utf8)                                                   ; 15
+       (utf8)                                                   ; 16
+       (class (ref -1) "[D")                                    ; 17
+       (utf8)                                                   ; 18
+       (utf8)                                                   ; 19
+       (name-and-type "<init>:()V")                             ; 20
+       (class (ref -1) "FdlibmTranslit")                        ; 21
+       (name-and-type "access$000:(D)I")                        ; 22
+       (class (ref -1) "FdlibmTranslit$KernelTan")              ; 23
+       (name-and-type "compute:(DDI)D")                         ; 24
+       (class (ref -1) "FdlibmTranslit$RemPio2")                ; 25
+       (name-and-type "compute:(D[D)I")                         ; 26
+       (utf8)                                                   ; 27
+       (utf8)                                                   ; 28
+       (utf8)                                                   ; 29
+       (utf8)                                                   ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (utf8)                                                   ; 33
+       (utf8)                                                   ; 34
+       (utf8)                                                   ; 35
+       (utf8)                                                   ; 36
+       (utf8)                                                   ; 37
+       (utf8)                                                   ; 38
+       (utf8)                                                   ; 39
+       (utf8)                                                   ; 40
+      )
+     #x00000020                                                 ; SUPER
+     '(
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #3184
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(D)D" nil
+      '("compute:(D)D" #x00000808                               ; STATIC STRICT
         ; line_number #3187
         (iconst_2)                                              ; 0
         (newarray T_DOUBLE)                                     ; 1

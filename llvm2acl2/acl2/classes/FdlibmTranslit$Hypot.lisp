@@ -7,63 +7,64 @@
     (make-class-decl
      "FdlibmTranslit$Hypot"
      '("java/lang/Object")
-     '()
-     '()
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (methodref "FdlibmTranslit" "access$000:(D)I" 2)        ; 2
-       (integer 2147483647)                                    ; 3
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)       ; 4
-       (integer 62914560)                                      ; 5
-       (integer 1596981248)                                    ; 6
-       (integer 2146435072)                                    ; 7
-       (integer 1048575)                                       ; 8
-       (methodref "FdlibmTranslit" "access$100:(D)I" 2)        ; 9
-       (integer 629145600)                                     ; 10
-       (integer 548405248)                                     ; 11
-       (integer 2144337920)                                    ; 12
-       (methodref "java/lang/Math" "sqrt:(D)D" 2)              ; 13
-       (integer 1048576)                                       ; 14
-       (class (ref -1) "FdlibmTranslit$Hypot")                 ; 15
-       (class (ref -1) "java/lang/Object")                     ; 16
-       (utf8)                                                  ; 17
-       (utf8)                                                  ; 18
-       (utf8)                                                  ; 19
-       (utf8)                                                  ; 20
-       (utf8)                                                  ; 21
-       (utf8)                                                  ; 22
-       (utf8)                                                  ; 23
-       (utf8)                                                  ; 24
-       (utf8)                                                  ; 25
-       (name-and-type "<init>:()V")                            ; 26
-       (class (ref -1) "FdlibmTranslit")                       ; 27
-       (name-and-type "access$000:(D)I")                       ; 28
-       (name-and-type "access$400:(DI)D")                      ; 29
-       (name-and-type "access$100:(D)I")                       ; 30
-       (class (ref -1) "java/lang/Math")                       ; 31
-       (name-and-type "sqrt:(D)D")                             ; 32
-       (utf8)                                                  ; 33
-       (utf8)                                                  ; 34
-       (utf8)                                                  ; 35
-       (utf8)                                                  ; 36
-       (utf8)                                                  ; 37
-       (utf8)                                                  ; 38
-       (utf8)                                                  ; 39
-       (utf8)                                                  ; 40
-       (utf8)                                                  ; 41
-       (utf8)                                                  ; 42
-       (utf8)                                                  ; 43
-       (utf8)                                                  ; 44
-       (utf8)                                                  ; 45
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (methodref "FdlibmTranslit" "access$000:(D)I" 2)         ; 2
+       (integer 2147483647)                                     ; 3
+       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 4
+       (integer 62914560)                                       ; 5
+       (integer 1596981248)                                     ; 6
+       (integer 2146435072)                                     ; 7
+       (integer 1048575)                                        ; 8
+       (methodref "FdlibmTranslit" "access$100:(D)I" 2)         ; 9
+       (integer 629145600)                                      ; 10
+       (integer 548405248)                                      ; 11
+       (integer 2144337920)                                     ; 12
+       (methodref "java/lang/Math" "sqrt:(D)D" 2)               ; 13
+       (integer 1048576)                                        ; 14
+       (class (ref -1) "FdlibmTranslit$Hypot")                  ; 15
+       (class (ref -1) "java/lang/Object")                      ; 16
+       (utf8)                                                   ; 17
+       (utf8)                                                   ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (utf8)                                                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (name-and-type "<init>:()V")                             ; 26
+       (class (ref -1) "FdlibmTranslit")                        ; 27
+       (name-and-type "access$000:(D)I")                        ; 28
+       (name-and-type "access$400:(DI)D")                       ; 29
+       (name-and-type "access$100:(D)I")                        ; 30
+       (class (ref -1) "java/lang/Math")                        ; 31
+       (name-and-type "sqrt:(D)D")                              ; 32
+       (utf8)                                                   ; 33
+       (utf8)                                                   ; 34
+       (utf8)                                                   ; 35
+       (utf8)                                                   ; 36
+       (utf8)                                                   ; 37
+       (utf8)                                                   ; 38
+       (utf8)                                                   ; 39
+       (utf8)                                                   ; 40
+       (utf8)                                                   ; 41
+       (utf8)                                                   ; 42
+       (utf8)                                                   ; 43
+       (utf8)                                                   ; 44
+       (utf8)                                                   ; 45
+      )
+     #x00000020                                                 ; SUPER
+     '(
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #1367
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(DD)D" nil
+      '("compute:(DD)D" #x00000009                              ; PUBLIC STATIC
         ; line_number #1370
         (dload_0)                                               ; 0
         (dstore 4)                                              ; 1

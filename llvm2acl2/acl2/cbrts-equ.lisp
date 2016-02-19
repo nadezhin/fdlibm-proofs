@@ -67,7 +67,7 @@
          (@cbrts-steps s (+ (nfix m) (nfix n))))
   :enable @cbrts-steps
   :induct (@cbrts-steps s m))
-          
+
 (defruled @cbrts-steps-nfix
   (equal (@cbrts-steps s (nfix n))
          (@cbrts-steps s n))
@@ -92,7 +92,7 @@
   :disable nfix
   :use @cbrts-clock-aux-nfix)
 
-(defruled @cbrts-clock-2a 
+(defruled @cbrts-clock-2a
   (implies (@cbrts-clock s)
            (equal (car (@cbrts-steps s (@cbrts-clock s))) '@cbrts-ret))
   :enable @cbrts-clock)
@@ -111,7 +111,7 @@
            (equal (@cbrts-steps s n) nil))
   :enable @cbrts-step
   :expand (@cbrts-steps s n))
-           
+
 (defrule @cbrts-clock-2
   (implies (equal (car (@cbrts-steps s n)) '@cbrts-ret)
            (equal (@cbrts-clock s) (nfix n)))
@@ -141,14 +141,14 @@
                            (s (@cbrts-steps s n))
                            (n (- (@cbrts-clock s) n)))
                          (:instance @cbrts-clock-2a)))))
-                
+
 
 (defrule kkk-ret
   (equal (@cbrts-clock (cons '@cbrts-ret tail)) 0)
   :use (:instance @cbrts-clock-2
          (s (cons '@cbrts-ret tail))
          (n 0))
-  :expand (@cbrts-steps (cons '@cbrts-ret tail) 0)) 
+  :expand (@cbrts-steps (cons '@cbrts-ret tail) 0))
 
 (defrule kkk-ret-1
   (implies (equal (car s) '@cbrts-ret)
@@ -203,7 +203,7 @@
 (defrule kkk-101
   (implies (equal (car s) '@cbrt-%101)
            (equal (@cbrt-clock s)
-                  (1+ (@cbrt-clock (list '@cbrt-ret ( 
+                  (1+ (@cbrt-clock (list '@cbrt-ret (
 
 (defrule kkk-%101
   (implies (equal (car s) '@cbrts-%101)

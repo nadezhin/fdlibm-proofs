@@ -7,327 +7,317 @@
     (make-class-decl
      "java/lang/StrictMath"
      '("java/lang/Object")
-     '()
-     '(
-      "E:D"
-      "PI:D"
-      "DEGREES_TO_RADIANS:D"
-      "RADIANS_TO_DEGREES:D"
-      "$assertionsDisabled:Z")
      '(nil
-       (methodref "java/lang/Object" "<init>:()V" 0)           ; 1
-       (class (ref -1) "java/lang/StrictMath")                 ; 2
-       (double #x3f91df46a2529d39) ; 0x1.1df46a2529d39p-6 0.017453292519943295 ; 3
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 1
+       (class (ref -1) "java/lang/StrictMath")                  ; 2
+       (double #x3f91df46a2529d39) ; 0x1.1df46a2529d39p-6 0.017453292519943295  ; 3
        nil
-       (double #x404ca5dc1a63c1f8) ; 0x1.ca5dc1a63c1f8p5 57.29577951308232     ; 5
+       (double #x404ca5dc1a63c1f8) ; 0x1.ca5dc1a63c1f8p5 57.29577951308232      ; 5
        nil
-       (methodref "java/lang/FdLibm$Cbrt" "compute:(D)D" 2)    ; 7
-       (double #x8000000000000000) ; -0x0.0p0 -0.0             ; 8
+       (methodref "java/lang/FdLibm$Cbrt" "compute:(D)D" 2)     ; 7
+       (double #x8000000000000000) ; -0x0.0p0 -0.0              ; 8
        nil
-       (methodref "java/lang/StrictMath" "floorOrCeil:(DDDD)D" 8)      ; 10
-       (double #xbff0000000000000) ; -0x1.0p0 -1.0             ; 11
+       (methodref "java/lang/StrictMath" "floorOrCeil:(DDDD)D" 8)       ; 10
+       (double #xbff0000000000000) ; -0x1.0p0 -1.0              ; 11
        nil
-       (methodref "java/lang/Math" "getExponent:(D)I" 2)       ; 13
-       (fieldref "java/lang/StrictMath" "$assertionsDisabled:Z" 1)     ; 14
-       (class (ref -1) "java/lang/AssertionError")             ; 15
-       (methodref "java/lang/AssertionError" "<init>:()V" 0)   ; 16
-       (methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2)     ; 17
-       (class (ref -1) "jdk/internal/math/DoubleConsts")       ; 18
-       (long 4503599627370495)                                 ; 19
+       (methodref "java/lang/Math" "getExponent:(D)I" 2)        ; 13
+       (fieldref "java/lang/StrictMath" "$assertionsDisabled:Z" 1)      ; 14
+       (class (ref -1) "java/lang/AssertionError")              ; 15
+       (methodref "java/lang/AssertionError" "<init>:()V" 0)    ; 16
+       (methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2)      ; 17
+       (class (ref -1) "jdk/internal/math/DoubleConsts")        ; 18
+       (long 4503599627370495)                                  ; 19
        nil
-       (long -1)                                               ; 21
+       (long -1)                                                ; 21
        nil
-       (methodref "java/lang/Double" "longBitsToDouble:(J)D" 2)        ; 23
-       (double #x4330000000000000) ; 0x1.0p52 4.503599627370496E15     ; 24
+       (methodref "java/lang/Double" "longBitsToDouble:(J)D" 2) ; 23
+       (double #x4330000000000000) ; 0x1.0p52 4.503599627370496E15      ; 24
        nil
-       (methodref "java/lang/Math" "copySign:(DD)D" 4)         ; 26
-       (methodref "java/lang/Math" "abs:(D)D" 2)               ; 27
-       (methodref "java/lang/FdLibm$Pow" "compute:(DD)D" 4)    ; 28
-       (methodref "java/lang/Math" "round:(F)I" 1)             ; 29
-       (methodref "java/lang/Math" "round:(D)J" 2)             ; 30
-       (fieldref "java/lang/StrictMath$RandomNumberGeneratorHolder" "randomNumberGenerator:Ljava/util/Random;" 1)      ; 31
-       (methodref "java/util/Random" "nextDouble:()D" 0)       ; 32
-       (methodref "java/lang/Math" "addExact:(II)I" 2)         ; 33
-       (methodref "java/lang/Math" "addExact:(JJ)J" 4)         ; 34
-       (methodref "java/lang/Math" "subtractExact:(II)I" 2)    ; 35
-       (methodref "java/lang/Math" "subtractExact:(JJ)J" 4)    ; 36
-       (methodref "java/lang/Math" "multiplyExact:(II)I" 2)    ; 37
-       (methodref "java/lang/Math" "multiplyExact:(JJ)J" 4)    ; 38
-       (methodref "java/lang/Math" "toIntExact:(J)I" 2)        ; 39
-       (methodref "java/lang/Math" "floorDiv:(II)I" 2)         ; 40
-       (methodref "java/lang/Math" "floorDiv:(JJ)J" 4)         ; 41
-       (methodref "java/lang/Math" "floorMod:(II)I" 2)         ; 42
-       (methodref "java/lang/Math" "floorMod:(JJ)J" 4)         ; 43
-       (methodref "java/lang/Math" "abs:(I)I" 1)               ; 44
-       (methodref "java/lang/Math" "abs:(J)J" 2)               ; 45
-       (methodref "java/lang/Math" "abs:(F)F" 1)               ; 46
-       (methodref "java/lang/Math" "max:(II)I" 2)              ; 47
-       (methodref "java/lang/Math" "max:(JJ)J" 4)              ; 48
-       (methodref "java/lang/Math" "max:(FF)F" 2)              ; 49
-       (methodref "java/lang/Math" "max:(DD)D" 4)              ; 50
-       (methodref "java/lang/Math" "min:(II)I" 2)              ; 51
-       (methodref "java/lang/Math" "min:(JJ)J" 4)              ; 52
-       (methodref "java/lang/Math" "min:(FF)F" 2)              ; 53
-       (methodref "java/lang/Math" "min:(DD)D" 4)              ; 54
-       (methodref "java/lang/Math" "ulp:(D)D" 2)               ; 55
-       (methodref "java/lang/Math" "ulp:(F)F" 1)               ; 56
-       (methodref "java/lang/Math" "signum:(D)D" 2)            ; 57
-       (methodref "java/lang/Math" "signum:(F)F" 1)            ; 58
-       (methodref "java/lang/FdLibm$Hypot" "compute:(DD)D" 4)  ; 59
-       (methodref "java/lang/Double" "isNaN:(D)Z" 2)           ; 60
-       (methodref "java/lang/Float" "isNaN:(F)Z" 1)            ; 61
-       (methodref "java/lang/Math" "copySign:(FF)F" 2)         ; 62
-       (methodref "java/lang/Math" "getExponent:(F)I" 1)       ; 63
-       (methodref "java/lang/Math" "nextAfter:(DD)D" 4)        ; 64
-       (methodref "java/lang/Math" "nextAfter:(FD)F" 3)        ; 65
-       (methodref "java/lang/Math" "nextUp:(D)D" 2)            ; 66
-       (methodref "java/lang/Math" "nextUp:(F)F" 1)            ; 67
-       (methodref "java/lang/Math" "nextDown:(D)D" 2)          ; 68
-       (methodref "java/lang/Math" "nextDown:(F)F" 1)          ; 69
-       (methodref "java/lang/Math" "scalb:(DI)D" 3)            ; 70
-       (methodref "java/lang/Math" "scalb:(FI)F" 2)            ; 71
-       (methodref "java/lang/Class" "desiredAssertionStatus:()Z" 0)    ; 72
-       (class (ref -1) "java/lang/Object")                     ; 73
-       (class (ref -1) "java/lang/StrictMath$RandomNumberGeneratorHolder")     ; 74
-       (utf8)                                                  ; 75
-       (utf8)                                                  ; 76
-       (utf8)                                                  ; 77
-       (utf8)                                                  ; 78
-       (utf8)                                                  ; 79
-       (double #x4005bf0a8b145769) ; 0x1.5bf0a8b145769p1 2.718281828459045     ; 80
+       (methodref "java/lang/Math" "copySign:(DD)D" 4)          ; 26
+       (methodref "java/lang/Math" "abs:(D)D" 2)                ; 27
+       (methodref "java/lang/FdLibm$Pow" "compute:(DD)D" 4)     ; 28
+       (methodref "java/lang/Math" "round:(F)I" 1)              ; 29
+       (methodref "java/lang/Math" "round:(D)J" 2)              ; 30
+       (fieldref "java/lang/StrictMath$RandomNumberGeneratorHolder" "randomNumberGenerator:Ljava/util/Random;" 1)       ; 31
+       (methodref "java/util/Random" "nextDouble:()D" 0)        ; 32
+       (methodref "java/lang/Math" "addExact:(II)I" 2)          ; 33
+       (methodref "java/lang/Math" "addExact:(JJ)J" 4)          ; 34
+       (methodref "java/lang/Math" "subtractExact:(II)I" 2)     ; 35
+       (methodref "java/lang/Math" "subtractExact:(JJ)J" 4)     ; 36
+       (methodref "java/lang/Math" "multiplyExact:(II)I" 2)     ; 37
+       (methodref "java/lang/Math" "multiplyExact:(JJ)J" 4)     ; 38
+       (methodref "java/lang/Math" "toIntExact:(J)I" 2)         ; 39
+       (methodref "java/lang/Math" "floorDiv:(II)I" 2)          ; 40
+       (methodref "java/lang/Math" "floorDiv:(JJ)J" 4)          ; 41
+       (methodref "java/lang/Math" "floorMod:(II)I" 2)          ; 42
+       (methodref "java/lang/Math" "floorMod:(JJ)J" 4)          ; 43
+       (methodref "java/lang/Math" "abs:(I)I" 1)                ; 44
+       (methodref "java/lang/Math" "abs:(J)J" 2)                ; 45
+       (methodref "java/lang/Math" "abs:(F)F" 1)                ; 46
+       (methodref "java/lang/Math" "max:(II)I" 2)               ; 47
+       (methodref "java/lang/Math" "max:(JJ)J" 4)               ; 48
+       (methodref "java/lang/Math" "max:(FF)F" 2)               ; 49
+       (methodref "java/lang/Math" "max:(DD)D" 4)               ; 50
+       (methodref "java/lang/Math" "min:(II)I" 2)               ; 51
+       (methodref "java/lang/Math" "min:(JJ)J" 4)               ; 52
+       (methodref "java/lang/Math" "min:(FF)F" 2)               ; 53
+       (methodref "java/lang/Math" "min:(DD)D" 4)               ; 54
+       (methodref "java/lang/Math" "ulp:(D)D" 2)                ; 55
+       (methodref "java/lang/Math" "ulp:(F)F" 1)                ; 56
+       (methodref "java/lang/Math" "signum:(D)D" 2)             ; 57
+       (methodref "java/lang/Math" "signum:(F)F" 1)             ; 58
+       (methodref "java/lang/FdLibm$Hypot" "compute:(DD)D" 4)   ; 59
+       (methodref "java/lang/Double" "isNaN:(D)Z" 2)            ; 60
+       (methodref "java/lang/Float" "isNaN:(F)Z" 1)             ; 61
+       (methodref "java/lang/Math" "copySign:(FF)F" 2)          ; 62
+       (methodref "java/lang/Math" "getExponent:(F)I" 1)        ; 63
+       (methodref "java/lang/Math" "nextAfter:(DD)D" 4)         ; 64
+       (methodref "java/lang/Math" "nextAfter:(FD)F" 3)         ; 65
+       (methodref "java/lang/Math" "nextUp:(D)D" 2)             ; 66
+       (methodref "java/lang/Math" "nextUp:(F)F" 1)             ; 67
+       (methodref "java/lang/Math" "nextDown:(D)D" 2)           ; 68
+       (methodref "java/lang/Math" "nextDown:(F)F" 1)           ; 69
+       (methodref "java/lang/Math" "scalb:(DI)D" 3)             ; 70
+       (methodref "java/lang/Math" "scalb:(FI)F" 2)             ; 71
+       (methodref "java/lang/Class" "desiredAssertionStatus:()Z" 0)     ; 72
+       (class (ref -1) "java/lang/Object")                      ; 73
+       (class (ref -1) "java/lang/StrictMath$RandomNumberGeneratorHolder")      ; 74
+       (utf8)                                                   ; 75
+       (utf8)                                                   ; 76
+       (utf8)                                                   ; 77
+       (utf8)                                                   ; 78
+       (utf8)                                                   ; 79
+       (double #x4005bf0a8b145769) ; 0x1.5bf0a8b145769p1 2.718281828459045      ; 80
        nil
-       (utf8)                                                  ; 82
-       (double #x400921fb54442d18) ; 0x1.921fb54442d18p1 3.141592653589793     ; 83
+       (utf8)                                                   ; 82
+       (double #x400921fb54442d18) ; 0x1.921fb54442d18p1 3.141592653589793      ; 83
        nil
-       (utf8)                                                  ; 85
-       (utf8)                                                  ; 86
-       (utf8)                                                  ; 87
-       (utf8)                                                  ; 88
-       (utf8)                                                  ; 89
-       (utf8)                                                  ; 90
-       (utf8)                                                  ; 91
-       (utf8)                                                  ; 92
-       (utf8)                                                  ; 93
-       (utf8)                                                  ; 94
-       (utf8)                                                  ; 95
-       (utf8)                                                  ; 96
-       (utf8)                                                  ; 97
-       (utf8)                                                  ; 98
-       (utf8)                                                  ; 99
-       (utf8)                                                  ; 100
-       (utf8)                                                  ; 101
-       (utf8)                                                  ; 102
-       (utf8)                                                  ; 103
-       (utf8)                                                  ; 104
-       (utf8)                                                  ; 105
-       (utf8)                                                  ; 106
-       (utf8)                                                  ; 107
-       (utf8)                                                  ; 108
-       (utf8)                                                  ; 109
-       (utf8)                                                  ; 110
-       (utf8)                                                  ; 111
-       (utf8)                                                  ; 112
-       (utf8)                                                  ; 113
-       (utf8)                                                  ; 114
-       (utf8)                                                  ; 115
-       (utf8)                                                  ; 116
-       (utf8)                                                  ; 117
-       (utf8)                                                  ; 118
-       (utf8)                                                  ; 119
-       (utf8)                                                  ; 120
-       (utf8)                                                  ; 121
-       (utf8)                                                  ; 122
-       (utf8)                                                  ; 123
-       (utf8)                                                  ; 124
-       (utf8)                                                  ; 125
-       (utf8)                                                  ; 126
-       (utf8)                                                  ; 127
-       (utf8)                                                  ; 128
-       (utf8)                                                  ; 129
-       (utf8)                                                  ; 130
-       (utf8)                                                  ; 131
-       (utf8)                                                  ; 132
-       (utf8)                                                  ; 133
-       (utf8)                                                  ; 134
-       (utf8)                                                  ; 135
-       (utf8)                                                  ; 136
-       (utf8)                                                  ; 137
-       (utf8)                                                  ; 138
-       (utf8)                                                  ; 139
-       (utf8)                                                  ; 140
-       (utf8)                                                  ; 141
-       (utf8)                                                  ; 142
-       (utf8)                                                  ; 143
-       (utf8)                                                  ; 144
-       (utf8)                                                  ; 145
-       (utf8)                                                  ; 146
-       (utf8)                                                  ; 147
-       (utf8)                                                  ; 148
-       (utf8)                                                  ; 149
-       (utf8)                                                  ; 150
-       (utf8)                                                  ; 151
-       (utf8)                                                  ; 152
-       (utf8)                                                  ; 153
-       (utf8)                                                  ; 154
-       (utf8)                                                  ; 155
-       (utf8)                                                  ; 156
-       (utf8)                                                  ; 157
-       (utf8)                                                  ; 158
-       (utf8)                                                  ; 159
-       (utf8)                                                  ; 160
-       (name-and-type "<init>:()V")                            ; 161
-       (utf8)                                                  ; 162
-       (class (ref -1) "java/lang/FdLibm$Cbrt")                ; 163
-       (name-and-type "compute:(D)D")                          ; 164
-       (name-and-type "floorOrCeil:(DDDD)D")                   ; 165
-       (class (ref -1) "java/lang/Math")                       ; 166
-       (name-and-type "getExponent:(D)I")                      ; 167
-       (name-and-type "$assertionsDisabled:Z")                 ; 168
-       (utf8)                                                  ; 169
-       (class (ref -1) "java/lang/Double")                     ; 170
-       (name-and-type "doubleToRawLongBits:(D)J")              ; 171
-       (utf8)                                                  ; 172
-       (name-and-type "longBitsToDouble:(J)D")                 ; 173
-       (name-and-type "copySign:(DD)D")                        ; 174
-       (name-and-type "abs:(D)D")                              ; 175
-       (class (ref -1) "java/lang/FdLibm$Pow")                 ; 176
-       (name-and-type "compute:(DD)D")                         ; 177
-       (name-and-type "round:(F)I")                            ; 178
-       (name-and-type "round:(D)J")                            ; 179
-       (name-and-type "randomNumberGenerator:Ljava/util/Random;")      ; 180
-       (class (ref -1) "java/util/Random")                     ; 181
-       (name-and-type "nextDouble:()D")                        ; 182
-       (name-and-type "addExact:(II)I")                        ; 183
-       (name-and-type "addExact:(JJ)J")                        ; 184
-       (name-and-type "subtractExact:(II)I")                   ; 185
-       (name-and-type "subtractExact:(JJ)J")                   ; 186
-       (name-and-type "multiplyExact:(II)I")                   ; 187
-       (name-and-type "multiplyExact:(JJ)J")                   ; 188
-       (name-and-type "toIntExact:(J)I")                       ; 189
-       (name-and-type "floorDiv:(II)I")                        ; 190
-       (name-and-type "floorDiv:(JJ)J")                        ; 191
-       (name-and-type "floorMod:(II)I")                        ; 192
-       (name-and-type "floorMod:(JJ)J")                        ; 193
-       (name-and-type "abs:(I)I")                              ; 194
-       (name-and-type "abs:(J)J")                              ; 195
-       (name-and-type "abs:(F)F")                              ; 196
-       (name-and-type "max:(II)I")                             ; 197
-       (name-and-type "max:(JJ)J")                             ; 198
-       (name-and-type "max:(FF)F")                             ; 199
-       (name-and-type "max:(DD)D")                             ; 200
-       (name-and-type "min:(II)I")                             ; 201
-       (name-and-type "min:(JJ)J")                             ; 202
-       (name-and-type "min:(FF)F")                             ; 203
-       (name-and-type "min:(DD)D")                             ; 204
-       (name-and-type "ulp:(D)D")                              ; 205
-       (name-and-type "ulp:(F)F")                              ; 206
-       (name-and-type "signum:(D)D")                           ; 207
-       (name-and-type "signum:(F)F")                           ; 208
-       (class (ref -1) "java/lang/FdLibm$Hypot")               ; 209
-       (name-and-type "isNaN:(D)Z")                            ; 210
-       (class (ref -1) "java/lang/Float")                      ; 211
-       (name-and-type "isNaN:(F)Z")                            ; 212
-       (name-and-type "copySign:(FF)F")                        ; 213
-       (name-and-type "getExponent:(F)I")                      ; 214
-       (name-and-type "nextAfter:(DD)D")                       ; 215
-       (name-and-type "nextAfter:(FD)F")                       ; 216
-       (name-and-type "nextUp:(D)D")                           ; 217
-       (name-and-type "nextUp:(F)F")                           ; 218
-       (name-and-type "nextDown:(D)D")                         ; 219
-       (name-and-type "nextDown:(F)F")                         ; 220
-       (name-and-type "scalb:(DI)D")                           ; 221
-       (name-and-type "scalb:(FI)F")                           ; 222
-       (class (ref -1) "java/lang/Class")                      ; 223
-       (name-and-type "desiredAssertionStatus:()Z")            ; 224
-       (utf8)                                                  ; 225
-       (utf8)                                                  ; 226
-       (class (ref -1) "java/lang/FdLibm")                     ; 227
-       (utf8)                                                  ; 228
-       (utf8)                                                  ; 229
-       (utf8)                                                  ; 230
-       (utf8)                                                  ; 231
-       (utf8)                                                  ; 232
-       (utf8)                                                  ; 233
-       (utf8)                                                  ; 234
-       (utf8)                                                  ; 235
-       (utf8)                                                  ; 236
-       (utf8)                                                  ; 237
-       (utf8)                                                  ; 238
-       (utf8)                                                  ; 239
-       (utf8)                                                  ; 240
-       (utf8)                                                  ; 241
-       (utf8)                                                  ; 242
-       (utf8)                                                  ; 243
-       (utf8)                                                  ; 244
-       (utf8)                                                  ; 245
-       (utf8)                                                  ; 246
-       (utf8)                                                  ; 247
-       (utf8)                                                  ; 248
-       (utf8)                                                  ; 249
-       (utf8)                                                  ; 250
-       (utf8)                                                  ; 251
+       (utf8)                                                   ; 85
+       (utf8)                                                   ; 86
+       (utf8)                                                   ; 87
+       (utf8)                                                   ; 88
+       (utf8)                                                   ; 89
+       (utf8)                                                   ; 90
+       (utf8)                                                   ; 91
+       (utf8)                                                   ; 92
+       (utf8)                                                   ; 93
+       (utf8)                                                   ; 94
+       (utf8)                                                   ; 95
+       (utf8)                                                   ; 96
+       (utf8)                                                   ; 97
+       (utf8)                                                   ; 98
+       (utf8)                                                   ; 99
+       (utf8)                                                   ; 100
+       (utf8)                                                   ; 101
+       (utf8)                                                   ; 102
+       (utf8)                                                   ; 103
+       (utf8)                                                   ; 104
+       (utf8)                                                   ; 105
+       (utf8)                                                   ; 106
+       (utf8)                                                   ; 107
+       (utf8)                                                   ; 108
+       (utf8)                                                   ; 109
+       (utf8)                                                   ; 110
+       (utf8)                                                   ; 111
+       (utf8)                                                   ; 112
+       (utf8)                                                   ; 113
+       (utf8)                                                   ; 114
+       (utf8)                                                   ; 115
+       (utf8)                                                   ; 116
+       (utf8)                                                   ; 117
+       (utf8)                                                   ; 118
+       (utf8)                                                   ; 119
+       (utf8)                                                   ; 120
+       (utf8)                                                   ; 121
+       (utf8)                                                   ; 122
+       (utf8)                                                   ; 123
+       (utf8)                                                   ; 124
+       (utf8)                                                   ; 125
+       (utf8)                                                   ; 126
+       (utf8)                                                   ; 127
+       (utf8)                                                   ; 128
+       (utf8)                                                   ; 129
+       (utf8)                                                   ; 130
+       (utf8)                                                   ; 131
+       (utf8)                                                   ; 132
+       (utf8)                                                   ; 133
+       (utf8)                                                   ; 134
+       (utf8)                                                   ; 135
+       (utf8)                                                   ; 136
+       (utf8)                                                   ; 137
+       (utf8)                                                   ; 138
+       (utf8)                                                   ; 139
+       (utf8)                                                   ; 140
+       (utf8)                                                   ; 141
+       (utf8)                                                   ; 142
+       (utf8)                                                   ; 143
+       (utf8)                                                   ; 144
+       (utf8)                                                   ; 145
+       (utf8)                                                   ; 146
+       (utf8)                                                   ; 147
+       (utf8)                                                   ; 148
+       (utf8)                                                   ; 149
+       (utf8)                                                   ; 150
+       (utf8)                                                   ; 151
+       (utf8)                                                   ; 152
+       (utf8)                                                   ; 153
+       (utf8)                                                   ; 154
+       (utf8)                                                   ; 155
+       (utf8)                                                   ; 156
+       (utf8)                                                   ; 157
+       (utf8)                                                   ; 158
+       (utf8)                                                   ; 159
+       (utf8)                                                   ; 160
+       (name-and-type "<init>:()V")                             ; 161
+       (utf8)                                                   ; 162
+       (class (ref -1) "java/lang/FdLibm$Cbrt")                 ; 163
+       (name-and-type "compute:(D)D")                           ; 164
+       (name-and-type "floorOrCeil:(DDDD)D")                    ; 165
+       (class (ref -1) "java/lang/Math")                        ; 166
+       (name-and-type "getExponent:(D)I")                       ; 167
+       (name-and-type "$assertionsDisabled:Z")                  ; 168
+       (utf8)                                                   ; 169
+       (class (ref -1) "java/lang/Double")                      ; 170
+       (name-and-type "doubleToRawLongBits:(D)J")               ; 171
+       (utf8)                                                   ; 172
+       (name-and-type "longBitsToDouble:(J)D")                  ; 173
+       (name-and-type "copySign:(DD)D")                         ; 174
+       (name-and-type "abs:(D)D")                               ; 175
+       (class (ref -1) "java/lang/FdLibm$Pow")                  ; 176
+       (name-and-type "compute:(DD)D")                          ; 177
+       (name-and-type "round:(F)I")                             ; 178
+       (name-and-type "round:(D)J")                             ; 179
+       (name-and-type "randomNumberGenerator:Ljava/util/Random;")       ; 180
+       (class (ref -1) "java/util/Random")                      ; 181
+       (name-and-type "nextDouble:()D")                         ; 182
+       (name-and-type "addExact:(II)I")                         ; 183
+       (name-and-type "addExact:(JJ)J")                         ; 184
+       (name-and-type "subtractExact:(II)I")                    ; 185
+       (name-and-type "subtractExact:(JJ)J")                    ; 186
+       (name-and-type "multiplyExact:(II)I")                    ; 187
+       (name-and-type "multiplyExact:(JJ)J")                    ; 188
+       (name-and-type "toIntExact:(J)I")                        ; 189
+       (name-and-type "floorDiv:(II)I")                         ; 190
+       (name-and-type "floorDiv:(JJ)J")                         ; 191
+       (name-and-type "floorMod:(II)I")                         ; 192
+       (name-and-type "floorMod:(JJ)J")                         ; 193
+       (name-and-type "abs:(I)I")                               ; 194
+       (name-and-type "abs:(J)J")                               ; 195
+       (name-and-type "abs:(F)F")                               ; 196
+       (name-and-type "max:(II)I")                              ; 197
+       (name-and-type "max:(JJ)J")                              ; 198
+       (name-and-type "max:(FF)F")                              ; 199
+       (name-and-type "max:(DD)D")                              ; 200
+       (name-and-type "min:(II)I")                              ; 201
+       (name-and-type "min:(JJ)J")                              ; 202
+       (name-and-type "min:(FF)F")                              ; 203
+       (name-and-type "min:(DD)D")                              ; 204
+       (name-and-type "ulp:(D)D")                               ; 205
+       (name-and-type "ulp:(F)F")                               ; 206
+       (name-and-type "signum:(D)D")                            ; 207
+       (name-and-type "signum:(F)F")                            ; 208
+       (class (ref -1) "java/lang/FdLibm$Hypot")                ; 209
+       (name-and-type "isNaN:(D)Z")                             ; 210
+       (class (ref -1) "java/lang/Float")                       ; 211
+       (name-and-type "isNaN:(F)Z")                             ; 212
+       (name-and-type "copySign:(FF)F")                         ; 213
+       (name-and-type "getExponent:(F)I")                       ; 214
+       (name-and-type "nextAfter:(DD)D")                        ; 215
+       (name-and-type "nextAfter:(FD)F")                        ; 216
+       (name-and-type "nextUp:(D)D")                            ; 217
+       (name-and-type "nextUp:(F)F")                            ; 218
+       (name-and-type "nextDown:(D)D")                          ; 219
+       (name-and-type "nextDown:(F)F")                          ; 220
+       (name-and-type "scalb:(DI)D")                            ; 221
+       (name-and-type "scalb:(FI)F")                            ; 222
+       (class (ref -1) "java/lang/Class")                       ; 223
+       (name-and-type "desiredAssertionStatus:()Z")             ; 224
+       (utf8)                                                   ; 225
+       (utf8)                                                   ; 226
+       (class (ref -1) "java/lang/FdLibm")                      ; 227
+       (utf8)                                                   ; 228
+       (utf8)                                                   ; 229
+       (utf8)                                                   ; 230
+       (utf8)                                                   ; 231
+       (utf8)                                                   ; 232
+       (utf8)                                                   ; 233
+       (utf8)                                                   ; 234
+       (utf8)                                                   ; 235
+       (utf8)                                                   ; 236
+       (utf8)                                                   ; 237
+       (utf8)                                                   ; 238
+       (utf8)                                                   ; 239
+       (utf8)                                                   ; 240
+       (utf8)                                                   ; 241
+       (utf8)                                                   ; 242
+       (utf8)                                                   ; 243
+       (utf8)                                                   ; 244
+       (utf8)                                                   ; 245
+       (utf8)                                                   ; 246
+       (utf8)                                                   ; 247
+       (utf8)                                                   ; 248
+       (utf8)                                                   ; 249
+       (utf8)                                                   ; 250
+       (utf8)                                                   ; 251
+      )
+     #x00000031                                                 ; PUBLIC FINAL SUPER
+     '(
+       ("E:D" #x00000019)                                       ; PUBLIC STATIC FINAL
+       ("PI:D" #x00000019)                                      ; PUBLIC STATIC FINAL
+       ("DEGREES_TO_RADIANS:D" #x0000001a)                      ; PRIVATE STATIC FINAL
+       ("RADIANS_TO_DEGREES:D" #x0000001a)                      ; PRIVATE STATIC FINAL
+       ("$assertionsDisabled:Z" #x00001018)                     ; STATIC FINAL SYNTHETIC
       )
      (list
-      '("<init>:()V" nil
+      '("<init>:()V" #x00000002                                 ; PRIVATE
         ; line_number #87
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("sin:(D)D" nil
-        ; native method
+      '("sin:(D)D" #x00000109                                   ; PUBLIC STATIC NATIVE
        )
-      '("cos:(D)D" nil
-        ; native method
+      '("cos:(D)D" #x00000109                                   ; PUBLIC STATIC NATIVE
        )
-      '("tan:(D)D" nil
-        ; native method
+      '("tan:(D)D" #x00000109                                   ; PUBLIC STATIC NATIVE
        )
-      '("asin:(D)D" nil
-        ; native method
+      '("asin:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("acos:(D)D" nil
-        ; native method
+      '("acos:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("atan:(D)D" nil
-        ; native method
+      '("atan:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("toRadians:(D)D" nil
+      '("toRadians:(D)D" #x00000809                             ; PUBLIC STATIC STRICT
         ; line_number #197
         (dload_0)                                               ; 0
         (ldc2_w 3)                                              ; 1 0.017453292519943295d
         (dmul)                                                  ; 4
         (dreturn)                                               ; 5
        )
-      '("toDegrees:(D)D" nil
+      '("toDegrees:(D)D" #x00000809                             ; PUBLIC STATIC STRICT
         ; line_number #214
         (dload_0)                                               ; 0
         (ldc2_w 5)                                              ; 1 57.29577951308232d
         (dmul)                                                  ; 4
         (dreturn)                                               ; 5
        )
-      '("exp:(D)D" nil
-        ; native method
+      '("exp:(D)D" #x00000109                                   ; PUBLIC STATIC NATIVE
        )
-      '("log:(D)D" nil
-        ; native method
+      '("log:(D)D" #x00000109                                   ; PUBLIC STATIC NATIVE
        )
-      '("log10:(D)D" nil
-        ; native method
+      '("log10:(D)D" #x00000109                                 ; PUBLIC STATIC NATIVE
        )
-      '("sqrt:(D)D" nil
-        ; native method
+      '("sqrt:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("cbrt:(D)D" nil
+      '("cbrt:(D)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #311
         (dload_0)                                               ; 0
         (invokestatic 7)                                        ; 1 java.lang.FdLibm$Cbrt.compute:(D)D
         (dreturn)                                               ; 4
        )
-      '("IEEEremainder:(DD)D" nil
-        ; native method
+      '("IEEEremainder:(DD)D" #x00000109                        ; PUBLIC STATIC NATIVE
        )
-      '("ceil:(D)D" nil
+      '("ceil:(D)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #357
         (dload_0)                                               ; 0
         (ldc2_w 8)                                              ; 1 -0.0d
@@ -336,7 +326,7 @@
         (invokestatic 10)                                       ; 6 java.lang.StrictMath.floorOrCeil:(DDDD)D
         (dreturn)                                               ; 9
        )
-      '("floor:(D)D" nil
+      '("floor:(D)D" #x00000009                                 ; PUBLIC STATIC
         ; line_number #376
         (dload_0)                                               ; 0
         (ldc2_w 11)                                             ; 1 -1.0d
@@ -345,7 +335,7 @@
         (invokestatic 10)                                       ; 8 java.lang.StrictMath.floorOrCeil:(DDDD)D
         (dreturn)                                               ; 11
        )
-      '("floorOrCeil:(DDDD)D" nil
+      '("floorOrCeil:(DDDD)D" #x0000000a                        ; PRIVATE STATIC
         ; line_number #391
         (dload_0)                                               ; 0
         (invokestatic 13)                                       ; 1 java.lang.Math.getExponent:(D)I
@@ -432,7 +422,7 @@
         (dload 13)                                              ; 125
         (dreturn)                                               ; 127
        )
-      '("rint:(D)D" nil
+      '("rint:(D)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #466
         (ldc2_w 24)                                             ; 0 4.503599627370496E15d
         (dstore_2)                                              ; 3
@@ -463,237 +453,231 @@
         (dmul)                                                  ; 31
         (dreturn)                                               ; 32
        )
-      '("atan2:(DD)D" nil
-        ; native method
+      '("atan2:(DD)D" #x00000109                                ; PUBLIC STATIC NATIVE
        )
-      '("pow:(DD)D" nil
+      '("pow:(DD)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #649
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 28)                                       ; 2 java.lang.FdLibm$Pow.compute:(DD)D
         (dreturn)                                               ; 5
        )
-      '("round:(F)I" nil
+      '("round:(F)I" #x00000009                                 ; PUBLIC STATIC
         ; line_number #672
         (fload_0)                                               ; 0
         (invokestatic 29)                                       ; 1 java.lang.Math.round:(F)I
         (ireturn)                                               ; 4
        )
-      '("round:(D)J" nil
+      '("round:(D)J" #x00000009                                 ; PUBLIC STATIC
         ; line_number #696
         (dload_0)                                               ; 0
         (invokestatic 30)                                       ; 1 java.lang.Math.round:(D)J
         (lreturn)                                               ; 4
        )
-      '("random:()D" nil
+      '("random:()D" #x00000009                                 ; PUBLIC STATIC
         ; line_number #727
         (getstatic 31)                                          ; 0 java.lang.StrictMath$RandomNumberGeneratorHolder.randomNumberGenerator:Ljava/util/Random;
         (invokevirtual 32)                                      ; 3 java.util.Random.nextDouble:()D
         (dreturn)                                               ; 6
        )
-      '("addExact:(II)I" nil
+      '("addExact:(II)I" #x00000009                             ; PUBLIC STATIC
         ; line_number #742
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 33)                                       ; 2 java.lang.Math.addExact:(II)I
         (ireturn)                                               ; 5
        )
-      '("addExact:(JJ)J" nil
+      '("addExact:(JJ)J" #x00000009                             ; PUBLIC STATIC
         ; line_number #757
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 34)                                       ; 2 java.lang.Math.addExact:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("subtractExact:(II)I" nil
+      '("subtractExact:(II)I" #x00000009                        ; PUBLIC STATIC
         ; line_number #772
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 35)                                       ; 2 java.lang.Math.subtractExact:(II)I
         (ireturn)                                               ; 5
        )
-      '("subtractExact:(JJ)J" nil
+      '("subtractExact:(JJ)J" #x00000009                        ; PUBLIC STATIC
         ; line_number #787
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 36)                                       ; 2 java.lang.Math.subtractExact:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("multiplyExact:(II)I" nil
+      '("multiplyExact:(II)I" #x00000009                        ; PUBLIC STATIC
         ; line_number #802
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 37)                                       ; 2 java.lang.Math.multiplyExact:(II)I
         (ireturn)                                               ; 5
        )
-      '("multiplyExact:(JJ)J" nil
+      '("multiplyExact:(JJ)J" #x00000009                        ; PUBLIC STATIC
         ; line_number #817
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 38)                                       ; 2 java.lang.Math.multiplyExact:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("toIntExact:(J)I" nil
+      '("toIntExact:(J)I" #x00000009                            ; PUBLIC STATIC
         ; line_number #831
         (lload_0)                                               ; 0
         (invokestatic 39)                                       ; 1 java.lang.Math.toIntExact:(J)I
         (ireturn)                                               ; 4
        )
-      '("floorDiv:(II)I" nil
+      '("floorDiv:(II)I" #x00000009                             ; PUBLIC STATIC
         ; line_number #855
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 40)                                       ; 2 java.lang.Math.floorDiv:(II)I
         (ireturn)                                               ; 5
        )
-      '("floorDiv:(JJ)J" nil
+      '("floorDiv:(JJ)J" #x00000009                             ; PUBLIC STATIC
         ; line_number #879
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 41)                                       ; 2 java.lang.Math.floorDiv:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("floorMod:(II)I" nil
+      '("floorMod:(II)I" #x00000009                             ; PUBLIC STATIC
         ; line_number #906
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 42)                                       ; 2 java.lang.Math.floorMod:(II)I
         (ireturn)                                               ; 5
        )
-      '("floorMod:(JJ)J" nil
+      '("floorMod:(JJ)J" #x00000009                             ; PUBLIC STATIC
         ; line_number #932
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 43)                                       ; 2 java.lang.Math.floorMod:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("abs:(I)I" nil
+      '("abs:(I)I" #x00000009                                   ; PUBLIC STATIC
         ; line_number #949
         (iload_0)                                               ; 0
         (invokestatic 44)                                       ; 1 java.lang.Math.abs:(I)I
         (ireturn)                                               ; 4
        )
-      '("abs:(J)J" nil
+      '("abs:(J)J" #x00000009                                   ; PUBLIC STATIC
         ; line_number #966
         (lload_0)                                               ; 0
         (invokestatic 45)                                       ; 1 java.lang.Math.abs:(J)J
         (lreturn)                                               ; 4
        )
-      '("abs:(F)F" nil
+      '("abs:(F)F" #x00000009                                   ; PUBLIC STATIC
         ; line_number #985
         (fload_0)                                               ; 0
         (invokestatic 46)                                       ; 1 java.lang.Math.abs:(F)F
         (freturn)                                               ; 4
        )
-      '("abs:(D)D" nil
+      '("abs:(D)D" #x00000009                                   ; PUBLIC STATIC
         ; line_number #1004
         (dload_0)                                               ; 0
         (invokestatic 27)                                       ; 1 java.lang.Math.abs:(D)D
         (dreturn)                                               ; 4
        )
-      '("max:(II)I" nil
+      '("max:(II)I" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1019
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 47)                                       ; 2 java.lang.Math.max:(II)I
         (ireturn)                                               ; 5
        )
-      '("max:(JJ)J" nil
+      '("max:(JJ)J" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1033
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 48)                                       ; 2 java.lang.Math.max:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("max:(FF)F" nil
+      '("max:(FF)F" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1051
         (fload_0)                                               ; 0
         (fload_1)                                               ; 1
         (invokestatic 49)                                       ; 2 java.lang.Math.max:(FF)F
         (freturn)                                               ; 5
        )
-      '("max:(DD)D" nil
+      '("max:(DD)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1069
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 50)                                       ; 2 java.lang.Math.max:(DD)D
         (dreturn)                                               ; 5
        )
-      '("min:(II)I" nil
+      '("min:(II)I" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1084
         (iload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 51)                                       ; 2 java.lang.Math.min:(II)I
         (ireturn)                                               ; 5
        )
-      '("min:(JJ)J" nil
+      '("min:(JJ)J" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1098
         (lload_0)                                               ; 0
         (lload_2)                                               ; 1
         (invokestatic 52)                                       ; 2 java.lang.Math.min:(JJ)J
         (lreturn)                                               ; 5
        )
-      '("min:(FF)F" nil
+      '("min:(FF)F" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1116
         (fload_0)                                               ; 0
         (fload_1)                                               ; 1
         (invokestatic 53)                                       ; 2 java.lang.Math.min:(FF)F
         (freturn)                                               ; 5
        )
-      '("min:(DD)D" nil
+      '("min:(DD)D" #x00000009                                  ; PUBLIC STATIC
         ; line_number #1134
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 54)                                       ; 2 java.lang.Math.min:(DD)D
         (dreturn)                                               ; 5
        )
-      '("ulp:(D)D" nil
+      '("ulp:(D)D" #x00000009                                   ; PUBLIC STATIC
         ; line_number #1161
         (dload_0)                                               ; 0
         (invokestatic 55)                                       ; 1 java.lang.Math.ulp:(D)D
         (dreturn)                                               ; 4
        )
-      '("ulp:(F)F" nil
+      '("ulp:(F)F" #x00000009                                   ; PUBLIC STATIC
         ; line_number #1188
         (fload_0)                                               ; 0
         (invokestatic 56)                                       ; 1 java.lang.Math.ulp:(F)F
         (freturn)                                               ; 4
        )
-      '("signum:(D)D" nil
+      '("signum:(D)D" #x00000009                                ; PUBLIC STATIC
         ; line_number #1209
         (dload_0)                                               ; 0
         (invokestatic 57)                                       ; 1 java.lang.Math.signum:(D)D
         (dreturn)                                               ; 4
        )
-      '("signum:(F)F" nil
+      '("signum:(F)F" #x00000009                                ; PUBLIC STATIC
         ; line_number #1230
         (fload_0)                                               ; 0
         (invokestatic 58)                                       ; 1 java.lang.Math.signum:(F)F
         (freturn)                                               ; 4
        )
-      '("sinh:(D)D" nil
-        ; native method
+      '("sinh:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("cosh:(D)D" nil
-        ; native method
+      '("cosh:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("tanh:(D)D" nil
-        ; native method
+      '("tanh:(D)D" #x00000109                                  ; PUBLIC STATIC NATIVE
        )
-      '("hypot:(DD)D" nil
+      '("hypot:(DD)D" #x00000009                                ; PUBLIC STATIC
         ; line_number #1335
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 59)                                       ; 2 java.lang.FdLibm$Hypot.compute:(DD)D
         (dreturn)                                               ; 5
        )
-      '("expm1:(D)D" nil
-        ; native method
+      '("expm1:(D)D" #x00000109                                 ; PUBLIC STATIC NATIVE
        )
-      '("log1p:(D)D" nil
-        ; native method
+      '("log1p:(D)D" #x00000109                                 ; PUBLIC STATIC NATIVE
        )
-      '("copySign:(DD)D" nil
+      '("copySign:(DD)D" #x00000009                             ; PUBLIC STATIC
         ; line_number #1410
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
@@ -705,7 +689,7 @@
         (invokestatic 26)                                       ; 13 java.lang.Math.copySign:(DD)D
         (dreturn)                                               ; 16
        )
-      '("copySign:(FF)F" nil
+      '("copySign:(FF)F" #x00000009                             ; PUBLIC STATIC
         ; line_number #1426
         (fload_0)                                               ; 0
         (fload_1)                                               ; 1
@@ -717,71 +701,71 @@
         (invokestatic 62)                                       ; 13 java.lang.Math.copySign:(FF)F
         (freturn)                                               ; 16
        )
-      '("getExponent:(F)I" nil
+      '("getExponent:(F)I" #x00000009                           ; PUBLIC STATIC
         ; line_number #1443
         (fload_0)                                               ; 0
         (invokestatic 63)                                       ; 1 java.lang.Math.getExponent:(F)I
         (ireturn)                                               ; 4
        )
-      '("getExponent:(D)I" nil
+      '("getExponent:(D)I" #x00000009                           ; PUBLIC STATIC
         ; line_number #1461
         (dload_0)                                               ; 0
         (invokestatic 13)                                       ; 1 java.lang.Math.getExponent:(D)I
         (ireturn)                                               ; 4
        )
-      '("nextAfter:(DD)D" nil
+      '("nextAfter:(DD)D" #x00000009                            ; PUBLIC STATIC
         ; line_number #1504
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (invokestatic 64)                                       ; 2 java.lang.Math.nextAfter:(DD)D
         (dreturn)                                               ; 5
        )
-      '("nextAfter:(FD)F" nil
+      '("nextAfter:(FD)F" #x00000009                            ; PUBLIC STATIC
         ; line_number #1546
         (fload_0)                                               ; 0
         (dload_1)                                               ; 1
         (invokestatic 65)                                       ; 2 java.lang.Math.nextAfter:(FD)F
         (freturn)                                               ; 5
        )
-      '("nextUp:(D)D" nil
+      '("nextUp:(D)D" #x00000009                                ; PUBLIC STATIC
         ; line_number #1575
         (dload_0)                                               ; 0
         (invokestatic 66)                                       ; 1 java.lang.Math.nextUp:(D)D
         (dreturn)                                               ; 4
        )
-      '("nextUp:(F)F" nil
+      '("nextUp:(F)F" #x00000009                                ; PUBLIC STATIC
         ; line_number #1604
         (fload_0)                                               ; 0
         (invokestatic 67)                                       ; 1 java.lang.Math.nextUp:(F)F
         (freturn)                                               ; 4
        )
-      '("nextDown:(D)D" nil
+      '("nextDown:(D)D" #x00000009                              ; PUBLIC STATIC
         ; line_number #1633
         (dload_0)                                               ; 0
         (invokestatic 68)                                       ; 1 java.lang.Math.nextDown:(D)D
         (dreturn)                                               ; 4
        )
-      '("nextDown:(F)F" nil
+      '("nextDown:(F)F" #x00000009                              ; PUBLIC STATIC
         ; line_number #1662
         (fload_0)                                               ; 0
         (invokestatic 69)                                       ; 1 java.lang.Math.nextDown:(F)F
         (freturn)                                               ; 4
        )
-      '("scalb:(DI)D" nil
+      '("scalb:(DI)D" #x00000009                                ; PUBLIC STATIC
         ; line_number #1696
         (dload_0)                                               ; 0
         (iload_2)                                               ; 1
         (invokestatic 70)                                       ; 2 java.lang.Math.scalb:(DI)D
         (dreturn)                                               ; 5
        )
-      '("scalb:(FI)F" nil
+      '("scalb:(FI)F" #x00000009                                ; PUBLIC STATIC
         ; line_number #1730
         (fload_0)                                               ; 0
         (iload_1)                                               ; 1
         (invokestatic 71)                                       ; 2 java.lang.Math.scalb:(FI)F
         (freturn)                                               ; 5
        )
-      '("<clinit>:()V" nil
+      '("<clinit>:()V" #x00000008                               ; STATIC
         ; line_number #82
         (ldc 2)                                                 ; 0 class java.lang.StrictMath
         (invokevirtual 72)                                      ; 2 java.lang.Class.desiredAssertionStatus:()Z
