@@ -26,10 +26,10 @@
        (methodref "java/lang/Math" "abs:(D)D" 2)                ; 14
        (string (ref -1) ; "0.0p0"
           48 46 48 112 48)                                      ; 15
-       (class (ref -1) "jdk/internal/math/DoubleConsts")        ; 16
-       (double #x0010000000000000) ; 0x1.0p-1022 2.2250738585072014E-308        ; 17
+       (double #x0010000000000000) ; 0x1.0p-1022 2.2250738585072014E-308        ; 16
        nil
-       (methodref "java/lang/Double" "doubleToLongBits:(D)J" 2) ; 19
+       (methodref "java/lang/Double" "doubleToLongBits:(D)J" 2) ; 18
+       (class (ref -1) "jdk/internal/math/DoubleConsts")        ; 19
        (long 4503599627370495)                                  ; 20
        nil
        (long 1152921504606846976)                               ; 22
@@ -186,8 +186,8 @@
        (utf8)                                                   ; 166
        (name-and-type "abs:(D)D")                               ; 167
        (utf8)                                                   ; 168
-       (utf8)                                                   ; 169
-       (name-and-type "doubleToLongBits:(D)J")                  ; 170
+       (name-and-type "doubleToLongBits:(D)J")                  ; 169
+       (utf8)                                                   ; 170
        (utf8)                                                   ; 171
        (utf8)                                                   ; 172
        (class (ref -1) "java/lang/Long")                        ; 173
@@ -317,7 +317,7 @@
         (goto 115)                                              ; 66
         ; line_number #304
         (dload_0)                                               ; 69
-        (ldc2_w 17)                                             ; 70 2.2250738585072014E-308d
+        (ldc2_w 16)                                             ; 70 2.2250738585072014E-308d
         (dcmpg)                                                 ; 73
         (ifge 7)                                                ; 74
         (iconst_1)                                              ; 77
@@ -326,7 +326,7 @@
         (istore_3)                                              ; 82
         ; line_number #309
         (dload_0)                                               ; 83
-        (invokestatic 19)                                       ; 84 java.lang.Double.doubleToLongBits:(D)J
+        (invokestatic 18)                                       ; 84 java.lang.Double.doubleToLongBits:(D)J
         (ldc2_w 20)                                             ; 87 4503599627370495l
         (land)                                                  ; 90
         (ldc2_w 22)                                             ; 91 1152921504606846976l
@@ -546,7 +546,7 @@
       '("hashCode:(D)I" #x00000009                              ; PUBLIC STATIC
         ; line_number #756
         (dload_0)                                               ; 0
-        (invokestatic 19)                                       ; 1 java.lang.Double.doubleToLongBits:(D)J
+        (invokestatic 18)                                       ; 1 java.lang.Double.doubleToLongBits:(D)J
         (lstore_2)                                              ; 4
         ; line_number #757
         (lload_2)                                               ; 5
@@ -566,11 +566,11 @@
         (checkcast 1)                                           ; 8 class java.lang.Double
         (getfield 48)                                           ; 11 java.lang.Double.value:D
         ; line_number #801
-        (invokestatic 19)                                       ; 14 java.lang.Double.doubleToLongBits:(D)J
+        (invokestatic 18)                                       ; 14 java.lang.Double.doubleToLongBits:(D)J
         (aload_0)                                               ; 17
         (getfield 48)                                           ; 18 java.lang.Double.value:D
         ; line_number #802
-        (invokestatic 19)                                       ; 21 java.lang.Double.doubleToLongBits:(D)J
+        (invokestatic 18)                                       ; 21 java.lang.Double.doubleToLongBits:(D)J
         (lcmp)                                                  ; 24
         (ifne 7)                                                ; 25
         (iconst_1)                                              ; 28
@@ -624,11 +624,11 @@
         (ireturn)                                               ; 15
         ; line_number #1007
         (dload_0)                                               ; 16
-        (invokestatic 19)                                       ; 17 java.lang.Double.doubleToLongBits:(D)J
+        (invokestatic 18)                                       ; 17 java.lang.Double.doubleToLongBits:(D)J
         (lstore 4)                                              ; 20
         ; line_number #1008
         (dload_2)                                               ; 22
-        (invokestatic 19)                                       ; 23 java.lang.Double.doubleToLongBits:(D)J
+        (invokestatic 18)                                       ; 23 java.lang.Double.doubleToLongBits:(D)J
         (lstore 6)                                              ; 26
         ; line_number #1010
         (lload 4)                                               ; 28

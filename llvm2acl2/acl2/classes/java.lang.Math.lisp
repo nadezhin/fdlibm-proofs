@@ -83,24 +83,24 @@
        (methodref "java/lang/Double" "longBitsToDouble:(J)D" 2) ; 71
        (methodref "java/lang/Math" "getExponent:(F)I" 1)        ; 72
        (methodref "java/lang/Math" "abs:(F)F" 1)                ; 73
-       (float #x00000001) ; 0x0.000002p-126 1.4E-45             ; 74
-       (methodref "java/lang/Math" "powerOfTwoF:(I)F" 1)        ; 75
-       (methodref "java/lang/Float" "intBitsToFloat:(I)F" 1)    ; 76
-       (methodref "java/lang/Double" "isNaN:(D)Z" 2)            ; 77
-       (methodref "java/lang/Math" "copySign:(DD)D" 4)          ; 78
-       (methodref "java/lang/Float" "isNaN:(F)Z" 1)             ; 79
-       (methodref "java/lang/Math" "copySign:(FF)F" 2)          ; 80
-       (methodref "java/lang/StrictMath" "sinh:(D)D" 2)         ; 81
-       (methodref "java/lang/StrictMath" "cosh:(D)D" 2)         ; 82
-       (methodref "java/lang/StrictMath" "tanh:(D)D" 2)         ; 83
-       (methodref "java/lang/StrictMath" "hypot:(DD)D" 4)       ; 84
-       (methodref "java/lang/StrictMath" "expm1:(D)D" 2)        ; 85
-       (methodref "java/lang/StrictMath" "log1p:(D)D" 2)        ; 86
-       (long 1023)                                              ; 87
+       (class (ref -1) "java/lang/Float")                       ; 74
+       (float #x00000001) ; 0x0.000002p-126 1.4E-45             ; 75
+       (methodref "java/lang/Math" "powerOfTwoF:(I)F" 1)        ; 76
+       (methodref "java/lang/Float" "intBitsToFloat:(I)F" 1)    ; 77
+       (methodref "java/lang/Double" "isNaN:(D)Z" 2)            ; 78
+       (methodref "java/lang/Math" "copySign:(DD)D" 4)          ; 79
+       (methodref "java/lang/Float" "isNaN:(F)Z" 1)             ; 80
+       (methodref "java/lang/Math" "copySign:(FF)F" 2)          ; 81
+       (methodref "java/lang/StrictMath" "sinh:(D)D" 2)         ; 82
+       (methodref "java/lang/StrictMath" "cosh:(D)D" 2)         ; 83
+       (methodref "java/lang/StrictMath" "tanh:(D)D" 2)         ; 84
+       (methodref "java/lang/StrictMath" "hypot:(DD)D" 4)       ; 85
+       (methodref "java/lang/StrictMath" "expm1:(D)D" 2)        ; 86
+       (methodref "java/lang/StrictMath" "log1p:(D)D" 2)        ; 87
+       (long 1023)                                              ; 88
        nil
-       (double #x8000000000000001) ; -0x0.0000000000001p-1022 -4.9E-324 ; 89
+       (double #x8000000000000001) ; -0x0.0000000000001p-1022 -4.9E-324 ; 90
        nil
-       (class (ref -1) "java/lang/Float")                       ; 91
        (float #x80000001) ; -0x0.000002p-126 -1.4E-45           ; 92
        (double #x7ff0000000000000) ; Infinity Infinity          ; 93
        nil
@@ -263,19 +263,19 @@
        (name-and-type "longBitsToDouble:(J)D")                  ; 251
        (name-and-type "getExponent:(F)I")                       ; 252
        (name-and-type "abs:(F)F")                               ; 253
-       (name-and-type "powerOfTwoF:(I)F")                       ; 254
-       (name-and-type "intBitsToFloat:(I)F")                    ; 255
-       (name-and-type "isNaN:(D)Z")                             ; 256
-       (name-and-type "copySign:(DD)D")                         ; 257
-       (name-and-type "isNaN:(F)Z")                             ; 258
-       (name-and-type "copySign:(FF)F")                         ; 259
-       (name-and-type "sinh:(D)D")                              ; 260
-       (name-and-type "cosh:(D)D")                              ; 261
-       (name-and-type "tanh:(D)D")                              ; 262
-       (name-and-type "hypot:(DD)D")                            ; 263
-       (name-and-type "expm1:(D)D")                             ; 264
-       (name-and-type "log1p:(D)D")                             ; 265
-       (utf8)                                                   ; 266
+       (utf8)                                                   ; 254
+       (name-and-type "powerOfTwoF:(I)F")                       ; 255
+       (name-and-type "intBitsToFloat:(I)F")                    ; 256
+       (name-and-type "isNaN:(D)Z")                             ; 257
+       (name-and-type "copySign:(DD)D")                         ; 258
+       (name-and-type "isNaN:(F)Z")                             ; 259
+       (name-and-type "copySign:(FF)F")                         ; 260
+       (name-and-type "sinh:(D)D")                              ; 261
+       (name-and-type "cosh:(D)D")                              ; 262
+       (name-and-type "tanh:(D)D")                              ; 263
+       (name-and-type "hypot:(DD)D")                            ; 264
+       (name-and-type "expm1:(D)D")                             ; 265
+       (name-and-type "log1p:(D)D")                             ; 266
        (name-and-type "max:(II)I")                              ; 267
        (name-and-type "twoToTheDoubleScaleDown:D")              ; 268
        (name-and-type "min:(II)I")                              ; 269
@@ -1233,7 +1233,7 @@
         (invokestatic 73)                                       ; 33 java.lang.Math.abs:(F)F
         (freturn)                                               ; 36
         ; line_number #1534
-        (ldc 74)                                                ; 37 1.4E-45f
+        (ldc 75)                                                ; 37 1.4E-45f
         (freturn)                                               ; 39
         ; line_number #1537
         (getstatic 67)                                          ; 40 java.lang.Math.$assertionsDisabled:Z
@@ -1259,120 +1259,120 @@
         (if_icmplt 8)                                           ; 74
         ; line_number #1542
         (iload_1)                                               ; 77
-        (invokestatic 75)                                       ; 78 java.lang.Math.powerOfTwoF:(I)F
+        (invokestatic 76)                                       ; 78 java.lang.Math.powerOfTwoF:(I)F
         (freturn)                                               ; 81
-        ; line_number #1548
+        ; line_number #1547
         (iconst_1)                                              ; 82
         (iload_1)                                               ; 83
         (sipush -149)                                           ; 84
         (isub)                                                  ; 87
         (ishl)                                                  ; 88
-        (invokestatic 76)                                       ; 89 java.lang.Float.intBitsToFloat:(I)F
+        (invokestatic 77)                                       ; 89 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 92
        )
       '("signum:(D)D" #x00000009                                ; PUBLIC STATIC
-        ; line_number #1572
+        ; line_number #1571
         (dload_0)                                               ; 0
         (dconst_0)                                              ; 1
         (dcmpl)                                                 ; 2
         (ifeq 10)                                               ; 3
         (dload_0)                                               ; 6
-        (invokestatic 77)                                       ; 7 java.lang.Double.isNaN:(D)Z
+        (invokestatic 78)                                       ; 7 java.lang.Double.isNaN:(D)Z
         (ifeq 7)                                                ; 10
         (dload_0)                                               ; 13
         (goto 8)                                                ; 14
         (dconst_1)                                              ; 17
         (dload_0)                                               ; 18
-        (invokestatic 78)                                       ; 19 java.lang.Math.copySign:(DD)D
+        (invokestatic 79)                                       ; 19 java.lang.Math.copySign:(DD)D
         (dreturn)                                               ; 22
        )
       '("signum:(F)F" #x00000009                                ; PUBLIC STATIC
-        ; line_number #1593
+        ; line_number #1592
         (fload_0)                                               ; 0
         (fconst_0)                                              ; 1
         (fcmpl)                                                 ; 2
         (ifeq 10)                                               ; 3
         (fload_0)                                               ; 6
-        (invokestatic 79)                                       ; 7 java.lang.Float.isNaN:(F)Z
+        (invokestatic 80)                                       ; 7 java.lang.Float.isNaN:(F)Z
         (ifeq 7)                                                ; 10
         (fload_0)                                               ; 13
         (goto 8)                                                ; 14
         (fconst_1)                                              ; 17
         (fload_0)                                               ; 18
-        (invokestatic 80)                                       ; 19 java.lang.Math.copySign:(FF)F
+        (invokestatic 81)                                       ; 19 java.lang.Math.copySign:(FF)F
         (freturn)                                               ; 22
        )
       '("sinh:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #1622
+        ; line_number #1621
         (dload_0)                                               ; 0
-        (invokestatic 81)                                       ; 1 java.lang.StrictMath.sinh:(D)D
+        (invokestatic 82)                                       ; 1 java.lang.StrictMath.sinh:(D)D
         (dreturn)                                               ; 4
        )
       '("cosh:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #1650
+        ; line_number #1649
         (dload_0)                                               ; 0
-        (invokestatic 82)                                       ; 1 java.lang.StrictMath.cosh:(D)D
+        (invokestatic 83)                                       ; 1 java.lang.StrictMath.cosh:(D)D
         (dreturn)                                               ; 4
        )
       '("tanh:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #1690
+        ; line_number #1689
         (dload_0)                                               ; 0
-        (invokestatic 83)                                       ; 1 java.lang.StrictMath.tanh:(D)D
+        (invokestatic 84)                                       ; 1 java.lang.StrictMath.tanh:(D)D
         (dreturn)                                               ; 4
        )
       '("hypot:(DD)D" #x00000009                                ; PUBLIC STATIC
-        ; line_number #1719
+        ; line_number #1718
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
-        (invokestatic 84)                                       ; 2 java.lang.StrictMath.hypot:(DD)D
+        (invokestatic 85)                                       ; 2 java.lang.StrictMath.hypot:(DD)D
         (dreturn)                                               ; 5
        )
       '("expm1:(D)D" #x00000009                                 ; PUBLIC STATIC
-        ; line_number #1757
+        ; line_number #1756
         (dload_0)                                               ; 0
-        (invokestatic 85)                                       ; 1 java.lang.StrictMath.expm1:(D)D
+        (invokestatic 86)                                       ; 1 java.lang.StrictMath.expm1:(D)D
         (dreturn)                                               ; 4
        )
       '("log1p:(D)D" #x00000009                                 ; PUBLIC STATIC
-        ; line_number #1794
+        ; line_number #1793
         (dload_0)                                               ; 0
-        (invokestatic 86)                                       ; 1 java.lang.StrictMath.log1p:(D)D
+        (invokestatic 87)                                       ; 1 java.lang.StrictMath.log1p:(D)D
         (dreturn)                                               ; 4
        )
       '("copySign:(DD)D" #x00000009                             ; PUBLIC STATIC
-        ; line_number #1813
+        ; line_number #1812
         (dload_2)                                               ; 0
         (invokestatic 29)                                       ; 1 java.lang.Double.doubleToRawLongBits:(D)J
         (ldc2_w 49)                                             ; 4 -9223372036854775808l
         (land)                                                  ; 7
         (dload_0)                                               ; 8
-        ; line_number #1815
+        ; line_number #1814
         (invokestatic 29)                                       ; 9 java.lang.Double.doubleToRawLongBits:(D)J
         (ldc2_w 55)                                             ; 12 9223372036854775807l
         (land)                                                  ; 15
         (lor)                                                   ; 16
-        ; line_number #1813
+        ; line_number #1812
         (invokestatic 71)                                       ; 17 java.lang.Double.longBitsToDouble:(J)D
         (dreturn)                                               ; 20
        )
       '("copySign:(FF)F" #x00000009                             ; PUBLIC STATIC
-        ; line_number #1836
+        ; line_number #1835
         (fload_1)                                               ; 0
         (invokestatic 24)                                       ; 1 java.lang.Float.floatToRawIntBits:(F)I
         (ldc 57)                                                ; 4 -2147483648
         (iand)                                                  ; 6
         (fload_0)                                               ; 7
-        ; line_number #1838
+        ; line_number #1837
         (invokestatic 24)                                       ; 8 java.lang.Float.floatToRawIntBits:(F)I
         (ldc 54)                                                ; 11 2147483647
         (iand)                                                  ; 13
         (ior)                                                   ; 14
-        ; line_number #1836
-        (invokestatic 76)                                       ; 15 java.lang.Float.intBitsToFloat:(I)F
+        ; line_number #1835
+        (invokestatic 77)                                       ; 15 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 18
        )
       '("getExponent:(F)I" #x00000009                           ; PUBLIC STATIC
-        ; line_number #1863
+        ; line_number #1862
         (fload_0)                                               ; 0
         (invokestatic 24)                                       ; 1 java.lang.Float.floatToRawIntBits:(F)I
         (ldc 26)                                                ; 4 2139095040
@@ -1384,34 +1384,34 @@
         (ireturn)                                               ; 13
        )
       '("getExponent:(D)I" #x00000009                           ; PUBLIC STATIC
-        ; line_number #1887
+        ; line_number #1886
         (dload_0)                                               ; 0
         (invokestatic 29)                                       ; 1 java.lang.Double.doubleToRawLongBits:(D)J
         (ldc2_w 31)                                             ; 4 9218868437227405312l
         (land)                                                  ; 7
         (bipush 52)                                             ; 8
         (lshr)                                                  ; 10
-        (ldc2_w 87)                                             ; 11 1023l
+        (ldc2_w 88)                                             ; 11 1023l
         (lsub)                                                  ; 14
         (l2i)                                                   ; 15
         (ireturn)                                               ; 16
        )
       '("nextAfter:(DD)D" #x00000009                            ; PUBLIC STATIC
-        ; line_number #1957
+        ; line_number #1956
         (dload_0)                                               ; 0
         (dload_2)                                               ; 1
         (dcmpl)                                                 ; 2
         (ifle 40)                                               ; 3
-        ; line_number #1958
+        ; line_number #1957
         (dload_0)                                               ; 6
         (dconst_0)                                              ; 7
         (dcmpl)                                                 ; 8
         (ifeq 30)                                               ; 9
-        ; line_number #1959
+        ; line_number #1958
         (dload_0)                                               ; 12
         (invokestatic 29)                                       ; 13 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore 4)                                              ; 16
-        ; line_number #1960
+        ; line_number #1959
         (lload 4)                                               ; 18
         (lload 4)                                               ; 20
         (lconst_0)                                              ; 22
@@ -1423,21 +1423,21 @@
         (ladd)                                                  ; 34
         (invokestatic 71)                                       ; 35 java.lang.Double.longBitsToDouble:(J)D
         (dreturn)                                               ; 38
-        ; line_number #1962
-        (ldc2_w 89)                                             ; 39 -4.9E-324d
+        ; line_number #1961
+        (ldc2_w 90)                                             ; 39 -4.9E-324d
         (dreturn)                                               ; 42
-        ; line_number #1964
+        ; line_number #1963
         (dload_0)                                               ; 43
         (dload_2)                                               ; 44
         (dcmpg)                                                 ; 45
         (ifge 32)                                               ; 46
-        ; line_number #1967
+        ; line_number #1966
         (dload_0)                                               ; 49
         (dconst_0)                                              ; 50
         (dadd)                                                  ; 51
         (invokestatic 29)                                       ; 52 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore 4)                                              ; 55
-        ; line_number #1968
+        ; line_number #1967
         (lload 4)                                               ; 57
         (lload 4)                                               ; 59
         (lconst_0)                                              ; 61
@@ -1449,37 +1449,37 @@
         (ladd)                                                  ; 73
         (invokestatic 71)                                       ; 74 java.lang.Double.longBitsToDouble:(J)D
         (dreturn)                                               ; 77
-        ; line_number #1969
+        ; line_number #1968
         (dload_0)                                               ; 78
         (dload_2)                                               ; 79
         (dcmpl)                                                 ; 80
         (ifne 5)                                                ; 81
-        ; line_number #1970
+        ; line_number #1969
         (dload_2)                                               ; 84
         (dreturn)                                               ; 85
-        ; line_number #1972
+        ; line_number #1971
         (dload_0)                                               ; 86
         (dload_2)                                               ; 87
         (dadd)                                                  ; 88
         (dreturn)                                               ; 89
        )
       '("nextAfter:(FD)F" #x00000009                            ; PUBLIC STATIC
-        ; line_number #2041
+        ; line_number #2040
         (fload_0)                                               ; 0
         (f2d)                                                   ; 1
         (dload_1)                                               ; 2
         (dcmpl)                                                 ; 3
         (ifle 32)                                               ; 4
-        ; line_number #2042
+        ; line_number #2041
         (fload_0)                                               ; 7
         (fconst_0)                                              ; 8
         (fcmpl)                                                 ; 9
         (ifeq 23)                                               ; 10
-        ; line_number #2043
+        ; line_number #2042
         (fload_0)                                               ; 13
         (invokestatic 24)                                       ; 14 java.lang.Float.floatToRawIntBits:(F)I
         (istore_3)                                              ; 17
-        ; line_number #2044
+        ; line_number #2043
         (iload_3)                                               ; 18
         (iload_3)                                               ; 19
         (ifle 7)                                                ; 20
@@ -1487,24 +1487,24 @@
         (goto 4)                                                ; 24
         (iconst_1)                                              ; 27
         (iadd)                                                  ; 28
-        (invokestatic 76)                                       ; 29 java.lang.Float.intBitsToFloat:(I)F
+        (invokestatic 77)                                       ; 29 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 32
-        ; line_number #2046
+        ; line_number #2045
         (ldc 92)                                                ; 33 -1.4E-45f
         (freturn)                                               ; 35
-        ; line_number #2048
+        ; line_number #2047
         (fload_0)                                               ; 36
         (f2d)                                                   ; 37
         (dload_1)                                               ; 38
         (dcmpg)                                                 ; 39
         (ifge 25)                                               ; 40
-        ; line_number #2051
+        ; line_number #2050
         (fload_0)                                               ; 43
         (fconst_0)                                              ; 44
         (fadd)                                                  ; 45
         (invokestatic 24)                                       ; 46 java.lang.Float.floatToRawIntBits:(F)I
         (istore_3)                                              ; 49
-        ; line_number #2052
+        ; line_number #2051
         (iload_3)                                               ; 50
         (iload_3)                                               ; 51
         (iflt 7)                                                ; 52
@@ -1512,19 +1512,19 @@
         (goto 4)                                                ; 56
         (iconst_m1)                                             ; 59
         (iadd)                                                  ; 60
-        (invokestatic 76)                                       ; 61 java.lang.Float.intBitsToFloat:(I)F
+        (invokestatic 77)                                       ; 61 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 64
-        ; line_number #2053
+        ; line_number #2052
         (fload_0)                                               ; 65
         (f2d)                                                   ; 66
         (dload_1)                                               ; 67
         (dcmpl)                                                 ; 68
         (ifne 6)                                                ; 69
-        ; line_number #2054
+        ; line_number #2053
         (dload_1)                                               ; 72
         (d2f)                                                   ; 73
         (freturn)                                               ; 74
-        ; line_number #2056
+        ; line_number #2055
         (fload_0)                                               ; 75
         (dload_1)                                               ; 76
         (d2f)                                                   ; 77
@@ -1532,18 +1532,18 @@
         (freturn)                                               ; 79
        )
       '("nextUp:(D)D" #x00000009                                ; PUBLIC STATIC
-        ; line_number #2087
+        ; line_number #2086
         (dload_0)                                               ; 0
         (ldc2_w 93)                                             ; 1 Infinityd
         (dcmpg)                                                 ; 4
         (ifge 29)                                               ; 5
-        ; line_number #2089
+        ; line_number #2088
         (dload_0)                                               ; 8
         (dconst_0)                                              ; 9
         (dadd)                                                  ; 10
         (invokestatic 29)                                       ; 11 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore_2)                                              ; 14
-        ; line_number #2090
+        ; line_number #2089
         (lload_2)                                               ; 15
         (lload_2)                                               ; 16
         (lconst_0)                                              ; 17
@@ -1555,23 +1555,23 @@
         (ladd)                                                  ; 29
         (invokestatic 71)                                       ; 30 java.lang.Double.longBitsToDouble:(J)D
         (dreturn)                                               ; 33
-        ; line_number #2092
+        ; line_number #2091
         (dload_0)                                               ; 34
         (dreturn)                                               ; 35
        )
       '("nextUp:(F)F" #x00000009                                ; PUBLIC STATIC
-        ; line_number #2123
+        ; line_number #2122
         (fload_0)                                               ; 0
         (ldc 95)                                                ; 1 Infinityf
         (fcmpg)                                                 ; 3
         (ifge 25)                                               ; 4
-        ; line_number #2125
+        ; line_number #2124
         (fload_0)                                               ; 7
         (fconst_0)                                              ; 8
         (fadd)                                                  ; 9
         (invokestatic 24)                                       ; 10 java.lang.Float.floatToRawIntBits:(F)I
         (istore_1)                                              ; 13
-        ; line_number #2126
+        ; line_number #2125
         (iload_1)                                               ; 14
         (iload_1)                                               ; 15
         (iflt 7)                                                ; 16
@@ -1579,128 +1579,128 @@
         (goto 4)                                                ; 20
         (iconst_m1)                                             ; 23
         (iadd)                                                  ; 24
-        (invokestatic 76)                                       ; 25 java.lang.Float.intBitsToFloat:(I)F
+        (invokestatic 77)                                       ; 25 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 28
-        ; line_number #2128
+        ; line_number #2127
         (fload_0)                                               ; 29
         (freturn)                                               ; 30
        )
       '("nextDown:(D)D" #x00000009                              ; PUBLIC STATIC
-        ; line_number #2158
+        ; line_number #2157
         (dload_0)                                               ; 0
-        (invokestatic 77)                                       ; 1 java.lang.Double.isNaN:(D)Z
+        (invokestatic 78)                                       ; 1 java.lang.Double.isNaN:(D)Z
         (ifne 11)                                               ; 4
         (dload_0)                                               ; 7
         (ldc2_w 96)                                             ; 8 -Infinityd
         (dcmpl)                                                 ; 11
         (ifne 5)                                                ; 12
-        ; line_number #2159
+        ; line_number #2158
         (dload_0)                                               ; 15
         (dreturn)                                               ; 16
-        ; line_number #2161
+        ; line_number #2160
         (dload_0)                                               ; 17
         (dconst_0)                                              ; 18
         (dcmpl)                                                 ; 19
         (ifne 7)                                                ; 20
-        ; line_number #2162
-        (ldc2_w 89)                                             ; 23 -4.9E-324d
+        ; line_number #2161
+        (ldc2_w 90)                                             ; 23 -4.9E-324d
         (dreturn)                                               ; 26
-        ; line_number #2164
+        ; line_number #2163
         (dload_0)                                               ; 27
         (invokestatic 29)                                       ; 28 java.lang.Double.doubleToRawLongBits:(D)J
         (dload_0)                                               ; 31
         (dconst_0)                                              ; 32
         (dcmpl)                                                 ; 33
         (ifle 9)                                                ; 34
-        ; line_number #2165
+        ; line_number #2164
         (ldc2_w 51)                                             ; 37 -1l
         (goto 4)                                                ; 40
         (lconst_1)                                              ; 43
         (ladd)                                                  ; 44
-        ; line_number #2164
+        ; line_number #2163
         (invokestatic 71)                                       ; 45 java.lang.Double.longBitsToDouble:(J)D
         (dreturn)                                               ; 48
        )
       '("nextDown:(F)F" #x00000009                              ; PUBLIC STATIC
-        ; line_number #2195
+        ; line_number #2194
         (fload_0)                                               ; 0
-        (invokestatic 79)                                       ; 1 java.lang.Float.isNaN:(F)Z
+        (invokestatic 80)                                       ; 1 java.lang.Float.isNaN:(F)Z
         (ifne 10)                                               ; 4
         (fload_0)                                               ; 7
         (ldc 98)                                                ; 8 -Infinityf
         (fcmpl)                                                 ; 10
         (ifne 5)                                                ; 11
-        ; line_number #2196
+        ; line_number #2195
         (fload_0)                                               ; 14
         (freturn)                                               ; 15
-        ; line_number #2198
+        ; line_number #2197
         (fload_0)                                               ; 16
         (fconst_0)                                              ; 17
         (fcmpl)                                                 ; 18
         (ifne 6)                                                ; 19
-        ; line_number #2199
+        ; line_number #2198
         (ldc 92)                                                ; 22 -1.4E-45f
         (freturn)                                               ; 24
-        ; line_number #2201
+        ; line_number #2200
         (fload_0)                                               ; 25
         (invokestatic 24)                                       ; 26 java.lang.Float.floatToRawIntBits:(F)I
         (fload_0)                                               ; 29
         (fconst_0)                                              ; 30
         (fcmpl)                                                 ; 31
         (ifle 7)                                                ; 32
-        ; line_number #2202
+        ; line_number #2201
         (iconst_m1)                                             ; 35
         (goto 4)                                                ; 36
         (iconst_1)                                              ; 39
         (iadd)                                                  ; 40
-        ; line_number #2201
-        (invokestatic 76)                                       ; 41 java.lang.Float.intBitsToFloat:(I)F
+        ; line_number #2200
+        (invokestatic 77)                                       ; 41 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 44
        )
       '("scalb:(DI)D" #x00000009                                ; PUBLIC STATIC
-        ; line_number #2281
+        ; line_number #2280
         (iconst_0)                                              ; 0
         (istore 4)                                              ; 1
-        ; line_number #2282
+        ; line_number #2281
         (iconst_0)                                              ; 3
         (istore 5)                                              ; 4
-        ; line_number #2283
+        ; line_number #2282
         (ldc2_w 99)                                             ; 6 NaNd
         (dstore 6)                                              ; 9
-        ; line_number #2287
+        ; line_number #2286
         (iload_2)                                               ; 11
         (ifge 24)                                               ; 12
-        ; line_number #2288
+        ; line_number #2287
         (iload_2)                                               ; 15
         (sipush -2099)                                          ; 16
         (invokestatic 101)                                      ; 19 java.lang.Math.max:(II)I
         (istore_2)                                              ; 22
-        ; line_number #2289
+        ; line_number #2288
         (sipush -512)                                           ; 23
         (istore 5)                                              ; 26
-        ; line_number #2290
+        ; line_number #2289
         (getstatic 102)                                         ; 28 java.lang.Math.twoToTheDoubleScaleDown:D
         (dstore 6)                                              ; 31
         (goto 21)                                               ; 33
-        ; line_number #2293
+        ; line_number #2292
         (iload_2)                                               ; 36
         (sipush 2099)                                           ; 37
         (invokestatic 103)                                      ; 40 java.lang.Math.min:(II)I
         (istore_2)                                              ; 43
-        ; line_number #2294
+        ; line_number #2293
         (sipush 512)                                            ; 44
         (istore 5)                                              ; 47
-        ; line_number #2295
+        ; line_number #2294
         (getstatic 104)                                         ; 49 java.lang.Math.twoToTheDoubleScaleUp:D
         (dstore 6)                                              ; 52
-        ; line_number #2300
+        ; line_number #2299
         (iload_2)                                               ; 54
         (bipush 8)                                              ; 55
         (ishr)                                                  ; 57
         (bipush 23)                                             ; 58
         (iushr)                                                 ; 60
         (istore 8)                                              ; 61
-        ; line_number #2301
+        ; line_number #2300
         (iload_2)                                               ; 63
         (iload 8)                                               ; 64
         (iadd)                                                  ; 66
@@ -1709,44 +1709,44 @@
         (iload 8)                                               ; 71
         (isub)                                                  ; 73
         (istore 4)                                              ; 74
-        ; line_number #2303
+        ; line_number #2302
         (dload_0)                                               ; 76
         (iload 4)                                               ; 77
         (invokestatic 70)                                       ; 79 java.lang.Math.powerOfTwoD:(I)D
         (dmul)                                                  ; 82
         (dstore_0)                                              ; 83
-        ; line_number #2304
+        ; line_number #2303
         (iload_2)                                               ; 84
         (iload 4)                                               ; 85
         (isub)                                                  ; 87
         (istore_2)                                              ; 88
-        ; line_number #2306
+        ; line_number #2305
         (iload_2)                                               ; 89
         (ifeq 16)                                               ; 90
-        ; line_number #2307
+        ; line_number #2306
         (dload_0)                                               ; 93
         (dload 6)                                               ; 94
         (dmul)                                                  ; 96
         (dstore_0)                                              ; 97
-        ; line_number #2308
+        ; line_number #2307
         (iload_2)                                               ; 98
         (iload 5)                                               ; 99
         (isub)                                                  ; 101
         (istore_2)                                              ; 102
         (goto -14)                                              ; 103
-        ; line_number #2310
+        ; line_number #2309
         (dload_0)                                               ; 106
         (dreturn)                                               ; 107
        )
       '("scalb:(FI)F" #x00000009                                ; PUBLIC STATIC
-        ; line_number #2352
+        ; line_number #2351
         (iload_1)                                               ; 0
         (sipush 278)                                            ; 1
         (invokestatic 103)                                      ; 4 java.lang.Math.min:(II)I
         (sipush -278)                                           ; 7
         (invokestatic 101)                                      ; 10 java.lang.Math.max:(II)I
         (istore_1)                                              ; 13
-        ; line_number #2363
+        ; line_number #2362
         (fload_0)                                               ; 14
         (f2d)                                                   ; 15
         (iload_1)                                               ; 16
@@ -1756,7 +1756,7 @@
         (freturn)                                               ; 22
        )
       '("powerOfTwoD:(I)D" #x00000008                           ; STATIC
-        ; line_number #2374
+        ; line_number #2373
         (getstatic 67)                                          ; 0 java.lang.Math.$assertionsDisabled:Z
         (ifne 25)                                               ; 3
         (iload_0)                                               ; 6
@@ -1769,10 +1769,10 @@
         (dup)                                                   ; 23
         (invokespecial 69)                                      ; 24 java.lang.AssertionError.<init>:()V
         (athrow)                                                ; 27
-        ; line_number #2375
+        ; line_number #2374
         (iload_0)                                               ; 28
         (i2l)                                                   ; 29
-        (ldc2_w 87)                                             ; 30 1023l
+        (ldc2_w 88)                                             ; 30 1023l
         (ladd)                                                  ; 33
         (bipush 52)                                             ; 34
         (lshl)                                                  ; 36
@@ -1782,7 +1782,7 @@
         (dreturn)                                               ; 44
        )
       '("powerOfTwoF:(I)F" #x00000008                           ; STATIC
-        ; line_number #2384
+        ; line_number #2383
         (getstatic 67)                                          ; 0 java.lang.Math.$assertionsDisabled:Z
         (ifne 23)                                               ; 3
         (iload_0)                                               ; 6
@@ -1795,7 +1795,7 @@
         (dup)                                                   ; 21
         (invokespecial 69)                                      ; 22 java.lang.AssertionError.<init>:()V
         (athrow)                                                ; 25
-        ; line_number #2385
+        ; line_number #2384
         (iload_0)                                               ; 26
         (bipush 127)                                            ; 27
         (iadd)                                                  ; 29
@@ -1803,7 +1803,7 @@
         (ishl)                                                  ; 32
         (ldc 26)                                                ; 33 2139095040
         (iand)                                                  ; 35
-        (invokestatic 76)                                       ; 36 java.lang.Float.intBitsToFloat:(I)F
+        (invokestatic 77)                                       ; 36 java.lang.Float.intBitsToFloat:(I)F
         (freturn)                                               ; 39
        )
       '("<clinit>:()V" #x00000008                               ; STATIC
@@ -1824,11 +1824,11 @@
         (ldc2_w 107)                                            ; 25 -0.0d
         (invokestatic 29)                                       ; 28 java.lang.Double.doubleToRawLongBits:(D)J
         (putstatic 61)                                          ; 31 java.lang.Math.negativeZeroDoubleBits:J
-        ; line_number #2367
+        ; line_number #2366
         (sipush 512)                                            ; 34
         (invokestatic 70)                                       ; 37 java.lang.Math.powerOfTwoD:(I)D
         (putstatic 104)                                         ; 40 java.lang.Math.twoToTheDoubleScaleUp:D
-        ; line_number #2368
+        ; line_number #2367
         (sipush -512)                                           ; 43
         (invokestatic 70)                                       ; 46 java.lang.Math.powerOfTwoD:(I)D
         (putstatic 102)                                         ; 49 java.lang.Math.twoToTheDoubleScaleDown:D
