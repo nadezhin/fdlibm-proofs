@@ -1432,7 +1432,7 @@ public class FdlibmTranslit {
                 t1 = 0;
                 t1 = __HI(t1, ha);
                 t2 = a - t1;
-                w = Math.sqrt(t1 * t1 - (b * (-b) - t2 * (a + t1)));
+                w = Sqrt.compute(t1 * t1 - (b * (-b) - t2 * (a + t1)));
             } else {
                 a = a + a;
                 y1 = 0;
@@ -1441,7 +1441,7 @@ public class FdlibmTranslit {
                 t1 = 0;
                 t1 = __HI(t1, ha + 0x00100000);
                 t2 = a - t1;
-                w = Math.sqrt(t1 * y1 - (w * (-w) - (t1 * y2 + t2 * b)));
+                w = Sqrt.compute(t1 * y1 - (w * (-w) - (t1 * y2 + t2 * b)));
             }
             if (k != 0) {
                 t1 = 1.0;
