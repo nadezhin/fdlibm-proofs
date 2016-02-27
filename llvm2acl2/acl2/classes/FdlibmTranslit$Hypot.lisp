@@ -20,7 +20,7 @@
        (integer 629145600)                                      ; 10
        (integer 548405248)                                      ; 11
        (integer 2144337920)                                     ; 12
-       (methodref "java/lang/Math" "sqrt:(D)D" 2)               ; 13
+       (methodref "FdlibmTranslit$Sqrt" "compute:(D)D" 2)       ; 13
        (integer 1048576)                                        ; 14
        (class (ref -1) "FdlibmTranslit$Hypot")                  ; 15
        (class (ref -1) "java/lang/Object")                      ; 16
@@ -38,8 +38,8 @@
        (name-and-type "access$000:(D)I")                        ; 28
        (name-and-type "access$400:(DI)D")                       ; 29
        (name-and-type "access$100:(D)I")                        ; 30
-       (class (ref -1) "java/lang/Math")                        ; 31
-       (name-and-type "sqrt:(D)D")                              ; 32
+       (class (ref -1) "FdlibmTranslit$Sqrt")                   ; 31
+       (name-and-type "compute:(D)D")                           ; 32
        (utf8)                                                   ; 33
        (utf8)                                                   ; 34
        (utf8)                                                   ; 35
@@ -291,7 +291,7 @@
         (dmul)                                                  ; 346
         (dsub)                                                  ; 347
         (dsub)                                                  ; 348
-        (invokestatic 13)                                       ; 349 java.lang.Math.sqrt:(D)D
+        (invokestatic 13)                                       ; 349 FdlibmTranslit$Sqrt.compute:(D)D
         (dstore 16)                                             ; 352
         (goto 80)                                               ; 354
         ; line_number #1437
@@ -344,7 +344,7 @@
         (dadd)                                                  ; 426
         (dsub)                                                  ; 427
         (dsub)                                                  ; 428
-        (invokestatic 13)                                       ; 429 java.lang.Math.sqrt:(D)D
+        (invokestatic 13)                                       ; 429 FdlibmTranslit$Sqrt.compute:(D)D
         (dstore 16)                                             ; 432
         ; line_number #1446
         (iload 19)                                              ; 434
