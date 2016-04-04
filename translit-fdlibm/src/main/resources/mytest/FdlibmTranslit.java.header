@@ -1,0 +1,154 @@
+/*
+ * Copyright (c) 1998, 2015, Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+ */
+/**
+ * A transliteration of the "Freely Distributable Math Library" algorithms from
+ * C into Java. That is, this port of the algorithms is as close to the C
+ * originals as possible while still being readable legal Java.
+ */
+public class FdlibmTranslitN {
+
+    public static double acos(double x) {
+        return Acos.compute(x);
+    }
+
+    public static double asin(double x) {
+        return Asin.compute(x);
+    }
+
+    public static double atan(double x) {
+        return Atan.compute(x);
+    }
+
+    public static double atan2(double y, double x) {
+        return Atan2.compute(y, x);
+    }
+
+    public static double cbrt(double x) {
+        return Cbrt.compute(x);
+    }
+
+    public static double cos(double x) {
+        return Cos.compute(x);
+    }
+
+    public static double cosh(double x) {
+        return Cosh.compute(x);
+    }
+
+    public static double exp(double x) {
+        return Exp.compute(x);
+    }
+
+    public static double expm1(double x) {
+        return Expm1.compute(x);
+    }
+
+    public static double hypot(double x, double y) {
+        return Hypot.compute(x, y);
+    }
+
+    public static double log(double x) {
+        return Log.compute(x);
+    }
+
+    public static double log10(double x) {
+        return Log10.compute(x);
+    }
+
+    public static double log1p(double x) {
+        return Log1p.compute(x);
+    }
+
+    public static double pow(double x, double y) {
+        return Pow.compute(x, y);
+    }
+
+    public static double sin(double x) {
+        return Sin.compute(x);
+    }
+
+    public static double sinh(double x) {
+        return Sinh.compute(x);
+    }
+
+    public static double tan(double x) {
+        return Tan.compute(x);
+    }
+
+    public static double tanh(double x) {
+        return Tanh.compute(x);
+    }
+
+    private FdlibmTranslitN() {
+        throw new UnsupportedOperationException("No FdLibmTranslit instances for you.");
+    }
+
+    static double U_DOUBLE = Double.NaN;
+    static int U_INT = Integer.MIN_VALUE;
+    static boolean __LITTLE_ENDIAN = false;
+    
+    /**
+     * Return the low-order 32 bits of the double argument as an int.
+     * Aka C ampersend operator.
+     */
+    private static int __LO(double x) {
+        long transducer = Double.doubleToRawLongBits(x);
+        return (int) transducer;
+    }
+
+    /**
+     * Return a double with its low-order bits of the second argument and the
+     * high-order bits of the first argument..
+     */
+    private static double __LO(double x, int low) {
+        long transX = Double.doubleToRawLongBits(x);
+        return Double.longBitsToDouble((transX & 0xFFFF_FFFF_0000_0000L) | (low & 0xFFFF_FFFFL));
+    }
+
+    /**
+     * Return the high-order 32 bits of the double argument as an int.
+     */
+    private static int __HI(double x) {
+        long transducer = Double.doubleToRawLongBits(x);
+        return (int) (transducer >> 32);
+    }
+
+    /**
+     * Return a double with its high-order bits of the second argument and the
+     * low-order bits of the first argument..
+     */
+    private static double __HI(double x, int high) {
+        long transX = Double.doubleToRawLongBits(x);
+        return Double.longBitsToDouble((transX & 0x0000_0000_FFFF_FFFFL) | (((long) high)) << 32);
+    }
+
+    /**
+     * Return an int array view of the double argument.
+     */
+    private static int[] __AMP(double x) {
+        int lo = __LO(x);
+        int hi = __HI(x);
+        return __LITTLE_ENDIAN ? new int[]{lo, hi} : new int[]{hi, lo};
+    }

@@ -1,0 +1,22 @@
+-library libclang-3.7
+-limitComments
+//-reification
+-publicRawBindings
+-f  // force overwrite
+-emptyStructsAsForwardDecls
+-mode Directory
+-package org.llvm.clang
+-o $(DIR)/src/main/java/clang
+-I/usr/include/x86_64-linux-gnu
+-I/usr/include/clang/3.7/include
+
+-verbose
+
+/usr/lib/llvm-3.7/include/clang-c/Platform.h
+/usr/lib/llvm-3.7/include/clang-c/CXString.h
+/usr/lib/llvm-3.7/include/clang-c/CXErrorCode.h
+/usr/lib/llvm-3.7/include/clang-c/CXCompilationDatabase.h
+/usr/lib/llvm-3.7/include/clang-c/BuildSystem.h
+/usr/lib/llvm-3.7/include/clang-c/Index.h
+/usr/lib/llvm-3.7/include/clang-c/Documentation.h
+

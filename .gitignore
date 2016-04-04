@@ -1,4 +1,8 @@
 *.FASL
 *.fasl
 *.lisp-temp
+*~
 /llvm2acl2/target/
+/translit-fdlibm/target/
+/translit-fdlibm/_jnaerator.*
+
