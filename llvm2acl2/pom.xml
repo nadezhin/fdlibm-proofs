@@ -6,7 +6,10 @@
     <packaging>jar</packaging>
     <version>0.1.0-SNAPSHOT</version>
     <name>llvm2acl2</name>
-    <description>Converter from llvm to ACL2</description>
+    <description>
+        This project converts .llvm files compiled by clang from Fdlibm C files
+        into ACL2 files.
+    </description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
