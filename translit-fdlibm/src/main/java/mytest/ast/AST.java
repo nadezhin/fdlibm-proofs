@@ -11,6 +11,8 @@ import java.util.List;
 import org.bridj.Pointer;
 import org.bridj.ann.Ptr;
 import org.llvm.clang.CXCursor;
+import org.llvm.clang.CXSourceLocation;
+import org.llvm.clang.CXSourceRange;
 import org.llvm.clang.CXString;
 import org.llvm.clang.CXType;
 import org.llvm.clang.Libclang37Library;
@@ -31,27 +33,39 @@ public class AST {
             this.cursor = cursor;
             this.path = path;
         }
-        
-        public CXCursorKind getKind () {
+
+        public CXCursorKind getKind() {
             return cursor.kind;
         }
-        
+
         public int getNumChildren() {
             return children.size();
         }
-        
+
         public Node getChild(int i) {
             return children.get(i);
         }
-        
+
         public MyCursor getMyCursor() {
             return cursor;
         }
-        
+
         public CXCursor getCXCursor() {
             return cursor.impl();
         }
-        
+
+        public CXSourceRange getSourceRange() {
+            return clang_getCursorExtent(getCXCursor());
+        }
+
+        public CXSourceLocation getLocationBefore() {
+            return clang_getRangeStart(getSourceRange());
+        }
+
+        public CXSourceLocation getLocationAfter() {
+            return clang_getRangeEnd(getSourceRange());
+        }
+
         public String getTypeSpelling() {
             CXType type = clang_getCursorType(getCXCursor());
             CXString typeCstr = clang_getTypeSpelling(type);
@@ -361,7 +375,7 @@ public class AST {
     public static TranslationUnit newRoot(MyCursor c) {
         return new TranslationUnit(c, "");
     }
-    
+
     public static Node newNode(Node parent, MyCursor c) {
         String path = parent.path + "." + parent.children.size();
         Node n;

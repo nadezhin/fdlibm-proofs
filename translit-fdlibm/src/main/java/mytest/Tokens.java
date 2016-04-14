@@ -43,41 +43,66 @@ public class Tokens {
             assert old == null;
         }
     }
-    
-    void printBefore(CXSourceRange range, String s) {
-        int offset = getLocationOffset(clang_getRangeStart(range));
-        String old = inserts.put(offset, s);
-        assert old == null;
+
+    void replace(CXSourceLocation before, CXSourceLocation after, String text) {
+        int bo = getLocationOffset(before);
+        int ao = getLocationOffset(after);
+        String old;
+        if (bo < ao) {
+            old = inserts.put(bo, "/*<");
+            assert old == null;
+            if (text.isEmpty()) {
+                old = inserts.put(ao, "/>*/");
+                assert old == null;
+            } else {
+                old = inserts.put(ao, "*/" + text + "/*>*/");
+                assert old == null;
+            }
+        } else {
+            assert bo == ao;
+            if (!text.isEmpty()) {
+                old = inserts.put(bo, "/*<*/" + text + "/*>*/");
+                assert old == null;
+            }
+        }
     }
 
-    void printAfter(CXSourceRange range, String s) {
-        int offset = getLocationOffset(clang_getRangeEnd(range));
-        String old = inserts.put(offset, s);
-        assert old == null;
+    void replace(CXToken tkB, CXToken tkA, String text) {
+        replace(clang_getRangeStart(clang_getTokenExtent(tu, tkB)),
+                clang_getRangeEnd(clang_getTokenExtent(tu, tkA)),
+                text);
     }
 
-    void printBefore(CXToken tk, String s) {
-        printBefore(clang_getTokenExtent(tu, tk), s);
+    void replace(CXToken tk, String text) {
+        replace(tk, tk, text);
     }
 
-    void printAfter(CXToken tk, String s) {
-        printAfter(clang_getTokenExtent(tu, tk), s);
+    void replace(AST.Node nodeB, AST.Node nodeA, String text) {
+        replace(nodeB.getLocationBefore(), nodeA.getLocationAfter(), text);
     }
 
-    void printBefore(CXCursor cursor, String s) {
-        printBefore(clang_getCursorExtent(cursor), s);
+    void replace(AST.Node node, String text) {
+        replace(node, node, text);
     }
 
-    void printAfter(CXCursor cursor, String s) {
-        printAfter(clang_getCursorExtent(cursor), s);
+    void insertBefore(CXToken tk, String text) {
+        CXSourceLocation loc = clang_getRangeStart(clang_getTokenExtent(tu, tk));
+        replace(loc, loc, text);
     }
 
-    void printBefore(AST.Node node, String s) {
-        printBefore(node.getCXCursor(), s);
+    void insertAfter(CXToken tk, String text) {
+        CXSourceLocation loc = clang_getRangeEnd(clang_getTokenExtent(tu, tk));
+        replace(loc, loc, text);
     }
 
-    void printAfter(AST.Node node, String s) {
-        printAfter(node.getCXCursor(), s);
+    void insertBefore(AST.Node node, String text) {
+        CXSourceLocation loc = clang_getRangeStart(clang_getCursorExtent(node.getCXCursor()));
+        replace(loc, loc, text);
+    }
+
+    void insertAfter(AST.Node node, String text) {
+        CXSourceLocation loc = clang_getRangeEnd(clang_getCursorExtent(node.getCXCursor()));
+        replace(loc, loc, text);
     }
 
     boolean match(int tokenNo, Libclang37Library.CXTokenKind kind, String spelling) {

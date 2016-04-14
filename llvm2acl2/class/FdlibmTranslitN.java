@@ -1002,7 +1002,7 @@ static double one = 1.0, half=0.5, huge = 1.0e300;
 	if (ix < 0x40862E42)  return half*/*<__ieee754_exp*/Exp.compute/*>*/(/*<fabs*/Fabs.compute/*>*/(x));
 
     /* |x| in [log(maxdouble), overflowthresold] */
-	lx = /*<*( (*/__AMP(x)[/*>*/((/*<*(unsigned*)&one*/__AMP(one)[0]/*>*/)/*<>>*/>>>/*>*/29)]/*<) + (unsigned*)&x)/>*/;
+	lx = /*<*( (*/__AMP(x)[/*>*/((/*<*(unsigned*)&one*/__AMP(one)[0]/*>*/)/*<>>*/>>>/*>*/29)/*<) + (unsigned*)&x)*/]/*>*/;
 	if (ix<0x408633CE || 
 	      (ix==0x408633ce)&&(/*<*/Integer.compareUnsigned(/*>*/lx/*<<=(unsigned)*/,/*>*/0x8fb9f87d/*<*/)<=0/*>*/)) {
 	    w = /*<__ieee754_exp*/Exp.compute/*>*/(half*/*<fabs*/Fabs.compute/*>*/(x));
@@ -3104,7 +3104,7 @@ static double one = 1.0, shuge = 1.0e307;
 	if (ix < 0x40862E42)  return h*/*<__ieee754_exp*/Exp.compute/*>*/(/*<fabs*/Fabs.compute/*>*/(x));
 
     /* |x| in [log(maxdouble), overflowthresold] */
-	lx = /*<*( (*/__AMP(x)[/*>*/((/*<*(unsigned*)&one*/__AMP(one)[0]/*>*/)/*<>>*/>>>/*>*/29)]/*<) + (unsigned*)&x)/>*/;
+	lx = /*<*( (*/__AMP(x)[/*>*/((/*<*(unsigned*)&one*/__AMP(one)[0]/*>*/)/*<>>*/>>>/*>*/29)/*<) + (unsigned*)&x)*/]/*>*/;
 	if (ix<0x408633CE || (ix==0x408633ce)&&(/*<*/Integer.compareUnsigned(/*>*/lx/*<<=(unsigned)*/,/*>*/0x8fb9f87d/*<*/)<=0/*>*/)) {
 	    w = /*<__ieee754_exp*/Exp.compute/*>*/(0.5*/*<fabs*/Fabs.compute/*>*/(x));
 	    t = h*w;

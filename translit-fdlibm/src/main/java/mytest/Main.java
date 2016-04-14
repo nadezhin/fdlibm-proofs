@@ -384,53 +384,51 @@ public class Main {
         Map<MyCursor, AST.Node> cursorPaths = new HashMap<>();
         makeCursorMap(cursorPaths, pf.ast);
         IfdefState ifdef = IfdefState.OutOf;
+        CXToken begComment = null;
         for (int tokNo = 0; tokNo < numTokens; tokNo++) {
             CXToken token = tokens.get(tokNo);
             String tokenSpelling = clang_getCString(clang_getTokenSpelling(pf.tu, token)).getCString();
             if (tokenSpelling.equals("#")) {
                 if (ts.match(tokNo + 1, CXTokenKind.CXToken_Identifier, "include")
                         && ts.match(tokNo + 2, CXTokenKind.CXToken_Literal, "\"fdlibm.h\"")) {
-                    ts.printBefore(token, "/*<");
-                    token = tokens.get(tokNo += 2);
-                    ts.printAfter(token, "*/private static class " + javaClassName(pf.fileName) + " {/*>*/");
+                    CXToken tokenA = tokens.get(tokNo += 2);
+                    ts.replace(token, tokenA, "private static class " + javaClassName(pf.fileName) + " {");
                 } else if (ts.match(tokNo + 1, CXTokenKind.CXToken_Identifier, "ifdef")
                         && ts.match(tokNo + 2, CXTokenKind.CXToken_Identifier, "__STDC__")) {
-                    ts.printBefore(token, "/*<");
-                    token = tokens.get(tokNo += 2);
-                    ts.printAfter(token, "/>*/");
+                    CXToken tokenA = tokens.get(tokNo += 2);
                     assert ifdef == IfdefState.OutOf;
                     ifdef = IfdefState.InTrue;
+                    ts.replace(token, tokenA, "");
                 } else if (ts.match(tokNo + 1, CXTokenKind.CXToken_Identifier, "ifndef")
                         && ts.match(tokNo + 2, CXTokenKind.CXToken_Identifier, "lint")) {
-                    ts.printBefore(token, "/*<");
+                    begComment = tokens.get(tokNo);
                     tokNo += 2;
                     assert ifdef == IfdefState.OutOf;
                     ifdef = IfdefState.InFalse;
                 } else if (ts.match(tokNo + 1, CXTokenKind.CXToken_Keyword, "else")) {
-                    ts.printBefore(token, "/*<");
+                    begComment = tokens.get(tokNo);
                     tokNo += 1;
                     assert ifdef == IfdefState.InTrue;
                     ifdef = IfdefState.InFalse;
                 } else if (ts.match(tokNo + 1, CXTokenKind.CXToken_Identifier, "endif")) {
                     token = tokens.get(tokNo += 1);
-                    ts.printAfter(token, "/>*/");
+                    ts.replace(begComment, token, "");
                     assert ifdef == IfdefState.InTrue || ifdef == IfdefState.InFalse;
                     ifdef = IfdefState.OutOf;
                 } else if (ts.match(tokNo + 1, CXTokenKind.CXToken_Identifier, "pragma")
                         && ts.match(tokNo + 2, CXTokenKind.CXToken_Identifier, "ident")) {
-                    ts.printBefore(token, "/*<");
-                    token = tokens.get(tokNo += 3);
-                    assert clang_getTokenKind(token).equals(CXTokenKind.CXToken_Literal);
-                    ts.printAfter(token, "/>*/");
+                    CXToken tokenA = tokens.get(tokNo += 3);
+                    assert clang_getTokenKind(tokenA).equals(CXTokenKind.CXToken_Literal);
+                    ts.replace(token, tokenA, "");
                 } else if (ts.match(tokNo + 1, CXTokenKind.CXToken_Identifier, "define")) {
-                    ts.printBefore(token, "/*<");
+                    CXToken tokenA;
                     if (ts.match(tokNo + 4, CXTokenKind.CXToken_Punctuation, "[")
                             && ts.match(tokNo + 6, CXTokenKind.CXToken_Punctuation, "]")) {
-                        token = tokens.get(tokNo += 6);
+                        tokenA = tokens.get(tokNo += 6);
                     } else {
-                        token = tokens.get(tokNo += 3);
+                        tokenA = tokens.get(tokNo += 3);
                     }
-                    ts.printAfter(token, "/>*/");
+                    ts.replace(token, tokenA, "");
                 } else {
                     assert false;
                 }
@@ -457,8 +455,8 @@ public class Main {
                             String t1 = child1.getTypeSpelling();
                             String t10 = child10.getTypeSpelling();
                             if (t0.equals("int") && t1.equals("int") && t10.equals("double")) {
-                                ts.printBefore(child10, "/*<*/(int)(/*>*/");
-                                ts.printAfter(child10, "/*<*/)/*>*/");
+                                ts.insertBefore(child10, "(int)(");
+                                ts.insertAfter(child10, ")");
                             }
                         }
                     } else if (ast instanceof AST.InitListExpr) {
@@ -481,10 +479,9 @@ public class Main {
                             assert child1.getNumChildren() == 1;
                             child1 = child1.getChild(0);
                         }
-                        ts.printBefore(child0, "/*<*/Integer.compareUnsigned(/*>*/");
-                        ts.printAfter(child0, "/*<");
-                        ts.printBefore(child1, "*/,/*>*/");
-                        ts.printAfter(child1, "/*<*/)" + tokenSpelling + "0/*>*/");
+                        ts.insertBefore(child0, "Integer.compareUnsigned(");
+                        ts.replace(child0.getLocationAfter(), child1.getLocationBefore(), ",");
+                        ts.insertAfter(child1, ")" + tokenSpelling + "0");
                     }
                     break;
                 }
@@ -496,8 +493,7 @@ public class Main {
                             && child1.getTypeSpelling().equals("unsigned int")) {
                         assert child1.getNumChildren() == 1;
                         AST.Node child10 = child1.getChild(0);
-                        ts.printBefore(child1, "/*<");
-                        ts.printBefore(child10, "/>*/");
+                        ts.replace(child1.getLocationBefore(), child10.getLocationBefore(), "");
                     }
                     break;
                 }
@@ -505,8 +501,7 @@ public class Main {
                     AST.Node ast = cursorPaths.get(myCursor);
                     if (ast instanceof AST.ParmDecl) {
                         CXToken tok = tokens.get(tokNo);
-                        ts.printBefore(tok, "/*<");
-                        ts.printAfter(tok, "*/[]/*>*/");
+                        ts.replace(tok, "[]");
                     } else if (ast instanceof AST.UnaryOperator) {
                         assert ast.getNumChildren() == 1;
                         AST.Node child0 = ast.getChild(0);
@@ -537,11 +532,8 @@ public class Main {
                                     && t000.equals("unsigned int") && t0000.equals("unsigned int")
                                     && t001.equals("unsigned int *")
                                     && t0010.equals("double *") && t00100.equals("double");
-                            ts.printBefore(ast, "/*<");
-                            ts.printBefore(child0000, "*/__AMP(" + var + ")[/*>*/");
-                            ts.printAfter(child0000, "]/*<");
-                            ts.printAfter(ast, "/>*/");
-                            ast = ast;
+                            ts.replace(ast.getLocationBefore(), child0000.getLocationBefore(), "__AMP(" + var + ")[");
+                            ts.replace(child0000.getLocationAfter(), ast.getLocationAfter(), "]");
                         } else if (child0 instanceof AST.CStyleCastExpr) {
                             assert child0.getNumChildren() == 1;
                             AST.Node child00 = (AST.UnaryOperator) child0.getChild(0);
@@ -556,8 +548,7 @@ public class Main {
                             assert (t.equals("unsigned int") && t0.equals("unsigned int *")
                                     || t.equals("int") && t0.equals("int *"))
                                     && t00.equals("const double *") && t000.equals("const double");
-                            ts.printBefore(ast, "/*<");
-                            ts.printAfter(ast, "*/__AMP(" + var + ")[0]/*>*/");
+                            ts.replace(ast, "__AMP(" + var + ")[0]");
                         }
                     }
                     break;
@@ -571,16 +562,14 @@ public class Main {
                         if (ast.getNumChildren() == 2) {
                             AST.Node child0 = (AST.IntegerLiteral) ast.getChild(0);
                             AST.Node child1 = (AST.InitListExpr) ast.getChild(1);
-                            ts.printBefore(child0, "/*<");
-                            ts.printAfter(child0, "/>*/");
+                            ts.replace(child0, "");
                         } else {
                             assert ast.getNumChildren() == 1;
                             AST.Node child0 = ast.getChild(0);
                             if (child0 instanceof AST.IntegerLiteral) {
                                 String t = ast.getTypeSpelling();
-                                ts.printBefore(child0, "/*<");
-                                ts.printAfter(child0, "/>*/");
-                                ts.printAfter(ast, "/*<*/= new " + t + "/*>*/");
+                                ts.replace(child0, "");
+                                ts.insertAfter(ast, "= new " + t);
                             }
                         }
                     } else if (ast instanceof AST.FunctionDecl) {
@@ -606,8 +595,7 @@ public class Main {
                                 String t000 = child000.getTypeSpelling();
                                 assert t.equals("unsigned int") && t0.equals("unsigned int")
                                         && t00.equals("unsigned int") && t000.equals("unsigned int");
-                                ts.printBefore(child00, "/*<");
-                                ts.printBefore(child000, "/>*/");
+                                ts.replace(child00.getLocationBefore(), child000.getLocationBefore(), "");
                             } else if (child00 instanceof AST.BinaryOperator) {
                                 AST.Node child000 = child00.getChild(0);
                                 AST.Node child001 = child00.getChild(1);
@@ -622,26 +610,22 @@ public class Main {
                                     assert t.equals("unsigned int") && t0.equals("unsigned int")
                                             && t00.equals("unsigned int") && t000.equals("unsigned int")
                                             && t001.equals("unsigned int") && t0000.equals("int");
-                                    ts.printBefore(child000, "/*<");
-                                    ts.printBefore(child0000, "/>*/");
+                                    ts.replace(child000.getLocationBefore(), child0000.getLocationBefore(), "");
                                 }
                             }
                         }
-                        ts.printAfter(child0, "/*<");
-                        ts.printBefore(child1, "*/>>>/*>*/");
+                        ts.replace(token, ">>>");
                     }
                     break;
                 }
                 case "const": {
-                    ts.printBefore(token, "/*<");
-                    ts.printAfter(token, "/>*/");
+                    ts.replace(token, "");
                     break;
                 }
                 case "unsigned": {
                     AST.Node ast = cursorPaths.get(myCursor);
                     if (ast instanceof AST.VarDecl) {
-                        ts.printBefore(token, "/*<");
-                        ts.printAfter(token, "*/int/*>*/");
+                        ts.replace(token, "int");
                     }
                     break;
                 }
@@ -661,25 +645,24 @@ public class Main {
                             assert varAst.getNumChildren() == 2;
                             AST.Node child0 = varAst.getChild(0);
                             AST.Node child1 = varAst.getChild(1);
-                            ts.printBefore(child0, "/*<");
-                            String s = "*/" + var + "=" + fun + "(" + var + ",";
+                            String s = var + "=" + fun + "(" + var + ",";
                             switch (op) {
                                 case "+=":
-                                    ts.printBefore(child1, s + fun + "(" + var + ")+/*>*/");
+                                    s += fun + "(" + var + ")+";
                                     break;
                                 case "^=":
-                                    ts.printBefore(child1, s + fun + "(" + var + ")^/*>*/");
+                                    s += fun + "(" + var + ")^";
                                     break;
                                 case "|=":
-                                    ts.printBefore(child1, s + fun + "(" + var + ")|/*>*/");
+                                    s += fun + "(" + var + ")|";
                                     break;
                                 case "&=":
-                                    ts.printBefore(child1, s + fun + "(" + var + ")&/*>*/");
+                                    s += fun + "(" + var + ")&";
                                     break;
                                 default:
-                                    ts.printBefore(child1, s + "/*>*/");
                             }
-                            ts.printAfter(child1, "/*<*/)/*>*/");
+                            ts.replace(child0.getLocationBefore(), child1.getLocationBefore(), s);
+                            ts.insertAfter(child1, ")");
                         }
                     }
                     break;
@@ -704,8 +687,7 @@ public class Main {
                             default:
                                 s = "";
                         }
-                        ts.printBefore(token, "/*<");
-                        ts.printAfter(token, "*/xxx" + s + "/*>*/");
+                        ts.replace(token, "xxx" + s);
                     }
                     break;
                 default:
@@ -715,35 +697,33 @@ public class Main {
                         if (ast instanceof AST.VarDecl) {
                             if (ast.getNumChildren() == 0 && needInitialization(pf.fileName, id)) {
                                 String type = ast.getTypeSpelling();
-                                ts.printAfter(ast, "/*<*/=U_" + type.toUpperCase() + "/*>*/");
+//                                ts.printAfter(ast, "/*<*/=U_" + type.toUpperCase() + "/*>*/");
+                                ts.insertAfter(ast, "=U_" + type.toUpperCase());
                             }
                         } else if (ast instanceof AST.FunctionDecl) {
                             assert cFunName(pf.fileName).equals(id);
-                            ts.printBefore(ast, "/*<*/static strictfp/*>*/");
-                            ts.printBefore(token, "/*<");
-                            ts.printAfter(token, "*/compute/*>*/");
+                            ts.insertBefore(ast, "static strictfp");
+                            ts.replace(token, "compute");
                         } else if (ast instanceof AST.DeclRefExpr) {
                             if (fun2class.containsKey(id)) {
-                                ts.printBefore(token, "/*<");
-                                ts.printAfter(token, "*/" + fun2class.get(id) + ".compute/*>*/");
+                                ts.replace(token, fun2class.get(id) + ".compute");
                             } else if (cFunName(pf.fileName).equals("__kernel_tan")
                                     && (id.equals("T")
                                     || id.equals("one")
                                     || id.equals("pio4")
                                     || id.equals("pio4lo"))) {
-                                ts.printBefore(token, "/*<");
                                 switch (id) {
                                     case "T":
-                                        ts.printAfter(token, "*/xxx/*>*/");
+                                        ts.replace(token, "xxx");
                                         break;
                                     case "one":
-                                        ts.printAfter(token, "*/xxx[13]/*>*/");
+                                        ts.replace(token, "xxx[13]");
                                         break;
                                     case "pio4":
-                                        ts.printAfter(token, "*/xxx[14]/*>*/");
+                                        ts.replace(token, "xxx[14]");
                                         break;
                                     case "pio4lo":
-                                        ts.printAfter(token, "*/xxx[15]/*>*/");
+                                        ts.replace(token, "xxx[15]");
                                         break;
                                 }
                             }
@@ -755,19 +735,17 @@ public class Main {
             case "k_rem_pio2.c": {
                 AST.Node labelStmt = (AST.LabelStmt) pf.ast.getChild(93).getChild(6).getChild(13);
                 CXToken labelTok = tokens.get(409);
-                ts.printAfter(labelTok, "/*<*/for(;;){/*>*/");
+                ts.insertAfter(labelTok, "for(;;){");
                 AST.Node gotoStmt = (AST.GotoStmt) pf.ast.getChild(93).getChild(6).getChild(21).getChild(1).getChild(2).getChild(1).getChild(3);
                 CXToken gotoTok = tokens.get(907);
-                ts.printBefore(gotoTok, "/*<");
-                ts.printAfter(gotoTok, "*/continue/*>*/");
+                ts.replace(gotoTok, "continue");
                 AST.Node gotoEnclStmt = (AST.IfStmt) pf.ast.getChild(93).getChild(6).getChild(21);
-                ts.printAfter(gotoEnclStmt, "/*<*/break recompute;}/*>*/");
+                ts.insertAfter(gotoEnclStmt, "break recompute;}");
                 break;
             }
             case "e_sqrt.c": { // .89.1.12.0 m&1
                 AST.Node expr = (AST.BinaryOperator) pf.ast.getChild(89).getChild(1).getChild(12).getChild(0);
-                ts.printBefore(expr, "/*<");
-                ts.printAfter(expr, "*/(m&1)!=0/*>*/");
+                ts.replace(expr, "(m&1)!=0");
                 break;
             }
         }
@@ -839,7 +817,7 @@ public class Main {
     public static void main(String[] args) throws IOException, URISyntaxException {
         System.setProperty("bridj.structsByValue", "true");
         String outFile = "../llvm2acl2/class/FdlibmTranslitN.java";
-//        String outFile = "../llvm2acl2/src/main/java/FdlibmTranslitN.java;
+//        String outFile = "../llvm2acl2/src/main/java/FdlibmTranslitN.java";
         PrintStream out = new PrintStream(outFile);
         convertByTokens(out);
         out.flush();
