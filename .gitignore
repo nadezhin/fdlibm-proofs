@@ -1,6 +1,9 @@
-*.FASL
-*.fasl
-*.lisp-temp
+*.cert
+*.cert.out
+*.lx64fsl
+*.port
+Makefile-tmp
+temp-emacs-file.lsp
 *~
 /llvm2acl2/target/
 /translit-fdlibm/target/

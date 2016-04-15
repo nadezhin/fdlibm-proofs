@@ -145,7 +145,7 @@ public class FdlibmTranslitN {
     }
 
     /**
-     * Return an int array view of the double argument.
+     * Return an int array view of the double argument like C ampersand operator.
      */
     private static int[] __AMP(double x) {
         int lo = __LO(x);
@@ -189,13 +189,11 @@ public class FdlibmTranslitN {
  * Function needed: sqrt
  */
 
-/*<#include "fdlibm.h"*/private static class Acos {/*>*/
+private static class Acos {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 one=  1.00000000000000000000e+00, /* 0x3FF00000, 0x00000000 */
 pi =  3.14159265358979311600e+00, /* 0x400921FB, 0x54442D18 */
 pio2_hi =  1.57079632679489655800e+00, /* 0x3FF921FB, 0x54442D18 */
@@ -211,12 +209,9 @@ qS2 =  2.02094576023350569471e+00, /* 0x40002AE5, 0x9C598AC8 */
 qS3 = -6.88283971605453293030e-01, /* 0xBFE6066C, 0x1B8D0159 */
 qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_acos*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_acos(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
 	double z,p,q,r,w,s,c,df;
 	int hx,ix;
@@ -240,15 +235,15 @@ qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
 	    z = (one+x)*0.5;
 	    p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
 	    q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
-	    s = /*<sqrt*/Sqrt.compute/*>*/(z);
+	    s = Sqrt.compute(z);
 	    r = p/q;
 	    w = r*s-pio2_lo;
 	    return pi - 2.0*(s+w);
 	} else {			/* x > 0.5 */
 	    z = (one-x)*0.5;
-	    s = /*<sqrt*/Sqrt.compute/*>*/(z);
+	    s = Sqrt.compute(z);
 	    df = s;
-	    /*<__LO(df) = */df=__LO(df,/*>*/0/*<*/)/*>*/;
+	    df=__LO(df,0);
 	    c  = (z-df*df)/(s+df);
 	    p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
 	    q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
@@ -302,13 +297,11 @@ qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
  */
 
 
-/*<#include "fdlibm.h"*/private static class Asin {/*>*/
+private static class Asin {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 one =  1.00000000000000000000e+00, /* 0x3FF00000, 0x00000000 */
 huge =  1.000e+300,
 pio2_hi =  1.57079632679489655800e+00, /* 0x3FF921FB, 0x54442D18 */
@@ -326,14 +319,11 @@ qS2 =  2.02094576023350569471e+00, /* 0x40002AE5, 0x9C598AC8 */
 qS3 = -6.88283971605453293030e-01, /* 0xBFE6066C, 0x1B8D0159 */
 qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_asin*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_asin(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	double t/*<*/=U_DOUBLE/*>*/,w,p,q,c,r,s;
+	double t=U_DOUBLE,w,p,q,c,r,s;
 	int hx,ix;
 	hx = __HI(x);
 	ix = hx&0x7fffffff;
@@ -353,17 +343,17 @@ qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
 		return x+x*w;
 	}
 	/* 1> |x|>= 0.5 */
-	w = one-/*<fabs*/Fabs.compute/*>*/(x);
+	w = one-Fabs.compute(x);
 	t = w*0.5;
 	p = t*(pS0+t*(pS1+t*(pS2+t*(pS3+t*(pS4+t*pS5)))));
 	q = one+t*(qS1+t*(qS2+t*(qS3+t*qS4)));
-	s = /*<sqrt*/Sqrt.compute/*>*/(t);
+	s = Sqrt.compute(t);
 	if(ix>=0x3FEF3333) { 	/* if |x| > 0.975 */
 	    w = p/q;
 	    t = pio2_hi-(2.0*(s+s*w)-pio2_lo);
 	} else {
 	    w  = s;
-	    /*<__LO(w) = */w=__LO(w,/*>*/0/*<*/)/*>*/;
+	    w=__LO(w,0);
 	    c  = (t-w*w)/(s+w);
 	    r  = p/q;
 	    p  = 2.0*s*r-(pio2_lo-2.0*c);
@@ -407,35 +397,29 @@ qS4 =  7.70381505559019352791e-02; /* 0x3FB3B8C5, 0xB12E9282 */
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Atan {/*>*/
+private static class Atan {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double atanhi[] = {
-/*<#else
-static double atanhi[] = {
-#endif/>*/
+
+static final double atanhi[] = {
+
   4.63647609000806093515e-01, /* atan(0.5)hi 0x3FDDAC67, 0x0561BB4F */
   7.85398163397448278999e-01, /* atan(1.0)hi 0x3FE921FB, 0x54442D18 */
   9.82793723247329054082e-01, /* atan(1.5)hi 0x3FEF730B, 0xD281F69B */
   1.57079632679489655800e+00, /* atan(inf)hi 0x3FF921FB, 0x54442D18 */
 };
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double atanlo[] = {
-/*<#else
-static double atanlo[] = {
-#endif/>*/
+
+static final double atanlo[] = {
+
   2.26987774529616870924e-17, /* atan(0.5)lo 0x3C7A2B7F, 0x222F65E2 */
   3.06161699786838301793e-17, /* atan(1.0)lo 0x3C81A626, 0x33145C07 */
   1.39033110312309984516e-17, /* atan(1.5)lo 0x3C700788, 0x7AF0CBBD */
   6.12323399573676603587e-17, /* atan(inf)lo 0x3C91A626, 0x33145C07 */
 };
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double aT[] = {
-/*<#else
-static double aT[] = {
-#endif/>*/
+
+static final double aT[] = {
+
   3.33333333333329318027e-01, /* 0x3FD55555, 0x5555550D */
  -1.99999999998764832476e-01, /* 0xBFC99999, 0x9998EBC4 */
   1.42857142725034663711e-01, /* 0x3FC24924, 0x920083FF */
@@ -449,20 +433,15 @@ static double aT[] = {
   1.62858201153657823623e-02, /* 0x3F90AD3A, 0xE322DA11 */
 };
 
-/*<#ifdef __STDC__/>*/
-	static /*<const/>*/ double 
-/*<#else
-	static double 
-#endif/>*/
+
+	static final double 
+
 one   = 1.0,
 huge   = 1.0e300;
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<atan*/compute/*>*/(double x)
-/*<#else
-	double atan(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
 	double w,s1,s2,z;
 	int ix,hx,id;
@@ -481,7 +460,7 @@ huge   = 1.0e300;
 	    }
 	    id = -1;
 	} else {
-	x = /*<fabs*/Fabs.compute/*>*/(x);
+	x = Fabs.compute(x);
 	if (ix < 0x3ff30000) {		/* |x| < 1.1875 */
 	    if (ix < 0x3fe60000) {	/* 7/16 <=|x|<11/16 */
 		id = 0; x = (2.0*x-one)/(2.0+x); 
@@ -549,13 +528,11 @@ huge   = 1.0e300;
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Atan2 {/*>*/
+private static class Atan2 {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 tiny  = 1.0e-300,
 zero  = 0.0,
 pi_o_4  = 7.8539816339744827900E-01, /* 0x3FE921FB, 0x54442D18 */
@@ -563,23 +540,20 @@ pi_o_2  = 1.5707963267948965580E+00, /* 0x3FF921FB, 0x54442D18 */
 pi      = 3.1415926535897931160E+00, /* 0x400921FB, 0x54442D18 */
 pi_lo   = 1.2246467991473531772E-16; /* 0x3CA1A626, 0x33145C07 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_atan2*/compute/*>*/(double y, double x)
-/*<#else
-	double __ieee754_atan2(y,x)
-	double  y,x;
-#endif/>*/
+
+	static strictfp double compute(double y, double x)
+
 {  
 	double z;
 	int k,m,hx,hy,ix,iy;
-	/*<unsigned*/int/*>*/ lx,ly;
+	int lx,ly;
 
 	hx = __HI(x); ix = hx&0x7fffffff;
 	lx = __LO(x);
 	hy = __HI(y); iy = hy&0x7fffffff;
 	ly = __LO(y);
-	if((/*<*/Integer.compareUnsigned(/*>*/(ix|((lx|-lx)/*<>>*/>>>/*>*/31))/*<>*/,/*>*/0x7ff00000/*<*/)>0/*>*/)||
-	   (/*<*/Integer.compareUnsigned(/*>*/(iy|((ly|-ly)/*<>>*/>>>/*>*/31))/*<>*/,/*>*/0x7ff00000/*<*/)>0/*>*/))	/* x or y is NaN */
+	if((Integer.compareUnsigned((ix|((lx|-lx)>>>31)),0x7ff00000)>0)||
+	   (Integer.compareUnsigned((iy|((ly|-ly)>>>31)),0x7ff00000)>0))	/* x or y is NaN */
 	   return x+y;
 	if((hx-0x3ff00000|lx)==0) return atan(y);   /* x=1.0 */
 	m = ((hy>>31)&1)|((hx>>30)&2);	/* 2*sign(x)+sign(y) */
@@ -621,10 +595,10 @@ pi_lo   = 1.2246467991473531772E-16; /* 0x3CA1A626, 0x33145C07 */
 	k = (iy-ix)>>20;
 	if(k > 60) z=pi_o_2+0.5*pi_lo; 	/* |y/x| >  2**60 */
 	else if(hx<0&&k<-60) z=0.0; 	/* |y|/x < -2**60 */
-	else z=atan(/*<fabs*/Fabs.compute/*>*/(y/x));		/* safe to do y/x */
+	else z=atan(Fabs.compute(y/x));		/* safe to do y/x */
 	switch (m) {
 	    case 0: return       z  ;	/* atan(+,+) */
-	    case 1: /*<__HI(z) ^= */z=__HI(z,__HI(z)^/*>*/0x80000000/*<*/)/*>*/;
+	    case 1: z=__HI(z,__HI(z)^0x80000000);
 		    return       z  ;	/* atan(-,+) */
 	    case 2: return  pi-(z-pi_lo);/* atan(+,-) */
 	    default: /* case 3 */
@@ -646,40 +620,33 @@ pi_lo   = 1.2246467991473531772E-16; /* 0x3CA1A626, 0x33145C07 */
  *
  */
 
-/*<#include "fdlibm.h"*/private static class Cbrt {/*>*/
+private static class Cbrt {
 
 /* cbrt(x)
  * Return cube root of x
  */
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ /*<unsigned*/int/*>*/ 
-/*<#else
-static unsigned 
-#endif/>*/
+
+static final int 
+
 	B1 = 715094163, /* B1 = (682-0.03306235651)*2**20 */
 	B2 = 696219795; /* B2 = (664-0.03306235651)*2**20 */
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 C =  5.42857142857142815906e-01, /* 19/35     = 0x3FE15F15, 0xF15F15F1 */
 D = -7.05306122448979611050e-01, /* -864/1225 = 0xBFE691DE, 0x2532C834 */
 E =  1.41428571428571436819e+00, /* 99/70     = 0x3FF6A0EA, 0x0EA0EA0F */
 F =  1.60714285714285720630e+00, /* 45/28     = 0x3FF9B6DB, 0x6DB6DB6E */
 G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<cbrt*/compute/*>*/(double x) 
-/*<#else
-	double cbrt(x) 
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x) 
+
 {
 	int	hx;
 	double r,s,t=0.0,w;
-	/*<unsigned*/int/*>*/ sign;
+	int sign;
 
 
 	hx = __HI(x);		/* high word of x */
@@ -689,14 +656,14 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
 	if((hx|__LO(x))==0) 
 	    return(x);		/* cbrt(0) is itself */
 
-	/*<__HI(x) = */x=__HI(x,/*>*/hx/*<*/)/*>*/;	/* x <- |x| */
+	x=__HI(x,hx);	/* x <- |x| */
     /* rough cbrt to 5 bits */
 	if(hx<0x00100000) 		/* subnormal number */
-	  {/*<__HI(t)=*/t=__HI(t,/*>*/0x43500000/*<*/)/*>*/; 		/* set t= 2**54 */
-	   t*=x; /*<__HI(t)=*/t=__HI(t,/*>*/__HI(t)/3+B2/*<*/)/*>*/;
+	  {t=__HI(t,0x43500000); 		/* set t= 2**54 */
+	   t*=x; t=__HI(t,__HI(t)/3+B2);
 	  }
 	else
-	  /*<__HI(t)=*/t=__HI(t,/*>*/hx/3+B1/*<*/)/*>*/;	
+	  t=__HI(t,hx/3+B1);	
 
 
     /* new cbrt to 23 bits, may be implemented in single precision */
@@ -705,7 +672,7 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
 	t*=G+F/(s+E+D/s);	
 
     /* chopped to 20 bits and make it larger than cbrt(x) */ 
-	/*<__LO(t)=*/t=__LO(t,/*>*/0/*<*/)/*>*/; /*<__HI(t)+=*/t=__HI(t,__HI(t)+/*>*/0x00000001/*<*/)/*>*/;
+	t=__LO(t,0); t=__HI(t,__HI(t)+0x00000001);
 
 
     /* one step newton iteration to 53 bits with error less than 0.667 ulps */
@@ -716,7 +683,7 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
 	t=t+t*r;
 
     /* retore the sign bit */
-	/*<__HI(t) |= */t=__HI(t,__HI(t)|/*>*/sign/*<*/)/*>*/;
+	t=__HI(t,__HI(t)|sign);
 	return(t);
 }
 }
@@ -739,16 +706,13 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
  * with the sign bit of y.
  */
 
-/*<#include "fdlibm.h"*/private static class Copysign {/*>*/
+private static class Copysign {
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<copysign*/compute/*>*/(double x, double y)
-/*<#else
-	double copysign(x,y)
-	double x,y;
-#endif/>*/
+
+	static strictfp double compute(double x, double y)
+
 {
-	/*<__HI(x) = */x=__HI(x,/*>*/(__HI(x)&0x7fffffff)|(__HI(y)&0x80000000)/*<*/)/*>*/;
+	x=__HI(x,(__HI(x)&0x7fffffff)|(__HI(y)&0x80000000));
         return x;
 }
 }
@@ -796,16 +760,13 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
  *	TRIG(x) returns trig(x) nearly rounded 
  */
 
-/*<#include "fdlibm.h"*/private static class Cos {/*>*/
+private static class Cos {
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<cos*/compute/*>*/(double x)
-/*<#else
-	double cos(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	double y[/*<2/>*/]/*<*/= new double [2]/*>*/,z=0.0;
+	double y[]= new double [2],z=0.0;
 	int n, ix;
 
     /* High word of x. */
@@ -813,20 +774,20 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
 
     /* |x| ~< pi/4 */
 	ix &= 0x7fffffff;
-	if(ix <= 0x3fe921fb) return /*<__kernel_cos*/KernelCos.compute/*>*/(x,z);
+	if(ix <= 0x3fe921fb) return KernelCos.compute(x,z);
 
     /* cos(Inf or NaN) is NaN */
 	else if (ix>=0x7ff00000) return x-x;
 
     /* argument reduction needed */
 	else {
-	    n = /*<__ieee754_rem_pio2*/RemPio2.compute/*>*/(x,y);
+	    n = RemPio2.compute(x,y);
 	    switch(n&3) {
-		case 0: return  /*<__kernel_cos*/KernelCos.compute/*>*/(y[0],y[1]);
-		case 1: return -/*<__kernel_sin*/KernelSin.compute/*>*/(y[0],y[1],1);
-		case 2: return -/*<__kernel_cos*/KernelCos.compute/*>*/(y[0],y[1]);
+		case 0: return  KernelCos.compute(y[0],y[1]);
+		case 1: return -KernelSin.compute(y[0],y[1],1);
+		case 2: return -KernelCos.compute(y[0],y[1]);
 		default:
-		        return  /*<__kernel_sin*/KernelSin.compute/*>*/(y[0],y[1],1);
+		        return  KernelSin.compute(y[0],y[1],1);
 	    }
 	}
 }
@@ -879,13 +840,11 @@ G =  3.57142857142857150787e-01; /* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */
  *	   thus, reducing the rounding error in the subtraction.
  */
 
-/*<#include "fdlibm.h"*/private static class KernelCos {/*>*/
+private static class KernelCos {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 one =  1.00000000000000000000e+00, /* 0x3FF00000, 0x00000000 */
 C1  =  4.16666666666666019037e-02, /* 0x3FA55555, 0x5555554C */
 C2  = -1.38888888888741095749e-03, /* 0xBF56C16C, 0x16C15177 */
@@ -894,14 +853,11 @@ C4  = -2.75573143513906633035e-07, /* 0xBE927E4F, 0x809C52AD */
 C5  =  2.08757232129817482790e-09, /* 0x3E21EE9E, 0xBDB4B1C4 */
 C6  = -1.13596475577881948265e-11; /* 0xBDA8FAE9, 0xBE8838D4 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__kernel_cos*/compute/*>*/(double x, double y)
-/*<#else
-	double __kernel_cos(x, y)
-	double x,y;
-#endif/>*/
+
+	static strictfp double compute(double x, double y)
+
 {
-	double a,hz,z,r,qx/*<*/=U_DOUBLE/*>*/;
+	double a,hz,z,r,qx=U_DOUBLE;
 	int ix;
 	ix = __HI(x)&0x7fffffff;	/* ix = |x|'s high word*/
 	if(ix<0x3e400000) {			/* if x < 2**27 */
@@ -915,8 +871,8 @@ C6  = -1.13596475577881948265e-11; /* 0xBDA8FAE9, 0xBE8838D4 */
 	    if(ix > 0x3fe90000) {		/* x > 0.78125 */
 		qx = 0.28125;
 	    } else {
-	        /*<__HI(qx) = */qx=__HI(qx,/*>*/ix-0x00200000/*<*/)/*>*/;	/* x/4 */
-	        /*<__LO(qx) = */qx=__LO(qx,/*>*/0/*<*/)/*>*/;
+	        qx=__HI(qx,ix-0x00200000);	/* x/4 */
+	        qx=__LO(qx,0);
 	    }
 	    hz = 0.5*z-qx;
 	    a  = one-qx;
@@ -958,24 +914,19 @@ C6  = -1.13596475577881948265e-11; /* 0xBDA8FAE9, 0xBE8838D4 */
  *	only cosh(0)=1 is exact for finite x.
  */
 
-/*<#include "fdlibm.h"*/private static class Cosh {/*>*/
+private static class Cosh {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double one = 1.0, half=0.5, huge = 1.0e300;
-/*<#else
-static double one = 1.0, half=0.5, huge = 1.0e300;
-#endif/>*/
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_cosh*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_cosh(x)
-	double x;
-#endif/>*/
+static final double one = 1.0, half=0.5, huge = 1.0e300;
+
+
+
+	static strictfp double compute(double x)
+
 {	
 	double t,w;
 	int ix;
-	/*<unsigned*/int/*>*/ lx;
+	int lx;
 
     /* High word of |x|. */
 	ix = __HI(x);
@@ -986,7 +937,7 @@ static double one = 1.0, half=0.5, huge = 1.0e300;
 
     /* |x| in [0,0.5*ln2], return 1+expm1(|x|)^2/(2*exp(|x|)) */
 	if(ix<0x3fd62e43) {
-	    t = expm1(/*<fabs*/Fabs.compute/*>*/(x));
+	    t = expm1(Fabs.compute(x));
 	    w = one+t;
 	    if (ix<0x3c800000) return w;	/* cosh(tiny) = 1 */
 	    return one+(t*t)/(w+w);
@@ -994,18 +945,18 @@ static double one = 1.0, half=0.5, huge = 1.0e300;
 
     /* |x| in [0.5*ln2,22], return (exp(|x|)+1/exp(|x|)/2; */
 	if (ix < 0x40360000) {
-		t = /*<__ieee754_exp*/Exp.compute/*>*/(/*<fabs*/Fabs.compute/*>*/(x));
+		t = Exp.compute(Fabs.compute(x));
 		return half*t+half/t;
 	}
 
     /* |x| in [22, log(maxdouble)] return half*exp(|x|) */
-	if (ix < 0x40862E42)  return half*/*<__ieee754_exp*/Exp.compute/*>*/(/*<fabs*/Fabs.compute/*>*/(x));
+	if (ix < 0x40862E42)  return half*Exp.compute(Fabs.compute(x));
 
     /* |x| in [log(maxdouble), overflowthresold] */
-	lx = /*<*( (*/__AMP(x)[/*>*/((/*<*(unsigned*)&one*/__AMP(one)[0]/*>*/)/*<>>*/>>>/*>*/29)/*<) + (unsigned*)&x)*/]/*>*/;
+	lx = __AMP(x)[((__AMP(one)[0])>>>29)];
 	if (ix<0x408633CE || 
-	      (ix==0x408633ce)&&(/*<*/Integer.compareUnsigned(/*>*/lx/*<<=(unsigned)*/,/*>*/0x8fb9f87d/*<*/)<=0/*>*/)) {
-	    w = /*<__ieee754_exp*/Exp.compute/*>*/(half*/*<fabs*/Fabs.compute/*>*/(x));
+	      (ix==0x408633ce)&&(Integer.compareUnsigned(lx,0x8fb9f87d)<=0)) {
+	    w = Exp.compute(half*Fabs.compute(x));
 	    t = half*w;
 	    return t*w;
 	}
@@ -1089,22 +1040,20 @@ static double one = 1.0, half=0.5, huge = 1.0e300;
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Exp {/*>*/
+private static class Exp {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 one	= 1.0,
-halF[/*<2/>*/]	= {0.5,-0.5,},
+halF[]	= {0.5,-0.5,},
 huge	= 1.0e+300,
 twom1000= 9.33263618503218878990e-302,     /* 2**-1000=0x01700000,0*/
 o_threshold=  7.09782712893383973096e+02,  /* 0x40862E42, 0xFEFA39EF */
 u_threshold= -7.45133219101941108420e+02,  /* 0xc0874910, 0xD52D3051 */
-ln2HI[/*<2/>*/]   ={ 6.93147180369123816490e-01,  /* 0x3fe62e42, 0xfee00000 */
+ln2HI[]   ={ 6.93147180369123816490e-01,  /* 0x3fe62e42, 0xfee00000 */
 	     -6.93147180369123816490e-01,},/* 0xbfe62e42, 0xfee00000 */
-ln2LO[/*<2/>*/]   ={ 1.90821492927058770002e-10,  /* 0x3dea39ef, 0x35793c76 */
+ln2LO[]   ={ 1.90821492927058770002e-10,  /* 0x3dea39ef, 0x35793c76 */
 	     -1.90821492927058770002e-10,},/* 0xbdea39ef, 0x35793c76 */
 invln2 =  1.44269504088896338700e+00, /* 0x3ff71547, 0x652b82fe */
 P1   =  1.66666666666666019037e-01, /* 0x3FC55555, 0x5555553E */
@@ -1114,24 +1063,21 @@ P4   = -1.65339022054652515390e-06, /* 0xBEBBBD41, 0xC5D26BF1 */
 P5   =  4.13813679705723846039e-08; /* 0x3E663769, 0x72BEA4D0 */
 
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_exp*/compute/*>*/(double x)	/* default IEEE double exp */
-/*<#else
-	double __ieee754_exp(x)	/* default IEEE double exp *=/
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)	/* default IEEE double exp */
+
 {
-	double y,hi/*<*/=U_DOUBLE/*>*/,lo/*<*/=U_DOUBLE/*>*/,c,t;
-	int k/*<*/=U_INT/*>*/,xsb;
-	/*<unsigned*/int/*>*/ hx;
+	double y,hi=U_DOUBLE,lo=U_DOUBLE,c,t;
+	int k=U_INT,xsb;
+	int hx;
 
 	hx  = __HI(x);	/* high word of x */
-	xsb = (hx/*<>>*/>>>/*>*/31)&1;		/* sign bit of x */
+	xsb = (hx>>>31)&1;		/* sign bit of x */
 	hx &= 0x7fffffff;		/* high word of |x| */
 
     /* filter out non-finite argument */
-	if(/*<*/Integer.compareUnsigned(/*>*/hx/*< >= */,/*>*/0x40862E42/*<*/)>=0/*>*/) {			/* if |x|>=709.78... */
-            if(/*<*/Integer.compareUnsigned(/*>*/hx/*<>=*/,/*>*/0x7ff00000/*<*/)>=0/*>*/) {
+	if(Integer.compareUnsigned(hx,0x40862E42)>=0) {			/* if |x|>=709.78... */
+            if(Integer.compareUnsigned(hx,0x7ff00000)>=0) {
 		if(((hx&0xfffff)|__LO(x))!=0) 
 		     return x+x; 		/* NaN */
 		else return (xsb==0)? x:0.0;	/* exp(+-inf)={inf,0} */
@@ -1141,8 +1087,8 @@ P5   =  4.13813679705723846039e-08; /* 0x3E663769, 0x72BEA4D0 */
 	}
 
     /* argument reduction */
-	if(/*<*/Integer.compareUnsigned(/*>*/hx/*< > */,/*>*/0x3fd62e42/*<*/)>0/*>*/) {		/* if  |x| > 0.5 ln2 */ 
-	    if(/*<*/Integer.compareUnsigned(/*>*/hx/*< < */,/*>*/0x3FF0A2B2/*<*/)<0/*>*/) {	/* and |x| < 1.5 ln2 */
+	if(Integer.compareUnsigned(hx,0x3fd62e42)>0) {		/* if  |x| > 0.5 ln2 */ 
+	    if(Integer.compareUnsigned(hx,0x3FF0A2B2)<0) {	/* and |x| < 1.5 ln2 */
 		hi = x-ln2HI[xsb]; lo=ln2LO[xsb]; k = 1-xsb-xsb;
 	    } else {
 		k  = (int)(invln2*x+halF[xsb]);
@@ -1152,7 +1098,7 @@ P5   =  4.13813679705723846039e-08; /* 0x3E663769, 0x72BEA4D0 */
 	    }
 	    x  = hi - lo;
 	} 
-	else if(/*<*/Integer.compareUnsigned(/*>*/hx/*< < */,/*>*/0x3e300000/*<*/)<0/*>*/)  {	/* when |x|<2**-28 */
+	else if(Integer.compareUnsigned(hx,0x3e300000)<0)  {	/* when |x|<2**-28 */
 	    if(huge+x>one) return one+x;/* trigger inexact */
 	}
 	else k = 0;
@@ -1163,10 +1109,10 @@ P5   =  4.13813679705723846039e-08; /* 0x3E663769, 0x72BEA4D0 */
 	if(k==0) 	return one-((x*c)/(c-2.0)-x); 
 	else 		y = one-((lo-(x*c)/(2.0-c))-hi);
 	if(k >= -1021) {
-	    /*<__HI(y) += */y=__HI(y,__HI(y)+/*>*/(k<<20)/*<*/)/*>*/;	/* add k to y's exponent */
+	    y=__HI(y,__HI(y)+(k<<20));	/* add k to y's exponent */
 	    return y;
 	} else {
-	    /*<__HI(y) += */y=__HI(y,__HI(y)+/*>*/((k+1000)<<20)/*<*/)/*>*/;/* add k to y's exponent */
+	    y=__HI(y,__HI(y)+((k+1000)<<20));/* add k to y's exponent */
 	    return y*twom1000;
 	}
 }
@@ -1278,13 +1224,11 @@ P5   =  4.13813679705723846039e-08; /* 0x3E663769, 0x72BEA4D0 */
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Expm1 {/*>*/
+private static class Expm1 {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 one		= 1.0,
 huge		= 1.0e+300,
 tiny		= 1.0e-300,
@@ -1299,16 +1243,13 @@ Q3  =  -7.93650757867487942473e-05, /* BF14CE19 9EAADBB7 */
 Q4  =   4.00821782732936239552e-06, /* 3ED0CFCA 86E65239 */
 Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<expm1*/compute/*>*/(double x)
-/*<#else
-	double expm1(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	double y,hi,lo,c/*<*/=U_DOUBLE/*>*/,t,e,hxs,hfx,r1;
+	double y,hi,lo,c=U_DOUBLE,t,e,hxs,hfx,r1;
 	int k,xsb;
-	/*<unsigned*/int/*>*/ hx;
+	int hx;
 
 	hx  = __HI(x);	/* high word of x */
 	xsb = hx&0x80000000;		/* sign bit of x */
@@ -1316,9 +1257,9 @@ Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
 	hx &= 0x7fffffff;		/* high word of |x| */
 
     /* filter out huge and non-finite argument */
-	if(/*<*/Integer.compareUnsigned(/*>*/hx/*< >= */,/*>*/0x4043687A/*<*/)>=0/*>*/) {			/* if |x|>=56*ln2 */
-	    if(/*<*/Integer.compareUnsigned(/*>*/hx/*< >= */,/*>*/0x40862E42/*<*/)>=0/*>*/) {		/* if |x|>=709.78... */
-                if(/*<*/Integer.compareUnsigned(/*>*/hx/*<>=*/,/*>*/0x7ff00000/*<*/)>=0/*>*/) {
+	if(Integer.compareUnsigned(hx,0x4043687A)>=0) {			/* if |x|>=56*ln2 */
+	    if(Integer.compareUnsigned(hx,0x40862E42)>=0) {		/* if |x|>=709.78... */
+                if(Integer.compareUnsigned(hx,0x7ff00000)>=0) {
 		    if(((hx&0xfffff)|__LO(x))!=0) 
 		         return x+x; 	 /* NaN */
 		    else return (xsb==0)? x:-1.0;/* exp(+-inf)={inf,-1} */
@@ -1332,14 +1273,14 @@ Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
 	}
 
     /* argument reduction */
-	if(/*<*/Integer.compareUnsigned(/*>*/hx/*< > */,/*>*/0x3fd62e42/*<*/)>0/*>*/) {		/* if  |x| > 0.5 ln2 */ 
-	    if(/*<*/Integer.compareUnsigned(/*>*/hx/*< < */,/*>*/0x3FF0A2B2/*<*/)<0/*>*/) {	/* and |x| < 1.5 ln2 */
+	if(Integer.compareUnsigned(hx,0x3fd62e42)>0) {		/* if  |x| > 0.5 ln2 */ 
+	    if(Integer.compareUnsigned(hx,0x3FF0A2B2)<0) {	/* and |x| < 1.5 ln2 */
 		if(xsb==0)
 		    {hi = x - ln2_hi; lo =  ln2_lo;  k =  1;}
 		else
 		    {hi = x + ln2_hi; lo = -ln2_lo;  k = -1;}
 	    } else {
-		k  = /*<*/(int)(/*>*/invln2*x+((xsb==0)?0.5:-0.5)/*<*/)/*>*/;
+		k  = (int)(invln2*x+((xsb==0)?0.5:-0.5));
 		t  = k;
 		hi = x - t*ln2_hi;	/* t*ln2_hi is exact here */
 		lo = t*ln2_lo;
@@ -1347,7 +1288,7 @@ Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
 	    x  = hi - lo;
 	    c  = (hi-x)-lo;
 	} 
-	else if(/*<*/Integer.compareUnsigned(/*>*/hx/*< < */,/*>*/0x3c900000/*<*/)<0/*>*/) {  	/* when |x|<2**-54, return x */
+	else if(Integer.compareUnsigned(hx,0x3c900000)<0) {  	/* when |x|<2**-54, return x */
 	    t = huge+x;	/* return x with inexact flags when x!=0 */
 	    return x - (t-(huge+x));	
 	}
@@ -1369,19 +1310,19 @@ Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
 	       	else 	      return  one+2.0*(x-e);
 	    if (k <= -2 || k>56) {   /* suffice to return exp(x)-1 */
 	        y = one-(e-x);
-	        /*<__HI(y) += */y=__HI(y,__HI(y)+/*>*/(k<<20)/*<*/)/*>*/;	/* add k to y's exponent */
+	        y=__HI(y,__HI(y)+(k<<20));	/* add k to y's exponent */
 	        return y-one;
 	    }
 	    t = one;
 	    if(k<20) {
-	       	/*<__HI(t) = */t=__HI(t,/*>*/0x3ff00000 - (0x200000>>k)/*<*/)/*>*/;  /* t=1-2^-k */
+	       	t=__HI(t,0x3ff00000 - (0x200000>>k));  /* t=1-2^-k */
 	       	y = t-(e-x);
-	       	/*<__HI(y) += */y=__HI(y,__HI(y)+/*>*/(k<<20)/*<*/)/*>*/;	/* add k to y's exponent */
+	       	y=__HI(y,__HI(y)+(k<<20));	/* add k to y's exponent */
 	   } else {
-	       	/*<__HI(t)  = */t=__HI(t,/*>*/((0x3ff-k)<<20)/*<*/)/*>*/;	/* 2^-k */
+	       	t=__HI(t,((0x3ff-k)<<20));	/* 2^-k */
 	       	y = x-(e+t);
 	       	y += one;
-	       	/*<__HI(y) += */y=__HI(y,__HI(y)+/*>*/(k<<20)/*<*/)/*>*/;	/* add k to y's exponent */
+	       	y=__HI(y,__HI(y)+(k<<20));	/* add k to y's exponent */
 	    }
 	}
 	return y;
@@ -1404,16 +1345,13 @@ Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
  * fabs(x) returns the absolute value of x.
  */
 
-/*<#include "fdlibm.h"*/private static class Fabs {/*>*/
+private static class Fabs {
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<fabs*/compute/*>*/(double x)
-/*<#else
-	double fabs(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	/*<__HI(x) &= */x=__HI(x,__HI(x)&/*>*/0x7fffffff/*<*/)/*>*/;
+	x=__HI(x,__HI(x)&0x7fffffff);
         return x;
 }
 }
@@ -1439,23 +1377,18 @@ Q5  =  -2.01099218183624371326e-07; /* BE8AFDB7 6E09C32D */
  *	Inexact flag raised if x not equal to floor(x).
  */
 
-/*<#include "fdlibm.h"*/private static class Floor {/*>*/
+private static class Floor {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double huge = 1.0e300;
-/*<#else
-static double huge = 1.0e300;
-#endif/>*/
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<floor*/compute/*>*/(double x)
-/*<#else
-	double floor(x)
-	double x;
-#endif/>*/
+static final double huge = 1.0e300;
+
+
+
+	static strictfp double compute(double x)
+
 {
 	int i0,i1,j0;
-	/*<unsigned*/int/*>*/ i,j;
+	int i,j;
 	i0 =  __HI(x);
 	i1 =  __LO(x);
 	j0 = ((i0>>20)&0x7ff)-0x3ff;
@@ -1478,22 +1411,22 @@ static double huge = 1.0e300;
 	    if(j0==0x400) return x+x;	/* inf or NaN */
 	    else return x;		/* x is integral */
 	} else {
-	    i = (/*<(unsigned)/>*/(0xffffffff))/*<>>*/>>>/*>*/(j0-20);
+	    i = ((0xffffffff))>>>(j0-20);
 	    if((i1&i)==0) return x;	/* x is integral */
 	    if(huge+x>0.0) { 		/* raise inexact flag */
 		if(i0<0) {
 		    if(j0==20) i0+=1; 
 		    else {
 			j = i1+(1<<(52-j0));
-			if(/*<*/Integer.compareUnsigned(/*>*/j/*<<*/,/*>*/i1/*<*/)<0/*>*/) i0 +=1 ; 	/* got a carry */
+			if(Integer.compareUnsigned(j,i1)<0) i0 +=1 ; 	/* got a carry */
 			i1=j;
 		    }
 		}
 		i1 &= (~i);
 	    }
 	}
-	/*<__HI(x) = */x=__HI(x,/*>*/i0/*<*/)/*>*/;
-	/*<__LO(x) = */x=__LO(x,/*>*/i1/*<*/)/*>*/;
+	x=__HI(x,i0);
+	x=__LO(x,i1);
 	return x;
 }
 }
@@ -1542,14 +1475,11 @@ static double huge = 1.0e300;
  * 	than 1 ulps (units in the last place) 
  */
 
-/*<#include "fdlibm.h"*/private static class Hypot {/*>*/
+private static class Hypot {
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_hypot*/compute/*>*/(double x, double y)
-/*<#else
-	double __ieee754_hypot(x,y)
-	double x, y;
-#endif/>*/
+
+	static strictfp double compute(double x, double y)
+
 {
 	double a=x,b=y,t1,t2,y1,y2,w;
 	int j,k,ha,hb;
@@ -1557,8 +1487,8 @@ static double huge = 1.0e300;
 	ha = __HI(x)&0x7fffffff;	/* high word of  x */
 	hb = __HI(y)&0x7fffffff;	/* high word of  y */
 	if(hb > ha) {a=y;b=x;j=ha; ha=hb;hb=j;} else {a=x;b=y;}
-	/*<__HI(a) = */a=__HI(a,/*>*/ha/*<*/)/*>*/;	/* a <- |a| */
-	/*<__HI(b) = */b=__HI(b,/*>*/hb/*<*/)/*>*/;	/* b <- |b| */
+	a=__HI(a,ha);	/* a <- |a| */
+	b=__HI(b,hb);	/* b <- |b| */
 	if((ha-hb)>0x3c00000) {return a+b;} /* x/y > 2**60 */
 	k=0;
 	if(ha > 0x5f300000) {	/* a>2**500 */
@@ -1570,14 +1500,14 @@ static double huge = 1.0e300;
 	   }
 	   /* scale a and b by 2**-600 */
 	   ha -= 0x25800000; hb -= 0x25800000;	k += 600;
-	   /*<__HI(a) = */a=__HI(a,/*>*/ha/*<*/)/*>*/;
-	   /*<__HI(b) = */b=__HI(b,/*>*/hb/*<*/)/*>*/;
+	   a=__HI(a,ha);
+	   b=__HI(b,hb);
 	}
 	if(hb < 0x20b00000) {	/* b < 2**-500 */
 	    if(hb <= 0x000fffff) {	/* subnormal b or 0 */	
 		if((hb|(__LO(b)))==0) return a;
 		t1=0;
-		/*<__HI(t1) = */t1=__HI(t1,/*>*/0x7fd00000/*<*/)/*>*/;	/* t1=2^1022 */
+		t1=__HI(t1,0x7fd00000);	/* t1=2^1022 */
 		b *= t1;
 		a *= t1;
 		k -= 1022;
@@ -1585,30 +1515,30 @@ static double huge = 1.0e300;
 	        ha += 0x25800000; 	/* a *= 2^600 */
 		hb += 0x25800000;	/* b *= 2^600 */
 		k -= 600;
-	   	/*<__HI(a) = */a=__HI(a,/*>*/ha/*<*/)/*>*/;
-	   	/*<__HI(b) = */b=__HI(b,/*>*/hb/*<*/)/*>*/;
+	   	a=__HI(a,ha);
+	   	b=__HI(b,hb);
 	    }
 	}
     /* medium size a and b */
 	w = a-b;
 	if (w>b) {
 	    t1 = 0;
-	    /*<__HI(t1) = */t1=__HI(t1,/*>*/ha/*<*/)/*>*/;
+	    t1=__HI(t1,ha);
 	    t2 = a-t1;
-	    w  = /*<sqrt*/Sqrt.compute/*>*/(t1*t1-(b*(-b)-t2*(a+t1)));
+	    w  = Sqrt.compute(t1*t1-(b*(-b)-t2*(a+t1)));
 	} else {
 	    a  = a+a;
 	    y1 = 0;
-	    /*<__HI(y1) = */y1=__HI(y1,/*>*/hb/*<*/)/*>*/;
+	    y1=__HI(y1,hb);
 	    y2 = b - y1;
 	    t1 = 0;
-	    /*<__HI(t1) = */t1=__HI(t1,/*>*/ha+0x00100000/*<*/)/*>*/;
+	    t1=__HI(t1,ha+0x00100000);
 	    t2 = a - t1;
-	    w  = /*<sqrt*/Sqrt.compute/*>*/(t1*y1-(w*(-w)-(t1*y2+t2*b)));
+	    w  = Sqrt.compute(t1*y1-(w*(-w)-(t1*y2+t2*b)));
 	}
 	if(k!=0) {
 	    t1 = 1.0;
-	    /*<__HI(t1) += */t1=__HI(t1,__HI(t1)+/*>*/(k<<20)/*<*/)/*>*/;
+	    t1=__HI(t1,__HI(t1)+(k<<20));
 	    return t1*w;
 	} else return w;
 }
@@ -1677,13 +1607,11 @@ static double huge = 1.0e300;
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Log {/*>*/
+private static class Log {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 ln2_hi  =  6.93147180369123816490e-01,	/* 3fe62e42 fee00000 */
 ln2_lo  =  1.90821492927058770002e-10,	/* 3dea39ef 35793c76 */
 two54   =  1.80143985094819840000e+16,  /* 43500000 00000000 */
@@ -1697,16 +1625,13 @@ Lg7 = 1.479819860511658591e-01;  /* 3FC2F112 DF3E5244 */
 
 static double zero   =  0.0;
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_log*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_log(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
 	double hfsq,f,s,z,R,w,t1,t2,dk;
 	int k,hx,i,j;
-	/*<unsigned*/int/*>*/ lx;
+	int lx;
 
 	hx = __HI(x);		/* high word of x */
 	lx = __LO(x);		/* low  word of x */
@@ -1723,7 +1648,7 @@ static double zero   =  0.0;
 	k += (hx>>20)-1023;
 	hx &= 0x000fffff;
 	i = (hx+0x95f64)&0x100000;
-	/*<__HI(x) = */x=__HI(x,/*>*/hx|(i^0x3ff00000)/*<*/)/*>*/;	/* normalize x or x/2 */
+	x=__HI(x,hx|(i^0x3ff00000));	/* normalize x or x/2 */
 	k += (i>>20);
 	f = x-1.0;
 	if((0x000fffff&(2+hx))<3) {	/* |f| < 2**-20 */
@@ -1799,13 +1724,11 @@ static double zero   =  0.0;
  * shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Log10 {/*>*/
+private static class Log10 {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 two54      =  1.80143985094819840000e+16, /* 0x43500000, 0x00000000 */
 ivln10     =  4.34294481903251816668e-01, /* 0x3FDBCB7B, 0x1526E50E */
 log10_2hi  =  3.01029995663611771306e-01, /* 0x3FD34413, 0x509F6000 */
@@ -1813,16 +1736,13 @@ log10_2lo  =  3.69423907715893078616e-13; /* 0x3D59FEF3, 0x11F12B36 */
 
 static double zero   =  0.0;
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_log10*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_log10(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
 	double y,z;
 	int i,k,hx;
-	/*<unsigned*/int/*>*/ lx;
+	int lx;
 
 	hx = __HI(x);	/* high word of x */
 	lx = __LO(x);	/* low word of x */
@@ -1837,11 +1757,11 @@ static double zero   =  0.0;
         }
 	if (hx >= 0x7ff00000) return x+x;
 	k += (hx>>20)-1023;
-	i  = (/*<(unsigned)/>*/k&0x80000000)/*<>>*/>>>/*>*/31;
+	i  = (k&0x80000000)>>>31;
         hx = (hx&0x000fffff)|((0x3ff-i)<<20);
         y  = (double)(k+i);
-        /*<__HI(x) = */x=__HI(x,/*>*/hx/*<*/)/*>*/;
-	z  = y*log10_2lo + ivln10*/*<__ieee754_log*/Log.compute/*>*/(x);
+        x=__HI(x,hx);
+	z  = y*log10_2lo + ivln10*Log.compute(x);
 	return  z+y*log10_2hi;
 }
 }
@@ -1923,13 +1843,11 @@ static double zero   =  0.0;
  *	 See HP-15C Advanced Functions Handbook, p.193.
  */
 
-/*<#include "fdlibm.h"*/private static class Log1p {/*>*/
+private static class Log1p {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 ln2_hi  =  6.93147180369123816490e-01,	/* 3fe62e42 fee00000 */
 ln2_lo  =  1.90821492927058770002e-10,	/* 3dea39ef 35793c76 */
 two54   =  1.80143985094819840000e+16,  /* 43500000 00000000 */
@@ -1943,15 +1861,12 @@ Lp7 = 1.479819860511658591e-01;  /* 3FC2F112 DF3E5244 */
 
 static double zero = 0.0;
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<log1p*/compute/*>*/(double x)
-/*<#else
-	double log1p(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	double hfsq,f/*<*/=U_DOUBLE/*>*/,c/*<*/=U_DOUBLE/*>*/,s,z,R,u;
-	int k,hx,hu/*<*/=U_INT/*>*/,ax;
+	double hfsq,f=U_DOUBLE,c=U_DOUBLE,s,z,R,u;
+	int k,hx,hu=U_INT,ax;
 
 	hx = __HI(x);		/* high word of x */
 	ax = hx&0x7fffffff;
@@ -1988,10 +1903,10 @@ static double zero = 0.0;
 	    }
 	    hu &= 0x000fffff;
 	    if(hu<0x6a09e) {
-	        /*<__HI(u) = */u=__HI(u,/*>*/hu|0x3ff00000/*<*/)/*>*/;	/* normalize u */
+	        u=__HI(u,hu|0x3ff00000);	/* normalize u */
 	    } else {
 	        k += 1; 
-	        /*<__HI(u) = */u=__HI(u,/*>*/hu|0x3fe00000/*<*/)/*>*/;	/* normalize u/2 */
+	        u=__HI(u,hu|0x3fe00000);	/* normalize u/2 */
 	        hu = (0x00100000-hu)>>2;
 	    }
 	    f = u-1.0;
@@ -2012,9 +1927,7 @@ static double zero = 0.0;
 }
 }
 
-/*<#ifndef lint
-static  char sccsid[] = "@(#)e_pow.c 1.5 04/04/22 SMI"; 
-#endif/>*/
+
 
 /*
  * ====================================================
@@ -2071,13 +1984,11 @@ static  char sccsid[] = "@(#)e_pow.c 1.5 04/04/22 SMI";
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class Pow {/*>*/
+private static class Pow {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 bp[] = {1.0, 1.5,},
 dp_h[] = { 0.0, 5.84962487220764160156e-01,}, /* 0x3FE2B803, 0x40000000 */
 dp_l[] = { 0.0, 1.35003920212974897128e-08,}, /* 0x3E4CFDEB, 0x43CFD006 */
@@ -2110,20 +2021,17 @@ ivln2    =  1.44269504088896338700e+00, /* 0x3FF71547, 0x652B82FE =1/ln2 */
 ivln2_h  =  1.44269502162933349609e+00, /* 0x3FF71547, 0x60000000 =24b 1/ln2*/
 ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_pow*/compute/*>*/(double x, double y)
-/*<#else
-	double __ieee754_pow(x,y)
-	double x, y;
-#endif/>*/
+
+	static strictfp double compute(double x, double y)
+
 {
 	double z,ax,z_h,z_l,p_h,p_l;
 	double y1,t1,t2,r,s,t,u,v,w;
 	int i0,i1,i,j,k,yisint,n;
 	int hx,hy,ix,iy;
-	/*<unsigned*/int/*>*/ lx,ly;
+	int lx,ly;
 
-	i0 = ((/*<*(int*)&one*/__AMP(one)[0]/*>*/)>>29)^1; i1=1-i0;
+	i0 = ((__AMP(one)[0])>>29)^1; i1=1-i0;
 	hx = __HI(x); lx = __LO(x);
 	hy = __HI(y); ly = __LO(y);
 	ix = hx&0x7fffffff;  iy = hy&0x7fffffff;
@@ -2147,7 +2055,7 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	    else if(iy>=0x3ff00000) {
 		k = (iy>>20)-0x3ff;	   /* exponent */
 		if(k>20) {
-		    j = ly/*<>>*/>>>/*>*/(52-k);
+		    j = ly>>>(52-k);
 		    if((j<<(52-k))==ly) yisint = 2-(j&1);
 		} else if(ly==0) {
 		    j = iy>>(20-k);
@@ -2172,11 +2080,11 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	    if(hy==0x40000000) return x*x; /* y is  2 */
 	    if(hy==0x3fe00000) {	/* y is  0.5 */
 		if(hx>=0)	/* x >= +0 */
-		return /*<sqrt*/Sqrt.compute/*>*/(x);	
+		return Sqrt.compute(x);	
 	    }
 	}
 
-	ax   = /*<fabs*/Fabs.compute/*>*/(x);
+	ax   = Fabs.compute(x);
     /* special value of x */
 	if(lx==0) {
 	    if(ix==0x7ff00000||ix==0||ix==0x3ff00000){
@@ -2216,7 +2124,7 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	    u = ivln2_h*t;	/* ivln2_h has 21 sig. bits */
 	    v = t*ivln2_l-w*ivln2;
 	    t1 = u+v;
-	    /*<__LO(t1) = */t1=__LO(t1,/*>*/0/*<*/)/*>*/;
+	    t1=__LO(t1,0);
 	    t2 = v-(t1-u);
 	} else {
 	    double ss,s2,s_h,s_l,t_h,t_l;
@@ -2231,17 +2139,17 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	    if(j<=0x3988E) k=0;		/* |x|<sqrt(3/2) */
 	    else if(j<0xBB67A) k=1;	/* |x|<sqrt(3)   */
 	    else {k=0;n+=1;ix -= 0x00100000;}
-	    /*<__HI(ax) = */ax=__HI(ax,/*>*/ix/*<*/)/*>*/;
+	    ax=__HI(ax,ix);
 
 	/* compute ss = s_h+s_l = (x-1)/(x+1) or (x-1.5)/(x+1.5) */
 	    u = ax-bp[k];		/* bp[0]=1.0, bp[1]=1.5 */
 	    v = one/(ax+bp[k]);
 	    ss = u*v;
 	    s_h = ss;
-	    /*<__LO(s_h) = */s_h=__LO(s_h,/*>*/0/*<*/)/*>*/;
+	    s_h=__LO(s_h,0);
 	/* t_h=ax+bp[k] High */
 	    t_h = zero;
-	    /*<__HI(t_h)=*/t_h=__HI(t_h,/*>*/((ix>>1)|0x20000000)+0x00080000+(k<<18)/*<*/)/*>*/; 
+	    t_h=__HI(t_h,((ix>>1)|0x20000000)+0x00080000+(k<<18)); 
 	    t_l = ax - (t_h-bp[k]);
 	    s_l = v*((u-s_h*t_h)-s_h*t_l);
 	/* compute log(ax) */
@@ -2250,27 +2158,27 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	    r += s_l*(s_h+ss);
 	    s2  = s_h*s_h;
 	    t_h = 3.0+s2+r;
-	    /*<__LO(t_h) = */t_h=__LO(t_h,/*>*/0/*<*/)/*>*/;
+	    t_h=__LO(t_h,0);
 	    t_l = r-((t_h-3.0)-s2);
 	/* u+v = ss*(1+...) */
 	    u = s_h*t_h;
 	    v = s_l*t_h+t_l*ss;
 	/* 2/(3log2)*(ss+...) */
 	    p_h = u+v;
-	    /*<__LO(p_h) = */p_h=__LO(p_h,/*>*/0/*<*/)/*>*/;
+	    p_h=__LO(p_h,0);
 	    p_l = v-(p_h-u);
 	    z_h = cp_h*p_h;		/* cp_h+cp_l = 2/(3*log2) */
 	    z_l = cp_l*p_h+p_l*cp+dp_l[k];
 	/* log2(ax) = (ss+..)*2/(3*log2) = n + dp_h + z_h + z_l */
 	    t = (double)n;
 	    t1 = (((z_h+z_l)+dp_h[k])+t);
-	    /*<__LO(t1) = */t1=__LO(t1,/*>*/0/*<*/)/*>*/;
+	    t1=__LO(t1,0);
 	    t2 = z_l-(((t1-t)-dp_h[k])-z_h);
 	}
 
     /* split up y into y1+y2 and compute (y1+y2)*(t1+t2) */
 	y1  = y;
-	/*<__LO(y1) = */y1=__LO(y1,/*>*/0/*<*/)/*>*/;
+	y1=__LO(y1,0);
 	p_l = (y-y1)*t1+y*t2;
 	p_h = y1*t1;
 	z = p_l+p_h;
@@ -2299,13 +2207,13 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	    n = j+(0x00100000>>(k+1));
 	    k = ((n&0x7fffffff)>>20)-0x3ff;	/* new k for n */
 	    t = zero;
-	    /*<__HI(t) = */t=__HI(t,/*>*/(n&~(0x000fffff>>k))/*<*/)/*>*/;
+	    t=__HI(t,(n&~(0x000fffff>>k)));
 	    n = ((n&0x000fffff)|0x00100000)>>(20-k);
 	    if(j<0) n = -n;
 	    p_h -= t;
 	} 
 	t = p_l+p_h;
-	/*<__LO(t) = */t=__LO(t,/*>*/0/*<*/)/*>*/;
+	t=__LO(t,0);
 	u = t*lg2_h;
 	v = (p_l-(t-p_h))*lg2+t*lg2_l;
 	z = u+v;
@@ -2316,8 +2224,8 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
 	z  = one-(r-z);
 	j  = __HI(z);
 	j += (n<<20);
-	if((j>>20)<=0) z = /*<scalbn*/Scalbn.compute/*>*/(z,n);	/* subnormal output */
-	else /*<__HI(z) += */z=__HI(z,__HI(z)+/*>*/(n<<20)/*<*/)/*>*/;
+	if((j>>20)<=0) z = Scalbn.compute(z,n);	/* subnormal output */
+	else z=__HI(z,__HI(z)+(n<<20));
 	return s*z;
 }
 }
@@ -2341,16 +2249,14 @@ ivln2_l  =  1.92596299112661746887e-08; /* 0x3E54AE0B, 0xF85DDF44 =1/ln2 tail*/
  * use __kernel_rem_pio2()
  */
 
-/*<#include "fdlibm.h"*/private static class RemPio2 {/*>*/
+private static class RemPio2 {
 
 /*
  * Table of constants for 2/pi, 396 Hex digits (476 decimal) of 2/pi 
  */
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ int two_over_pi[] = {
-/*<#else
-static int two_over_pi[] = {
-#endif/>*/
+
+static final int two_over_pi[] = {
+
 0xA2F983, 0x6E4E44, 0x1529FC, 0x2757D1, 0xF534DD, 0xC0DB62, 
 0x95993C, 0x439041, 0xFE5163, 0xABDEBB, 0xC561B7, 0x246E3A, 
 0x424DD2, 0xE00649, 0x2EEA09, 0xD1921C, 0xFE1DEB, 0x1CB129, 
@@ -2364,11 +2270,9 @@ static int two_over_pi[] = {
 0x4D7327, 0x310606, 0x1556CA, 0x73A8C9, 0x60E27B, 0xC08C6B, 
 };
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ int npio2_hw[] = {
-/*<#else
-static int npio2_hw[] = {
-#endif/>*/
+
+static final int npio2_hw[] = {
+
 0x3FF921FB, 0x400921FB, 0x4012D97C, 0x401921FB, 0x401F6A7A, 0x4022D97C,
 0x4025FDBB, 0x402921FB, 0x402C463A, 0x402F6A7A, 0x4031475C, 0x4032D97C,
 0x40346B9C, 0x4035FDBB, 0x40378FDB, 0x403921FB, 0x403AB41B, 0x403C463A,
@@ -2387,11 +2291,9 @@ static int npio2_hw[] = {
  * pio2_3t:  pi/2 - (pio2_1+pio2_2+pio2_3)
  */
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 zero =  0.00000000000000000000e+00, /* 0x00000000, 0x00000000 */
 half =  5.00000000000000000000e-01, /* 0x3FE00000, 0x00000000 */
 two24 =  1.67772160000000000000e+07, /* 0x41700000, 0x00000000 */
@@ -2403,15 +2305,12 @@ pio2_2t =  2.02226624879595063154e-21, /* 0x3BA3198A, 0x2E037073 */
 pio2_3  =  2.02226624871116645580e-21, /* 0x3BA3198A, 0x2E000000 */
 pio2_3t =  8.47842766036889956997e-32; /* 0x397B839A, 0x252049C1 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/int /*<__ieee754_rem_pio2*/compute/*>*/(double x, double /*<**/[]/*>*/y)
-/*<#else
-	int __ieee754_rem_pio2(x,y)
-	double x,y[];
-#endif/>*/
+
+	static strictfp int compute(double x, double []y)
+
 {
-	double z/*<*/=U_DOUBLE/*>*/,w,t,r,fn;
-	double tx[/*<3/>*/]/*<*/= new double [3]/*>*/;
+	double z=U_DOUBLE,w,t,r,fn;
+	double tx[]= new double [3];
 	int e0,i,j,nx,n,ix,hx;
 
 	hx = __HI(x);		/* high word of x */
@@ -2444,7 +2343,7 @@ pio2_3t =  8.47842766036889956997e-32; /* 0x397B839A, 0x252049C1 */
 	    }
 	}
 	if(ix<=0x413921fb) { /* |x| ~<= 2^19*(pi/2), medium size */
-	    t  = /*<fabs*/Fabs.compute/*>*/(x);
+	    t  = Fabs.compute(x);
 	    n  = (int) (t*invpio2+half);
 	    fn = (double)n;
 	    r  = t-fn*pio2_1;
@@ -2482,9 +2381,9 @@ pio2_3t =  8.47842766036889956997e-32; /* 0x397B839A, 0x252049C1 */
 	    y[0]=y[1]=x-x; return 0;
 	}
     /* set z = scalbn(|x|,ilogb(x)-23) */
-	/*<__LO(z) = */z=__LO(z,/*>*/__LO(x)/*<*/)/*>*/;
+	z=__LO(z,__LO(x));
 	e0 	= (ix>>20)-1046;	/* e0 = ilogb(z)-23; */
-	/*<__HI(z) = */z=__HI(z,/*>*/ix - (e0<<20)/*<*/)/*>*/;
+	z=__HI(z,ix - (e0<<20));
 	for(i=0;i<2;i++) {
 		tx[i] = (double)((int)(z));
 		z     = (z-tx[i])*two24;
@@ -2492,7 +2391,7 @@ pio2_3t =  8.47842766036889956997e-32; /* 0x397B839A, 0x252049C1 */
 	tx[2] = z;
 	nx = 3;
 	while(tx[nx-1]==zero) nx--;	/* skip zero term */
-	n  =  /*<__kernel_rem_pio2*/KernelRemPio2.compute/*>*/(tx,y,e0,nx,2,two_over_pi);
+	n  =  KernelRemPio2.compute(tx,y,e0,nx,2,two_over_pi);
 	if(hx<0) {y[0] = -y[0]; y[1] = -y[1]; return -n;}
 	return n;
 }
@@ -2626,19 +2525,15 @@ pio2_3t =  8.47842766036889956997e-32; /* 0x397B839A, 0x252049C1 */
  * to produce the hexadecimal values shown.
  */
 
-/*<#include "fdlibm.h"*/private static class KernelRemPio2 {/*>*/
+private static class KernelRemPio2 {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ int init_jk[] = {2,3,4,6}; /* initial value for jk */
-/*<#else
-static int init_jk[] = {2,3,4,6}; 
-#endif/>*/
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double PIo2[] = {
-/*<#else
-static double PIo2[] = {
-#endif/>*/
+static final int init_jk[] = {2,3,4,6}; /* initial value for jk */
+
+
+
+static final double PIo2[] = {
+
   1.57079625129699707031e+00, /* 0x3FF921FB, 0x40000000 */
   7.54978941586159635335e-08, /* 0x3E74442D, 0x00000000 */
   5.39030252995776476554e-15, /* 0x3CF84698, 0x80000000 */
@@ -2649,25 +2544,20 @@ static double PIo2[] = {
   2.16741683877804819444e-51, /* 0x3569F31D, 0x00000000 */
 };
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double			
-/*<#else
-static double			
-#endif/>*/
+
+static final double			
+
 zero   = 0.0,
 one    = 1.0,
 two24   =  1.67772160000000000000e+07, /* 0x41700000, 0x00000000 */
 twon24  =  5.96046447753906250000e-08; /* 0x3E700000, 0x00000000 */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/int /*<__kernel_rem_pio2*/compute/*>*/(double /*<**/[]/*>*/x, double /*<**/[]/*>*/y, int e0, int nx, int prec, /*<const/>*/ int /*<**/[]/*>*/ipio2) 
-/*<#else
-	int __kernel_rem_pio2(x,y,e0,nx,prec,ipio2) 	
-	double x[], y[]; int e0,nx,prec; int ipio2[];
-#endif/>*/
+
+	static strictfp int compute(double []x, double []y, int e0, int nx, int prec,  int []ipio2) 
+
 {
-	int jz,jx,jv,jp,jk,carry,n,iq[/*<20/>*/]/*<*/= new int [20]/*>*/,i,j,k,m,q0,ih;
-	double z,fw,f[/*<20/>*/]/*<*/= new double [20]/*>*/,fq[/*<20/>*/]/*<*/= new double [20]/*>*/,q[/*<20/>*/]/*<*/= new double [20]/*>*/;
+	int jz,jx,jv,jp,jk,carry,n,iq[]= new int [20],i,j,k,m,q0,ih;
+	double z,fw,f[]= new double [20],fq[]= new double [20],q[]= new double [20];
 
     /* initialize jk*/
 	jk = init_jk[prec];
@@ -2688,7 +2578,7 @@ twon24  =  5.96046447753906250000e-08; /* 0x3E700000, 0x00000000 */
 	}
 
 	jz = jk;
-recompute:/*<*/for(;;){/*>*/
+recompute:for(;;){
     /* distill q[] into iq[] reversingly */
 	for(i=0,j=jz,z=q[jz];j>0;i++,j--) {
 	    fw    =  (double)((int)(twon24* z));
@@ -2697,8 +2587,8 @@ recompute:/*<*/for(;;){/*>*/
 	}
 
     /* compute n */
-	z  = /*<scalbn*/Scalbn.compute/*>*/(z,q0);		/* actual value of z */
-	z -= 8.0*/*<floor*/Floor.compute/*>*/(z*0.125);		/* trim off integer >= 8 */
+	z  = Scalbn.compute(z,q0);		/* actual value of z */
+	z -= 8.0*Floor.compute(z*0.125);		/* trim off integer >= 8 */
 	n  = (int) z;
 	z -= (double)n;
 	ih = 0;
@@ -2730,7 +2620,7 @@ recompute:/*<*/for(;;){/*>*/
 	    }
 	    if(ih==2) {
 		z = one - z;
-		if(carry!=0) z -= /*<scalbn*/Scalbn.compute/*>*/(one,q0);
+		if(carry!=0) z -= Scalbn.compute(one,q0);
 	    }
 	}
 
@@ -2747,16 +2637,16 @@ recompute:/*<*/for(;;){/*>*/
 		    q[i] = fw;
 		}
 		jz += k;
-		/*<goto*/continue/*>*/ recompute;
+		continue recompute;
 	    }
-	}/*<*/break recompute;}/*>*/
+	}break recompute;}
 
     /* chop off zero terms */
 	if(z==0.0) {
 	    jz -= 1; q0 -= 24;
 	    while(iq[jz]==0) { jz--; q0-=24;}
 	} else { /* break z into 24-bit if necessary */
-	    z = /*<scalbn*/Scalbn.compute/*>*/(z,-q0);
+	    z = Scalbn.compute(z,-q0);
 	    if(z>=two24) { 
 		fw = (double)((int)(twon24*z));
 		iq[jz] = (int)(z-two24*fw);
@@ -2766,7 +2656,7 @@ recompute:/*<*/for(;;){/*>*/
 	}
 
     /* convert integer "bit" chunk to floating-point value */
-	fw = /*<scalbn*/Scalbn.compute/*>*/(one,q0);
+	fw = Scalbn.compute(one,q0);
 	for(i=jz;i>=0;i--) {
 	    q[i] = fw*(double)iq[i]; fw*=twon24;
 	}
@@ -2834,24 +2724,19 @@ recompute:/*<*/for(;;){/*>*/
  * exponentiation or a multiplication.
  */
 
-/*<#include "fdlibm.h"*/private static class Scalbn {/*>*/
+private static class Scalbn {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double
-/*<#else
-static double
-#endif/>*/
+
+static final double
+
 two54   =  1.80143985094819840000e+16, /* 0x43500000, 0x00000000 */
 twom54  =  5.55111512312578270212e-17, /* 0x3C900000, 0x00000000 */
 huge   = 1.0e+300,
 tiny   = 1.0e-300;
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<scalbn*/compute/*>*/ (double x, int n)
-/*<#else
-	double scalbn (x,n)
-	double x; int n;
-#endif/>*/
+
+	static strictfp double compute (double x, int n)
+
 {
 	int  k,hx,lx;
 	hx = __HI(x);
@@ -2866,15 +2751,15 @@ tiny   = 1.0e-300;
 	    }
         if (k==0x7ff) return x+x;		/* NaN or Inf */
         k = k+n; 
-        if (k >  0x7fe) return huge*/*<copysign*/Copysign.compute/*>*/(huge,x); /* overflow  */
+        if (k >  0x7fe) return huge*Copysign.compute(huge,x); /* overflow  */
         if (k > 0) 				/* normal result */
-	    {/*<__HI(x) = */x=__HI(x,/*>*/(hx&0x800fffff)|(k<<20)/*<*/)/*>*/; return x;}
+	    {x=__HI(x,(hx&0x800fffff)|(k<<20)); return x;}
         if (k <= -54)
             if (n > 50000) 	/* in case integer overflow in n+k */
-		return huge*/*<copysign*/Copysign.compute/*>*/(huge,x);	/*overflow*/
-	    else return tiny*/*<copysign*/Copysign.compute/*>*/(tiny,x); 	/*underflow*/
+		return huge*Copysign.compute(huge,x);	/*overflow*/
+	    else return tiny*Copysign.compute(tiny,x); 	/*underflow*/
         k += 54;				/* subnormal result */
-        /*<__HI(x) = */x=__HI(x,/*>*/(hx&0x800fffff)|(k<<20)/*<*/)/*>*/;
+        x=__HI(x,(hx&0x800fffff)|(k<<20));
         return x*twom54;
 }
 }
@@ -2922,16 +2807,13 @@ tiny   = 1.0e-300;
  *	TRIG(x) returns trig(x) nearly rounded 
  */
 
-/*<#include "fdlibm.h"*/private static class Sin {/*>*/
+private static class Sin {
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<sin*/compute/*>*/(double x)
-/*<#else
-	double sin(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	double y[/*<2/>*/]/*<*/= new double [2]/*>*/,z=0.0;
+	double y[]= new double [2],z=0.0;
 	int n, ix;
 
     /* High word of x. */
@@ -2939,20 +2821,20 @@ tiny   = 1.0e-300;
 
     /* |x| ~< pi/4 */
 	ix &= 0x7fffffff;
-	if(ix <= 0x3fe921fb) return /*<__kernel_sin*/KernelSin.compute/*>*/(x,z,0);
+	if(ix <= 0x3fe921fb) return KernelSin.compute(x,z,0);
 
     /* sin(Inf or NaN) is NaN */
 	else if (ix>=0x7ff00000) return x-x;
 
     /* argument reduction needed */
 	else {
-	    n = /*<__ieee754_rem_pio2*/RemPio2.compute/*>*/(x,y);
+	    n = RemPio2.compute(x,y);
 	    switch(n&3) {
-		case 0: return  /*<__kernel_sin*/KernelSin.compute/*>*/(y[0],y[1],1);
-		case 1: return  /*<__kernel_cos*/KernelCos.compute/*>*/(y[0],y[1]);
-		case 2: return -/*<__kernel_sin*/KernelSin.compute/*>*/(y[0],y[1],1);
+		case 0: return  KernelSin.compute(y[0],y[1],1);
+		case 1: return  KernelCos.compute(y[0],y[1]);
+		case 2: return -KernelSin.compute(y[0],y[1],1);
 		default:
-			return -/*<__kernel_cos*/KernelCos.compute/*>*/(y[0],y[1]);
+			return -KernelCos.compute(y[0],y[1]);
 	    }
 	}
 }
@@ -2998,13 +2880,11 @@ tiny   = 1.0e-300;
  *		sin(x) = x + (S1*x + (x *(r-y/2)+y))
  */
 
-/*<#include "fdlibm.h"*/private static class KernelSin {/*>*/
+private static class KernelSin {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double 
-/*<#else
-static double 
-#endif/>*/
+
+static final double 
+
 half =  5.00000000000000000000e-01, /* 0x3FE00000, 0x00000000 */
 S1  = -1.66666666666666324348e-01, /* 0xBFC55555, 0x55555549 */
 S2  =  8.33333333332248946124e-03, /* 0x3F811111, 0x1110F8A6 */
@@ -3013,12 +2893,9 @@ S4  =  2.75573137070700676789e-06, /* 0x3EC71DE3, 0x57B1FE7D */
 S5  = -2.50507602534068634195e-08, /* 0xBE5AE5E6, 0x8A2B9CEB */
 S6  =  1.58969099521155010221e-10; /* 0x3DE5D93A, 0x5ACFD57C */
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__kernel_sin*/compute/*>*/(double x, double y, int iy)
-/*<#else
-	double __kernel_sin(x, y, iy)
-	double x,y; int iy;		/* iy=0 if y is zero *=/
-#endif/>*/
+
+	static strictfp double compute(double x, double y, int iy)
+
 {
 	double z,r,v;
 	int ix;
@@ -3063,24 +2940,19 @@ S6  =  1.58969099521155010221e-10; /* 0x3DE5D93A, 0x5ACFD57C */
  *	only sinh(0)=0 is exact for finite x.
  */
 
-/*<#include "fdlibm.h"*/private static class Sinh {/*>*/
+private static class Sinh {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double one = 1.0, shuge = 1.0e307;
-/*<#else
-static double one = 1.0, shuge = 1.0e307;
-#endif/>*/
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_sinh*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_sinh(x)
-	double x;
-#endif/>*/
+static final double one = 1.0, shuge = 1.0e307;
+
+
+
+	static strictfp double compute(double x)
+
 {	
 	double t,w,h;
 	int ix,jx;
-	/*<unsigned*/int/*>*/ lx;
+	int lx;
 
     /* High word of |x|. */
 	jx = __HI(x);
@@ -3095,18 +2967,18 @@ static double one = 1.0, shuge = 1.0e307;
 	if (ix < 0x40360000) {		/* |x|<22 */
 	    if (ix<0x3e300000) 		/* |x|<2**-28 */
 		if(shuge+x>one) return x;/* sinh(tiny) = tiny with inexact */
-	    t = expm1(/*<fabs*/Fabs.compute/*>*/(x));
+	    t = expm1(Fabs.compute(x));
 	    if(ix<0x3ff00000) return h*(2.0*t-t*t/(t+one));
 	    return h*(t+t/(t+one));
 	}
 
     /* |x| in [22, log(maxdouble)] return 0.5*exp(|x|) */
-	if (ix < 0x40862E42)  return h*/*<__ieee754_exp*/Exp.compute/*>*/(/*<fabs*/Fabs.compute/*>*/(x));
+	if (ix < 0x40862E42)  return h*Exp.compute(Fabs.compute(x));
 
     /* |x| in [log(maxdouble), overflowthresold] */
-	lx = /*<*( (*/__AMP(x)[/*>*/((/*<*(unsigned*)&one*/__AMP(one)[0]/*>*/)/*<>>*/>>>/*>*/29)/*<) + (unsigned*)&x)*/]/*>*/;
-	if (ix<0x408633CE || (ix==0x408633ce)&&(/*<*/Integer.compareUnsigned(/*>*/lx/*<<=(unsigned)*/,/*>*/0x8fb9f87d/*<*/)<=0/*>*/)) {
-	    w = /*<__ieee754_exp*/Exp.compute/*>*/(0.5*/*<fabs*/Fabs.compute/*>*/(x));
+	lx = __AMP(x)[((__AMP(one)[0])>>>29)];
+	if (ix<0x408633CE || (ix==0x408633ce)&&(Integer.compareUnsigned(lx,0x8fb9f87d)<=0)) {
+	    w = Exp.compute(0.5*Fabs.compute(x));
 	    t = h*w;
 	    return t*w;
 	}
@@ -3197,24 +3069,19 @@ static double one = 1.0, shuge = 1.0e307;
  *---------------
  */
 
-/*<#include "fdlibm.h"*/private static class Sqrt {/*>*/
+private static class Sqrt {
 
-/*<#ifdef __STDC__/>*/
-static	/*<const/>*/ double	one	= 1.0, tiny=1.0e-300;
-/*<#else
-static	double	one	= 1.0, tiny=1.0e-300;
-#endif/>*/
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<__ieee754_sqrt*/compute/*>*/(double x)
-/*<#else
-	double __ieee754_sqrt(x)
-	double x;
-#endif/>*/
+static	final double	one	= 1.0, tiny=1.0e-300;
+
+
+
+	static strictfp double compute(double x)
+
 {
-	double z/*<*/=U_DOUBLE/*>*/;
+	double z=U_DOUBLE;
 	int 	sign = (int)0x80000000; 
-	/*<unsigned*/int/*>*/ r,t1,s1,ix1,q1;
+	int r,t1,s1,ix1,q1;
 	int ix0,s0,q,m,t,i;
 
 	ix0 = __HI(x);			/* high word of x */
@@ -3236,23 +3103,23 @@ static	double	one	= 1.0, tiny=1.0e-300;
 	if(m==0) {				/* subnormal x */
 	    while(ix0==0) {
 		m -= 21;
-		ix0 |= (ix1/*<>>*/>>>/*>*/11); ix1 <<= 21;
+		ix0 |= (ix1>>>11); ix1 <<= 21;
 	    }
 	    for(i=0;(ix0&0x00100000)==0;i++) ix0<<=1;
 	    m -= i-1;
-	    ix0 |= (ix1/*<>>*/>>>/*>*/(32-i));
+	    ix0 |= (ix1>>>(32-i));
 	    ix1 <<= i;
 	}
 	m -= 1023;	/* unbias exponent */
 	ix0 = (ix0&0x000fffff)|0x00100000;
-	if(/*<m&1*/(m&1)!=0/*>*/){	/* odd m, double x to make it even */
-	    ix0 += ix0 + ((ix1&sign)/*<>>*/>>>/*>*/31);
+	if((m&1)!=0){	/* odd m, double x to make it even */
+	    ix0 += ix0 + ((ix1&sign)>>>31);
 	    ix1 += ix1;
 	}
 	m >>= 1;	/* m = [m/2] */
 
     /* generate sqrt(x) bit by bit */
-	ix0 += ix0 + ((ix1&sign)/*<>>*/>>>/*>*/31);
+	ix0 += ix0 + ((ix1&sign)>>>31);
 	ix1 += ix1;
 	q = q1 = s0 = s1 = 0;	/* [q,q1] = sqrt(x) */
 	r = 0x00200000;		/* r = moving bit from right to left */
@@ -3264,7 +3131,7 @@ static	double	one	= 1.0, tiny=1.0e-300;
 		ix0 -= t; 
 		q   += r; 
 	    } 
-	    ix0 += ix0 + ((ix1&sign)/*<>>*/>>>/*>*/31);
+	    ix0 += ix0 + ((ix1&sign)>>>31);
 	    ix1 += ix1;
 	    r>>=1;
 	}
@@ -3273,15 +3140,15 @@ static	double	one	= 1.0, tiny=1.0e-300;
 	while(r!=0) {
 	    t1 = s1+r; 
 	    t  = s0;
-	    if((t<ix0)||((t==ix0)&&(/*<*/Integer.compareUnsigned(/*>*/t1/*<<=*/,/*>*/ix1/*<*/)<=0/*>*/))) { 
+	    if((t<ix0)||((t==ix0)&&(Integer.compareUnsigned(t1,ix1)<=0))) { 
 		s1  = t1+r;
 		if(((t1&sign)==sign)&&(s1&sign)==0) s0 += 1;
 		ix0 -= t;
-		if (/*<*/Integer.compareUnsigned(/*>*/ix1/*< < */,/*>*/t1/*<*/)<0/*>*/) ix0 -= 1;
+		if (Integer.compareUnsigned(ix1,t1)<0) ix0 -= 1;
 		ix1 -= t1;
 		q1  += r;
 	    }
-	    ix0 += ix0 + ((ix1&sign)/*<>>*/>>>/*>*/31);
+	    ix0 += ix0 + ((ix1&sign)>>>31);
 	    ix1 += ix1;
 	    r>>=1;
 	}
@@ -3291,20 +3158,20 @@ static	double	one	= 1.0, tiny=1.0e-300;
 	    z = one-tiny; /* trigger inexact flag */
 	    if (z>=one) {
 	        z = one+tiny;
-	        if (q1==/*<(unsigned)/>*/0xffffffff) { q1=0; q += 1;}
+	        if (q1==0xffffffff) { q1=0; q += 1;}
 		else if (z>one) {
-		    if (q1==/*<(unsigned)/>*/0xfffffffe) q+=1;
+		    if (q1==0xfffffffe) q+=1;
 		    q1+=2; 
 		} else
 	            q1 += (q1&1);
 	    }
 	}
 	ix0 = (q>>1)+0x3fe00000;
-	ix1 =  q1/*<>>*/>>>/*>*/1;
+	ix1 =  q1>>>1;
 	if ((q&1)==1) ix1 |= sign;
 	ix0 += (m <<20);
-	/*<__HI(z) = */z=__HI(z,/*>*/ix0/*<*/)/*>*/;
-	/*<__LO(z) = */z=__LO(z,/*>*/ix1/*<*/)/*>*/;
+	z=__HI(z,ix0);
+	z=__LO(z,ix1);
 	return z;
 }
 
@@ -3609,16 +3476,13 @@ B.  sqrt(x) by Reciproot Iteration
  *	TRIG(x) returns trig(x) nearly rounded 
  */
 
-/*<#include "fdlibm.h"*/private static class Tan {/*>*/
+private static class Tan {
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<tan*/compute/*>*/(double x)
-/*<#else
-	double tan(x)
-	double x;
-#endif/>*/
+
+	static strictfp double compute(double x)
+
 {
-	double y[/*<2/>*/]/*<*/= new double [2]/*>*/,z=0.0;
+	double y[]= new double [2],z=0.0;
 	int n, ix;
 
     /* High word of x. */
@@ -3626,20 +3490,20 @@ B.  sqrt(x) by Reciproot Iteration
 
     /* |x| ~< pi/4 */
 	ix &= 0x7fffffff;
-	if(ix <= 0x3fe921fb) return /*<__kernel_tan*/KernelTan.compute/*>*/(x,z,1);
+	if(ix <= 0x3fe921fb) return KernelTan.compute(x,z,1);
 
     /* tan(Inf or NaN) is NaN */
 	else if (ix>=0x7ff00000) return x-x;		/* NaN */
 
     /* argument reduction needed */
 	else {
-	    n = /*<__ieee754_rem_pio2*/RemPio2.compute/*>*/(x,y);
-	    return /*<__kernel_tan*/KernelTan.compute/*>*/(y[0],y[1],1-((n&1)<<1)); /*   1 -- n even
+	    n = RemPio2.compute(x,y);
+	    return KernelTan.compute(y[0],y[1],1-((n&1)<<1)); /*   1 -- n even
 							-1 -- n odd */
 	}
 }
 }
-/*<#pragma ident "@(#)k_tan.c 1.5 04/04/22 SMI"/>*/
+
 
 /*
  * ====================================================
@@ -3685,9 +3549,9 @@ B.  sqrt(x) by Reciproot Iteration
  *		       = 1 - 2*(tan(y) - (tan(y)^2)/(1+tan(y)))
  */
 
-/*<#include "fdlibm.h"*/private static class KernelTan {/*>*/
+private static class KernelTan {
 
-static /*<const/>*/ double xxx[] = {
+static final double xxx[] = {
 		 3.33333333333334091986e-01,	/* 3FD55555, 55555563 */
 		 1.33333333333201242699e-01,	/* 3FC11111, 1110FE7A */
 		 5.39682539762260521377e-02,	/* 3FABA1BA, 1BB341FE */
@@ -3705,14 +3569,14 @@ static /*<const/>*/ double xxx[] = {
 /* pio4 */	 7.85398163397448278999e-01,	/* 3FE921FB, 54442D18 */
 /* pio4lo */	 3.06161699786838301793e-17	/* 3C81A626, 33145C07 */
 };
-/*<#define	one	xxx[13]/>*/
-/*<#define	pio4	xxx[14]/>*/
-/*<#define	pio4lo	xxx[15]/>*/
-/*<#define	T	xxx/>*/
+
+
+
+
 /* INDENT ON */
 
-/*<*/static strictfp/*>*/double
-/*<__kernel_tan*/compute/*>*/(double x, double y, int iy) {
+static strictfp double
+compute(double x, double y, int iy) {
 	double z, r, v, w, s;
 	int ix, hx;
 
@@ -3721,7 +3585,7 @@ static /*<const/>*/ double xxx[] = {
 	if (ix < 0x3e300000) {			/* x < 2**-28 */
 		if ((int) x == 0) {		/* generate inexact */
 			if (((ix | __LO(x)) | (iy + 1)) == 0)
-				return /*<one*/xxx[13]/*>*/ / /*<fabs*/Fabs.compute/*>*/(x);
+				return xxx[13] / Fabs.compute(x);
 			else {
 				if (iy == 1)
 					return x;
@@ -3729,11 +3593,11 @@ static /*<const/>*/ double xxx[] = {
 					double a, t;
 
 					z = w = x + y;
-					/*<__LO(z) = */z=__LO(z,/*>*/0/*<*/)/*>*/;
+					z=__LO(z,0);
 					v = y - (z - x);
-					t = a = -/*<one*/xxx[13]/*>*/ / w;
-					/*<__LO(t) = */t=__LO(t,/*>*/0/*<*/)/*>*/;
-					s = /*<one*/xxx[13]/*>*/ + t * z;
+					t = a = -xxx[13] / w;
+					t=__LO(t,0);
+					s = xxx[13] + t * z;
 					return t + a * (s + t * v);
 				}
 			}
@@ -3744,8 +3608,8 @@ static /*<const/>*/ double xxx[] = {
 			x = -x;
 			y = -y;
 		}
-		z = /*<pio4*/xxx[14]/*>*/ - x;
-		w = /*<pio4lo*/xxx[15]/*>*/ - y;
+		z = xxx[14] - x;
+		w = xxx[15] - y;
 		x = z + w;
 		y = 0.0;
 	}
@@ -3756,13 +3620,13 @@ static /*<const/>*/ double xxx[] = {
 	 * x^5(T[1]+x^4*T[3]+...+x^20*T[11]) +
 	 * x^5(x^2*(T[2]+x^4*T[4]+...+x^22*[T12]))
 	 */
-	r = /*<T*/xxx/*>*/[1] + w * (/*<T*/xxx/*>*/[3] + w * (/*<T*/xxx/*>*/[5] + w * (/*<T*/xxx/*>*/[7] + w * (/*<T*/xxx/*>*/[9] +
-		w * /*<T*/xxx/*>*/[11]))));
-	v = z * (/*<T*/xxx/*>*/[2] + w * (/*<T*/xxx/*>*/[4] + w * (/*<T*/xxx/*>*/[6] + w * (/*<T*/xxx/*>*/[8] + w * (/*<T*/xxx/*>*/[10] +
-		w * /*<T*/xxx/*>*/[12])))));
+	r = xxx[1] + w * (xxx[3] + w * (xxx[5] + w * (xxx[7] + w * (xxx[9] +
+		w * xxx[11]))));
+	v = z * (xxx[2] + w * (xxx[4] + w * (xxx[6] + w * (xxx[8] + w * (xxx[10] +
+		w * xxx[12])))));
 	s = z * x;
 	r = y + z * (s * (r + v) + y);
-	r += /*<T*/xxx/*>*/[0] * s;
+	r += xxx[0] * s;
 	w = x + r;
 	if (ix >= 0x3FE59428) {
 		v = (double) iy;
@@ -3779,10 +3643,10 @@ static /*<const/>*/ double xxx[] = {
 		/* compute -1.0 / (x+r) accurately */
 		double a, t;
 		z = w;
-		/*<__LO(z) = */z=__LO(z,/*>*/0/*<*/)/*>*/;
+		z=__LO(z,0);
 		v = r - (z - x);	/* z+v = r+x */
 		t = a = -1.0 / w;	/* a = -1.0/w */
-		/*<__LO(t) = */t=__LO(t,/*>*/0/*<*/)/*>*/;
+		t=__LO(t,0);
 		s = 1.0 + t * z;
 		return t + a * (s + t * v);
 	}
@@ -3825,20 +3689,15 @@ static /*<const/>*/ double xxx[] = {
  *	only tanh(0)=0 is exact for finite argument.
  */
 
-/*<#include "fdlibm.h"*/private static class Tanh {/*>*/
+private static class Tanh {
 
-/*<#ifdef __STDC__/>*/
-static /*<const/>*/ double one=1.0, two=2.0, tiny = 1.0e-300;
-/*<#else
-static double one=1.0, two=2.0, tiny = 1.0e-300;
-#endif/>*/
 
-/*<#ifdef __STDC__/>*/
-	/*<*/static strictfp/*>*/double /*<tanh*/compute/*>*/(double x)
-/*<#else
-	double tanh(x)
-	double x;
-#endif/>*/
+static final double one=1.0, two=2.0, tiny = 1.0e-300;
+
+
+
+	static strictfp double compute(double x)
+
 {
 	double t,z;
 	int jx,ix;
@@ -3858,10 +3717,10 @@ static double one=1.0, two=2.0, tiny = 1.0e-300;
 	    if (ix<0x3c800000) 		/* |x|<2**-55 */
 		return x*(one+x);    	/* tanh(small) = small */
 	    if (ix>=0x3ff00000) {	/* |x|>=1  */
-		t = expm1(two*/*<fabs*/Fabs.compute/*>*/(x));
+		t = expm1(two*Fabs.compute(x));
 		z = one - two/(t+two);
 	    } else {
-	        t = expm1(-two*/*<fabs*/Fabs.compute/*>*/(x));
+	        t = expm1(-two*Fabs.compute(x));
 	        z= -t/(t+two);
 	    }
     /* |x| > 22, return +-1 */

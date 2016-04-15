@@ -145,7 +145,7 @@ public class FdlibmTranslitN {
     }
 
     /**
-     * Return an int array view of the double argument.
+     * Return an int array view of the double argument like C ampersand operator.
      */
     private static int[] __AMP(double x) {
         int lo = __LO(x);

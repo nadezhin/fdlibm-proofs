@@ -5,9 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import mytest.ast.AST;
 import org.bridj.Pointer;
-import org.llvm.clang.CXCursor;
 import org.llvm.clang.CXSourceLocation;
-import org.llvm.clang.CXSourceRange;
 import org.llvm.clang.CXString;
 import org.llvm.clang.CXToken;
 import org.llvm.clang.Libclang37Library;
@@ -25,6 +23,9 @@ import static org.llvm.clang.Libclang37Library.clang_getTokenSpelling;
  */
 public class Tokens {
 
+    private final boolean KEEP_IN_COMMENTS = false;
+    private final String MARKER = "$$$MARKER";
+
     private final Libclang37Library.CXTranslationUnit tu;
     private final int numTokens;
     private final Pointer<CXToken> tokens;
@@ -37,7 +38,7 @@ public class Tokens {
     }
 
     void printSkipped(CXToken token) {
-        if (clang_getTokenKind(token).equals(Libclang37Library.CXTokenKind.CXToken_Comment)) {
+        if (KEEP_IN_COMMENTS && clang_getTokenKind(token).equals(Libclang37Library.CXTokenKind.CXToken_Comment)) {
             int offset = getLocationOffset(clang_getRangeEnd(clang_getTokenExtent(tu, token)));
             String old = inserts.put(offset - 1, "=");
             assert old == null;
@@ -49,19 +50,16 @@ public class Tokens {
         int ao = getLocationOffset(after);
         String old;
         if (bo < ao) {
-            old = inserts.put(bo, "/*<");
+            old = inserts.put(bo, KEEP_IN_COMMENTS ? "/*<" : MARKER);
             assert old == null;
-            if (text.isEmpty()) {
-                old = inserts.put(ao, "/>*/");
-                assert old == null;
-            } else {
-                old = inserts.put(ao, "*/" + text + "/*>*/");
-                assert old == null;
-            }
+            old = inserts.put(ao,
+                    !KEEP_IN_COMMENTS ? text
+                            : text.isEmpty() ? "/>*/" : "*/" + text + "/*>*/");
+            assert old == null;
         } else {
             assert bo == ao;
             if (!text.isEmpty()) {
-                old = inserts.put(bo, "/*<*/" + text + "/*>*/");
+                old = inserts.put(bo, KEEP_IN_COMMENTS ? "/*<*/" + text + "/*>*/" : text);
                 assert old == null;
             }
         }
@@ -128,13 +126,24 @@ public class Tokens {
 
     public void close(PrintStream out, byte[] contentsBytes) {
         int offset = 0;
+        boolean skip = false;
         for (Map.Entry<Integer, String> e : inserts.entrySet()) {
             int newOffset = e.getKey();
             String insert = e.getValue();
-            out.write(contentsBytes, offset, newOffset - offset);
+            if (skip) {
+                assert insert != MARKER;
+                skip = false;
+            } else {
+                out.write(contentsBytes, offset, newOffset - offset);
+            }
             offset = newOffset;
-            out.print(insert);
+            if (insert == MARKER) {
+                skip = true;
+            } else {
+                out.print(insert);
+            }
         }
+        assert !skip;
         out.write(contentsBytes, offset, contentsBytes.length - offset);
     }
 }

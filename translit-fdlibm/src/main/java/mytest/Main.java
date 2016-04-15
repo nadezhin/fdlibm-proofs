@@ -619,7 +619,14 @@ public class Main {
                     break;
                 }
                 case "const": {
-                    ts.replace(token, "");
+                    AST.Node ast = cursorPaths.get(myCursor);
+                    if (ast instanceof AST.VarDecl) {
+                        ts.replace(token, "final");
+                    } else if (ast instanceof AST.ParmDecl) {
+                        ts.replace(token, "");
+                    } else {
+                        assert false;
+                    }
                     break;
                 }
                 case "unsigned": {
@@ -702,7 +709,7 @@ public class Main {
                             }
                         } else if (ast instanceof AST.FunctionDecl) {
                             assert cFunName(pf.fileName).equals(id);
-                            ts.insertBefore(ast, "static strictfp");
+                            ts.insertBefore(ast, "static strictfp ");
                             ts.replace(token, "compute");
                         } else if (ast instanceof AST.DeclRefExpr) {
                             if (fun2class.containsKey(id)) {
@@ -765,12 +772,12 @@ public class Main {
 
     private static void convertByTokens(PrintStream out) throws IOException, URISyntaxException {
         Pointer<?> Index = clang_createIndex(0, 0);
-        copyResource(out, "FdlibmTranslit.java.header");
+        copyResource(out, "FdlibmTranslitN.java.header");
         for (Map.Entry<String, ParsedFile> e : parseFiles(Index).entrySet()) {
             ParsedFile pf = e.getValue();
             convertByTokens(out, pf);
         }
-        copyResource(out, "FdlibmTranslit.java.trailer");
+        copyResource(out, "FdlibmTranslitN.java.trailer");
         clang_disposeIndex(Index);
     }
 
