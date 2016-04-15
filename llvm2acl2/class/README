@@ -1,4 +1,5 @@
 This directory contains 
+FdlibmTranslit.java    manual transliteration of Fdlibm JDK 8 files taken from OpenJDK 9 test files
 FdlibmTranslitN.java   automatically generated transliteration of Fdlibm 5.3 C files
 Makefile               makefile to prepare FdlibmTranslitN.diff to view transliteration details
 8/                     classfiles of FdlibmTranslitN.java compiled by OpenJDK 8

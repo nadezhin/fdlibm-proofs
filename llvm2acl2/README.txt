@@ -9,10 +9,10 @@ netlib.llvm/               Translation of netlib/ files by clang-3.7 to x86_64-p
 jdk8/                      Slightly modified sources of the Fdlibm library found in OpenJDK 8 .
 jdk8.llvm/                 Translation of jdk8/ files by clang-3.7 to x86_64-pc-linux-gnu target .
 class/                     Variants of transliteration of Fdlibm C files into Java.
-class/FdlibmTranslit.java  Manual tranliteration - will be replaced by automatic
-class/8/                   Classfiles of class/FdlibmTranslit.java complied bu OpenJDK 8    
-class/9/                   Classfiles of class/FdlibmTranslit.java complied bu OpenJDK 9
+class/FdlibmTranslit.java  Manual tranliteration from OpenJDK 9 tests
 class/FdlibmTranslitN.java Automatic tranliteration by ../translit-fdlibm
+class/8/                   Classfiles of class/FdlibmTranslit.java and class/FdlibmTranslitN.java complied bu OpenJDK 8    
+class/9/                   Classfiles of class/FdlibmTranslit.java and class/FdlibmTranslitN.java complied bu OpenJDK 9
 pom.xml                    Maven project file of converter from LLVM bitcode to ACL2
 nbactions.xml              Netbeans configuration file ot the Converter
 src/                       Source files of the Converter
@@ -26,12 +26,15 @@ acl2/utils.lisp            Some lemmas about JVM M5 types
 acl2/llvm-lemmas.lisp      Lemmas about LLVM primitives
 acl2/llvm-rec.lisp         Obsolte definition of LLVM primitives using misc/record 
 acl2/llvm-rec-lemmas.lisp  Lemmas about llvm-rec
-acl2/fdlibm-translit.lisp  Specification of auxilarry methods in FdlibmmTranslit with proofs that
+acl2/fdlibm-translit.lisp  Specification of auxilarry methods in FdlibmTranslit with proofs that
+                           bytecode matches the specification
+acl2/fdlibm-translitN.lisp Specification of auxilarry methods in FdlibmTranslitN with proofs that
                            bytecode matches the specification
 acl2/cbrt.lisp             Manually written LLVM model of cbrt(x). It differs from automatically
                            generated acl2/llvm/s_cbrt.lisp by replacing alloca variables by registers
 acl2/cbrt-opt-equ.lisp     Equivalence between acl2/cbrt.lisp and acl2/llvm/s_cbrt.lisp 
 acl2/cbrt-opt-jvm          Equivalence between acl2/cbrt.lisp and acl2/classes/FdlibmTranslit$Cbrt.lisp
+acl2/cbrt-opt-jvmN         Equivalence between acl2/cbrt.lisp and acl2/classes/FdlibmTranslitN$Cbrt.lisp
 acl2/cbrts.lisp            Another style of cbrt definition (as a step function)
 acl2/cbrts-equ.lisp        Attemps to prove acl2/cbrts.lisp properties
 acl2/cbrt-rec.lisp         Obsolete definition of cbrt based on acl2/llvm-rec.lsip

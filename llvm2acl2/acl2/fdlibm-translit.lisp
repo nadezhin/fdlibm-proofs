@@ -80,9 +80,9 @@
               (m5::class-decl-methods
                (m5::bound? "FdlibmTranslit"
                            (m5::class-table *FdlibmTranslit-initial-state*))))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 5 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 3 (m5::class-table s))
               '(m5::methodref "FdlibmTranslit" "__LO:(D)I" 2))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 29 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 9 (m5::class-table s))
               '(m5::methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2))
        (equal (m5::bound? "doubleToRawLongBits:(D)J"
                           (m5::class-decl-methods
@@ -134,9 +134,9 @@
               (m5::class-decl-methods
                (m5::bound? "FdlibmTranslit"
                            (m5::class-table *FdlibmTranslit-initial-state*))))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 6 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 4 (m5::class-table s))
               '(m5::methodref "FdlibmTranslit" "__HI:(D)I" 2))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 29 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 9 (m5::class-table s))
               '(m5::methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2))
        (equal (m5::bound? "doubleToRawLongBits:(D)J"
                           (m5::class-decl-methods
@@ -165,10 +165,10 @@
             m5::bind-formals))
 
 (defund set-lo-schedule (th)
-  (m5::repeat th 18))
+  (m5::repeat th 16))
 
 (defund poised-to-invoke-set-lo-p (th s)
-  (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$200:(DI)D" 3)
+  (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$300:(DI)D" 3)
        (doublep (m5::top2 (m5::pop (m5::stack (m5::top-frame th s)))))
        (i32p (m5::top (m5::stack (m5::top-frame th s))))
        (equal (m5::class-decl-methods
@@ -177,15 +177,13 @@
               (m5::class-decl-methods
                (m5::bound? "FdlibmTranslit"
                            (m5::class-table *FdlibmTranslit-initial-state*))))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 4 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 1 (m5::class-table s))
               '(m5::methodref "FdlibmTranslit" "__LO:(DI)D" 3))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 29 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 9 (m5::class-table s))
               '(m5::methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 30 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 10 (m5::class-table s))
               '(m5::long #x-100000000))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 32 (m5::class-table s))
-              '(m5::long #xffffffff))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 34 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 12 (m5::class-table s))
               '(m5::methodref "java/lang/Double" "longBitsToDouble:(J)D" 2))
        (equal (m5::bound? "doubleToRawLongBits:(D)J"
                           (m5::class-decl-methods
@@ -197,28 +195,24 @@
               *longBitsToDouble-def*)))
 
 (defrule thm-set-lo
-  (implies (poised-to-invoke-set-lo-p th s)
+  (implies (and (poised-to-invoke-set-lo-p th s)
+                (equal (m5::top (m5::stack (m5::top-frame th s))) 0))
            (equal (m5::run (set-lo-schedule th) s)
                   (m5::modify
                    th s
                    :pc (+ 3 (m5::pc (m5::top-frame th s)))
                    :stack (m5::push2
                             (set-lo (m5::top2 (m5::pop (m5::stack (m5::top-frame th s))))
-                                    (m5::top (m5::stack (m5::top-frame th s))))
+                                    0)
                             (m5::pop2 (m5::pop (m5::stack (m5::top-frame th s))))))))
   :prep-lemmas (
     (gl::set-preferred-def m5::shr shr-for-gl1)
     (gl::def-gl-rule lemma
-      :hyp (and (rtl::bvecp d 64)
-                (i32p lo))
+      :hyp (rtl::bvecp d 64)
       :concl (equal
-              (m5::double-fix
-               (logior
-                (logand 4294967295 (m5::long-fix lo))
-                (logand -4294967296 (m5::long-fix d))))
-              (set-lo d lo))
-      :g-bindings `((d ,(gl::g-int 1 2 65))
-                    (lo ,(gl::g-int 2 2 33)))))
+              (m5::double-fix (logand -4294967296 (m5::long-fix d)))
+              (set-lo d 0))
+      :g-bindings `((d ,(gl::g-int 1 2 65)))))
   :enable (set-lo-schedule poised-to-invoke-set-lo-p doublep rtl::encodingp rtl::dp)
   :disable (m5::long-fix
             m5::deref
@@ -232,7 +226,7 @@
   (m5::repeat th 18))
 
 (defund poised-to-invoke-set-hi-p (th s)
-  (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$400:(DI)D" 3)
+  (and (m5::poised-to-invokestatic th s "FdlibmTranslit" "access$200:(DI)D" 3)
        (doublep (m5::top2 (m5::pop (m5::stack (m5::top-frame th s)))))
        (i32p (m5::top (m5::stack (m5::top-frame th s))))
        (equal (m5::class-decl-methods
@@ -243,13 +237,11 @@
                            (m5::class-table *FdlibmTranslit-initial-state*))))
        (equal (m5::retrieve-cp-entry "FdlibmTranslit" 2 (m5::class-table s))
               '(m5::methodref "FdlibmTranslit" "__HI:(DI)D" 3))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 29 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 9 (m5::class-table s))
               '(m5::methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 30 (m5::class-table s))
-              '(m5::long #x-100000000))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 32 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 13 (m5::class-table s))
               '(m5::long #xffffffff))
-       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 34 (m5::class-table s))
+       (equal (m5::retrieve-cp-entry "FdlibmTranslit" 12 (m5::class-table s))
               '(m5::methodref "java/lang/Double" "longBitsToDouble:(J)D" 2))
        (equal (m5::bound? "doubleToRawLongBits:(D)J"
                           (m5::class-decl-methods

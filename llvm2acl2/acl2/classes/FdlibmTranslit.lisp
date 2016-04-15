@@ -8,357 +8,115 @@
      "FdlibmTranslit"
      '("java/lang/Object")
      '(nil
-       (fieldref "FdlibmTranslit" "U_INT:I" 1)                  ; 1
+       (methodref "FdlibmTranslit" "__LO:(DI)D" 3)              ; 1
        (methodref "FdlibmTranslit" "__HI:(DI)D" 3)              ; 2
-       (fieldref "FdlibmTranslit" "U_DOUBLE:D" 2)               ; 3
-       (methodref "FdlibmTranslit" "__LO:(DI)D" 3)              ; 4
-       (methodref "FdlibmTranslit" "__LO:(D)I" 2)               ; 5
-       (methodref "FdlibmTranslit" "__HI:(D)I" 2)               ; 6
-       (methodref "FdlibmTranslit$Acos" "compute:(D)D" 2)       ; 7
-       (methodref "FdlibmTranslit$Asin" "compute:(D)D" 2)       ; 8
-       (methodref "FdlibmTranslit$Atan" "compute:(D)D" 2)       ; 9
-       (methodref "FdlibmTranslit$Atan2" "compute:(DD)D" 4)     ; 10
-       (methodref "FdlibmTranslit$Cbrt" "compute:(D)D" 2)       ; 11
-       (methodref "FdlibmTranslit$Cos" "compute:(D)D" 2)        ; 12
-       (methodref "FdlibmTranslit$Cosh" "compute:(D)D" 2)       ; 13
-       (methodref "FdlibmTranslit$Exp" "compute:(D)D" 2)        ; 14
-       (methodref "FdlibmTranslit$Expm1" "compute:(D)D" 2)      ; 15
-       (methodref "FdlibmTranslit$Hypot" "compute:(DD)D" 4)     ; 16
-       (methodref "FdlibmTranslit$Log" "compute:(D)D" 2)        ; 17
-       (methodref "FdlibmTranslit$Log10" "compute:(D)D" 2)      ; 18
-       (methodref "FdlibmTranslit$Log1p" "compute:(D)D" 2)      ; 19
-       (methodref "FdlibmTranslit$Pow" "compute:(DD)D" 4)       ; 20
-       (methodref "FdlibmTranslit$Sin" "compute:(D)D" 2)        ; 21
-       (methodref "FdlibmTranslit$Sinh" "compute:(D)D" 2)       ; 22
-       (methodref "FdlibmTranslit$Tan" "compute:(D)D" 2)        ; 23
-       (methodref "FdlibmTranslit$Tanh" "compute:(D)D" 2)       ; 24
-       (methodref "java/lang/Object" "<init>:()V" 0)            ; 25
-       (class (ref -1) "java/lang/UnsupportedOperationException")       ; 26
+       (methodref "FdlibmTranslit" "__LO:(D)I" 2)               ; 3
+       (methodref "FdlibmTranslit" "__HI:(D)I" 2)               ; 4
+       (methodref "java/lang/Object" "<init>:()V" 0)            ; 5
+       (class (ref -1) "java/lang/UnsupportedOperationException")       ; 6
        (string (ref -1) ; "No FdLibmTranslit instances for you."
-          78 111 32 70 100 76 105 98 109 84 114 97 110 115 108 105 116 32 105 110 115 116 97 110 99 101 115 32 102 111 114 32 121 111 117 46)   ; 27
-       (methodref "java/lang/UnsupportedOperationException" "<init>:(Ljava/lang/String;)V" 1)   ; 28
-       (methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2)      ; 29
-       (long -4294967296)                                       ; 30
+          78 111 32 70 100 76 105 98 109 84 114 97 110 115 108 105 116 32 105 110 115 116 97 110 99 101 115 32 102 111 114 32 121 111 117 46)   ; 7
+       (methodref "java/lang/UnsupportedOperationException" "<init>:(Ljava/lang/String;)V" 1)   ; 8
+       (methodref "java/lang/Double" "doubleToRawLongBits:(D)J" 2)      ; 9
+       (long -4294967296)                                       ; 10
        nil
-       (long 4294967295)                                        ; 32
+       (methodref "java/lang/Double" "longBitsToDouble:(J)D" 2) ; 12
+       (long 4294967295)                                        ; 13
        nil
-       (methodref "java/lang/Double" "longBitsToDouble:(J)D" 2) ; 34
-       (class (ref -1) "FdlibmTranslit")                        ; 35
-       (class (ref -1) "java/lang/Object")                      ; 36
-       (class (ref -1) "FdlibmTranslit$Tanh")                   ; 37
+       (methodref "FdlibmTranslit$Hypot" "compute:(DD)D" 4)     ; 15
+       (class (ref -1) "FdlibmTranslit")                        ; 16
+       (class (ref -1) "java/lang/Object")                      ; 17
+       (class (ref -1) "FdlibmTranslit$Hypot")                  ; 18
+       (utf8)                                                   ; 19
+       (utf8)                                                   ; 20
+       (class (ref -1) "FdlibmTranslit$Cbrt")                   ; 21
+       (utf8)                                                   ; 22
+       (utf8)                                                   ; 23
+       (utf8)                                                   ; 24
+       (utf8)                                                   ; 25
+       (utf8)                                                   ; 26
+       (utf8)                                                   ; 27
+       (utf8)                                                   ; 28
+       (utf8)                                                   ; 29
+       (utf8)                                                   ; 30
+       (utf8)                                                   ; 31
+       (utf8)                                                   ; 32
+       (utf8)                                                   ; 33
+       (utf8)                                                   ; 34
+       (utf8)                                                   ; 35
+       (utf8)                                                   ; 36
+       (utf8)                                                   ; 37
        (utf8)                                                   ; 38
-       (utf8)                                                   ; 39
-       (class (ref -1) "FdlibmTranslit$KernelTan")              ; 40
-       (utf8)                                                   ; 41
-       (class (ref -1) "FdlibmTranslit$Tan")                    ; 42
-       (utf8)                                                   ; 43
-       (class (ref -1) "FdlibmTranslit$Sqrt")                   ; 44
+       (name-and-type "__LO:(DI)D")                             ; 39
+       (name-and-type "__HI:(DI)D")                             ; 40
+       (name-and-type "__LO:(D)I")                              ; 41
+       (name-and-type "__HI:(D)I")                              ; 42
+       (name-and-type "<init>:()V")                             ; 43
+       (utf8)                                                   ; 44
        (utf8)                                                   ; 45
-       (class (ref -1) "FdlibmTranslit$Sinh")                   ; 46
-       (utf8)                                                   ; 47
-       (class (ref -1) "FdlibmTranslit$KernelSin")              ; 48
-       (utf8)                                                   ; 49
-       (class (ref -1) "FdlibmTranslit$Sin")                    ; 50
+       (name-and-type "<init>:(Ljava/lang/String;)V")           ; 46
+       (class (ref -1) "java/lang/Double")                      ; 47
+       (name-and-type "doubleToRawLongBits:(D)J")               ; 48
+       (name-and-type "longBitsToDouble:(J)D")                  ; 49
+       (name-and-type "compute:(DD)D")                          ; 50
        (utf8)                                                   ; 51
-       (class (ref -1) "FdlibmTranslit$Scalbn")                 ; 52
+       (utf8)                                                   ; 52
        (utf8)                                                   ; 53
-       (class (ref -1) "FdlibmTranslit$KernelRemPio2")          ; 54
+       (utf8)                                                   ; 54
        (utf8)                                                   ; 55
-       (class (ref -1) "FdlibmTranslit$RemPio2")                ; 56
+       (utf8)                                                   ; 56
        (utf8)                                                   ; 57
-       (class (ref -1) "FdlibmTranslit$Pow")                    ; 58
+       (utf8)                                                   ; 58
        (utf8)                                                   ; 59
-       (class (ref -1) "FdlibmTranslit$Log1p")                  ; 60
+       (utf8)                                                   ; 60
        (utf8)                                                   ; 61
-       (class (ref -1) "FdlibmTranslit$Log10")                  ; 62
-       (utf8)                                                   ; 63
-       (class (ref -1) "FdlibmTranslit$Log")                    ; 64
-       (utf8)                                                   ; 65
-       (class (ref -1) "FdlibmTranslit$Hypot")                  ; 66
-       (utf8)                                                   ; 67
-       (class (ref -1) "FdlibmTranslit$Floor")                  ; 68
-       (utf8)                                                   ; 69
-       (class (ref -1) "FdlibmTranslit$Fabs")                   ; 70
-       (utf8)                                                   ; 71
-       (class (ref -1) "FdlibmTranslit$Expm1")                  ; 72
-       (utf8)                                                   ; 73
-       (class (ref -1) "FdlibmTranslit$Exp")                    ; 74
-       (utf8)                                                   ; 75
-       (class (ref -1) "FdlibmTranslit$Cosh")                   ; 76
-       (utf8)                                                   ; 77
-       (class (ref -1) "FdlibmTranslit$KernelCos")              ; 78
-       (utf8)                                                   ; 79
-       (class (ref -1) "FdlibmTranslit$Cos")                    ; 80
-       (utf8)                                                   ; 81
-       (class (ref -1) "FdlibmTranslit$Copysign")               ; 82
-       (utf8)                                                   ; 83
-       (class (ref -1) "FdlibmTranslit$Cbrt")                   ; 84
-       (utf8)                                                   ; 85
-       (class (ref -1) "FdlibmTranslit$Atan2")                  ; 86
-       (utf8)                                                   ; 87
-       (class (ref -1) "FdlibmTranslit$Atan")                   ; 88
-       (utf8)                                                   ; 89
-       (class (ref -1) "FdlibmTranslit$Asin")                   ; 90
-       (utf8)                                                   ; 91
-       (class (ref -1) "FdlibmTranslit$Acos")                   ; 92
-       (utf8)                                                   ; 93
-       (utf8)                                                   ; 94
-       (utf8)                                                   ; 95
-       (utf8)                                                   ; 96
-       (utf8)                                                   ; 97
-       (utf8)                                                   ; 98
-       (utf8)                                                   ; 99
-       (utf8)                                                   ; 100
-       (utf8)                                                   ; 101
-       (utf8)                                                   ; 102
-       (utf8)                                                   ; 103
-       (utf8)                                                   ; 104
-       (utf8)                                                   ; 105
-       (utf8)                                                   ; 106
-       (utf8)                                                   ; 107
-       (utf8)                                                   ; 108
-       (utf8)                                                   ; 109
-       (utf8)                                                   ; 110
-       (utf8)                                                   ; 111
-       (utf8)                                                   ; 112
-       (utf8)                                                   ; 113
-       (utf8)                                                   ; 114
-       (utf8)                                                   ; 115
-       (utf8)                                                   ; 116
-       (utf8)                                                   ; 117
-       (utf8)                                                   ; 118
-       (utf8)                                                   ; 119
-       (utf8)                                                   ; 120
-       (utf8)                                                   ; 121
-       (utf8)                                                   ; 122
-       (utf8)                                                   ; 123
-       (utf8)                                                   ; 124
-       (utf8)                                                   ; 125
-       (utf8)                                                   ; 126
-       (utf8)                                                   ; 127
-       (utf8)                                                   ; 128
-       (utf8)                                                   ; 129
-       (utf8)                                                   ; 130
-       (utf8)                                                   ; 131
-       (utf8)                                                   ; 132
-       (utf8)                                                   ; 133
-       (utf8)                                                   ; 134
-       (utf8)                                                   ; 135
-       (utf8)                                                   ; 136
-       (name-and-type "U_INT:I")                                ; 137
-       (name-and-type "__HI:(DI)D")                             ; 138
-       (name-and-type "U_DOUBLE:D")                             ; 139
-       (name-and-type "__LO:(DI)D")                             ; 140
-       (name-and-type "__LO:(D)I")                              ; 141
-       (name-and-type "__HI:(D)I")                              ; 142
-       (name-and-type "compute:(D)D")                           ; 143
-       (name-and-type "compute:(DD)D")                          ; 144
-       (name-and-type "<init>:()V")                             ; 145
-       (utf8)                                                   ; 146
-       (utf8)                                                   ; 147
-       (name-and-type "<init>:(Ljava/lang/String;)V")           ; 148
-       (class (ref -1) "java/lang/Double")                      ; 149
-       (name-and-type "doubleToRawLongBits:(D)J")               ; 150
-       (name-and-type "longBitsToDouble:(J)D")                  ; 151
-       (utf8)                                                   ; 152
-       (utf8)                                                   ; 153
-       (utf8)                                                   ; 154
-       (utf8)                                                   ; 155
-       (utf8)                                                   ; 156
-       (utf8)                                                   ; 157
-       (utf8)                                                   ; 158
-       (utf8)                                                   ; 159
-       (utf8)                                                   ; 160
-       (utf8)                                                   ; 161
-       (utf8)                                                   ; 162
-       (utf8)                                                   ; 163
-       (utf8)                                                   ; 164
-       (utf8)                                                   ; 165
-       (utf8)                                                   ; 166
-       (utf8)                                                   ; 167
-       (utf8)                                                   ; 168
-       (utf8)                                                   ; 169
-       (utf8)                                                   ; 170
-       (utf8)                                                   ; 171
-       (utf8)                                                   ; 172
-       (utf8)                                                   ; 173
-       (utf8)                                                   ; 174
-       (utf8)                                                   ; 175
-       (utf8)                                                   ; 176
-       (utf8)                                                   ; 177
-       (utf8)                                                   ; 178
-       (utf8)                                                   ; 179
-       (utf8)                                                   ; 180
-       (utf8)                                                   ; 181
-       (utf8)                                                   ; 182
-       (utf8)                                                   ; 183
-       (utf8)                                                   ; 184
-       (utf8)                                                   ; 185
-       (utf8)                                                   ; 186
-       (utf8)                                                   ; 187
-       (utf8)                                                   ; 188
       )
      #x00000021                                                 ; PUBLIC SUPER
      '(
-       ("U_DOUBLE:D" #x0000000a)                                ; PRIVATE STATIC
-       ("U_INT:I" #x0000000a)                                   ; PRIVATE STATIC
       )
      (list
-      '("acos:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #33
-        (dload_0)                                               ; 0
-        (invokestatic 7)                                        ; 1 FdlibmTranslit$Acos.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("asin:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #37
-        (dload_0)                                               ; 0
-        (invokestatic 8)                                        ; 1 FdlibmTranslit$Asin.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("atan:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #41
-        (dload_0)                                               ; 0
-        (invokestatic 9)                                        ; 1 FdlibmTranslit$Atan.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("atan2:(DD)D" #x00000009                                ; PUBLIC STATIC
-        ; line_number #45
-        (dload_0)                                               ; 0
-        (dload_2)                                               ; 1
-        (invokestatic 10)                                       ; 2 FdlibmTranslit$Atan2.compute:(DD)D
-        (dreturn)                                               ; 5
-       )
-      '("cbrt:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #49
-        (dload_0)                                               ; 0
-        (invokestatic 11)                                       ; 1 FdlibmTranslit$Cbrt.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("cos:(D)D" #x00000009                                   ; PUBLIC STATIC
-        ; line_number #53
-        (dload_0)                                               ; 0
-        (invokestatic 12)                                       ; 1 FdlibmTranslit$Cos.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("cosh:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #57
-        (dload_0)                                               ; 0
-        (invokestatic 13)                                       ; 1 FdlibmTranslit$Cosh.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("exp:(D)D" #x00000009                                   ; PUBLIC STATIC
-        ; line_number #61
-        (dload_0)                                               ; 0
-        (invokestatic 14)                                       ; 1 FdlibmTranslit$Exp.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("expm1:(D)D" #x00000009                                 ; PUBLIC STATIC
-        ; line_number #65
-        (dload_0)                                               ; 0
-        (invokestatic 15)                                       ; 1 FdlibmTranslit$Expm1.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("hypot:(DD)D" #x00000009                                ; PUBLIC STATIC
-        ; line_number #69
-        (dload_0)                                               ; 0
-        (dload_2)                                               ; 1
-        (invokestatic 16)                                       ; 2 FdlibmTranslit$Hypot.compute:(DD)D
-        (dreturn)                                               ; 5
-       )
-      '("log:(D)D" #x00000009                                   ; PUBLIC STATIC
-        ; line_number #73
-        (dload_0)                                               ; 0
-        (invokestatic 17)                                       ; 1 FdlibmTranslit$Log.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("log10:(D)D" #x00000009                                 ; PUBLIC STATIC
-        ; line_number #77
-        (dload_0)                                               ; 0
-        (invokestatic 18)                                       ; 1 FdlibmTranslit$Log10.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("log1p:(D)D" #x00000009                                 ; PUBLIC STATIC
-        ; line_number #81
-        (dload_0)                                               ; 0
-        (invokestatic 19)                                       ; 1 FdlibmTranslit$Log1p.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("pow:(DD)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #85
-        (dload_0)                                               ; 0
-        (dload_2)                                               ; 1
-        (invokestatic 20)                                       ; 2 FdlibmTranslit$Pow.compute:(DD)D
-        (dreturn)                                               ; 5
-       )
-      '("sin:(D)D" #x00000009                                   ; PUBLIC STATIC
-        ; line_number #89
-        (dload_0)                                               ; 0
-        (invokestatic 21)                                       ; 1 FdlibmTranslit$Sin.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("sinh:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #93
-        (dload_0)                                               ; 0
-        (invokestatic 22)                                       ; 1 FdlibmTranslit$Sinh.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("tan:(D)D" #x00000009                                   ; PUBLIC STATIC
-        ; line_number #97
-        (dload_0)                                               ; 0
-        (invokestatic 23)                                       ; 1 FdlibmTranslit$Tan.compute:(D)D
-        (dreturn)                                               ; 4
-       )
-      '("tanh:(D)D" #x00000009                                  ; PUBLIC STATIC
-        ; line_number #101
-        (dload_0)                                               ; 0
-        (invokestatic 24)                                       ; 1 FdlibmTranslit$Tanh.compute:(D)D
-        (dreturn)                                               ; 4
-       )
       '("<init>:()V" #x00000002                                 ; PRIVATE
-        ; line_number #104
+        ; line_number #33
         (aload_0)                                               ; 0
-        (invokespecial 25)                                      ; 1 java.lang.Object.<init>:()V
-        ; line_number #105
-        (new 26)                                                ; 4 class java.lang.UnsupportedOperationException
+        (invokespecial 5)                                       ; 1 java.lang.Object.<init>:()V
+        ; line_number #34
+        (new 6)                                                 ; 4 class java.lang.UnsupportedOperationException
         (dup)                                                   ; 7
-        (ldc 27)                                                ; 8 "No FdLibmTranslit instances for you."
-        (invokespecial 28)                                      ; 10 java.lang.UnsupportedOperationException.<init>:(Ljava/lang/String;)V
+        (ldc 7)                                                 ; 8 "No FdLibmTranslit instances for you."
+        (invokespecial 8)                                       ; 10 java.lang.UnsupportedOperationException.<init>:(Ljava/lang/String;)V
         (athrow)                                                ; 13
        )
       '("__LO:(D)I" #x0000000a                                  ; PRIVATE STATIC
-        ; line_number #115
+        ; line_number #41
         (dload_0)                                               ; 0
-        (invokestatic 29)                                       ; 1 java.lang.Double.doubleToRawLongBits:(D)J
+        (invokestatic 9)                                        ; 1 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore_2)                                              ; 4
-        ; line_number #116
+        ; line_number #42
         (lload_2)                                               ; 5
         (l2i)                                                   ; 6
         (ireturn)                                               ; 7
        )
       '("__LO:(DI)D" #x0000000a                                 ; PRIVATE STATIC
-        ; line_number #124
+        ; line_number #50
         (dload_0)                                               ; 0
-        (invokestatic 29)                                       ; 1 java.lang.Double.doubleToRawLongBits:(D)J
+        (invokestatic 9)                                        ; 1 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore_3)                                              ; 4
-        ; line_number #125
+        ; line_number #51
         (lload_3)                                               ; 5
-        (ldc2_w 30)                                             ; 6 -4294967296l
+        (ldc2_w 10)                                             ; 6 -4294967296l
         (land)                                                  ; 9
         (iload_2)                                               ; 10
         (i2l)                                                   ; 11
-        (ldc2_w 32)                                             ; 12 4294967295l
-        (land)                                                  ; 15
-        (lor)                                                   ; 16
-        (invokestatic 34)                                       ; 17 java.lang.Double.longBitsToDouble:(J)D
-        (dreturn)                                               ; 20
+        (lor)                                                   ; 12
+        (invokestatic 12)                                       ; 13 java.lang.Double.longBitsToDouble:(J)D
+        (dreturn)                                               ; 16
        )
       '("__HI:(D)I" #x0000000a                                  ; PRIVATE STATIC
-        ; line_number #132
+        ; line_number #58
         (dload_0)                                               ; 0
-        (invokestatic 29)                                       ; 1 java.lang.Double.doubleToRawLongBits:(D)J
+        (invokestatic 9)                                        ; 1 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore_2)                                              ; 4
-        ; line_number #133
+        ; line_number #59
         (lload_2)                                               ; 5
         (bipush 32)                                             ; 6
         (lshr)                                                  ; 8
@@ -366,65 +124,53 @@
         (ireturn)                                               ; 10
        )
       '("__HI:(DI)D" #x0000000a                                 ; PRIVATE STATIC
-        ; line_number #141
+        ; line_number #67
         (dload_0)                                               ; 0
-        (invokestatic 29)                                       ; 1 java.lang.Double.doubleToRawLongBits:(D)J
+        (invokestatic 9)                                        ; 1 java.lang.Double.doubleToRawLongBits:(D)J
         (lstore_3)                                              ; 4
-        ; line_number #142
+        ; line_number #68
         (lload_3)                                               ; 5
-        (ldc2_w 32)                                             ; 6 4294967295l
+        (ldc2_w 13)                                             ; 6 4294967295l
         (land)                                                  ; 9
         (iload_2)                                               ; 10
         (i2l)                                                   ; 11
         (bipush 32)                                             ; 12
         (lshl)                                                  ; 14
         (lor)                                                   ; 15
-        (invokestatic 34)                                       ; 16 java.lang.Double.longBitsToDouble:(J)D
+        (invokestatic 12)                                       ; 16 java.lang.Double.longBitsToDouble:(J)D
         (dreturn)                                               ; 19
        )
-      '("access$000:(D)I" #x00001008                            ; STATIC SYNTHETIC
-        ; line_number #30
+      '("hypot:(DD)D" #x00000009                                ; PUBLIC STATIC
+        ; line_number #72
         (dload_0)                                               ; 0
-        (invokestatic 6)                                        ; 1 FdlibmTranslit.__HI:(D)I
+        (dload_2)                                               ; 1
+        (invokestatic 15)                                       ; 2 FdlibmTranslit$Hypot.compute:(DD)D
+        (dreturn)                                               ; 5
+       )
+      '("access$000:(D)I" #x00001008                            ; STATIC SYNTHETIC
+        ; line_number #32
+        (dload_0)                                               ; 0
+        (invokestatic 4)                                        ; 1 FdlibmTranslit.__HI:(D)I
         (ireturn)                                               ; 4
        )
       '("access$100:(D)I" #x00001008                            ; STATIC SYNTHETIC
-        ; line_number #30
+        ; line_number #32
         (dload_0)                                               ; 0
-        (invokestatic 5)                                        ; 1 FdlibmTranslit.__LO:(D)I
+        (invokestatic 3)                                        ; 1 FdlibmTranslit.__LO:(D)I
         (ireturn)                                               ; 4
        )
       '("access$200:(DI)D" #x00001008                           ; STATIC SYNTHETIC
-        ; line_number #30
-        (dload_0)                                               ; 0
-        (iload_2)                                               ; 1
-        (invokestatic 4)                                        ; 2 FdlibmTranslit.__LO:(DI)D
-        (dreturn)                                               ; 5
-       )
-      '("access$300:()D" #x00001008                             ; STATIC SYNTHETIC
-        ; line_number #30
-        (getstatic 3)                                           ; 0 FdlibmTranslit.U_DOUBLE:D
-        (dreturn)                                               ; 3
-       )
-      '("access$400:(DI)D" #x00001008                           ; STATIC SYNTHETIC
-        ; line_number #30
+        ; line_number #32
         (dload_0)                                               ; 0
         (iload_2)                                               ; 1
         (invokestatic 2)                                        ; 2 FdlibmTranslit.__HI:(DI)D
         (dreturn)                                               ; 5
        )
-      '("access$500:()I" #x00001008                             ; STATIC SYNTHETIC
-        ; line_number #30
-        (getstatic 1)                                           ; 0 FdlibmTranslit.U_INT:I
-        (ireturn)                                               ; 3
-       )
-      '("<clinit>:()V" #x00000008                               ; STATIC
-        ; line_number #108
-        (dconst_0)                                              ; 0
-        (putstatic 3)                                           ; 1 FdlibmTranslit.U_DOUBLE:D
-        ; line_number #109
-        (iconst_0)                                              ; 4
-        (putstatic 1)                                           ; 5 FdlibmTranslit.U_INT:I
-        (return)                                                ; 8
+      '("access$300:(DI)D" #x00001008                           ; STATIC SYNTHETIC
+        ; line_number #32
+        (dload_0)                                               ; 0
+        (iload_2)                                               ; 1
+        (invokestatic 1)                                        ; 2 FdlibmTranslit.__LO:(DI)D
+        (dreturn)                                               ; 5
        ))
      '(ref -1)))

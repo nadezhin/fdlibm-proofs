@@ -13,7 +13,7 @@
        (integer -2147483648)                                    ; 3
        (integer 2146435072)                                     ; 4
        (methodref "FdlibmTranslit" "access$100:(D)I" 2)         ; 5
-       (methodref "FdlibmTranslit" "access$400:(DI)D" 3)        ; 6
+       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)        ; 6
        (integer 1048576)                                        ; 7
        (integer 1129316352)                                     ; 8
        (class (ref -1) "FdlibmTranslit$Cbrt")                   ; 9
@@ -29,7 +29,7 @@
        nil
        (double #xbfe691de2532c834) ; -0x1.691de2532c834p-1 -0.7053061224489796  ; 20
        nil
-       (methodref "FdlibmTranslit" "access$200:(DI)D" 3)        ; 22
+       (methodref "FdlibmTranslit" "access$300:(DI)D" 3)        ; 22
        (class (ref -1) "java/lang/Object")                      ; 23
        (utf8)                                                   ; 24
        (utf8)                                                   ; 25
@@ -53,11 +53,11 @@
        (class (ref -1) "FdlibmTranslit")                        ; 43
        (name-and-type "access$000:(D)I")                        ; 44
        (name-and-type "access$100:(D)I")                        ; 45
-       (name-and-type "access$400:(DI)D")                       ; 46
+       (name-and-type "access$200:(DI)D")                       ; 46
        (utf8)                                                   ; 47
        (utf8)                                                   ; 48
        (utf8)                                                   ; 49
-       (name-and-type "access$200:(DI)D")                       ; 50
+       (name-and-type "access$300:(DI)D")                       ; 50
        (utf8)                                                   ; 51
        (utf8)                                                   ; 52
        (utf8)                                                   ; 53
@@ -67,7 +67,7 @@
        (utf8)                                                   ; 57
        (utf8)                                                   ; 58
       )
-     #x00000020                                                 ; SUPER
+     #x00000021                                                 ; PUBLIC SUPER
      '(
        ("B1:I" #x0000001a)                                      ; PRIVATE STATIC FINAL
        ("B2:I" #x0000001a)                                      ; PRIVATE STATIC FINAL
@@ -78,68 +78,68 @@
        ("G:D" #x0000001a)                                       ; PRIVATE STATIC FINAL
       )
      (list
-      '("<init>:()V" #x00000002                                 ; PRIVATE
-        ; line_number #587
+      '("<init>:()V" #x00000001                                 ; PUBLIC
+        ; line_number #79
         (aload_0)                                               ; 0
         (invokespecial 1)                                       ; 1 java.lang.Object.<init>:()V
         (return)                                                ; 4
        )
-      '("compute:(D)D" #x00000808                               ; STATIC STRICT
-        ; line_number #601
+      '("compute:(D)D" #x00000809                               ; PUBLIC STATIC STRICT
+        ; line_number #92
         (dconst_0)                                              ; 0
         (dstore 7)                                              ; 1
-        ; line_number #604
+        ; line_number #95
         (dload_0)                                               ; 3
         (invokestatic 2)                                        ; 4 FdlibmTranslit.access$000:(D)I
         (istore_2)                                              ; 7
-        ; line_number #605
+        ; line_number #96
         (iload_2)                                               ; 8
         (ldc 3)                                                 ; 9 -2147483648
         (iand)                                                  ; 11
         (istore 11)                                             ; 12
-        ; line_number #606
+        ; line_number #97
         (iload_2)                                               ; 14
         (iload 11)                                              ; 15
         (ixor)                                                  ; 17
         (istore_2)                                              ; 18
-        ; line_number #607
+        ; line_number #98
         (iload_2)                                               ; 19
         (ldc 4)                                                 ; 20 2146435072
         (if_icmplt 7)                                           ; 22
-        ; line_number #608
+        ; line_number #99
         (dload_0)                                               ; 25
         (dload_0)                                               ; 26
         (dadd)                                                  ; 27
         (dreturn)                                               ; 28
-        ; line_number #610
+        ; line_number #100
         (iload_2)                                               ; 29
         (dload_0)                                               ; 30
         (invokestatic 5)                                        ; 31 FdlibmTranslit.access$100:(D)I
         (ior)                                                   ; 34
         (ifne 5)                                                ; 35
-        ; line_number #611
+        ; line_number #101
         (dload_0)                                               ; 38
         (dreturn)                                               ; 39
-        ; line_number #613
+        ; line_number #103
         (dload_0)                                               ; 40
         (iload_2)                                               ; 41
-        (invokestatic 6)                                        ; 42 FdlibmTranslit.access$400:(DI)D
+        (invokestatic 6)                                        ; 42 FdlibmTranslit.access$200:(DI)D
         (dstore_0)                                              ; 45
-        ; line_number #615
+        ; line_number #105
         (iload_2)                                               ; 46
         (ldc 7)                                                 ; 47 1048576
         (if_icmpge 38)                                          ; 49
-        ; line_number #616
+        ; line_number #106
         (dload 7)                                               ; 52
         (ldc 8)                                                 ; 54 1129316352
-        (invokestatic 6)                                        ; 56 FdlibmTranslit.access$400:(DI)D
+        (invokestatic 6)                                        ; 56 FdlibmTranslit.access$200:(DI)D
         (dstore 7)                                              ; 59
-        ; line_number #617
+        ; line_number #107
         (dload 7)                                               ; 61
         (dload_0)                                               ; 63
         (dmul)                                                  ; 64
         (dstore 7)                                              ; 65
-        ; line_number #618
+        ; line_number #108
         (dload 7)                                               ; 67
         (dload 7)                                               ; 69
         (invokestatic 2)                                        ; 71 FdlibmTranslit.access$000:(D)I
@@ -147,33 +147,33 @@
         (idiv)                                                  ; 75
         (ldc 10)                                                ; 76 696219795
         (iadd)                                                  ; 78
-        (invokestatic 6)                                        ; 79 FdlibmTranslit.access$400:(DI)D
+        (invokestatic 6)                                        ; 79 FdlibmTranslit.access$200:(DI)D
         (dstore 7)                                              ; 82
         (goto 16)                                               ; 84
-        ; line_number #620
+        ; line_number #110
         (dload 7)                                               ; 87
         (iload_2)                                               ; 89
         (iconst_3)                                              ; 90
         (idiv)                                                  ; 91
         (ldc 11)                                                ; 92 715094163
         (iadd)                                                  ; 94
-        (invokestatic 6)                                        ; 95 FdlibmTranslit.access$400:(DI)D
+        (invokestatic 6)                                        ; 95 FdlibmTranslit.access$200:(DI)D
         (dstore 7)                                              ; 98
-        ; line_number #624
+        ; line_number #114
         (dload 7)                                               ; 100
         (dload 7)                                               ; 102
         (dmul)                                                  ; 104
         (dload_0)                                               ; 105
         (ddiv)                                                  ; 106
         (dstore_3)                                              ; 107
-        ; line_number #625
+        ; line_number #115
         (ldc2_w 12)                                             ; 108 0.5428571428571428d
         (dload_3)                                               ; 111
         (dload 7)                                               ; 112
         (dmul)                                                  ; 114
         (dadd)                                                  ; 115
         (dstore 5)                                              ; 116
-        ; line_number #626
+        ; line_number #116
         (dload 7)                                               ; 118
         (ldc2_w 14)                                             ; 120 0.35714285714285715d
         (ldc2_w 16)                                             ; 123 1.6071428571428572d
@@ -188,35 +188,35 @@
         (dadd)                                                  ; 140
         (dmul)                                                  ; 141
         (dstore 7)                                              ; 142
-        ; line_number #629
+        ; line_number #119
         (dload 7)                                               ; 144
         (iconst_0)                                              ; 146
-        (invokestatic 22)                                       ; 147 FdlibmTranslit.access$200:(DI)D
+        (invokestatic 22)                                       ; 147 FdlibmTranslit.access$300:(DI)D
         (dstore 7)                                              ; 150
-        ; line_number #630
+        ; line_number #120
         (dload 7)                                               ; 152
         (dload 7)                                               ; 154
         (invokestatic 2)                                        ; 156 FdlibmTranslit.access$000:(D)I
         (iconst_1)                                              ; 159
         (iadd)                                                  ; 160
-        (invokestatic 6)                                        ; 161 FdlibmTranslit.access$400:(DI)D
+        (invokestatic 6)                                        ; 161 FdlibmTranslit.access$200:(DI)D
         (dstore 7)                                              ; 164
-        ; line_number #633
+        ; line_number #124
         (dload 7)                                               ; 166
         (dload 7)                                               ; 168
         (dmul)                                                  ; 170
         (dstore 5)                                              ; 171
-        ; line_number #634
+        ; line_number #125
         (dload_0)                                               ; 173
         (dload 5)                                               ; 174
         (ddiv)                                                  ; 176
         (dstore_3)                                              ; 177
-        ; line_number #635
+        ; line_number #126
         (dload 7)                                               ; 178
         (dload 7)                                               ; 180
         (dadd)                                                  ; 182
         (dstore 9)                                              ; 183
-        ; line_number #636
+        ; line_number #127
         (dload_3)                                               ; 185
         (dload 7)                                               ; 186
         (dsub)                                                  ; 188
@@ -225,22 +225,22 @@
         (dadd)                                                  ; 192
         (ddiv)                                                  ; 193
         (dstore_3)                                              ; 194
-        ; line_number #637
+        ; line_number #128
         (dload 7)                                               ; 195
         (dload 7)                                               ; 197
         (dload_3)                                               ; 199
         (dmul)                                                  ; 200
         (dadd)                                                  ; 201
         (dstore 7)                                              ; 202
-        ; line_number #640
+        ; line_number #131
         (dload 7)                                               ; 204
         (dload 7)                                               ; 206
         (invokestatic 2)                                        ; 208 FdlibmTranslit.access$000:(D)I
         (iload 11)                                              ; 211
         (ior)                                                   ; 213
-        (invokestatic 6)                                        ; 214 FdlibmTranslit.access$400:(DI)D
+        (invokestatic 6)                                        ; 214 FdlibmTranslit.access$200:(DI)D
         (dstore 7)                                              ; 217
-        ; line_number #641
+        ; line_number #132
         (dload 7)                                               ; 219
         (dreturn)                                               ; 221
        ))
