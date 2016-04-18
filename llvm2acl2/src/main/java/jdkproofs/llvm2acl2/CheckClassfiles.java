@@ -14,9 +14,9 @@ import com.sun.tools.classfile.Method;
 import com.sun.tools.classfile.RuntimeInvisibleAnnotations_attribute;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import jdkproofs.llvm2acl2.Instruction.SelectInst;
 import org.bridj.Pointer;
 
 /**
@@ -25,11 +25,11 @@ import org.bridj.Pointer;
 public class CheckClassfiles {
 
     private static ClassFile readCF(String suffix) throws IOException, ConstantPoolException {
-        String name = "FdlibmTranslit";
+        String name = "class/9/FdlibmTranslitN";
         if (suffix != null) {
             name += "$" + suffix;
         }
-        try (InputStream in = ClassLoader.getSystemResourceAsStream(name + ".class")) {
+        try (InputStream in = Files.newInputStream(Paths.get(name + ".class"))) {
             return ClassFile.read(in);
         }
     }
@@ -90,15 +90,29 @@ public class CheckClassfiles {
         private final Module jM;
         private final Function jF;
 
-        ModuleMatch(String name) throws IOException, ConstantPoolException, DescriptorException {
+        private static String labS(int lab) {
+            switch (lab) {
+                case -1:
+                    return "_";
+                case Integer.MAX_VALUE:
+                    return "RET";
+                default:
+                    return "B" + lab;
+            }
+        }
+
+        ModuleMatch(String name, String className) throws IOException, ConstantPoolException, DescriptorException {
             this.name = name;
-            cf = readCF(name);
+            cf = readCF(className);
             cp = cf.constant_pool;
 
             for (Field field : cf.fields) {
-                assert field.access_flags.is(AccessFlags.ACC_PRIVATE);
+                assert !field.access_flags.is(AccessFlags.ACC_PRIVATE);
                 assert field.access_flags.is(AccessFlags.ACC_STATIC);
-                assert field.access_flags.is(AccessFlags.ACC_FINAL);
+                if (!((className.equals("Log") || className.equals("Log10") || className.equals("Log1p"))
+                        && field.getName(cp).equals("zero"))) {
+                    assert field.access_flags.is(AccessFlags.ACC_FINAL);
+                }
             }
             init = cf.methods[0];
             compute = cf.methods[1];
@@ -106,12 +120,14 @@ public class CheckClassfiles {
                 assert cf.methods.length == 3;
                 clinit = cf.methods[2];
                 assert clinit.descriptor.getValue(cp).equals("()V");
-                assert makeBasicBlocks(clinit).equals(Collections.<Integer>singleton(0));
+                JavaCFG clinitCFG = new JavaCFG(clinit);
+                assert clinitCFG.blocks.size() == 1 && clinitCFG.blocks.get(0).instrs.get(0).getPC() == 0;
             } else {
                 clinit = null;
             }
             assert init.descriptor.getValue(cp).equals("()V");
-            assert makeBasicBlocks(init).equals(Collections.<Integer>singleton(0));
+            JavaCFG initCFG = new JavaCFG(init);
+            assert initCFG.blocks.size() == 1 && initCFG.blocks.get(0).instrs.get(0).getPC() == 0;
             retType = compute.descriptor.getReturnType(cp);
             String paramTypes = compute.descriptor.getParameterTypes(cp);
             assert paramTypes.charAt(0) == '(';
@@ -122,28 +138,18 @@ public class CheckClassfiles {
             } else {
                 params = paramTypes.split(", ");
             }
+            Code_attribute computeCode = (Code_attribute) compute.attributes.get(Attribute.Code);
 
             assert init.getName(cp).equals("<init>");
             assert compute.getName(cp).equals("compute");
-            RuntimeInvisibleAnnotations_attribute ria
-                    = (RuntimeInvisibleAnnotations_attribute) compute.attributes.get("RuntimeInvisibleAnnotations");
-            assert ria.annotations.length == 1;
-            assert cp.getUTF8Value(ria.annotations[0].type_index).equals("LFdlibmTranslit$CNames;");
-            assert ria.annotations[0].element_value_pairs.length == 2;
-
-            assert cp.getUTF8Value(ria.annotations[0].element_value_pairs[0].element_name_index).equals("netlib");
-            nName = cp.getUTF8Value(((Annotation.Primitive_element_value) ria.annotations[0].element_value_pairs[0].value).const_value_index);
-            nM = readModule("../../t/ole71/jvm/fdlibm/netlib.llvm/", "../netlib/", name + ".bc");
+            nM = readModule("netlib.llvm/", "../netlib/", name + ".bc");
             nF = nM.funs.get(0);
-            assert nF.name.equals(nName);
+            nName = nF.name;
             assert nF.args.size() == params.length;
             assert nF.returnType.typeStr.equals(mapType(retType));
-
-            assert cp.getUTF8Value(ria.annotations[0].element_value_pairs[1].element_name_index).equals("jdk8");
-            jName = cp.getUTF8Value(((Annotation.Primitive_element_value) ria.annotations[0].element_value_pairs[1].value).const_value_index);
-            jM = readModule("../../t/ole71/jvm/fdlibm/jdk8.llvm/", "../netlib/src", name + ".bc");
+            jM = readModule("jdk8.llvm/", "../jdk8/src", name + ".bc");
             jF = jM.funs.get(0);
-            assert jF.name.equals(jName);
+            jName = jF.name;
             assert jF.args.size() == params.length;
             assert jF.returnType.typeStr.equals(mapType(retType));
 
@@ -157,7 +163,6 @@ public class CheckClassfiles {
                     assert nG.type.typeStr.equals("[16 x double]*");
                     assert jG.type.typeStr.equals("[13 x double]*");
                     assert findField("xxx").descriptor.getFieldType(cp).equals("double[]");
-                    assert findField("T").descriptor.getFieldType(cp).equals("double[]");
                 } else {
                     System.out.println("  " + nG.name);
                     assert nG.name.equals(jG.name);
@@ -176,15 +181,93 @@ public class CheckClassfiles {
 
             String prefix
                     = nName.equals("copysign") || nName.equals("scalbn") ? ""
-                            : nName.startsWith("__") ? "__j"
-                                    : "j";
+                    : nName.startsWith("__") ? "__j"
+                    : "j";
             assert jName.equals(prefix + nName);
             for (int i = 0; i < params.length; i++) {
                 assert nF.args.get(i).type.typeStr.equals(mapType(params[i]));
                 assert jF.args.get(i).type.typeStr.equals(mapType(params[i]));
             }
-            Set<Integer> basicBlocks = makeBasicBlocks(compute);
-            int nBlocks = basicBlocks.size();
+            int[] additionalLabels = {};
+            if (name.equals("e_rem_pio2")) {
+                additionalLabels = new int[]{532};
+            } else if (name.equals("k_rem_pio2")) {
+                additionalLabels = new int[]{112, 165, 178, 244, 584, 609, 682, 695, 849, 907, 923, 982, 1029, 1080, 1156, 1214, 1243};
+            } else if (name.equals("e_sqrt")) {
+                additionalLabels = new int[]{126};
+            }
+            JavaCFG computeCFG = new JavaCFG(compute, additionalLabels);
+            for (JavaCFG.JBasicBlock jbb : computeCFG.blocks) {
+                System.out.print(" " + labS(jbb.blockLabel)
+                        + " [" + jbb.instrs.get(0).getPC()
+                        + "," + jbb.lastInst.getPC()
+                        + "] " + jbb.lastInst.getMnemonic());
+                for (int lab : jbb.labels) {
+                    System.out.print(" " + labS(lab));
+                }
+                System.out.println();
+            }
+            System.out.println(" RET [" + computeCode.code_length + "]");
+            System.out.println();
+
+            int[] mapBlocks = new int[nF.blocks.size()];
+            int k = computeCFG.blocks.size();
+            int ii = nF.blocks.size();
+            if (mapBlocks.length != 1 && !name.equals("k_rem_pio2")) {
+                mapBlocks[--ii] = Integer.MAX_VALUE;
+            }
+            while (ii > 0) {
+                BasicBlock nB = nF.blocks.get(--ii);
+                if (nB.insts.size() == 1 && nB.terminator.successors.size() == 1) {
+                    int succ = nF.blocks.indexOf(nB.terminator.successors.get(0));
+                    assert succ > ii;
+                    if (name.equals("k_rem_pio2") && nB.label == 39) {
+                    } else if (k > 0 && computeCFG.blocks.get(k - 1).instrs.size() != 1) {
+                        mapBlocks[ii] = -1;
+                        continue;
+                    }
+                }
+                if (name.equals("k_rem_pio2") && nB.label == 458) {
+                    mapBlocks[ii] = -1;
+                    continue;
+                }
+                for (Instruction inst : nB.insts) {
+                    if (inst instanceof SelectInst) {
+                        System.out.println("**** " + nB.label + " SELECT");
+                        k -= 3;
+                    }
+                }
+                mapBlocks[ii] = --k;
+            }
+            if (k != 0) {
+                System.out.println("???????????????????????????");
+            }
+
+            for (int i = 0; i < nF.blocks.size(); i++) {
+                BasicBlock nB = nF.blocks.get(i);
+                if (nB.insts.size() == 1) {
+                    System.out.print(" " + nB.label + " " + labS(mapBlocks[i]) + " -> " + nB.terminator.representation);
+                } else {
+                    System.out.print(" " + nB.label + " " + labS(mapBlocks[i]) + " " + nB.terminator.representation);
+                }
+                for (BasicBlock succB : nB.terminator.successors) {
+                    int succ = nF.blocks.indexOf(succB);
+                    int lab = mapBlocks[succ];
+                    if (lab == -1) {
+                        System.out.print(" (");
+                        for (BasicBlock succB2 : nF.blocks.get(succ).terminator.successors) {
+                            int succ2 = nF.blocks.indexOf(succB2);
+                            System.out.print(" " + labS(mapBlocks[succ2]));
+                        }
+                        System.out.print(")");
+                    } else {
+                        System.out.print(" " + labS(mapBlocks[succ]));
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
+            int nBlocks = computeCFG.blocks.size();
             if (name.equals("s_log1p")) {
                 assert nBlocks == 37;
                 assert nF.blocks.size() == 39;
@@ -199,7 +282,7 @@ public class CheckClassfiles {
                     if (nB.terminator.opcode.equals(LLVMOpcode.LLVMBr)
                             && nB.terminator.operands.length == 1
                             && nB.insts.size() == 1) {
-                        System.out.println("  Skip " + nB.label);
+//                        System.out.println("  Skip " + nB.label);
                     }
 
                     switch (name) {
@@ -281,52 +364,6 @@ public class CheckClassfiles {
         }
     }
 
-    private static Set<Integer> makeBasicBlocks(Method m) {
-        Code_attribute code = (Code_attribute) m.attributes.get("Code");
-        final Set<Integer> labels = new TreeSet<>();
-        labels.add(0);
-        com.sun.tools.classfile.Instruction.KindVisitor<Void, Integer> labelVisitor
-                = new AbstractInstructionVisitor<Void, Integer>() {
-
-                    @Override
-                    public Void visitBranch(com.sun.tools.classfile.Instruction instr, int offset, Integer pc) {
-                        labels.add(pc + offset);
-                        switch (instr.getOpcode()) {
-                            case GOTO:
-                            case GOTO_W:
-                            case JSR:
-                            case JSR_W:
-                                break;
-                            default:
-                                labels.add(pc + instr.length());
-                        }
-                        return null;
-                    }
-
-                    public Void visitLookupSwitch(com.sun.tools.classfile.Instruction instr, int default_, int npairs, int[] matches, int[] offsets, Integer pc) {
-                        labels.add(pc + default_);
-                        for (int offset : offsets) {
-                            labels.add(pc + offset);
-                        }
-                        labels.add(pc + instr.length());
-                        return null;
-                    }
-
-                    public Void visitTableSwitch(com.sun.tools.classfile.Instruction instr, int default_, int low, int high, int[] offsets, Integer pc) {
-                        labels.add(pc + default_);
-                        for (int offset : offsets) {
-                            labels.add(pc + offset);
-                        }
-                        labels.add(pc + instr.length());
-                        return null;
-                    }
-                };
-        for (com.sun.tools.classfile.Instruction inst : code.getInstructions()) {
-            inst.accept(labelVisitor, inst.getPC());
-        }
-        return labels;
-    }
-
     private static void printMethods(String suffix) throws IOException, ConstantPoolException {
         ClassFile cf = readCF(suffix);
         ConstantPool cp = cf.constant_pool;
@@ -351,53 +388,58 @@ public class CheckClassfiles {
         }
     }
 
-    private static final String[] modNames = {
-        "w_acos",
-        "e_acos",
-        "w_asin",
-        "e_asin",
-        "s_atan",
-        "w_atan2",
-        "e_atan2",
-        "s_cbrt",
-        "s_copysign",
-        "s_cos",
-        "k_cos",
-        "w_cosh",
-        "e_cosh",
-        "w_exp",
-        "e_exp",
-        "s_expm1",
-        "s_fabs",
-        "s_floor",
-        "w_hypot",
-        "e_hypot",
-        "w_log",
-        "e_log",
-        "w_log10",
-        "e_log10",
-        "s_log1p",
-        "w_pow",
-        "e_pow",
-        "e_rem_pio2",
-        "k_rem_pio2",
-        "s_scalbn",
-        "s_sin",
-        "k_sin",
-        "w_sinh",
-        "e_sinh",
-        "w_sqrt",
-        "e_sqrt",
-        "s_tan",
-        "k_tan",
-        "s_tanh"
+    private static final String[][] modNames = {
+        {"w_acos"},
+        {"e_acos", "Acos"},
+        {"w_asin"},
+        {"e_asin", "Asin"},
+        {"s_atan", "Atan"},
+        {"w_atan2"},
+        {"e_atan2", "Atan2"},
+        {"s_cbrt", "Cbrt"},
+        {"s_copysign", "Copysign"},
+        {"s_cos", "Cos"},
+        {"k_cos", "KernelCos"},
+        {"w_cosh"},
+        {"e_cosh", "Cosh"},
+        {"w_exp"},
+        {"e_exp", "Exp"},
+        {"s_expm1", "Expm1"},
+        {"s_fabs", "Fabs"},
+        {"s_floor", "Floor"},
+        {"w_hypot"},
+        {"e_hypot", "Hypot"},
+        {"w_log"},
+        {"e_log", "Log"},
+        {"w_log10"},
+        {"e_log10", "Log10"},
+        {"s_log1p", "Log1p"},
+        {"w_pow"},
+        {"e_pow", "Pow"},
+        {"e_rem_pio2", "RemPio2"},
+        {"k_rem_pio2", "KernelRemPio2"},
+        {"s_scalbn", "Scalbn"},
+        {"s_sin", "Sin"},
+        {"k_sin", "KernelSin"},
+        {"w_sinh"},
+        {"e_sinh", "Sinh"},
+        {"w_sqrt"},
+        {"e_sqrt", "Sqrt"},
+        {"s_tan"},
+        {"k_tan", "KernelTan"},
+        {"s_tanh", "Tanh"}
     };
 
     public static void main(String[] args) throws IOException, ConstantPoolException, DescriptorException {
 //        printMethods(null);
-        for (String modName : modNames) {
-            System.out.println(modName);
-            ModuleMatch m = new ModuleMatch(modName);
+        for (String[] modNames : modNames) {
+            if (modNames.length != 2) {
+                continue;
+            }
+            String modName = modNames[0];
+            String className = modNames[1];
+            System.out.println(modName + " " + className);
+            ModuleMatch m = new ModuleMatch(modName, className);
         }
     }
 }
