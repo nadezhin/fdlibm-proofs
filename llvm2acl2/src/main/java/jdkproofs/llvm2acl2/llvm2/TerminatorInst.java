@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
 public class TerminatorInst extends Instruction {
 
     public List<BasicBlock> successors;
-    
+
     TerminatorInst(Function fun, long peer) {
         super(fun, peer);
         List<BasicBlock> successors = new ArrayList<>();
@@ -30,7 +30,7 @@ public class TerminatorInst extends Instruction {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitBranchInst(this, p);
         }
     }
@@ -56,7 +56,7 @@ public class TerminatorInst extends Instruction {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitReturnInst(this, p);
         }
     }
@@ -66,7 +66,7 @@ public class TerminatorInst extends Instruction {
         public final String[] tags;
         public final BasicBlock[] labels;
         public final BasicBlock defaultDest;
-        
+
         SwitchInst(Function fun, long peer) {
             super(fun, peer);
             defaultDest = BasicBlock.valueOf(fun, LLVMGetSwitchDefaultDest(peer));
@@ -89,7 +89,7 @@ public class TerminatorInst extends Instruction {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitSwitchInst(this, p);
         }
     }

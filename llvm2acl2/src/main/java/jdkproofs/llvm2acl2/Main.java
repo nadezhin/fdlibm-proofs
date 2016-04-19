@@ -2,6 +2,8 @@ package jdkproofs.llvm2acl2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.io.File;
+import jdkproofs.llvm2acl2.llvm2.Module;
+import jdkproofs.llvm2acl2.llvm2.Value;
 import org.bridj.Pointer;
 
 /**
@@ -59,7 +61,7 @@ public class Main {
 
     public static void main(String[] args) {
         showDir("../../t/ole71/jvm/fdlibm/netlib.llvm");
-        for (Class cls: Value.usedSubclasses) {
+        for (Class cls : Value.usedSubclasses) {
             System.out.println(cls.getName());
         }
     }
@@ -92,4 +94,4 @@ com.github.nadezhin.llvm2acl2.Value$GlobalVariable
 com.github.nadezhin.llvm2acl2.Value$ConstantExpr
 com.github.nadezhin.llvm2acl2.Value$Argument
 com.github.nadezhin.llvm2acl2.Value$BranchInst
-*/
+ */

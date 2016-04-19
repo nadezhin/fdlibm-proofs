@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import org.bridj.Pointer;
@@ -16,8 +16,8 @@ public class Utils {
         }
         throw new AssertionError();
     }
-    
-    static LLVMIntPredicate intPredicateOf(int intPredicateValue) {
+
+    public static LLVMIntPredicate intPredicateOf(int intPredicateValue) {
         for (LLVMIntPredicate ip : LLVMIntPredicate.values()) {
             if (ip.value() == intPredicateValue) {
                 return ip;
@@ -26,7 +26,7 @@ public class Utils {
         throw new AssertionError();
     }
 
-    static LLVMRealPredicate realPredicateOf(int realPredicateValue) {
+    public static LLVMRealPredicate realPredicateOf(int realPredicateValue) {
         for (LLVMRealPredicate rp : LLVMRealPredicate.values()) {
             if (rp.value() == realPredicateValue) {
                 return rp;
@@ -41,7 +41,7 @@ public class Utils {
         typeStr.release();
         return s;
     }
-    
+
     static String valueStr(LLVMValueRef value) {
         LLVMTypeRef typeRef = LLVMTypeOf(value);
         return "[" + typeRefStr(typeRef) + "@" + Long.toHexString(Pointer.getPeer(value)) + "]";

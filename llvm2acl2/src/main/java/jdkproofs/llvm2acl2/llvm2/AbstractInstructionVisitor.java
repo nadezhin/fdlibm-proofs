@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import com.sun.tools.classfile.Instruction;
 

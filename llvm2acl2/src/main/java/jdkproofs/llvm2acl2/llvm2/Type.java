@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 
@@ -29,12 +29,12 @@ public class Type {
     LLVMTypeRef getTypeRef() {
         return new LLVMTypeRef(peer);
     }
-    
+
     @Override
     public String toString() {
         return typeStr + ":" + Long.toHexString(peer);
     }
-    
+
     static void clear() {
         allTypes.clear();
     }

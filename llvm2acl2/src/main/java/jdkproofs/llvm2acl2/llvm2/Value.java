@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class Value {
         rep.release();
     }
 
-    long getPeer() {
+    public long getPeer() {
         return peer;
     }
 

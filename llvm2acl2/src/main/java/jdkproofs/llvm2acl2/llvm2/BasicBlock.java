@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.util.ArrayList;
@@ -125,7 +125,7 @@ public class BasicBlock extends Value {
         }
     }
 
-    String getDefArgs() {
+    public String getDefArgs() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < function.args.size(); i++) {
             if (useArgs.get(i)) {

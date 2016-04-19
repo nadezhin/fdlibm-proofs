@@ -1,10 +1,19 @@
 package jdkproofs.llvm2acl2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
-import jdkproofs.llvm2acl2.Value.Argument;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
+import jdkproofs.llvm2acl2.llvm2.BasicBlock;
+import jdkproofs.llvm2acl2.llvm2.Constant;
+import jdkproofs.llvm2acl2.llvm2.Function;
+import jdkproofs.llvm2acl2.llvm2.Instruction;
+import jdkproofs.llvm2acl2.llvm2.Module;
+import jdkproofs.llvm2acl2.llvm2.TerminatorInst;
+import jdkproofs.llvm2acl2.llvm2.User;
+import jdkproofs.llvm2acl2.llvm2.Utils;
+import jdkproofs.llvm2acl2.llvm2.Value;
+import jdkproofs.llvm2acl2.llvm2.Value.Argument;
 import org.bridj.Pointer;
 
 /**
@@ -681,7 +690,7 @@ public class DumpACL2 implements Instruction.Visitor<Void, Void> {
         {"w_sinh.bc", "e_sinh"},
         {"e_sinh.bc", "s_fabs", "s_expm1", "e_exp"},
         {"w_sqrt.bc", "e_sqrt"},
-        //{"e_sqrt.bc"}, 
+        //{"e_sqrt.bc"},
         {"s_tan.bc", "k_tan", "e_rem_pio2"},
         {"k_tan.bc", "s_fabs"},
         {"s_tanh.bc", "s_fabs", "s_expm1"}

@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class Function extends Constant.GlobalObject {
         }
         assert LLVMGetLastParam(peer) == prevParamRef;
         args = Collections.unmodifiableList(params);
-        
+
         List<BasicBlock> blocks = new ArrayList<>();
         long prevBbRef = 0;
         long bbRef = LLVMGetFirstBasicBlock(peer);
@@ -63,13 +63,13 @@ public class Function extends Constant.GlobalObject {
         }
         attribute = LLVMGetFunctionAttr(peer);
         attributesGroup = representation.substring(indSharp, indSp);
-        
+
         if (!blocks.isEmpty()) {
             for (int i = blocks.size() - 1; i >= 0; i--) {
                 BasicBlock bb = blocks.get(i);
-                for (BasicBlock succ: bb.terminator.successors) {
+                for (BasicBlock succ : bb.terminator.successors) {
                     if (succ.label > bb.label) {
-                        for (Map.Entry<Integer,BasicBlock> e: succ.inLoops.entrySet()) {
+                        for (Map.Entry<Integer, BasicBlock> e : succ.inLoops.entrySet()) {
                             if (e.getKey() <= bb.label) {
                                 bb.inLoops.put(e.getKey(), e.getValue());
                             }
@@ -92,7 +92,7 @@ public class Function extends Constant.GlobalObject {
             }
         }
     }
-    
+
     static Function valueOf(long peer) {
         Function fun = findValue(peer, Function.class);
         if (fun == null) {

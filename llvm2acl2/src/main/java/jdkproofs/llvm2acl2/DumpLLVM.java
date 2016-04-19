@@ -6,6 +6,14 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import jdkproofs.llvm2acl2.llvm2.BasicBlock;
+import jdkproofs.llvm2acl2.llvm2.Constant;
+import jdkproofs.llvm2acl2.llvm2.Function;
+import jdkproofs.llvm2acl2.llvm2.Instruction;
+import jdkproofs.llvm2acl2.llvm2.Module;
+import jdkproofs.llvm2acl2.llvm2.TerminatorInst;
+import jdkproofs.llvm2acl2.llvm2.Utils;
+import jdkproofs.llvm2acl2.llvm2.Value;
 import org.bridj.Pointer;
 
 /**
@@ -626,13 +634,13 @@ public class DumpLLVM {
         "e_cosh.bc",
         "w_exp.bc",
         "e_exp.bc",
-        "s_expm1.bc", 
+        "s_expm1.bc",
         "s_fabs.bc",
         "s_floor.bc",
         "w_hypot.bc",
-        "e_hypot.bc", 
+        "e_hypot.bc",
         "w_log.bc",
-        "e_log.bc", 
+        "e_log.bc",
         "w_log10.bc",
         "e_log10.bc",
         "s_log1p.bc",
@@ -646,12 +654,12 @@ public class DumpLLVM {
         "w_sinh.bc",
         "e_sinh.bc",
         "w_sqrt.bc",
-        "e_sqrt.bc", 
+        "e_sqrt.bc",
         "s_tan.bc",
         "k_tan.bc",
         "s_tanh.bc"
     };
-    
+
     private static final String[] interestingFiles = {
         "s_sin.bc", "s_cos.bc", "s_tan.bc",
         "e_asin.bc", "e_acos.bc", "s_atan.bc",
@@ -659,12 +667,10 @@ public class DumpLLVM {
         "s_cbrt.bc", "e_atan2.bc", "e_pow.bc",
         "e_sinh.bc", "e_cosh.bc", "s_tanh.bc",
         "e_hypot.bc", "s_expm1.bc", "s_log1p.bc",
-        
         "e_sqrt.bc", "s_fabs.bc", "e_rem_pio2.bc", "s_scalbn.bc", "s_copysign.bc", "s_floor.bc",
-        
         "k_sin.bc", "k_cos.bc", "k_tan.bc", "k_rem_pio2.bc"
     };
-    
+
     private static final String[] w_files = {
         "w_asin.bc", "w_acos.bc",
         "w_exp.bc", "w_log.bc", "w_log10.bc",
@@ -672,11 +678,11 @@ public class DumpLLVM {
         "w_sinh.bc", "w_cosh.bc",
         "w_hypot.bc", "w_sqrt.bc"
     };
-    
+
     public static void main(String[] args) throws IOException {
 //        dumpDir("netlib.llvm/", "../netlib/");
         dumpDir("jdk8.llvm/", "../jdk8/src/");
-        
+
 //        dumpFiles("netlib.llvm/", "../netlib/", interestingFiles);
 //        dumpFiles("jdk8.llvm/", "../jdk8/src/", w_files);
 //        dumpFiles("jdk8.llvm/", "../jdk8/src/", interestingFiles);

@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         alignment = LLVMGetAlignment(peer);
     }
 
-    boolean typesMatch(String retType, String... argTypes) {
+    public boolean typesMatch(String retType, String... argTypes) {
         if (argTypes.length != operands.length) {
             return false;
         }
@@ -171,7 +171,7 @@ public class Instruction extends User implements Comparable<Instruction> {
 
         checkOpcode(LLVMIsASelectInst(peer), LLVMOpcode.LLVMSelect, SelectInst.class);
         /* LLVMOpcode.UserOp1 */
-        /* LLVMOpcode.UserOp2 */
+ /* LLVMOpcode.UserOp2 */
         checkOpcode(LLVMIsAVAArgInst(peer), LLVMOpcode.LLVMVAArg, VAArgInst.class);
         checkOpcode(LLVMIsAExtractElementInst(peer), LLVMOpcode.LLVMExtractElement, ExtractElementInst.class);
         checkOpcode(LLVMIsAInsertElementInst(peer), LLVMOpcode.LLVMInsertElement, InsertElementInst.class);
@@ -179,8 +179,8 @@ public class Instruction extends User implements Comparable<Instruction> {
         checkOpcode(LLVMIsAExtractValueInst(peer), LLVMOpcode.LLVMExtractValue, ExtractValueInst.class);
         checkOpcode(LLVMIsAInsertValueInst(peer), LLVMOpcode.LLVMInsertValue, InsertValueInst.class);
         /* LLVMCode.Fence */
-        /* LLVMCode.AtomicCmpXchg */
-        /* LLVMCode.RMW */
+ /* LLVMCode.AtomicCmpXchg */
+ /* LLVMCode.RMW */
         checkOpcode(LLVMIsAResumeInst(peer), LLVMOpcode.LLVMResume, TerminatorInst.ResumeInst.class);
         checkOpcode(LLVMIsALandingPadInst(peer), LLVMOpcode.LLVMLandingPad, LandingPadInst.class);
     }
@@ -211,15 +211,15 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitBinaryOperator(this, p);
         }
     }
 
     public static class CallInst extends Instruction {
 
-        final String attributeGroup;
-        
+        public final String attributeGroup;
+
         CallInst(Function fun, long peer) {
             super(fun, peer);
             int indSharp = this.representation.indexOf('#');
@@ -229,7 +229,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitCallInst(this, p);
         }
     }
@@ -297,7 +297,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitFCmpInst(this, p);
         }
     }
@@ -309,7 +309,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitICmpInst(this, p);
         }
     }
@@ -328,7 +328,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitGetElementPtrInst(this, p);
         }
     }
@@ -356,8 +356,8 @@ public class Instruction extends User implements Comparable<Instruction> {
 
     public static class PHINode extends Instruction {
 
-        BasicBlock[] incomingBlocks;
-        User[] incomingValues;
+        public BasicBlock[] incomingBlocks;
+        public User[] incomingValues;
 
         PHINode(Function fun, long peer) {
             super(fun, peer);
@@ -370,7 +370,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitPHINode(this, p);
         }
     }
@@ -382,7 +382,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitSelectInst(this, p);
         }
     }
@@ -401,7 +401,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitStoreInst(this, p);
         }
     }
@@ -420,7 +420,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitAllocaInst(this, p);
         }
     }
@@ -446,7 +446,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitBitCastInst(this, p);
         }
     }
@@ -458,7 +458,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitFPExtInst(this, p);
         }
     }
@@ -470,7 +470,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitFPToSIInst(this, p);
         }
     }
@@ -510,7 +510,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitSExtInst(this, p);
         }
     }
@@ -522,7 +522,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitSIToFPInst(this, p);
         }
     }
@@ -541,7 +541,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitUIToFPInst(this, p);
         }
     }
@@ -553,7 +553,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitZExtInst(this, p);
         }
     }
@@ -572,7 +572,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         }
 
         @Override
-        <R, P> R accept(Visitor<R, P> visitor, P p) {
+        public <R, P> R accept(Visitor<R, P> visitor, P p) {
             return visitor.visitLoadInst(this, p);
         }
     }
@@ -819,7 +819,7 @@ public class Instruction extends User implements Comparable<Instruction> {
         R visitSwitchInst(TerminatorInst.SwitchInst inst, P p);
     }
 
-    <R, P> R accept(Visitor<R, P> visitor, P p) {
+    public <R, P> R accept(Visitor<R, P> visitor, P p) {
         throw new UnsupportedOperationException();
     }
 }

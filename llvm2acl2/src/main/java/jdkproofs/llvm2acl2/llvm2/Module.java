@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2;
+package jdkproofs.llvm2acl2.llvm2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.util.ArrayList;
@@ -10,23 +10,24 @@ import org.bridj.Pointer;
  *
  */
 public class Module {
+
     public final String dataLayout;
     public final String target;
     public final List<Value> globals;
     public final List<Function> funs;
     public final Context context;
     public final String tail;
-    
+
     private final long peer;
-    
-    Module(long peer) {
+
+    public Module(long peer) {
         this.peer = peer;
         Type.clear();
         Value.clear();
         Pointer<Byte> repRef = LLVMPrintModuleToString(getModuleRef());
         String rep = repRef.getCString();
         repRef.release();
-        LLVMModuleRef module = new LLVMModuleRef(peer); 
+        LLVMModuleRef module = new LLVMModuleRef(peer);
         Pointer<Byte> dataLayoutRef = LLVMGetDataLayout(module);
         assert Pointer.getPeer(LLVMGetDataLayout(module)) == Pointer.getPeer(dataLayoutRef);
         dataLayout = dataLayoutRef.getCString();
@@ -60,41 +61,41 @@ public class Module {
             funRef = LLVMGetNextFunction(funRef);
         }
         assert LLVMGetLastFunction(peer) == prevFunRef;
-        for (Function fun: funs) {
+        for (Function fun : funs) {
             Pointer<Byte> nameRef = Pointer.pointerToCString(fun.getName());
             assert Pointer.getPeer(LLVMGetNamedFunction(module, nameRef)) == fun.getPeer();
             nameRef.release();
         }
         this.funs = Collections.unmodifiableList(funs);
-        
+
         tail = rep.substring(rep.indexOf(funs.isEmpty() ? "!llvm.ident =" : "attributes #0 ="));
     }
-    
+
     long getPeer() {
         return peer;
     }
-    
+
     LLVMModuleRef getModuleRef() {
         return new LLVMModuleRef(peer);
     }
-    
+
     String getDataLayout() {
         return dataLayout;
     }
-    
+
     String getTarget() {
         return target;
     }
-    
+
     Context getContext() {
         return context;
     }
-    
+
     public void show() {
         System.out.println("target datalayout = \"" + dataLayout + "\"");
         System.out.println("target triple = \"" + target + "\"");
         context.show();
-        for (Function fun: funs) {
+        for (Function fun : funs) {
             fun.show();
         }
         System.out.println("====================");
