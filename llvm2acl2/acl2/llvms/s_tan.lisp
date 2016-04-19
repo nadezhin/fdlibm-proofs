@@ -1,0 +1,102 @@
+(in-package "ACL2")
+(include-book "../llvm")
+(include-book "k_tan")
+(include-book "e_rem_pio2")
+
+(defconst *tan-globals* '())
+
+(defund @tan-%0-bb (mem loc)
+  (b* (
+    (mem (alloca-double 'ret 1 mem))
+    (mem (alloca-double 'x 1 mem))
+    (mem (alloca-double 'y 2 mem))
+    (mem (alloca-double 'z 1 mem))
+    (mem (alloca-i32 'n 1 mem))
+    (mem (alloca-i32 'ix 1 mem))
+    (mem (store-double (g '%x loc) '(x . 0) mem))
+    (mem (store-double #x0000000000000000 '(z . 0) mem))
+    (loc (s '%3 (bitcast-double*-to-i32* '(x . 0)) loc))
+    (loc (s '%4 (getelementptr-i32 (g '%3 loc) 1) loc))
+    (loc (s '%5 (load-i32 (g '%4 loc) mem) loc))
+    (mem (store-i32 (g '%5 loc) '(ix . 0) mem))
+    (loc (s '%6 (load-i32 '(ix . 0) mem) loc))
+    (loc (s '%7 (and-i32 (g '%6 loc) 2147483647) loc))
+    (mem (store-i32 (g '%7 loc) '(ix . 0) mem))
+    (loc (s '%8 (load-i32 '(ix . 0) mem) loc))
+    (loc (s '%9 (icmp-sle-i32 (g '%8 loc) 1072243195) loc)))
+  (case (g '%9 loc)
+    (-1 (mv '@tan-%10-bb mem loc))
+    ( 0 (mv '@tan-%14-bb mem loc))
+    (otherwise (mv nil mem loc)))))
+
+(defund @tan-%10-bb (mem loc)
+  (b* (
+    (loc (s '%11 (load-double '(x . 0) mem) loc))
+    (loc (s '%12 (load-double '(z . 0) mem) loc))
+    (loc (s '%13 (@__kernel_tan (g '%11 loc) (g '%12 loc) 1) loc))
+    (mem (store-double (g '%13 loc) '(ret . 0) mem)))
+  (mv '@tan-%34-bb mem loc)))
+
+(defund @tan-%14-bb (mem loc)
+  (b* (
+    (loc (s '%15 (load-i32 '(ix . 0) mem) loc))
+    (loc (s '%16 (icmp-sge-i32 (g '%15 loc) 2146435072) loc)))
+  (case (g '%16 loc)
+    (-1 (mv '@tan-%17-bb mem loc))
+    ( 0 (mv '@tan-%21-bb mem loc))
+    (otherwise (mv nil mem loc)))))
+
+(defund @tan-%17-bb (mem loc)
+  (b* (
+    (loc (s '%18 (load-double '(x . 0) mem) loc))
+    (loc (s '%19 (load-double '(x . 0) mem) loc))
+    (loc (s '%20 (fsub-double (g '%18 loc) (g '%19 loc)) loc))
+    (mem (store-double (g '%20 loc) '(ret . 0) mem)))
+  (mv '@tan-%34-bb mem loc)))
+
+(defund @tan-%21-bb (mem loc)
+  (b* (
+    (loc (s '%22 (load-double '(x . 0) mem) loc))
+    (loc (s '%23 (getelementptr-double '(y . 0) 0) loc))
+    (loc (s '%24 (@__ieee754_rem_pio2 (g '%22 loc) (g '%23 loc)) loc))
+    (mem (store-i32 (g '%24 loc) '(n . 0) mem))
+    (loc (s '%25 (getelementptr-double '(y . 0) 0) loc))
+    (loc (s '%26 (load-double (g '%25 loc) mem) loc))
+    (loc (s '%27 (getelementptr-double '(y . 0) 1) loc))
+    (loc (s '%28 (load-double (g '%27 loc) mem) loc))
+    (loc (s '%29 (load-i32 '(n . 0) mem) loc))
+    (loc (s '%30 (and-i32 (g '%29 loc) 1) loc))
+    (loc (s '%31 (shl-i32 (g '%30 loc) 1) loc))
+    (loc (s '%32 (sub-i32 1 (g '%31 loc)) loc))
+    (loc (s '%33 (@__kernel_tan (g '%26 loc) (g '%28 loc) (g '%32 loc)) loc))
+    (mem (store-double (g '%33 loc) '(ret . 0) mem)))
+  (mv '@tan-%34-bb mem loc)))
+
+(defund @tan-%34-bb (mem loc)
+  (b* (
+    (loc (s '%35 (load-double '(ret . 0) mem) loc)))
+  (mv 'ret mem loc)))
+
+(defund @tan-step (label mem loc)
+  (case label
+    (%-0 (@tan-%0-bb mem loc))
+    (%-10 (@tan-%10-bb mem loc))
+    (%-14 (@tan-%14-bb mem loc))
+    (%-17 (@tan-%17-bb mem loc))
+    (%-21 (@tan-%21-bb mem loc))
+    (%-34 (@tan-%34-bb mem loc))
+    (otherwise (mv nil mem loc))))
+
+(defund @tan-steps (label mem loc n)
+  (declare (xargs :measure (nfix n)))
+  (if (equal label 'ret)
+      (g '%35 loc)
+    (if (zp n) nil
+      (mv-let
+        (label mem loc)
+        (@tan-step label mem loc)
+        (@tan-steps label mem loc (1- n))))))
+
+(defund @tan (%x)
+  (declare (ignore %x))
+   nil)

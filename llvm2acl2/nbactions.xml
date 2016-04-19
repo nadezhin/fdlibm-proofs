@@ -10,7 +10,7 @@
             <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
         </goals>
         <properties>
-            <exec.args>-ea -classpath %classpath jdkproofs.llvm2acl2.CheckClassfiles</exec.args>
+            <exec.args>-ea -classpath %classpath jdkproofs.llvm2acl2.DumpACL2Steps</exec.args>
             <exec.executable>java</exec.executable>
         </properties>
     </action>
@@ -24,7 +24,7 @@
             <goal>org.codehaus.mojo:exec-maven-plugin:1.4.0:exec</goal>
         </goals>
         <properties>
-            <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -ea -classpath %classpath:${java.home}/../lib/tools.jar jdkproofs.llvm2acl2.CheckClassfiles</exec.args>
+            <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -ea -classpath %classpath jdkproofs.llvm2acl2.DumpACL2Steps</exec.args>
             <exec.executable>java</exec.executable>
             <jpda.listen>true</jpda.listen>
             <Env.LLVM_HOME>/usr/lib/llvm-3.7</Env.LLVM_HOME>
@@ -41,7 +41,7 @@
             <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
         </goals>
         <properties>
-            <exec.args>-ea -classpath %classpath jdkproofs.llvm2acl2.CheckClassfiles</exec.args>
+            <exec.args>-ea -classpath %classpath jdkproofs.llvm2acl2.DumpACL2Steps</exec.args>
             <exec.executable>java</exec.executable>
         </properties>
     </action>

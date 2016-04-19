@@ -18,6 +18,7 @@ nbactions.xml              Netbeans configuration file ot the Converter
 src/                       Source files of the Converter
 acl2/                      Various ACL2 work
 acl2/llvm                  Conversion of from netlib.llvm/*.bc to ACL2 by Maven project
+acl2/llvms                 Conversion of from netlib.llvm/*.bc to ACL2 by Maven project in step style
 acl2/classes               Conversion of class/9/*.class and some classes from OpenJDK 9 tree
                            into ACL2 classfiles for JVM M5 model. They were converted by acl2m5 
                            https://github.com/nadezhin/acl2/blob/jvm-overload/books/models/jvm/m5/jvm2m5.java

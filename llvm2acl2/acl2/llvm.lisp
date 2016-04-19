@@ -50,6 +50,10 @@
 (defund alloca-i32 (var n mem)
   (m5::bind var (make-list n) mem))
 
+(defund alloca-pointer (var mem)
+  (declare (ignore var))
+  mem)
+
 (defund store-double (d a mem)
   (let* ((var (car a))
          (ofs (cdr a))
@@ -71,6 +75,10 @@
     (m5::bind var new mem)))
 ;    (s var new mem)))
 
+(defund store-pointer (i a mem)
+  (declare (ignore i a))
+  mem)
+
 (defund load-double (a mem)
   (let* ((var (car a))
          (ofs (cdr a))
@@ -87,6 +95,10 @@
 ;         (val (g var mem))
          (w0 (nth ofs val)))
     (and (wordp w0) (make-i32 w0))))
+
+(defund load-pointer (a mem)
+  (declare (ignore a))
+  mem)
 
 (defund getelementptr-double (a i)
   (and (addressp a)
@@ -145,6 +157,9 @@
 
 (defund sub-i32 (x y)
   (and (i32p x) (i32p y) (m5::int-fix (- x y))))
+
+(defund mul-i32 (x y)
+  (and (i32p x) (i32p y) (m5::int-fix (* x y))))
 
 (defund sdiv-i32 (x y)
   (and (i32p x) (i32p y) (not (= y 0)) (m5::int-fix (truncate x y))))
@@ -214,3 +229,10 @@
 (defund set-hi (d hi)
   (make-double (get-lo-i32 hi) (get-lo-double d)))
 
+;-----
+
+(defund g (l locs)
+  (assoc-equal l locs))
+
+(defund s (l v locs)
+  (acons l v locs))
