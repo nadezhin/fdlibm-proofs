@@ -16,12 +16,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import jdkproofs.llvm2acl2.llvm2.BasicBlock;
-import jdkproofs.llvm2acl2.llvm2.Function;
-import jdkproofs.llvm2acl2.llvm2.Instruction;
-import jdkproofs.llvm2acl2.llvm2.Instruction.SelectInst;
-import jdkproofs.llvm2acl2.llvm2.Module;
-import jdkproofs.llvm2acl2.llvm2.Value;
+import jdkproofs.llvm2acl2.llvm.BasicBlock;
+import jdkproofs.llvm2acl2.llvm.Function;
+import jdkproofs.llvm2acl2.llvm.Instruction;
+import jdkproofs.llvm2acl2.llvm.Instruction.SelectInst;
+import jdkproofs.llvm2acl2.llvm.Module;
+import jdkproofs.llvm2acl2.llvm.Value;
 import org.bridj.Pointer;
 
 /**

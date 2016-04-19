@@ -4,16 +4,16 @@ import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
-import jdkproofs.llvm2acl2.llvm2.BasicBlock;
-import jdkproofs.llvm2acl2.llvm2.Constant;
-import jdkproofs.llvm2acl2.llvm2.Function;
-import jdkproofs.llvm2acl2.llvm2.Instruction;
-import jdkproofs.llvm2acl2.llvm2.Module;
-import jdkproofs.llvm2acl2.llvm2.TerminatorInst;
-import jdkproofs.llvm2acl2.llvm2.User;
-import jdkproofs.llvm2acl2.llvm2.Utils;
-import jdkproofs.llvm2acl2.llvm2.Value;
-import jdkproofs.llvm2acl2.llvm2.Value.Argument;
+import jdkproofs.llvm2acl2.llvm.BasicBlock;
+import jdkproofs.llvm2acl2.llvm.Constant;
+import jdkproofs.llvm2acl2.llvm.Function;
+import jdkproofs.llvm2acl2.llvm.Instruction;
+import jdkproofs.llvm2acl2.llvm.Module;
+import jdkproofs.llvm2acl2.llvm.TerminatorInst;
+import jdkproofs.llvm2acl2.llvm.User;
+import jdkproofs.llvm2acl2.llvm.Utils;
+import jdkproofs.llvm2acl2.llvm.Value;
+import jdkproofs.llvm2acl2.llvm.Value.Argument;
 import org.bridj.Pointer;
 
 /**

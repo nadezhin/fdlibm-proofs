@@ -2,8 +2,8 @@ package jdkproofs.llvm2acl2;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.io.File;
-import jdkproofs.llvm2acl2.llvm2.Module;
-import jdkproofs.llvm2acl2.llvm2.Value;
+import jdkproofs.llvm2acl2.llvm.Module;
+import jdkproofs.llvm2acl2.llvm.Value;
 import org.bridj.Pointer;
 
 /**

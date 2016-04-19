@@ -1,4 +1,4 @@
-package jdkproofs.llvm2acl2.llvm2;
+package jdkproofs.llvm2acl2.llvm;
 
 import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import org.bridj.Pointer;

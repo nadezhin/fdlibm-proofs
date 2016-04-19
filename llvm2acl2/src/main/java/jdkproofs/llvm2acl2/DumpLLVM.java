@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import jdkproofs.llvm2acl2.llvm2.BasicBlock;
-import jdkproofs.llvm2acl2.llvm2.Constant;
-import jdkproofs.llvm2acl2.llvm2.Function;
-import jdkproofs.llvm2acl2.llvm2.Instruction;
-import jdkproofs.llvm2acl2.llvm2.Module;
-import jdkproofs.llvm2acl2.llvm2.TerminatorInst;
-import jdkproofs.llvm2acl2.llvm2.Utils;
-import jdkproofs.llvm2acl2.llvm2.Value;
+import jdkproofs.llvm2acl2.llvm.BasicBlock;
+import jdkproofs.llvm2acl2.llvm.Constant;
+import jdkproofs.llvm2acl2.llvm.Function;
+import jdkproofs.llvm2acl2.llvm.Instruction;
+import jdkproofs.llvm2acl2.llvm.Module;
+import jdkproofs.llvm2acl2.llvm.TerminatorInst;
+import jdkproofs.llvm2acl2.llvm.Utils;
+import jdkproofs.llvm2acl2.llvm.Value;
 import org.bridj.Pointer;
 
 /**
