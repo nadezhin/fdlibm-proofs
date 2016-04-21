@@ -1,6 +1,6 @@
 (in-package "ACL2")
 (include-book "std/util/bstar" :dir :system)
-;(include-book "misc/records" :dir :system)
+(include-book "misc/records" :dir :system)
 (include-book "models/jvm/m5/m5" :dir :system)
 
 (defund addressp (a)
@@ -228,11 +228,3 @@
 
 (defund set-hi (d hi)
   (make-double (get-lo-i32 hi) (get-lo-double d)))
-
-;-----
-
-(defund g (l locs)
-  (assoc-equal l locs))
-
-(defund s (l v locs)
-  (acons l v locs))

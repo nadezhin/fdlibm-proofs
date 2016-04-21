@@ -54,6 +54,7 @@ public class BasicBlock extends Value {
         assert LLVMGetLastInstruction(peer) == prevInstRef;
         assert LLVMGetBasicBlockTerminator(peer) == prevInstRef;
         int numPhi = 0;
+        int mIndex = 0;
         for (int i = 0; i < insts.size() - 1; i++) {
             Instruction instr = insts.get(i);
             assert !(instr instanceof TerminatorInst);
@@ -61,10 +62,16 @@ public class BasicBlock extends Value {
                 assert i == numPhi;
                 numPhi++;
             }
+            if (instr.refName != null) {
+                instr.fullName = "@" + function.name + "-" + instr.refName;
+            } else {
+                instr.fullName = "@" + function.name + "-m" + label + "." + (++mIndex);
+            }
         }
         this.numPhi = numPhi;
         this.insts = Collections.unmodifiableList(insts);
         terminator = (TerminatorInst) insts.get(insts.size() - 1);
+        terminator.fullName = "@" + function.name + "-succ" + label;
     }
 
     LLVMBasicBlockRef getBasicBlockRef() {

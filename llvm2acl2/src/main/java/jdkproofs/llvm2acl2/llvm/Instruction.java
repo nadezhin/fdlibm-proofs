@@ -15,6 +15,7 @@ public class Instruction extends User implements Comparable<Instruction> {
     public final int refNum;
     public final Value[] operands;
     public final int alignment;
+    public String fullName;
 
     Instruction(Function fun, long peer) {
         super(peer);
@@ -40,6 +41,10 @@ public class Instruction extends User implements Comparable<Instruction> {
             operands[i] = Value.valueOf(fun, LLVMGetOperand(peer, i));
         }
         alignment = LLVMGetAlignment(peer);
+    }
+
+    public String fn(String suffix) {
+        return fullName + "-" + suffix;
     }
 
     public boolean typesMatch(String retType, String... argTypes) {

@@ -4,6 +4,8 @@ import static jdkproofs.llvm2acl2.LLVM37Library.*;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import jdkproofs.llvm2acl2.llvm.BasicBlock;
 import jdkproofs.llvm2acl2.llvm.Constant;
 import jdkproofs.llvm2acl2.llvm.Function;
@@ -11,7 +13,6 @@ import jdkproofs.llvm2acl2.llvm.Instruction;
 import jdkproofs.llvm2acl2.llvm.Module;
 import jdkproofs.llvm2acl2.llvm.TerminatorInst;
 import jdkproofs.llvm2acl2.llvm.TerminatorInst.ReturnInst;
-import jdkproofs.llvm2acl2.llvm.User;
 import jdkproofs.llvm2acl2.llvm.Utils;
 import jdkproofs.llvm2acl2.llvm.Value;
 import jdkproofs.llvm2acl2.llvm.Value.Argument;
@@ -26,6 +27,13 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     private int indent;
     private Function curFun;
     private BasicBlock curBb;
+    private boolean smallFuns;
+    private boolean revFuns;
+    private String lastMem;
+    private String lastLoc;
+    private String lastPred;
+    private String nextRev;
+    private Set allMems = new LinkedHashSet<>();
 
     DumpACL2Steps(PrintStream out) {
         this.out = out;
@@ -39,8 +47,13 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         out.print(s);
     }
 
+    private String st() {
+        return "s" + curBb.label;
+    }
+
     private void dumpModule(Module module, String[] deps) {
         out.print("(in-package \"ACL2\")");
+        nl("(include-book \"std/util/defrule\" :dir :system)");
         nl("(include-book \"../llvm\")");
         for (String dep : deps) {
             nl("(include-book \"" + dep + "\")");
@@ -54,11 +67,26 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         }
         out.print("))");
         indent -= 2;
+        nl("");
+        nl("(defconst *" + moduleName + "-labels* '(");
+        for (Function fun : module.funs) {
+            if (fun.blocks.isEmpty()) {
+                continue;
+            }
+            for (int i = 0; i < fun.blocks.size(); i++) {
+                if (i > 0) {
+                    out.print(" ");
+                }
+                out.print("%" + fun.blocks.get(i).label);
+            }
+        }
+        out.print("))");
         for (Function fun : module.funs) {
             if (fun.blocks.isEmpty()) {
                 continue;
             }
             curFun = fun;
+            allMems.clear();
             String args = "";
             for (int i = 0; i < fun.args.size(); i++) {
                 Argument arg = fun.args.get(i);
@@ -70,54 +98,90 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
             for (int i = 0; i < fun.blocks.size(); i++) {
                 curBb = fun.blocks.get(i);
                 nl("");
-//                if (i == 0) {
-//                    nl("(defund @" + fun.name + "-%" + curBb.label + "-bb (mem loc " + args + ")");
-//                } else {
-                nl("(defund @" + fun.name + "-%" + curBb.label + "-bb (mem loc)");
-//                }
-                indent += 2;
-                for (int j = 0; j < curBb.numPhi; j++) {
+                nl("(defund @" + fun.name + "-%" + curBb.label + "-mem (" + st() + ")");
+                nl("  (car " + st() + "))");
+                nl("(defund @" + fun.name + "-%" + curBb.label + "-loc (" + st() + ")");
+                nl("  (cadr " + st() + "))");
+                nl("(defund @" + fun.name + "-%" + curBb.label + "-pred (" + st() + ")");
+                nl("  (caddr " + st() + "))");
+                allMems.add("%" + curBb.label);
+                lastMem = "(@" + fun.name + "-%" + curBb.label + "-mem " + st() + ")";
+                lastLoc = "(@" + fun.name + "-%" + curBb.label + "-loc " + st() + ")";
+                lastPred = "(@" + fun.name + "-%" + curBb.label + "-pred " + st() + ")";
+                smallFuns = true;
+                for (int j = 0; j < curBb.insts.size(); j++) {
                     Instruction inst = curBb.insts.get(j);
-                    nl("; ");
                     inst.accept(this, null);
                 }
+                smallFuns = false;
+                nl("");
+                revFuns = true;
+                nextRev = null;
+                for (int j = curBb.insts.size() - 1; j >= 0; j--) {
+                    Instruction inst = curBb.insts.get(j);
+                    nl("(defund " + inst.fn("rev") + " (mem loc pred)");
+                    indent += 2;
+                    inst.accept(this, null);
+                    out.print(")");
+                    indent -= 2;
+                    nextRev = inst.fn("rev");
+                }
+                nl("");
+                nl("(defund @" + fun.name + "-%" + curBb.label + "-rev (mem loc pred)");
+                nl("  (" + nextRev + " mem loc pred))");
+                revFuns = false;
+                nl("");
+                nl("(defund @" + fun.name + "-%" + curBb.label + "-bb (mem loc pred)");
+                if (curBb.numPhi == 0) {
+                    nl("  (declare (ignore pred))");
+                }
+                indent += 2;
                 nl("(b* (");
                 indent += 2;
-                for (int j = curBb.numPhi; j < curBb.insts.size() - 1; j++) {
+                for (int j = 0; j < curBb.insts.size(); j++) {
                     Instruction inst = curBb.insts.get(j);
-                    nl("(");
                     inst.accept(this, null);
-                    out.print(')');
                 }
-                // loop
                 out.print(")");
                 indent -= 2;
-                nl("");
-                curBb.terminator.accept(this, null);
+                nl("(mv succ mem loc)");
                 indent -= 2;
                 out.print("))");
+                nl("");
+                nl("(defruled @" + fun.name + "-%" + curBb.label + "-expand-bb");
+                nl("  (equal (@" + fun.name + "-%" + curBb.label + "-bb mem loc pred)");
+                nl("         (@" + fun.name + "-%" + curBb.label + "-rev mem loc pred))");
+                nl("  :enable (@" + fun.name + "-%" + curBb.label + "-bb" +
+                        " @" + fun.name + "-%" + curBb.label + "-rev");
+                indent += 4;
+                for (Instruction inst: curBb.insts) {
+                    nl(inst.fn("rev"));
+                }
+                out.print(")");
+                indent -= 4;
+                nl("  :disable s-diff-s)");
             }
             nl("");
-            nl("(defund @" + fun.name + "-step (label mem loc)");
+            nl("(defund @" + fun.name + "-step (label mem loc pred)");
             nl("  (case label");
             indent += 4;
             for (int i = 0; i < fun.blocks.size(); i++) {
                 curBb = fun.blocks.get(i);
-                nl("(%-" + curBb.label + " (@" + fun.name + "-%" + curBb.label + "-bb mem loc))");
+                nl("(%" + curBb.label + " (@" + fun.name + "-%" + curBb.label + "-bb mem loc pred))");
             }
             nl("(otherwise (mv nil mem loc))))");
             indent -= 4;
             nl("");
-            nl("(defund @" + fun.name + "-steps (label mem loc n)");
+            nl("(defund @" + fun.name + "-steps (label mem loc pred n)");
             nl("  (declare (xargs :measure (nfix n)))");
             nl("  (if (equal label 'ret)");
             ReturnInst retInst = (ReturnInst) fun.blocks.get(fun.blocks.size() - 1).terminator;
             nl("      " + operandStr(retInst.operands[0]));
             nl("    (if (zp n) nil");
             nl("      (mv-let");
-            nl("        (label mem loc)");
-            nl("        (@" + fun.name + "-step label mem loc)");
-            nl("        (@" + fun.name + "-steps label mem loc (1- n))))))");
+            nl("        (new-label new-mem new-loc)");
+            nl("        (@" + fun.name + "-step label mem loc pred)");
+            nl("        (@" + fun.name + "-steps new-label new-mem new-loc label (1- n))))))");
             nl("");
             nl("(defund @" + fun.name + " (" + args + ")");
             nl("  (declare (ignore " + args + "))");
@@ -274,17 +338,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     }
 
     private String operandStr(Value operand) {
-        if (operand instanceof Instruction.AllocaInst) {
-            String nm = ((Instruction) operand).refName;
-            assert nm.charAt(0) == '%';
-            nm = nm.substring(1);
-            try {
-                int ind = Integer.valueOf(nm);
-                nm = ind == 1 ? "ret" : curFun.args.get(ind - 2).name;
-            } catch (NumberFormatException e) {
-            }
-            return "'(" + nm + " . 0)";
-        } else if (operand instanceof Instruction) {
+        if (operand instanceof Instruction) {
             return "(g '" + ((Instruction) operand).refName + " loc)";
         } else if (operand instanceof Constant.ConstantInt) {
             if (operand.representation.startsWith("i32 ")
@@ -361,15 +415,80 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         }
     }
 
+    private void setAlloca(Instruction inst, String type, String nm, String size) {
+        size = size != null ?  " " + size : "";
+        if (smallFuns) {
+            boolean ok = allMems.add(inst.refName);
+            assert ok;
+            nl("(defund " + inst.fn("mem") + " (" + st() + ")");
+            nl("  (alloca-" + type + " '" + nm + size + " " + lastMem + "))");
+            lastMem = "(" + inst.fn("mem") + " " + st() + ")";
+            nl("(defund " + inst.fn("loc") + " (" + st() + ")");
+            nl("  (s '" + inst.refName + " '(" + nm + " . 0) " + lastLoc + "))");
+            lastLoc = "(" + inst.fn("loc") + " " + st() + ")";
+        } else if (revFuns) {
+            nl("(" + nextRev + " (alloca-" + type + " '" + nm + size + " mem)"
+                    + " (s '" + inst.refName + " '(" + nm + " . 0) loc) pred)");
+        } else {
+            nl("(mem (alloca-" + type + " '" + nm + size + " mem))");
+            nl("(loc (s '" + inst.refName + " '(" + nm + " . 0) loc))");
+        }
+    }
+
+    private void setLoc(Instruction inst, String expr) {
+        if (smallFuns) {
+            nl("(defund " + inst.fn("val") + " (" + st() + ")");
+            nl("  " + expr
+                    .replace("mem", lastMem)
+                    .replace("loc", lastLoc)
+                    .replace("pred", lastPred)
+                    + ")");
+            nl("(defund " + inst.fn("loc") + " (" + st() + ")");
+            nl("  (s '" + inst.refName + " (" + inst.fn("val") + " " + st() + ") " + lastLoc + "))");
+            lastLoc = "(" + inst.fn("loc") + " " + st() + ")";
+        } else if (revFuns) {
+            nl("(" + nextRev + " mem (s '" + inst.refName + " " + expr + " loc) pred)");
+        } else {
+            nl("(loc (s '" + inst.refName + " " + expr + " loc))");
+        }
+    }
+
+    private void setMem(Instruction inst, String newMem) {
+        if (smallFuns) {
+            nl("(defund " + inst.fn("mem") + " (" + st() + ")");
+            nl("  " + newMem.replace("mem", lastMem).replace("loc", lastLoc) + ")");
+            lastMem = "(" + inst.fn("mem") + " " + st() + ")";
+        } else if (revFuns) {
+            nl("(" + nextRev + " " + newMem + " loc pred)");
+        } else {
+            nl("(mem " + newMem + ")");
+        }
+    }
+
+    private void setSucc(TerminatorInst inst, String label) {
+        if (smallFuns) {
+            nl("(defund " + inst.fn("lab") + " (" + st() + ")");
+            if (label.indexOf("loc") < 0) {
+                nl("  (declare (ignore s" + curBb.label + "))");
+            }
+            nl("  " + label.replace("loc", lastLoc) + ")");
+        } else if (revFuns) {
+            nl("(declare (ignore pred))");
+            nl("(mv " + label + " mem loc)");
+        } else {
+            nl("(succ " + label + ")");
+        }
+    }
+
     @Override
     public Void visitBinaryOperator(Instruction.BinaryOperator inst, Void p) {
         String opname = inst.opcode.name().substring(4).toLowerCase();
         String op0 = operandStr(inst.operands[0]);
         String op1 = operandStr(inst.operands[1]);
         if (inst.typesMatch("double", "double", "double")) {
-            out.print("loc (s '" + inst.refName + " (" + opname + "-double " + op0 + " " + op1 + ") loc)");
+            setLoc(inst, "(" + opname + "-double " + op0 + " " + op1 + ")");
         } else if (inst.typesMatch("i32", "i32", "i32")) {
-            out.print("loc (s '" + inst.refName + " (" + opname + "-i32 " + op0 + " " + op1 + ") loc)");
+            setLoc(inst, "(" + opname + "-i32 " + op0 + " " + op1 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -381,17 +500,19 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         Function fn = (Function) inst.operands[inst.operands.length - 1];
         assert fn.args.size() == inst.operands.length - 1;
         if (inst.type.typeStr.equals("double")) {
-            out.print("loc (s '" + inst.refName + " (@" + fn.name);
+            String expr = "(@" + fn.name;
             for (int i = 0; i < fn.args.size(); i++) {
-                out.print(" " + operandStr(inst.operands[i]));
+                expr += " " + operandStr(inst.operands[i]);
             }
-            out.print(") loc)");
+            expr += ")";
+            setLoc(inst, expr);
         } else if (inst.type.typeStr.equals("i32")) {
-            out.print("loc (s '" + inst.refName + " (@" + fn.name);
+            String expr = "(@" + fn.name;
             for (int i = 0; i < fn.args.size(); i++) {
-                out.print(" " + operandStr(inst.operands[i]));
+                expr += " " + operandStr(inst.operands[i]);
             }
-            out.print(") loc)");
+            expr += ")";
+            setLoc(inst, expr);
         } else {
             throw new UnsupportedOperationException();
         }
@@ -405,7 +526,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         String cmp = Utils.realPredicateOf(LLVMGetFCmpPredicate(inst.getPeer())).name();
         cmp = cmp.substring("LLVMReal".length()).toLowerCase();
         if (inst.typesMatch("i1", "double", "double")) {
-            out.print("loc (s '" + inst.refName + " (fcmp-" + cmp + "-double " + op0 + " " + op1 + ") loc)");
+            setLoc(inst, "(fcmp-" + cmp + "-double " + op0 + " " + op1 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -419,7 +540,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         String cmp = Utils.intPredicateOf(LLVMGetICmpPredicate(inst.getPeer())).name();
         cmp = cmp.substring("LLVMInt".length()).toLowerCase();
         if (inst.typesMatch("i1", "i32", "i32")) {
-            out.print("loc (s '" + inst.refName + " (icmp-" + cmp + "-i32 " + op0 + " " + op1 + ") loc)");
+            setLoc(inst, "(icmp-" + cmp + "-i32 " + op0 + " " + op1 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -431,76 +552,76 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         String op0 = operandStr(inst.operands[0]);
         String op1 = operandStr(inst.operands[1]);
         if (inst.typesMatch("double*", "double*", "i64")) {
-            out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op1 + ") loc)");
+            setLoc(inst, "(getelementptr-double " + op0 + " " + op1 + ")");
         } else if (inst.typesMatch("i32*", "i32*", "i64")) {
-            out.print("loc (s '" + inst.refName + " (getelementptr-i32 " + op0 + " " + op1 + ") loc)");
+            setLoc(inst, "(getelementptr-i32 " + op0 + " " + op1 + ")");
         } else if (inst.typesMatch("double*", "[2 x double]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double*", "[2 x double]*", "i32", "i32")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double*", "[3 x double]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double*", "[3 x double]*", "i32", "i32")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double*", "[4 x double]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double*", "[8 x double]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double*", "[20 x double]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-double " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-double " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32*", "[4 x i32]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-i32 " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-i32 " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32*", "[20 x i32]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-i32 " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-i32 " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32*", "[32 x i32]*", "i32", "i64")) {
             String op2 = operandStr(inst.operands[2]);
             if (op1.equals("0")) {
-                out.print("loc (s '" + inst.refName + " (getelementptr-i32 " + op0 + " " + op2 + ") loc)");
+                setLoc(inst, "(getelementptr-i32 " + op0 + " " + op2 + ")");
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -513,25 +634,23 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     @Override
     public Void visitPHINode(Instruction.PHINode inst, Void p) {
         if (inst.type.typeStr.equals("double")) {
-            out.print(inst.refName + " = phi double ");
+            String s = "(case pred";
             for (int i = 0; i < inst.incomingBlocks.length; i++) {
                 int label = inst.incomingBlocks[i].label;
                 String value = operandStr(inst.incomingValues[i]);
-                if (i > 0) {
-                    out.print(", ");
-                }
-                out.print("[ " + value + ", %" + label + " ]");
+                s += " (%" + label + " " + value + ")";
             }
+            s += ")";
+            setLoc(inst, s);
         } else if (inst.type.typeStr.equals("i1")) {
-            out.print(inst.refName + " = phi i1 ");
+            String s = "(case pred";
             for (int i = 0; i < inst.incomingBlocks.length; i++) {
                 int label = inst.incomingBlocks[i].label;
                 String value = operandStr(inst.incomingValues[i]);
-                if (i > 0) {
-                    out.print(", ");
-                }
-                out.print("[ " + value + ", %" + label + " ]");
+                s += " (%" + label + " " + value + ")";
             }
+            s += ")";
+            setLoc(inst, s);
         } else {
             throw new UnsupportedOperationException();
         }
@@ -544,7 +663,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         String op1 = operandStr(inst.operands[1]);
         String op2 = operandStr(inst.operands[2]);
         if (inst.typesMatch("double", "i1", "double", "double")) {
-            out.print("loc (s '" + inst.refName + " (select-double " + op0 + " " + op1 + " " + op2 + ") loc)");
+            setLoc(inst, "(select-double " + op0 + " " + op1 + " " + op2 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -556,13 +675,13 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         String op0 = operandStr(inst.operands[0]);
         String op1 = operandStr(inst.operands[1]);
         if (inst.typesMatch("void", "double", "double*")) {
-            out.print("mem (store-double " + op0 + " " + op1 + " mem)");
+            setMem(inst, "(store-double " + op0 + " " + op1 + " mem)");
         } else if (inst.typesMatch("void", "i32", "i32*")) {
-            out.print("mem (store-i32 " + op0 + " " + op1 + " mem)");
+            setMem(inst, "(store-i32 " + op0 + " " + op1 + " mem)");
         } else if (inst.typesMatch("void", "double*", "double**")) {
-            out.print("mem (store-pointer " + op0 + " " + op1 + " mem)");
+            setMem(inst, "(store-pointer " + op0 + " " + op1 + " mem)");
         } else if (inst.typesMatch("void", "i32*", "i32**")) {
-            out.print("mem (store-pointer " + op0 + " " + op1 + " mem)");
+            setMem(inst, "(store-pointer " + op0 + " " + op1 + " mem)");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -583,49 +702,49 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         }
         if (inst.typesMatch("double*", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-double '" + nm + " 1 mem)");
+                setAlloca(inst, "double", nm, "1");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32*", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-i32 '" + nm + " 1 mem)");
+                setAlloca(inst, "i32", nm, "1");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("[2 x double]*", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-double '" + nm + " 2 mem)");
+                setAlloca(inst, "double", nm, "2");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("[3 x double]*", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-double '" + nm + " 3 mem)");
+                setAlloca(inst, "i32", nm, "3");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("[20 x double]*", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-double '" + nm + " 20 mem)");
+                setAlloca(inst, "double", nm, "20");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("[20 x i32]*", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-i32 '" + nm + " 20 mem)");
+                setAlloca(inst, "i32", nm, "20");
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("double**", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-pointer '" + nm + " mem)");
+                setAlloca(inst, "pointer", nm, null);
             } else {
                 throw new UnsupportedOperationException();
             }
         } else if (inst.typesMatch("i32**", "i32")) {
             if (op0.equals("1")) {
-                out.print("mem (alloca-pointer '" + nm + " mem)");
+                setAlloca(inst, "pointer", nm, null);
             } else {
                 throw new UnsupportedOperationException();
             }
@@ -639,7 +758,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     public Void visitBitCastInst(Instruction.BitCastInst inst, Void p) {
         String op0 = operandStr(inst.operands[0]);
         if (inst.typesMatch("i32*", "double*")) {
-            out.print("loc (s '" + inst.refName + " (bitcast-double*-to-i32* " + op0 + ") loc)");
+            setLoc(inst, "(bitcast-double*-to-i32* " + op0 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -655,7 +774,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     public Void visitFPToSIInst(Instruction.FPToSIInst inst, Void p) {
         String op0 = operandStr(inst.operands[0]);
         if (inst.typesMatch("i32", "double")) {
-            out.print("loc (s '" + inst.refName + " (fptosi-double-to-i32 " + op0 + ") loc)");
+            setLoc(inst, "(fptosi-double-to-i32 " + op0 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -666,7 +785,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     public Void visitSExtInst(Instruction.SExtInst inst, Void p) {
         String op0 = operandStr(inst.operands[0]);
         if (inst.typesMatch("i64", "i32")) {
-            out.print("loc (s '" + inst.refName + " (sext-i32-to-i64 " + op0 + ") loc)");
+            setLoc(inst, "(sext-i32-to-i64 " + op0 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -677,7 +796,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     public Void visitSIToFPInst(Instruction.SIToFPInst inst, Void p) {
         String op0 = operandStr(inst.operands[0]);
         if (inst.typesMatch("double", "i32")) {
-            out.print("loc (s '" + inst.refName + " (sitofp-i32-to-double " + op0 + ") loc)");
+            setLoc(inst, "(sitofp-i32-to-double " + op0 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -693,7 +812,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     public Void visitZExtInst(Instruction.ZExtInst inst, Void p) {
         String op0 = operandStr(inst.operands[0]);
         if (inst.typesMatch("i64", "i32")) {
-            out.print("loc (s '" + inst.refName + " (zext-i32-to-i64 " + op0 + ") loc)");
+            setLoc(inst, "(zext-i32-to-i64 " + op0 + ")");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -704,57 +823,29 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     public Void visitLoadInst(Instruction.LoadInst inst, Void p) {
         String op0 = operandStr(inst.operands[0]);
         if (inst.typesMatch("double", "double*")) {
-            out.print("loc (s '" + inst.refName + " (load-double " + op0 + " mem) loc)");
+            setLoc(inst, "(load-double " + op0 + " mem)");
         } else if (inst.typesMatch("i32", "i32*")) {
-            out.print("loc (s '" + inst.refName + " (load-i32 " + op0 + " mem) loc)");
+            setLoc(inst, "(load-i32 " + op0 + " mem)");
         } else if (inst.typesMatch("double*", "double**")) {
-            out.print("loc (s '" + inst.refName + " (load-pointer " + op0 + " mem) loc)");
+            setLoc(inst, "(load-pointer " + op0 + " mem)");
         } else if (inst.typesMatch("i32*", "i32**")) {
-            out.print("loc (s '" + inst.refName + " (load-pointer " + op0 + " mem) loc)");
+            setLoc(inst, "(load-pointer " + op0 + " mem)");
         } else {
             throw new UnsupportedOperationException();
         }
         return null;
     }
 
-    private void br(BasicBlock bb) {
-        if (bb.numPhi > 0) {
-            String s = "(let* (";
-            for (int i = 0; i < bb.numPhi; i++) {
-                Instruction.PHINode phi = (Instruction.PHINode) bb.insts.get(i);
-                if (i != 0) {
-                    s += " ";
-                }
-                for (int j = 0; j < phi.incomingBlocks.length; j++) {
-                    if (phi.incomingBlocks[j] == curBb) {
-                        User value = phi.incomingValues[j];
-                        s += "(loc (s '" + phi.refName + " " + operandStr(value) + " loc))";
-                    }
-                }
-            }
-            out.print(s + ") (mv '@" + curFun.name + "-%" + bb.label + "-bb mem loc))");
-        } else {
-            out.print("(mv '@" + curFun.name + "-%" + bb.label + "-bb mem loc)");
-        }
-    }
-
     @Override
     public Void visitBranchInst(TerminatorInst.BranchInst inst, Void p) {
         if (inst.typesMatch("void", "label")) {
             BasicBlock bb0 = (BasicBlock) inst.operands[0];
-            br(bb0);
+            setSucc(inst, "'%" + bb0.label);
         } else if (inst.typesMatch("void", "i1", "label", "label")) {
             String op0 = operandStr(inst.operands[0]);
             BasicBlock bb1 = (BasicBlock) inst.operands[1];
             BasicBlock bb2 = (BasicBlock) inst.operands[2];
-            out.print("(case " + op0);
-            nl("  (-1 ");
-            br(bb2);
-            out.print(")");
-            nl("  ( 0 ");
-            br(bb1);
-            out.print(")");
-            nl("  (otherwise (mv nil mem loc)))");
+            setSucc(inst, "(case " + op0 + " (-1 '%" + bb2.label + ") (0 '%" + bb1.label + "))");
         } else {
             throw new UnsupportedOperationException();
         }
@@ -763,15 +854,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
 
     @Override
     public Void visitReturnInst(TerminatorInst.ReturnInst inst, Void p) {
-        String op0 = operandStr(inst.operands[0]);
-        out.print("(mv 'ret mem loc)");
-//        if (inst.typesMatch("void", "double")) {
-//            out.print(op0);
-//        } else if (inst.typesMatch("void", "i32")) {
-//            out.print(op0);
-//        } else {
-//            throw new UnsupportedOperationException();
-//        }
+        setSucc(inst, "'ret");
         return null;
     }
 
@@ -781,17 +864,14 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         BasicBlock defaultLabel = (BasicBlock) inst.operands[1];
         if (inst.operands[0].type.typeStr.equals("i32")) {
             int numCases = inst.operands.length / 2 - 1;
-            out.print("(case " + op0);
+            String s = "(case " + op0;
             for (int i = 0; i < numCases; i++) {
                 String tag = operandStr(inst.operands[i * 2 + 2]);
                 BasicBlock label = (BasicBlock) inst.operands[i * 2 + 3];
-                nl("  (" + tag + " ");
-                br(label);
-                out.print(")");
+                s += "(" + tag + " '%" + label.label + ")";
             }
-            nl("  (otherwise ");
-            br(defaultLabel);
-            out.print("))");
+            s += " (otherwise '%" + defaultLabel.label + "))";
+            setSucc(inst, s);
         } else {
             throw new UnsupportedOperationException();
         }
