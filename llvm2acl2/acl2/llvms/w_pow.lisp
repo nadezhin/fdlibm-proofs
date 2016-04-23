@@ -41,6 +41,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @pow-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@pow-succ0-lab s0) (@pow-m0.2-mem s0) (@pow-%5-loc s0))))
+
 (defund @pow-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -62,6 +66,75 @@
 (defund @pow-%0-rev (mem loc pred)
   (@pow-%1-rev mem loc pred))
 
+(defruled @pow-%0-expand-rev-as-@pow-%1-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-%1-rev
+            (@pow-%0-mem s0)
+            (@pow-%0-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-rev @pow-%0-mem @pow-%0-loc @pow-%0-pred))
+(defruled @pow-%0-expand-rev-as-@pow-%2-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-%2-rev
+            (@pow-%1-mem s0)
+            (@pow-%1-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-%1-rev @pow-%1-rev @pow-%1-mem @pow-%1-loc))
+(defruled @pow-%0-expand-rev-as-@pow-m0.1-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-m0.1-rev
+            (@pow-%2-mem s0)
+            (@pow-%2-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-%2-rev @pow-%2-rev @pow-%2-mem @pow-%2-loc))
+(defruled @pow-%0-expand-rev-as-@pow-m0.2-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-m0.2-rev
+            (@pow-m0.1-mem s0)
+            (@pow-%2-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-m0.1-rev @pow-m0.1-rev @pow-m0.1-mem))
+(defruled @pow-%0-expand-rev-as-@pow-%3-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-%3-rev
+            (@pow-m0.2-mem s0)
+            (@pow-%2-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-m0.2-rev @pow-m0.2-rev @pow-m0.2-mem))
+(defruled @pow-%0-expand-rev-as-@pow-%4-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-%4-rev
+            (@pow-m0.2-mem s0)
+            (@pow-%3-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-%3-rev @pow-%3-rev @pow-%3-loc @pow-%3-val))
+(defruled @pow-%0-expand-rev-as-@pow-%5-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-%5-rev
+            (@pow-m0.2-mem s0)
+            (@pow-%4-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-%4-rev @pow-%4-rev @pow-%4-loc @pow-%4-val))
+(defruled @pow-%0-expand-rev-as-@pow-succ0-rev
+  (equal (@pow-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@pow-succ0-rev
+            (@pow-m0.2-mem s0)
+            (@pow-%5-loc s0)
+            (@pow-%0-pred s0))))
+  :enable (@pow-%0-expand-rev-as-@pow-%5-rev @pow-%5-rev @pow-%5-loc @pow-%5-val))
+(defruled @pow-%0-expand-rev-as-fwd
+  (equal (@pow-%0-rev mem loc pred)
+         (@pow-%0-fwd mem loc pred))
+  :enable (@pow-%0-expand-rev-as-@pow-succ0-rev @pow-succ0-rev @pow-succ0-lab @pow-%0-fwd))
+
 (defund @pow-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -76,20 +149,6 @@
     (loc (s '%5 (@__ieee754_pow (g '%3 loc) (g '%4 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @pow-%0-expand-bb
-  (equal (@pow-%0-bb mem loc pred)
-         (@pow-%0-rev mem loc pred))
-  :enable (@pow-%0-bb @pow-%0-rev
-    @pow-%1-rev
-    @pow-%2-rev
-    @pow-m0.1-rev
-    @pow-m0.2-rev
-    @pow-%3-rev
-    @pow-%4-rev
-    @pow-%5-rev
-    @pow-succ0-rev)
-  :disable s-diff-s)
 
 (defund @pow-step (label mem loc pred)
   (case label

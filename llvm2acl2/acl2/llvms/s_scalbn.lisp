@@ -90,6 +90,10 @@
 (defund @scalbn-succ0-lab (s0)
   (case (g '%13 (@scalbn-%13-loc s0)) (-1 '%14) (0 '%38)))
 
+(defund @scalbn-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@scalbn-succ0-lab s0) (@scalbn-m0.5-mem s0) (@scalbn-%13-loc s0))))
+
 (defund @scalbn-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%13 loc) (-1 '%14) (0 '%38)) mem loc))
@@ -139,6 +143,187 @@
 (defund @scalbn-%0-rev (mem loc pred)
   (@scalbn-%1-rev mem loc pred))
 
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%1-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%1-rev
+            (@scalbn-%0-mem s0)
+            (@scalbn-%0-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-rev @scalbn-%0-mem @scalbn-%0-loc @scalbn-%0-pred))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%2-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%2-rev
+            (@scalbn-%1-mem s0)
+            (@scalbn-%1-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%1-rev @scalbn-%1-rev @scalbn-%1-mem @scalbn-%1-loc))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%3-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%3-rev
+            (@scalbn-%2-mem s0)
+            (@scalbn-%2-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%2-rev @scalbn-%2-rev @scalbn-%2-mem @scalbn-%2-loc))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%k-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%k-rev
+            (@scalbn-%3-mem s0)
+            (@scalbn-%3-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%3-rev @scalbn-%3-rev @scalbn-%3-mem @scalbn-%3-loc))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%hx-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%hx-rev
+            (@scalbn-%k-mem s0)
+            (@scalbn-%k-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%k-rev @scalbn-%k-rev @scalbn-%k-mem @scalbn-%k-loc))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%lx-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%lx-rev
+            (@scalbn-%hx-mem s0)
+            (@scalbn-%hx-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%hx-rev @scalbn-%hx-rev @scalbn-%hx-mem @scalbn-%hx-loc))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-m0.1-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-m0.1-rev
+            (@scalbn-%lx-mem s0)
+            (@scalbn-%lx-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%lx-rev @scalbn-%lx-rev @scalbn-%lx-mem @scalbn-%lx-loc))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-m0.2-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-m0.2-rev
+            (@scalbn-m0.1-mem s0)
+            (@scalbn-%lx-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-m0.1-rev @scalbn-m0.1-rev @scalbn-m0.1-mem))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%4-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%4-rev
+            (@scalbn-m0.2-mem s0)
+            (@scalbn-%lx-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-m0.2-rev @scalbn-m0.2-rev @scalbn-m0.2-mem))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%5-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%5-rev
+            (@scalbn-m0.2-mem s0)
+            (@scalbn-%4-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%4-rev @scalbn-%4-rev @scalbn-%4-loc @scalbn-%4-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%6-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%6-rev
+            (@scalbn-m0.2-mem s0)
+            (@scalbn-%5-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%5-rev @scalbn-%5-rev @scalbn-%5-loc @scalbn-%5-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-m0.3-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-m0.3-rev
+            (@scalbn-m0.2-mem s0)
+            (@scalbn-%6-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%6-rev @scalbn-%6-rev @scalbn-%6-loc @scalbn-%6-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%7-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%7-rev
+            (@scalbn-m0.3-mem s0)
+            (@scalbn-%6-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-m0.3-rev @scalbn-m0.3-rev @scalbn-m0.3-mem))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%8-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%8-rev
+            (@scalbn-m0.3-mem s0)
+            (@scalbn-%7-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%7-rev @scalbn-%7-rev @scalbn-%7-loc @scalbn-%7-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-m0.4-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-m0.4-rev
+            (@scalbn-m0.3-mem s0)
+            (@scalbn-%8-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%8-rev @scalbn-%8-rev @scalbn-%8-loc @scalbn-%8-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%9-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%9-rev
+            (@scalbn-m0.4-mem s0)
+            (@scalbn-%8-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-m0.4-rev @scalbn-m0.4-rev @scalbn-m0.4-mem))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%10-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%10-rev
+            (@scalbn-m0.4-mem s0)
+            (@scalbn-%9-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%9-rev @scalbn-%9-rev @scalbn-%9-loc @scalbn-%9-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%11-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%11-rev
+            (@scalbn-m0.4-mem s0)
+            (@scalbn-%10-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%10-rev @scalbn-%10-rev @scalbn-%10-loc @scalbn-%10-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-m0.5-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-m0.5-rev
+            (@scalbn-m0.4-mem s0)
+            (@scalbn-%11-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%11-rev @scalbn-%11-rev @scalbn-%11-loc @scalbn-%11-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%12-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%12-rev
+            (@scalbn-m0.5-mem s0)
+            (@scalbn-%11-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-m0.5-rev @scalbn-m0.5-rev @scalbn-m0.5-mem))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-%13-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-%13-rev
+            (@scalbn-m0.5-mem s0)
+            (@scalbn-%12-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%12-rev @scalbn-%12-rev @scalbn-%12-loc @scalbn-%12-val))
+(defruled @scalbn-%0-expand-rev-as-@scalbn-succ0-rev
+  (equal (@scalbn-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@scalbn-succ0-rev
+            (@scalbn-m0.5-mem s0)
+            (@scalbn-%13-loc s0)
+            (@scalbn-%0-pred s0))))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-%13-rev @scalbn-%13-rev @scalbn-%13-loc @scalbn-%13-val))
+(defruled @scalbn-%0-expand-rev-as-fwd
+  (equal (@scalbn-%0-rev mem loc pred)
+         (@scalbn-%0-fwd mem loc pred))
+  :enable (@scalbn-%0-expand-rev-as-@scalbn-succ0-rev @scalbn-succ0-rev @scalbn-succ0-lab @scalbn-%0-fwd))
+
 (defund @scalbn-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -172,34 +357,6 @@
     (succ (case (g '%13 loc) (-1 '%14) (0 '%38))))
   (mv succ mem loc)))
 
-(defruled @scalbn-%0-expand-bb
-  (equal (@scalbn-%0-bb mem loc pred)
-         (@scalbn-%0-rev mem loc pred))
-  :enable (@scalbn-%0-bb @scalbn-%0-rev
-    @scalbn-%1-rev
-    @scalbn-%2-rev
-    @scalbn-%3-rev
-    @scalbn-%k-rev
-    @scalbn-%hx-rev
-    @scalbn-%lx-rev
-    @scalbn-m0.1-rev
-    @scalbn-m0.2-rev
-    @scalbn-%4-rev
-    @scalbn-%5-rev
-    @scalbn-%6-rev
-    @scalbn-m0.3-rev
-    @scalbn-%7-rev
-    @scalbn-%8-rev
-    @scalbn-m0.4-rev
-    @scalbn-%9-rev
-    @scalbn-%10-rev
-    @scalbn-%11-rev
-    @scalbn-m0.5-rev
-    @scalbn-%12-rev
-    @scalbn-%13-rev
-    @scalbn-succ0-rev)
-  :disable s-diff-s)
-
 (defund @scalbn-%14-mem (s14)
   (car s14))
 (defund @scalbn-%14-loc (s14)
@@ -229,6 +386,10 @@
 (defund @scalbn-succ14-lab (s14)
   (case (g '%19 (@scalbn-%19-loc s14)) (-1 '%20) (0 '%22)))
 
+(defund @scalbn-%14-fwd (mem loc pred)
+  (let ((s14 (list mem loc pred)))
+    (mv (@scalbn-succ14-lab s14) (@scalbn-%14-mem s14) (@scalbn-%19-loc s14))))
+
 (defund @scalbn-succ14-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%19 loc) (-1 '%20) (0 '%22)) mem loc))
@@ -246,6 +407,59 @@
 (defund @scalbn-%14-rev (mem loc pred)
   (@scalbn-%15-rev mem loc pred))
 
+(defruled @scalbn-%14-expand-rev-as-@scalbn-%15-rev
+  (equal (@scalbn-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@scalbn-%15-rev
+            (@scalbn-%14-mem s14)
+            (@scalbn-%14-loc s14)
+            (@scalbn-%14-pred s14))))
+  :enable (@scalbn-%14-rev @scalbn-%14-mem @scalbn-%14-loc @scalbn-%14-pred))
+(defruled @scalbn-%14-expand-rev-as-@scalbn-%16-rev
+  (equal (@scalbn-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@scalbn-%16-rev
+            (@scalbn-%14-mem s14)
+            (@scalbn-%15-loc s14)
+            (@scalbn-%14-pred s14))))
+  :enable (@scalbn-%14-expand-rev-as-@scalbn-%15-rev @scalbn-%15-rev @scalbn-%15-loc @scalbn-%15-val))
+(defruled @scalbn-%14-expand-rev-as-@scalbn-%17-rev
+  (equal (@scalbn-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@scalbn-%17-rev
+            (@scalbn-%14-mem s14)
+            (@scalbn-%16-loc s14)
+            (@scalbn-%14-pred s14))))
+  :enable (@scalbn-%14-expand-rev-as-@scalbn-%16-rev @scalbn-%16-rev @scalbn-%16-loc @scalbn-%16-val))
+(defruled @scalbn-%14-expand-rev-as-@scalbn-%18-rev
+  (equal (@scalbn-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@scalbn-%18-rev
+            (@scalbn-%14-mem s14)
+            (@scalbn-%17-loc s14)
+            (@scalbn-%14-pred s14))))
+  :enable (@scalbn-%14-expand-rev-as-@scalbn-%17-rev @scalbn-%17-rev @scalbn-%17-loc @scalbn-%17-val))
+(defruled @scalbn-%14-expand-rev-as-@scalbn-%19-rev
+  (equal (@scalbn-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@scalbn-%19-rev
+            (@scalbn-%14-mem s14)
+            (@scalbn-%18-loc s14)
+            (@scalbn-%14-pred s14))))
+  :enable (@scalbn-%14-expand-rev-as-@scalbn-%18-rev @scalbn-%18-rev @scalbn-%18-loc @scalbn-%18-val))
+(defruled @scalbn-%14-expand-rev-as-@scalbn-succ14-rev
+  (equal (@scalbn-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@scalbn-succ14-rev
+            (@scalbn-%14-mem s14)
+            (@scalbn-%19-loc s14)
+            (@scalbn-%14-pred s14))))
+  :enable (@scalbn-%14-expand-rev-as-@scalbn-%19-rev @scalbn-%19-rev @scalbn-%19-loc @scalbn-%19-val))
+(defruled @scalbn-%14-expand-rev-as-fwd
+  (equal (@scalbn-%14-rev mem loc pred)
+         (@scalbn-%14-fwd mem loc pred))
+  :enable (@scalbn-%14-expand-rev-as-@scalbn-succ14-rev @scalbn-succ14-rev @scalbn-succ14-lab @scalbn-%14-fwd))
+
 (defund @scalbn-%14-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -256,18 +470,6 @@
     (loc (s '%19 (icmp-eq-i32 (g '%18 loc) 0) loc))
     (succ (case (g '%19 loc) (-1 '%20) (0 '%22))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%14-expand-bb
-  (equal (@scalbn-%14-bb mem loc pred)
-         (@scalbn-%14-rev mem loc pred))
-  :enable (@scalbn-%14-bb @scalbn-%14-rev
-    @scalbn-%15-rev
-    @scalbn-%16-rev
-    @scalbn-%17-rev
-    @scalbn-%18-rev
-    @scalbn-%19-rev
-    @scalbn-succ14-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%20-mem (s20)
   (car s20))
@@ -285,6 +487,10 @@
   (declare (ignore s20))
   '%93)
 
+(defund @scalbn-%20-fwd (mem loc pred)
+  (let ((s20 (list mem loc pred)))
+    (mv (@scalbn-succ20-lab s20) (@scalbn-m20.1-mem s20) (@scalbn-%21-loc s20))))
+
 (defund @scalbn-succ20-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -296,6 +502,35 @@
 (defund @scalbn-%20-rev (mem loc pred)
   (@scalbn-%21-rev mem loc pred))
 
+(defruled @scalbn-%20-expand-rev-as-@scalbn-%21-rev
+  (equal (@scalbn-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@scalbn-%21-rev
+            (@scalbn-%20-mem s20)
+            (@scalbn-%20-loc s20)
+            (@scalbn-%20-pred s20))))
+  :enable (@scalbn-%20-rev @scalbn-%20-mem @scalbn-%20-loc @scalbn-%20-pred))
+(defruled @scalbn-%20-expand-rev-as-@scalbn-m20.1-rev
+  (equal (@scalbn-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@scalbn-m20.1-rev
+            (@scalbn-%20-mem s20)
+            (@scalbn-%21-loc s20)
+            (@scalbn-%20-pred s20))))
+  :enable (@scalbn-%20-expand-rev-as-@scalbn-%21-rev @scalbn-%21-rev @scalbn-%21-loc @scalbn-%21-val))
+(defruled @scalbn-%20-expand-rev-as-@scalbn-succ20-rev
+  (equal (@scalbn-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@scalbn-succ20-rev
+            (@scalbn-m20.1-mem s20)
+            (@scalbn-%21-loc s20)
+            (@scalbn-%20-pred s20))))
+  :enable (@scalbn-%20-expand-rev-as-@scalbn-m20.1-rev @scalbn-m20.1-rev @scalbn-m20.1-mem))
+(defruled @scalbn-%20-expand-rev-as-fwd
+  (equal (@scalbn-%20-rev mem loc pred)
+         (@scalbn-%20-fwd mem loc pred))
+  :enable (@scalbn-%20-expand-rev-as-@scalbn-succ20-rev @scalbn-succ20-rev @scalbn-succ20-lab @scalbn-%20-fwd))
+
 (defund @scalbn-%20-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -303,15 +538,6 @@
     (mem (store-double (g '%21 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%20-expand-bb
-  (equal (@scalbn-%20-bb mem loc pred)
-         (@scalbn-%20-rev mem loc pred))
-  :enable (@scalbn-%20-bb @scalbn-%20-rev
-    @scalbn-%21-rev
-    @scalbn-m20.1-rev
-    @scalbn-succ20-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%22-mem (s22)
   (car s22))
@@ -372,6 +598,10 @@
 (defund @scalbn-succ22-lab (s22)
   (case (g '%33 (@scalbn-%33-loc s22)) (-1 '%34) (0 '%37)))
 
+(defund @scalbn-%22-fwd (mem loc pred)
+  (let ((s22 (list mem loc pred)))
+    (mv (@scalbn-succ22-lab s22) (@scalbn-m22.3-mem s22) (@scalbn-%33-loc s22))))
+
 (defund @scalbn-succ22-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%33 loc) (-1 '%34) (0 '%37)) mem loc))
@@ -407,6 +637,131 @@
 (defund @scalbn-%22-rev (mem loc pred)
   (@scalbn-%23-rev mem loc pred))
 
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%23-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%23-rev
+            (@scalbn-%22-mem s22)
+            (@scalbn-%22-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-rev @scalbn-%22-mem @scalbn-%22-loc @scalbn-%22-pred))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%24-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%24-rev
+            (@scalbn-%22-mem s22)
+            (@scalbn-%23-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%23-rev @scalbn-%23-rev @scalbn-%23-loc @scalbn-%23-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-m22.1-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-m22.1-rev
+            (@scalbn-%22-mem s22)
+            (@scalbn-%24-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%24-rev @scalbn-%24-rev @scalbn-%24-loc @scalbn-%24-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%25-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%25-rev
+            (@scalbn-m22.1-mem s22)
+            (@scalbn-%24-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-m22.1-rev @scalbn-m22.1-rev @scalbn-m22.1-mem))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%26-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%26-rev
+            (@scalbn-m22.1-mem s22)
+            (@scalbn-%25-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%25-rev @scalbn-%25-rev @scalbn-%25-loc @scalbn-%25-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%27-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%27-rev
+            (@scalbn-m22.1-mem s22)
+            (@scalbn-%26-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%26-rev @scalbn-%26-rev @scalbn-%26-loc @scalbn-%26-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-m22.2-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-m22.2-rev
+            (@scalbn-m22.1-mem s22)
+            (@scalbn-%27-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%27-rev @scalbn-%27-rev @scalbn-%27-loc @scalbn-%27-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%28-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%28-rev
+            (@scalbn-m22.2-mem s22)
+            (@scalbn-%27-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-m22.2-rev @scalbn-m22.2-rev @scalbn-m22.2-mem))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%29-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%29-rev
+            (@scalbn-m22.2-mem s22)
+            (@scalbn-%28-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%28-rev @scalbn-%28-rev @scalbn-%28-loc @scalbn-%28-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%30-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%30-rev
+            (@scalbn-m22.2-mem s22)
+            (@scalbn-%29-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%29-rev @scalbn-%29-rev @scalbn-%29-loc @scalbn-%29-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%31-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%31-rev
+            (@scalbn-m22.2-mem s22)
+            (@scalbn-%30-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%30-rev @scalbn-%30-rev @scalbn-%30-loc @scalbn-%30-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-m22.3-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-m22.3-rev
+            (@scalbn-m22.2-mem s22)
+            (@scalbn-%31-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%31-rev @scalbn-%31-rev @scalbn-%31-loc @scalbn-%31-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%32-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%32-rev
+            (@scalbn-m22.3-mem s22)
+            (@scalbn-%31-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-m22.3-rev @scalbn-m22.3-rev @scalbn-m22.3-mem))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-%33-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-%33-rev
+            (@scalbn-m22.3-mem s22)
+            (@scalbn-%32-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%32-rev @scalbn-%32-rev @scalbn-%32-loc @scalbn-%32-val))
+(defruled @scalbn-%22-expand-rev-as-@scalbn-succ22-rev
+  (equal (@scalbn-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@scalbn-succ22-rev
+            (@scalbn-m22.3-mem s22)
+            (@scalbn-%33-loc s22)
+            (@scalbn-%22-pred s22))))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-%33-rev @scalbn-%33-rev @scalbn-%33-loc @scalbn-%33-val))
+(defruled @scalbn-%22-expand-rev-as-fwd
+  (equal (@scalbn-%22-rev mem loc pred)
+         (@scalbn-%22-fwd mem loc pred))
+  :enable (@scalbn-%22-expand-rev-as-@scalbn-succ22-rev @scalbn-succ22-rev @scalbn-succ22-lab @scalbn-%22-fwd))
+
 (defund @scalbn-%22-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -426,27 +781,6 @@
     (loc (s '%33 (icmp-slt-i32 (g '%32 loc) -50000) loc))
     (succ (case (g '%33 loc) (-1 '%34) (0 '%37))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%22-expand-bb
-  (equal (@scalbn-%22-bb mem loc pred)
-         (@scalbn-%22-rev mem loc pred))
-  :enable (@scalbn-%22-bb @scalbn-%22-rev
-    @scalbn-%23-rev
-    @scalbn-%24-rev
-    @scalbn-m22.1-rev
-    @scalbn-%25-rev
-    @scalbn-%26-rev
-    @scalbn-%27-rev
-    @scalbn-m22.2-rev
-    @scalbn-%28-rev
-    @scalbn-%29-rev
-    @scalbn-%30-rev
-    @scalbn-%31-rev
-    @scalbn-m22.3-rev
-    @scalbn-%32-rev
-    @scalbn-%33-rev
-    @scalbn-succ22-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%34-mem (s34)
   (car s34))
@@ -468,6 +802,10 @@
   (declare (ignore s34))
   '%93)
 
+(defund @scalbn-%34-fwd (mem loc pred)
+  (let ((s34 (list mem loc pred)))
+    (mv (@scalbn-succ34-lab s34) (@scalbn-m34.1-mem s34) (@scalbn-%36-loc s34))))
+
 (defund @scalbn-succ34-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -481,6 +819,43 @@
 (defund @scalbn-%34-rev (mem loc pred)
   (@scalbn-%35-rev mem loc pred))
 
+(defruled @scalbn-%34-expand-rev-as-@scalbn-%35-rev
+  (equal (@scalbn-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@scalbn-%35-rev
+            (@scalbn-%34-mem s34)
+            (@scalbn-%34-loc s34)
+            (@scalbn-%34-pred s34))))
+  :enable (@scalbn-%34-rev @scalbn-%34-mem @scalbn-%34-loc @scalbn-%34-pred))
+(defruled @scalbn-%34-expand-rev-as-@scalbn-%36-rev
+  (equal (@scalbn-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@scalbn-%36-rev
+            (@scalbn-%34-mem s34)
+            (@scalbn-%35-loc s34)
+            (@scalbn-%34-pred s34))))
+  :enable (@scalbn-%34-expand-rev-as-@scalbn-%35-rev @scalbn-%35-rev @scalbn-%35-loc @scalbn-%35-val))
+(defruled @scalbn-%34-expand-rev-as-@scalbn-m34.1-rev
+  (equal (@scalbn-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@scalbn-m34.1-rev
+            (@scalbn-%34-mem s34)
+            (@scalbn-%36-loc s34)
+            (@scalbn-%34-pred s34))))
+  :enable (@scalbn-%34-expand-rev-as-@scalbn-%36-rev @scalbn-%36-rev @scalbn-%36-loc @scalbn-%36-val))
+(defruled @scalbn-%34-expand-rev-as-@scalbn-succ34-rev
+  (equal (@scalbn-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@scalbn-succ34-rev
+            (@scalbn-m34.1-mem s34)
+            (@scalbn-%36-loc s34)
+            (@scalbn-%34-pred s34))))
+  :enable (@scalbn-%34-expand-rev-as-@scalbn-m34.1-rev @scalbn-m34.1-rev @scalbn-m34.1-mem))
+(defruled @scalbn-%34-expand-rev-as-fwd
+  (equal (@scalbn-%34-rev mem loc pred)
+         (@scalbn-%34-fwd mem loc pred))
+  :enable (@scalbn-%34-expand-rev-as-@scalbn-succ34-rev @scalbn-succ34-rev @scalbn-succ34-lab @scalbn-%34-fwd))
+
 (defund @scalbn-%34-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -489,16 +864,6 @@
     (mem (store-double (g '%36 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%34-expand-bb
-  (equal (@scalbn-%34-bb mem loc pred)
-         (@scalbn-%34-rev mem loc pred))
-  :enable (@scalbn-%34-bb @scalbn-%34-rev
-    @scalbn-%35-rev
-    @scalbn-%36-rev
-    @scalbn-m34.1-rev
-    @scalbn-succ34-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%37-mem (s37)
   (car s37))
@@ -510,6 +875,10 @@
   (declare (ignore s37))
   '%38)
 
+(defund @scalbn-%37-fwd (mem loc pred)
+  (let ((s37 (list mem loc pred)))
+    (mv (@scalbn-succ37-lab s37) (@scalbn-%37-mem s37) (@scalbn-%37-loc s37))))
+
 (defund @scalbn-succ37-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%38 mem loc))
@@ -517,18 +886,24 @@
 (defund @scalbn-%37-rev (mem loc pred)
   (@scalbn-succ37-rev mem loc pred))
 
+(defruled @scalbn-%37-expand-rev-as-@scalbn-succ37-rev
+  (equal (@scalbn-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@scalbn-succ37-rev
+            (@scalbn-%37-mem s37)
+            (@scalbn-%37-loc s37)
+            (@scalbn-%37-pred s37))))
+  :enable (@scalbn-%37-rev @scalbn-%37-mem @scalbn-%37-loc @scalbn-%37-pred))
+(defruled @scalbn-%37-expand-rev-as-fwd
+  (equal (@scalbn-%37-rev mem loc pred)
+         (@scalbn-%37-fwd mem loc pred))
+  :enable (@scalbn-%37-expand-rev-as-@scalbn-succ37-rev @scalbn-succ37-rev @scalbn-succ37-lab @scalbn-%37-fwd))
+
 (defund @scalbn-%37-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%38))
   (mv succ mem loc)))
-
-(defruled @scalbn-%37-expand-bb
-  (equal (@scalbn-%37-bb mem loc pred)
-         (@scalbn-%37-rev mem loc pred))
-  :enable (@scalbn-%37-bb @scalbn-%37-rev
-    @scalbn-succ37-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%38-mem (s38)
   (car s38))
@@ -547,6 +922,10 @@
 (defund @scalbn-succ38-lab (s38)
   (case (g '%40 (@scalbn-%40-loc s38)) (-1 '%41) (0 '%45)))
 
+(defund @scalbn-%38-fwd (mem loc pred)
+  (let ((s38 (list mem loc pred)))
+    (mv (@scalbn-succ38-lab s38) (@scalbn-%38-mem s38) (@scalbn-%40-loc s38))))
+
 (defund @scalbn-succ38-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%40 loc) (-1 '%41) (0 '%45)) mem loc))
@@ -558,6 +937,35 @@
 (defund @scalbn-%38-rev (mem loc pred)
   (@scalbn-%39-rev mem loc pred))
 
+(defruled @scalbn-%38-expand-rev-as-@scalbn-%39-rev
+  (equal (@scalbn-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@scalbn-%39-rev
+            (@scalbn-%38-mem s38)
+            (@scalbn-%38-loc s38)
+            (@scalbn-%38-pred s38))))
+  :enable (@scalbn-%38-rev @scalbn-%38-mem @scalbn-%38-loc @scalbn-%38-pred))
+(defruled @scalbn-%38-expand-rev-as-@scalbn-%40-rev
+  (equal (@scalbn-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@scalbn-%40-rev
+            (@scalbn-%38-mem s38)
+            (@scalbn-%39-loc s38)
+            (@scalbn-%38-pred s38))))
+  :enable (@scalbn-%38-expand-rev-as-@scalbn-%39-rev @scalbn-%39-rev @scalbn-%39-loc @scalbn-%39-val))
+(defruled @scalbn-%38-expand-rev-as-@scalbn-succ38-rev
+  (equal (@scalbn-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@scalbn-succ38-rev
+            (@scalbn-%38-mem s38)
+            (@scalbn-%40-loc s38)
+            (@scalbn-%38-pred s38))))
+  :enable (@scalbn-%38-expand-rev-as-@scalbn-%40-rev @scalbn-%40-rev @scalbn-%40-loc @scalbn-%40-val))
+(defruled @scalbn-%38-expand-rev-as-fwd
+  (equal (@scalbn-%38-rev mem loc pred)
+         (@scalbn-%38-fwd mem loc pred))
+  :enable (@scalbn-%38-expand-rev-as-@scalbn-succ38-rev @scalbn-succ38-rev @scalbn-succ38-lab @scalbn-%38-fwd))
+
 (defund @scalbn-%38-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -565,15 +973,6 @@
     (loc (s '%40 (icmp-eq-i32 (g '%39 loc) 2047) loc))
     (succ (case (g '%40 loc) (-1 '%41) (0 '%45))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%38-expand-bb
-  (equal (@scalbn-%38-bb mem loc pred)
-         (@scalbn-%38-rev mem loc pred))
-  :enable (@scalbn-%38-bb @scalbn-%38-rev
-    @scalbn-%39-rev
-    @scalbn-%40-rev
-    @scalbn-succ38-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%41-mem (s41)
   (car s41))
@@ -599,6 +998,10 @@
   (declare (ignore s41))
   '%93)
 
+(defund @scalbn-%41-fwd (mem loc pred)
+  (let ((s41 (list mem loc pred)))
+    (mv (@scalbn-succ41-lab s41) (@scalbn-m41.1-mem s41) (@scalbn-%44-loc s41))))
+
 (defund @scalbn-succ41-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -614,6 +1017,51 @@
 (defund @scalbn-%41-rev (mem loc pred)
   (@scalbn-%42-rev mem loc pred))
 
+(defruled @scalbn-%41-expand-rev-as-@scalbn-%42-rev
+  (equal (@scalbn-%41-rev mem loc pred)
+         (let ((s41 (list mem loc pred)))
+           (@scalbn-%42-rev
+            (@scalbn-%41-mem s41)
+            (@scalbn-%41-loc s41)
+            (@scalbn-%41-pred s41))))
+  :enable (@scalbn-%41-rev @scalbn-%41-mem @scalbn-%41-loc @scalbn-%41-pred))
+(defruled @scalbn-%41-expand-rev-as-@scalbn-%43-rev
+  (equal (@scalbn-%41-rev mem loc pred)
+         (let ((s41 (list mem loc pred)))
+           (@scalbn-%43-rev
+            (@scalbn-%41-mem s41)
+            (@scalbn-%42-loc s41)
+            (@scalbn-%41-pred s41))))
+  :enable (@scalbn-%41-expand-rev-as-@scalbn-%42-rev @scalbn-%42-rev @scalbn-%42-loc @scalbn-%42-val))
+(defruled @scalbn-%41-expand-rev-as-@scalbn-%44-rev
+  (equal (@scalbn-%41-rev mem loc pred)
+         (let ((s41 (list mem loc pred)))
+           (@scalbn-%44-rev
+            (@scalbn-%41-mem s41)
+            (@scalbn-%43-loc s41)
+            (@scalbn-%41-pred s41))))
+  :enable (@scalbn-%41-expand-rev-as-@scalbn-%43-rev @scalbn-%43-rev @scalbn-%43-loc @scalbn-%43-val))
+(defruled @scalbn-%41-expand-rev-as-@scalbn-m41.1-rev
+  (equal (@scalbn-%41-rev mem loc pred)
+         (let ((s41 (list mem loc pred)))
+           (@scalbn-m41.1-rev
+            (@scalbn-%41-mem s41)
+            (@scalbn-%44-loc s41)
+            (@scalbn-%41-pred s41))))
+  :enable (@scalbn-%41-expand-rev-as-@scalbn-%44-rev @scalbn-%44-rev @scalbn-%44-loc @scalbn-%44-val))
+(defruled @scalbn-%41-expand-rev-as-@scalbn-succ41-rev
+  (equal (@scalbn-%41-rev mem loc pred)
+         (let ((s41 (list mem loc pred)))
+           (@scalbn-succ41-rev
+            (@scalbn-m41.1-mem s41)
+            (@scalbn-%44-loc s41)
+            (@scalbn-%41-pred s41))))
+  :enable (@scalbn-%41-expand-rev-as-@scalbn-m41.1-rev @scalbn-m41.1-rev @scalbn-m41.1-mem))
+(defruled @scalbn-%41-expand-rev-as-fwd
+  (equal (@scalbn-%41-rev mem loc pred)
+         (@scalbn-%41-fwd mem loc pred))
+  :enable (@scalbn-%41-expand-rev-as-@scalbn-succ41-rev @scalbn-succ41-rev @scalbn-succ41-lab @scalbn-%41-fwd))
+
 (defund @scalbn-%41-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -623,17 +1071,6 @@
     (mem (store-double (g '%44 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%41-expand-bb
-  (equal (@scalbn-%41-bb mem loc pred)
-         (@scalbn-%41-rev mem loc pred))
-  :enable (@scalbn-%41-bb @scalbn-%41-rev
-    @scalbn-%42-rev
-    @scalbn-%43-rev
-    @scalbn-%44-rev
-    @scalbn-m41.1-rev
-    @scalbn-succ41-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%45-mem (s45)
   (car s45))
@@ -666,6 +1103,10 @@
 (defund @scalbn-succ45-lab (s45)
   (case (g '%50 (@scalbn-%50-loc s45)) (-1 '%51) (0 '%55)))
 
+(defund @scalbn-%45-fwd (mem loc pred)
+  (let ((s45 (list mem loc pred)))
+    (mv (@scalbn-succ45-lab s45) (@scalbn-m45.1-mem s45) (@scalbn-%50-loc s45))))
+
 (defund @scalbn-succ45-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%50 loc) (-1 '%51) (0 '%55)) mem loc))
@@ -685,6 +1126,67 @@
 (defund @scalbn-%45-rev (mem loc pred)
   (@scalbn-%46-rev mem loc pred))
 
+(defruled @scalbn-%45-expand-rev-as-@scalbn-%46-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-%46-rev
+            (@scalbn-%45-mem s45)
+            (@scalbn-%45-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-rev @scalbn-%45-mem @scalbn-%45-loc @scalbn-%45-pred))
+(defruled @scalbn-%45-expand-rev-as-@scalbn-%47-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-%47-rev
+            (@scalbn-%45-mem s45)
+            (@scalbn-%46-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-%46-rev @scalbn-%46-rev @scalbn-%46-loc @scalbn-%46-val))
+(defruled @scalbn-%45-expand-rev-as-@scalbn-%48-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-%48-rev
+            (@scalbn-%45-mem s45)
+            (@scalbn-%47-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-%47-rev @scalbn-%47-rev @scalbn-%47-loc @scalbn-%47-val))
+(defruled @scalbn-%45-expand-rev-as-@scalbn-m45.1-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-m45.1-rev
+            (@scalbn-%45-mem s45)
+            (@scalbn-%48-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-%48-rev @scalbn-%48-rev @scalbn-%48-loc @scalbn-%48-val))
+(defruled @scalbn-%45-expand-rev-as-@scalbn-%49-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-%49-rev
+            (@scalbn-m45.1-mem s45)
+            (@scalbn-%48-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-m45.1-rev @scalbn-m45.1-rev @scalbn-m45.1-mem))
+(defruled @scalbn-%45-expand-rev-as-@scalbn-%50-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-%50-rev
+            (@scalbn-m45.1-mem s45)
+            (@scalbn-%49-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-%49-rev @scalbn-%49-rev @scalbn-%49-loc @scalbn-%49-val))
+(defruled @scalbn-%45-expand-rev-as-@scalbn-succ45-rev
+  (equal (@scalbn-%45-rev mem loc pred)
+         (let ((s45 (list mem loc pred)))
+           (@scalbn-succ45-rev
+            (@scalbn-m45.1-mem s45)
+            (@scalbn-%50-loc s45)
+            (@scalbn-%45-pred s45))))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-%50-rev @scalbn-%50-rev @scalbn-%50-loc @scalbn-%50-val))
+(defruled @scalbn-%45-expand-rev-as-fwd
+  (equal (@scalbn-%45-rev mem loc pred)
+         (@scalbn-%45-fwd mem loc pred))
+  :enable (@scalbn-%45-expand-rev-as-@scalbn-succ45-rev @scalbn-succ45-rev @scalbn-succ45-lab @scalbn-%45-fwd))
+
 (defund @scalbn-%45-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -696,19 +1198,6 @@
     (loc (s '%50 (icmp-sgt-i32 (g '%49 loc) 2046) loc))
     (succ (case (g '%50 loc) (-1 '%51) (0 '%55))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%45-expand-bb
-  (equal (@scalbn-%45-bb mem loc pred)
-         (@scalbn-%45-rev mem loc pred))
-  :enable (@scalbn-%45-bb @scalbn-%45-rev
-    @scalbn-%46-rev
-    @scalbn-%47-rev
-    @scalbn-%48-rev
-    @scalbn-m45.1-rev
-    @scalbn-%49-rev
-    @scalbn-%50-rev
-    @scalbn-succ45-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%51-mem (s51)
   (car s51))
@@ -734,6 +1223,10 @@
   (declare (ignore s51))
   '%93)
 
+(defund @scalbn-%51-fwd (mem loc pred)
+  (let ((s51 (list mem loc pred)))
+    (mv (@scalbn-succ51-lab s51) (@scalbn-m51.1-mem s51) (@scalbn-%54-loc s51))))
+
 (defund @scalbn-succ51-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -749,6 +1242,51 @@
 (defund @scalbn-%51-rev (mem loc pred)
   (@scalbn-%52-rev mem loc pred))
 
+(defruled @scalbn-%51-expand-rev-as-@scalbn-%52-rev
+  (equal (@scalbn-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@scalbn-%52-rev
+            (@scalbn-%51-mem s51)
+            (@scalbn-%51-loc s51)
+            (@scalbn-%51-pred s51))))
+  :enable (@scalbn-%51-rev @scalbn-%51-mem @scalbn-%51-loc @scalbn-%51-pred))
+(defruled @scalbn-%51-expand-rev-as-@scalbn-%53-rev
+  (equal (@scalbn-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@scalbn-%53-rev
+            (@scalbn-%51-mem s51)
+            (@scalbn-%52-loc s51)
+            (@scalbn-%51-pred s51))))
+  :enable (@scalbn-%51-expand-rev-as-@scalbn-%52-rev @scalbn-%52-rev @scalbn-%52-loc @scalbn-%52-val))
+(defruled @scalbn-%51-expand-rev-as-@scalbn-%54-rev
+  (equal (@scalbn-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@scalbn-%54-rev
+            (@scalbn-%51-mem s51)
+            (@scalbn-%53-loc s51)
+            (@scalbn-%51-pred s51))))
+  :enable (@scalbn-%51-expand-rev-as-@scalbn-%53-rev @scalbn-%53-rev @scalbn-%53-loc @scalbn-%53-val))
+(defruled @scalbn-%51-expand-rev-as-@scalbn-m51.1-rev
+  (equal (@scalbn-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@scalbn-m51.1-rev
+            (@scalbn-%51-mem s51)
+            (@scalbn-%54-loc s51)
+            (@scalbn-%51-pred s51))))
+  :enable (@scalbn-%51-expand-rev-as-@scalbn-%54-rev @scalbn-%54-rev @scalbn-%54-loc @scalbn-%54-val))
+(defruled @scalbn-%51-expand-rev-as-@scalbn-succ51-rev
+  (equal (@scalbn-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@scalbn-succ51-rev
+            (@scalbn-m51.1-mem s51)
+            (@scalbn-%54-loc s51)
+            (@scalbn-%51-pred s51))))
+  :enable (@scalbn-%51-expand-rev-as-@scalbn-m51.1-rev @scalbn-m51.1-rev @scalbn-m51.1-mem))
+(defruled @scalbn-%51-expand-rev-as-fwd
+  (equal (@scalbn-%51-rev mem loc pred)
+         (@scalbn-%51-fwd mem loc pred))
+  :enable (@scalbn-%51-expand-rev-as-@scalbn-succ51-rev @scalbn-succ51-rev @scalbn-succ51-lab @scalbn-%51-fwd))
+
 (defund @scalbn-%51-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -758,17 +1296,6 @@
     (mem (store-double (g '%54 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%51-expand-bb
-  (equal (@scalbn-%51-bb mem loc pred)
-         (@scalbn-%51-rev mem loc pred))
-  :enable (@scalbn-%51-bb @scalbn-%51-rev
-    @scalbn-%52-rev
-    @scalbn-%53-rev
-    @scalbn-%54-rev
-    @scalbn-m51.1-rev
-    @scalbn-succ51-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%55-mem (s55)
   (car s55))
@@ -787,6 +1314,10 @@
 (defund @scalbn-succ55-lab (s55)
   (case (g '%57 (@scalbn-%57-loc s55)) (-1 '%58) (0 '%67)))
 
+(defund @scalbn-%55-fwd (mem loc pred)
+  (let ((s55 (list mem loc pred)))
+    (mv (@scalbn-succ55-lab s55) (@scalbn-%55-mem s55) (@scalbn-%57-loc s55))))
+
 (defund @scalbn-succ55-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%57 loc) (-1 '%58) (0 '%67)) mem loc))
@@ -798,6 +1329,35 @@
 (defund @scalbn-%55-rev (mem loc pred)
   (@scalbn-%56-rev mem loc pred))
 
+(defruled @scalbn-%55-expand-rev-as-@scalbn-%56-rev
+  (equal (@scalbn-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@scalbn-%56-rev
+            (@scalbn-%55-mem s55)
+            (@scalbn-%55-loc s55)
+            (@scalbn-%55-pred s55))))
+  :enable (@scalbn-%55-rev @scalbn-%55-mem @scalbn-%55-loc @scalbn-%55-pred))
+(defruled @scalbn-%55-expand-rev-as-@scalbn-%57-rev
+  (equal (@scalbn-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@scalbn-%57-rev
+            (@scalbn-%55-mem s55)
+            (@scalbn-%56-loc s55)
+            (@scalbn-%55-pred s55))))
+  :enable (@scalbn-%55-expand-rev-as-@scalbn-%56-rev @scalbn-%56-rev @scalbn-%56-loc @scalbn-%56-val))
+(defruled @scalbn-%55-expand-rev-as-@scalbn-succ55-rev
+  (equal (@scalbn-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@scalbn-succ55-rev
+            (@scalbn-%55-mem s55)
+            (@scalbn-%57-loc s55)
+            (@scalbn-%55-pred s55))))
+  :enable (@scalbn-%55-expand-rev-as-@scalbn-%57-rev @scalbn-%57-rev @scalbn-%57-loc @scalbn-%57-val))
+(defruled @scalbn-%55-expand-rev-as-fwd
+  (equal (@scalbn-%55-rev mem loc pred)
+         (@scalbn-%55-fwd mem loc pred))
+  :enable (@scalbn-%55-expand-rev-as-@scalbn-succ55-rev @scalbn-succ55-rev @scalbn-succ55-lab @scalbn-%55-fwd))
+
 (defund @scalbn-%55-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -805,15 +1365,6 @@
     (loc (s '%57 (icmp-sgt-i32 (g '%56 loc) 0) loc))
     (succ (case (g '%57 loc) (-1 '%58) (0 '%67))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%55-expand-bb
-  (equal (@scalbn-%55-bb mem loc pred)
-         (@scalbn-%55-rev mem loc pred))
-  :enable (@scalbn-%55-bb @scalbn-%55-rev
-    @scalbn-%56-rev
-    @scalbn-%57-rev
-    @scalbn-succ55-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%58-mem (s58)
   (car s58))
@@ -861,6 +1412,10 @@
   (declare (ignore s58))
   '%93)
 
+(defund @scalbn-%58-fwd (mem loc pred)
+  (let ((s58 (list mem loc pred)))
+    (mv (@scalbn-succ58-lab s58) (@scalbn-m58.2-mem s58) (@scalbn-%66-loc s58))))
+
 (defund @scalbn-succ58-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -888,6 +1443,99 @@
 (defund @scalbn-%58-rev (mem loc pred)
   (@scalbn-%59-rev mem loc pred))
 
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%59-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%59-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%58-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-rev @scalbn-%58-mem @scalbn-%58-loc @scalbn-%58-pred))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%60-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%60-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%59-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%59-rev @scalbn-%59-rev @scalbn-%59-loc @scalbn-%59-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%61-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%61-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%60-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%60-rev @scalbn-%60-rev @scalbn-%60-loc @scalbn-%60-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%62-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%62-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%61-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%61-rev @scalbn-%61-rev @scalbn-%61-loc @scalbn-%61-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%63-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%63-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%62-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%62-rev @scalbn-%62-rev @scalbn-%62-loc @scalbn-%62-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%64-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%64-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%63-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%63-rev @scalbn-%63-rev @scalbn-%63-loc @scalbn-%63-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%65-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%65-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%64-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%64-rev @scalbn-%64-rev @scalbn-%64-loc @scalbn-%64-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-m58.1-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-m58.1-rev
+            (@scalbn-%58-mem s58)
+            (@scalbn-%65-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%65-rev @scalbn-%65-rev @scalbn-%65-loc @scalbn-%65-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-%66-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-%66-rev
+            (@scalbn-m58.1-mem s58)
+            (@scalbn-%65-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-m58.1-rev @scalbn-m58.1-rev @scalbn-m58.1-mem))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-m58.2-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-m58.2-rev
+            (@scalbn-m58.1-mem s58)
+            (@scalbn-%66-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-%66-rev @scalbn-%66-rev @scalbn-%66-loc @scalbn-%66-val))
+(defruled @scalbn-%58-expand-rev-as-@scalbn-succ58-rev
+  (equal (@scalbn-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@scalbn-succ58-rev
+            (@scalbn-m58.2-mem s58)
+            (@scalbn-%66-loc s58)
+            (@scalbn-%58-pred s58))))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-m58.2-rev @scalbn-m58.2-rev @scalbn-m58.2-mem))
+(defruled @scalbn-%58-expand-rev-as-fwd
+  (equal (@scalbn-%58-rev mem loc pred)
+         (@scalbn-%58-fwd mem loc pred))
+  :enable (@scalbn-%58-expand-rev-as-@scalbn-succ58-rev @scalbn-succ58-rev @scalbn-succ58-lab @scalbn-%58-fwd))
+
 (defund @scalbn-%58-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -903,23 +1551,6 @@
     (mem (store-double (g '%66 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%58-expand-bb
-  (equal (@scalbn-%58-bb mem loc pred)
-         (@scalbn-%58-rev mem loc pred))
-  :enable (@scalbn-%58-bb @scalbn-%58-rev
-    @scalbn-%59-rev
-    @scalbn-%60-rev
-    @scalbn-%61-rev
-    @scalbn-%62-rev
-    @scalbn-%63-rev
-    @scalbn-%64-rev
-    @scalbn-%65-rev
-    @scalbn-m58.1-rev
-    @scalbn-%66-rev
-    @scalbn-m58.2-rev
-    @scalbn-succ58-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%67-mem (s67)
   (car s67))
@@ -938,6 +1569,10 @@
 (defund @scalbn-succ67-lab (s67)
   (case (g '%69 (@scalbn-%69-loc s67)) (-1 '%70) (0 '%81)))
 
+(defund @scalbn-%67-fwd (mem loc pred)
+  (let ((s67 (list mem loc pred)))
+    (mv (@scalbn-succ67-lab s67) (@scalbn-%67-mem s67) (@scalbn-%69-loc s67))))
+
 (defund @scalbn-succ67-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%69 loc) (-1 '%70) (0 '%81)) mem loc))
@@ -949,6 +1584,35 @@
 (defund @scalbn-%67-rev (mem loc pred)
   (@scalbn-%68-rev mem loc pred))
 
+(defruled @scalbn-%67-expand-rev-as-@scalbn-%68-rev
+  (equal (@scalbn-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@scalbn-%68-rev
+            (@scalbn-%67-mem s67)
+            (@scalbn-%67-loc s67)
+            (@scalbn-%67-pred s67))))
+  :enable (@scalbn-%67-rev @scalbn-%67-mem @scalbn-%67-loc @scalbn-%67-pred))
+(defruled @scalbn-%67-expand-rev-as-@scalbn-%69-rev
+  (equal (@scalbn-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@scalbn-%69-rev
+            (@scalbn-%67-mem s67)
+            (@scalbn-%68-loc s67)
+            (@scalbn-%67-pred s67))))
+  :enable (@scalbn-%67-expand-rev-as-@scalbn-%68-rev @scalbn-%68-rev @scalbn-%68-loc @scalbn-%68-val))
+(defruled @scalbn-%67-expand-rev-as-@scalbn-succ67-rev
+  (equal (@scalbn-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@scalbn-succ67-rev
+            (@scalbn-%67-mem s67)
+            (@scalbn-%69-loc s67)
+            (@scalbn-%67-pred s67))))
+  :enable (@scalbn-%67-expand-rev-as-@scalbn-%69-rev @scalbn-%69-rev @scalbn-%69-loc @scalbn-%69-val))
+(defruled @scalbn-%67-expand-rev-as-fwd
+  (equal (@scalbn-%67-rev mem loc pred)
+         (@scalbn-%67-fwd mem loc pred))
+  :enable (@scalbn-%67-expand-rev-as-@scalbn-succ67-rev @scalbn-succ67-rev @scalbn-succ67-lab @scalbn-%67-fwd))
+
 (defund @scalbn-%67-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -956,15 +1620,6 @@
     (loc (s '%69 (icmp-sle-i32 (g '%68 loc) -54) loc))
     (succ (case (g '%69 loc) (-1 '%70) (0 '%81))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%67-expand-bb
-  (equal (@scalbn-%67-bb mem loc pred)
-         (@scalbn-%67-rev mem loc pred))
-  :enable (@scalbn-%67-bb @scalbn-%67-rev
-    @scalbn-%68-rev
-    @scalbn-%69-rev
-    @scalbn-succ67-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%70-mem (s70)
   (car s70))
@@ -983,6 +1638,10 @@
 (defund @scalbn-succ70-lab (s70)
   (case (g '%72 (@scalbn-%72-loc s70)) (-1 '%73) (0 '%77)))
 
+(defund @scalbn-%70-fwd (mem loc pred)
+  (let ((s70 (list mem loc pred)))
+    (mv (@scalbn-succ70-lab s70) (@scalbn-%70-mem s70) (@scalbn-%72-loc s70))))
+
 (defund @scalbn-succ70-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%72 loc) (-1 '%73) (0 '%77)) mem loc))
@@ -994,6 +1653,35 @@
 (defund @scalbn-%70-rev (mem loc pred)
   (@scalbn-%71-rev mem loc pred))
 
+(defruled @scalbn-%70-expand-rev-as-@scalbn-%71-rev
+  (equal (@scalbn-%70-rev mem loc pred)
+         (let ((s70 (list mem loc pred)))
+           (@scalbn-%71-rev
+            (@scalbn-%70-mem s70)
+            (@scalbn-%70-loc s70)
+            (@scalbn-%70-pred s70))))
+  :enable (@scalbn-%70-rev @scalbn-%70-mem @scalbn-%70-loc @scalbn-%70-pred))
+(defruled @scalbn-%70-expand-rev-as-@scalbn-%72-rev
+  (equal (@scalbn-%70-rev mem loc pred)
+         (let ((s70 (list mem loc pred)))
+           (@scalbn-%72-rev
+            (@scalbn-%70-mem s70)
+            (@scalbn-%71-loc s70)
+            (@scalbn-%70-pred s70))))
+  :enable (@scalbn-%70-expand-rev-as-@scalbn-%71-rev @scalbn-%71-rev @scalbn-%71-loc @scalbn-%71-val))
+(defruled @scalbn-%70-expand-rev-as-@scalbn-succ70-rev
+  (equal (@scalbn-%70-rev mem loc pred)
+         (let ((s70 (list mem loc pred)))
+           (@scalbn-succ70-rev
+            (@scalbn-%70-mem s70)
+            (@scalbn-%72-loc s70)
+            (@scalbn-%70-pred s70))))
+  :enable (@scalbn-%70-expand-rev-as-@scalbn-%72-rev @scalbn-%72-rev @scalbn-%72-loc @scalbn-%72-val))
+(defruled @scalbn-%70-expand-rev-as-fwd
+  (equal (@scalbn-%70-rev mem loc pred)
+         (@scalbn-%70-fwd mem loc pred))
+  :enable (@scalbn-%70-expand-rev-as-@scalbn-succ70-rev @scalbn-succ70-rev @scalbn-succ70-lab @scalbn-%70-fwd))
+
 (defund @scalbn-%70-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1001,15 +1689,6 @@
     (loc (s '%72 (icmp-sgt-i32 (g '%71 loc) 50000) loc))
     (succ (case (g '%72 loc) (-1 '%73) (0 '%77))))
   (mv succ mem loc)))
-
-(defruled @scalbn-%70-expand-bb
-  (equal (@scalbn-%70-bb mem loc pred)
-         (@scalbn-%70-rev mem loc pred))
-  :enable (@scalbn-%70-bb @scalbn-%70-rev
-    @scalbn-%71-rev
-    @scalbn-%72-rev
-    @scalbn-succ70-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%73-mem (s73)
   (car s73))
@@ -1035,6 +1714,10 @@
   (declare (ignore s73))
   '%93)
 
+(defund @scalbn-%73-fwd (mem loc pred)
+  (let ((s73 (list mem loc pred)))
+    (mv (@scalbn-succ73-lab s73) (@scalbn-m73.1-mem s73) (@scalbn-%76-loc s73))))
+
 (defund @scalbn-succ73-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -1050,6 +1733,51 @@
 (defund @scalbn-%73-rev (mem loc pred)
   (@scalbn-%74-rev mem loc pred))
 
+(defruled @scalbn-%73-expand-rev-as-@scalbn-%74-rev
+  (equal (@scalbn-%73-rev mem loc pred)
+         (let ((s73 (list mem loc pred)))
+           (@scalbn-%74-rev
+            (@scalbn-%73-mem s73)
+            (@scalbn-%73-loc s73)
+            (@scalbn-%73-pred s73))))
+  :enable (@scalbn-%73-rev @scalbn-%73-mem @scalbn-%73-loc @scalbn-%73-pred))
+(defruled @scalbn-%73-expand-rev-as-@scalbn-%75-rev
+  (equal (@scalbn-%73-rev mem loc pred)
+         (let ((s73 (list mem loc pred)))
+           (@scalbn-%75-rev
+            (@scalbn-%73-mem s73)
+            (@scalbn-%74-loc s73)
+            (@scalbn-%73-pred s73))))
+  :enable (@scalbn-%73-expand-rev-as-@scalbn-%74-rev @scalbn-%74-rev @scalbn-%74-loc @scalbn-%74-val))
+(defruled @scalbn-%73-expand-rev-as-@scalbn-%76-rev
+  (equal (@scalbn-%73-rev mem loc pred)
+         (let ((s73 (list mem loc pred)))
+           (@scalbn-%76-rev
+            (@scalbn-%73-mem s73)
+            (@scalbn-%75-loc s73)
+            (@scalbn-%73-pred s73))))
+  :enable (@scalbn-%73-expand-rev-as-@scalbn-%75-rev @scalbn-%75-rev @scalbn-%75-loc @scalbn-%75-val))
+(defruled @scalbn-%73-expand-rev-as-@scalbn-m73.1-rev
+  (equal (@scalbn-%73-rev mem loc pred)
+         (let ((s73 (list mem loc pred)))
+           (@scalbn-m73.1-rev
+            (@scalbn-%73-mem s73)
+            (@scalbn-%76-loc s73)
+            (@scalbn-%73-pred s73))))
+  :enable (@scalbn-%73-expand-rev-as-@scalbn-%76-rev @scalbn-%76-rev @scalbn-%76-loc @scalbn-%76-val))
+(defruled @scalbn-%73-expand-rev-as-@scalbn-succ73-rev
+  (equal (@scalbn-%73-rev mem loc pred)
+         (let ((s73 (list mem loc pred)))
+           (@scalbn-succ73-rev
+            (@scalbn-m73.1-mem s73)
+            (@scalbn-%76-loc s73)
+            (@scalbn-%73-pred s73))))
+  :enable (@scalbn-%73-expand-rev-as-@scalbn-m73.1-rev @scalbn-m73.1-rev @scalbn-m73.1-mem))
+(defruled @scalbn-%73-expand-rev-as-fwd
+  (equal (@scalbn-%73-rev mem loc pred)
+         (@scalbn-%73-fwd mem loc pred))
+  :enable (@scalbn-%73-expand-rev-as-@scalbn-succ73-rev @scalbn-succ73-rev @scalbn-succ73-lab @scalbn-%73-fwd))
+
 (defund @scalbn-%73-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1059,17 +1787,6 @@
     (mem (store-double (g '%76 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%73-expand-bb
-  (equal (@scalbn-%73-bb mem loc pred)
-         (@scalbn-%73-rev mem loc pred))
-  :enable (@scalbn-%73-bb @scalbn-%73-rev
-    @scalbn-%74-rev
-    @scalbn-%75-rev
-    @scalbn-%76-rev
-    @scalbn-m73.1-rev
-    @scalbn-succ73-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%77-mem (s77)
   (car s77))
@@ -1095,6 +1812,10 @@
   (declare (ignore s77))
   '%93)
 
+(defund @scalbn-%77-fwd (mem loc pred)
+  (let ((s77 (list mem loc pred)))
+    (mv (@scalbn-succ77-lab s77) (@scalbn-m77.1-mem s77) (@scalbn-%80-loc s77))))
+
 (defund @scalbn-succ77-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -1110,6 +1831,51 @@
 (defund @scalbn-%77-rev (mem loc pred)
   (@scalbn-%78-rev mem loc pred))
 
+(defruled @scalbn-%77-expand-rev-as-@scalbn-%78-rev
+  (equal (@scalbn-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@scalbn-%78-rev
+            (@scalbn-%77-mem s77)
+            (@scalbn-%77-loc s77)
+            (@scalbn-%77-pred s77))))
+  :enable (@scalbn-%77-rev @scalbn-%77-mem @scalbn-%77-loc @scalbn-%77-pred))
+(defruled @scalbn-%77-expand-rev-as-@scalbn-%79-rev
+  (equal (@scalbn-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@scalbn-%79-rev
+            (@scalbn-%77-mem s77)
+            (@scalbn-%78-loc s77)
+            (@scalbn-%77-pred s77))))
+  :enable (@scalbn-%77-expand-rev-as-@scalbn-%78-rev @scalbn-%78-rev @scalbn-%78-loc @scalbn-%78-val))
+(defruled @scalbn-%77-expand-rev-as-@scalbn-%80-rev
+  (equal (@scalbn-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@scalbn-%80-rev
+            (@scalbn-%77-mem s77)
+            (@scalbn-%79-loc s77)
+            (@scalbn-%77-pred s77))))
+  :enable (@scalbn-%77-expand-rev-as-@scalbn-%79-rev @scalbn-%79-rev @scalbn-%79-loc @scalbn-%79-val))
+(defruled @scalbn-%77-expand-rev-as-@scalbn-m77.1-rev
+  (equal (@scalbn-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@scalbn-m77.1-rev
+            (@scalbn-%77-mem s77)
+            (@scalbn-%80-loc s77)
+            (@scalbn-%77-pred s77))))
+  :enable (@scalbn-%77-expand-rev-as-@scalbn-%80-rev @scalbn-%80-rev @scalbn-%80-loc @scalbn-%80-val))
+(defruled @scalbn-%77-expand-rev-as-@scalbn-succ77-rev
+  (equal (@scalbn-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@scalbn-succ77-rev
+            (@scalbn-m77.1-mem s77)
+            (@scalbn-%80-loc s77)
+            (@scalbn-%77-pred s77))))
+  :enable (@scalbn-%77-expand-rev-as-@scalbn-m77.1-rev @scalbn-m77.1-rev @scalbn-m77.1-mem))
+(defruled @scalbn-%77-expand-rev-as-fwd
+  (equal (@scalbn-%77-rev mem loc pred)
+         (@scalbn-%77-fwd mem loc pred))
+  :enable (@scalbn-%77-expand-rev-as-@scalbn-succ77-rev @scalbn-succ77-rev @scalbn-succ77-lab @scalbn-%77-fwd))
+
 (defund @scalbn-%77-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1119,17 +1885,6 @@
     (mem (store-double (g '%80 loc) (g '%1 loc) mem))
     (succ '%93))
   (mv succ mem loc)))
-
-(defruled @scalbn-%77-expand-bb
-  (equal (@scalbn-%77-bb mem loc pred)
-         (@scalbn-%77-rev mem loc pred))
-  :enable (@scalbn-%77-bb @scalbn-%77-rev
-    @scalbn-%78-rev
-    @scalbn-%79-rev
-    @scalbn-%80-rev
-    @scalbn-m77.1-rev
-    @scalbn-succ77-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-%81-mem (s81)
   (car s81))
@@ -1191,6 +1946,10 @@
   (declare (ignore s81))
   '%93)
 
+(defund @scalbn-%81-fwd (mem loc pred)
+  (let ((s81 (list mem loc pred)))
+    (mv (@scalbn-succ81-lab s81) (@scalbn-m81.3-mem s81) (@scalbn-%92-loc s81))))
+
 (defund @scalbn-succ81-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%93 mem loc))
@@ -1226,6 +1985,131 @@
 (defund @scalbn-%81-rev (mem loc pred)
   (@scalbn-%82-rev mem loc pred))
 
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%82-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%82-rev
+            (@scalbn-%81-mem s81)
+            (@scalbn-%81-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-rev @scalbn-%81-mem @scalbn-%81-loc @scalbn-%81-pred))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%83-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%83-rev
+            (@scalbn-%81-mem s81)
+            (@scalbn-%82-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%82-rev @scalbn-%82-rev @scalbn-%82-loc @scalbn-%82-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-m81.1-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-m81.1-rev
+            (@scalbn-%81-mem s81)
+            (@scalbn-%83-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%83-rev @scalbn-%83-rev @scalbn-%83-loc @scalbn-%83-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%84-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%84-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%83-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-m81.1-rev @scalbn-m81.1-rev @scalbn-m81.1-mem))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%85-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%85-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%84-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%84-rev @scalbn-%84-rev @scalbn-%84-loc @scalbn-%84-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%86-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%86-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%85-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%85-rev @scalbn-%85-rev @scalbn-%85-loc @scalbn-%85-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%87-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%87-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%86-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%86-rev @scalbn-%86-rev @scalbn-%86-loc @scalbn-%86-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%88-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%88-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%87-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%87-rev @scalbn-%87-rev @scalbn-%87-loc @scalbn-%87-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%89-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%89-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%88-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%88-rev @scalbn-%88-rev @scalbn-%88-loc @scalbn-%88-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%90-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%90-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%89-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%89-rev @scalbn-%89-rev @scalbn-%89-loc @scalbn-%89-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-m81.2-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-m81.2-rev
+            (@scalbn-m81.1-mem s81)
+            (@scalbn-%90-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%90-rev @scalbn-%90-rev @scalbn-%90-loc @scalbn-%90-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%91-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%91-rev
+            (@scalbn-m81.2-mem s81)
+            (@scalbn-%90-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-m81.2-rev @scalbn-m81.2-rev @scalbn-m81.2-mem))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-%92-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-%92-rev
+            (@scalbn-m81.2-mem s81)
+            (@scalbn-%91-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%91-rev @scalbn-%91-rev @scalbn-%91-loc @scalbn-%91-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-m81.3-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-m81.3-rev
+            (@scalbn-m81.2-mem s81)
+            (@scalbn-%92-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-%92-rev @scalbn-%92-rev @scalbn-%92-loc @scalbn-%92-val))
+(defruled @scalbn-%81-expand-rev-as-@scalbn-succ81-rev
+  (equal (@scalbn-%81-rev mem loc pred)
+         (let ((s81 (list mem loc pred)))
+           (@scalbn-succ81-rev
+            (@scalbn-m81.3-mem s81)
+            (@scalbn-%92-loc s81)
+            (@scalbn-%81-pred s81))))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-m81.3-rev @scalbn-m81.3-rev @scalbn-m81.3-mem))
+(defruled @scalbn-%81-expand-rev-as-fwd
+  (equal (@scalbn-%81-rev mem loc pred)
+         (@scalbn-%81-fwd mem loc pred))
+  :enable (@scalbn-%81-expand-rev-as-@scalbn-succ81-rev @scalbn-succ81-rev @scalbn-succ81-lab @scalbn-%81-fwd))
+
 (defund @scalbn-%81-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1246,27 +2130,6 @@
     (succ '%93))
   (mv succ mem loc)))
 
-(defruled @scalbn-%81-expand-bb
-  (equal (@scalbn-%81-bb mem loc pred)
-         (@scalbn-%81-rev mem loc pred))
-  :enable (@scalbn-%81-bb @scalbn-%81-rev
-    @scalbn-%82-rev
-    @scalbn-%83-rev
-    @scalbn-m81.1-rev
-    @scalbn-%84-rev
-    @scalbn-%85-rev
-    @scalbn-%86-rev
-    @scalbn-%87-rev
-    @scalbn-%88-rev
-    @scalbn-%89-rev
-    @scalbn-%90-rev
-    @scalbn-m81.2-rev
-    @scalbn-%91-rev
-    @scalbn-%92-rev
-    @scalbn-m81.3-rev
-    @scalbn-succ81-rev)
-  :disable s-diff-s)
-
 (defund @scalbn-%93-mem (s93)
   (car s93))
 (defund @scalbn-%93-loc (s93)
@@ -1281,6 +2144,10 @@
   (declare (ignore s93))
   'ret)
 
+(defund @scalbn-%93-fwd (mem loc pred)
+  (let ((s93 (list mem loc pred)))
+    (mv (@scalbn-succ93-lab s93) (@scalbn-%93-mem s93) (@scalbn-%94-loc s93))))
+
 (defund @scalbn-succ93-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -1290,20 +2157,33 @@
 (defund @scalbn-%93-rev (mem loc pred)
   (@scalbn-%94-rev mem loc pred))
 
+(defruled @scalbn-%93-expand-rev-as-@scalbn-%94-rev
+  (equal (@scalbn-%93-rev mem loc pred)
+         (let ((s93 (list mem loc pred)))
+           (@scalbn-%94-rev
+            (@scalbn-%93-mem s93)
+            (@scalbn-%93-loc s93)
+            (@scalbn-%93-pred s93))))
+  :enable (@scalbn-%93-rev @scalbn-%93-mem @scalbn-%93-loc @scalbn-%93-pred))
+(defruled @scalbn-%93-expand-rev-as-@scalbn-succ93-rev
+  (equal (@scalbn-%93-rev mem loc pred)
+         (let ((s93 (list mem loc pred)))
+           (@scalbn-succ93-rev
+            (@scalbn-%93-mem s93)
+            (@scalbn-%94-loc s93)
+            (@scalbn-%93-pred s93))))
+  :enable (@scalbn-%93-expand-rev-as-@scalbn-%94-rev @scalbn-%94-rev @scalbn-%94-loc @scalbn-%94-val))
+(defruled @scalbn-%93-expand-rev-as-fwd
+  (equal (@scalbn-%93-rev mem loc pred)
+         (@scalbn-%93-fwd mem loc pred))
+  :enable (@scalbn-%93-expand-rev-as-@scalbn-succ93-rev @scalbn-succ93-rev @scalbn-succ93-lab @scalbn-%93-fwd))
+
 (defund @scalbn-%93-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%94 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @scalbn-%93-expand-bb
-  (equal (@scalbn-%93-bb mem loc pred)
-         (@scalbn-%93-rev mem loc pred))
-  :enable (@scalbn-%93-bb @scalbn-%93-rev
-    @scalbn-%94-rev
-    @scalbn-succ93-rev)
-  :disable s-diff-s)
 
 (defund @scalbn-step (label mem loc pred)
   (case label

@@ -95,6 +95,10 @@
 (defund @floor-succ0-lab (s0)
   (case (g '%13 (@floor-%13-loc s0)) (-1 '%14) (0 '%65)))
 
+(defund @floor-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@floor-succ0-lab s0) (@floor-m0.4-mem s0) (@floor-%13-loc s0))))
+
 (defund @floor-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%13 loc) (-1 '%14) (0 '%65)) mem loc))
@@ -146,6 +150,195 @@
 (defund @floor-%0-rev (mem loc pred)
   (@floor-%1-rev mem loc pred))
 
+(defruled @floor-%0-expand-rev-as-@floor-%1-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%1-rev
+            (@floor-%0-mem s0)
+            (@floor-%0-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-rev @floor-%0-mem @floor-%0-loc @floor-%0-pred))
+(defruled @floor-%0-expand-rev-as-@floor-%2-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%2-rev
+            (@floor-%1-mem s0)
+            (@floor-%1-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%1-rev @floor-%1-rev @floor-%1-mem @floor-%1-loc))
+(defruled @floor-%0-expand-rev-as-@floor-%i0-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%i0-rev
+            (@floor-%2-mem s0)
+            (@floor-%2-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%2-rev @floor-%2-rev @floor-%2-mem @floor-%2-loc))
+(defruled @floor-%0-expand-rev-as-@floor-%i1-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%i1-rev
+            (@floor-%i0-mem s0)
+            (@floor-%i0-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%i0-rev @floor-%i0-rev @floor-%i0-mem @floor-%i0-loc))
+(defruled @floor-%0-expand-rev-as-@floor-%j0-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%j0-rev
+            (@floor-%i1-mem s0)
+            (@floor-%i1-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%i1-rev @floor-%i1-rev @floor-%i1-mem @floor-%i1-loc))
+(defruled @floor-%0-expand-rev-as-@floor-%i-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%i-rev
+            (@floor-%j0-mem s0)
+            (@floor-%j0-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%j0-rev @floor-%j0-rev @floor-%j0-mem @floor-%j0-loc))
+(defruled @floor-%0-expand-rev-as-@floor-%j-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%j-rev
+            (@floor-%i-mem s0)
+            (@floor-%i-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%i-rev @floor-%i-rev @floor-%i-mem @floor-%i-loc))
+(defruled @floor-%0-expand-rev-as-@floor-m0.1-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-m0.1-rev
+            (@floor-%j-mem s0)
+            (@floor-%j-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%j-rev @floor-%j-rev @floor-%j-mem @floor-%j-loc))
+(defruled @floor-%0-expand-rev-as-@floor-%3-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%3-rev
+            (@floor-m0.1-mem s0)
+            (@floor-%j-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-m0.1-rev @floor-m0.1-rev @floor-m0.1-mem))
+(defruled @floor-%0-expand-rev-as-@floor-%4-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%4-rev
+            (@floor-m0.1-mem s0)
+            (@floor-%3-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%3-rev @floor-%3-rev @floor-%3-loc @floor-%3-val))
+(defruled @floor-%0-expand-rev-as-@floor-%5-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%5-rev
+            (@floor-m0.1-mem s0)
+            (@floor-%4-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%4-rev @floor-%4-rev @floor-%4-loc @floor-%4-val))
+(defruled @floor-%0-expand-rev-as-@floor-m0.2-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-m0.2-rev
+            (@floor-m0.1-mem s0)
+            (@floor-%5-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%5-rev @floor-%5-rev @floor-%5-loc @floor-%5-val))
+(defruled @floor-%0-expand-rev-as-@floor-%6-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%6-rev
+            (@floor-m0.2-mem s0)
+            (@floor-%5-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-m0.2-rev @floor-m0.2-rev @floor-m0.2-mem))
+(defruled @floor-%0-expand-rev-as-@floor-%7-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%7-rev
+            (@floor-m0.2-mem s0)
+            (@floor-%6-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%6-rev @floor-%6-rev @floor-%6-loc @floor-%6-val))
+(defruled @floor-%0-expand-rev-as-@floor-m0.3-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-m0.3-rev
+            (@floor-m0.2-mem s0)
+            (@floor-%7-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%7-rev @floor-%7-rev @floor-%7-loc @floor-%7-val))
+(defruled @floor-%0-expand-rev-as-@floor-%8-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%8-rev
+            (@floor-m0.3-mem s0)
+            (@floor-%7-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-m0.3-rev @floor-m0.3-rev @floor-m0.3-mem))
+(defruled @floor-%0-expand-rev-as-@floor-%9-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%9-rev
+            (@floor-m0.3-mem s0)
+            (@floor-%8-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%8-rev @floor-%8-rev @floor-%8-loc @floor-%8-val))
+(defruled @floor-%0-expand-rev-as-@floor-%10-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%10-rev
+            (@floor-m0.3-mem s0)
+            (@floor-%9-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%9-rev @floor-%9-rev @floor-%9-loc @floor-%9-val))
+(defruled @floor-%0-expand-rev-as-@floor-%11-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%11-rev
+            (@floor-m0.3-mem s0)
+            (@floor-%10-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%10-rev @floor-%10-rev @floor-%10-loc @floor-%10-val))
+(defruled @floor-%0-expand-rev-as-@floor-m0.4-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-m0.4-rev
+            (@floor-m0.3-mem s0)
+            (@floor-%11-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%11-rev @floor-%11-rev @floor-%11-loc @floor-%11-val))
+(defruled @floor-%0-expand-rev-as-@floor-%12-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%12-rev
+            (@floor-m0.4-mem s0)
+            (@floor-%11-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-m0.4-rev @floor-m0.4-rev @floor-m0.4-mem))
+(defruled @floor-%0-expand-rev-as-@floor-%13-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-%13-rev
+            (@floor-m0.4-mem s0)
+            (@floor-%12-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%12-rev @floor-%12-rev @floor-%12-loc @floor-%12-val))
+(defruled @floor-%0-expand-rev-as-@floor-succ0-rev
+  (equal (@floor-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@floor-succ0-rev
+            (@floor-m0.4-mem s0)
+            (@floor-%13-loc s0)
+            (@floor-%0-pred s0))))
+  :enable (@floor-%0-expand-rev-as-@floor-%13-rev @floor-%13-rev @floor-%13-loc @floor-%13-val))
+(defruled @floor-%0-expand-rev-as-fwd
+  (equal (@floor-%0-rev mem loc pred)
+         (@floor-%0-fwd mem loc pred))
+  :enable (@floor-%0-expand-rev-as-@floor-succ0-rev @floor-succ0-rev @floor-succ0-lab @floor-%0-fwd))
+
 (defund @floor-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -181,35 +374,6 @@
     (succ (case (g '%13 loc) (-1 '%14) (0 '%65))))
   (mv succ mem loc)))
 
-(defruled @floor-%0-expand-bb
-  (equal (@floor-%0-bb mem loc pred)
-         (@floor-%0-rev mem loc pred))
-  :enable (@floor-%0-bb @floor-%0-rev
-    @floor-%1-rev
-    @floor-%2-rev
-    @floor-%i0-rev
-    @floor-%i1-rev
-    @floor-%j0-rev
-    @floor-%i-rev
-    @floor-%j-rev
-    @floor-m0.1-rev
-    @floor-%3-rev
-    @floor-%4-rev
-    @floor-%5-rev
-    @floor-m0.2-rev
-    @floor-%6-rev
-    @floor-%7-rev
-    @floor-m0.3-rev
-    @floor-%8-rev
-    @floor-%9-rev
-    @floor-%10-rev
-    @floor-%11-rev
-    @floor-m0.4-rev
-    @floor-%12-rev
-    @floor-%13-rev
-    @floor-succ0-rev)
-  :disable s-diff-s)
-
 (defund @floor-%14-mem (s14)
   (car s14))
 (defund @floor-%14-loc (s14)
@@ -227,6 +391,10 @@
 (defund @floor-succ14-lab (s14)
   (case (g '%16 (@floor-%16-loc s14)) (-1 '%17) (0 '%35)))
 
+(defund @floor-%14-fwd (mem loc pred)
+  (let ((s14 (list mem loc pred)))
+    (mv (@floor-succ14-lab s14) (@floor-%14-mem s14) (@floor-%16-loc s14))))
+
 (defund @floor-succ14-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%16 loc) (-1 '%17) (0 '%35)) mem loc))
@@ -238,6 +406,35 @@
 (defund @floor-%14-rev (mem loc pred)
   (@floor-%15-rev mem loc pred))
 
+(defruled @floor-%14-expand-rev-as-@floor-%15-rev
+  (equal (@floor-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@floor-%15-rev
+            (@floor-%14-mem s14)
+            (@floor-%14-loc s14)
+            (@floor-%14-pred s14))))
+  :enable (@floor-%14-rev @floor-%14-mem @floor-%14-loc @floor-%14-pred))
+(defruled @floor-%14-expand-rev-as-@floor-%16-rev
+  (equal (@floor-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@floor-%16-rev
+            (@floor-%14-mem s14)
+            (@floor-%15-loc s14)
+            (@floor-%14-pred s14))))
+  :enable (@floor-%14-expand-rev-as-@floor-%15-rev @floor-%15-rev @floor-%15-loc @floor-%15-val))
+(defruled @floor-%14-expand-rev-as-@floor-succ14-rev
+  (equal (@floor-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@floor-succ14-rev
+            (@floor-%14-mem s14)
+            (@floor-%16-loc s14)
+            (@floor-%14-pred s14))))
+  :enable (@floor-%14-expand-rev-as-@floor-%16-rev @floor-%16-rev @floor-%16-loc @floor-%16-val))
+(defruled @floor-%14-expand-rev-as-fwd
+  (equal (@floor-%14-rev mem loc pred)
+         (@floor-%14-fwd mem loc pred))
+  :enable (@floor-%14-expand-rev-as-@floor-succ14-rev @floor-succ14-rev @floor-succ14-lab @floor-%14-fwd))
+
 (defund @floor-%14-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -245,15 +442,6 @@
     (loc (s '%16 (icmp-slt-i32 (g '%15 loc) 0) loc))
     (succ (case (g '%16 loc) (-1 '%17) (0 '%35))))
   (mv succ mem loc)))
-
-(defruled @floor-%14-expand-bb
-  (equal (@floor-%14-bb mem loc pred)
-         (@floor-%14-rev mem loc pred))
-  :enable (@floor-%14-bb @floor-%14-rev
-    @floor-%15-rev
-    @floor-%16-rev
-    @floor-succ14-rev)
-  :disable s-diff-s)
 
 (defund @floor-%17-mem (s17)
   (car s17))
@@ -276,6 +464,10 @@
 (defund @floor-succ17-lab (s17)
   (case (g '%20 (@floor-%20-loc s17)) (-1 '%21) (0 '%34)))
 
+(defund @floor-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@floor-succ17-lab s17) (@floor-%17-mem s17) (@floor-%20-loc s17))))
+
 (defund @floor-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%20 loc) (-1 '%21) (0 '%34)) mem loc))
@@ -289,6 +481,43 @@
 (defund @floor-%17-rev (mem loc pred)
   (@floor-%18-rev mem loc pred))
 
+(defruled @floor-%17-expand-rev-as-@floor-%18-rev
+  (equal (@floor-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@floor-%18-rev
+            (@floor-%17-mem s17)
+            (@floor-%17-loc s17)
+            (@floor-%17-pred s17))))
+  :enable (@floor-%17-rev @floor-%17-mem @floor-%17-loc @floor-%17-pred))
+(defruled @floor-%17-expand-rev-as-@floor-%19-rev
+  (equal (@floor-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@floor-%19-rev
+            (@floor-%17-mem s17)
+            (@floor-%18-loc s17)
+            (@floor-%17-pred s17))))
+  :enable (@floor-%17-expand-rev-as-@floor-%18-rev @floor-%18-rev @floor-%18-loc @floor-%18-val))
+(defruled @floor-%17-expand-rev-as-@floor-%20-rev
+  (equal (@floor-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@floor-%20-rev
+            (@floor-%17-mem s17)
+            (@floor-%19-loc s17)
+            (@floor-%17-pred s17))))
+  :enable (@floor-%17-expand-rev-as-@floor-%19-rev @floor-%19-rev @floor-%19-loc @floor-%19-val))
+(defruled @floor-%17-expand-rev-as-@floor-succ17-rev
+  (equal (@floor-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@floor-succ17-rev
+            (@floor-%17-mem s17)
+            (@floor-%20-loc s17)
+            (@floor-%17-pred s17))))
+  :enable (@floor-%17-expand-rev-as-@floor-%20-rev @floor-%20-rev @floor-%20-loc @floor-%20-val))
+(defruled @floor-%17-expand-rev-as-fwd
+  (equal (@floor-%17-rev mem loc pred)
+         (@floor-%17-fwd mem loc pred))
+  :enable (@floor-%17-expand-rev-as-@floor-succ17-rev @floor-succ17-rev @floor-succ17-lab @floor-%17-fwd))
+
 (defund @floor-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -297,16 +526,6 @@
     (loc (s '%20 (fcmp-ogt-double (g '%19 loc) #x0000000000000000) loc))
     (succ (case (g '%20 loc) (-1 '%21) (0 '%34))))
   (mv succ mem loc)))
-
-(defruled @floor-%17-expand-bb
-  (equal (@floor-%17-bb mem loc pred)
-         (@floor-%17-rev mem loc pred))
-  :enable (@floor-%17-bb @floor-%17-rev
-    @floor-%18-rev
-    @floor-%19-rev
-    @floor-%20-rev
-    @floor-succ17-rev)
-  :disable s-diff-s)
 
 (defund @floor-%21-mem (s21)
   (car s21))
@@ -325,6 +544,10 @@
 (defund @floor-succ21-lab (s21)
   (case (g '%23 (@floor-%23-loc s21)) (-1 '%24) (0 '%25)))
 
+(defund @floor-%21-fwd (mem loc pred)
+  (let ((s21 (list mem loc pred)))
+    (mv (@floor-succ21-lab s21) (@floor-%21-mem s21) (@floor-%23-loc s21))))
+
 (defund @floor-succ21-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%23 loc) (-1 '%24) (0 '%25)) mem loc))
@@ -336,6 +559,35 @@
 (defund @floor-%21-rev (mem loc pred)
   (@floor-%22-rev mem loc pred))
 
+(defruled @floor-%21-expand-rev-as-@floor-%22-rev
+  (equal (@floor-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@floor-%22-rev
+            (@floor-%21-mem s21)
+            (@floor-%21-loc s21)
+            (@floor-%21-pred s21))))
+  :enable (@floor-%21-rev @floor-%21-mem @floor-%21-loc @floor-%21-pred))
+(defruled @floor-%21-expand-rev-as-@floor-%23-rev
+  (equal (@floor-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@floor-%23-rev
+            (@floor-%21-mem s21)
+            (@floor-%22-loc s21)
+            (@floor-%21-pred s21))))
+  :enable (@floor-%21-expand-rev-as-@floor-%22-rev @floor-%22-rev @floor-%22-loc @floor-%22-val))
+(defruled @floor-%21-expand-rev-as-@floor-succ21-rev
+  (equal (@floor-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@floor-succ21-rev
+            (@floor-%21-mem s21)
+            (@floor-%23-loc s21)
+            (@floor-%21-pred s21))))
+  :enable (@floor-%21-expand-rev-as-@floor-%23-rev @floor-%23-rev @floor-%23-loc @floor-%23-val))
+(defruled @floor-%21-expand-rev-as-fwd
+  (equal (@floor-%21-rev mem loc pred)
+         (@floor-%21-fwd mem loc pred))
+  :enable (@floor-%21-expand-rev-as-@floor-succ21-rev @floor-succ21-rev @floor-succ21-lab @floor-%21-fwd))
+
 (defund @floor-%21-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -343,15 +595,6 @@
     (loc (s '%23 (icmp-sge-i32 (g '%22 loc) 0) loc))
     (succ (case (g '%23 loc) (-1 '%24) (0 '%25))))
   (mv succ mem loc)))
-
-(defruled @floor-%21-expand-bb
-  (equal (@floor-%21-bb mem loc pred)
-         (@floor-%21-rev mem loc pred))
-  :enable (@floor-%21-bb @floor-%21-rev
-    @floor-%22-rev
-    @floor-%23-rev
-    @floor-succ21-rev)
-  :disable s-diff-s)
 
 (defund @floor-%24-mem (s24)
   (car s24))
@@ -367,6 +610,10 @@
   (declare (ignore s24))
   '%33)
 
+(defund @floor-%24-fwd (mem loc pred)
+  (let ((s24 (list mem loc pred)))
+    (mv (@floor-succ24-lab s24) (@floor-m24.2-mem s24) (@floor-%24-loc s24))))
+
 (defund @floor-succ24-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%33 mem loc))
@@ -378,6 +625,35 @@
 (defund @floor-%24-rev (mem loc pred)
   (@floor-m24.1-rev mem loc pred))
 
+(defruled @floor-%24-expand-rev-as-@floor-m24.1-rev
+  (equal (@floor-%24-rev mem loc pred)
+         (let ((s24 (list mem loc pred)))
+           (@floor-m24.1-rev
+            (@floor-%24-mem s24)
+            (@floor-%24-loc s24)
+            (@floor-%24-pred s24))))
+  :enable (@floor-%24-rev @floor-%24-mem @floor-%24-loc @floor-%24-pred))
+(defruled @floor-%24-expand-rev-as-@floor-m24.2-rev
+  (equal (@floor-%24-rev mem loc pred)
+         (let ((s24 (list mem loc pred)))
+           (@floor-m24.2-rev
+            (@floor-m24.1-mem s24)
+            (@floor-%24-loc s24)
+            (@floor-%24-pred s24))))
+  :enable (@floor-%24-expand-rev-as-@floor-m24.1-rev @floor-m24.1-rev @floor-m24.1-mem))
+(defruled @floor-%24-expand-rev-as-@floor-succ24-rev
+  (equal (@floor-%24-rev mem loc pred)
+         (let ((s24 (list mem loc pred)))
+           (@floor-succ24-rev
+            (@floor-m24.2-mem s24)
+            (@floor-%24-loc s24)
+            (@floor-%24-pred s24))))
+  :enable (@floor-%24-expand-rev-as-@floor-m24.2-rev @floor-m24.2-rev @floor-m24.2-mem))
+(defruled @floor-%24-expand-rev-as-fwd
+  (equal (@floor-%24-rev mem loc pred)
+         (@floor-%24-fwd mem loc pred))
+  :enable (@floor-%24-expand-rev-as-@floor-succ24-rev @floor-succ24-rev @floor-succ24-lab @floor-%24-fwd))
+
 (defund @floor-%24-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -385,15 +661,6 @@
     (mem (store-i32 0 (g '%i0 loc) mem))
     (succ '%33))
   (mv succ mem loc)))
-
-(defruled @floor-%24-expand-bb
-  (equal (@floor-%24-bb mem loc pred)
-         (@floor-%24-rev mem loc pred))
-  :enable (@floor-%24-bb @floor-%24-rev
-    @floor-m24.1-rev
-    @floor-m24.2-rev
-    @floor-succ24-rev)
-  :disable s-diff-s)
 
 (defund @floor-%25-mem (s25)
   (car s25))
@@ -424,6 +691,10 @@
 (defund @floor-succ25-lab (s25)
   (case (g '%30 (@floor-%30-loc s25)) (-1 '%31) (0 '%32)))
 
+(defund @floor-%25-fwd (mem loc pred)
+  (let ((s25 (list mem loc pred)))
+    (mv (@floor-succ25-lab s25) (@floor-%25-mem s25) (@floor-%30-loc s25))))
+
 (defund @floor-succ25-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%30 loc) (-1 '%31) (0 '%32)) mem loc))
@@ -441,6 +712,59 @@
 (defund @floor-%25-rev (mem loc pred)
   (@floor-%26-rev mem loc pred))
 
+(defruled @floor-%25-expand-rev-as-@floor-%26-rev
+  (equal (@floor-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@floor-%26-rev
+            (@floor-%25-mem s25)
+            (@floor-%25-loc s25)
+            (@floor-%25-pred s25))))
+  :enable (@floor-%25-rev @floor-%25-mem @floor-%25-loc @floor-%25-pred))
+(defruled @floor-%25-expand-rev-as-@floor-%27-rev
+  (equal (@floor-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@floor-%27-rev
+            (@floor-%25-mem s25)
+            (@floor-%26-loc s25)
+            (@floor-%25-pred s25))))
+  :enable (@floor-%25-expand-rev-as-@floor-%26-rev @floor-%26-rev @floor-%26-loc @floor-%26-val))
+(defruled @floor-%25-expand-rev-as-@floor-%28-rev
+  (equal (@floor-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@floor-%28-rev
+            (@floor-%25-mem s25)
+            (@floor-%27-loc s25)
+            (@floor-%25-pred s25))))
+  :enable (@floor-%25-expand-rev-as-@floor-%27-rev @floor-%27-rev @floor-%27-loc @floor-%27-val))
+(defruled @floor-%25-expand-rev-as-@floor-%29-rev
+  (equal (@floor-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@floor-%29-rev
+            (@floor-%25-mem s25)
+            (@floor-%28-loc s25)
+            (@floor-%25-pred s25))))
+  :enable (@floor-%25-expand-rev-as-@floor-%28-rev @floor-%28-rev @floor-%28-loc @floor-%28-val))
+(defruled @floor-%25-expand-rev-as-@floor-%30-rev
+  (equal (@floor-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@floor-%30-rev
+            (@floor-%25-mem s25)
+            (@floor-%29-loc s25)
+            (@floor-%25-pred s25))))
+  :enable (@floor-%25-expand-rev-as-@floor-%29-rev @floor-%29-rev @floor-%29-loc @floor-%29-val))
+(defruled @floor-%25-expand-rev-as-@floor-succ25-rev
+  (equal (@floor-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@floor-succ25-rev
+            (@floor-%25-mem s25)
+            (@floor-%30-loc s25)
+            (@floor-%25-pred s25))))
+  :enable (@floor-%25-expand-rev-as-@floor-%30-rev @floor-%30-rev @floor-%30-loc @floor-%30-val))
+(defruled @floor-%25-expand-rev-as-fwd
+  (equal (@floor-%25-rev mem loc pred)
+         (@floor-%25-fwd mem loc pred))
+  :enable (@floor-%25-expand-rev-as-@floor-succ25-rev @floor-succ25-rev @floor-succ25-lab @floor-%25-fwd))
+
 (defund @floor-%25-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -451,18 +775,6 @@
     (loc (s '%30 (icmp-ne-i32 (g '%29 loc) 0) loc))
     (succ (case (g '%30 loc) (-1 '%31) (0 '%32))))
   (mv succ mem loc)))
-
-(defruled @floor-%25-expand-bb
-  (equal (@floor-%25-bb mem loc pred)
-         (@floor-%25-rev mem loc pred))
-  :enable (@floor-%25-bb @floor-%25-rev
-    @floor-%26-rev
-    @floor-%27-rev
-    @floor-%28-rev
-    @floor-%29-rev
-    @floor-%30-rev
-    @floor-succ25-rev)
-  :disable s-diff-s)
 
 (defund @floor-%31-mem (s31)
   (car s31))
@@ -478,6 +790,10 @@
   (declare (ignore s31))
   '%32)
 
+(defund @floor-%31-fwd (mem loc pred)
+  (let ((s31 (list mem loc pred)))
+    (mv (@floor-succ31-lab s31) (@floor-m31.2-mem s31) (@floor-%31-loc s31))))
+
 (defund @floor-succ31-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%32 mem loc))
@@ -489,6 +805,35 @@
 (defund @floor-%31-rev (mem loc pred)
   (@floor-m31.1-rev mem loc pred))
 
+(defruled @floor-%31-expand-rev-as-@floor-m31.1-rev
+  (equal (@floor-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@floor-m31.1-rev
+            (@floor-%31-mem s31)
+            (@floor-%31-loc s31)
+            (@floor-%31-pred s31))))
+  :enable (@floor-%31-rev @floor-%31-mem @floor-%31-loc @floor-%31-pred))
+(defruled @floor-%31-expand-rev-as-@floor-m31.2-rev
+  (equal (@floor-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@floor-m31.2-rev
+            (@floor-m31.1-mem s31)
+            (@floor-%31-loc s31)
+            (@floor-%31-pred s31))))
+  :enable (@floor-%31-expand-rev-as-@floor-m31.1-rev @floor-m31.1-rev @floor-m31.1-mem))
+(defruled @floor-%31-expand-rev-as-@floor-succ31-rev
+  (equal (@floor-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@floor-succ31-rev
+            (@floor-m31.2-mem s31)
+            (@floor-%31-loc s31)
+            (@floor-%31-pred s31))))
+  :enable (@floor-%31-expand-rev-as-@floor-m31.2-rev @floor-m31.2-rev @floor-m31.2-mem))
+(defruled @floor-%31-expand-rev-as-fwd
+  (equal (@floor-%31-rev mem loc pred)
+         (@floor-%31-fwd mem loc pred))
+  :enable (@floor-%31-expand-rev-as-@floor-succ31-rev @floor-succ31-rev @floor-succ31-lab @floor-%31-fwd))
+
 (defund @floor-%31-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -496,15 +841,6 @@
     (mem (store-i32 0 (g '%i1 loc) mem))
     (succ '%32))
   (mv succ mem loc)))
-
-(defruled @floor-%31-expand-bb
-  (equal (@floor-%31-bb mem loc pred)
-         (@floor-%31-rev mem loc pred))
-  :enable (@floor-%31-bb @floor-%31-rev
-    @floor-m31.1-rev
-    @floor-m31.2-rev
-    @floor-succ31-rev)
-  :disable s-diff-s)
 
 (defund @floor-%32-mem (s32)
   (car s32))
@@ -516,6 +852,10 @@
   (declare (ignore s32))
   '%33)
 
+(defund @floor-%32-fwd (mem loc pred)
+  (let ((s32 (list mem loc pred)))
+    (mv (@floor-succ32-lab s32) (@floor-%32-mem s32) (@floor-%32-loc s32))))
+
 (defund @floor-succ32-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%33 mem loc))
@@ -523,18 +863,24 @@
 (defund @floor-%32-rev (mem loc pred)
   (@floor-succ32-rev mem loc pred))
 
+(defruled @floor-%32-expand-rev-as-@floor-succ32-rev
+  (equal (@floor-%32-rev mem loc pred)
+         (let ((s32 (list mem loc pred)))
+           (@floor-succ32-rev
+            (@floor-%32-mem s32)
+            (@floor-%32-loc s32)
+            (@floor-%32-pred s32))))
+  :enable (@floor-%32-rev @floor-%32-mem @floor-%32-loc @floor-%32-pred))
+(defruled @floor-%32-expand-rev-as-fwd
+  (equal (@floor-%32-rev mem loc pred)
+         (@floor-%32-fwd mem loc pred))
+  :enable (@floor-%32-expand-rev-as-@floor-succ32-rev @floor-succ32-rev @floor-succ32-lab @floor-%32-fwd))
+
 (defund @floor-%32-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%33))
   (mv succ mem loc)))
-
-(defruled @floor-%32-expand-bb
-  (equal (@floor-%32-bb mem loc pred)
-         (@floor-%32-rev mem loc pred))
-  :enable (@floor-%32-bb @floor-%32-rev
-    @floor-succ32-rev)
-  :disable s-diff-s)
 
 (defund @floor-%33-mem (s33)
   (car s33))
@@ -546,6 +892,10 @@
   (declare (ignore s33))
   '%34)
 
+(defund @floor-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@floor-succ33-lab s33) (@floor-%33-mem s33) (@floor-%33-loc s33))))
+
 (defund @floor-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%34 mem loc))
@@ -553,18 +903,24 @@
 (defund @floor-%33-rev (mem loc pred)
   (@floor-succ33-rev mem loc pred))
 
+(defruled @floor-%33-expand-rev-as-@floor-succ33-rev
+  (equal (@floor-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@floor-succ33-rev
+            (@floor-%33-mem s33)
+            (@floor-%33-loc s33)
+            (@floor-%33-pred s33))))
+  :enable (@floor-%33-rev @floor-%33-mem @floor-%33-loc @floor-%33-pred))
+(defruled @floor-%33-expand-rev-as-fwd
+  (equal (@floor-%33-rev mem loc pred)
+         (@floor-%33-fwd mem loc pred))
+  :enable (@floor-%33-expand-rev-as-@floor-succ33-rev @floor-succ33-rev @floor-succ33-lab @floor-%33-fwd))
+
 (defund @floor-%33-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%34))
   (mv succ mem loc)))
-
-(defruled @floor-%33-expand-bb
-  (equal (@floor-%33-bb mem loc pred)
-         (@floor-%33-rev mem loc pred))
-  :enable (@floor-%33-bb @floor-%33-rev
-    @floor-succ33-rev)
-  :disable s-diff-s)
 
 (defund @floor-%34-mem (s34)
   (car s34))
@@ -576,6 +932,10 @@
   (declare (ignore s34))
   '%64)
 
+(defund @floor-%34-fwd (mem loc pred)
+  (let ((s34 (list mem loc pred)))
+    (mv (@floor-succ34-lab s34) (@floor-%34-mem s34) (@floor-%34-loc s34))))
+
 (defund @floor-succ34-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%64 mem loc))
@@ -583,18 +943,24 @@
 (defund @floor-%34-rev (mem loc pred)
   (@floor-succ34-rev mem loc pred))
 
+(defruled @floor-%34-expand-rev-as-@floor-succ34-rev
+  (equal (@floor-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@floor-succ34-rev
+            (@floor-%34-mem s34)
+            (@floor-%34-loc s34)
+            (@floor-%34-pred s34))))
+  :enable (@floor-%34-rev @floor-%34-mem @floor-%34-loc @floor-%34-pred))
+(defruled @floor-%34-expand-rev-as-fwd
+  (equal (@floor-%34-rev mem loc pred)
+         (@floor-%34-fwd mem loc pred))
+  :enable (@floor-%34-expand-rev-as-@floor-succ34-rev @floor-succ34-rev @floor-succ34-lab @floor-%34-fwd))
+
 (defund @floor-%34-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%64))
   (mv succ mem loc)))
-
-(defruled @floor-%34-expand-bb
-  (equal (@floor-%34-bb mem loc pred)
-         (@floor-%34-rev mem loc pred))
-  :enable (@floor-%34-bb @floor-%34-rev
-    @floor-succ34-rev)
-  :disable s-diff-s)
 
 (defund @floor-%35-mem (s35)
   (car s35))
@@ -639,6 +1005,10 @@
 (defund @floor-succ35-lab (s35)
   (case (g '%43 (@floor-%43-loc s35)) (-1 '%44) (0 '%46)))
 
+(defund @floor-%35-fwd (mem loc pred)
+  (let ((s35 (list mem loc pred)))
+    (mv (@floor-succ35-lab s35) (@floor-m35.1-mem s35) (@floor-%43-loc s35))))
+
 (defund @floor-succ35-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%43 loc) (-1 '%44) (0 '%46)) mem loc))
@@ -664,6 +1034,91 @@
 (defund @floor-%35-rev (mem loc pred)
   (@floor-%36-rev mem loc pred))
 
+(defruled @floor-%35-expand-rev-as-@floor-%36-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%36-rev
+            (@floor-%35-mem s35)
+            (@floor-%35-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-rev @floor-%35-mem @floor-%35-loc @floor-%35-pred))
+(defruled @floor-%35-expand-rev-as-@floor-%37-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%37-rev
+            (@floor-%35-mem s35)
+            (@floor-%36-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%36-rev @floor-%36-rev @floor-%36-loc @floor-%36-val))
+(defruled @floor-%35-expand-rev-as-@floor-m35.1-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-m35.1-rev
+            (@floor-%35-mem s35)
+            (@floor-%37-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%37-rev @floor-%37-rev @floor-%37-loc @floor-%37-val))
+(defruled @floor-%35-expand-rev-as-@floor-%38-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%38-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%37-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-m35.1-rev @floor-m35.1-rev @floor-m35.1-mem))
+(defruled @floor-%35-expand-rev-as-@floor-%39-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%39-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%38-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%38-rev @floor-%38-rev @floor-%38-loc @floor-%38-val))
+(defruled @floor-%35-expand-rev-as-@floor-%40-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%40-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%39-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%39-rev @floor-%39-rev @floor-%39-loc @floor-%39-val))
+(defruled @floor-%35-expand-rev-as-@floor-%41-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%41-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%40-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%40-rev @floor-%40-rev @floor-%40-loc @floor-%40-val))
+(defruled @floor-%35-expand-rev-as-@floor-%42-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%42-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%41-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%41-rev @floor-%41-rev @floor-%41-loc @floor-%41-val))
+(defruled @floor-%35-expand-rev-as-@floor-%43-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-%43-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%42-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%42-rev @floor-%42-rev @floor-%42-loc @floor-%42-val))
+(defruled @floor-%35-expand-rev-as-@floor-succ35-rev
+  (equal (@floor-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@floor-succ35-rev
+            (@floor-m35.1-mem s35)
+            (@floor-%43-loc s35)
+            (@floor-%35-pred s35))))
+  :enable (@floor-%35-expand-rev-as-@floor-%43-rev @floor-%43-rev @floor-%43-loc @floor-%43-val))
+(defruled @floor-%35-expand-rev-as-fwd
+  (equal (@floor-%35-rev mem loc pred)
+         (@floor-%35-fwd mem loc pred))
+  :enable (@floor-%35-expand-rev-as-@floor-succ35-rev @floor-succ35-rev @floor-succ35-lab @floor-%35-fwd))
+
 (defund @floor-%35-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -678,22 +1133,6 @@
     (loc (s '%43 (icmp-eq-i32 (g '%42 loc) 0) loc))
     (succ (case (g '%43 loc) (-1 '%44) (0 '%46))))
   (mv succ mem loc)))
-
-(defruled @floor-%35-expand-bb
-  (equal (@floor-%35-bb mem loc pred)
-         (@floor-%35-rev mem loc pred))
-  :enable (@floor-%35-bb @floor-%35-rev
-    @floor-%36-rev
-    @floor-%37-rev
-    @floor-m35.1-rev
-    @floor-%38-rev
-    @floor-%39-rev
-    @floor-%40-rev
-    @floor-%41-rev
-    @floor-%42-rev
-    @floor-%43-rev
-    @floor-succ35-rev)
-  :disable s-diff-s)
 
 (defund @floor-%44-mem (s44)
   (car s44))
@@ -711,6 +1150,10 @@
   (declare (ignore s44))
   '%129)
 
+(defund @floor-%44-fwd (mem loc pred)
+  (let ((s44 (list mem loc pred)))
+    (mv (@floor-succ44-lab s44) (@floor-m44.1-mem s44) (@floor-%45-loc s44))))
+
 (defund @floor-succ44-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%129 mem loc))
@@ -722,6 +1165,35 @@
 (defund @floor-%44-rev (mem loc pred)
   (@floor-%45-rev mem loc pred))
 
+(defruled @floor-%44-expand-rev-as-@floor-%45-rev
+  (equal (@floor-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@floor-%45-rev
+            (@floor-%44-mem s44)
+            (@floor-%44-loc s44)
+            (@floor-%44-pred s44))))
+  :enable (@floor-%44-rev @floor-%44-mem @floor-%44-loc @floor-%44-pred))
+(defruled @floor-%44-expand-rev-as-@floor-m44.1-rev
+  (equal (@floor-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@floor-m44.1-rev
+            (@floor-%44-mem s44)
+            (@floor-%45-loc s44)
+            (@floor-%44-pred s44))))
+  :enable (@floor-%44-expand-rev-as-@floor-%45-rev @floor-%45-rev @floor-%45-loc @floor-%45-val))
+(defruled @floor-%44-expand-rev-as-@floor-succ44-rev
+  (equal (@floor-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@floor-succ44-rev
+            (@floor-m44.1-mem s44)
+            (@floor-%45-loc s44)
+            (@floor-%44-pred s44))))
+  :enable (@floor-%44-expand-rev-as-@floor-m44.1-rev @floor-m44.1-rev @floor-m44.1-mem))
+(defruled @floor-%44-expand-rev-as-fwd
+  (equal (@floor-%44-rev mem loc pred)
+         (@floor-%44-fwd mem loc pred))
+  :enable (@floor-%44-expand-rev-as-@floor-succ44-rev @floor-succ44-rev @floor-succ44-lab @floor-%44-fwd))
+
 (defund @floor-%44-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -729,15 +1201,6 @@
     (mem (store-double (g '%45 loc) (g '%1 loc) mem))
     (succ '%129))
   (mv succ mem loc)))
-
-(defruled @floor-%44-expand-bb
-  (equal (@floor-%44-bb mem loc pred)
-         (@floor-%44-rev mem loc pred))
-  :enable (@floor-%44-bb @floor-%44-rev
-    @floor-%45-rev
-    @floor-m44.1-rev
-    @floor-succ44-rev)
-  :disable s-diff-s)
 
 (defund @floor-%46-mem (s46)
   (car s46))
@@ -760,6 +1223,10 @@
 (defund @floor-succ46-lab (s46)
   (case (g '%49 (@floor-%49-loc s46)) (-1 '%50) (0 '%63)))
 
+(defund @floor-%46-fwd (mem loc pred)
+  (let ((s46 (list mem loc pred)))
+    (mv (@floor-succ46-lab s46) (@floor-%46-mem s46) (@floor-%49-loc s46))))
+
 (defund @floor-succ46-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%49 loc) (-1 '%50) (0 '%63)) mem loc))
@@ -773,6 +1240,43 @@
 (defund @floor-%46-rev (mem loc pred)
   (@floor-%47-rev mem loc pred))
 
+(defruled @floor-%46-expand-rev-as-@floor-%47-rev
+  (equal (@floor-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@floor-%47-rev
+            (@floor-%46-mem s46)
+            (@floor-%46-loc s46)
+            (@floor-%46-pred s46))))
+  :enable (@floor-%46-rev @floor-%46-mem @floor-%46-loc @floor-%46-pred))
+(defruled @floor-%46-expand-rev-as-@floor-%48-rev
+  (equal (@floor-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@floor-%48-rev
+            (@floor-%46-mem s46)
+            (@floor-%47-loc s46)
+            (@floor-%46-pred s46))))
+  :enable (@floor-%46-expand-rev-as-@floor-%47-rev @floor-%47-rev @floor-%47-loc @floor-%47-val))
+(defruled @floor-%46-expand-rev-as-@floor-%49-rev
+  (equal (@floor-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@floor-%49-rev
+            (@floor-%46-mem s46)
+            (@floor-%48-loc s46)
+            (@floor-%46-pred s46))))
+  :enable (@floor-%46-expand-rev-as-@floor-%48-rev @floor-%48-rev @floor-%48-loc @floor-%48-val))
+(defruled @floor-%46-expand-rev-as-@floor-succ46-rev
+  (equal (@floor-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@floor-succ46-rev
+            (@floor-%46-mem s46)
+            (@floor-%49-loc s46)
+            (@floor-%46-pred s46))))
+  :enable (@floor-%46-expand-rev-as-@floor-%49-rev @floor-%49-rev @floor-%49-loc @floor-%49-val))
+(defruled @floor-%46-expand-rev-as-fwd
+  (equal (@floor-%46-rev mem loc pred)
+         (@floor-%46-fwd mem loc pred))
+  :enable (@floor-%46-expand-rev-as-@floor-succ46-rev @floor-succ46-rev @floor-succ46-lab @floor-%46-fwd))
+
 (defund @floor-%46-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -781,16 +1285,6 @@
     (loc (s '%49 (fcmp-ogt-double (g '%48 loc) #x0000000000000000) loc))
     (succ (case (g '%49 loc) (-1 '%50) (0 '%63))))
   (mv succ mem loc)))
-
-(defruled @floor-%46-expand-bb
-  (equal (@floor-%46-bb mem loc pred)
-         (@floor-%46-rev mem loc pred))
-  :enable (@floor-%46-bb @floor-%46-rev
-    @floor-%47-rev
-    @floor-%48-rev
-    @floor-%49-rev
-    @floor-succ46-rev)
-  :disable s-diff-s)
 
 (defund @floor-%50-mem (s50)
   (car s50))
@@ -809,6 +1303,10 @@
 (defund @floor-succ50-lab (s50)
   (case (g '%52 (@floor-%52-loc s50)) (-1 '%53) (0 '%58)))
 
+(defund @floor-%50-fwd (mem loc pred)
+  (let ((s50 (list mem loc pred)))
+    (mv (@floor-succ50-lab s50) (@floor-%50-mem s50) (@floor-%52-loc s50))))
+
 (defund @floor-succ50-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%52 loc) (-1 '%53) (0 '%58)) mem loc))
@@ -820,6 +1318,35 @@
 (defund @floor-%50-rev (mem loc pred)
   (@floor-%51-rev mem loc pred))
 
+(defruled @floor-%50-expand-rev-as-@floor-%51-rev
+  (equal (@floor-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@floor-%51-rev
+            (@floor-%50-mem s50)
+            (@floor-%50-loc s50)
+            (@floor-%50-pred s50))))
+  :enable (@floor-%50-rev @floor-%50-mem @floor-%50-loc @floor-%50-pred))
+(defruled @floor-%50-expand-rev-as-@floor-%52-rev
+  (equal (@floor-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@floor-%52-rev
+            (@floor-%50-mem s50)
+            (@floor-%51-loc s50)
+            (@floor-%50-pred s50))))
+  :enable (@floor-%50-expand-rev-as-@floor-%51-rev @floor-%51-rev @floor-%51-loc @floor-%51-val))
+(defruled @floor-%50-expand-rev-as-@floor-succ50-rev
+  (equal (@floor-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@floor-succ50-rev
+            (@floor-%50-mem s50)
+            (@floor-%52-loc s50)
+            (@floor-%50-pred s50))))
+  :enable (@floor-%50-expand-rev-as-@floor-%52-rev @floor-%52-rev @floor-%52-loc @floor-%52-val))
+(defruled @floor-%50-expand-rev-as-fwd
+  (equal (@floor-%50-rev mem loc pred)
+         (@floor-%50-fwd mem loc pred))
+  :enable (@floor-%50-expand-rev-as-@floor-succ50-rev @floor-succ50-rev @floor-succ50-lab @floor-%50-fwd))
+
 (defund @floor-%50-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -827,15 +1354,6 @@
     (loc (s '%52 (icmp-slt-i32 (g '%51 loc) 0) loc))
     (succ (case (g '%52 loc) (-1 '%53) (0 '%58))))
   (mv succ mem loc)))
-
-(defruled @floor-%50-expand-bb
-  (equal (@floor-%50-bb mem loc pred)
-         (@floor-%50-rev mem loc pred))
-  :enable (@floor-%50-bb @floor-%50-rev
-    @floor-%51-rev
-    @floor-%52-rev
-    @floor-succ50-rev)
-  :disable s-diff-s)
 
 (defund @floor-%53-mem (s53)
   (car s53))
@@ -865,6 +1383,10 @@
   (declare (ignore s53))
   '%58)
 
+(defund @floor-%53-fwd (mem loc pred)
+  (let ((s53 (list mem loc pred)))
+    (mv (@floor-succ53-lab s53) (@floor-m53.1-mem s53) (@floor-%57-loc s53))))
+
 (defund @floor-succ53-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%58 mem loc))
@@ -882,6 +1404,59 @@
 (defund @floor-%53-rev (mem loc pred)
   (@floor-%54-rev mem loc pred))
 
+(defruled @floor-%53-expand-rev-as-@floor-%54-rev
+  (equal (@floor-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@floor-%54-rev
+            (@floor-%53-mem s53)
+            (@floor-%53-loc s53)
+            (@floor-%53-pred s53))))
+  :enable (@floor-%53-rev @floor-%53-mem @floor-%53-loc @floor-%53-pred))
+(defruled @floor-%53-expand-rev-as-@floor-%55-rev
+  (equal (@floor-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@floor-%55-rev
+            (@floor-%53-mem s53)
+            (@floor-%54-loc s53)
+            (@floor-%53-pred s53))))
+  :enable (@floor-%53-expand-rev-as-@floor-%54-rev @floor-%54-rev @floor-%54-loc @floor-%54-val))
+(defruled @floor-%53-expand-rev-as-@floor-%56-rev
+  (equal (@floor-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@floor-%56-rev
+            (@floor-%53-mem s53)
+            (@floor-%55-loc s53)
+            (@floor-%53-pred s53))))
+  :enable (@floor-%53-expand-rev-as-@floor-%55-rev @floor-%55-rev @floor-%55-loc @floor-%55-val))
+(defruled @floor-%53-expand-rev-as-@floor-%57-rev
+  (equal (@floor-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@floor-%57-rev
+            (@floor-%53-mem s53)
+            (@floor-%56-loc s53)
+            (@floor-%53-pred s53))))
+  :enable (@floor-%53-expand-rev-as-@floor-%56-rev @floor-%56-rev @floor-%56-loc @floor-%56-val))
+(defruled @floor-%53-expand-rev-as-@floor-m53.1-rev
+  (equal (@floor-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@floor-m53.1-rev
+            (@floor-%53-mem s53)
+            (@floor-%57-loc s53)
+            (@floor-%53-pred s53))))
+  :enable (@floor-%53-expand-rev-as-@floor-%57-rev @floor-%57-rev @floor-%57-loc @floor-%57-val))
+(defruled @floor-%53-expand-rev-as-@floor-succ53-rev
+  (equal (@floor-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@floor-succ53-rev
+            (@floor-m53.1-mem s53)
+            (@floor-%57-loc s53)
+            (@floor-%53-pred s53))))
+  :enable (@floor-%53-expand-rev-as-@floor-m53.1-rev @floor-m53.1-rev @floor-m53.1-mem))
+(defruled @floor-%53-expand-rev-as-fwd
+  (equal (@floor-%53-rev mem loc pred)
+         (@floor-%53-fwd mem loc pred))
+  :enable (@floor-%53-expand-rev-as-@floor-succ53-rev @floor-succ53-rev @floor-succ53-lab @floor-%53-fwd))
+
 (defund @floor-%53-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -892,18 +1467,6 @@
     (mem (store-i32 (g '%57 loc) (g '%i0 loc) mem))
     (succ '%58))
   (mv succ mem loc)))
-
-(defruled @floor-%53-expand-bb
-  (equal (@floor-%53-bb mem loc pred)
-         (@floor-%53-rev mem loc pred))
-  :enable (@floor-%53-bb @floor-%53-rev
-    @floor-%54-rev
-    @floor-%55-rev
-    @floor-%56-rev
-    @floor-%57-rev
-    @floor-m53.1-rev
-    @floor-succ53-rev)
-  :disable s-diff-s)
 
 (defund @floor-%58-mem (s58)
   (car s58))
@@ -935,6 +1498,10 @@
   (declare (ignore s58))
   '%63)
 
+(defund @floor-%58-fwd (mem loc pred)
+  (let ((s58 (list mem loc pred)))
+    (mv (@floor-succ58-lab s58) (@floor-m58.2-mem s58) (@floor-%62-loc s58))))
+
 (defund @floor-succ58-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%63 mem loc))
@@ -954,6 +1521,67 @@
 (defund @floor-%58-rev (mem loc pred)
   (@floor-%59-rev mem loc pred))
 
+(defruled @floor-%58-expand-rev-as-@floor-%59-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-%59-rev
+            (@floor-%58-mem s58)
+            (@floor-%58-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-rev @floor-%58-mem @floor-%58-loc @floor-%58-pred))
+(defruled @floor-%58-expand-rev-as-@floor-%60-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-%60-rev
+            (@floor-%58-mem s58)
+            (@floor-%59-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-expand-rev-as-@floor-%59-rev @floor-%59-rev @floor-%59-loc @floor-%59-val))
+(defruled @floor-%58-expand-rev-as-@floor-%61-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-%61-rev
+            (@floor-%58-mem s58)
+            (@floor-%60-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-expand-rev-as-@floor-%60-rev @floor-%60-rev @floor-%60-loc @floor-%60-val))
+(defruled @floor-%58-expand-rev-as-@floor-%62-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-%62-rev
+            (@floor-%58-mem s58)
+            (@floor-%61-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-expand-rev-as-@floor-%61-rev @floor-%61-rev @floor-%61-loc @floor-%61-val))
+(defruled @floor-%58-expand-rev-as-@floor-m58.1-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-m58.1-rev
+            (@floor-%58-mem s58)
+            (@floor-%62-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-expand-rev-as-@floor-%62-rev @floor-%62-rev @floor-%62-loc @floor-%62-val))
+(defruled @floor-%58-expand-rev-as-@floor-m58.2-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-m58.2-rev
+            (@floor-m58.1-mem s58)
+            (@floor-%62-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-expand-rev-as-@floor-m58.1-rev @floor-m58.1-rev @floor-m58.1-mem))
+(defruled @floor-%58-expand-rev-as-@floor-succ58-rev
+  (equal (@floor-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@floor-succ58-rev
+            (@floor-m58.2-mem s58)
+            (@floor-%62-loc s58)
+            (@floor-%58-pred s58))))
+  :enable (@floor-%58-expand-rev-as-@floor-m58.2-rev @floor-m58.2-rev @floor-m58.2-mem))
+(defruled @floor-%58-expand-rev-as-fwd
+  (equal (@floor-%58-rev mem loc pred)
+         (@floor-%58-fwd mem loc pred))
+  :enable (@floor-%58-expand-rev-as-@floor-succ58-rev @floor-succ58-rev @floor-succ58-lab @floor-%58-fwd))
+
 (defund @floor-%58-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -966,19 +1594,6 @@
     (succ '%63))
   (mv succ mem loc)))
 
-(defruled @floor-%58-expand-bb
-  (equal (@floor-%58-bb mem loc pred)
-         (@floor-%58-rev mem loc pred))
-  :enable (@floor-%58-bb @floor-%58-rev
-    @floor-%59-rev
-    @floor-%60-rev
-    @floor-%61-rev
-    @floor-%62-rev
-    @floor-m58.1-rev
-    @floor-m58.2-rev
-    @floor-succ58-rev)
-  :disable s-diff-s)
-
 (defund @floor-%63-mem (s63)
   (car s63))
 (defund @floor-%63-loc (s63)
@@ -989,6 +1604,10 @@
   (declare (ignore s63))
   '%64)
 
+(defund @floor-%63-fwd (mem loc pred)
+  (let ((s63 (list mem loc pred)))
+    (mv (@floor-succ63-lab s63) (@floor-%63-mem s63) (@floor-%63-loc s63))))
+
 (defund @floor-succ63-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%64 mem loc))
@@ -996,18 +1615,24 @@
 (defund @floor-%63-rev (mem loc pred)
   (@floor-succ63-rev mem loc pred))
 
+(defruled @floor-%63-expand-rev-as-@floor-succ63-rev
+  (equal (@floor-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@floor-succ63-rev
+            (@floor-%63-mem s63)
+            (@floor-%63-loc s63)
+            (@floor-%63-pred s63))))
+  :enable (@floor-%63-rev @floor-%63-mem @floor-%63-loc @floor-%63-pred))
+(defruled @floor-%63-expand-rev-as-fwd
+  (equal (@floor-%63-rev mem loc pred)
+         (@floor-%63-fwd mem loc pred))
+  :enable (@floor-%63-expand-rev-as-@floor-succ63-rev @floor-succ63-rev @floor-succ63-lab @floor-%63-fwd))
+
 (defund @floor-%63-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%64))
   (mv succ mem loc)))
-
-(defruled @floor-%63-expand-bb
-  (equal (@floor-%63-bb mem loc pred)
-         (@floor-%63-rev mem loc pred))
-  :enable (@floor-%63-bb @floor-%63-rev
-    @floor-succ63-rev)
-  :disable s-diff-s)
 
 (defund @floor-%64-mem (s64)
   (car s64))
@@ -1019,6 +1644,10 @@
   (declare (ignore s64))
   '%122)
 
+(defund @floor-%64-fwd (mem loc pred)
+  (let ((s64 (list mem loc pred)))
+    (mv (@floor-succ64-lab s64) (@floor-%64-mem s64) (@floor-%64-loc s64))))
+
 (defund @floor-succ64-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%122 mem loc))
@@ -1026,18 +1655,24 @@
 (defund @floor-%64-rev (mem loc pred)
   (@floor-succ64-rev mem loc pred))
 
+(defruled @floor-%64-expand-rev-as-@floor-succ64-rev
+  (equal (@floor-%64-rev mem loc pred)
+         (let ((s64 (list mem loc pred)))
+           (@floor-succ64-rev
+            (@floor-%64-mem s64)
+            (@floor-%64-loc s64)
+            (@floor-%64-pred s64))))
+  :enable (@floor-%64-rev @floor-%64-mem @floor-%64-loc @floor-%64-pred))
+(defruled @floor-%64-expand-rev-as-fwd
+  (equal (@floor-%64-rev mem loc pred)
+         (@floor-%64-fwd mem loc pred))
+  :enable (@floor-%64-expand-rev-as-@floor-succ64-rev @floor-succ64-rev @floor-succ64-lab @floor-%64-fwd))
+
 (defund @floor-%64-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%122))
   (mv succ mem loc)))
-
-(defruled @floor-%64-expand-bb
-  (equal (@floor-%64-bb mem loc pred)
-         (@floor-%64-rev mem loc pred))
-  :enable (@floor-%64-bb @floor-%64-rev
-    @floor-succ64-rev)
-  :disable s-diff-s)
 
 (defund @floor-%65-mem (s65)
   (car s65))
@@ -1056,6 +1691,10 @@
 (defund @floor-succ65-lab (s65)
   (case (g '%67 (@floor-%67-loc s65)) (-1 '%68) (0 '%77)))
 
+(defund @floor-%65-fwd (mem loc pred)
+  (let ((s65 (list mem loc pred)))
+    (mv (@floor-succ65-lab s65) (@floor-%65-mem s65) (@floor-%67-loc s65))))
+
 (defund @floor-succ65-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%67 loc) (-1 '%68) (0 '%77)) mem loc))
@@ -1067,6 +1706,35 @@
 (defund @floor-%65-rev (mem loc pred)
   (@floor-%66-rev mem loc pred))
 
+(defruled @floor-%65-expand-rev-as-@floor-%66-rev
+  (equal (@floor-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@floor-%66-rev
+            (@floor-%65-mem s65)
+            (@floor-%65-loc s65)
+            (@floor-%65-pred s65))))
+  :enable (@floor-%65-rev @floor-%65-mem @floor-%65-loc @floor-%65-pred))
+(defruled @floor-%65-expand-rev-as-@floor-%67-rev
+  (equal (@floor-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@floor-%67-rev
+            (@floor-%65-mem s65)
+            (@floor-%66-loc s65)
+            (@floor-%65-pred s65))))
+  :enable (@floor-%65-expand-rev-as-@floor-%66-rev @floor-%66-rev @floor-%66-loc @floor-%66-val))
+(defruled @floor-%65-expand-rev-as-@floor-succ65-rev
+  (equal (@floor-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@floor-succ65-rev
+            (@floor-%65-mem s65)
+            (@floor-%67-loc s65)
+            (@floor-%65-pred s65))))
+  :enable (@floor-%65-expand-rev-as-@floor-%67-rev @floor-%67-rev @floor-%67-loc @floor-%67-val))
+(defruled @floor-%65-expand-rev-as-fwd
+  (equal (@floor-%65-rev mem loc pred)
+         (@floor-%65-fwd mem loc pred))
+  :enable (@floor-%65-expand-rev-as-@floor-succ65-rev @floor-succ65-rev @floor-succ65-lab @floor-%65-fwd))
+
 (defund @floor-%65-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1074,15 +1742,6 @@
     (loc (s '%67 (icmp-sgt-i32 (g '%66 loc) 51) loc))
     (succ (case (g '%67 loc) (-1 '%68) (0 '%77))))
   (mv succ mem loc)))
-
-(defruled @floor-%65-expand-bb
-  (equal (@floor-%65-bb mem loc pred)
-         (@floor-%65-rev mem loc pred))
-  :enable (@floor-%65-bb @floor-%65-rev
-    @floor-%66-rev
-    @floor-%67-rev
-    @floor-succ65-rev)
-  :disable s-diff-s)
 
 (defund @floor-%68-mem (s68)
   (car s68))
@@ -1101,6 +1760,10 @@
 (defund @floor-succ68-lab (s68)
   (case (g '%70 (@floor-%70-loc s68)) (-1 '%71) (0 '%75)))
 
+(defund @floor-%68-fwd (mem loc pred)
+  (let ((s68 (list mem loc pred)))
+    (mv (@floor-succ68-lab s68) (@floor-%68-mem s68) (@floor-%70-loc s68))))
+
 (defund @floor-succ68-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%70 loc) (-1 '%71) (0 '%75)) mem loc))
@@ -1112,6 +1775,35 @@
 (defund @floor-%68-rev (mem loc pred)
   (@floor-%69-rev mem loc pred))
 
+(defruled @floor-%68-expand-rev-as-@floor-%69-rev
+  (equal (@floor-%68-rev mem loc pred)
+         (let ((s68 (list mem loc pred)))
+           (@floor-%69-rev
+            (@floor-%68-mem s68)
+            (@floor-%68-loc s68)
+            (@floor-%68-pred s68))))
+  :enable (@floor-%68-rev @floor-%68-mem @floor-%68-loc @floor-%68-pred))
+(defruled @floor-%68-expand-rev-as-@floor-%70-rev
+  (equal (@floor-%68-rev mem loc pred)
+         (let ((s68 (list mem loc pred)))
+           (@floor-%70-rev
+            (@floor-%68-mem s68)
+            (@floor-%69-loc s68)
+            (@floor-%68-pred s68))))
+  :enable (@floor-%68-expand-rev-as-@floor-%69-rev @floor-%69-rev @floor-%69-loc @floor-%69-val))
+(defruled @floor-%68-expand-rev-as-@floor-succ68-rev
+  (equal (@floor-%68-rev mem loc pred)
+         (let ((s68 (list mem loc pred)))
+           (@floor-succ68-rev
+            (@floor-%68-mem s68)
+            (@floor-%70-loc s68)
+            (@floor-%68-pred s68))))
+  :enable (@floor-%68-expand-rev-as-@floor-%70-rev @floor-%70-rev @floor-%70-loc @floor-%70-val))
+(defruled @floor-%68-expand-rev-as-fwd
+  (equal (@floor-%68-rev mem loc pred)
+         (@floor-%68-fwd mem loc pred))
+  :enable (@floor-%68-expand-rev-as-@floor-succ68-rev @floor-succ68-rev @floor-succ68-lab @floor-%68-fwd))
+
 (defund @floor-%68-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1119,15 +1811,6 @@
     (loc (s '%70 (icmp-eq-i32 (g '%69 loc) 1024) loc))
     (succ (case (g '%70 loc) (-1 '%71) (0 '%75))))
   (mv succ mem loc)))
-
-(defruled @floor-%68-expand-bb
-  (equal (@floor-%68-bb mem loc pred)
-         (@floor-%68-rev mem loc pred))
-  :enable (@floor-%68-bb @floor-%68-rev
-    @floor-%69-rev
-    @floor-%70-rev
-    @floor-succ68-rev)
-  :disable s-diff-s)
 
 (defund @floor-%71-mem (s71)
   (car s71))
@@ -1153,6 +1836,10 @@
   (declare (ignore s71))
   '%129)
 
+(defund @floor-%71-fwd (mem loc pred)
+  (let ((s71 (list mem loc pred)))
+    (mv (@floor-succ71-lab s71) (@floor-m71.1-mem s71) (@floor-%74-loc s71))))
+
 (defund @floor-succ71-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%129 mem loc))
@@ -1168,6 +1855,51 @@
 (defund @floor-%71-rev (mem loc pred)
   (@floor-%72-rev mem loc pred))
 
+(defruled @floor-%71-expand-rev-as-@floor-%72-rev
+  (equal (@floor-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@floor-%72-rev
+            (@floor-%71-mem s71)
+            (@floor-%71-loc s71)
+            (@floor-%71-pred s71))))
+  :enable (@floor-%71-rev @floor-%71-mem @floor-%71-loc @floor-%71-pred))
+(defruled @floor-%71-expand-rev-as-@floor-%73-rev
+  (equal (@floor-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@floor-%73-rev
+            (@floor-%71-mem s71)
+            (@floor-%72-loc s71)
+            (@floor-%71-pred s71))))
+  :enable (@floor-%71-expand-rev-as-@floor-%72-rev @floor-%72-rev @floor-%72-loc @floor-%72-val))
+(defruled @floor-%71-expand-rev-as-@floor-%74-rev
+  (equal (@floor-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@floor-%74-rev
+            (@floor-%71-mem s71)
+            (@floor-%73-loc s71)
+            (@floor-%71-pred s71))))
+  :enable (@floor-%71-expand-rev-as-@floor-%73-rev @floor-%73-rev @floor-%73-loc @floor-%73-val))
+(defruled @floor-%71-expand-rev-as-@floor-m71.1-rev
+  (equal (@floor-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@floor-m71.1-rev
+            (@floor-%71-mem s71)
+            (@floor-%74-loc s71)
+            (@floor-%71-pred s71))))
+  :enable (@floor-%71-expand-rev-as-@floor-%74-rev @floor-%74-rev @floor-%74-loc @floor-%74-val))
+(defruled @floor-%71-expand-rev-as-@floor-succ71-rev
+  (equal (@floor-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@floor-succ71-rev
+            (@floor-m71.1-mem s71)
+            (@floor-%74-loc s71)
+            (@floor-%71-pred s71))))
+  :enable (@floor-%71-expand-rev-as-@floor-m71.1-rev @floor-m71.1-rev @floor-m71.1-mem))
+(defruled @floor-%71-expand-rev-as-fwd
+  (equal (@floor-%71-rev mem loc pred)
+         (@floor-%71-fwd mem loc pred))
+  :enable (@floor-%71-expand-rev-as-@floor-succ71-rev @floor-succ71-rev @floor-succ71-lab @floor-%71-fwd))
+
 (defund @floor-%71-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1177,17 +1909,6 @@
     (mem (store-double (g '%74 loc) (g '%1 loc) mem))
     (succ '%129))
   (mv succ mem loc)))
-
-(defruled @floor-%71-expand-bb
-  (equal (@floor-%71-bb mem loc pred)
-         (@floor-%71-rev mem loc pred))
-  :enable (@floor-%71-bb @floor-%71-rev
-    @floor-%72-rev
-    @floor-%73-rev
-    @floor-%74-rev
-    @floor-m71.1-rev
-    @floor-succ71-rev)
-  :disable s-diff-s)
 
 (defund @floor-%75-mem (s75)
   (car s75))
@@ -1205,6 +1926,10 @@
   (declare (ignore s75))
   '%129)
 
+(defund @floor-%75-fwd (mem loc pred)
+  (let ((s75 (list mem loc pred)))
+    (mv (@floor-succ75-lab s75) (@floor-m75.1-mem s75) (@floor-%76-loc s75))))
+
 (defund @floor-succ75-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%129 mem loc))
@@ -1216,6 +1941,35 @@
 (defund @floor-%75-rev (mem loc pred)
   (@floor-%76-rev mem loc pred))
 
+(defruled @floor-%75-expand-rev-as-@floor-%76-rev
+  (equal (@floor-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@floor-%76-rev
+            (@floor-%75-mem s75)
+            (@floor-%75-loc s75)
+            (@floor-%75-pred s75))))
+  :enable (@floor-%75-rev @floor-%75-mem @floor-%75-loc @floor-%75-pred))
+(defruled @floor-%75-expand-rev-as-@floor-m75.1-rev
+  (equal (@floor-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@floor-m75.1-rev
+            (@floor-%75-mem s75)
+            (@floor-%76-loc s75)
+            (@floor-%75-pred s75))))
+  :enable (@floor-%75-expand-rev-as-@floor-%76-rev @floor-%76-rev @floor-%76-loc @floor-%76-val))
+(defruled @floor-%75-expand-rev-as-@floor-succ75-rev
+  (equal (@floor-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@floor-succ75-rev
+            (@floor-m75.1-mem s75)
+            (@floor-%76-loc s75)
+            (@floor-%75-pred s75))))
+  :enable (@floor-%75-expand-rev-as-@floor-m75.1-rev @floor-m75.1-rev @floor-m75.1-mem))
+(defruled @floor-%75-expand-rev-as-fwd
+  (equal (@floor-%75-rev mem loc pred)
+         (@floor-%75-fwd mem loc pred))
+  :enable (@floor-%75-expand-rev-as-@floor-succ75-rev @floor-succ75-rev @floor-succ75-lab @floor-%75-fwd))
+
 (defund @floor-%75-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1223,15 +1977,6 @@
     (mem (store-double (g '%76 loc) (g '%1 loc) mem))
     (succ '%129))
   (mv succ mem loc)))
-
-(defruled @floor-%75-expand-bb
-  (equal (@floor-%75-bb mem loc pred)
-         (@floor-%75-rev mem loc pred))
-  :enable (@floor-%75-bb @floor-%75-rev
-    @floor-%76-rev
-    @floor-m75.1-rev
-    @floor-succ75-rev)
-  :disable s-diff-s)
 
 (defund @floor-%77-mem (s77)
   (car s77))
@@ -1272,6 +2017,10 @@
 (defund @floor-succ77-lab (s77)
   (case (g '%84 (@floor-%84-loc s77)) (-1 '%85) (0 '%87)))
 
+(defund @floor-%77-fwd (mem loc pred)
+  (let ((s77 (list mem loc pred)))
+    (mv (@floor-succ77-lab s77) (@floor-m77.1-mem s77) (@floor-%84-loc s77))))
+
 (defund @floor-succ77-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%84 loc) (-1 '%85) (0 '%87)) mem loc))
@@ -1295,6 +2044,83 @@
 (defund @floor-%77-rev (mem loc pred)
   (@floor-%78-rev mem loc pred))
 
+(defruled @floor-%77-expand-rev-as-@floor-%78-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%78-rev
+            (@floor-%77-mem s77)
+            (@floor-%77-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-rev @floor-%77-mem @floor-%77-loc @floor-%77-pred))
+(defruled @floor-%77-expand-rev-as-@floor-%79-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%79-rev
+            (@floor-%77-mem s77)
+            (@floor-%78-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%78-rev @floor-%78-rev @floor-%78-loc @floor-%78-val))
+(defruled @floor-%77-expand-rev-as-@floor-%80-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%80-rev
+            (@floor-%77-mem s77)
+            (@floor-%79-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%79-rev @floor-%79-rev @floor-%79-loc @floor-%79-val))
+(defruled @floor-%77-expand-rev-as-@floor-m77.1-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-m77.1-rev
+            (@floor-%77-mem s77)
+            (@floor-%80-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%80-rev @floor-%80-rev @floor-%80-loc @floor-%80-val))
+(defruled @floor-%77-expand-rev-as-@floor-%81-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%81-rev
+            (@floor-m77.1-mem s77)
+            (@floor-%80-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-m77.1-rev @floor-m77.1-rev @floor-m77.1-mem))
+(defruled @floor-%77-expand-rev-as-@floor-%82-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%82-rev
+            (@floor-m77.1-mem s77)
+            (@floor-%81-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%81-rev @floor-%81-rev @floor-%81-loc @floor-%81-val))
+(defruled @floor-%77-expand-rev-as-@floor-%83-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%83-rev
+            (@floor-m77.1-mem s77)
+            (@floor-%82-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%82-rev @floor-%82-rev @floor-%82-loc @floor-%82-val))
+(defruled @floor-%77-expand-rev-as-@floor-%84-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-%84-rev
+            (@floor-m77.1-mem s77)
+            (@floor-%83-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%83-rev @floor-%83-rev @floor-%83-loc @floor-%83-val))
+(defruled @floor-%77-expand-rev-as-@floor-succ77-rev
+  (equal (@floor-%77-rev mem loc pred)
+         (let ((s77 (list mem loc pred)))
+           (@floor-succ77-rev
+            (@floor-m77.1-mem s77)
+            (@floor-%84-loc s77)
+            (@floor-%77-pred s77))))
+  :enable (@floor-%77-expand-rev-as-@floor-%84-rev @floor-%84-rev @floor-%84-loc @floor-%84-val))
+(defruled @floor-%77-expand-rev-as-fwd
+  (equal (@floor-%77-rev mem loc pred)
+         (@floor-%77-fwd mem loc pred))
+  :enable (@floor-%77-expand-rev-as-@floor-succ77-rev @floor-succ77-rev @floor-succ77-lab @floor-%77-fwd))
+
 (defund @floor-%77-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1308,21 +2134,6 @@
     (loc (s '%84 (icmp-eq-i32 (g '%83 loc) 0) loc))
     (succ (case (g '%84 loc) (-1 '%85) (0 '%87))))
   (mv succ mem loc)))
-
-(defruled @floor-%77-expand-bb
-  (equal (@floor-%77-bb mem loc pred)
-         (@floor-%77-rev mem loc pred))
-  :enable (@floor-%77-bb @floor-%77-rev
-    @floor-%78-rev
-    @floor-%79-rev
-    @floor-%80-rev
-    @floor-m77.1-rev
-    @floor-%81-rev
-    @floor-%82-rev
-    @floor-%83-rev
-    @floor-%84-rev
-    @floor-succ77-rev)
-  :disable s-diff-s)
 
 (defund @floor-%85-mem (s85)
   (car s85))
@@ -1340,6 +2151,10 @@
   (declare (ignore s85))
   '%129)
 
+(defund @floor-%85-fwd (mem loc pred)
+  (let ((s85 (list mem loc pred)))
+    (mv (@floor-succ85-lab s85) (@floor-m85.1-mem s85) (@floor-%86-loc s85))))
+
 (defund @floor-succ85-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%129 mem loc))
@@ -1351,6 +2166,35 @@
 (defund @floor-%85-rev (mem loc pred)
   (@floor-%86-rev mem loc pred))
 
+(defruled @floor-%85-expand-rev-as-@floor-%86-rev
+  (equal (@floor-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@floor-%86-rev
+            (@floor-%85-mem s85)
+            (@floor-%85-loc s85)
+            (@floor-%85-pred s85))))
+  :enable (@floor-%85-rev @floor-%85-mem @floor-%85-loc @floor-%85-pred))
+(defruled @floor-%85-expand-rev-as-@floor-m85.1-rev
+  (equal (@floor-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@floor-m85.1-rev
+            (@floor-%85-mem s85)
+            (@floor-%86-loc s85)
+            (@floor-%85-pred s85))))
+  :enable (@floor-%85-expand-rev-as-@floor-%86-rev @floor-%86-rev @floor-%86-loc @floor-%86-val))
+(defruled @floor-%85-expand-rev-as-@floor-succ85-rev
+  (equal (@floor-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@floor-succ85-rev
+            (@floor-m85.1-mem s85)
+            (@floor-%86-loc s85)
+            (@floor-%85-pred s85))))
+  :enable (@floor-%85-expand-rev-as-@floor-m85.1-rev @floor-m85.1-rev @floor-m85.1-mem))
+(defruled @floor-%85-expand-rev-as-fwd
+  (equal (@floor-%85-rev mem loc pred)
+         (@floor-%85-fwd mem loc pred))
+  :enable (@floor-%85-expand-rev-as-@floor-succ85-rev @floor-succ85-rev @floor-succ85-lab @floor-%85-fwd))
+
 (defund @floor-%85-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1358,15 +2202,6 @@
     (mem (store-double (g '%86 loc) (g '%1 loc) mem))
     (succ '%129))
   (mv succ mem loc)))
-
-(defruled @floor-%85-expand-bb
-  (equal (@floor-%85-bb mem loc pred)
-         (@floor-%85-rev mem loc pred))
-  :enable (@floor-%85-bb @floor-%85-rev
-    @floor-%86-rev
-    @floor-m85.1-rev
-    @floor-succ85-rev)
-  :disable s-diff-s)
 
 (defund @floor-%87-mem (s87)
   (car s87))
@@ -1389,6 +2224,10 @@
 (defund @floor-succ87-lab (s87)
   (case (g '%90 (@floor-%90-loc s87)) (-1 '%91) (0 '%120)))
 
+(defund @floor-%87-fwd (mem loc pred)
+  (let ((s87 (list mem loc pred)))
+    (mv (@floor-succ87-lab s87) (@floor-%87-mem s87) (@floor-%90-loc s87))))
+
 (defund @floor-succ87-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%90 loc) (-1 '%91) (0 '%120)) mem loc))
@@ -1402,6 +2241,43 @@
 (defund @floor-%87-rev (mem loc pred)
   (@floor-%88-rev mem loc pred))
 
+(defruled @floor-%87-expand-rev-as-@floor-%88-rev
+  (equal (@floor-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@floor-%88-rev
+            (@floor-%87-mem s87)
+            (@floor-%87-loc s87)
+            (@floor-%87-pred s87))))
+  :enable (@floor-%87-rev @floor-%87-mem @floor-%87-loc @floor-%87-pred))
+(defruled @floor-%87-expand-rev-as-@floor-%89-rev
+  (equal (@floor-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@floor-%89-rev
+            (@floor-%87-mem s87)
+            (@floor-%88-loc s87)
+            (@floor-%87-pred s87))))
+  :enable (@floor-%87-expand-rev-as-@floor-%88-rev @floor-%88-rev @floor-%88-loc @floor-%88-val))
+(defruled @floor-%87-expand-rev-as-@floor-%90-rev
+  (equal (@floor-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@floor-%90-rev
+            (@floor-%87-mem s87)
+            (@floor-%89-loc s87)
+            (@floor-%87-pred s87))))
+  :enable (@floor-%87-expand-rev-as-@floor-%89-rev @floor-%89-rev @floor-%89-loc @floor-%89-val))
+(defruled @floor-%87-expand-rev-as-@floor-succ87-rev
+  (equal (@floor-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@floor-succ87-rev
+            (@floor-%87-mem s87)
+            (@floor-%90-loc s87)
+            (@floor-%87-pred s87))))
+  :enable (@floor-%87-expand-rev-as-@floor-%90-rev @floor-%90-rev @floor-%90-loc @floor-%90-val))
+(defruled @floor-%87-expand-rev-as-fwd
+  (equal (@floor-%87-rev mem loc pred)
+         (@floor-%87-fwd mem loc pred))
+  :enable (@floor-%87-expand-rev-as-@floor-succ87-rev @floor-succ87-rev @floor-succ87-lab @floor-%87-fwd))
+
 (defund @floor-%87-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1410,16 +2286,6 @@
     (loc (s '%90 (fcmp-ogt-double (g '%89 loc) #x0000000000000000) loc))
     (succ (case (g '%90 loc) (-1 '%91) (0 '%120))))
   (mv succ mem loc)))
-
-(defruled @floor-%87-expand-bb
-  (equal (@floor-%87-bb mem loc pred)
-         (@floor-%87-rev mem loc pred))
-  :enable (@floor-%87-bb @floor-%87-rev
-    @floor-%88-rev
-    @floor-%89-rev
-    @floor-%90-rev
-    @floor-succ87-rev)
-  :disable s-diff-s)
 
 (defund @floor-%91-mem (s91)
   (car s91))
@@ -1438,6 +2304,10 @@
 (defund @floor-succ91-lab (s91)
   (case (g '%93 (@floor-%93-loc s91)) (-1 '%94) (0 '%115)))
 
+(defund @floor-%91-fwd (mem loc pred)
+  (let ((s91 (list mem loc pred)))
+    (mv (@floor-succ91-lab s91) (@floor-%91-mem s91) (@floor-%93-loc s91))))
+
 (defund @floor-succ91-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%93 loc) (-1 '%94) (0 '%115)) mem loc))
@@ -1449,6 +2319,35 @@
 (defund @floor-%91-rev (mem loc pred)
   (@floor-%92-rev mem loc pred))
 
+(defruled @floor-%91-expand-rev-as-@floor-%92-rev
+  (equal (@floor-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@floor-%92-rev
+            (@floor-%91-mem s91)
+            (@floor-%91-loc s91)
+            (@floor-%91-pred s91))))
+  :enable (@floor-%91-rev @floor-%91-mem @floor-%91-loc @floor-%91-pred))
+(defruled @floor-%91-expand-rev-as-@floor-%93-rev
+  (equal (@floor-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@floor-%93-rev
+            (@floor-%91-mem s91)
+            (@floor-%92-loc s91)
+            (@floor-%91-pred s91))))
+  :enable (@floor-%91-expand-rev-as-@floor-%92-rev @floor-%92-rev @floor-%92-loc @floor-%92-val))
+(defruled @floor-%91-expand-rev-as-@floor-succ91-rev
+  (equal (@floor-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@floor-succ91-rev
+            (@floor-%91-mem s91)
+            (@floor-%93-loc s91)
+            (@floor-%91-pred s91))))
+  :enable (@floor-%91-expand-rev-as-@floor-%93-rev @floor-%93-rev @floor-%93-loc @floor-%93-val))
+(defruled @floor-%91-expand-rev-as-fwd
+  (equal (@floor-%91-rev mem loc pred)
+         (@floor-%91-fwd mem loc pred))
+  :enable (@floor-%91-expand-rev-as-@floor-succ91-rev @floor-succ91-rev @floor-succ91-lab @floor-%91-fwd))
+
 (defund @floor-%91-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1456,15 +2355,6 @@
     (loc (s '%93 (icmp-slt-i32 (g '%92 loc) 0) loc))
     (succ (case (g '%93 loc) (-1 '%94) (0 '%115))))
   (mv succ mem loc)))
-
-(defruled @floor-%91-expand-bb
-  (equal (@floor-%91-bb mem loc pred)
-         (@floor-%91-rev mem loc pred))
-  :enable (@floor-%91-bb @floor-%91-rev
-    @floor-%92-rev
-    @floor-%93-rev
-    @floor-succ91-rev)
-  :disable s-diff-s)
 
 (defund @floor-%94-mem (s94)
   (car s94))
@@ -1483,6 +2373,10 @@
 (defund @floor-succ94-lab (s94)
   (case (g '%96 (@floor-%96-loc s94)) (-1 '%97) (0 '%100)))
 
+(defund @floor-%94-fwd (mem loc pred)
+  (let ((s94 (list mem loc pred)))
+    (mv (@floor-succ94-lab s94) (@floor-%94-mem s94) (@floor-%96-loc s94))))
+
 (defund @floor-succ94-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%96 loc) (-1 '%97) (0 '%100)) mem loc))
@@ -1494,6 +2388,35 @@
 (defund @floor-%94-rev (mem loc pred)
   (@floor-%95-rev mem loc pred))
 
+(defruled @floor-%94-expand-rev-as-@floor-%95-rev
+  (equal (@floor-%94-rev mem loc pred)
+         (let ((s94 (list mem loc pred)))
+           (@floor-%95-rev
+            (@floor-%94-mem s94)
+            (@floor-%94-loc s94)
+            (@floor-%94-pred s94))))
+  :enable (@floor-%94-rev @floor-%94-mem @floor-%94-loc @floor-%94-pred))
+(defruled @floor-%94-expand-rev-as-@floor-%96-rev
+  (equal (@floor-%94-rev mem loc pred)
+         (let ((s94 (list mem loc pred)))
+           (@floor-%96-rev
+            (@floor-%94-mem s94)
+            (@floor-%95-loc s94)
+            (@floor-%94-pred s94))))
+  :enable (@floor-%94-expand-rev-as-@floor-%95-rev @floor-%95-rev @floor-%95-loc @floor-%95-val))
+(defruled @floor-%94-expand-rev-as-@floor-succ94-rev
+  (equal (@floor-%94-rev mem loc pred)
+         (let ((s94 (list mem loc pred)))
+           (@floor-succ94-rev
+            (@floor-%94-mem s94)
+            (@floor-%96-loc s94)
+            (@floor-%94-pred s94))))
+  :enable (@floor-%94-expand-rev-as-@floor-%96-rev @floor-%96-rev @floor-%96-loc @floor-%96-val))
+(defruled @floor-%94-expand-rev-as-fwd
+  (equal (@floor-%94-rev mem loc pred)
+         (@floor-%94-fwd mem loc pred))
+  :enable (@floor-%94-expand-rev-as-@floor-succ94-rev @floor-succ94-rev @floor-succ94-lab @floor-%94-fwd))
+
 (defund @floor-%94-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1501,15 +2424,6 @@
     (loc (s '%96 (icmp-eq-i32 (g '%95 loc) 20) loc))
     (succ (case (g '%96 loc) (-1 '%97) (0 '%100))))
   (mv succ mem loc)))
-
-(defruled @floor-%94-expand-bb
-  (equal (@floor-%94-bb mem loc pred)
-         (@floor-%94-rev mem loc pred))
-  :enable (@floor-%94-bb @floor-%94-rev
-    @floor-%95-rev
-    @floor-%96-rev
-    @floor-succ94-rev)
-  :disable s-diff-s)
 
 (defund @floor-%97-mem (s97)
   (car s97))
@@ -1531,6 +2445,10 @@
   (declare (ignore s97))
   '%114)
 
+(defund @floor-%97-fwd (mem loc pred)
+  (let ((s97 (list mem loc pred)))
+    (mv (@floor-succ97-lab s97) (@floor-m97.1-mem s97) (@floor-%99-loc s97))))
+
 (defund @floor-succ97-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%114 mem loc))
@@ -1544,6 +2462,43 @@
 (defund @floor-%97-rev (mem loc pred)
   (@floor-%98-rev mem loc pred))
 
+(defruled @floor-%97-expand-rev-as-@floor-%98-rev
+  (equal (@floor-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@floor-%98-rev
+            (@floor-%97-mem s97)
+            (@floor-%97-loc s97)
+            (@floor-%97-pred s97))))
+  :enable (@floor-%97-rev @floor-%97-mem @floor-%97-loc @floor-%97-pred))
+(defruled @floor-%97-expand-rev-as-@floor-%99-rev
+  (equal (@floor-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@floor-%99-rev
+            (@floor-%97-mem s97)
+            (@floor-%98-loc s97)
+            (@floor-%97-pred s97))))
+  :enable (@floor-%97-expand-rev-as-@floor-%98-rev @floor-%98-rev @floor-%98-loc @floor-%98-val))
+(defruled @floor-%97-expand-rev-as-@floor-m97.1-rev
+  (equal (@floor-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@floor-m97.1-rev
+            (@floor-%97-mem s97)
+            (@floor-%99-loc s97)
+            (@floor-%97-pred s97))))
+  :enable (@floor-%97-expand-rev-as-@floor-%99-rev @floor-%99-rev @floor-%99-loc @floor-%99-val))
+(defruled @floor-%97-expand-rev-as-@floor-succ97-rev
+  (equal (@floor-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@floor-succ97-rev
+            (@floor-m97.1-mem s97)
+            (@floor-%99-loc s97)
+            (@floor-%97-pred s97))))
+  :enable (@floor-%97-expand-rev-as-@floor-m97.1-rev @floor-m97.1-rev @floor-m97.1-mem))
+(defruled @floor-%97-expand-rev-as-fwd
+  (equal (@floor-%97-rev mem loc pred)
+         (@floor-%97-fwd mem loc pred))
+  :enable (@floor-%97-expand-rev-as-@floor-succ97-rev @floor-succ97-rev @floor-succ97-lab @floor-%97-fwd))
+
 (defund @floor-%97-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1552,16 +2507,6 @@
     (mem (store-i32 (g '%99 loc) (g '%i0 loc) mem))
     (succ '%114))
   (mv succ mem loc)))
-
-(defruled @floor-%97-expand-bb
-  (equal (@floor-%97-bb mem loc pred)
-         (@floor-%97-rev mem loc pred))
-  :enable (@floor-%97-bb @floor-%97-rev
-    @floor-%98-rev
-    @floor-%99-rev
-    @floor-m97.1-rev
-    @floor-succ97-rev)
-  :disable s-diff-s)
 
 (defund @floor-%100-mem (s100)
   (car s100))
@@ -1606,6 +2551,10 @@
 (defund @floor-succ100-lab (s100)
   (case (g '%108 (@floor-%108-loc s100)) (-1 '%109) (0 '%112)))
 
+(defund @floor-%100-fwd (mem loc pred)
+  (let ((s100 (list mem loc pred)))
+    (mv (@floor-succ100-lab s100) (@floor-m100.1-mem s100) (@floor-%108-loc s100))))
+
 (defund @floor-succ100-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%108 loc) (-1 '%109) (0 '%112)) mem loc))
@@ -1631,6 +2580,91 @@
 (defund @floor-%100-rev (mem loc pred)
   (@floor-%101-rev mem loc pred))
 
+(defruled @floor-%100-expand-rev-as-@floor-%101-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%101-rev
+            (@floor-%100-mem s100)
+            (@floor-%100-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-rev @floor-%100-mem @floor-%100-loc @floor-%100-pred))
+(defruled @floor-%100-expand-rev-as-@floor-%102-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%102-rev
+            (@floor-%100-mem s100)
+            (@floor-%101-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%101-rev @floor-%101-rev @floor-%101-loc @floor-%101-val))
+(defruled @floor-%100-expand-rev-as-@floor-%103-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%103-rev
+            (@floor-%100-mem s100)
+            (@floor-%102-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%102-rev @floor-%102-rev @floor-%102-loc @floor-%102-val))
+(defruled @floor-%100-expand-rev-as-@floor-%104-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%104-rev
+            (@floor-%100-mem s100)
+            (@floor-%103-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%103-rev @floor-%103-rev @floor-%103-loc @floor-%103-val))
+(defruled @floor-%100-expand-rev-as-@floor-%105-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%105-rev
+            (@floor-%100-mem s100)
+            (@floor-%104-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%104-rev @floor-%104-rev @floor-%104-loc @floor-%104-val))
+(defruled @floor-%100-expand-rev-as-@floor-m100.1-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-m100.1-rev
+            (@floor-%100-mem s100)
+            (@floor-%105-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%105-rev @floor-%105-rev @floor-%105-loc @floor-%105-val))
+(defruled @floor-%100-expand-rev-as-@floor-%106-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%106-rev
+            (@floor-m100.1-mem s100)
+            (@floor-%105-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-m100.1-rev @floor-m100.1-rev @floor-m100.1-mem))
+(defruled @floor-%100-expand-rev-as-@floor-%107-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%107-rev
+            (@floor-m100.1-mem s100)
+            (@floor-%106-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%106-rev @floor-%106-rev @floor-%106-loc @floor-%106-val))
+(defruled @floor-%100-expand-rev-as-@floor-%108-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-%108-rev
+            (@floor-m100.1-mem s100)
+            (@floor-%107-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%107-rev @floor-%107-rev @floor-%107-loc @floor-%107-val))
+(defruled @floor-%100-expand-rev-as-@floor-succ100-rev
+  (equal (@floor-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@floor-succ100-rev
+            (@floor-m100.1-mem s100)
+            (@floor-%108-loc s100)
+            (@floor-%100-pred s100))))
+  :enable (@floor-%100-expand-rev-as-@floor-%108-rev @floor-%108-rev @floor-%108-loc @floor-%108-val))
+(defruled @floor-%100-expand-rev-as-fwd
+  (equal (@floor-%100-rev mem loc pred)
+         (@floor-%100-fwd mem loc pred))
+  :enable (@floor-%100-expand-rev-as-@floor-succ100-rev @floor-succ100-rev @floor-succ100-lab @floor-%100-fwd))
+
 (defund @floor-%100-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1645,22 +2679,6 @@
     (loc (s '%108 (icmp-ult-i32 (g '%106 loc) (g '%107 loc)) loc))
     (succ (case (g '%108 loc) (-1 '%109) (0 '%112))))
   (mv succ mem loc)))
-
-(defruled @floor-%100-expand-bb
-  (equal (@floor-%100-bb mem loc pred)
-         (@floor-%100-rev mem loc pred))
-  :enable (@floor-%100-bb @floor-%100-rev
-    @floor-%101-rev
-    @floor-%102-rev
-    @floor-%103-rev
-    @floor-%104-rev
-    @floor-%105-rev
-    @floor-m100.1-rev
-    @floor-%106-rev
-    @floor-%107-rev
-    @floor-%108-rev
-    @floor-succ100-rev)
-  :disable s-diff-s)
 
 (defund @floor-%109-mem (s109)
   (car s109))
@@ -1682,6 +2700,10 @@
   (declare (ignore s109))
   '%112)
 
+(defund @floor-%109-fwd (mem loc pred)
+  (let ((s109 (list mem loc pred)))
+    (mv (@floor-succ109-lab s109) (@floor-m109.1-mem s109) (@floor-%111-loc s109))))
+
 (defund @floor-succ109-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%112 mem loc))
@@ -1695,6 +2717,43 @@
 (defund @floor-%109-rev (mem loc pred)
   (@floor-%110-rev mem loc pred))
 
+(defruled @floor-%109-expand-rev-as-@floor-%110-rev
+  (equal (@floor-%109-rev mem loc pred)
+         (let ((s109 (list mem loc pred)))
+           (@floor-%110-rev
+            (@floor-%109-mem s109)
+            (@floor-%109-loc s109)
+            (@floor-%109-pred s109))))
+  :enable (@floor-%109-rev @floor-%109-mem @floor-%109-loc @floor-%109-pred))
+(defruled @floor-%109-expand-rev-as-@floor-%111-rev
+  (equal (@floor-%109-rev mem loc pred)
+         (let ((s109 (list mem loc pred)))
+           (@floor-%111-rev
+            (@floor-%109-mem s109)
+            (@floor-%110-loc s109)
+            (@floor-%109-pred s109))))
+  :enable (@floor-%109-expand-rev-as-@floor-%110-rev @floor-%110-rev @floor-%110-loc @floor-%110-val))
+(defruled @floor-%109-expand-rev-as-@floor-m109.1-rev
+  (equal (@floor-%109-rev mem loc pred)
+         (let ((s109 (list mem loc pred)))
+           (@floor-m109.1-rev
+            (@floor-%109-mem s109)
+            (@floor-%111-loc s109)
+            (@floor-%109-pred s109))))
+  :enable (@floor-%109-expand-rev-as-@floor-%111-rev @floor-%111-rev @floor-%111-loc @floor-%111-val))
+(defruled @floor-%109-expand-rev-as-@floor-succ109-rev
+  (equal (@floor-%109-rev mem loc pred)
+         (let ((s109 (list mem loc pred)))
+           (@floor-succ109-rev
+            (@floor-m109.1-mem s109)
+            (@floor-%111-loc s109)
+            (@floor-%109-pred s109))))
+  :enable (@floor-%109-expand-rev-as-@floor-m109.1-rev @floor-m109.1-rev @floor-m109.1-mem))
+(defruled @floor-%109-expand-rev-as-fwd
+  (equal (@floor-%109-rev mem loc pred)
+         (@floor-%109-fwd mem loc pred))
+  :enable (@floor-%109-expand-rev-as-@floor-succ109-rev @floor-succ109-rev @floor-succ109-lab @floor-%109-fwd))
+
 (defund @floor-%109-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1703,16 +2762,6 @@
     (mem (store-i32 (g '%111 loc) (g '%i0 loc) mem))
     (succ '%112))
   (mv succ mem loc)))
-
-(defruled @floor-%109-expand-bb
-  (equal (@floor-%109-bb mem loc pred)
-         (@floor-%109-rev mem loc pred))
-  :enable (@floor-%109-bb @floor-%109-rev
-    @floor-%110-rev
-    @floor-%111-rev
-    @floor-m109.1-rev
-    @floor-succ109-rev)
-  :disable s-diff-s)
 
 (defund @floor-%112-mem (s112)
   (car s112))
@@ -1730,6 +2779,10 @@
   (declare (ignore s112))
   '%114)
 
+(defund @floor-%112-fwd (mem loc pred)
+  (let ((s112 (list mem loc pred)))
+    (mv (@floor-succ112-lab s112) (@floor-m112.1-mem s112) (@floor-%113-loc s112))))
+
 (defund @floor-succ112-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%114 mem loc))
@@ -1741,6 +2794,35 @@
 (defund @floor-%112-rev (mem loc pred)
   (@floor-%113-rev mem loc pred))
 
+(defruled @floor-%112-expand-rev-as-@floor-%113-rev
+  (equal (@floor-%112-rev mem loc pred)
+         (let ((s112 (list mem loc pred)))
+           (@floor-%113-rev
+            (@floor-%112-mem s112)
+            (@floor-%112-loc s112)
+            (@floor-%112-pred s112))))
+  :enable (@floor-%112-rev @floor-%112-mem @floor-%112-loc @floor-%112-pred))
+(defruled @floor-%112-expand-rev-as-@floor-m112.1-rev
+  (equal (@floor-%112-rev mem loc pred)
+         (let ((s112 (list mem loc pred)))
+           (@floor-m112.1-rev
+            (@floor-%112-mem s112)
+            (@floor-%113-loc s112)
+            (@floor-%112-pred s112))))
+  :enable (@floor-%112-expand-rev-as-@floor-%113-rev @floor-%113-rev @floor-%113-loc @floor-%113-val))
+(defruled @floor-%112-expand-rev-as-@floor-succ112-rev
+  (equal (@floor-%112-rev mem loc pred)
+         (let ((s112 (list mem loc pred)))
+           (@floor-succ112-rev
+            (@floor-m112.1-mem s112)
+            (@floor-%113-loc s112)
+            (@floor-%112-pred s112))))
+  :enable (@floor-%112-expand-rev-as-@floor-m112.1-rev @floor-m112.1-rev @floor-m112.1-mem))
+(defruled @floor-%112-expand-rev-as-fwd
+  (equal (@floor-%112-rev mem loc pred)
+         (@floor-%112-fwd mem loc pred))
+  :enable (@floor-%112-expand-rev-as-@floor-succ112-rev @floor-succ112-rev @floor-succ112-lab @floor-%112-fwd))
+
 (defund @floor-%112-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1748,15 +2830,6 @@
     (mem (store-i32 (g '%113 loc) (g '%i1 loc) mem))
     (succ '%114))
   (mv succ mem loc)))
-
-(defruled @floor-%112-expand-bb
-  (equal (@floor-%112-bb mem loc pred)
-         (@floor-%112-rev mem loc pred))
-  :enable (@floor-%112-bb @floor-%112-rev
-    @floor-%113-rev
-    @floor-m112.1-rev
-    @floor-succ112-rev)
-  :disable s-diff-s)
 
 (defund @floor-%114-mem (s114)
   (car s114))
@@ -1768,6 +2841,10 @@
   (declare (ignore s114))
   '%115)
 
+(defund @floor-%114-fwd (mem loc pred)
+  (let ((s114 (list mem loc pred)))
+    (mv (@floor-succ114-lab s114) (@floor-%114-mem s114) (@floor-%114-loc s114))))
+
 (defund @floor-succ114-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%115 mem loc))
@@ -1775,18 +2852,24 @@
 (defund @floor-%114-rev (mem loc pred)
   (@floor-succ114-rev mem loc pred))
 
+(defruled @floor-%114-expand-rev-as-@floor-succ114-rev
+  (equal (@floor-%114-rev mem loc pred)
+         (let ((s114 (list mem loc pred)))
+           (@floor-succ114-rev
+            (@floor-%114-mem s114)
+            (@floor-%114-loc s114)
+            (@floor-%114-pred s114))))
+  :enable (@floor-%114-rev @floor-%114-mem @floor-%114-loc @floor-%114-pred))
+(defruled @floor-%114-expand-rev-as-fwd
+  (equal (@floor-%114-rev mem loc pred)
+         (@floor-%114-fwd mem loc pred))
+  :enable (@floor-%114-expand-rev-as-@floor-succ114-rev @floor-succ114-rev @floor-succ114-lab @floor-%114-fwd))
+
 (defund @floor-%114-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%115))
   (mv succ mem loc)))
-
-(defruled @floor-%114-expand-bb
-  (equal (@floor-%114-bb mem loc pred)
-         (@floor-%114-rev mem loc pred))
-  :enable (@floor-%114-bb @floor-%114-rev
-    @floor-succ114-rev)
-  :disable s-diff-s)
 
 (defund @floor-%115-mem (s115)
   (car s115))
@@ -1816,6 +2899,10 @@
   (declare (ignore s115))
   '%120)
 
+(defund @floor-%115-fwd (mem loc pred)
+  (let ((s115 (list mem loc pred)))
+    (mv (@floor-succ115-lab s115) (@floor-m115.1-mem s115) (@floor-%119-loc s115))))
+
 (defund @floor-succ115-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%120 mem loc))
@@ -1833,6 +2920,59 @@
 (defund @floor-%115-rev (mem loc pred)
   (@floor-%116-rev mem loc pred))
 
+(defruled @floor-%115-expand-rev-as-@floor-%116-rev
+  (equal (@floor-%115-rev mem loc pred)
+         (let ((s115 (list mem loc pred)))
+           (@floor-%116-rev
+            (@floor-%115-mem s115)
+            (@floor-%115-loc s115)
+            (@floor-%115-pred s115))))
+  :enable (@floor-%115-rev @floor-%115-mem @floor-%115-loc @floor-%115-pred))
+(defruled @floor-%115-expand-rev-as-@floor-%117-rev
+  (equal (@floor-%115-rev mem loc pred)
+         (let ((s115 (list mem loc pred)))
+           (@floor-%117-rev
+            (@floor-%115-mem s115)
+            (@floor-%116-loc s115)
+            (@floor-%115-pred s115))))
+  :enable (@floor-%115-expand-rev-as-@floor-%116-rev @floor-%116-rev @floor-%116-loc @floor-%116-val))
+(defruled @floor-%115-expand-rev-as-@floor-%118-rev
+  (equal (@floor-%115-rev mem loc pred)
+         (let ((s115 (list mem loc pred)))
+           (@floor-%118-rev
+            (@floor-%115-mem s115)
+            (@floor-%117-loc s115)
+            (@floor-%115-pred s115))))
+  :enable (@floor-%115-expand-rev-as-@floor-%117-rev @floor-%117-rev @floor-%117-loc @floor-%117-val))
+(defruled @floor-%115-expand-rev-as-@floor-%119-rev
+  (equal (@floor-%115-rev mem loc pred)
+         (let ((s115 (list mem loc pred)))
+           (@floor-%119-rev
+            (@floor-%115-mem s115)
+            (@floor-%118-loc s115)
+            (@floor-%115-pred s115))))
+  :enable (@floor-%115-expand-rev-as-@floor-%118-rev @floor-%118-rev @floor-%118-loc @floor-%118-val))
+(defruled @floor-%115-expand-rev-as-@floor-m115.1-rev
+  (equal (@floor-%115-rev mem loc pred)
+         (let ((s115 (list mem loc pred)))
+           (@floor-m115.1-rev
+            (@floor-%115-mem s115)
+            (@floor-%119-loc s115)
+            (@floor-%115-pred s115))))
+  :enable (@floor-%115-expand-rev-as-@floor-%119-rev @floor-%119-rev @floor-%119-loc @floor-%119-val))
+(defruled @floor-%115-expand-rev-as-@floor-succ115-rev
+  (equal (@floor-%115-rev mem loc pred)
+         (let ((s115 (list mem loc pred)))
+           (@floor-succ115-rev
+            (@floor-m115.1-mem s115)
+            (@floor-%119-loc s115)
+            (@floor-%115-pred s115))))
+  :enable (@floor-%115-expand-rev-as-@floor-m115.1-rev @floor-m115.1-rev @floor-m115.1-mem))
+(defruled @floor-%115-expand-rev-as-fwd
+  (equal (@floor-%115-rev mem loc pred)
+         (@floor-%115-fwd mem loc pred))
+  :enable (@floor-%115-expand-rev-as-@floor-succ115-rev @floor-succ115-rev @floor-succ115-lab @floor-%115-fwd))
+
 (defund @floor-%115-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1844,18 +2984,6 @@
     (succ '%120))
   (mv succ mem loc)))
 
-(defruled @floor-%115-expand-bb
-  (equal (@floor-%115-bb mem loc pred)
-         (@floor-%115-rev mem loc pred))
-  :enable (@floor-%115-bb @floor-%115-rev
-    @floor-%116-rev
-    @floor-%117-rev
-    @floor-%118-rev
-    @floor-%119-rev
-    @floor-m115.1-rev
-    @floor-succ115-rev)
-  :disable s-diff-s)
-
 (defund @floor-%120-mem (s120)
   (car s120))
 (defund @floor-%120-loc (s120)
@@ -1866,6 +2994,10 @@
   (declare (ignore s120))
   '%121)
 
+(defund @floor-%120-fwd (mem loc pred)
+  (let ((s120 (list mem loc pred)))
+    (mv (@floor-succ120-lab s120) (@floor-%120-mem s120) (@floor-%120-loc s120))))
+
 (defund @floor-succ120-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%121 mem loc))
@@ -1873,18 +3005,24 @@
 (defund @floor-%120-rev (mem loc pred)
   (@floor-succ120-rev mem loc pred))
 
+(defruled @floor-%120-expand-rev-as-@floor-succ120-rev
+  (equal (@floor-%120-rev mem loc pred)
+         (let ((s120 (list mem loc pred)))
+           (@floor-succ120-rev
+            (@floor-%120-mem s120)
+            (@floor-%120-loc s120)
+            (@floor-%120-pred s120))))
+  :enable (@floor-%120-rev @floor-%120-mem @floor-%120-loc @floor-%120-pred))
+(defruled @floor-%120-expand-rev-as-fwd
+  (equal (@floor-%120-rev mem loc pred)
+         (@floor-%120-fwd mem loc pred))
+  :enable (@floor-%120-expand-rev-as-@floor-succ120-rev @floor-succ120-rev @floor-succ120-lab @floor-%120-fwd))
+
 (defund @floor-%120-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%121))
   (mv succ mem loc)))
-
-(defruled @floor-%120-expand-bb
-  (equal (@floor-%120-bb mem loc pred)
-         (@floor-%120-rev mem loc pred))
-  :enable (@floor-%120-bb @floor-%120-rev
-    @floor-succ120-rev)
-  :disable s-diff-s)
 
 (defund @floor-%121-mem (s121)
   (car s121))
@@ -1896,6 +3034,10 @@
   (declare (ignore s121))
   '%122)
 
+(defund @floor-%121-fwd (mem loc pred)
+  (let ((s121 (list mem loc pred)))
+    (mv (@floor-succ121-lab s121) (@floor-%121-mem s121) (@floor-%121-loc s121))))
+
 (defund @floor-succ121-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%122 mem loc))
@@ -1903,18 +3045,24 @@
 (defund @floor-%121-rev (mem loc pred)
   (@floor-succ121-rev mem loc pred))
 
+(defruled @floor-%121-expand-rev-as-@floor-succ121-rev
+  (equal (@floor-%121-rev mem loc pred)
+         (let ((s121 (list mem loc pred)))
+           (@floor-succ121-rev
+            (@floor-%121-mem s121)
+            (@floor-%121-loc s121)
+            (@floor-%121-pred s121))))
+  :enable (@floor-%121-rev @floor-%121-mem @floor-%121-loc @floor-%121-pred))
+(defruled @floor-%121-expand-rev-as-fwd
+  (equal (@floor-%121-rev mem loc pred)
+         (@floor-%121-fwd mem loc pred))
+  :enable (@floor-%121-expand-rev-as-@floor-succ121-rev @floor-succ121-rev @floor-succ121-lab @floor-%121-fwd))
+
 (defund @floor-%121-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%122))
   (mv succ mem loc)))
-
-(defruled @floor-%121-expand-bb
-  (equal (@floor-%121-bb mem loc pred)
-         (@floor-%121-rev mem loc pred))
-  :enable (@floor-%121-bb @floor-%121-rev
-    @floor-succ121-rev)
-  :disable s-diff-s)
 
 (defund @floor-%122-mem (s122)
   (car s122))
@@ -1956,6 +3104,10 @@
   (declare (ignore s122))
   '%129)
 
+(defund @floor-%122-fwd (mem loc pred)
+  (let ((s122 (list mem loc pred)))
+    (mv (@floor-succ122-lab s122) (@floor-m122.3-mem s122) (@floor-%128-loc s122))))
+
 (defund @floor-succ122-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%129 mem loc))
@@ -1981,6 +3133,91 @@
 (defund @floor-%122-rev (mem loc pred)
   (@floor-%123-rev mem loc pred))
 
+(defruled @floor-%122-expand-rev-as-@floor-%123-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-%123-rev
+            (@floor-%122-mem s122)
+            (@floor-%122-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-rev @floor-%122-mem @floor-%122-loc @floor-%122-pred))
+(defruled @floor-%122-expand-rev-as-@floor-%124-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-%124-rev
+            (@floor-%122-mem s122)
+            (@floor-%123-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-%123-rev @floor-%123-rev @floor-%123-loc @floor-%123-val))
+(defruled @floor-%122-expand-rev-as-@floor-%125-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-%125-rev
+            (@floor-%122-mem s122)
+            (@floor-%124-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-%124-rev @floor-%124-rev @floor-%124-loc @floor-%124-val))
+(defruled @floor-%122-expand-rev-as-@floor-m122.1-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-m122.1-rev
+            (@floor-%122-mem s122)
+            (@floor-%125-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-%125-rev @floor-%125-rev @floor-%125-loc @floor-%125-val))
+(defruled @floor-%122-expand-rev-as-@floor-%126-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-%126-rev
+            (@floor-m122.1-mem s122)
+            (@floor-%125-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-m122.1-rev @floor-m122.1-rev @floor-m122.1-mem))
+(defruled @floor-%122-expand-rev-as-@floor-%127-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-%127-rev
+            (@floor-m122.1-mem s122)
+            (@floor-%126-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-%126-rev @floor-%126-rev @floor-%126-loc @floor-%126-val))
+(defruled @floor-%122-expand-rev-as-@floor-m122.2-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-m122.2-rev
+            (@floor-m122.1-mem s122)
+            (@floor-%127-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-%127-rev @floor-%127-rev @floor-%127-loc @floor-%127-val))
+(defruled @floor-%122-expand-rev-as-@floor-%128-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-%128-rev
+            (@floor-m122.2-mem s122)
+            (@floor-%127-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-m122.2-rev @floor-m122.2-rev @floor-m122.2-mem))
+(defruled @floor-%122-expand-rev-as-@floor-m122.3-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-m122.3-rev
+            (@floor-m122.2-mem s122)
+            (@floor-%128-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-%128-rev @floor-%128-rev @floor-%128-loc @floor-%128-val))
+(defruled @floor-%122-expand-rev-as-@floor-succ122-rev
+  (equal (@floor-%122-rev mem loc pred)
+         (let ((s122 (list mem loc pred)))
+           (@floor-succ122-rev
+            (@floor-m122.3-mem s122)
+            (@floor-%128-loc s122)
+            (@floor-%122-pred s122))))
+  :enable (@floor-%122-expand-rev-as-@floor-m122.3-rev @floor-m122.3-rev @floor-m122.3-mem))
+(defruled @floor-%122-expand-rev-as-fwd
+  (equal (@floor-%122-rev mem loc pred)
+         (@floor-%122-fwd mem loc pred))
+  :enable (@floor-%122-expand-rev-as-@floor-succ122-rev @floor-succ122-rev @floor-succ122-lab @floor-%122-fwd))
+
 (defund @floor-%122-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1996,22 +3233,6 @@
     (succ '%129))
   (mv succ mem loc)))
 
-(defruled @floor-%122-expand-bb
-  (equal (@floor-%122-bb mem loc pred)
-         (@floor-%122-rev mem loc pred))
-  :enable (@floor-%122-bb @floor-%122-rev
-    @floor-%123-rev
-    @floor-%124-rev
-    @floor-%125-rev
-    @floor-m122.1-rev
-    @floor-%126-rev
-    @floor-%127-rev
-    @floor-m122.2-rev
-    @floor-%128-rev
-    @floor-m122.3-rev
-    @floor-succ122-rev)
-  :disable s-diff-s)
-
 (defund @floor-%129-mem (s129)
   (car s129))
 (defund @floor-%129-loc (s129)
@@ -2026,6 +3247,10 @@
   (declare (ignore s129))
   'ret)
 
+(defund @floor-%129-fwd (mem loc pred)
+  (let ((s129 (list mem loc pred)))
+    (mv (@floor-succ129-lab s129) (@floor-%129-mem s129) (@floor-%130-loc s129))))
+
 (defund @floor-succ129-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -2035,20 +3260,33 @@
 (defund @floor-%129-rev (mem loc pred)
   (@floor-%130-rev mem loc pred))
 
+(defruled @floor-%129-expand-rev-as-@floor-%130-rev
+  (equal (@floor-%129-rev mem loc pred)
+         (let ((s129 (list mem loc pred)))
+           (@floor-%130-rev
+            (@floor-%129-mem s129)
+            (@floor-%129-loc s129)
+            (@floor-%129-pred s129))))
+  :enable (@floor-%129-rev @floor-%129-mem @floor-%129-loc @floor-%129-pred))
+(defruled @floor-%129-expand-rev-as-@floor-succ129-rev
+  (equal (@floor-%129-rev mem loc pred)
+         (let ((s129 (list mem loc pred)))
+           (@floor-succ129-rev
+            (@floor-%129-mem s129)
+            (@floor-%130-loc s129)
+            (@floor-%129-pred s129))))
+  :enable (@floor-%129-expand-rev-as-@floor-%130-rev @floor-%130-rev @floor-%130-loc @floor-%130-val))
+(defruled @floor-%129-expand-rev-as-fwd
+  (equal (@floor-%129-rev mem loc pred)
+         (@floor-%129-fwd mem loc pred))
+  :enable (@floor-%129-expand-rev-as-@floor-succ129-rev @floor-succ129-rev @floor-succ129-lab @floor-%129-fwd))
+
 (defund @floor-%129-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%130 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @floor-%129-expand-bb
-  (equal (@floor-%129-bb mem loc pred)
-         (@floor-%129-rev mem loc pred))
-  :enable (@floor-%129-bb @floor-%129-rev
-    @floor-%130-rev
-    @floor-succ129-rev)
-  :disable s-diff-s)
 
 (defund @floor-step (label mem loc pred)
   (case label

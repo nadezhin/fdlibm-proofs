@@ -31,6 +31,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @sinh-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@sinh-succ0-lab s0) (@sinh-m0.1-mem s0) (@sinh-%3-loc s0))))
+
 (defund @sinh-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -46,6 +50,51 @@
 (defund @sinh-%0-rev (mem loc pred)
   (@sinh-%1-rev mem loc pred))
 
+(defruled @sinh-%0-expand-rev-as-@sinh-%1-rev
+  (equal (@sinh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sinh-%1-rev
+            (@sinh-%0-mem s0)
+            (@sinh-%0-loc s0)
+            (@sinh-%0-pred s0))))
+  :enable (@sinh-%0-rev @sinh-%0-mem @sinh-%0-loc @sinh-%0-pred))
+(defruled @sinh-%0-expand-rev-as-@sinh-m0.1-rev
+  (equal (@sinh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sinh-m0.1-rev
+            (@sinh-%1-mem s0)
+            (@sinh-%1-loc s0)
+            (@sinh-%0-pred s0))))
+  :enable (@sinh-%0-expand-rev-as-@sinh-%1-rev @sinh-%1-rev @sinh-%1-mem @sinh-%1-loc))
+(defruled @sinh-%0-expand-rev-as-@sinh-%2-rev
+  (equal (@sinh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sinh-%2-rev
+            (@sinh-m0.1-mem s0)
+            (@sinh-%1-loc s0)
+            (@sinh-%0-pred s0))))
+  :enable (@sinh-%0-expand-rev-as-@sinh-m0.1-rev @sinh-m0.1-rev @sinh-m0.1-mem))
+(defruled @sinh-%0-expand-rev-as-@sinh-%3-rev
+  (equal (@sinh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sinh-%3-rev
+            (@sinh-m0.1-mem s0)
+            (@sinh-%2-loc s0)
+            (@sinh-%0-pred s0))))
+  :enable (@sinh-%0-expand-rev-as-@sinh-%2-rev @sinh-%2-rev @sinh-%2-loc @sinh-%2-val))
+(defruled @sinh-%0-expand-rev-as-@sinh-succ0-rev
+  (equal (@sinh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sinh-succ0-rev
+            (@sinh-m0.1-mem s0)
+            (@sinh-%3-loc s0)
+            (@sinh-%0-pred s0))))
+  :enable (@sinh-%0-expand-rev-as-@sinh-%3-rev @sinh-%3-rev @sinh-%3-loc @sinh-%3-val))
+(defruled @sinh-%0-expand-rev-as-fwd
+  (equal (@sinh-%0-rev mem loc pred)
+         (@sinh-%0-fwd mem loc pred))
+  :enable (@sinh-%0-expand-rev-as-@sinh-succ0-rev @sinh-succ0-rev @sinh-succ0-lab @sinh-%0-fwd))
+
 (defund @sinh-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -56,17 +105,6 @@
     (loc (s '%3 (@__ieee754_sinh (g '%2 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @sinh-%0-expand-bb
-  (equal (@sinh-%0-bb mem loc pred)
-         (@sinh-%0-rev mem loc pred))
-  :enable (@sinh-%0-bb @sinh-%0-rev
-    @sinh-%1-rev
-    @sinh-m0.1-rev
-    @sinh-%2-rev
-    @sinh-%3-rev
-    @sinh-succ0-rev)
-  :disable s-diff-s)
 
 (defund @sinh-step (label mem loc pred)
   (case label

@@ -115,6 +115,10 @@
 (defund @__kernel_tan-succ0-lab (s0)
   (case (g '%11 (@__kernel_tan-%11-loc s0)) (-1 '%12) (0 '%65)))
 
+(defund @__kernel_tan-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@__kernel_tan-succ0-lab s0) (@__kernel_tan-m0.5-mem s0) (@__kernel_tan-%11-loc s0))))
+
 (defund @__kernel_tan-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%11 loc) (-1 '%12) (0 '%65)) mem loc))
@@ -176,6 +180,235 @@
 (defund @__kernel_tan-%0-rev (mem loc pred)
   (@__kernel_tan-%1-rev mem loc pred))
 
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%1-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%1-rev
+            (@__kernel_tan-%0-mem s0)
+            (@__kernel_tan-%0-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-rev @__kernel_tan-%0-mem @__kernel_tan-%0-loc @__kernel_tan-%0-pred))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%2-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%2-rev
+            (@__kernel_tan-%1-mem s0)
+            (@__kernel_tan-%1-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%1-rev @__kernel_tan-%1-rev @__kernel_tan-%1-mem @__kernel_tan-%1-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%3-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%3-rev
+            (@__kernel_tan-%2-mem s0)
+            (@__kernel_tan-%2-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%2-rev @__kernel_tan-%2-rev @__kernel_tan-%2-mem @__kernel_tan-%2-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%4-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%4-rev
+            (@__kernel_tan-%3-mem s0)
+            (@__kernel_tan-%3-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%3-rev @__kernel_tan-%3-rev @__kernel_tan-%3-mem @__kernel_tan-%3-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%z-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%z-rev
+            (@__kernel_tan-%4-mem s0)
+            (@__kernel_tan-%4-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%4-rev @__kernel_tan-%4-rev @__kernel_tan-%4-mem @__kernel_tan-%4-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%r-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%r-rev
+            (@__kernel_tan-%z-mem s0)
+            (@__kernel_tan-%z-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%z-rev @__kernel_tan-%z-rev @__kernel_tan-%z-mem @__kernel_tan-%z-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%v-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%v-rev
+            (@__kernel_tan-%r-mem s0)
+            (@__kernel_tan-%r-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%r-rev @__kernel_tan-%r-rev @__kernel_tan-%r-mem @__kernel_tan-%r-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%w-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%w-rev
+            (@__kernel_tan-%v-mem s0)
+            (@__kernel_tan-%v-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%v-rev @__kernel_tan-%v-rev @__kernel_tan-%v-mem @__kernel_tan-%v-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%s-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%s-rev
+            (@__kernel_tan-%w-mem s0)
+            (@__kernel_tan-%w-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%w-rev @__kernel_tan-%w-rev @__kernel_tan-%w-mem @__kernel_tan-%w-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%ix-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%ix-rev
+            (@__kernel_tan-%s-mem s0)
+            (@__kernel_tan-%s-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%s-rev @__kernel_tan-%s-rev @__kernel_tan-%s-mem @__kernel_tan-%s-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%hx-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%hx-rev
+            (@__kernel_tan-%ix-mem s0)
+            (@__kernel_tan-%ix-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%ix-rev @__kernel_tan-%ix-rev @__kernel_tan-%ix-mem @__kernel_tan-%ix-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%a-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%a-rev
+            (@__kernel_tan-%hx-mem s0)
+            (@__kernel_tan-%hx-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%hx-rev @__kernel_tan-%hx-rev @__kernel_tan-%hx-mem @__kernel_tan-%hx-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%t-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%t-rev
+            (@__kernel_tan-%a-mem s0)
+            (@__kernel_tan-%a-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%a-rev @__kernel_tan-%a-rev @__kernel_tan-%a-mem @__kernel_tan-%a-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%a1-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%a1-rev
+            (@__kernel_tan-%t-mem s0)
+            (@__kernel_tan-%t-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%t-rev @__kernel_tan-%t-rev @__kernel_tan-%t-mem @__kernel_tan-%t-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%t2-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%t2-rev
+            (@__kernel_tan-%a1-mem s0)
+            (@__kernel_tan-%a1-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%a1-rev @__kernel_tan-%a1-rev @__kernel_tan-%a1-mem @__kernel_tan-%a1-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.1-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-m0.1-rev
+            (@__kernel_tan-%t2-mem s0)
+            (@__kernel_tan-%t2-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%t2-rev @__kernel_tan-%t2-rev @__kernel_tan-%t2-mem @__kernel_tan-%t2-loc))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.2-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-m0.2-rev
+            (@__kernel_tan-m0.1-mem s0)
+            (@__kernel_tan-%t2-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.1-rev @__kernel_tan-m0.1-rev @__kernel_tan-m0.1-mem))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.3-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-m0.3-rev
+            (@__kernel_tan-m0.2-mem s0)
+            (@__kernel_tan-%t2-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.2-rev @__kernel_tan-m0.2-rev @__kernel_tan-m0.2-mem))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%5-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%5-rev
+            (@__kernel_tan-m0.3-mem s0)
+            (@__kernel_tan-%t2-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.3-rev @__kernel_tan-m0.3-rev @__kernel_tan-m0.3-mem))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%6-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%6-rev
+            (@__kernel_tan-m0.3-mem s0)
+            (@__kernel_tan-%5-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%5-rev @__kernel_tan-%5-rev @__kernel_tan-%5-loc @__kernel_tan-%5-val))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%7-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%7-rev
+            (@__kernel_tan-m0.3-mem s0)
+            (@__kernel_tan-%6-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%6-rev @__kernel_tan-%6-rev @__kernel_tan-%6-loc @__kernel_tan-%6-val))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.4-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-m0.4-rev
+            (@__kernel_tan-m0.3-mem s0)
+            (@__kernel_tan-%7-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%7-rev @__kernel_tan-%7-rev @__kernel_tan-%7-loc @__kernel_tan-%7-val))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%8-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%8-rev
+            (@__kernel_tan-m0.4-mem s0)
+            (@__kernel_tan-%7-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.4-rev @__kernel_tan-m0.4-rev @__kernel_tan-m0.4-mem))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%9-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%9-rev
+            (@__kernel_tan-m0.4-mem s0)
+            (@__kernel_tan-%8-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%8-rev @__kernel_tan-%8-rev @__kernel_tan-%8-loc @__kernel_tan-%8-val))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.5-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-m0.5-rev
+            (@__kernel_tan-m0.4-mem s0)
+            (@__kernel_tan-%9-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%9-rev @__kernel_tan-%9-rev @__kernel_tan-%9-loc @__kernel_tan-%9-val))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%10-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%10-rev
+            (@__kernel_tan-m0.5-mem s0)
+            (@__kernel_tan-%9-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-m0.5-rev @__kernel_tan-m0.5-rev @__kernel_tan-m0.5-mem))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-%11-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-%11-rev
+            (@__kernel_tan-m0.5-mem s0)
+            (@__kernel_tan-%10-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%10-rev @__kernel_tan-%10-rev @__kernel_tan-%10-loc @__kernel_tan-%10-val))
+(defruled @__kernel_tan-%0-expand-rev-as-@__kernel_tan-succ0-rev
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_tan-succ0-rev
+            (@__kernel_tan-m0.5-mem s0)
+            (@__kernel_tan-%11-loc s0)
+            (@__kernel_tan-%0-pred s0))))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-%11-rev @__kernel_tan-%11-rev @__kernel_tan-%11-loc @__kernel_tan-%11-val))
+(defruled @__kernel_tan-%0-expand-rev-as-fwd
+  (equal (@__kernel_tan-%0-rev mem loc pred)
+         (@__kernel_tan-%0-fwd mem loc pred))
+  :enable (@__kernel_tan-%0-expand-rev-as-@__kernel_tan-succ0-rev @__kernel_tan-succ0-rev @__kernel_tan-succ0-lab @__kernel_tan-%0-fwd))
+
 (defund @__kernel_tan-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -224,40 +457,6 @@
     (succ (case (g '%11 loc) (-1 '%12) (0 '%65))))
   (mv succ mem loc)))
 
-(defruled @__kernel_tan-%0-expand-bb
-  (equal (@__kernel_tan-%0-bb mem loc pred)
-         (@__kernel_tan-%0-rev mem loc pred))
-  :enable (@__kernel_tan-%0-bb @__kernel_tan-%0-rev
-    @__kernel_tan-%1-rev
-    @__kernel_tan-%2-rev
-    @__kernel_tan-%3-rev
-    @__kernel_tan-%4-rev
-    @__kernel_tan-%z-rev
-    @__kernel_tan-%r-rev
-    @__kernel_tan-%v-rev
-    @__kernel_tan-%w-rev
-    @__kernel_tan-%s-rev
-    @__kernel_tan-%ix-rev
-    @__kernel_tan-%hx-rev
-    @__kernel_tan-%a-rev
-    @__kernel_tan-%t-rev
-    @__kernel_tan-%a1-rev
-    @__kernel_tan-%t2-rev
-    @__kernel_tan-m0.1-rev
-    @__kernel_tan-m0.2-rev
-    @__kernel_tan-m0.3-rev
-    @__kernel_tan-%5-rev
-    @__kernel_tan-%6-rev
-    @__kernel_tan-%7-rev
-    @__kernel_tan-m0.4-rev
-    @__kernel_tan-%8-rev
-    @__kernel_tan-%9-rev
-    @__kernel_tan-m0.5-rev
-    @__kernel_tan-%10-rev
-    @__kernel_tan-%11-rev
-    @__kernel_tan-succ0-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_tan-%12-mem (s12)
   (car s12))
 (defund @__kernel_tan-%12-loc (s12)
@@ -279,6 +478,10 @@
 (defund @__kernel_tan-succ12-lab (s12)
   (case (g '%15 (@__kernel_tan-%15-loc s12)) (-1 '%16) (0 '%64)))
 
+(defund @__kernel_tan-%12-fwd (mem loc pred)
+  (let ((s12 (list mem loc pred)))
+    (mv (@__kernel_tan-succ12-lab s12) (@__kernel_tan-%12-mem s12) (@__kernel_tan-%15-loc s12))))
+
 (defund @__kernel_tan-succ12-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%15 loc) (-1 '%16) (0 '%64)) mem loc))
@@ -292,6 +495,43 @@
 (defund @__kernel_tan-%12-rev (mem loc pred)
   (@__kernel_tan-%13-rev mem loc pred))
 
+(defruled @__kernel_tan-%12-expand-rev-as-@__kernel_tan-%13-rev
+  (equal (@__kernel_tan-%12-rev mem loc pred)
+         (let ((s12 (list mem loc pred)))
+           (@__kernel_tan-%13-rev
+            (@__kernel_tan-%12-mem s12)
+            (@__kernel_tan-%12-loc s12)
+            (@__kernel_tan-%12-pred s12))))
+  :enable (@__kernel_tan-%12-rev @__kernel_tan-%12-mem @__kernel_tan-%12-loc @__kernel_tan-%12-pred))
+(defruled @__kernel_tan-%12-expand-rev-as-@__kernel_tan-%14-rev
+  (equal (@__kernel_tan-%12-rev mem loc pred)
+         (let ((s12 (list mem loc pred)))
+           (@__kernel_tan-%14-rev
+            (@__kernel_tan-%12-mem s12)
+            (@__kernel_tan-%13-loc s12)
+            (@__kernel_tan-%12-pred s12))))
+  :enable (@__kernel_tan-%12-expand-rev-as-@__kernel_tan-%13-rev @__kernel_tan-%13-rev @__kernel_tan-%13-loc @__kernel_tan-%13-val))
+(defruled @__kernel_tan-%12-expand-rev-as-@__kernel_tan-%15-rev
+  (equal (@__kernel_tan-%12-rev mem loc pred)
+         (let ((s12 (list mem loc pred)))
+           (@__kernel_tan-%15-rev
+            (@__kernel_tan-%12-mem s12)
+            (@__kernel_tan-%14-loc s12)
+            (@__kernel_tan-%12-pred s12))))
+  :enable (@__kernel_tan-%12-expand-rev-as-@__kernel_tan-%14-rev @__kernel_tan-%14-rev @__kernel_tan-%14-loc @__kernel_tan-%14-val))
+(defruled @__kernel_tan-%12-expand-rev-as-@__kernel_tan-succ12-rev
+  (equal (@__kernel_tan-%12-rev mem loc pred)
+         (let ((s12 (list mem loc pred)))
+           (@__kernel_tan-succ12-rev
+            (@__kernel_tan-%12-mem s12)
+            (@__kernel_tan-%15-loc s12)
+            (@__kernel_tan-%12-pred s12))))
+  :enable (@__kernel_tan-%12-expand-rev-as-@__kernel_tan-%15-rev @__kernel_tan-%15-rev @__kernel_tan-%15-loc @__kernel_tan-%15-val))
+(defruled @__kernel_tan-%12-expand-rev-as-fwd
+  (equal (@__kernel_tan-%12-rev mem loc pred)
+         (@__kernel_tan-%12-fwd mem loc pred))
+  :enable (@__kernel_tan-%12-expand-rev-as-@__kernel_tan-succ12-rev @__kernel_tan-succ12-rev @__kernel_tan-succ12-lab @__kernel_tan-%12-fwd))
+
 (defund @__kernel_tan-%12-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -300,16 +540,6 @@
     (loc (s '%15 (icmp-eq-i32 (g '%14 loc) 0) loc))
     (succ (case (g '%15 loc) (-1 '%16) (0 '%64))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%12-expand-bb
-  (equal (@__kernel_tan-%12-bb mem loc pred)
-         (@__kernel_tan-%12-rev mem loc pred))
-  :enable (@__kernel_tan-%12-bb @__kernel_tan-%12-rev
-    @__kernel_tan-%13-rev
-    @__kernel_tan-%14-rev
-    @__kernel_tan-%15-rev
-    @__kernel_tan-succ12-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%16-mem (s16)
   (car s16))
@@ -352,6 +582,10 @@
 (defund @__kernel_tan-succ16-lab (s16)
   (case (g '%24 (@__kernel_tan-%24-loc s16)) (-1 '%25) (0 '%30)))
 
+(defund @__kernel_tan-%16-fwd (mem loc pred)
+  (let ((s16 (list mem loc pred)))
+    (mv (@__kernel_tan-succ16-lab s16) (@__kernel_tan-%16-mem s16) (@__kernel_tan-%24-loc s16))))
+
 (defund @__kernel_tan-succ16-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%24 loc) (-1 '%25) (0 '%30)) mem loc))
@@ -375,6 +609,83 @@
 (defund @__kernel_tan-%16-rev (mem loc pred)
   (@__kernel_tan-%17-rev mem loc pred))
 
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%17-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%17-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%16-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-rev @__kernel_tan-%16-mem @__kernel_tan-%16-loc @__kernel_tan-%16-pred))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%18-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%18-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%17-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%17-rev @__kernel_tan-%17-rev @__kernel_tan-%17-loc @__kernel_tan-%17-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%19-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%19-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%18-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%18-rev @__kernel_tan-%18-rev @__kernel_tan-%18-loc @__kernel_tan-%18-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%20-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%20-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%19-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%19-rev @__kernel_tan-%19-rev @__kernel_tan-%19-loc @__kernel_tan-%19-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%21-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%21-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%20-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%20-rev @__kernel_tan-%20-rev @__kernel_tan-%20-loc @__kernel_tan-%20-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%22-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%22-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%21-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%21-rev @__kernel_tan-%21-rev @__kernel_tan-%21-loc @__kernel_tan-%21-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%23-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%23-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%22-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%22-rev @__kernel_tan-%22-rev @__kernel_tan-%22-loc @__kernel_tan-%22-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-%24-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-%24-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%23-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%23-rev @__kernel_tan-%23-rev @__kernel_tan-%23-loc @__kernel_tan-%23-val))
+(defruled @__kernel_tan-%16-expand-rev-as-@__kernel_tan-succ16-rev
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_tan-succ16-rev
+            (@__kernel_tan-%16-mem s16)
+            (@__kernel_tan-%24-loc s16)
+            (@__kernel_tan-%16-pred s16))))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-%24-rev @__kernel_tan-%24-rev @__kernel_tan-%24-loc @__kernel_tan-%24-val))
+(defruled @__kernel_tan-%16-expand-rev-as-fwd
+  (equal (@__kernel_tan-%16-rev mem loc pred)
+         (@__kernel_tan-%16-fwd mem loc pred))
+  :enable (@__kernel_tan-%16-expand-rev-as-@__kernel_tan-succ16-rev @__kernel_tan-succ16-rev @__kernel_tan-succ16-lab @__kernel_tan-%16-fwd))
+
 (defund @__kernel_tan-%16-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -388,21 +699,6 @@
     (loc (s '%24 (icmp-eq-i32 (g '%23 loc) 0) loc))
     (succ (case (g '%24 loc) (-1 '%25) (0 '%30))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%16-expand-bb
-  (equal (@__kernel_tan-%16-bb mem loc pred)
-         (@__kernel_tan-%16-rev mem loc pred))
-  :enable (@__kernel_tan-%16-bb @__kernel_tan-%16-rev
-    @__kernel_tan-%17-rev
-    @__kernel_tan-%18-rev
-    @__kernel_tan-%19-rev
-    @__kernel_tan-%20-rev
-    @__kernel_tan-%21-rev
-    @__kernel_tan-%22-rev
-    @__kernel_tan-%23-rev
-    @__kernel_tan-%24-rev
-    @__kernel_tan-succ16-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%25-mem (s25)
   (car s25))
@@ -432,6 +728,10 @@
   (declare (ignore s25))
   '%213)
 
+(defund @__kernel_tan-%25-fwd (mem loc pred)
+  (let ((s25 (list mem loc pred)))
+    (mv (@__kernel_tan-succ25-lab s25) (@__kernel_tan-m25.1-mem s25) (@__kernel_tan-%29-loc s25))))
+
 (defund @__kernel_tan-succ25-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%213 mem loc))
@@ -449,6 +749,59 @@
 (defund @__kernel_tan-%25-rev (mem loc pred)
   (@__kernel_tan-%26-rev mem loc pred))
 
+(defruled @__kernel_tan-%25-expand-rev-as-@__kernel_tan-%26-rev
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@__kernel_tan-%26-rev
+            (@__kernel_tan-%25-mem s25)
+            (@__kernel_tan-%25-loc s25)
+            (@__kernel_tan-%25-pred s25))))
+  :enable (@__kernel_tan-%25-rev @__kernel_tan-%25-mem @__kernel_tan-%25-loc @__kernel_tan-%25-pred))
+(defruled @__kernel_tan-%25-expand-rev-as-@__kernel_tan-%27-rev
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@__kernel_tan-%27-rev
+            (@__kernel_tan-%25-mem s25)
+            (@__kernel_tan-%26-loc s25)
+            (@__kernel_tan-%25-pred s25))))
+  :enable (@__kernel_tan-%25-expand-rev-as-@__kernel_tan-%26-rev @__kernel_tan-%26-rev @__kernel_tan-%26-loc @__kernel_tan-%26-val))
+(defruled @__kernel_tan-%25-expand-rev-as-@__kernel_tan-%28-rev
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@__kernel_tan-%28-rev
+            (@__kernel_tan-%25-mem s25)
+            (@__kernel_tan-%27-loc s25)
+            (@__kernel_tan-%25-pred s25))))
+  :enable (@__kernel_tan-%25-expand-rev-as-@__kernel_tan-%27-rev @__kernel_tan-%27-rev @__kernel_tan-%27-loc @__kernel_tan-%27-val))
+(defruled @__kernel_tan-%25-expand-rev-as-@__kernel_tan-%29-rev
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@__kernel_tan-%29-rev
+            (@__kernel_tan-%25-mem s25)
+            (@__kernel_tan-%28-loc s25)
+            (@__kernel_tan-%25-pred s25))))
+  :enable (@__kernel_tan-%25-expand-rev-as-@__kernel_tan-%28-rev @__kernel_tan-%28-rev @__kernel_tan-%28-loc @__kernel_tan-%28-val))
+(defruled @__kernel_tan-%25-expand-rev-as-@__kernel_tan-m25.1-rev
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@__kernel_tan-m25.1-rev
+            (@__kernel_tan-%25-mem s25)
+            (@__kernel_tan-%29-loc s25)
+            (@__kernel_tan-%25-pred s25))))
+  :enable (@__kernel_tan-%25-expand-rev-as-@__kernel_tan-%29-rev @__kernel_tan-%29-rev @__kernel_tan-%29-loc @__kernel_tan-%29-val))
+(defruled @__kernel_tan-%25-expand-rev-as-@__kernel_tan-succ25-rev
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@__kernel_tan-succ25-rev
+            (@__kernel_tan-m25.1-mem s25)
+            (@__kernel_tan-%29-loc s25)
+            (@__kernel_tan-%25-pred s25))))
+  :enable (@__kernel_tan-%25-expand-rev-as-@__kernel_tan-m25.1-rev @__kernel_tan-m25.1-rev @__kernel_tan-m25.1-mem))
+(defruled @__kernel_tan-%25-expand-rev-as-fwd
+  (equal (@__kernel_tan-%25-rev mem loc pred)
+         (@__kernel_tan-%25-fwd mem loc pred))
+  :enable (@__kernel_tan-%25-expand-rev-as-@__kernel_tan-succ25-rev @__kernel_tan-succ25-rev @__kernel_tan-succ25-lab @__kernel_tan-%25-fwd))
+
 (defund @__kernel_tan-%25-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -459,18 +812,6 @@
     (mem (store-double (g '%29 loc) (g '%1 loc) mem))
     (succ '%213))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%25-expand-bb
-  (equal (@__kernel_tan-%25-bb mem loc pred)
-         (@__kernel_tan-%25-rev mem loc pred))
-  :enable (@__kernel_tan-%25-bb @__kernel_tan-%25-rev
-    @__kernel_tan-%26-rev
-    @__kernel_tan-%27-rev
-    @__kernel_tan-%28-rev
-    @__kernel_tan-%29-rev
-    @__kernel_tan-m25.1-rev
-    @__kernel_tan-succ25-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%30-mem (s30)
   (car s30))
@@ -489,6 +830,10 @@
 (defund @__kernel_tan-succ30-lab (s30)
   (case (g '%32 (@__kernel_tan-%32-loc s30)) (-1 '%33) (0 '%35)))
 
+(defund @__kernel_tan-%30-fwd (mem loc pred)
+  (let ((s30 (list mem loc pred)))
+    (mv (@__kernel_tan-succ30-lab s30) (@__kernel_tan-%30-mem s30) (@__kernel_tan-%32-loc s30))))
+
 (defund @__kernel_tan-succ30-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%32 loc) (-1 '%33) (0 '%35)) mem loc))
@@ -500,6 +845,35 @@
 (defund @__kernel_tan-%30-rev (mem loc pred)
   (@__kernel_tan-%31-rev mem loc pred))
 
+(defruled @__kernel_tan-%30-expand-rev-as-@__kernel_tan-%31-rev
+  (equal (@__kernel_tan-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__kernel_tan-%31-rev
+            (@__kernel_tan-%30-mem s30)
+            (@__kernel_tan-%30-loc s30)
+            (@__kernel_tan-%30-pred s30))))
+  :enable (@__kernel_tan-%30-rev @__kernel_tan-%30-mem @__kernel_tan-%30-loc @__kernel_tan-%30-pred))
+(defruled @__kernel_tan-%30-expand-rev-as-@__kernel_tan-%32-rev
+  (equal (@__kernel_tan-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__kernel_tan-%32-rev
+            (@__kernel_tan-%30-mem s30)
+            (@__kernel_tan-%31-loc s30)
+            (@__kernel_tan-%30-pred s30))))
+  :enable (@__kernel_tan-%30-expand-rev-as-@__kernel_tan-%31-rev @__kernel_tan-%31-rev @__kernel_tan-%31-loc @__kernel_tan-%31-val))
+(defruled @__kernel_tan-%30-expand-rev-as-@__kernel_tan-succ30-rev
+  (equal (@__kernel_tan-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__kernel_tan-succ30-rev
+            (@__kernel_tan-%30-mem s30)
+            (@__kernel_tan-%32-loc s30)
+            (@__kernel_tan-%30-pred s30))))
+  :enable (@__kernel_tan-%30-expand-rev-as-@__kernel_tan-%32-rev @__kernel_tan-%32-rev @__kernel_tan-%32-loc @__kernel_tan-%32-val))
+(defruled @__kernel_tan-%30-expand-rev-as-fwd
+  (equal (@__kernel_tan-%30-rev mem loc pred)
+         (@__kernel_tan-%30-fwd mem loc pred))
+  :enable (@__kernel_tan-%30-expand-rev-as-@__kernel_tan-succ30-rev @__kernel_tan-succ30-rev @__kernel_tan-succ30-lab @__kernel_tan-%30-fwd))
+
 (defund @__kernel_tan-%30-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -507,15 +881,6 @@
     (loc (s '%32 (icmp-eq-i32 (g '%31 loc) 1) loc))
     (succ (case (g '%32 loc) (-1 '%33) (0 '%35))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%30-expand-bb
-  (equal (@__kernel_tan-%30-bb mem loc pred)
-         (@__kernel_tan-%30-rev mem loc pred))
-  :enable (@__kernel_tan-%30-bb @__kernel_tan-%30-rev
-    @__kernel_tan-%31-rev
-    @__kernel_tan-%32-rev
-    @__kernel_tan-succ30-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%33-mem (s33)
   (car s33))
@@ -533,6 +898,10 @@
   (declare (ignore s33))
   '%213)
 
+(defund @__kernel_tan-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@__kernel_tan-succ33-lab s33) (@__kernel_tan-m33.1-mem s33) (@__kernel_tan-%34-loc s33))))
+
 (defund @__kernel_tan-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%213 mem loc))
@@ -544,6 +913,35 @@
 (defund @__kernel_tan-%33-rev (mem loc pred)
   (@__kernel_tan-%34-rev mem loc pred))
 
+(defruled @__kernel_tan-%33-expand-rev-as-@__kernel_tan-%34-rev
+  (equal (@__kernel_tan-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__kernel_tan-%34-rev
+            (@__kernel_tan-%33-mem s33)
+            (@__kernel_tan-%33-loc s33)
+            (@__kernel_tan-%33-pred s33))))
+  :enable (@__kernel_tan-%33-rev @__kernel_tan-%33-mem @__kernel_tan-%33-loc @__kernel_tan-%33-pred))
+(defruled @__kernel_tan-%33-expand-rev-as-@__kernel_tan-m33.1-rev
+  (equal (@__kernel_tan-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__kernel_tan-m33.1-rev
+            (@__kernel_tan-%33-mem s33)
+            (@__kernel_tan-%34-loc s33)
+            (@__kernel_tan-%33-pred s33))))
+  :enable (@__kernel_tan-%33-expand-rev-as-@__kernel_tan-%34-rev @__kernel_tan-%34-rev @__kernel_tan-%34-loc @__kernel_tan-%34-val))
+(defruled @__kernel_tan-%33-expand-rev-as-@__kernel_tan-succ33-rev
+  (equal (@__kernel_tan-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__kernel_tan-succ33-rev
+            (@__kernel_tan-m33.1-mem s33)
+            (@__kernel_tan-%34-loc s33)
+            (@__kernel_tan-%33-pred s33))))
+  :enable (@__kernel_tan-%33-expand-rev-as-@__kernel_tan-m33.1-rev @__kernel_tan-m33.1-rev @__kernel_tan-m33.1-mem))
+(defruled @__kernel_tan-%33-expand-rev-as-fwd
+  (equal (@__kernel_tan-%33-rev mem loc pred)
+         (@__kernel_tan-%33-fwd mem loc pred))
+  :enable (@__kernel_tan-%33-expand-rev-as-@__kernel_tan-succ33-rev @__kernel_tan-succ33-rev @__kernel_tan-succ33-lab @__kernel_tan-%33-fwd))
+
 (defund @__kernel_tan-%33-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -551,15 +949,6 @@
     (mem (store-double (g '%34 loc) (g '%1 loc) mem))
     (succ '%213))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%33-expand-bb
-  (equal (@__kernel_tan-%33-bb mem loc pred)
-         (@__kernel_tan-%33-rev mem loc pred))
-  :enable (@__kernel_tan-%33-bb @__kernel_tan-%33-rev
-    @__kernel_tan-%34-rev
-    @__kernel_tan-m33.1-rev
-    @__kernel_tan-succ33-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%35-mem (s35)
   (car s35))
@@ -701,6 +1090,10 @@
   (declare (ignore s35))
   '%213)
 
+(defund @__kernel_tan-%35-fwd (mem loc pred)
+  (let ((s35 (list mem loc pred)))
+    (mv (@__kernel_tan-succ35-lab s35) (@__kernel_tan-m35.9-mem s35) (@__kernel_tan-%63-loc s35))))
+
 (defund @__kernel_tan-succ35-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%213 mem loc))
@@ -782,6 +1175,315 @@
 (defund @__kernel_tan-%35-rev (mem loc pred)
   (@__kernel_tan-%36-rev mem loc pred))
 
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%36-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%36-rev
+            (@__kernel_tan-%35-mem s35)
+            (@__kernel_tan-%35-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-rev @__kernel_tan-%35-mem @__kernel_tan-%35-loc @__kernel_tan-%35-pred))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%37-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%37-rev
+            (@__kernel_tan-%35-mem s35)
+            (@__kernel_tan-%36-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%36-rev @__kernel_tan-%36-rev @__kernel_tan-%36-loc @__kernel_tan-%36-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%38-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%38-rev
+            (@__kernel_tan-%35-mem s35)
+            (@__kernel_tan-%37-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%37-rev @__kernel_tan-%37-rev @__kernel_tan-%37-loc @__kernel_tan-%37-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.1-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.1-rev
+            (@__kernel_tan-%35-mem s35)
+            (@__kernel_tan-%38-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%38-rev @__kernel_tan-%38-rev @__kernel_tan-%38-loc @__kernel_tan-%38-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.2-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.2-rev
+            (@__kernel_tan-m35.1-mem s35)
+            (@__kernel_tan-%38-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.1-rev @__kernel_tan-m35.1-rev @__kernel_tan-m35.1-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%39-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%39-rev
+            (@__kernel_tan-m35.2-mem s35)
+            (@__kernel_tan-%38-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.2-rev @__kernel_tan-m35.2-rev @__kernel_tan-m35.2-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.3-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.3-rev
+            (@__kernel_tan-m35.2-mem s35)
+            (@__kernel_tan-%39-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%39-rev @__kernel_tan-%39-rev @__kernel_tan-%39-loc @__kernel_tan-%39-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%40-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%40-rev
+            (@__kernel_tan-m35.3-mem s35)
+            (@__kernel_tan-%39-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.3-rev @__kernel_tan-m35.3-rev @__kernel_tan-m35.3-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%41-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%41-rev
+            (@__kernel_tan-m35.3-mem s35)
+            (@__kernel_tan-%40-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%40-rev @__kernel_tan-%40-rev @__kernel_tan-%40-loc @__kernel_tan-%40-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%42-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%42-rev
+            (@__kernel_tan-m35.3-mem s35)
+            (@__kernel_tan-%41-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%41-rev @__kernel_tan-%41-rev @__kernel_tan-%41-loc @__kernel_tan-%41-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%43-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%43-rev
+            (@__kernel_tan-m35.3-mem s35)
+            (@__kernel_tan-%42-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%42-rev @__kernel_tan-%42-rev @__kernel_tan-%42-loc @__kernel_tan-%42-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%44-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%44-rev
+            (@__kernel_tan-m35.3-mem s35)
+            (@__kernel_tan-%43-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%43-rev @__kernel_tan-%43-rev @__kernel_tan-%43-loc @__kernel_tan-%43-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.4-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.4-rev
+            (@__kernel_tan-m35.3-mem s35)
+            (@__kernel_tan-%44-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%44-rev @__kernel_tan-%44-rev @__kernel_tan-%44-loc @__kernel_tan-%44-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%45-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%45-rev
+            (@__kernel_tan-m35.4-mem s35)
+            (@__kernel_tan-%44-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.4-rev @__kernel_tan-m35.4-rev @__kernel_tan-m35.4-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%46-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%46-rev
+            (@__kernel_tan-m35.4-mem s35)
+            (@__kernel_tan-%45-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%45-rev @__kernel_tan-%45-rev @__kernel_tan-%45-loc @__kernel_tan-%45-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%47-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%47-rev
+            (@__kernel_tan-m35.4-mem s35)
+            (@__kernel_tan-%46-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%46-rev @__kernel_tan-%46-rev @__kernel_tan-%46-loc @__kernel_tan-%46-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%48-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%48-rev
+            (@__kernel_tan-m35.4-mem s35)
+            (@__kernel_tan-%47-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%47-rev @__kernel_tan-%47-rev @__kernel_tan-%47-loc @__kernel_tan-%47-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.5-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.5-rev
+            (@__kernel_tan-m35.4-mem s35)
+            (@__kernel_tan-%48-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%48-rev @__kernel_tan-%48-rev @__kernel_tan-%48-loc @__kernel_tan-%48-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.6-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.6-rev
+            (@__kernel_tan-m35.5-mem s35)
+            (@__kernel_tan-%48-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.5-rev @__kernel_tan-m35.5-rev @__kernel_tan-m35.5-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%49-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%49-rev
+            (@__kernel_tan-m35.6-mem s35)
+            (@__kernel_tan-%48-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.6-rev @__kernel_tan-m35.6-rev @__kernel_tan-m35.6-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.7-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.7-rev
+            (@__kernel_tan-m35.6-mem s35)
+            (@__kernel_tan-%49-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%49-rev @__kernel_tan-%49-rev @__kernel_tan-%49-loc @__kernel_tan-%49-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%50-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%50-rev
+            (@__kernel_tan-m35.7-mem s35)
+            (@__kernel_tan-%49-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.7-rev @__kernel_tan-m35.7-rev @__kernel_tan-m35.7-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%51-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%51-rev
+            (@__kernel_tan-m35.7-mem s35)
+            (@__kernel_tan-%50-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%50-rev @__kernel_tan-%50-rev @__kernel_tan-%50-loc @__kernel_tan-%50-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%52-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%52-rev
+            (@__kernel_tan-m35.7-mem s35)
+            (@__kernel_tan-%51-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%51-rev @__kernel_tan-%51-rev @__kernel_tan-%51-loc @__kernel_tan-%51-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%53-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%53-rev
+            (@__kernel_tan-m35.7-mem s35)
+            (@__kernel_tan-%52-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%52-rev @__kernel_tan-%52-rev @__kernel_tan-%52-loc @__kernel_tan-%52-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%54-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%54-rev
+            (@__kernel_tan-m35.7-mem s35)
+            (@__kernel_tan-%53-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%53-rev @__kernel_tan-%53-rev @__kernel_tan-%53-loc @__kernel_tan-%53-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.8-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.8-rev
+            (@__kernel_tan-m35.7-mem s35)
+            (@__kernel_tan-%54-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%54-rev @__kernel_tan-%54-rev @__kernel_tan-%54-loc @__kernel_tan-%54-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%55-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%55-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%54-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.8-rev @__kernel_tan-m35.8-rev @__kernel_tan-m35.8-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%56-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%56-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%55-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%55-rev @__kernel_tan-%55-rev @__kernel_tan-%55-loc @__kernel_tan-%55-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%57-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%57-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%56-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%56-rev @__kernel_tan-%56-rev @__kernel_tan-%56-loc @__kernel_tan-%56-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%58-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%58-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%57-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%57-rev @__kernel_tan-%57-rev @__kernel_tan-%57-loc @__kernel_tan-%57-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%59-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%59-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%58-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%58-rev @__kernel_tan-%58-rev @__kernel_tan-%58-loc @__kernel_tan-%58-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%60-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%60-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%59-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%59-rev @__kernel_tan-%59-rev @__kernel_tan-%59-loc @__kernel_tan-%59-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%61-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%61-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%60-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%60-rev @__kernel_tan-%60-rev @__kernel_tan-%60-loc @__kernel_tan-%60-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%62-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%62-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%61-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%61-rev @__kernel_tan-%61-rev @__kernel_tan-%61-loc @__kernel_tan-%61-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-%63-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-%63-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%62-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%62-rev @__kernel_tan-%62-rev @__kernel_tan-%62-loc @__kernel_tan-%62-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.9-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-m35.9-rev
+            (@__kernel_tan-m35.8-mem s35)
+            (@__kernel_tan-%63-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-%63-rev @__kernel_tan-%63-rev @__kernel_tan-%63-loc @__kernel_tan-%63-val))
+(defruled @__kernel_tan-%35-expand-rev-as-@__kernel_tan-succ35-rev
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__kernel_tan-succ35-rev
+            (@__kernel_tan-m35.9-mem s35)
+            (@__kernel_tan-%63-loc s35)
+            (@__kernel_tan-%35-pred s35))))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-m35.9-rev @__kernel_tan-m35.9-rev @__kernel_tan-m35.9-mem))
+(defruled @__kernel_tan-%35-expand-rev-as-fwd
+  (equal (@__kernel_tan-%35-rev mem loc pred)
+         (@__kernel_tan-%35-fwd mem loc pred))
+  :enable (@__kernel_tan-%35-expand-rev-as-@__kernel_tan-succ35-rev @__kernel_tan-succ35-rev @__kernel_tan-succ35-lab @__kernel_tan-%35-fwd))
+
 (defund @__kernel_tan-%35-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -825,50 +1527,6 @@
     (succ '%213))
   (mv succ mem loc)))
 
-(defruled @__kernel_tan-%35-expand-bb
-  (equal (@__kernel_tan-%35-bb mem loc pred)
-         (@__kernel_tan-%35-rev mem loc pred))
-  :enable (@__kernel_tan-%35-bb @__kernel_tan-%35-rev
-    @__kernel_tan-%36-rev
-    @__kernel_tan-%37-rev
-    @__kernel_tan-%38-rev
-    @__kernel_tan-m35.1-rev
-    @__kernel_tan-m35.2-rev
-    @__kernel_tan-%39-rev
-    @__kernel_tan-m35.3-rev
-    @__kernel_tan-%40-rev
-    @__kernel_tan-%41-rev
-    @__kernel_tan-%42-rev
-    @__kernel_tan-%43-rev
-    @__kernel_tan-%44-rev
-    @__kernel_tan-m35.4-rev
-    @__kernel_tan-%45-rev
-    @__kernel_tan-%46-rev
-    @__kernel_tan-%47-rev
-    @__kernel_tan-%48-rev
-    @__kernel_tan-m35.5-rev
-    @__kernel_tan-m35.6-rev
-    @__kernel_tan-%49-rev
-    @__kernel_tan-m35.7-rev
-    @__kernel_tan-%50-rev
-    @__kernel_tan-%51-rev
-    @__kernel_tan-%52-rev
-    @__kernel_tan-%53-rev
-    @__kernel_tan-%54-rev
-    @__kernel_tan-m35.8-rev
-    @__kernel_tan-%55-rev
-    @__kernel_tan-%56-rev
-    @__kernel_tan-%57-rev
-    @__kernel_tan-%58-rev
-    @__kernel_tan-%59-rev
-    @__kernel_tan-%60-rev
-    @__kernel_tan-%61-rev
-    @__kernel_tan-%62-rev
-    @__kernel_tan-%63-rev
-    @__kernel_tan-m35.9-rev
-    @__kernel_tan-succ35-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_tan-%64-mem (s64)
   (car s64))
 (defund @__kernel_tan-%64-loc (s64)
@@ -879,6 +1537,10 @@
   (declare (ignore s64))
   '%65)
 
+(defund @__kernel_tan-%64-fwd (mem loc pred)
+  (let ((s64 (list mem loc pred)))
+    (mv (@__kernel_tan-succ64-lab s64) (@__kernel_tan-%64-mem s64) (@__kernel_tan-%64-loc s64))))
+
 (defund @__kernel_tan-succ64-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%65 mem loc))
@@ -886,18 +1548,24 @@
 (defund @__kernel_tan-%64-rev (mem loc pred)
   (@__kernel_tan-succ64-rev mem loc pred))
 
+(defruled @__kernel_tan-%64-expand-rev-as-@__kernel_tan-succ64-rev
+  (equal (@__kernel_tan-%64-rev mem loc pred)
+         (let ((s64 (list mem loc pred)))
+           (@__kernel_tan-succ64-rev
+            (@__kernel_tan-%64-mem s64)
+            (@__kernel_tan-%64-loc s64)
+            (@__kernel_tan-%64-pred s64))))
+  :enable (@__kernel_tan-%64-rev @__kernel_tan-%64-mem @__kernel_tan-%64-loc @__kernel_tan-%64-pred))
+(defruled @__kernel_tan-%64-expand-rev-as-fwd
+  (equal (@__kernel_tan-%64-rev mem loc pred)
+         (@__kernel_tan-%64-fwd mem loc pred))
+  :enable (@__kernel_tan-%64-expand-rev-as-@__kernel_tan-succ64-rev @__kernel_tan-succ64-rev @__kernel_tan-succ64-lab @__kernel_tan-%64-fwd))
+
 (defund @__kernel_tan-%64-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%65))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%64-expand-bb
-  (equal (@__kernel_tan-%64-bb mem loc pred)
-         (@__kernel_tan-%64-rev mem loc pred))
-  :enable (@__kernel_tan-%64-bb @__kernel_tan-%64-rev
-    @__kernel_tan-succ64-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%65-mem (s65)
   (car s65))
@@ -916,6 +1584,10 @@
 (defund @__kernel_tan-succ65-lab (s65)
   (case (g '%67 (@__kernel_tan-%67-loc s65)) (-1 '%68) (0 '%86)))
 
+(defund @__kernel_tan-%65-fwd (mem loc pred)
+  (let ((s65 (list mem loc pred)))
+    (mv (@__kernel_tan-succ65-lab s65) (@__kernel_tan-%65-mem s65) (@__kernel_tan-%67-loc s65))))
+
 (defund @__kernel_tan-succ65-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%67 loc) (-1 '%68) (0 '%86)) mem loc))
@@ -927,6 +1599,35 @@
 (defund @__kernel_tan-%65-rev (mem loc pred)
   (@__kernel_tan-%66-rev mem loc pred))
 
+(defruled @__kernel_tan-%65-expand-rev-as-@__kernel_tan-%66-rev
+  (equal (@__kernel_tan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__kernel_tan-%66-rev
+            (@__kernel_tan-%65-mem s65)
+            (@__kernel_tan-%65-loc s65)
+            (@__kernel_tan-%65-pred s65))))
+  :enable (@__kernel_tan-%65-rev @__kernel_tan-%65-mem @__kernel_tan-%65-loc @__kernel_tan-%65-pred))
+(defruled @__kernel_tan-%65-expand-rev-as-@__kernel_tan-%67-rev
+  (equal (@__kernel_tan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__kernel_tan-%67-rev
+            (@__kernel_tan-%65-mem s65)
+            (@__kernel_tan-%66-loc s65)
+            (@__kernel_tan-%65-pred s65))))
+  :enable (@__kernel_tan-%65-expand-rev-as-@__kernel_tan-%66-rev @__kernel_tan-%66-rev @__kernel_tan-%66-loc @__kernel_tan-%66-val))
+(defruled @__kernel_tan-%65-expand-rev-as-@__kernel_tan-succ65-rev
+  (equal (@__kernel_tan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__kernel_tan-succ65-rev
+            (@__kernel_tan-%65-mem s65)
+            (@__kernel_tan-%67-loc s65)
+            (@__kernel_tan-%65-pred s65))))
+  :enable (@__kernel_tan-%65-expand-rev-as-@__kernel_tan-%67-rev @__kernel_tan-%67-rev @__kernel_tan-%67-loc @__kernel_tan-%67-val))
+(defruled @__kernel_tan-%65-expand-rev-as-fwd
+  (equal (@__kernel_tan-%65-rev mem loc pred)
+         (@__kernel_tan-%65-fwd mem loc pred))
+  :enable (@__kernel_tan-%65-expand-rev-as-@__kernel_tan-succ65-rev @__kernel_tan-succ65-rev @__kernel_tan-succ65-lab @__kernel_tan-%65-fwd))
+
 (defund @__kernel_tan-%65-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -934,15 +1635,6 @@
     (loc (s '%67 (icmp-sge-i32 (g '%66 loc) 1072010280) loc))
     (succ (case (g '%67 loc) (-1 '%68) (0 '%86))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%65-expand-bb
-  (equal (@__kernel_tan-%65-bb mem loc pred)
-         (@__kernel_tan-%65-rev mem loc pred))
-  :enable (@__kernel_tan-%65-bb @__kernel_tan-%65-rev
-    @__kernel_tan-%66-rev
-    @__kernel_tan-%67-rev
-    @__kernel_tan-succ65-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%68-mem (s68)
   (car s68))
@@ -961,6 +1653,10 @@
 (defund @__kernel_tan-succ68-lab (s68)
   (case (g '%70 (@__kernel_tan-%70-loc s68)) (-1 '%71) (0 '%76)))
 
+(defund @__kernel_tan-%68-fwd (mem loc pred)
+  (let ((s68 (list mem loc pred)))
+    (mv (@__kernel_tan-succ68-lab s68) (@__kernel_tan-%68-mem s68) (@__kernel_tan-%70-loc s68))))
+
 (defund @__kernel_tan-succ68-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%70 loc) (-1 '%71) (0 '%76)) mem loc))
@@ -972,6 +1668,35 @@
 (defund @__kernel_tan-%68-rev (mem loc pred)
   (@__kernel_tan-%69-rev mem loc pred))
 
+(defruled @__kernel_tan-%68-expand-rev-as-@__kernel_tan-%69-rev
+  (equal (@__kernel_tan-%68-rev mem loc pred)
+         (let ((s68 (list mem loc pred)))
+           (@__kernel_tan-%69-rev
+            (@__kernel_tan-%68-mem s68)
+            (@__kernel_tan-%68-loc s68)
+            (@__kernel_tan-%68-pred s68))))
+  :enable (@__kernel_tan-%68-rev @__kernel_tan-%68-mem @__kernel_tan-%68-loc @__kernel_tan-%68-pred))
+(defruled @__kernel_tan-%68-expand-rev-as-@__kernel_tan-%70-rev
+  (equal (@__kernel_tan-%68-rev mem loc pred)
+         (let ((s68 (list mem loc pred)))
+           (@__kernel_tan-%70-rev
+            (@__kernel_tan-%68-mem s68)
+            (@__kernel_tan-%69-loc s68)
+            (@__kernel_tan-%68-pred s68))))
+  :enable (@__kernel_tan-%68-expand-rev-as-@__kernel_tan-%69-rev @__kernel_tan-%69-rev @__kernel_tan-%69-loc @__kernel_tan-%69-val))
+(defruled @__kernel_tan-%68-expand-rev-as-@__kernel_tan-succ68-rev
+  (equal (@__kernel_tan-%68-rev mem loc pred)
+         (let ((s68 (list mem loc pred)))
+           (@__kernel_tan-succ68-rev
+            (@__kernel_tan-%68-mem s68)
+            (@__kernel_tan-%70-loc s68)
+            (@__kernel_tan-%68-pred s68))))
+  :enable (@__kernel_tan-%68-expand-rev-as-@__kernel_tan-%70-rev @__kernel_tan-%70-rev @__kernel_tan-%70-loc @__kernel_tan-%70-val))
+(defruled @__kernel_tan-%68-expand-rev-as-fwd
+  (equal (@__kernel_tan-%68-rev mem loc pred)
+         (@__kernel_tan-%68-fwd mem loc pred))
+  :enable (@__kernel_tan-%68-expand-rev-as-@__kernel_tan-succ68-rev @__kernel_tan-succ68-rev @__kernel_tan-succ68-lab @__kernel_tan-%68-fwd))
+
 (defund @__kernel_tan-%68-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -979,15 +1704,6 @@
     (loc (s '%70 (icmp-slt-i32 (g '%69 loc) 0) loc))
     (succ (case (g '%70 loc) (-1 '%71) (0 '%76))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%68-expand-bb
-  (equal (@__kernel_tan-%68-bb mem loc pred)
-         (@__kernel_tan-%68-rev mem loc pred))
-  :enable (@__kernel_tan-%68-bb @__kernel_tan-%68-rev
-    @__kernel_tan-%69-rev
-    @__kernel_tan-%70-rev
-    @__kernel_tan-succ68-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%71-mem (s71)
   (car s71))
@@ -1019,6 +1735,10 @@
   (declare (ignore s71))
   '%76)
 
+(defund @__kernel_tan-%71-fwd (mem loc pred)
+  (let ((s71 (list mem loc pred)))
+    (mv (@__kernel_tan-succ71-lab s71) (@__kernel_tan-m71.2-mem s71) (@__kernel_tan-%75-loc s71))))
+
 (defund @__kernel_tan-succ71-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%76 mem loc))
@@ -1038,6 +1758,67 @@
 (defund @__kernel_tan-%71-rev (mem loc pred)
   (@__kernel_tan-%72-rev mem loc pred))
 
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-%72-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-%72-rev
+            (@__kernel_tan-%71-mem s71)
+            (@__kernel_tan-%71-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-rev @__kernel_tan-%71-mem @__kernel_tan-%71-loc @__kernel_tan-%71-pred))
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-%73-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-%73-rev
+            (@__kernel_tan-%71-mem s71)
+            (@__kernel_tan-%72-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-%72-rev @__kernel_tan-%72-rev @__kernel_tan-%72-loc @__kernel_tan-%72-val))
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-m71.1-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-m71.1-rev
+            (@__kernel_tan-%71-mem s71)
+            (@__kernel_tan-%73-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-%73-rev @__kernel_tan-%73-rev @__kernel_tan-%73-loc @__kernel_tan-%73-val))
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-%74-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-%74-rev
+            (@__kernel_tan-m71.1-mem s71)
+            (@__kernel_tan-%73-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-m71.1-rev @__kernel_tan-m71.1-rev @__kernel_tan-m71.1-mem))
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-%75-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-%75-rev
+            (@__kernel_tan-m71.1-mem s71)
+            (@__kernel_tan-%74-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-%74-rev @__kernel_tan-%74-rev @__kernel_tan-%74-loc @__kernel_tan-%74-val))
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-m71.2-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-m71.2-rev
+            (@__kernel_tan-m71.1-mem s71)
+            (@__kernel_tan-%75-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-%75-rev @__kernel_tan-%75-rev @__kernel_tan-%75-loc @__kernel_tan-%75-val))
+(defruled @__kernel_tan-%71-expand-rev-as-@__kernel_tan-succ71-rev
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@__kernel_tan-succ71-rev
+            (@__kernel_tan-m71.2-mem s71)
+            (@__kernel_tan-%75-loc s71)
+            (@__kernel_tan-%71-pred s71))))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-m71.2-rev @__kernel_tan-m71.2-rev @__kernel_tan-m71.2-mem))
+(defruled @__kernel_tan-%71-expand-rev-as-fwd
+  (equal (@__kernel_tan-%71-rev mem loc pred)
+         (@__kernel_tan-%71-fwd mem loc pred))
+  :enable (@__kernel_tan-%71-expand-rev-as-@__kernel_tan-succ71-rev @__kernel_tan-succ71-rev @__kernel_tan-succ71-lab @__kernel_tan-%71-fwd))
+
 (defund @__kernel_tan-%71-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1049,19 +1830,6 @@
     (mem (store-double (g '%75 loc) (g '%3 loc) mem))
     (succ '%76))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%71-expand-bb
-  (equal (@__kernel_tan-%71-bb mem loc pred)
-         (@__kernel_tan-%71-rev mem loc pred))
-  :enable (@__kernel_tan-%71-bb @__kernel_tan-%71-rev
-    @__kernel_tan-%72-rev
-    @__kernel_tan-%73-rev
-    @__kernel_tan-m71.1-rev
-    @__kernel_tan-%74-rev
-    @__kernel_tan-%75-rev
-    @__kernel_tan-m71.2-rev
-    @__kernel_tan-succ71-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%76-mem (s76)
   (car s76))
@@ -1117,6 +1885,10 @@
   (declare (ignore s76))
   '%86)
 
+(defund @__kernel_tan-%76-fwd (mem loc pred)
+  (let ((s76 (list mem loc pred)))
+    (mv (@__kernel_tan-succ76-lab s76) (@__kernel_tan-m76.4-mem s76) (@__kernel_tan-%85-loc s76))))
+
 (defund @__kernel_tan-succ76-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%86 mem loc))
@@ -1150,6 +1922,123 @@
 (defund @__kernel_tan-%76-rev (mem loc pred)
   (@__kernel_tan-%77-rev mem loc pred))
 
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%77-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%77-rev
+            (@__kernel_tan-%76-mem s76)
+            (@__kernel_tan-%76-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-rev @__kernel_tan-%76-mem @__kernel_tan-%76-loc @__kernel_tan-%76-pred))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%78-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%78-rev
+            (@__kernel_tan-%76-mem s76)
+            (@__kernel_tan-%77-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%77-rev @__kernel_tan-%77-rev @__kernel_tan-%77-loc @__kernel_tan-%77-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%79-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%79-rev
+            (@__kernel_tan-%76-mem s76)
+            (@__kernel_tan-%78-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%78-rev @__kernel_tan-%78-rev @__kernel_tan-%78-loc @__kernel_tan-%78-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.1-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-m76.1-rev
+            (@__kernel_tan-%76-mem s76)
+            (@__kernel_tan-%79-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%79-rev @__kernel_tan-%79-rev @__kernel_tan-%79-loc @__kernel_tan-%79-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%80-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%80-rev
+            (@__kernel_tan-m76.1-mem s76)
+            (@__kernel_tan-%79-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.1-rev @__kernel_tan-m76.1-rev @__kernel_tan-m76.1-mem))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%81-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%81-rev
+            (@__kernel_tan-m76.1-mem s76)
+            (@__kernel_tan-%80-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%80-rev @__kernel_tan-%80-rev @__kernel_tan-%80-loc @__kernel_tan-%80-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%82-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%82-rev
+            (@__kernel_tan-m76.1-mem s76)
+            (@__kernel_tan-%81-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%81-rev @__kernel_tan-%81-rev @__kernel_tan-%81-loc @__kernel_tan-%81-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.2-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-m76.2-rev
+            (@__kernel_tan-m76.1-mem s76)
+            (@__kernel_tan-%82-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%82-rev @__kernel_tan-%82-rev @__kernel_tan-%82-loc @__kernel_tan-%82-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%83-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%83-rev
+            (@__kernel_tan-m76.2-mem s76)
+            (@__kernel_tan-%82-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.2-rev @__kernel_tan-m76.2-rev @__kernel_tan-m76.2-mem))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%84-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%84-rev
+            (@__kernel_tan-m76.2-mem s76)
+            (@__kernel_tan-%83-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%83-rev @__kernel_tan-%83-rev @__kernel_tan-%83-loc @__kernel_tan-%83-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-%85-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-%85-rev
+            (@__kernel_tan-m76.2-mem s76)
+            (@__kernel_tan-%84-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%84-rev @__kernel_tan-%84-rev @__kernel_tan-%84-loc @__kernel_tan-%84-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.3-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-m76.3-rev
+            (@__kernel_tan-m76.2-mem s76)
+            (@__kernel_tan-%85-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-%85-rev @__kernel_tan-%85-rev @__kernel_tan-%85-loc @__kernel_tan-%85-val))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.4-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-m76.4-rev
+            (@__kernel_tan-m76.3-mem s76)
+            (@__kernel_tan-%85-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.3-rev @__kernel_tan-m76.3-rev @__kernel_tan-m76.3-mem))
+(defruled @__kernel_tan-%76-expand-rev-as-@__kernel_tan-succ76-rev
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (let ((s76 (list mem loc pred)))
+           (@__kernel_tan-succ76-rev
+            (@__kernel_tan-m76.4-mem s76)
+            (@__kernel_tan-%85-loc s76)
+            (@__kernel_tan-%76-pred s76))))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-m76.4-rev @__kernel_tan-m76.4-rev @__kernel_tan-m76.4-mem))
+(defruled @__kernel_tan-%76-expand-rev-as-fwd
+  (equal (@__kernel_tan-%76-rev mem loc pred)
+         (@__kernel_tan-%76-fwd mem loc pred))
+  :enable (@__kernel_tan-%76-expand-rev-as-@__kernel_tan-succ76-rev @__kernel_tan-succ76-rev @__kernel_tan-succ76-lab @__kernel_tan-%76-fwd))
+
 (defund @__kernel_tan-%76-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1168,26 +2057,6 @@
     (mem (store-double #x0000000000000000 (g '%3 loc) mem))
     (succ '%86))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%76-expand-bb
-  (equal (@__kernel_tan-%76-bb mem loc pred)
-         (@__kernel_tan-%76-rev mem loc pred))
-  :enable (@__kernel_tan-%76-bb @__kernel_tan-%76-rev
-    @__kernel_tan-%77-rev
-    @__kernel_tan-%78-rev
-    @__kernel_tan-%79-rev
-    @__kernel_tan-m76.1-rev
-    @__kernel_tan-%80-rev
-    @__kernel_tan-%81-rev
-    @__kernel_tan-%82-rev
-    @__kernel_tan-m76.2-rev
-    @__kernel_tan-%83-rev
-    @__kernel_tan-%84-rev
-    @__kernel_tan-%85-rev
-    @__kernel_tan-m76.3-rev
-    @__kernel_tan-m76.4-rev
-    @__kernel_tan-succ76-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%86-mem (s86)
   (car s86))
@@ -1510,6 +2379,10 @@
 (defund @__kernel_tan-succ86-lab (s86)
   (case (g '%160 (@__kernel_tan-%160-loc s86)) (-1 '%161) (0 '%184)))
 
+(defund @__kernel_tan-%86-fwd (mem loc pred)
+  (let ((s86 (list mem loc pred)))
+    (mv (@__kernel_tan-succ86-lab s86) (@__kernel_tan-m86.8-mem s86) (@__kernel_tan-%160-loc s86))))
+
 (defund @__kernel_tan-succ86-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%160 loc) (-1 '%161) (0 '%184)) mem loc))
@@ -1681,6 +2554,675 @@
 (defund @__kernel_tan-%86-rev (mem loc pred)
   (@__kernel_tan-%87-rev mem loc pred))
 
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%87-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%87-rev
+            (@__kernel_tan-%86-mem s86)
+            (@__kernel_tan-%86-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-rev @__kernel_tan-%86-mem @__kernel_tan-%86-loc @__kernel_tan-%86-pred))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%88-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%88-rev
+            (@__kernel_tan-%86-mem s86)
+            (@__kernel_tan-%87-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%87-rev @__kernel_tan-%87-rev @__kernel_tan-%87-loc @__kernel_tan-%87-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%89-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%89-rev
+            (@__kernel_tan-%86-mem s86)
+            (@__kernel_tan-%88-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%88-rev @__kernel_tan-%88-rev @__kernel_tan-%88-loc @__kernel_tan-%88-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.1-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.1-rev
+            (@__kernel_tan-%86-mem s86)
+            (@__kernel_tan-%89-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%89-rev @__kernel_tan-%89-rev @__kernel_tan-%89-loc @__kernel_tan-%89-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%90-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%90-rev
+            (@__kernel_tan-m86.1-mem s86)
+            (@__kernel_tan-%89-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.1-rev @__kernel_tan-m86.1-rev @__kernel_tan-m86.1-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%91-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%91-rev
+            (@__kernel_tan-m86.1-mem s86)
+            (@__kernel_tan-%90-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%90-rev @__kernel_tan-%90-rev @__kernel_tan-%90-loc @__kernel_tan-%90-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%92-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%92-rev
+            (@__kernel_tan-m86.1-mem s86)
+            (@__kernel_tan-%91-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%91-rev @__kernel_tan-%91-rev @__kernel_tan-%91-loc @__kernel_tan-%91-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.2-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.2-rev
+            (@__kernel_tan-m86.1-mem s86)
+            (@__kernel_tan-%92-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%92-rev @__kernel_tan-%92-rev @__kernel_tan-%92-loc @__kernel_tan-%92-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%93-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%93-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%92-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.2-rev @__kernel_tan-m86.2-rev @__kernel_tan-m86.2-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%94-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%94-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%93-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%93-rev @__kernel_tan-%93-rev @__kernel_tan-%93-loc @__kernel_tan-%93-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%95-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%95-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%94-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%94-rev @__kernel_tan-%94-rev @__kernel_tan-%94-loc @__kernel_tan-%94-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%96-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%96-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%95-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%95-rev @__kernel_tan-%95-rev @__kernel_tan-%95-loc @__kernel_tan-%95-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%97-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%97-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%96-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%96-rev @__kernel_tan-%96-rev @__kernel_tan-%96-loc @__kernel_tan-%96-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%98-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%98-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%97-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%97-rev @__kernel_tan-%97-rev @__kernel_tan-%97-loc @__kernel_tan-%97-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%99-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%99-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%98-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%98-rev @__kernel_tan-%98-rev @__kernel_tan-%98-loc @__kernel_tan-%98-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%100-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%100-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%99-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%99-rev @__kernel_tan-%99-rev @__kernel_tan-%99-loc @__kernel_tan-%99-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%101-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%101-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%100-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%100-rev @__kernel_tan-%100-rev @__kernel_tan-%100-loc @__kernel_tan-%100-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%102-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%102-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%101-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%101-rev @__kernel_tan-%101-rev @__kernel_tan-%101-loc @__kernel_tan-%101-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%103-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%103-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%102-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%102-rev @__kernel_tan-%102-rev @__kernel_tan-%102-loc @__kernel_tan-%102-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%104-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%104-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%103-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%103-rev @__kernel_tan-%103-rev @__kernel_tan-%103-loc @__kernel_tan-%103-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%105-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%105-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%104-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%104-rev @__kernel_tan-%104-rev @__kernel_tan-%104-loc @__kernel_tan-%104-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%106-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%106-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%105-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%105-rev @__kernel_tan-%105-rev @__kernel_tan-%105-loc @__kernel_tan-%105-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%107-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%107-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%106-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%106-rev @__kernel_tan-%106-rev @__kernel_tan-%106-loc @__kernel_tan-%106-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%108-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%108-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%107-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%107-rev @__kernel_tan-%107-rev @__kernel_tan-%107-loc @__kernel_tan-%107-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%109-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%109-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%108-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%108-rev @__kernel_tan-%108-rev @__kernel_tan-%108-loc @__kernel_tan-%108-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%110-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%110-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%109-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%109-rev @__kernel_tan-%109-rev @__kernel_tan-%109-loc @__kernel_tan-%109-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%111-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%111-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%110-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%110-rev @__kernel_tan-%110-rev @__kernel_tan-%110-loc @__kernel_tan-%110-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%112-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%112-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%111-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%111-rev @__kernel_tan-%111-rev @__kernel_tan-%111-loc @__kernel_tan-%111-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%113-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%113-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%112-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%112-rev @__kernel_tan-%112-rev @__kernel_tan-%112-loc @__kernel_tan-%112-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.3-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.3-rev
+            (@__kernel_tan-m86.2-mem s86)
+            (@__kernel_tan-%113-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%113-rev @__kernel_tan-%113-rev @__kernel_tan-%113-loc @__kernel_tan-%113-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%114-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%114-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%113-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.3-rev @__kernel_tan-m86.3-rev @__kernel_tan-m86.3-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%115-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%115-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%114-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%114-rev @__kernel_tan-%114-rev @__kernel_tan-%114-loc @__kernel_tan-%114-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%116-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%116-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%115-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%115-rev @__kernel_tan-%115-rev @__kernel_tan-%115-loc @__kernel_tan-%115-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%117-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%117-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%116-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%116-rev @__kernel_tan-%116-rev @__kernel_tan-%116-loc @__kernel_tan-%116-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%118-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%118-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%117-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%117-rev @__kernel_tan-%117-rev @__kernel_tan-%117-loc @__kernel_tan-%117-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%119-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%119-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%118-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%118-rev @__kernel_tan-%118-rev @__kernel_tan-%118-loc @__kernel_tan-%118-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%120-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%120-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%119-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%119-rev @__kernel_tan-%119-rev @__kernel_tan-%119-loc @__kernel_tan-%119-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%121-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%121-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%120-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%120-rev @__kernel_tan-%120-rev @__kernel_tan-%120-loc @__kernel_tan-%120-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%122-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%122-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%121-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%121-rev @__kernel_tan-%121-rev @__kernel_tan-%121-loc @__kernel_tan-%121-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%123-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%123-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%122-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%122-rev @__kernel_tan-%122-rev @__kernel_tan-%122-loc @__kernel_tan-%122-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%124-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%124-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%123-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%123-rev @__kernel_tan-%123-rev @__kernel_tan-%123-loc @__kernel_tan-%123-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%125-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%125-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%124-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%124-rev @__kernel_tan-%124-rev @__kernel_tan-%124-loc @__kernel_tan-%124-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%126-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%126-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%125-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%125-rev @__kernel_tan-%125-rev @__kernel_tan-%125-loc @__kernel_tan-%125-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%127-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%127-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%126-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%126-rev @__kernel_tan-%126-rev @__kernel_tan-%126-loc @__kernel_tan-%126-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%128-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%128-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%127-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%127-rev @__kernel_tan-%127-rev @__kernel_tan-%127-loc @__kernel_tan-%127-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%129-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%129-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%128-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%128-rev @__kernel_tan-%128-rev @__kernel_tan-%128-loc @__kernel_tan-%128-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%130-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%130-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%129-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%129-rev @__kernel_tan-%129-rev @__kernel_tan-%129-loc @__kernel_tan-%129-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%131-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%131-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%130-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%130-rev @__kernel_tan-%130-rev @__kernel_tan-%130-loc @__kernel_tan-%130-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%132-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%132-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%131-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%131-rev @__kernel_tan-%131-rev @__kernel_tan-%131-loc @__kernel_tan-%131-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%133-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%133-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%132-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%132-rev @__kernel_tan-%132-rev @__kernel_tan-%132-loc @__kernel_tan-%132-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%134-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%134-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%133-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%133-rev @__kernel_tan-%133-rev @__kernel_tan-%133-loc @__kernel_tan-%133-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%135-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%135-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%134-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%134-rev @__kernel_tan-%134-rev @__kernel_tan-%134-loc @__kernel_tan-%134-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%136-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%136-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%135-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%135-rev @__kernel_tan-%135-rev @__kernel_tan-%135-loc @__kernel_tan-%135-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.4-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.4-rev
+            (@__kernel_tan-m86.3-mem s86)
+            (@__kernel_tan-%136-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%136-rev @__kernel_tan-%136-rev @__kernel_tan-%136-loc @__kernel_tan-%136-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%137-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%137-rev
+            (@__kernel_tan-m86.4-mem s86)
+            (@__kernel_tan-%136-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.4-rev @__kernel_tan-m86.4-rev @__kernel_tan-m86.4-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%138-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%138-rev
+            (@__kernel_tan-m86.4-mem s86)
+            (@__kernel_tan-%137-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%137-rev @__kernel_tan-%137-rev @__kernel_tan-%137-loc @__kernel_tan-%137-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%139-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%139-rev
+            (@__kernel_tan-m86.4-mem s86)
+            (@__kernel_tan-%138-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%138-rev @__kernel_tan-%138-rev @__kernel_tan-%138-loc @__kernel_tan-%138-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.5-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.5-rev
+            (@__kernel_tan-m86.4-mem s86)
+            (@__kernel_tan-%139-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%139-rev @__kernel_tan-%139-rev @__kernel_tan-%139-loc @__kernel_tan-%139-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%140-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%140-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%139-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.5-rev @__kernel_tan-m86.5-rev @__kernel_tan-m86.5-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%141-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%141-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%140-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%140-rev @__kernel_tan-%140-rev @__kernel_tan-%140-loc @__kernel_tan-%140-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%142-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%142-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%141-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%141-rev @__kernel_tan-%141-rev @__kernel_tan-%141-loc @__kernel_tan-%141-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%143-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%143-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%142-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%142-rev @__kernel_tan-%142-rev @__kernel_tan-%142-loc @__kernel_tan-%142-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%144-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%144-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%143-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%143-rev @__kernel_tan-%143-rev @__kernel_tan-%143-loc @__kernel_tan-%143-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%145-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%145-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%144-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%144-rev @__kernel_tan-%144-rev @__kernel_tan-%144-loc @__kernel_tan-%144-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%146-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%146-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%145-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%145-rev @__kernel_tan-%145-rev @__kernel_tan-%145-loc @__kernel_tan-%145-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%147-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%147-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%146-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%146-rev @__kernel_tan-%146-rev @__kernel_tan-%146-loc @__kernel_tan-%146-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%148-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%148-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%147-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%147-rev @__kernel_tan-%147-rev @__kernel_tan-%147-loc @__kernel_tan-%147-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%149-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%149-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%148-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%148-rev @__kernel_tan-%148-rev @__kernel_tan-%148-loc @__kernel_tan-%148-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%150-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%150-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%149-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%149-rev @__kernel_tan-%149-rev @__kernel_tan-%149-loc @__kernel_tan-%149-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.6-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.6-rev
+            (@__kernel_tan-m86.5-mem s86)
+            (@__kernel_tan-%150-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%150-rev @__kernel_tan-%150-rev @__kernel_tan-%150-loc @__kernel_tan-%150-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%151-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%151-rev
+            (@__kernel_tan-m86.6-mem s86)
+            (@__kernel_tan-%150-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.6-rev @__kernel_tan-m86.6-rev @__kernel_tan-m86.6-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%152-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%152-rev
+            (@__kernel_tan-m86.6-mem s86)
+            (@__kernel_tan-%151-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%151-rev @__kernel_tan-%151-rev @__kernel_tan-%151-loc @__kernel_tan-%151-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%153-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%153-rev
+            (@__kernel_tan-m86.6-mem s86)
+            (@__kernel_tan-%152-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%152-rev @__kernel_tan-%152-rev @__kernel_tan-%152-loc @__kernel_tan-%152-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%154-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%154-rev
+            (@__kernel_tan-m86.6-mem s86)
+            (@__kernel_tan-%153-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%153-rev @__kernel_tan-%153-rev @__kernel_tan-%153-loc @__kernel_tan-%153-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%155-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%155-rev
+            (@__kernel_tan-m86.6-mem s86)
+            (@__kernel_tan-%154-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%154-rev @__kernel_tan-%154-rev @__kernel_tan-%154-loc @__kernel_tan-%154-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.7-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.7-rev
+            (@__kernel_tan-m86.6-mem s86)
+            (@__kernel_tan-%155-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%155-rev @__kernel_tan-%155-rev @__kernel_tan-%155-loc @__kernel_tan-%155-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%156-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%156-rev
+            (@__kernel_tan-m86.7-mem s86)
+            (@__kernel_tan-%155-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.7-rev @__kernel_tan-m86.7-rev @__kernel_tan-m86.7-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%157-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%157-rev
+            (@__kernel_tan-m86.7-mem s86)
+            (@__kernel_tan-%156-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%156-rev @__kernel_tan-%156-rev @__kernel_tan-%156-loc @__kernel_tan-%156-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%158-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%158-rev
+            (@__kernel_tan-m86.7-mem s86)
+            (@__kernel_tan-%157-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%157-rev @__kernel_tan-%157-rev @__kernel_tan-%157-loc @__kernel_tan-%157-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.8-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-m86.8-rev
+            (@__kernel_tan-m86.7-mem s86)
+            (@__kernel_tan-%158-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%158-rev @__kernel_tan-%158-rev @__kernel_tan-%158-loc @__kernel_tan-%158-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%159-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%159-rev
+            (@__kernel_tan-m86.8-mem s86)
+            (@__kernel_tan-%158-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-m86.8-rev @__kernel_tan-m86.8-rev @__kernel_tan-m86.8-mem))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-%160-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-%160-rev
+            (@__kernel_tan-m86.8-mem s86)
+            (@__kernel_tan-%159-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%159-rev @__kernel_tan-%159-rev @__kernel_tan-%159-loc @__kernel_tan-%159-val))
+(defruled @__kernel_tan-%86-expand-rev-as-@__kernel_tan-succ86-rev
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__kernel_tan-succ86-rev
+            (@__kernel_tan-m86.8-mem s86)
+            (@__kernel_tan-%160-loc s86)
+            (@__kernel_tan-%86-pred s86))))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-%160-rev @__kernel_tan-%160-rev @__kernel_tan-%160-loc @__kernel_tan-%160-val))
+(defruled @__kernel_tan-%86-expand-rev-as-fwd
+  (equal (@__kernel_tan-%86-rev mem loc pred)
+         (@__kernel_tan-%86-fwd mem loc pred))
+  :enable (@__kernel_tan-%86-expand-rev-as-@__kernel_tan-succ86-rev @__kernel_tan-succ86-rev @__kernel_tan-succ86-lab @__kernel_tan-%86-fwd))
+
 (defund @__kernel_tan-%86-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1768,95 +3310,6 @@
     (loc (s '%160 (icmp-sge-i32 (g '%159 loc) 1072010280) loc))
     (succ (case (g '%160 loc) (-1 '%161) (0 '%184))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%86-expand-bb
-  (equal (@__kernel_tan-%86-bb mem loc pred)
-         (@__kernel_tan-%86-rev mem loc pred))
-  :enable (@__kernel_tan-%86-bb @__kernel_tan-%86-rev
-    @__kernel_tan-%87-rev
-    @__kernel_tan-%88-rev
-    @__kernel_tan-%89-rev
-    @__kernel_tan-m86.1-rev
-    @__kernel_tan-%90-rev
-    @__kernel_tan-%91-rev
-    @__kernel_tan-%92-rev
-    @__kernel_tan-m86.2-rev
-    @__kernel_tan-%93-rev
-    @__kernel_tan-%94-rev
-    @__kernel_tan-%95-rev
-    @__kernel_tan-%96-rev
-    @__kernel_tan-%97-rev
-    @__kernel_tan-%98-rev
-    @__kernel_tan-%99-rev
-    @__kernel_tan-%100-rev
-    @__kernel_tan-%101-rev
-    @__kernel_tan-%102-rev
-    @__kernel_tan-%103-rev
-    @__kernel_tan-%104-rev
-    @__kernel_tan-%105-rev
-    @__kernel_tan-%106-rev
-    @__kernel_tan-%107-rev
-    @__kernel_tan-%108-rev
-    @__kernel_tan-%109-rev
-    @__kernel_tan-%110-rev
-    @__kernel_tan-%111-rev
-    @__kernel_tan-%112-rev
-    @__kernel_tan-%113-rev
-    @__kernel_tan-m86.3-rev
-    @__kernel_tan-%114-rev
-    @__kernel_tan-%115-rev
-    @__kernel_tan-%116-rev
-    @__kernel_tan-%117-rev
-    @__kernel_tan-%118-rev
-    @__kernel_tan-%119-rev
-    @__kernel_tan-%120-rev
-    @__kernel_tan-%121-rev
-    @__kernel_tan-%122-rev
-    @__kernel_tan-%123-rev
-    @__kernel_tan-%124-rev
-    @__kernel_tan-%125-rev
-    @__kernel_tan-%126-rev
-    @__kernel_tan-%127-rev
-    @__kernel_tan-%128-rev
-    @__kernel_tan-%129-rev
-    @__kernel_tan-%130-rev
-    @__kernel_tan-%131-rev
-    @__kernel_tan-%132-rev
-    @__kernel_tan-%133-rev
-    @__kernel_tan-%134-rev
-    @__kernel_tan-%135-rev
-    @__kernel_tan-%136-rev
-    @__kernel_tan-m86.4-rev
-    @__kernel_tan-%137-rev
-    @__kernel_tan-%138-rev
-    @__kernel_tan-%139-rev
-    @__kernel_tan-m86.5-rev
-    @__kernel_tan-%140-rev
-    @__kernel_tan-%141-rev
-    @__kernel_tan-%142-rev
-    @__kernel_tan-%143-rev
-    @__kernel_tan-%144-rev
-    @__kernel_tan-%145-rev
-    @__kernel_tan-%146-rev
-    @__kernel_tan-%147-rev
-    @__kernel_tan-%148-rev
-    @__kernel_tan-%149-rev
-    @__kernel_tan-%150-rev
-    @__kernel_tan-m86.6-rev
-    @__kernel_tan-%151-rev
-    @__kernel_tan-%152-rev
-    @__kernel_tan-%153-rev
-    @__kernel_tan-%154-rev
-    @__kernel_tan-%155-rev
-    @__kernel_tan-m86.7-rev
-    @__kernel_tan-%156-rev
-    @__kernel_tan-%157-rev
-    @__kernel_tan-%158-rev
-    @__kernel_tan-m86.8-rev
-    @__kernel_tan-%159-rev
-    @__kernel_tan-%160-rev
-    @__kernel_tan-succ86-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%161-mem (s161)
   (car s161))
@@ -1960,6 +3413,10 @@
   (declare (ignore s161))
   '%213)
 
+(defund @__kernel_tan-%161-fwd (mem loc pred)
+  (let ((s161 (list mem loc pred)))
+    (mv (@__kernel_tan-succ161-lab s161) (@__kernel_tan-m161.2-mem s161) (@__kernel_tan-%183-loc s161))))
+
 (defund @__kernel_tan-succ161-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%213 mem loc))
@@ -2015,6 +3472,211 @@
 (defund @__kernel_tan-%161-rev (mem loc pred)
   (@__kernel_tan-%162-rev mem loc pred))
 
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%162-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%162-rev
+            (@__kernel_tan-%161-mem s161)
+            (@__kernel_tan-%161-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-rev @__kernel_tan-%161-mem @__kernel_tan-%161-loc @__kernel_tan-%161-pred))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%163-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%163-rev
+            (@__kernel_tan-%161-mem s161)
+            (@__kernel_tan-%162-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%162-rev @__kernel_tan-%162-rev @__kernel_tan-%162-loc @__kernel_tan-%162-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-m161.1-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-m161.1-rev
+            (@__kernel_tan-%161-mem s161)
+            (@__kernel_tan-%163-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%163-rev @__kernel_tan-%163-rev @__kernel_tan-%163-loc @__kernel_tan-%163-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%164-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%164-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%163-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-m161.1-rev @__kernel_tan-m161.1-rev @__kernel_tan-m161.1-mem))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%165-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%165-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%164-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%164-rev @__kernel_tan-%164-rev @__kernel_tan-%164-loc @__kernel_tan-%164-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%166-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%166-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%165-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%165-rev @__kernel_tan-%165-rev @__kernel_tan-%165-loc @__kernel_tan-%165-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%167-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%167-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%166-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%166-rev @__kernel_tan-%166-rev @__kernel_tan-%166-loc @__kernel_tan-%166-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%168-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%168-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%167-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%167-rev @__kernel_tan-%167-rev @__kernel_tan-%167-loc @__kernel_tan-%167-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%169-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%169-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%168-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%168-rev @__kernel_tan-%168-rev @__kernel_tan-%168-loc @__kernel_tan-%168-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%170-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%170-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%169-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%169-rev @__kernel_tan-%169-rev @__kernel_tan-%169-loc @__kernel_tan-%169-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%171-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%171-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%170-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%170-rev @__kernel_tan-%170-rev @__kernel_tan-%170-loc @__kernel_tan-%170-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%172-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%172-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%171-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%171-rev @__kernel_tan-%171-rev @__kernel_tan-%171-loc @__kernel_tan-%171-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%173-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%173-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%172-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%172-rev @__kernel_tan-%172-rev @__kernel_tan-%172-loc @__kernel_tan-%172-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%174-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%174-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%173-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%173-rev @__kernel_tan-%173-rev @__kernel_tan-%173-loc @__kernel_tan-%173-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%175-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%175-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%174-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%174-rev @__kernel_tan-%174-rev @__kernel_tan-%174-loc @__kernel_tan-%174-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%176-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%176-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%175-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%175-rev @__kernel_tan-%175-rev @__kernel_tan-%175-loc @__kernel_tan-%175-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%177-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%177-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%176-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%176-rev @__kernel_tan-%176-rev @__kernel_tan-%176-loc @__kernel_tan-%176-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%178-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%178-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%177-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%177-rev @__kernel_tan-%177-rev @__kernel_tan-%177-loc @__kernel_tan-%177-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%179-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%179-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%178-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%178-rev @__kernel_tan-%178-rev @__kernel_tan-%178-loc @__kernel_tan-%178-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%180-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%180-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%179-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%179-rev @__kernel_tan-%179-rev @__kernel_tan-%179-loc @__kernel_tan-%179-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%181-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%181-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%180-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%180-rev @__kernel_tan-%180-rev @__kernel_tan-%180-loc @__kernel_tan-%180-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%182-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%182-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%181-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%181-rev @__kernel_tan-%181-rev @__kernel_tan-%181-loc @__kernel_tan-%181-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-%183-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-%183-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%182-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%182-rev @__kernel_tan-%182-rev @__kernel_tan-%182-loc @__kernel_tan-%182-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-m161.2-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-m161.2-rev
+            (@__kernel_tan-m161.1-mem s161)
+            (@__kernel_tan-%183-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-%183-rev @__kernel_tan-%183-rev @__kernel_tan-%183-loc @__kernel_tan-%183-val))
+(defruled @__kernel_tan-%161-expand-rev-as-@__kernel_tan-succ161-rev
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@__kernel_tan-succ161-rev
+            (@__kernel_tan-m161.2-mem s161)
+            (@__kernel_tan-%183-loc s161)
+            (@__kernel_tan-%161-pred s161))))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-m161.2-rev @__kernel_tan-m161.2-rev @__kernel_tan-m161.2-mem))
+(defruled @__kernel_tan-%161-expand-rev-as-fwd
+  (equal (@__kernel_tan-%161-rev mem loc pred)
+         (@__kernel_tan-%161-fwd mem loc pred))
+  :enable (@__kernel_tan-%161-expand-rev-as-@__kernel_tan-succ161-rev @__kernel_tan-succ161-rev @__kernel_tan-succ161-lab @__kernel_tan-%161-fwd))
+
 (defund @__kernel_tan-%161-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2045,37 +3707,6 @@
     (succ '%213))
   (mv succ mem loc)))
 
-(defruled @__kernel_tan-%161-expand-bb
-  (equal (@__kernel_tan-%161-bb mem loc pred)
-         (@__kernel_tan-%161-rev mem loc pred))
-  :enable (@__kernel_tan-%161-bb @__kernel_tan-%161-rev
-    @__kernel_tan-%162-rev
-    @__kernel_tan-%163-rev
-    @__kernel_tan-m161.1-rev
-    @__kernel_tan-%164-rev
-    @__kernel_tan-%165-rev
-    @__kernel_tan-%166-rev
-    @__kernel_tan-%167-rev
-    @__kernel_tan-%168-rev
-    @__kernel_tan-%169-rev
-    @__kernel_tan-%170-rev
-    @__kernel_tan-%171-rev
-    @__kernel_tan-%172-rev
-    @__kernel_tan-%173-rev
-    @__kernel_tan-%174-rev
-    @__kernel_tan-%175-rev
-    @__kernel_tan-%176-rev
-    @__kernel_tan-%177-rev
-    @__kernel_tan-%178-rev
-    @__kernel_tan-%179-rev
-    @__kernel_tan-%180-rev
-    @__kernel_tan-%181-rev
-    @__kernel_tan-%182-rev
-    @__kernel_tan-%183-rev
-    @__kernel_tan-m161.2-rev
-    @__kernel_tan-succ161-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_tan-%184-mem (s184)
   (car s184))
 (defund @__kernel_tan-%184-loc (s184)
@@ -2093,6 +3724,10 @@
 (defund @__kernel_tan-succ184-lab (s184)
   (case (g '%186 (@__kernel_tan-%186-loc s184)) (-1 '%187) (0 '%189)))
 
+(defund @__kernel_tan-%184-fwd (mem loc pred)
+  (let ((s184 (list mem loc pred)))
+    (mv (@__kernel_tan-succ184-lab s184) (@__kernel_tan-%184-mem s184) (@__kernel_tan-%186-loc s184))))
+
 (defund @__kernel_tan-succ184-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%186 loc) (-1 '%187) (0 '%189)) mem loc))
@@ -2104,6 +3739,35 @@
 (defund @__kernel_tan-%184-rev (mem loc pred)
   (@__kernel_tan-%185-rev mem loc pred))
 
+(defruled @__kernel_tan-%184-expand-rev-as-@__kernel_tan-%185-rev
+  (equal (@__kernel_tan-%184-rev mem loc pred)
+         (let ((s184 (list mem loc pred)))
+           (@__kernel_tan-%185-rev
+            (@__kernel_tan-%184-mem s184)
+            (@__kernel_tan-%184-loc s184)
+            (@__kernel_tan-%184-pred s184))))
+  :enable (@__kernel_tan-%184-rev @__kernel_tan-%184-mem @__kernel_tan-%184-loc @__kernel_tan-%184-pred))
+(defruled @__kernel_tan-%184-expand-rev-as-@__kernel_tan-%186-rev
+  (equal (@__kernel_tan-%184-rev mem loc pred)
+         (let ((s184 (list mem loc pred)))
+           (@__kernel_tan-%186-rev
+            (@__kernel_tan-%184-mem s184)
+            (@__kernel_tan-%185-loc s184)
+            (@__kernel_tan-%184-pred s184))))
+  :enable (@__kernel_tan-%184-expand-rev-as-@__kernel_tan-%185-rev @__kernel_tan-%185-rev @__kernel_tan-%185-loc @__kernel_tan-%185-val))
+(defruled @__kernel_tan-%184-expand-rev-as-@__kernel_tan-succ184-rev
+  (equal (@__kernel_tan-%184-rev mem loc pred)
+         (let ((s184 (list mem loc pred)))
+           (@__kernel_tan-succ184-rev
+            (@__kernel_tan-%184-mem s184)
+            (@__kernel_tan-%186-loc s184)
+            (@__kernel_tan-%184-pred s184))))
+  :enable (@__kernel_tan-%184-expand-rev-as-@__kernel_tan-%186-rev @__kernel_tan-%186-rev @__kernel_tan-%186-loc @__kernel_tan-%186-val))
+(defruled @__kernel_tan-%184-expand-rev-as-fwd
+  (equal (@__kernel_tan-%184-rev mem loc pred)
+         (@__kernel_tan-%184-fwd mem loc pred))
+  :enable (@__kernel_tan-%184-expand-rev-as-@__kernel_tan-succ184-rev @__kernel_tan-succ184-rev @__kernel_tan-succ184-lab @__kernel_tan-%184-fwd))
+
 (defund @__kernel_tan-%184-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2111,15 +3775,6 @@
     (loc (s '%186 (icmp-eq-i32 (g '%185 loc) 1) loc))
     (succ (case (g '%186 loc) (-1 '%187) (0 '%189))))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%184-expand-bb
-  (equal (@__kernel_tan-%184-bb mem loc pred)
-         (@__kernel_tan-%184-rev mem loc pred))
-  :enable (@__kernel_tan-%184-bb @__kernel_tan-%184-rev
-    @__kernel_tan-%185-rev
-    @__kernel_tan-%186-rev
-    @__kernel_tan-succ184-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%187-mem (s187)
   (car s187))
@@ -2137,6 +3792,10 @@
   (declare (ignore s187))
   '%213)
 
+(defund @__kernel_tan-%187-fwd (mem loc pred)
+  (let ((s187 (list mem loc pred)))
+    (mv (@__kernel_tan-succ187-lab s187) (@__kernel_tan-m187.1-mem s187) (@__kernel_tan-%188-loc s187))))
+
 (defund @__kernel_tan-succ187-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%213 mem loc))
@@ -2148,6 +3807,35 @@
 (defund @__kernel_tan-%187-rev (mem loc pred)
   (@__kernel_tan-%188-rev mem loc pred))
 
+(defruled @__kernel_tan-%187-expand-rev-as-@__kernel_tan-%188-rev
+  (equal (@__kernel_tan-%187-rev mem loc pred)
+         (let ((s187 (list mem loc pred)))
+           (@__kernel_tan-%188-rev
+            (@__kernel_tan-%187-mem s187)
+            (@__kernel_tan-%187-loc s187)
+            (@__kernel_tan-%187-pred s187))))
+  :enable (@__kernel_tan-%187-rev @__kernel_tan-%187-mem @__kernel_tan-%187-loc @__kernel_tan-%187-pred))
+(defruled @__kernel_tan-%187-expand-rev-as-@__kernel_tan-m187.1-rev
+  (equal (@__kernel_tan-%187-rev mem loc pred)
+         (let ((s187 (list mem loc pred)))
+           (@__kernel_tan-m187.1-rev
+            (@__kernel_tan-%187-mem s187)
+            (@__kernel_tan-%188-loc s187)
+            (@__kernel_tan-%187-pred s187))))
+  :enable (@__kernel_tan-%187-expand-rev-as-@__kernel_tan-%188-rev @__kernel_tan-%188-rev @__kernel_tan-%188-loc @__kernel_tan-%188-val))
+(defruled @__kernel_tan-%187-expand-rev-as-@__kernel_tan-succ187-rev
+  (equal (@__kernel_tan-%187-rev mem loc pred)
+         (let ((s187 (list mem loc pred)))
+           (@__kernel_tan-succ187-rev
+            (@__kernel_tan-m187.1-mem s187)
+            (@__kernel_tan-%188-loc s187)
+            (@__kernel_tan-%187-pred s187))))
+  :enable (@__kernel_tan-%187-expand-rev-as-@__kernel_tan-m187.1-rev @__kernel_tan-m187.1-rev @__kernel_tan-m187.1-mem))
+(defruled @__kernel_tan-%187-expand-rev-as-fwd
+  (equal (@__kernel_tan-%187-rev mem loc pred)
+         (@__kernel_tan-%187-fwd mem loc pred))
+  :enable (@__kernel_tan-%187-expand-rev-as-@__kernel_tan-succ187-rev @__kernel_tan-succ187-rev @__kernel_tan-succ187-lab @__kernel_tan-%187-fwd))
+
 (defund @__kernel_tan-%187-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2155,15 +3843,6 @@
     (mem (store-double (g '%188 loc) (g '%1 loc) mem))
     (succ '%213))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%187-expand-bb
-  (equal (@__kernel_tan-%187-bb mem loc pred)
-         (@__kernel_tan-%187-rev mem loc pred))
-  :enable (@__kernel_tan-%187-bb @__kernel_tan-%187-rev
-    @__kernel_tan-%188-rev
-    @__kernel_tan-m187.1-rev
-    @__kernel_tan-succ187-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-%189-mem (s189)
   (car s189))
@@ -2283,6 +3962,10 @@
   (declare (ignore s189))
   '%213)
 
+(defund @__kernel_tan-%189-fwd (mem loc pred)
+  (let ((s189 (list mem loc pred)))
+    (mv (@__kernel_tan-succ189-lab s189) (@__kernel_tan-m189.8-mem s189) (@__kernel_tan-%212-loc s189))))
+
 (defund @__kernel_tan-succ189-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%213 mem loc))
@@ -2352,6 +4035,267 @@
 (defund @__kernel_tan-%189-rev (mem loc pred)
   (@__kernel_tan-%190-rev mem loc pred))
 
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%190-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%190-rev
+            (@__kernel_tan-%189-mem s189)
+            (@__kernel_tan-%189-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-rev @__kernel_tan-%189-mem @__kernel_tan-%189-loc @__kernel_tan-%189-pred))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.1-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.1-rev
+            (@__kernel_tan-%189-mem s189)
+            (@__kernel_tan-%190-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%190-rev @__kernel_tan-%190-rev @__kernel_tan-%190-loc @__kernel_tan-%190-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%191-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%191-rev
+            (@__kernel_tan-m189.1-mem s189)
+            (@__kernel_tan-%190-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.1-rev @__kernel_tan-m189.1-rev @__kernel_tan-m189.1-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.2-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.2-rev
+            (@__kernel_tan-m189.1-mem s189)
+            (@__kernel_tan-%191-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%191-rev @__kernel_tan-%191-rev @__kernel_tan-%191-loc @__kernel_tan-%191-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%192-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%192-rev
+            (@__kernel_tan-m189.2-mem s189)
+            (@__kernel_tan-%191-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.2-rev @__kernel_tan-m189.2-rev @__kernel_tan-m189.2-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%193-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%193-rev
+            (@__kernel_tan-m189.2-mem s189)
+            (@__kernel_tan-%192-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%192-rev @__kernel_tan-%192-rev @__kernel_tan-%192-loc @__kernel_tan-%192-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%194-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%194-rev
+            (@__kernel_tan-m189.2-mem s189)
+            (@__kernel_tan-%193-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%193-rev @__kernel_tan-%193-rev @__kernel_tan-%193-loc @__kernel_tan-%193-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%195-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%195-rev
+            (@__kernel_tan-m189.2-mem s189)
+            (@__kernel_tan-%194-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%194-rev @__kernel_tan-%194-rev @__kernel_tan-%194-loc @__kernel_tan-%194-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%196-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%196-rev
+            (@__kernel_tan-m189.2-mem s189)
+            (@__kernel_tan-%195-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%195-rev @__kernel_tan-%195-rev @__kernel_tan-%195-loc @__kernel_tan-%195-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.3-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.3-rev
+            (@__kernel_tan-m189.2-mem s189)
+            (@__kernel_tan-%196-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%196-rev @__kernel_tan-%196-rev @__kernel_tan-%196-loc @__kernel_tan-%196-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%197-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%197-rev
+            (@__kernel_tan-m189.3-mem s189)
+            (@__kernel_tan-%196-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.3-rev @__kernel_tan-m189.3-rev @__kernel_tan-m189.3-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%198-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%198-rev
+            (@__kernel_tan-m189.3-mem s189)
+            (@__kernel_tan-%197-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%197-rev @__kernel_tan-%197-rev @__kernel_tan-%197-loc @__kernel_tan-%197-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.4-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.4-rev
+            (@__kernel_tan-m189.3-mem s189)
+            (@__kernel_tan-%198-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%198-rev @__kernel_tan-%198-rev @__kernel_tan-%198-loc @__kernel_tan-%198-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.5-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.5-rev
+            (@__kernel_tan-m189.4-mem s189)
+            (@__kernel_tan-%198-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.4-rev @__kernel_tan-m189.4-rev @__kernel_tan-m189.4-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%199-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%199-rev
+            (@__kernel_tan-m189.5-mem s189)
+            (@__kernel_tan-%198-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.5-rev @__kernel_tan-m189.5-rev @__kernel_tan-m189.5-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.6-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.6-rev
+            (@__kernel_tan-m189.5-mem s189)
+            (@__kernel_tan-%199-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%199-rev @__kernel_tan-%199-rev @__kernel_tan-%199-loc @__kernel_tan-%199-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%200-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%200-rev
+            (@__kernel_tan-m189.6-mem s189)
+            (@__kernel_tan-%199-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.6-rev @__kernel_tan-m189.6-rev @__kernel_tan-m189.6-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%201-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%201-rev
+            (@__kernel_tan-m189.6-mem s189)
+            (@__kernel_tan-%200-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%200-rev @__kernel_tan-%200-rev @__kernel_tan-%200-loc @__kernel_tan-%200-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%202-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%202-rev
+            (@__kernel_tan-m189.6-mem s189)
+            (@__kernel_tan-%201-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%201-rev @__kernel_tan-%201-rev @__kernel_tan-%201-loc @__kernel_tan-%201-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%203-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%203-rev
+            (@__kernel_tan-m189.6-mem s189)
+            (@__kernel_tan-%202-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%202-rev @__kernel_tan-%202-rev @__kernel_tan-%202-loc @__kernel_tan-%202-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.7-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.7-rev
+            (@__kernel_tan-m189.6-mem s189)
+            (@__kernel_tan-%203-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%203-rev @__kernel_tan-%203-rev @__kernel_tan-%203-loc @__kernel_tan-%203-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%204-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%204-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%203-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.7-rev @__kernel_tan-m189.7-rev @__kernel_tan-m189.7-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%205-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%205-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%204-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%204-rev @__kernel_tan-%204-rev @__kernel_tan-%204-loc @__kernel_tan-%204-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%206-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%206-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%205-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%205-rev @__kernel_tan-%205-rev @__kernel_tan-%205-loc @__kernel_tan-%205-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%207-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%207-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%206-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%206-rev @__kernel_tan-%206-rev @__kernel_tan-%206-loc @__kernel_tan-%206-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%208-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%208-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%207-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%207-rev @__kernel_tan-%207-rev @__kernel_tan-%207-loc @__kernel_tan-%207-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%209-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%209-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%208-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%208-rev @__kernel_tan-%208-rev @__kernel_tan-%208-loc @__kernel_tan-%208-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%210-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%210-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%209-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%209-rev @__kernel_tan-%209-rev @__kernel_tan-%209-loc @__kernel_tan-%209-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%211-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%211-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%210-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%210-rev @__kernel_tan-%210-rev @__kernel_tan-%210-loc @__kernel_tan-%210-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-%212-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-%212-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%211-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%211-rev @__kernel_tan-%211-rev @__kernel_tan-%211-loc @__kernel_tan-%211-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.8-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-m189.8-rev
+            (@__kernel_tan-m189.7-mem s189)
+            (@__kernel_tan-%212-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-%212-rev @__kernel_tan-%212-rev @__kernel_tan-%212-loc @__kernel_tan-%212-val))
+(defruled @__kernel_tan-%189-expand-rev-as-@__kernel_tan-succ189-rev
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_tan-succ189-rev
+            (@__kernel_tan-m189.8-mem s189)
+            (@__kernel_tan-%212-loc s189)
+            (@__kernel_tan-%189-pred s189))))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-m189.8-rev @__kernel_tan-m189.8-rev @__kernel_tan-m189.8-mem))
+(defruled @__kernel_tan-%189-expand-rev-as-fwd
+  (equal (@__kernel_tan-%189-rev mem loc pred)
+         (@__kernel_tan-%189-fwd mem loc pred))
+  :enable (@__kernel_tan-%189-expand-rev-as-@__kernel_tan-succ189-rev @__kernel_tan-succ189-rev @__kernel_tan-succ189-lab @__kernel_tan-%189-fwd))
+
 (defund @__kernel_tan-%189-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2389,44 +4333,6 @@
     (succ '%213))
   (mv succ mem loc)))
 
-(defruled @__kernel_tan-%189-expand-bb
-  (equal (@__kernel_tan-%189-bb mem loc pred)
-         (@__kernel_tan-%189-rev mem loc pred))
-  :enable (@__kernel_tan-%189-bb @__kernel_tan-%189-rev
-    @__kernel_tan-%190-rev
-    @__kernel_tan-m189.1-rev
-    @__kernel_tan-%191-rev
-    @__kernel_tan-m189.2-rev
-    @__kernel_tan-%192-rev
-    @__kernel_tan-%193-rev
-    @__kernel_tan-%194-rev
-    @__kernel_tan-%195-rev
-    @__kernel_tan-%196-rev
-    @__kernel_tan-m189.3-rev
-    @__kernel_tan-%197-rev
-    @__kernel_tan-%198-rev
-    @__kernel_tan-m189.4-rev
-    @__kernel_tan-m189.5-rev
-    @__kernel_tan-%199-rev
-    @__kernel_tan-m189.6-rev
-    @__kernel_tan-%200-rev
-    @__kernel_tan-%201-rev
-    @__kernel_tan-%202-rev
-    @__kernel_tan-%203-rev
-    @__kernel_tan-m189.7-rev
-    @__kernel_tan-%204-rev
-    @__kernel_tan-%205-rev
-    @__kernel_tan-%206-rev
-    @__kernel_tan-%207-rev
-    @__kernel_tan-%208-rev
-    @__kernel_tan-%209-rev
-    @__kernel_tan-%210-rev
-    @__kernel_tan-%211-rev
-    @__kernel_tan-%212-rev
-    @__kernel_tan-m189.8-rev
-    @__kernel_tan-succ189-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_tan-%213-mem (s213)
   (car s213))
 (defund @__kernel_tan-%213-loc (s213)
@@ -2441,6 +4347,10 @@
   (declare (ignore s213))
   'ret)
 
+(defund @__kernel_tan-%213-fwd (mem loc pred)
+  (let ((s213 (list mem loc pred)))
+    (mv (@__kernel_tan-succ213-lab s213) (@__kernel_tan-%213-mem s213) (@__kernel_tan-%214-loc s213))))
+
 (defund @__kernel_tan-succ213-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -2450,20 +4360,33 @@
 (defund @__kernel_tan-%213-rev (mem loc pred)
   (@__kernel_tan-%214-rev mem loc pred))
 
+(defruled @__kernel_tan-%213-expand-rev-as-@__kernel_tan-%214-rev
+  (equal (@__kernel_tan-%213-rev mem loc pred)
+         (let ((s213 (list mem loc pred)))
+           (@__kernel_tan-%214-rev
+            (@__kernel_tan-%213-mem s213)
+            (@__kernel_tan-%213-loc s213)
+            (@__kernel_tan-%213-pred s213))))
+  :enable (@__kernel_tan-%213-rev @__kernel_tan-%213-mem @__kernel_tan-%213-loc @__kernel_tan-%213-pred))
+(defruled @__kernel_tan-%213-expand-rev-as-@__kernel_tan-succ213-rev
+  (equal (@__kernel_tan-%213-rev mem loc pred)
+         (let ((s213 (list mem loc pred)))
+           (@__kernel_tan-succ213-rev
+            (@__kernel_tan-%213-mem s213)
+            (@__kernel_tan-%214-loc s213)
+            (@__kernel_tan-%213-pred s213))))
+  :enable (@__kernel_tan-%213-expand-rev-as-@__kernel_tan-%214-rev @__kernel_tan-%214-rev @__kernel_tan-%214-loc @__kernel_tan-%214-val))
+(defruled @__kernel_tan-%213-expand-rev-as-fwd
+  (equal (@__kernel_tan-%213-rev mem loc pred)
+         (@__kernel_tan-%213-fwd mem loc pred))
+  :enable (@__kernel_tan-%213-expand-rev-as-@__kernel_tan-succ213-rev @__kernel_tan-succ213-rev @__kernel_tan-succ213-lab @__kernel_tan-%213-fwd))
+
 (defund @__kernel_tan-%213-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%214 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @__kernel_tan-%213-expand-bb
-  (equal (@__kernel_tan-%213-bb mem loc pred)
-         (@__kernel_tan-%213-rev mem loc pred))
-  :enable (@__kernel_tan-%213-bb @__kernel_tan-%213-rev
-    @__kernel_tan-%214-rev
-    @__kernel_tan-succ213-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_tan-step (label mem loc pred)
   (case label

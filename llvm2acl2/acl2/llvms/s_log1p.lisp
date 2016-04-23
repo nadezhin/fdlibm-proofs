@@ -104,6 +104,10 @@
 (defund @log1p-succ0-lab (s0)
   (case (g '%9 (@log1p-%9-loc s0)) (-1 '%10) (0 '%56)))
 
+(defund @log1p-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@log1p-succ0-lab s0) (@log1p-m0.4-mem s0) (@log1p-%9-loc s0))))
+
 (defund @log1p-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%56)) mem loc))
@@ -159,6 +163,211 @@
 (defund @log1p-%0-rev (mem loc pred)
   (@log1p-%1-rev mem loc pred))
 
+(defruled @log1p-%0-expand-rev-as-@log1p-%1-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%1-rev
+            (@log1p-%0-mem s0)
+            (@log1p-%0-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-rev @log1p-%0-mem @log1p-%0-loc @log1p-%0-pred))
+(defruled @log1p-%0-expand-rev-as-@log1p-%2-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%2-rev
+            (@log1p-%1-mem s0)
+            (@log1p-%1-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%1-rev @log1p-%1-rev @log1p-%1-mem @log1p-%1-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%hfsq-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%hfsq-rev
+            (@log1p-%2-mem s0)
+            (@log1p-%2-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%2-rev @log1p-%2-rev @log1p-%2-mem @log1p-%2-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%f-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%f-rev
+            (@log1p-%hfsq-mem s0)
+            (@log1p-%hfsq-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%hfsq-rev @log1p-%hfsq-rev @log1p-%hfsq-mem @log1p-%hfsq-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%c-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%c-rev
+            (@log1p-%f-mem s0)
+            (@log1p-%f-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%f-rev @log1p-%f-rev @log1p-%f-mem @log1p-%f-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%s-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%s-rev
+            (@log1p-%c-mem s0)
+            (@log1p-%c-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%c-rev @log1p-%c-rev @log1p-%c-mem @log1p-%c-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%z-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%z-rev
+            (@log1p-%s-mem s0)
+            (@log1p-%s-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%s-rev @log1p-%s-rev @log1p-%s-mem @log1p-%s-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%R-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%R-rev
+            (@log1p-%z-mem s0)
+            (@log1p-%z-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%z-rev @log1p-%z-rev @log1p-%z-mem @log1p-%z-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%u-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%u-rev
+            (@log1p-%R-mem s0)
+            (@log1p-%R-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%R-rev @log1p-%R-rev @log1p-%R-mem @log1p-%R-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%k-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%k-rev
+            (@log1p-%u-mem s0)
+            (@log1p-%u-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%u-rev @log1p-%u-rev @log1p-%u-mem @log1p-%u-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%hx-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%hx-rev
+            (@log1p-%k-mem s0)
+            (@log1p-%k-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%k-rev @log1p-%k-rev @log1p-%k-mem @log1p-%k-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%hu-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%hu-rev
+            (@log1p-%hx-mem s0)
+            (@log1p-%hx-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%hx-rev @log1p-%hx-rev @log1p-%hx-mem @log1p-%hx-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%ax-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%ax-rev
+            (@log1p-%hu-mem s0)
+            (@log1p-%hu-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%hu-rev @log1p-%hu-rev @log1p-%hu-mem @log1p-%hu-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-m0.1-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-m0.1-rev
+            (@log1p-%ax-mem s0)
+            (@log1p-%ax-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%ax-rev @log1p-%ax-rev @log1p-%ax-mem @log1p-%ax-loc))
+(defruled @log1p-%0-expand-rev-as-@log1p-%3-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%3-rev
+            (@log1p-m0.1-mem s0)
+            (@log1p-%ax-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-m0.1-rev @log1p-m0.1-rev @log1p-m0.1-mem))
+(defruled @log1p-%0-expand-rev-as-@log1p-%4-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%4-rev
+            (@log1p-m0.1-mem s0)
+            (@log1p-%3-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%3-rev @log1p-%3-rev @log1p-%3-loc @log1p-%3-val))
+(defruled @log1p-%0-expand-rev-as-@log1p-%5-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%5-rev
+            (@log1p-m0.1-mem s0)
+            (@log1p-%4-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%4-rev @log1p-%4-rev @log1p-%4-loc @log1p-%4-val))
+(defruled @log1p-%0-expand-rev-as-@log1p-m0.2-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-m0.2-rev
+            (@log1p-m0.1-mem s0)
+            (@log1p-%5-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%5-rev @log1p-%5-rev @log1p-%5-loc @log1p-%5-val))
+(defruled @log1p-%0-expand-rev-as-@log1p-%6-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%6-rev
+            (@log1p-m0.2-mem s0)
+            (@log1p-%5-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-m0.2-rev @log1p-m0.2-rev @log1p-m0.2-mem))
+(defruled @log1p-%0-expand-rev-as-@log1p-%7-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%7-rev
+            (@log1p-m0.2-mem s0)
+            (@log1p-%6-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%6-rev @log1p-%6-rev @log1p-%6-loc @log1p-%6-val))
+(defruled @log1p-%0-expand-rev-as-@log1p-m0.3-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-m0.3-rev
+            (@log1p-m0.2-mem s0)
+            (@log1p-%7-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%7-rev @log1p-%7-rev @log1p-%7-loc @log1p-%7-val))
+(defruled @log1p-%0-expand-rev-as-@log1p-m0.4-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-m0.4-rev
+            (@log1p-m0.3-mem s0)
+            (@log1p-%7-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-m0.3-rev @log1p-m0.3-rev @log1p-m0.3-mem))
+(defruled @log1p-%0-expand-rev-as-@log1p-%8-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%8-rev
+            (@log1p-m0.4-mem s0)
+            (@log1p-%7-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-m0.4-rev @log1p-m0.4-rev @log1p-m0.4-mem))
+(defruled @log1p-%0-expand-rev-as-@log1p-%9-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-%9-rev
+            (@log1p-m0.4-mem s0)
+            (@log1p-%8-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%8-rev @log1p-%8-rev @log1p-%8-loc @log1p-%8-val))
+(defruled @log1p-%0-expand-rev-as-@log1p-succ0-rev
+  (equal (@log1p-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log1p-succ0-rev
+            (@log1p-m0.4-mem s0)
+            (@log1p-%9-loc s0)
+            (@log1p-%0-pred s0))))
+  :enable (@log1p-%0-expand-rev-as-@log1p-%9-rev @log1p-%9-rev @log1p-%9-loc @log1p-%9-val))
+(defruled @log1p-%0-expand-rev-as-fwd
+  (equal (@log1p-%0-rev mem loc pred)
+         (@log1p-%0-fwd mem loc pred))
+  :enable (@log1p-%0-expand-rev-as-@log1p-succ0-rev @log1p-succ0-rev @log1p-succ0-lab @log1p-%0-fwd))
+
 (defund @log1p-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -202,37 +411,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%56))))
   (mv succ mem loc)))
 
-(defruled @log1p-%0-expand-bb
-  (equal (@log1p-%0-bb mem loc pred)
-         (@log1p-%0-rev mem loc pred))
-  :enable (@log1p-%0-bb @log1p-%0-rev
-    @log1p-%1-rev
-    @log1p-%2-rev
-    @log1p-%hfsq-rev
-    @log1p-%f-rev
-    @log1p-%c-rev
-    @log1p-%s-rev
-    @log1p-%z-rev
-    @log1p-%R-rev
-    @log1p-%u-rev
-    @log1p-%k-rev
-    @log1p-%hx-rev
-    @log1p-%hu-rev
-    @log1p-%ax-rev
-    @log1p-m0.1-rev
-    @log1p-%3-rev
-    @log1p-%4-rev
-    @log1p-%5-rev
-    @log1p-m0.2-rev
-    @log1p-%6-rev
-    @log1p-%7-rev
-    @log1p-m0.3-rev
-    @log1p-m0.4-rev
-    @log1p-%8-rev
-    @log1p-%9-rev
-    @log1p-succ0-rev)
-  :disable s-diff-s)
-
 (defund @log1p-%10-mem (s10)
   (car s10))
 (defund @log1p-%10-loc (s10)
@@ -250,6 +428,10 @@
 (defund @log1p-succ10-lab (s10)
   (case (g '%12 (@log1p-%12-loc s10)) (-1 '%13) (0 '%27)))
 
+(defund @log1p-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@log1p-succ10-lab s10) (@log1p-%10-mem s10) (@log1p-%12-loc s10))))
+
 (defund @log1p-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%12 loc) (-1 '%13) (0 '%27)) mem loc))
@@ -261,6 +443,35 @@
 (defund @log1p-%10-rev (mem loc pred)
   (@log1p-%11-rev mem loc pred))
 
+(defruled @log1p-%10-expand-rev-as-@log1p-%11-rev
+  (equal (@log1p-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@log1p-%11-rev
+            (@log1p-%10-mem s10)
+            (@log1p-%10-loc s10)
+            (@log1p-%10-pred s10))))
+  :enable (@log1p-%10-rev @log1p-%10-mem @log1p-%10-loc @log1p-%10-pred))
+(defruled @log1p-%10-expand-rev-as-@log1p-%12-rev
+  (equal (@log1p-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@log1p-%12-rev
+            (@log1p-%10-mem s10)
+            (@log1p-%11-loc s10)
+            (@log1p-%10-pred s10))))
+  :enable (@log1p-%10-expand-rev-as-@log1p-%11-rev @log1p-%11-rev @log1p-%11-loc @log1p-%11-val))
+(defruled @log1p-%10-expand-rev-as-@log1p-succ10-rev
+  (equal (@log1p-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@log1p-succ10-rev
+            (@log1p-%10-mem s10)
+            (@log1p-%12-loc s10)
+            (@log1p-%10-pred s10))))
+  :enable (@log1p-%10-expand-rev-as-@log1p-%12-rev @log1p-%12-rev @log1p-%12-loc @log1p-%12-val))
+(defruled @log1p-%10-expand-rev-as-fwd
+  (equal (@log1p-%10-rev mem loc pred)
+         (@log1p-%10-fwd mem loc pred))
+  :enable (@log1p-%10-expand-rev-as-@log1p-succ10-rev @log1p-succ10-rev @log1p-succ10-lab @log1p-%10-fwd))
+
 (defund @log1p-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -268,15 +479,6 @@
     (loc (s '%12 (icmp-sge-i32 (g '%11 loc) 1072693248) loc))
     (succ (case (g '%12 loc) (-1 '%13) (0 '%27))))
   (mv succ mem loc)))
-
-(defruled @log1p-%10-expand-bb
-  (equal (@log1p-%10-bb mem loc pred)
-         (@log1p-%10-rev mem loc pred))
-  :enable (@log1p-%10-bb @log1p-%10-rev
-    @log1p-%11-rev
-    @log1p-%12-rev
-    @log1p-succ10-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%13-mem (s13)
   (car s13))
@@ -295,6 +497,10 @@
 (defund @log1p-succ13-lab (s13)
   (case (g '%15 (@log1p-%15-loc s13)) (-1 '%16) (0 '%19)))
 
+(defund @log1p-%13-fwd (mem loc pred)
+  (let ((s13 (list mem loc pred)))
+    (mv (@log1p-succ13-lab s13) (@log1p-%13-mem s13) (@log1p-%15-loc s13))))
+
 (defund @log1p-succ13-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%15 loc) (-1 '%16) (0 '%19)) mem loc))
@@ -306,6 +512,35 @@
 (defund @log1p-%13-rev (mem loc pred)
   (@log1p-%14-rev mem loc pred))
 
+(defruled @log1p-%13-expand-rev-as-@log1p-%14-rev
+  (equal (@log1p-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@log1p-%14-rev
+            (@log1p-%13-mem s13)
+            (@log1p-%13-loc s13)
+            (@log1p-%13-pred s13))))
+  :enable (@log1p-%13-rev @log1p-%13-mem @log1p-%13-loc @log1p-%13-pred))
+(defruled @log1p-%13-expand-rev-as-@log1p-%15-rev
+  (equal (@log1p-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@log1p-%15-rev
+            (@log1p-%13-mem s13)
+            (@log1p-%14-loc s13)
+            (@log1p-%13-pred s13))))
+  :enable (@log1p-%13-expand-rev-as-@log1p-%14-rev @log1p-%14-rev @log1p-%14-loc @log1p-%14-val))
+(defruled @log1p-%13-expand-rev-as-@log1p-succ13-rev
+  (equal (@log1p-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@log1p-succ13-rev
+            (@log1p-%13-mem s13)
+            (@log1p-%15-loc s13)
+            (@log1p-%13-pred s13))))
+  :enable (@log1p-%13-expand-rev-as-@log1p-%15-rev @log1p-%15-rev @log1p-%15-loc @log1p-%15-val))
+(defruled @log1p-%13-expand-rev-as-fwd
+  (equal (@log1p-%13-rev mem loc pred)
+         (@log1p-%13-fwd mem loc pred))
+  :enable (@log1p-%13-expand-rev-as-@log1p-succ13-rev @log1p-succ13-rev @log1p-succ13-lab @log1p-%13-fwd))
+
 (defund @log1p-%13-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -313,15 +548,6 @@
     (loc (s '%15 (fcmp-oeq-double (g '%14 loc) #xbff0000000000000) loc))
     (succ (case (g '%15 loc) (-1 '%16) (0 '%19))))
   (mv succ mem loc)))
-
-(defruled @log1p-%13-expand-bb
-  (equal (@log1p-%13-bb mem loc pred)
-         (@log1p-%13-rev mem loc pred))
-  :enable (@log1p-%13-bb @log1p-%13-rev
-    @log1p-%14-rev
-    @log1p-%15-rev
-    @log1p-succ13-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%16-mem (s16)
   (car s16))
@@ -343,6 +569,10 @@
   (declare (ignore s16))
   '%239)
 
+(defund @log1p-%16-fwd (mem loc pred)
+  (let ((s16 (list mem loc pred)))
+    (mv (@log1p-succ16-lab s16) (@log1p-m16.1-mem s16) (@log1p-%18-loc s16))))
+
 (defund @log1p-succ16-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -356,6 +586,43 @@
 (defund @log1p-%16-rev (mem loc pred)
   (@log1p-%17-rev mem loc pred))
 
+(defruled @log1p-%16-expand-rev-as-@log1p-%17-rev
+  (equal (@log1p-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@log1p-%17-rev
+            (@log1p-%16-mem s16)
+            (@log1p-%16-loc s16)
+            (@log1p-%16-pred s16))))
+  :enable (@log1p-%16-rev @log1p-%16-mem @log1p-%16-loc @log1p-%16-pred))
+(defruled @log1p-%16-expand-rev-as-@log1p-%18-rev
+  (equal (@log1p-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@log1p-%18-rev
+            (@log1p-%16-mem s16)
+            (@log1p-%17-loc s16)
+            (@log1p-%16-pred s16))))
+  :enable (@log1p-%16-expand-rev-as-@log1p-%17-rev @log1p-%17-rev @log1p-%17-loc @log1p-%17-val))
+(defruled @log1p-%16-expand-rev-as-@log1p-m16.1-rev
+  (equal (@log1p-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@log1p-m16.1-rev
+            (@log1p-%16-mem s16)
+            (@log1p-%18-loc s16)
+            (@log1p-%16-pred s16))))
+  :enable (@log1p-%16-expand-rev-as-@log1p-%18-rev @log1p-%18-rev @log1p-%18-loc @log1p-%18-val))
+(defruled @log1p-%16-expand-rev-as-@log1p-succ16-rev
+  (equal (@log1p-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@log1p-succ16-rev
+            (@log1p-m16.1-mem s16)
+            (@log1p-%18-loc s16)
+            (@log1p-%16-pred s16))))
+  :enable (@log1p-%16-expand-rev-as-@log1p-m16.1-rev @log1p-m16.1-rev @log1p-m16.1-mem))
+(defruled @log1p-%16-expand-rev-as-fwd
+  (equal (@log1p-%16-rev mem loc pred)
+         (@log1p-%16-fwd mem loc pred))
+  :enable (@log1p-%16-expand-rev-as-@log1p-succ16-rev @log1p-succ16-rev @log1p-succ16-lab @log1p-%16-fwd))
+
 (defund @log1p-%16-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -364,16 +631,6 @@
     (mem (store-double (g '%18 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%16-expand-bb
-  (equal (@log1p-%16-bb mem loc pred)
-         (@log1p-%16-rev mem loc pred))
-  :enable (@log1p-%16-bb @log1p-%16-rev
-    @log1p-%17-rev
-    @log1p-%18-rev
-    @log1p-m16.1-rev
-    @log1p-succ16-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%19-mem (s19)
   (car s19))
@@ -415,6 +672,10 @@
   (declare (ignore s19))
   '%239)
 
+(defund @log1p-%19-fwd (mem loc pred)
+  (let ((s19 (list mem loc pred)))
+    (mv (@log1p-succ19-lab s19) (@log1p-m19.1-mem s19) (@log1p-%26-loc s19))))
+
 (defund @log1p-succ19-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -438,6 +699,83 @@
 (defund @log1p-%19-rev (mem loc pred)
   (@log1p-%20-rev mem loc pred))
 
+(defruled @log1p-%19-expand-rev-as-@log1p-%20-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%20-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%19-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-rev @log1p-%19-mem @log1p-%19-loc @log1p-%19-pred))
+(defruled @log1p-%19-expand-rev-as-@log1p-%21-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%21-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%20-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%20-rev @log1p-%20-rev @log1p-%20-loc @log1p-%20-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-%22-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%22-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%21-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%21-rev @log1p-%21-rev @log1p-%21-loc @log1p-%21-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-%23-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%23-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%22-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%22-rev @log1p-%22-rev @log1p-%22-loc @log1p-%22-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-%24-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%24-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%23-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%23-rev @log1p-%23-rev @log1p-%23-loc @log1p-%23-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-%25-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%25-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%24-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%24-rev @log1p-%24-rev @log1p-%24-loc @log1p-%24-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-%26-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-%26-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%25-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%25-rev @log1p-%25-rev @log1p-%25-loc @log1p-%25-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-m19.1-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-m19.1-rev
+            (@log1p-%19-mem s19)
+            (@log1p-%26-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-%26-rev @log1p-%26-rev @log1p-%26-loc @log1p-%26-val))
+(defruled @log1p-%19-expand-rev-as-@log1p-succ19-rev
+  (equal (@log1p-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@log1p-succ19-rev
+            (@log1p-m19.1-mem s19)
+            (@log1p-%26-loc s19)
+            (@log1p-%19-pred s19))))
+  :enable (@log1p-%19-expand-rev-as-@log1p-m19.1-rev @log1p-m19.1-rev @log1p-m19.1-mem))
+(defruled @log1p-%19-expand-rev-as-fwd
+  (equal (@log1p-%19-rev mem loc pred)
+         (@log1p-%19-fwd mem loc pred))
+  :enable (@log1p-%19-expand-rev-as-@log1p-succ19-rev @log1p-succ19-rev @log1p-succ19-lab @log1p-%19-fwd))
+
 (defund @log1p-%19-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -451,21 +789,6 @@
     (mem (store-double (g '%26 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%19-expand-bb
-  (equal (@log1p-%19-bb mem loc pred)
-         (@log1p-%19-rev mem loc pred))
-  :enable (@log1p-%19-bb @log1p-%19-rev
-    @log1p-%20-rev
-    @log1p-%21-rev
-    @log1p-%22-rev
-    @log1p-%23-rev
-    @log1p-%24-rev
-    @log1p-%25-rev
-    @log1p-%26-rev
-    @log1p-m19.1-rev
-    @log1p-succ19-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%27-mem (s27)
   (car s27))
@@ -484,6 +807,10 @@
 (defund @log1p-succ27-lab (s27)
   (case (g '%29 (@log1p-%29-loc s27)) (-1 '%30) (0 '%47)))
 
+(defund @log1p-%27-fwd (mem loc pred)
+  (let ((s27 (list mem loc pred)))
+    (mv (@log1p-succ27-lab s27) (@log1p-%27-mem s27) (@log1p-%29-loc s27))))
+
 (defund @log1p-succ27-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%29 loc) (-1 '%30) (0 '%47)) mem loc))
@@ -495,6 +822,35 @@
 (defund @log1p-%27-rev (mem loc pred)
   (@log1p-%28-rev mem loc pred))
 
+(defruled @log1p-%27-expand-rev-as-@log1p-%28-rev
+  (equal (@log1p-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@log1p-%28-rev
+            (@log1p-%27-mem s27)
+            (@log1p-%27-loc s27)
+            (@log1p-%27-pred s27))))
+  :enable (@log1p-%27-rev @log1p-%27-mem @log1p-%27-loc @log1p-%27-pred))
+(defruled @log1p-%27-expand-rev-as-@log1p-%29-rev
+  (equal (@log1p-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@log1p-%29-rev
+            (@log1p-%27-mem s27)
+            (@log1p-%28-loc s27)
+            (@log1p-%27-pred s27))))
+  :enable (@log1p-%27-expand-rev-as-@log1p-%28-rev @log1p-%28-rev @log1p-%28-loc @log1p-%28-val))
+(defruled @log1p-%27-expand-rev-as-@log1p-succ27-rev
+  (equal (@log1p-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@log1p-succ27-rev
+            (@log1p-%27-mem s27)
+            (@log1p-%29-loc s27)
+            (@log1p-%27-pred s27))))
+  :enable (@log1p-%27-expand-rev-as-@log1p-%29-rev @log1p-%29-rev @log1p-%29-loc @log1p-%29-val))
+(defruled @log1p-%27-expand-rev-as-fwd
+  (equal (@log1p-%27-rev mem loc pred)
+         (@log1p-%27-fwd mem loc pred))
+  :enable (@log1p-%27-expand-rev-as-@log1p-succ27-rev @log1p-succ27-rev @log1p-succ27-lab @log1p-%27-fwd))
+
 (defund @log1p-%27-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -502,15 +858,6 @@
     (loc (s '%29 (icmp-slt-i32 (g '%28 loc) 1042284544) loc))
     (succ (case (g '%29 loc) (-1 '%30) (0 '%47))))
   (mv succ mem loc)))
-
-(defruled @log1p-%27-expand-bb
-  (equal (@log1p-%27-bb mem loc pred)
-         (@log1p-%27-rev mem loc pred))
-  :enable (@log1p-%27-bb @log1p-%27-rev
-    @log1p-%28-rev
-    @log1p-%29-rev
-    @log1p-succ27-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%30-mem (s30)
   (car s30))
@@ -537,6 +884,10 @@
 (defund @log1p-succ30-lab (s30)
   (case (g '%34 (@log1p-%34-loc s30)) (-1 '%35) (0 '%40)))
 
+(defund @log1p-%30-fwd (mem loc pred)
+  (let ((s30 (list mem loc pred)))
+    (mv (@log1p-succ30-lab s30) (@log1p-%30-mem s30) (@log1p-%34-loc s30))))
+
 (defund @log1p-succ30-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%34 loc) (-1 '%35) (0 '%40)) mem loc))
@@ -552,6 +903,51 @@
 (defund @log1p-%30-rev (mem loc pred)
   (@log1p-%31-rev mem loc pred))
 
+(defruled @log1p-%30-expand-rev-as-@log1p-%31-rev
+  (equal (@log1p-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@log1p-%31-rev
+            (@log1p-%30-mem s30)
+            (@log1p-%30-loc s30)
+            (@log1p-%30-pred s30))))
+  :enable (@log1p-%30-rev @log1p-%30-mem @log1p-%30-loc @log1p-%30-pred))
+(defruled @log1p-%30-expand-rev-as-@log1p-%32-rev
+  (equal (@log1p-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@log1p-%32-rev
+            (@log1p-%30-mem s30)
+            (@log1p-%31-loc s30)
+            (@log1p-%30-pred s30))))
+  :enable (@log1p-%30-expand-rev-as-@log1p-%31-rev @log1p-%31-rev @log1p-%31-loc @log1p-%31-val))
+(defruled @log1p-%30-expand-rev-as-@log1p-%33-rev
+  (equal (@log1p-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@log1p-%33-rev
+            (@log1p-%30-mem s30)
+            (@log1p-%32-loc s30)
+            (@log1p-%30-pred s30))))
+  :enable (@log1p-%30-expand-rev-as-@log1p-%32-rev @log1p-%32-rev @log1p-%32-loc @log1p-%32-val))
+(defruled @log1p-%30-expand-rev-as-@log1p-%34-rev
+  (equal (@log1p-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@log1p-%34-rev
+            (@log1p-%30-mem s30)
+            (@log1p-%33-loc s30)
+            (@log1p-%30-pred s30))))
+  :enable (@log1p-%30-expand-rev-as-@log1p-%33-rev @log1p-%33-rev @log1p-%33-loc @log1p-%33-val))
+(defruled @log1p-%30-expand-rev-as-@log1p-succ30-rev
+  (equal (@log1p-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@log1p-succ30-rev
+            (@log1p-%30-mem s30)
+            (@log1p-%34-loc s30)
+            (@log1p-%30-pred s30))))
+  :enable (@log1p-%30-expand-rev-as-@log1p-%34-rev @log1p-%34-rev @log1p-%34-loc @log1p-%34-val))
+(defruled @log1p-%30-expand-rev-as-fwd
+  (equal (@log1p-%30-rev mem loc pred)
+         (@log1p-%30-fwd mem loc pred))
+  :enable (@log1p-%30-expand-rev-as-@log1p-succ30-rev @log1p-succ30-rev @log1p-succ30-lab @log1p-%30-fwd))
+
 (defund @log1p-%30-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -561,17 +957,6 @@
     (loc (s '%34 (fcmp-ogt-double (g '%32 loc) (g '%33 loc)) loc))
     (succ (case (g '%34 loc) (-1 '%35) (0 '%40))))
   (mv succ mem loc)))
-
-(defruled @log1p-%30-expand-bb
-  (equal (@log1p-%30-bb mem loc pred)
-         (@log1p-%30-rev mem loc pred))
-  :enable (@log1p-%30-bb @log1p-%30-rev
-    @log1p-%31-rev
-    @log1p-%32-rev
-    @log1p-%33-rev
-    @log1p-%34-rev
-    @log1p-succ30-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%35-mem (s35)
   (car s35))
@@ -590,6 +975,10 @@
 (defund @log1p-succ35-lab (s35)
   (case (g '%37 (@log1p-%37-loc s35)) (-1 '%38) (0 '%40)))
 
+(defund @log1p-%35-fwd (mem loc pred)
+  (let ((s35 (list mem loc pred)))
+    (mv (@log1p-succ35-lab s35) (@log1p-%35-mem s35) (@log1p-%37-loc s35))))
+
 (defund @log1p-succ35-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%37 loc) (-1 '%38) (0 '%40)) mem loc))
@@ -601,6 +990,35 @@
 (defund @log1p-%35-rev (mem loc pred)
   (@log1p-%36-rev mem loc pred))
 
+(defruled @log1p-%35-expand-rev-as-@log1p-%36-rev
+  (equal (@log1p-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@log1p-%36-rev
+            (@log1p-%35-mem s35)
+            (@log1p-%35-loc s35)
+            (@log1p-%35-pred s35))))
+  :enable (@log1p-%35-rev @log1p-%35-mem @log1p-%35-loc @log1p-%35-pred))
+(defruled @log1p-%35-expand-rev-as-@log1p-%37-rev
+  (equal (@log1p-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@log1p-%37-rev
+            (@log1p-%35-mem s35)
+            (@log1p-%36-loc s35)
+            (@log1p-%35-pred s35))))
+  :enable (@log1p-%35-expand-rev-as-@log1p-%36-rev @log1p-%36-rev @log1p-%36-loc @log1p-%36-val))
+(defruled @log1p-%35-expand-rev-as-@log1p-succ35-rev
+  (equal (@log1p-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@log1p-succ35-rev
+            (@log1p-%35-mem s35)
+            (@log1p-%37-loc s35)
+            (@log1p-%35-pred s35))))
+  :enable (@log1p-%35-expand-rev-as-@log1p-%37-rev @log1p-%37-rev @log1p-%37-loc @log1p-%37-val))
+(defruled @log1p-%35-expand-rev-as-fwd
+  (equal (@log1p-%35-rev mem loc pred)
+         (@log1p-%35-fwd mem loc pred))
+  :enable (@log1p-%35-expand-rev-as-@log1p-succ35-rev @log1p-succ35-rev @log1p-succ35-lab @log1p-%35-fwd))
+
 (defund @log1p-%35-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -608,15 +1026,6 @@
     (loc (s '%37 (icmp-slt-i32 (g '%36 loc) 1016070144) loc))
     (succ (case (g '%37 loc) (-1 '%38) (0 '%40))))
   (mv succ mem loc)))
-
-(defruled @log1p-%35-expand-bb
-  (equal (@log1p-%35-bb mem loc pred)
-         (@log1p-%35-rev mem loc pred))
-  :enable (@log1p-%35-bb @log1p-%35-rev
-    @log1p-%36-rev
-    @log1p-%37-rev
-    @log1p-succ35-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%38-mem (s38)
   (car s38))
@@ -634,6 +1043,10 @@
   (declare (ignore s38))
   '%239)
 
+(defund @log1p-%38-fwd (mem loc pred)
+  (let ((s38 (list mem loc pred)))
+    (mv (@log1p-succ38-lab s38) (@log1p-m38.1-mem s38) (@log1p-%39-loc s38))))
+
 (defund @log1p-succ38-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -645,6 +1058,35 @@
 (defund @log1p-%38-rev (mem loc pred)
   (@log1p-%39-rev mem loc pred))
 
+(defruled @log1p-%38-expand-rev-as-@log1p-%39-rev
+  (equal (@log1p-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@log1p-%39-rev
+            (@log1p-%38-mem s38)
+            (@log1p-%38-loc s38)
+            (@log1p-%38-pred s38))))
+  :enable (@log1p-%38-rev @log1p-%38-mem @log1p-%38-loc @log1p-%38-pred))
+(defruled @log1p-%38-expand-rev-as-@log1p-m38.1-rev
+  (equal (@log1p-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@log1p-m38.1-rev
+            (@log1p-%38-mem s38)
+            (@log1p-%39-loc s38)
+            (@log1p-%38-pred s38))))
+  :enable (@log1p-%38-expand-rev-as-@log1p-%39-rev @log1p-%39-rev @log1p-%39-loc @log1p-%39-val))
+(defruled @log1p-%38-expand-rev-as-@log1p-succ38-rev
+  (equal (@log1p-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@log1p-succ38-rev
+            (@log1p-m38.1-mem s38)
+            (@log1p-%39-loc s38)
+            (@log1p-%38-pred s38))))
+  :enable (@log1p-%38-expand-rev-as-@log1p-m38.1-rev @log1p-m38.1-rev @log1p-m38.1-mem))
+(defruled @log1p-%38-expand-rev-as-fwd
+  (equal (@log1p-%38-rev mem loc pred)
+         (@log1p-%38-fwd mem loc pred))
+  :enable (@log1p-%38-expand-rev-as-@log1p-succ38-rev @log1p-succ38-rev @log1p-succ38-lab @log1p-%38-fwd))
+
 (defund @log1p-%38-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -652,15 +1094,6 @@
     (mem (store-double (g '%39 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%38-expand-bb
-  (equal (@log1p-%38-bb mem loc pred)
-         (@log1p-%38-rev mem loc pred))
-  :enable (@log1p-%38-bb @log1p-%38-rev
-    @log1p-%39-rev
-    @log1p-m38.1-rev
-    @log1p-succ38-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%40-mem (s40)
   (car s40))
@@ -698,6 +1131,10 @@
   (declare (ignore s40))
   '%239)
 
+(defund @log1p-%40-fwd (mem loc pred)
+  (let ((s40 (list mem loc pred)))
+    (mv (@log1p-succ40-lab s40) (@log1p-m40.1-mem s40) (@log1p-%46-loc s40))))
+
 (defund @log1p-succ40-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -719,6 +1156,75 @@
 (defund @log1p-%40-rev (mem loc pred)
   (@log1p-%41-rev mem loc pred))
 
+(defruled @log1p-%40-expand-rev-as-@log1p-%41-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-%41-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%40-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-rev @log1p-%40-mem @log1p-%40-loc @log1p-%40-pred))
+(defruled @log1p-%40-expand-rev-as-@log1p-%42-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-%42-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%41-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-%41-rev @log1p-%41-rev @log1p-%41-loc @log1p-%41-val))
+(defruled @log1p-%40-expand-rev-as-@log1p-%43-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-%43-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%42-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-%42-rev @log1p-%42-rev @log1p-%42-loc @log1p-%42-val))
+(defruled @log1p-%40-expand-rev-as-@log1p-%44-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-%44-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%43-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-%43-rev @log1p-%43-rev @log1p-%43-loc @log1p-%43-val))
+(defruled @log1p-%40-expand-rev-as-@log1p-%45-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-%45-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%44-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-%44-rev @log1p-%44-rev @log1p-%44-loc @log1p-%44-val))
+(defruled @log1p-%40-expand-rev-as-@log1p-%46-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-%46-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%45-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-%45-rev @log1p-%45-rev @log1p-%45-loc @log1p-%45-val))
+(defruled @log1p-%40-expand-rev-as-@log1p-m40.1-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-m40.1-rev
+            (@log1p-%40-mem s40)
+            (@log1p-%46-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-%46-rev @log1p-%46-rev @log1p-%46-loc @log1p-%46-val))
+(defruled @log1p-%40-expand-rev-as-@log1p-succ40-rev
+  (equal (@log1p-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@log1p-succ40-rev
+            (@log1p-m40.1-mem s40)
+            (@log1p-%46-loc s40)
+            (@log1p-%40-pred s40))))
+  :enable (@log1p-%40-expand-rev-as-@log1p-m40.1-rev @log1p-m40.1-rev @log1p-m40.1-mem))
+(defruled @log1p-%40-expand-rev-as-fwd
+  (equal (@log1p-%40-rev mem loc pred)
+         (@log1p-%40-fwd mem loc pred))
+  :enable (@log1p-%40-expand-rev-as-@log1p-succ40-rev @log1p-succ40-rev @log1p-succ40-lab @log1p-%40-fwd))
+
 (defund @log1p-%40-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -731,20 +1237,6 @@
     (mem (store-double (g '%46 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%40-expand-bb
-  (equal (@log1p-%40-bb mem loc pred)
-         (@log1p-%40-rev mem loc pred))
-  :enable (@log1p-%40-bb @log1p-%40-rev
-    @log1p-%41-rev
-    @log1p-%42-rev
-    @log1p-%43-rev
-    @log1p-%44-rev
-    @log1p-%45-rev
-    @log1p-%46-rev
-    @log1p-m40.1-rev
-    @log1p-succ40-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%47-mem (s47)
   (car s47))
@@ -763,6 +1255,10 @@
 (defund @log1p-succ47-lab (s47)
   (case (g '%49 (@log1p-%49-loc s47)) (-1 '%53) (0 '%50)))
 
+(defund @log1p-%47-fwd (mem loc pred)
+  (let ((s47 (list mem loc pred)))
+    (mv (@log1p-succ47-lab s47) (@log1p-%47-mem s47) (@log1p-%49-loc s47))))
+
 (defund @log1p-succ47-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%49 loc) (-1 '%53) (0 '%50)) mem loc))
@@ -774,6 +1270,35 @@
 (defund @log1p-%47-rev (mem loc pred)
   (@log1p-%48-rev mem loc pred))
 
+(defruled @log1p-%47-expand-rev-as-@log1p-%48-rev
+  (equal (@log1p-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@log1p-%48-rev
+            (@log1p-%47-mem s47)
+            (@log1p-%47-loc s47)
+            (@log1p-%47-pred s47))))
+  :enable (@log1p-%47-rev @log1p-%47-mem @log1p-%47-loc @log1p-%47-pred))
+(defruled @log1p-%47-expand-rev-as-@log1p-%49-rev
+  (equal (@log1p-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@log1p-%49-rev
+            (@log1p-%47-mem s47)
+            (@log1p-%48-loc s47)
+            (@log1p-%47-pred s47))))
+  :enable (@log1p-%47-expand-rev-as-@log1p-%48-rev @log1p-%48-rev @log1p-%48-loc @log1p-%48-val))
+(defruled @log1p-%47-expand-rev-as-@log1p-succ47-rev
+  (equal (@log1p-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@log1p-succ47-rev
+            (@log1p-%47-mem s47)
+            (@log1p-%49-loc s47)
+            (@log1p-%47-pred s47))))
+  :enable (@log1p-%47-expand-rev-as-@log1p-%49-rev @log1p-%49-rev @log1p-%49-loc @log1p-%49-val))
+(defruled @log1p-%47-expand-rev-as-fwd
+  (equal (@log1p-%47-rev mem loc pred)
+         (@log1p-%47-fwd mem loc pred))
+  :enable (@log1p-%47-expand-rev-as-@log1p-succ47-rev @log1p-succ47-rev @log1p-succ47-lab @log1p-%47-fwd))
+
 (defund @log1p-%47-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -781,15 +1306,6 @@
     (loc (s '%49 (icmp-sgt-i32 (g '%48 loc) 0) loc))
     (succ (case (g '%49 loc) (-1 '%53) (0 '%50))))
   (mv succ mem loc)))
-
-(defruled @log1p-%47-expand-bb
-  (equal (@log1p-%47-bb mem loc pred)
-         (@log1p-%47-rev mem loc pred))
-  :enable (@log1p-%47-bb @log1p-%47-rev
-    @log1p-%48-rev
-    @log1p-%49-rev
-    @log1p-succ47-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%50-mem (s50)
   (car s50))
@@ -808,6 +1324,10 @@
 (defund @log1p-succ50-lab (s50)
   (case (g '%52 (@log1p-%52-loc s50)) (-1 '%53) (0 '%55)))
 
+(defund @log1p-%50-fwd (mem loc pred)
+  (let ((s50 (list mem loc pred)))
+    (mv (@log1p-succ50-lab s50) (@log1p-%50-mem s50) (@log1p-%52-loc s50))))
+
 (defund @log1p-succ50-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%52 loc) (-1 '%53) (0 '%55)) mem loc))
@@ -819,6 +1339,35 @@
 (defund @log1p-%50-rev (mem loc pred)
   (@log1p-%51-rev mem loc pred))
 
+(defruled @log1p-%50-expand-rev-as-@log1p-%51-rev
+  (equal (@log1p-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@log1p-%51-rev
+            (@log1p-%50-mem s50)
+            (@log1p-%50-loc s50)
+            (@log1p-%50-pred s50))))
+  :enable (@log1p-%50-rev @log1p-%50-mem @log1p-%50-loc @log1p-%50-pred))
+(defruled @log1p-%50-expand-rev-as-@log1p-%52-rev
+  (equal (@log1p-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@log1p-%52-rev
+            (@log1p-%50-mem s50)
+            (@log1p-%51-loc s50)
+            (@log1p-%50-pred s50))))
+  :enable (@log1p-%50-expand-rev-as-@log1p-%51-rev @log1p-%51-rev @log1p-%51-loc @log1p-%51-val))
+(defruled @log1p-%50-expand-rev-as-@log1p-succ50-rev
+  (equal (@log1p-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@log1p-succ50-rev
+            (@log1p-%50-mem s50)
+            (@log1p-%52-loc s50)
+            (@log1p-%50-pred s50))))
+  :enable (@log1p-%50-expand-rev-as-@log1p-%52-rev @log1p-%52-rev @log1p-%52-loc @log1p-%52-val))
+(defruled @log1p-%50-expand-rev-as-fwd
+  (equal (@log1p-%50-rev mem loc pred)
+         (@log1p-%50-fwd mem loc pred))
+  :enable (@log1p-%50-expand-rev-as-@log1p-succ50-rev @log1p-succ50-rev @log1p-succ50-lab @log1p-%50-fwd))
+
 (defund @log1p-%50-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -826,15 +1375,6 @@
     (loc (s '%52 (icmp-sle-i32 (g '%51 loc) -1076707645) loc))
     (succ (case (g '%52 loc) (-1 '%53) (0 '%55))))
   (mv succ mem loc)))
-
-(defruled @log1p-%50-expand-bb
-  (equal (@log1p-%50-bb mem loc pred)
-         (@log1p-%50-rev mem loc pred))
-  :enable (@log1p-%50-bb @log1p-%50-rev
-    @log1p-%51-rev
-    @log1p-%52-rev
-    @log1p-succ50-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%53-mem (s53)
   (car s53))
@@ -856,6 +1396,10 @@
   (declare (ignore s53))
   '%55)
 
+(defund @log1p-%53-fwd (mem loc pred)
+  (let ((s53 (list mem loc pred)))
+    (mv (@log1p-succ53-lab s53) (@log1p-m53.3-mem s53) (@log1p-%54-loc s53))))
+
 (defund @log1p-succ53-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%55 mem loc))
@@ -871,6 +1415,51 @@
 (defund @log1p-%53-rev (mem loc pred)
   (@log1p-m53.1-rev mem loc pred))
 
+(defruled @log1p-%53-expand-rev-as-@log1p-m53.1-rev
+  (equal (@log1p-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@log1p-m53.1-rev
+            (@log1p-%53-mem s53)
+            (@log1p-%53-loc s53)
+            (@log1p-%53-pred s53))))
+  :enable (@log1p-%53-rev @log1p-%53-mem @log1p-%53-loc @log1p-%53-pred))
+(defruled @log1p-%53-expand-rev-as-@log1p-%54-rev
+  (equal (@log1p-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@log1p-%54-rev
+            (@log1p-m53.1-mem s53)
+            (@log1p-%53-loc s53)
+            (@log1p-%53-pred s53))))
+  :enable (@log1p-%53-expand-rev-as-@log1p-m53.1-rev @log1p-m53.1-rev @log1p-m53.1-mem))
+(defruled @log1p-%53-expand-rev-as-@log1p-m53.2-rev
+  (equal (@log1p-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@log1p-m53.2-rev
+            (@log1p-m53.1-mem s53)
+            (@log1p-%54-loc s53)
+            (@log1p-%53-pred s53))))
+  :enable (@log1p-%53-expand-rev-as-@log1p-%54-rev @log1p-%54-rev @log1p-%54-loc @log1p-%54-val))
+(defruled @log1p-%53-expand-rev-as-@log1p-m53.3-rev
+  (equal (@log1p-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@log1p-m53.3-rev
+            (@log1p-m53.2-mem s53)
+            (@log1p-%54-loc s53)
+            (@log1p-%53-pred s53))))
+  :enable (@log1p-%53-expand-rev-as-@log1p-m53.2-rev @log1p-m53.2-rev @log1p-m53.2-mem))
+(defruled @log1p-%53-expand-rev-as-@log1p-succ53-rev
+  (equal (@log1p-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@log1p-succ53-rev
+            (@log1p-m53.3-mem s53)
+            (@log1p-%54-loc s53)
+            (@log1p-%53-pred s53))))
+  :enable (@log1p-%53-expand-rev-as-@log1p-m53.3-rev @log1p-m53.3-rev @log1p-m53.3-mem))
+(defruled @log1p-%53-expand-rev-as-fwd
+  (equal (@log1p-%53-rev mem loc pred)
+         (@log1p-%53-fwd mem loc pred))
+  :enable (@log1p-%53-expand-rev-as-@log1p-succ53-rev @log1p-succ53-rev @log1p-succ53-lab @log1p-%53-fwd))
+
 (defund @log1p-%53-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -880,17 +1469,6 @@
     (mem (store-i32 1 (g '%hu loc) mem))
     (succ '%55))
   (mv succ mem loc)))
-
-(defruled @log1p-%53-expand-bb
-  (equal (@log1p-%53-bb mem loc pred)
-         (@log1p-%53-rev mem loc pred))
-  :enable (@log1p-%53-bb @log1p-%53-rev
-    @log1p-m53.1-rev
-    @log1p-%54-rev
-    @log1p-m53.2-rev
-    @log1p-m53.3-rev
-    @log1p-succ53-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%55-mem (s55)
   (car s55))
@@ -902,6 +1480,10 @@
   (declare (ignore s55))
   '%56)
 
+(defund @log1p-%55-fwd (mem loc pred)
+  (let ((s55 (list mem loc pred)))
+    (mv (@log1p-succ55-lab s55) (@log1p-%55-mem s55) (@log1p-%55-loc s55))))
+
 (defund @log1p-succ55-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%56 mem loc))
@@ -909,18 +1491,24 @@
 (defund @log1p-%55-rev (mem loc pred)
   (@log1p-succ55-rev mem loc pred))
 
+(defruled @log1p-%55-expand-rev-as-@log1p-succ55-rev
+  (equal (@log1p-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@log1p-succ55-rev
+            (@log1p-%55-mem s55)
+            (@log1p-%55-loc s55)
+            (@log1p-%55-pred s55))))
+  :enable (@log1p-%55-rev @log1p-%55-mem @log1p-%55-loc @log1p-%55-pred))
+(defruled @log1p-%55-expand-rev-as-fwd
+  (equal (@log1p-%55-rev mem loc pred)
+         (@log1p-%55-fwd mem loc pred))
+  :enable (@log1p-%55-expand-rev-as-@log1p-succ55-rev @log1p-succ55-rev @log1p-succ55-lab @log1p-%55-fwd))
+
 (defund @log1p-%55-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%56))
   (mv succ mem loc)))
-
-(defruled @log1p-%55-expand-bb
-  (equal (@log1p-%55-bb mem loc pred)
-         (@log1p-%55-rev mem loc pred))
-  :enable (@log1p-%55-bb @log1p-%55-rev
-    @log1p-succ55-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%56-mem (s56)
   (car s56))
@@ -939,6 +1527,10 @@
 (defund @log1p-succ56-lab (s56)
   (case (g '%58 (@log1p-%58-loc s56)) (-1 '%59) (0 '%63)))
 
+(defund @log1p-%56-fwd (mem loc pred)
+  (let ((s56 (list mem loc pred)))
+    (mv (@log1p-succ56-lab s56) (@log1p-%56-mem s56) (@log1p-%58-loc s56))))
+
 (defund @log1p-succ56-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%58 loc) (-1 '%59) (0 '%63)) mem loc))
@@ -950,6 +1542,35 @@
 (defund @log1p-%56-rev (mem loc pred)
   (@log1p-%57-rev mem loc pred))
 
+(defruled @log1p-%56-expand-rev-as-@log1p-%57-rev
+  (equal (@log1p-%56-rev mem loc pred)
+         (let ((s56 (list mem loc pred)))
+           (@log1p-%57-rev
+            (@log1p-%56-mem s56)
+            (@log1p-%56-loc s56)
+            (@log1p-%56-pred s56))))
+  :enable (@log1p-%56-rev @log1p-%56-mem @log1p-%56-loc @log1p-%56-pred))
+(defruled @log1p-%56-expand-rev-as-@log1p-%58-rev
+  (equal (@log1p-%56-rev mem loc pred)
+         (let ((s56 (list mem loc pred)))
+           (@log1p-%58-rev
+            (@log1p-%56-mem s56)
+            (@log1p-%57-loc s56)
+            (@log1p-%56-pred s56))))
+  :enable (@log1p-%56-expand-rev-as-@log1p-%57-rev @log1p-%57-rev @log1p-%57-loc @log1p-%57-val))
+(defruled @log1p-%56-expand-rev-as-@log1p-succ56-rev
+  (equal (@log1p-%56-rev mem loc pred)
+         (let ((s56 (list mem loc pred)))
+           (@log1p-succ56-rev
+            (@log1p-%56-mem s56)
+            (@log1p-%58-loc s56)
+            (@log1p-%56-pred s56))))
+  :enable (@log1p-%56-expand-rev-as-@log1p-%58-rev @log1p-%58-rev @log1p-%58-loc @log1p-%58-val))
+(defruled @log1p-%56-expand-rev-as-fwd
+  (equal (@log1p-%56-rev mem loc pred)
+         (@log1p-%56-fwd mem loc pred))
+  :enable (@log1p-%56-expand-rev-as-@log1p-succ56-rev @log1p-succ56-rev @log1p-succ56-lab @log1p-%56-fwd))
+
 (defund @log1p-%56-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -957,15 +1578,6 @@
     (loc (s '%58 (icmp-sge-i32 (g '%57 loc) 2146435072) loc))
     (succ (case (g '%58 loc) (-1 '%59) (0 '%63))))
   (mv succ mem loc)))
-
-(defruled @log1p-%56-expand-bb
-  (equal (@log1p-%56-bb mem loc pred)
-         (@log1p-%56-rev mem loc pred))
-  :enable (@log1p-%56-bb @log1p-%56-rev
-    @log1p-%57-rev
-    @log1p-%58-rev
-    @log1p-succ56-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%59-mem (s59)
   (car s59))
@@ -991,6 +1603,10 @@
   (declare (ignore s59))
   '%239)
 
+(defund @log1p-%59-fwd (mem loc pred)
+  (let ((s59 (list mem loc pred)))
+    (mv (@log1p-succ59-lab s59) (@log1p-m59.1-mem s59) (@log1p-%62-loc s59))))
+
 (defund @log1p-succ59-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -1006,6 +1622,51 @@
 (defund @log1p-%59-rev (mem loc pred)
   (@log1p-%60-rev mem loc pred))
 
+(defruled @log1p-%59-expand-rev-as-@log1p-%60-rev
+  (equal (@log1p-%59-rev mem loc pred)
+         (let ((s59 (list mem loc pred)))
+           (@log1p-%60-rev
+            (@log1p-%59-mem s59)
+            (@log1p-%59-loc s59)
+            (@log1p-%59-pred s59))))
+  :enable (@log1p-%59-rev @log1p-%59-mem @log1p-%59-loc @log1p-%59-pred))
+(defruled @log1p-%59-expand-rev-as-@log1p-%61-rev
+  (equal (@log1p-%59-rev mem loc pred)
+         (let ((s59 (list mem loc pred)))
+           (@log1p-%61-rev
+            (@log1p-%59-mem s59)
+            (@log1p-%60-loc s59)
+            (@log1p-%59-pred s59))))
+  :enable (@log1p-%59-expand-rev-as-@log1p-%60-rev @log1p-%60-rev @log1p-%60-loc @log1p-%60-val))
+(defruled @log1p-%59-expand-rev-as-@log1p-%62-rev
+  (equal (@log1p-%59-rev mem loc pred)
+         (let ((s59 (list mem loc pred)))
+           (@log1p-%62-rev
+            (@log1p-%59-mem s59)
+            (@log1p-%61-loc s59)
+            (@log1p-%59-pred s59))))
+  :enable (@log1p-%59-expand-rev-as-@log1p-%61-rev @log1p-%61-rev @log1p-%61-loc @log1p-%61-val))
+(defruled @log1p-%59-expand-rev-as-@log1p-m59.1-rev
+  (equal (@log1p-%59-rev mem loc pred)
+         (let ((s59 (list mem loc pred)))
+           (@log1p-m59.1-rev
+            (@log1p-%59-mem s59)
+            (@log1p-%62-loc s59)
+            (@log1p-%59-pred s59))))
+  :enable (@log1p-%59-expand-rev-as-@log1p-%62-rev @log1p-%62-rev @log1p-%62-loc @log1p-%62-val))
+(defruled @log1p-%59-expand-rev-as-@log1p-succ59-rev
+  (equal (@log1p-%59-rev mem loc pred)
+         (let ((s59 (list mem loc pred)))
+           (@log1p-succ59-rev
+            (@log1p-m59.1-mem s59)
+            (@log1p-%62-loc s59)
+            (@log1p-%59-pred s59))))
+  :enable (@log1p-%59-expand-rev-as-@log1p-m59.1-rev @log1p-m59.1-rev @log1p-m59.1-mem))
+(defruled @log1p-%59-expand-rev-as-fwd
+  (equal (@log1p-%59-rev mem loc pred)
+         (@log1p-%59-fwd mem loc pred))
+  :enable (@log1p-%59-expand-rev-as-@log1p-succ59-rev @log1p-succ59-rev @log1p-succ59-lab @log1p-%59-fwd))
+
 (defund @log1p-%59-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1015,17 +1676,6 @@
     (mem (store-double (g '%62 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%59-expand-bb
-  (equal (@log1p-%59-bb mem loc pred)
-         (@log1p-%59-rev mem loc pred))
-  :enable (@log1p-%59-bb @log1p-%59-rev
-    @log1p-%60-rev
-    @log1p-%61-rev
-    @log1p-%62-rev
-    @log1p-m59.1-rev
-    @log1p-succ59-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%63-mem (s63)
   (car s63))
@@ -1044,6 +1694,10 @@
 (defund @log1p-succ63-lab (s63)
   (case (g '%65 (@log1p-%65-loc s63)) (-1 '%66) (0 '%126)))
 
+(defund @log1p-%63-fwd (mem loc pred)
+  (let ((s63 (list mem loc pred)))
+    (mv (@log1p-succ63-lab s63) (@log1p-%63-mem s63) (@log1p-%65-loc s63))))
+
 (defund @log1p-succ63-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%65 loc) (-1 '%66) (0 '%126)) mem loc))
@@ -1055,6 +1709,35 @@
 (defund @log1p-%63-rev (mem loc pred)
   (@log1p-%64-rev mem loc pred))
 
+(defruled @log1p-%63-expand-rev-as-@log1p-%64-rev
+  (equal (@log1p-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@log1p-%64-rev
+            (@log1p-%63-mem s63)
+            (@log1p-%63-loc s63)
+            (@log1p-%63-pred s63))))
+  :enable (@log1p-%63-rev @log1p-%63-mem @log1p-%63-loc @log1p-%63-pred))
+(defruled @log1p-%63-expand-rev-as-@log1p-%65-rev
+  (equal (@log1p-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@log1p-%65-rev
+            (@log1p-%63-mem s63)
+            (@log1p-%64-loc s63)
+            (@log1p-%63-pred s63))))
+  :enable (@log1p-%63-expand-rev-as-@log1p-%64-rev @log1p-%64-rev @log1p-%64-loc @log1p-%64-val))
+(defruled @log1p-%63-expand-rev-as-@log1p-succ63-rev
+  (equal (@log1p-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@log1p-succ63-rev
+            (@log1p-%63-mem s63)
+            (@log1p-%65-loc s63)
+            (@log1p-%63-pred s63))))
+  :enable (@log1p-%63-expand-rev-as-@log1p-%65-rev @log1p-%65-rev @log1p-%65-loc @log1p-%65-val))
+(defruled @log1p-%63-expand-rev-as-fwd
+  (equal (@log1p-%63-rev mem loc pred)
+         (@log1p-%63-fwd mem loc pred))
+  :enable (@log1p-%63-expand-rev-as-@log1p-succ63-rev @log1p-succ63-rev @log1p-succ63-lab @log1p-%63-fwd))
+
 (defund @log1p-%63-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1062,15 +1745,6 @@
     (loc (s '%65 (icmp-ne-i32 (g '%64 loc) 0) loc))
     (succ (case (g '%65 loc) (-1 '%66) (0 '%126))))
   (mv succ mem loc)))
-
-(defruled @log1p-%63-expand-bb
-  (equal (@log1p-%63-bb mem loc pred)
-         (@log1p-%63-rev mem loc pred))
-  :enable (@log1p-%63-bb @log1p-%63-rev
-    @log1p-%64-rev
-    @log1p-%65-rev
-    @log1p-succ63-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%66-mem (s66)
   (car s66))
@@ -1089,6 +1763,10 @@
 (defund @log1p-succ66-lab (s66)
   (case (g '%68 (@log1p-%68-loc s66)) (-1 '%69) (0 '%95)))
 
+(defund @log1p-%66-fwd (mem loc pred)
+  (let ((s66 (list mem loc pred)))
+    (mv (@log1p-succ66-lab s66) (@log1p-%66-mem s66) (@log1p-%68-loc s66))))
+
 (defund @log1p-succ66-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%68 loc) (-1 '%69) (0 '%95)) mem loc))
@@ -1100,6 +1778,35 @@
 (defund @log1p-%66-rev (mem loc pred)
   (@log1p-%67-rev mem loc pred))
 
+(defruled @log1p-%66-expand-rev-as-@log1p-%67-rev
+  (equal (@log1p-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@log1p-%67-rev
+            (@log1p-%66-mem s66)
+            (@log1p-%66-loc s66)
+            (@log1p-%66-pred s66))))
+  :enable (@log1p-%66-rev @log1p-%66-mem @log1p-%66-loc @log1p-%66-pred))
+(defruled @log1p-%66-expand-rev-as-@log1p-%68-rev
+  (equal (@log1p-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@log1p-%68-rev
+            (@log1p-%66-mem s66)
+            (@log1p-%67-loc s66)
+            (@log1p-%66-pred s66))))
+  :enable (@log1p-%66-expand-rev-as-@log1p-%67-rev @log1p-%67-rev @log1p-%67-loc @log1p-%67-val))
+(defruled @log1p-%66-expand-rev-as-@log1p-succ66-rev
+  (equal (@log1p-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@log1p-succ66-rev
+            (@log1p-%66-mem s66)
+            (@log1p-%68-loc s66)
+            (@log1p-%66-pred s66))))
+  :enable (@log1p-%66-expand-rev-as-@log1p-%68-rev @log1p-%68-rev @log1p-%68-loc @log1p-%68-val))
+(defruled @log1p-%66-expand-rev-as-fwd
+  (equal (@log1p-%66-rev mem loc pred)
+         (@log1p-%66-fwd mem loc pred))
+  :enable (@log1p-%66-expand-rev-as-@log1p-succ66-rev @log1p-succ66-rev @log1p-succ66-lab @log1p-%66-fwd))
+
 (defund @log1p-%66-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1107,15 +1814,6 @@
     (loc (s '%68 (icmp-slt-i32 (g '%67 loc) 1128267776) loc))
     (succ (case (g '%68 loc) (-1 '%69) (0 '%95))))
   (mv succ mem loc)))
-
-(defruled @log1p-%66-expand-bb
-  (equal (@log1p-%66-bb mem loc pred)
-         (@log1p-%66-rev mem loc pred))
-  :enable (@log1p-%66-bb @log1p-%66-rev
-    @log1p-%67-rev
-    @log1p-%68-rev
-    @log1p-succ66-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%69-mem (s69)
   (car s69))
@@ -1172,6 +1870,10 @@
 (defund @log1p-succ69-lab (s69)
   (case (g '%79 (@log1p-%79-loc s69)) (-1 '%80) (0 '%85)))
 
+(defund @log1p-%69-fwd (mem loc pred)
+  (let ((s69 (list mem loc pred)))
+    (mv (@log1p-succ69-lab s69) (@log1p-m69.3-mem s69) (@log1p-%79-loc s69))))
+
 (defund @log1p-succ69-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%79 loc) (-1 '%80) (0 '%85)) mem loc))
@@ -1205,6 +1907,123 @@
 (defund @log1p-%69-rev (mem loc pred)
   (@log1p-%70-rev mem loc pred))
 
+(defruled @log1p-%69-expand-rev-as-@log1p-%70-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%70-rev
+            (@log1p-%69-mem s69)
+            (@log1p-%69-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-rev @log1p-%69-mem @log1p-%69-loc @log1p-%69-pred))
+(defruled @log1p-%69-expand-rev-as-@log1p-%71-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%71-rev
+            (@log1p-%69-mem s69)
+            (@log1p-%70-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%70-rev @log1p-%70-rev @log1p-%70-loc @log1p-%70-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-m69.1-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-m69.1-rev
+            (@log1p-%69-mem s69)
+            (@log1p-%71-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%71-rev @log1p-%71-rev @log1p-%71-loc @log1p-%71-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-%72-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%72-rev
+            (@log1p-m69.1-mem s69)
+            (@log1p-%71-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-m69.1-rev @log1p-m69.1-rev @log1p-m69.1-mem))
+(defruled @log1p-%69-expand-rev-as-@log1p-%73-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%73-rev
+            (@log1p-m69.1-mem s69)
+            (@log1p-%72-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%72-rev @log1p-%72-rev @log1p-%72-loc @log1p-%72-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-%74-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%74-rev
+            (@log1p-m69.1-mem s69)
+            (@log1p-%73-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%73-rev @log1p-%73-rev @log1p-%73-loc @log1p-%73-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-m69.2-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-m69.2-rev
+            (@log1p-m69.1-mem s69)
+            (@log1p-%74-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%74-rev @log1p-%74-rev @log1p-%74-loc @log1p-%74-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-%75-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%75-rev
+            (@log1p-m69.2-mem s69)
+            (@log1p-%74-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-m69.2-rev @log1p-m69.2-rev @log1p-m69.2-mem))
+(defruled @log1p-%69-expand-rev-as-@log1p-%76-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%76-rev
+            (@log1p-m69.2-mem s69)
+            (@log1p-%75-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%75-rev @log1p-%75-rev @log1p-%75-loc @log1p-%75-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-%77-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%77-rev
+            (@log1p-m69.2-mem s69)
+            (@log1p-%76-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%76-rev @log1p-%76-rev @log1p-%76-loc @log1p-%76-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-m69.3-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-m69.3-rev
+            (@log1p-m69.2-mem s69)
+            (@log1p-%77-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%77-rev @log1p-%77-rev @log1p-%77-loc @log1p-%77-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-%78-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%78-rev
+            (@log1p-m69.3-mem s69)
+            (@log1p-%77-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-m69.3-rev @log1p-m69.3-rev @log1p-m69.3-mem))
+(defruled @log1p-%69-expand-rev-as-@log1p-%79-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-%79-rev
+            (@log1p-m69.3-mem s69)
+            (@log1p-%78-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%78-rev @log1p-%78-rev @log1p-%78-loc @log1p-%78-val))
+(defruled @log1p-%69-expand-rev-as-@log1p-succ69-rev
+  (equal (@log1p-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@log1p-succ69-rev
+            (@log1p-m69.3-mem s69)
+            (@log1p-%79-loc s69)
+            (@log1p-%69-pred s69))))
+  :enable (@log1p-%69-expand-rev-as-@log1p-%79-rev @log1p-%79-rev @log1p-%79-loc @log1p-%79-val))
+(defruled @log1p-%69-expand-rev-as-fwd
+  (equal (@log1p-%69-rev mem loc pred)
+         (@log1p-%69-fwd mem loc pred))
+  :enable (@log1p-%69-expand-rev-as-@log1p-succ69-rev @log1p-succ69-rev @log1p-succ69-lab @log1p-%69-fwd))
+
 (defund @log1p-%69-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1223,26 +2042,6 @@
     (loc (s '%79 (icmp-sgt-i32 (g '%78 loc) 0) loc))
     (succ (case (g '%79 loc) (-1 '%80) (0 '%85))))
   (mv succ mem loc)))
-
-(defruled @log1p-%69-expand-bb
-  (equal (@log1p-%69-bb mem loc pred)
-         (@log1p-%69-rev mem loc pred))
-  :enable (@log1p-%69-bb @log1p-%69-rev
-    @log1p-%70-rev
-    @log1p-%71-rev
-    @log1p-m69.1-rev
-    @log1p-%72-rev
-    @log1p-%73-rev
-    @log1p-%74-rev
-    @log1p-m69.2-rev
-    @log1p-%75-rev
-    @log1p-%76-rev
-    @log1p-%77-rev
-    @log1p-m69.3-rev
-    @log1p-%78-rev
-    @log1p-%79-rev
-    @log1p-succ69-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%80-mem (s80)
   (car s80))
@@ -1270,6 +2069,10 @@
   (declare (ignore s80))
   '%90)
 
+(defund @log1p-%80-fwd (mem loc pred)
+  (let ((s80 (list mem loc pred)))
+    (mv (@log1p-succ80-lab s80) (@log1p-%80-mem s80) (@log1p-%84-loc s80))))
+
 (defund @log1p-succ80-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%90 mem loc))
@@ -1285,6 +2088,51 @@
 (defund @log1p-%80-rev (mem loc pred)
   (@log1p-%81-rev mem loc pred))
 
+(defruled @log1p-%80-expand-rev-as-@log1p-%81-rev
+  (equal (@log1p-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@log1p-%81-rev
+            (@log1p-%80-mem s80)
+            (@log1p-%80-loc s80)
+            (@log1p-%80-pred s80))))
+  :enable (@log1p-%80-rev @log1p-%80-mem @log1p-%80-loc @log1p-%80-pred))
+(defruled @log1p-%80-expand-rev-as-@log1p-%82-rev
+  (equal (@log1p-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@log1p-%82-rev
+            (@log1p-%80-mem s80)
+            (@log1p-%81-loc s80)
+            (@log1p-%80-pred s80))))
+  :enable (@log1p-%80-expand-rev-as-@log1p-%81-rev @log1p-%81-rev @log1p-%81-loc @log1p-%81-val))
+(defruled @log1p-%80-expand-rev-as-@log1p-%83-rev
+  (equal (@log1p-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@log1p-%83-rev
+            (@log1p-%80-mem s80)
+            (@log1p-%82-loc s80)
+            (@log1p-%80-pred s80))))
+  :enable (@log1p-%80-expand-rev-as-@log1p-%82-rev @log1p-%82-rev @log1p-%82-loc @log1p-%82-val))
+(defruled @log1p-%80-expand-rev-as-@log1p-%84-rev
+  (equal (@log1p-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@log1p-%84-rev
+            (@log1p-%80-mem s80)
+            (@log1p-%83-loc s80)
+            (@log1p-%80-pred s80))))
+  :enable (@log1p-%80-expand-rev-as-@log1p-%83-rev @log1p-%83-rev @log1p-%83-loc @log1p-%83-val))
+(defruled @log1p-%80-expand-rev-as-@log1p-succ80-rev
+  (equal (@log1p-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@log1p-succ80-rev
+            (@log1p-%80-mem s80)
+            (@log1p-%84-loc s80)
+            (@log1p-%80-pred s80))))
+  :enable (@log1p-%80-expand-rev-as-@log1p-%84-rev @log1p-%84-rev @log1p-%84-loc @log1p-%84-val))
+(defruled @log1p-%80-expand-rev-as-fwd
+  (equal (@log1p-%80-rev mem loc pred)
+         (@log1p-%80-fwd mem loc pred))
+  :enable (@log1p-%80-expand-rev-as-@log1p-succ80-rev @log1p-succ80-rev @log1p-succ80-lab @log1p-%80-fwd))
+
 (defund @log1p-%80-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1294,17 +2142,6 @@
     (loc (s '%84 (fsub-double #x3ff0000000000000 (g '%83 loc)) loc))
     (succ '%90))
   (mv succ mem loc)))
-
-(defruled @log1p-%80-expand-bb
-  (equal (@log1p-%80-bb mem loc pred)
-         (@log1p-%80-rev mem loc pred))
-  :enable (@log1p-%80-bb @log1p-%80-rev
-    @log1p-%81-rev
-    @log1p-%82-rev
-    @log1p-%83-rev
-    @log1p-%84-rev
-    @log1p-succ80-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%85-mem (s85)
   (car s85))
@@ -1332,6 +2169,10 @@
   (declare (ignore s85))
   '%90)
 
+(defund @log1p-%85-fwd (mem loc pred)
+  (let ((s85 (list mem loc pred)))
+    (mv (@log1p-succ85-lab s85) (@log1p-%85-mem s85) (@log1p-%89-loc s85))))
+
 (defund @log1p-succ85-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%90 mem loc))
@@ -1347,6 +2188,51 @@
 (defund @log1p-%85-rev (mem loc pred)
   (@log1p-%86-rev mem loc pred))
 
+(defruled @log1p-%85-expand-rev-as-@log1p-%86-rev
+  (equal (@log1p-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@log1p-%86-rev
+            (@log1p-%85-mem s85)
+            (@log1p-%85-loc s85)
+            (@log1p-%85-pred s85))))
+  :enable (@log1p-%85-rev @log1p-%85-mem @log1p-%85-loc @log1p-%85-pred))
+(defruled @log1p-%85-expand-rev-as-@log1p-%87-rev
+  (equal (@log1p-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@log1p-%87-rev
+            (@log1p-%85-mem s85)
+            (@log1p-%86-loc s85)
+            (@log1p-%85-pred s85))))
+  :enable (@log1p-%85-expand-rev-as-@log1p-%86-rev @log1p-%86-rev @log1p-%86-loc @log1p-%86-val))
+(defruled @log1p-%85-expand-rev-as-@log1p-%88-rev
+  (equal (@log1p-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@log1p-%88-rev
+            (@log1p-%85-mem s85)
+            (@log1p-%87-loc s85)
+            (@log1p-%85-pred s85))))
+  :enable (@log1p-%85-expand-rev-as-@log1p-%87-rev @log1p-%87-rev @log1p-%87-loc @log1p-%87-val))
+(defruled @log1p-%85-expand-rev-as-@log1p-%89-rev
+  (equal (@log1p-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@log1p-%89-rev
+            (@log1p-%85-mem s85)
+            (@log1p-%88-loc s85)
+            (@log1p-%85-pred s85))))
+  :enable (@log1p-%85-expand-rev-as-@log1p-%88-rev @log1p-%88-rev @log1p-%88-loc @log1p-%88-val))
+(defruled @log1p-%85-expand-rev-as-@log1p-succ85-rev
+  (equal (@log1p-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@log1p-succ85-rev
+            (@log1p-%85-mem s85)
+            (@log1p-%89-loc s85)
+            (@log1p-%85-pred s85))))
+  :enable (@log1p-%85-expand-rev-as-@log1p-%89-rev @log1p-%89-rev @log1p-%89-loc @log1p-%89-val))
+(defruled @log1p-%85-expand-rev-as-fwd
+  (equal (@log1p-%85-rev mem loc pred)
+         (@log1p-%85-fwd mem loc pred))
+  :enable (@log1p-%85-expand-rev-as-@log1p-succ85-rev @log1p-succ85-rev @log1p-succ85-lab @log1p-%85-fwd))
+
 (defund @log1p-%85-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1356,17 +2242,6 @@
     (loc (s '%89 (fsub-double (g '%86 loc) (g '%88 loc)) loc))
     (succ '%90))
   (mv succ mem loc)))
-
-(defruled @log1p-%85-expand-bb
-  (equal (@log1p-%85-bb mem loc pred)
-         (@log1p-%85-rev mem loc pred))
-  :enable (@log1p-%85-bb @log1p-%85-rev
-    @log1p-%86-rev
-    @log1p-%87-rev
-    @log1p-%88-rev
-    @log1p-%89-rev
-    @log1p-succ85-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%90-mem (s90)
   (car s90))
@@ -1398,6 +2273,10 @@
   (declare (ignore s90))
   '%103)
 
+(defund @log1p-%90-fwd (mem loc pred)
+  (let ((s90 (list mem loc pred)))
+    (mv (@log1p-succ90-lab s90) (@log1p-m90.2-mem s90) (@log1p-%94-loc s90))))
+
 (defund @log1p-succ90-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%103 mem loc))
@@ -1417,6 +2296,67 @@
 (defund @log1p-%90-rev (mem loc pred)
   (@log1p-%91-rev mem loc pred))
 
+(defruled @log1p-%90-expand-rev-as-@log1p-%91-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-%91-rev
+            (@log1p-%90-mem s90)
+            (@log1p-%90-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-rev @log1p-%90-mem @log1p-%90-loc @log1p-%90-pred))
+(defruled @log1p-%90-expand-rev-as-@log1p-m90.1-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-m90.1-rev
+            (@log1p-%90-mem s90)
+            (@log1p-%91-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-expand-rev-as-@log1p-%91-rev @log1p-%91-rev @log1p-%91-loc @log1p-%91-val))
+(defruled @log1p-%90-expand-rev-as-@log1p-%92-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-%92-rev
+            (@log1p-m90.1-mem s90)
+            (@log1p-%91-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-expand-rev-as-@log1p-m90.1-rev @log1p-m90.1-rev @log1p-m90.1-mem))
+(defruled @log1p-%90-expand-rev-as-@log1p-%93-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-%93-rev
+            (@log1p-m90.1-mem s90)
+            (@log1p-%92-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-expand-rev-as-@log1p-%92-rev @log1p-%92-rev @log1p-%92-loc @log1p-%92-val))
+(defruled @log1p-%90-expand-rev-as-@log1p-%94-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-%94-rev
+            (@log1p-m90.1-mem s90)
+            (@log1p-%93-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-expand-rev-as-@log1p-%93-rev @log1p-%93-rev @log1p-%93-loc @log1p-%93-val))
+(defruled @log1p-%90-expand-rev-as-@log1p-m90.2-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-m90.2-rev
+            (@log1p-m90.1-mem s90)
+            (@log1p-%94-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-expand-rev-as-@log1p-%94-rev @log1p-%94-rev @log1p-%94-loc @log1p-%94-val))
+(defruled @log1p-%90-expand-rev-as-@log1p-succ90-rev
+  (equal (@log1p-%90-rev mem loc pred)
+         (let ((s90 (list mem loc pred)))
+           (@log1p-succ90-rev
+            (@log1p-m90.2-mem s90)
+            (@log1p-%94-loc s90)
+            (@log1p-%90-pred s90))))
+  :enable (@log1p-%90-expand-rev-as-@log1p-m90.2-rev @log1p-m90.2-rev @log1p-m90.2-mem))
+(defruled @log1p-%90-expand-rev-as-fwd
+  (equal (@log1p-%90-rev mem loc pred)
+         (@log1p-%90-fwd mem loc pred))
+  :enable (@log1p-%90-expand-rev-as-@log1p-succ90-rev @log1p-succ90-rev @log1p-succ90-lab @log1p-%90-fwd))
+
 (defund @log1p-%90-bb (mem loc pred)
   (b* (
     (loc (s '%91 (case pred (%80 (g '%84 loc)) (%85 (g '%89 loc))) loc))
@@ -1427,19 +2367,6 @@
     (mem (store-double (g '%94 loc) (g '%c loc) mem))
     (succ '%103))
   (mv succ mem loc)))
-
-(defruled @log1p-%90-expand-bb
-  (equal (@log1p-%90-bb mem loc pred)
-         (@log1p-%90-rev mem loc pred))
-  :enable (@log1p-%90-bb @log1p-%90-rev
-    @log1p-%91-rev
-    @log1p-m90.1-rev
-    @log1p-%92-rev
-    @log1p-%93-rev
-    @log1p-%94-rev
-    @log1p-m90.2-rev
-    @log1p-succ90-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%95-mem (s95)
   (car s95))
@@ -1487,6 +2414,10 @@
   (declare (ignore s95))
   '%103)
 
+(defund @log1p-%95-fwd (mem loc pred)
+  (let ((s95 (list mem loc pred)))
+    (mv (@log1p-succ95-lab s95) (@log1p-m95.4-mem s95) (@log1p-%102-loc s95))))
+
 (defund @log1p-succ95-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%103 mem loc))
@@ -1516,6 +2447,107 @@
 (defund @log1p-%95-rev (mem loc pred)
   (@log1p-%96-rev mem loc pred))
 
+(defruled @log1p-%95-expand-rev-as-@log1p-%96-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%96-rev
+            (@log1p-%95-mem s95)
+            (@log1p-%95-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-rev @log1p-%95-mem @log1p-%95-loc @log1p-%95-pred))
+(defruled @log1p-%95-expand-rev-as-@log1p-m95.1-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-m95.1-rev
+            (@log1p-%95-mem s95)
+            (@log1p-%96-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%96-rev @log1p-%96-rev @log1p-%96-loc @log1p-%96-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-%97-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%97-rev
+            (@log1p-m95.1-mem s95)
+            (@log1p-%96-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-m95.1-rev @log1p-m95.1-rev @log1p-m95.1-mem))
+(defruled @log1p-%95-expand-rev-as-@log1p-%98-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%98-rev
+            (@log1p-m95.1-mem s95)
+            (@log1p-%97-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%97-rev @log1p-%97-rev @log1p-%97-loc @log1p-%97-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-%99-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%99-rev
+            (@log1p-m95.1-mem s95)
+            (@log1p-%98-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%98-rev @log1p-%98-rev @log1p-%98-loc @log1p-%98-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-m95.2-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-m95.2-rev
+            (@log1p-m95.1-mem s95)
+            (@log1p-%99-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%99-rev @log1p-%99-rev @log1p-%99-loc @log1p-%99-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-%100-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%100-rev
+            (@log1p-m95.2-mem s95)
+            (@log1p-%99-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-m95.2-rev @log1p-m95.2-rev @log1p-m95.2-mem))
+(defruled @log1p-%95-expand-rev-as-@log1p-%101-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%101-rev
+            (@log1p-m95.2-mem s95)
+            (@log1p-%100-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%100-rev @log1p-%100-rev @log1p-%100-loc @log1p-%100-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-%102-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-%102-rev
+            (@log1p-m95.2-mem s95)
+            (@log1p-%101-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%101-rev @log1p-%101-rev @log1p-%101-loc @log1p-%101-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-m95.3-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-m95.3-rev
+            (@log1p-m95.2-mem s95)
+            (@log1p-%102-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-%102-rev @log1p-%102-rev @log1p-%102-loc @log1p-%102-val))
+(defruled @log1p-%95-expand-rev-as-@log1p-m95.4-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-m95.4-rev
+            (@log1p-m95.3-mem s95)
+            (@log1p-%102-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-m95.3-rev @log1p-m95.3-rev @log1p-m95.3-mem))
+(defruled @log1p-%95-expand-rev-as-@log1p-succ95-rev
+  (equal (@log1p-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@log1p-succ95-rev
+            (@log1p-m95.4-mem s95)
+            (@log1p-%102-loc s95)
+            (@log1p-%95-pred s95))))
+  :enable (@log1p-%95-expand-rev-as-@log1p-m95.4-rev @log1p-m95.4-rev @log1p-m95.4-mem))
+(defruled @log1p-%95-expand-rev-as-fwd
+  (equal (@log1p-%95-rev mem loc pred)
+         (@log1p-%95-fwd mem loc pred))
+  :enable (@log1p-%95-expand-rev-as-@log1p-succ95-rev @log1p-succ95-rev @log1p-succ95-lab @log1p-%95-fwd))
+
 (defund @log1p-%95-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1532,24 +2564,6 @@
     (mem (store-double #x0000000000000000 (g '%c loc) mem))
     (succ '%103))
   (mv succ mem loc)))
-
-(defruled @log1p-%95-expand-bb
-  (equal (@log1p-%95-bb mem loc pred)
-         (@log1p-%95-rev mem loc pred))
-  :enable (@log1p-%95-bb @log1p-%95-rev
-    @log1p-%96-rev
-    @log1p-m95.1-rev
-    @log1p-%97-rev
-    @log1p-%98-rev
-    @log1p-%99-rev
-    @log1p-m95.2-rev
-    @log1p-%100-rev
-    @log1p-%101-rev
-    @log1p-%102-rev
-    @log1p-m95.3-rev
-    @log1p-m95.4-rev
-    @log1p-succ95-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%103-mem (s103)
   (car s103))
@@ -1578,6 +2592,10 @@
 (defund @log1p-succ103-lab (s103)
   (case (g '%107 (@log1p-%107-loc s103)) (-1 '%108) (0 '%113)))
 
+(defund @log1p-%103-fwd (mem loc pred)
+  (let ((s103 (list mem loc pred)))
+    (mv (@log1p-succ103-lab s103) (@log1p-m103.1-mem s103) (@log1p-%107-loc s103))))
+
 (defund @log1p-succ103-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%107 loc) (-1 '%108) (0 '%113)) mem loc))
@@ -1595,6 +2613,59 @@
 (defund @log1p-%103-rev (mem loc pred)
   (@log1p-%104-rev mem loc pred))
 
+(defruled @log1p-%103-expand-rev-as-@log1p-%104-rev
+  (equal (@log1p-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@log1p-%104-rev
+            (@log1p-%103-mem s103)
+            (@log1p-%103-loc s103)
+            (@log1p-%103-pred s103))))
+  :enable (@log1p-%103-rev @log1p-%103-mem @log1p-%103-loc @log1p-%103-pred))
+(defruled @log1p-%103-expand-rev-as-@log1p-%105-rev
+  (equal (@log1p-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@log1p-%105-rev
+            (@log1p-%103-mem s103)
+            (@log1p-%104-loc s103)
+            (@log1p-%103-pred s103))))
+  :enable (@log1p-%103-expand-rev-as-@log1p-%104-rev @log1p-%104-rev @log1p-%104-loc @log1p-%104-val))
+(defruled @log1p-%103-expand-rev-as-@log1p-m103.1-rev
+  (equal (@log1p-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@log1p-m103.1-rev
+            (@log1p-%103-mem s103)
+            (@log1p-%105-loc s103)
+            (@log1p-%103-pred s103))))
+  :enable (@log1p-%103-expand-rev-as-@log1p-%105-rev @log1p-%105-rev @log1p-%105-loc @log1p-%105-val))
+(defruled @log1p-%103-expand-rev-as-@log1p-%106-rev
+  (equal (@log1p-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@log1p-%106-rev
+            (@log1p-m103.1-mem s103)
+            (@log1p-%105-loc s103)
+            (@log1p-%103-pred s103))))
+  :enable (@log1p-%103-expand-rev-as-@log1p-m103.1-rev @log1p-m103.1-rev @log1p-m103.1-mem))
+(defruled @log1p-%103-expand-rev-as-@log1p-%107-rev
+  (equal (@log1p-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@log1p-%107-rev
+            (@log1p-m103.1-mem s103)
+            (@log1p-%106-loc s103)
+            (@log1p-%103-pred s103))))
+  :enable (@log1p-%103-expand-rev-as-@log1p-%106-rev @log1p-%106-rev @log1p-%106-loc @log1p-%106-val))
+(defruled @log1p-%103-expand-rev-as-@log1p-succ103-rev
+  (equal (@log1p-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@log1p-succ103-rev
+            (@log1p-m103.1-mem s103)
+            (@log1p-%107-loc s103)
+            (@log1p-%103-pred s103))))
+  :enable (@log1p-%103-expand-rev-as-@log1p-%107-rev @log1p-%107-rev @log1p-%107-loc @log1p-%107-val))
+(defruled @log1p-%103-expand-rev-as-fwd
+  (equal (@log1p-%103-rev mem loc pred)
+         (@log1p-%103-fwd mem loc pred))
+  :enable (@log1p-%103-expand-rev-as-@log1p-succ103-rev @log1p-succ103-rev @log1p-succ103-lab @log1p-%103-fwd))
+
 (defund @log1p-%103-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1605,18 +2676,6 @@
     (loc (s '%107 (icmp-slt-i32 (g '%106 loc) 434334) loc))
     (succ (case (g '%107 loc) (-1 '%108) (0 '%113))))
   (mv succ mem loc)))
-
-(defruled @log1p-%103-expand-bb
-  (equal (@log1p-%103-bb mem loc pred)
-         (@log1p-%103-rev mem loc pred))
-  :enable (@log1p-%103-bb @log1p-%103-rev
-    @log1p-%104-rev
-    @log1p-%105-rev
-    @log1p-m103.1-rev
-    @log1p-%106-rev
-    @log1p-%107-rev
-    @log1p-succ103-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%108-mem (s108)
   (car s108))
@@ -1646,6 +2705,10 @@
   (declare (ignore s108))
   '%123)
 
+(defund @log1p-%108-fwd (mem loc pred)
+  (let ((s108 (list mem loc pred)))
+    (mv (@log1p-succ108-lab s108) (@log1p-m108.1-mem s108) (@log1p-%112-loc s108))))
+
 (defund @log1p-succ108-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%123 mem loc))
@@ -1663,6 +2726,59 @@
 (defund @log1p-%108-rev (mem loc pred)
   (@log1p-%109-rev mem loc pred))
 
+(defruled @log1p-%108-expand-rev-as-@log1p-%109-rev
+  (equal (@log1p-%108-rev mem loc pred)
+         (let ((s108 (list mem loc pred)))
+           (@log1p-%109-rev
+            (@log1p-%108-mem s108)
+            (@log1p-%108-loc s108)
+            (@log1p-%108-pred s108))))
+  :enable (@log1p-%108-rev @log1p-%108-mem @log1p-%108-loc @log1p-%108-pred))
+(defruled @log1p-%108-expand-rev-as-@log1p-%110-rev
+  (equal (@log1p-%108-rev mem loc pred)
+         (let ((s108 (list mem loc pred)))
+           (@log1p-%110-rev
+            (@log1p-%108-mem s108)
+            (@log1p-%109-loc s108)
+            (@log1p-%108-pred s108))))
+  :enable (@log1p-%108-expand-rev-as-@log1p-%109-rev @log1p-%109-rev @log1p-%109-loc @log1p-%109-val))
+(defruled @log1p-%108-expand-rev-as-@log1p-%111-rev
+  (equal (@log1p-%108-rev mem loc pred)
+         (let ((s108 (list mem loc pred)))
+           (@log1p-%111-rev
+            (@log1p-%108-mem s108)
+            (@log1p-%110-loc s108)
+            (@log1p-%108-pred s108))))
+  :enable (@log1p-%108-expand-rev-as-@log1p-%110-rev @log1p-%110-rev @log1p-%110-loc @log1p-%110-val))
+(defruled @log1p-%108-expand-rev-as-@log1p-%112-rev
+  (equal (@log1p-%108-rev mem loc pred)
+         (let ((s108 (list mem loc pred)))
+           (@log1p-%112-rev
+            (@log1p-%108-mem s108)
+            (@log1p-%111-loc s108)
+            (@log1p-%108-pred s108))))
+  :enable (@log1p-%108-expand-rev-as-@log1p-%111-rev @log1p-%111-rev @log1p-%111-loc @log1p-%111-val))
+(defruled @log1p-%108-expand-rev-as-@log1p-m108.1-rev
+  (equal (@log1p-%108-rev mem loc pred)
+         (let ((s108 (list mem loc pred)))
+           (@log1p-m108.1-rev
+            (@log1p-%108-mem s108)
+            (@log1p-%112-loc s108)
+            (@log1p-%108-pred s108))))
+  :enable (@log1p-%108-expand-rev-as-@log1p-%112-rev @log1p-%112-rev @log1p-%112-loc @log1p-%112-val))
+(defruled @log1p-%108-expand-rev-as-@log1p-succ108-rev
+  (equal (@log1p-%108-rev mem loc pred)
+         (let ((s108 (list mem loc pred)))
+           (@log1p-succ108-rev
+            (@log1p-m108.1-mem s108)
+            (@log1p-%112-loc s108)
+            (@log1p-%108-pred s108))))
+  :enable (@log1p-%108-expand-rev-as-@log1p-m108.1-rev @log1p-m108.1-rev @log1p-m108.1-mem))
+(defruled @log1p-%108-expand-rev-as-fwd
+  (equal (@log1p-%108-rev mem loc pred)
+         (@log1p-%108-fwd mem loc pred))
+  :enable (@log1p-%108-expand-rev-as-@log1p-succ108-rev @log1p-succ108-rev @log1p-succ108-lab @log1p-%108-fwd))
+
 (defund @log1p-%108-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1673,18 +2789,6 @@
     (mem (store-i32 (g '%110 loc) (g '%112 loc) mem))
     (succ '%123))
   (mv succ mem loc)))
-
-(defruled @log1p-%108-expand-bb
-  (equal (@log1p-%108-bb mem loc pred)
-         (@log1p-%108-rev mem loc pred))
-  :enable (@log1p-%108-bb @log1p-%108-rev
-    @log1p-%109-rev
-    @log1p-%110-rev
-    @log1p-%111-rev
-    @log1p-%112-rev
-    @log1p-m108.1-rev
-    @log1p-succ108-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%113-mem (s113)
   (car s113))
@@ -1738,6 +2842,10 @@
   (declare (ignore s113))
   '%123)
 
+(defund @log1p-%113-fwd (mem loc pred)
+  (let ((s113 (list mem loc pred)))
+    (mv (@log1p-succ113-lab s113) (@log1p-m113.3-mem s113) (@log1p-%122-loc s113))))
+
 (defund @log1p-succ113-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%123 mem loc))
@@ -1769,6 +2877,115 @@
 (defund @log1p-%113-rev (mem loc pred)
   (@log1p-%114-rev mem loc pred))
 
+(defruled @log1p-%113-expand-rev-as-@log1p-%114-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%114-rev
+            (@log1p-%113-mem s113)
+            (@log1p-%113-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-rev @log1p-%113-mem @log1p-%113-loc @log1p-%113-pred))
+(defruled @log1p-%113-expand-rev-as-@log1p-%115-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%115-rev
+            (@log1p-%113-mem s113)
+            (@log1p-%114-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%114-rev @log1p-%114-rev @log1p-%114-loc @log1p-%114-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-m113.1-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-m113.1-rev
+            (@log1p-%113-mem s113)
+            (@log1p-%115-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%115-rev @log1p-%115-rev @log1p-%115-loc @log1p-%115-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-%116-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%116-rev
+            (@log1p-m113.1-mem s113)
+            (@log1p-%115-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-m113.1-rev @log1p-m113.1-rev @log1p-m113.1-mem))
+(defruled @log1p-%113-expand-rev-as-@log1p-%117-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%117-rev
+            (@log1p-m113.1-mem s113)
+            (@log1p-%116-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%116-rev @log1p-%116-rev @log1p-%116-loc @log1p-%116-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-%118-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%118-rev
+            (@log1p-m113.1-mem s113)
+            (@log1p-%117-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%117-rev @log1p-%117-rev @log1p-%117-loc @log1p-%117-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-%119-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%119-rev
+            (@log1p-m113.1-mem s113)
+            (@log1p-%118-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%118-rev @log1p-%118-rev @log1p-%118-loc @log1p-%118-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-m113.2-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-m113.2-rev
+            (@log1p-m113.1-mem s113)
+            (@log1p-%119-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%119-rev @log1p-%119-rev @log1p-%119-loc @log1p-%119-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-%120-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%120-rev
+            (@log1p-m113.2-mem s113)
+            (@log1p-%119-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-m113.2-rev @log1p-m113.2-rev @log1p-m113.2-mem))
+(defruled @log1p-%113-expand-rev-as-@log1p-%121-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%121-rev
+            (@log1p-m113.2-mem s113)
+            (@log1p-%120-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%120-rev @log1p-%120-rev @log1p-%120-loc @log1p-%120-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-%122-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-%122-rev
+            (@log1p-m113.2-mem s113)
+            (@log1p-%121-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%121-rev @log1p-%121-rev @log1p-%121-loc @log1p-%121-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-m113.3-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-m113.3-rev
+            (@log1p-m113.2-mem s113)
+            (@log1p-%122-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-%122-rev @log1p-%122-rev @log1p-%122-loc @log1p-%122-val))
+(defruled @log1p-%113-expand-rev-as-@log1p-succ113-rev
+  (equal (@log1p-%113-rev mem loc pred)
+         (let ((s113 (list mem loc pred)))
+           (@log1p-succ113-rev
+            (@log1p-m113.3-mem s113)
+            (@log1p-%122-loc s113)
+            (@log1p-%113-pred s113))))
+  :enable (@log1p-%113-expand-rev-as-@log1p-m113.3-rev @log1p-m113.3-rev @log1p-m113.3-mem))
+(defruled @log1p-%113-expand-rev-as-fwd
+  (equal (@log1p-%113-rev mem loc pred)
+         (@log1p-%113-fwd mem loc pred))
+  :enable (@log1p-%113-expand-rev-as-@log1p-succ113-rev @log1p-succ113-rev @log1p-succ113-lab @log1p-%113-fwd))
+
 (defund @log1p-%113-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1786,25 +3003,6 @@
     (mem (store-i32 (g '%122 loc) (g '%hu loc) mem))
     (succ '%123))
   (mv succ mem loc)))
-
-(defruled @log1p-%113-expand-bb
-  (equal (@log1p-%113-bb mem loc pred)
-         (@log1p-%113-rev mem loc pred))
-  :enable (@log1p-%113-bb @log1p-%113-rev
-    @log1p-%114-rev
-    @log1p-%115-rev
-    @log1p-m113.1-rev
-    @log1p-%116-rev
-    @log1p-%117-rev
-    @log1p-%118-rev
-    @log1p-%119-rev
-    @log1p-m113.2-rev
-    @log1p-%120-rev
-    @log1p-%121-rev
-    @log1p-%122-rev
-    @log1p-m113.3-rev
-    @log1p-succ113-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%123-mem (s123)
   (car s123))
@@ -1826,6 +3024,10 @@
   (declare (ignore s123))
   '%126)
 
+(defund @log1p-%123-fwd (mem loc pred)
+  (let ((s123 (list mem loc pred)))
+    (mv (@log1p-succ123-lab s123) (@log1p-m123.1-mem s123) (@log1p-%125-loc s123))))
+
 (defund @log1p-succ123-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%126 mem loc))
@@ -1839,6 +3041,43 @@
 (defund @log1p-%123-rev (mem loc pred)
   (@log1p-%124-rev mem loc pred))
 
+(defruled @log1p-%123-expand-rev-as-@log1p-%124-rev
+  (equal (@log1p-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@log1p-%124-rev
+            (@log1p-%123-mem s123)
+            (@log1p-%123-loc s123)
+            (@log1p-%123-pred s123))))
+  :enable (@log1p-%123-rev @log1p-%123-mem @log1p-%123-loc @log1p-%123-pred))
+(defruled @log1p-%123-expand-rev-as-@log1p-%125-rev
+  (equal (@log1p-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@log1p-%125-rev
+            (@log1p-%123-mem s123)
+            (@log1p-%124-loc s123)
+            (@log1p-%123-pred s123))))
+  :enable (@log1p-%123-expand-rev-as-@log1p-%124-rev @log1p-%124-rev @log1p-%124-loc @log1p-%124-val))
+(defruled @log1p-%123-expand-rev-as-@log1p-m123.1-rev
+  (equal (@log1p-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@log1p-m123.1-rev
+            (@log1p-%123-mem s123)
+            (@log1p-%125-loc s123)
+            (@log1p-%123-pred s123))))
+  :enable (@log1p-%123-expand-rev-as-@log1p-%125-rev @log1p-%125-rev @log1p-%125-loc @log1p-%125-val))
+(defruled @log1p-%123-expand-rev-as-@log1p-succ123-rev
+  (equal (@log1p-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@log1p-succ123-rev
+            (@log1p-m123.1-mem s123)
+            (@log1p-%125-loc s123)
+            (@log1p-%123-pred s123))))
+  :enable (@log1p-%123-expand-rev-as-@log1p-m123.1-rev @log1p-m123.1-rev @log1p-m123.1-mem))
+(defruled @log1p-%123-expand-rev-as-fwd
+  (equal (@log1p-%123-rev mem loc pred)
+         (@log1p-%123-fwd mem loc pred))
+  :enable (@log1p-%123-expand-rev-as-@log1p-succ123-rev @log1p-succ123-rev @log1p-succ123-lab @log1p-%123-fwd))
+
 (defund @log1p-%123-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1847,16 +3086,6 @@
     (mem (store-double (g '%125 loc) (g '%f loc) mem))
     (succ '%126))
   (mv succ mem loc)))
-
-(defruled @log1p-%123-expand-bb
-  (equal (@log1p-%123-bb mem loc pred)
-         (@log1p-%123-rev mem loc pred))
-  :enable (@log1p-%123-bb @log1p-%123-rev
-    @log1p-%124-rev
-    @log1p-%125-rev
-    @log1p-m123.1-rev
-    @log1p-succ123-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%126-mem (s126)
   (car s126))
@@ -1893,6 +3122,10 @@
 (defund @log1p-succ126-lab (s126)
   (case (g '%132 (@log1p-%132-loc s126)) (-1 '%133) (0 '%179)))
 
+(defund @log1p-%126-fwd (mem loc pred)
+  (let ((s126 (list mem loc pred)))
+    (mv (@log1p-succ126-lab s126) (@log1p-m126.1-mem s126) (@log1p-%132-loc s126))))
+
 (defund @log1p-succ126-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%132 loc) (-1 '%133) (0 '%179)) mem loc))
@@ -1914,6 +3147,75 @@
 (defund @log1p-%126-rev (mem loc pred)
   (@log1p-%127-rev mem loc pred))
 
+(defruled @log1p-%126-expand-rev-as-@log1p-%127-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-%127-rev
+            (@log1p-%126-mem s126)
+            (@log1p-%126-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-rev @log1p-%126-mem @log1p-%126-loc @log1p-%126-pred))
+(defruled @log1p-%126-expand-rev-as-@log1p-%128-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-%128-rev
+            (@log1p-%126-mem s126)
+            (@log1p-%127-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-%127-rev @log1p-%127-rev @log1p-%127-loc @log1p-%127-val))
+(defruled @log1p-%126-expand-rev-as-@log1p-%129-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-%129-rev
+            (@log1p-%126-mem s126)
+            (@log1p-%128-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-%128-rev @log1p-%128-rev @log1p-%128-loc @log1p-%128-val))
+(defruled @log1p-%126-expand-rev-as-@log1p-%130-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-%130-rev
+            (@log1p-%126-mem s126)
+            (@log1p-%129-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-%129-rev @log1p-%129-rev @log1p-%129-loc @log1p-%129-val))
+(defruled @log1p-%126-expand-rev-as-@log1p-m126.1-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-m126.1-rev
+            (@log1p-%126-mem s126)
+            (@log1p-%130-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-%130-rev @log1p-%130-rev @log1p-%130-loc @log1p-%130-val))
+(defruled @log1p-%126-expand-rev-as-@log1p-%131-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-%131-rev
+            (@log1p-m126.1-mem s126)
+            (@log1p-%130-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-m126.1-rev @log1p-m126.1-rev @log1p-m126.1-mem))
+(defruled @log1p-%126-expand-rev-as-@log1p-%132-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-%132-rev
+            (@log1p-m126.1-mem s126)
+            (@log1p-%131-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-%131-rev @log1p-%131-rev @log1p-%131-loc @log1p-%131-val))
+(defruled @log1p-%126-expand-rev-as-@log1p-succ126-rev
+  (equal (@log1p-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@log1p-succ126-rev
+            (@log1p-m126.1-mem s126)
+            (@log1p-%132-loc s126)
+            (@log1p-%126-pred s126))))
+  :enable (@log1p-%126-expand-rev-as-@log1p-%132-rev @log1p-%132-rev @log1p-%132-loc @log1p-%132-val))
+(defruled @log1p-%126-expand-rev-as-fwd
+  (equal (@log1p-%126-rev mem loc pred)
+         (@log1p-%126-fwd mem loc pred))
+  :enable (@log1p-%126-expand-rev-as-@log1p-succ126-rev @log1p-succ126-rev @log1p-succ126-lab @log1p-%126-fwd))
+
 (defund @log1p-%126-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1926,20 +3228,6 @@
     (loc (s '%132 (icmp-eq-i32 (g '%131 loc) 0) loc))
     (succ (case (g '%132 loc) (-1 '%133) (0 '%179))))
   (mv succ mem loc)))
-
-(defruled @log1p-%126-expand-bb
-  (equal (@log1p-%126-bb mem loc pred)
-         (@log1p-%126-rev mem loc pred))
-  :enable (@log1p-%126-bb @log1p-%126-rev
-    @log1p-%127-rev
-    @log1p-%128-rev
-    @log1p-%129-rev
-    @log1p-%130-rev
-    @log1p-m126.1-rev
-    @log1p-%131-rev
-    @log1p-%132-rev
-    @log1p-succ126-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%133-mem (s133)
   (car s133))
@@ -1962,6 +3250,10 @@
 (defund @log1p-succ133-lab (s133)
   (case (g '%136 (@log1p-%136-loc s133)) (-1 '%137) (0 '%153)))
 
+(defund @log1p-%133-fwd (mem loc pred)
+  (let ((s133 (list mem loc pred)))
+    (mv (@log1p-succ133-lab s133) (@log1p-%133-mem s133) (@log1p-%136-loc s133))))
+
 (defund @log1p-succ133-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%136 loc) (-1 '%137) (0 '%153)) mem loc))
@@ -1975,6 +3267,43 @@
 (defund @log1p-%133-rev (mem loc pred)
   (@log1p-%134-rev mem loc pred))
 
+(defruled @log1p-%133-expand-rev-as-@log1p-%134-rev
+  (equal (@log1p-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@log1p-%134-rev
+            (@log1p-%133-mem s133)
+            (@log1p-%133-loc s133)
+            (@log1p-%133-pred s133))))
+  :enable (@log1p-%133-rev @log1p-%133-mem @log1p-%133-loc @log1p-%133-pred))
+(defruled @log1p-%133-expand-rev-as-@log1p-%135-rev
+  (equal (@log1p-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@log1p-%135-rev
+            (@log1p-%133-mem s133)
+            (@log1p-%134-loc s133)
+            (@log1p-%133-pred s133))))
+  :enable (@log1p-%133-expand-rev-as-@log1p-%134-rev @log1p-%134-rev @log1p-%134-loc @log1p-%134-val))
+(defruled @log1p-%133-expand-rev-as-@log1p-%136-rev
+  (equal (@log1p-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@log1p-%136-rev
+            (@log1p-%133-mem s133)
+            (@log1p-%135-loc s133)
+            (@log1p-%133-pred s133))))
+  :enable (@log1p-%133-expand-rev-as-@log1p-%135-rev @log1p-%135-rev @log1p-%135-loc @log1p-%135-val))
+(defruled @log1p-%133-expand-rev-as-@log1p-succ133-rev
+  (equal (@log1p-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@log1p-succ133-rev
+            (@log1p-%133-mem s133)
+            (@log1p-%136-loc s133)
+            (@log1p-%133-pred s133))))
+  :enable (@log1p-%133-expand-rev-as-@log1p-%136-rev @log1p-%136-rev @log1p-%136-loc @log1p-%136-val))
+(defruled @log1p-%133-expand-rev-as-fwd
+  (equal (@log1p-%133-rev mem loc pred)
+         (@log1p-%133-fwd mem loc pred))
+  :enable (@log1p-%133-expand-rev-as-@log1p-succ133-rev @log1p-succ133-rev @log1p-succ133-lab @log1p-%133-fwd))
+
 (defund @log1p-%133-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1983,16 +3312,6 @@
     (loc (s '%136 (fcmp-oeq-double (g '%134 loc) (g '%135 loc)) loc))
     (succ (case (g '%136 loc) (-1 '%137) (0 '%153))))
   (mv succ mem loc)))
-
-(defruled @log1p-%133-expand-bb
-  (equal (@log1p-%133-bb mem loc pred)
-         (@log1p-%133-rev mem loc pred))
-  :enable (@log1p-%133-bb @log1p-%133-rev
-    @log1p-%134-rev
-    @log1p-%135-rev
-    @log1p-%136-rev
-    @log1p-succ133-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%137-mem (s137)
   (car s137))
@@ -2011,6 +3330,10 @@
 (defund @log1p-succ137-lab (s137)
   (case (g '%139 (@log1p-%139-loc s137)) (-1 '%140) (0 '%142)))
 
+(defund @log1p-%137-fwd (mem loc pred)
+  (let ((s137 (list mem loc pred)))
+    (mv (@log1p-succ137-lab s137) (@log1p-%137-mem s137) (@log1p-%139-loc s137))))
+
 (defund @log1p-succ137-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%139 loc) (-1 '%140) (0 '%142)) mem loc))
@@ -2022,6 +3345,35 @@
 (defund @log1p-%137-rev (mem loc pred)
   (@log1p-%138-rev mem loc pred))
 
+(defruled @log1p-%137-expand-rev-as-@log1p-%138-rev
+  (equal (@log1p-%137-rev mem loc pred)
+         (let ((s137 (list mem loc pred)))
+           (@log1p-%138-rev
+            (@log1p-%137-mem s137)
+            (@log1p-%137-loc s137)
+            (@log1p-%137-pred s137))))
+  :enable (@log1p-%137-rev @log1p-%137-mem @log1p-%137-loc @log1p-%137-pred))
+(defruled @log1p-%137-expand-rev-as-@log1p-%139-rev
+  (equal (@log1p-%137-rev mem loc pred)
+         (let ((s137 (list mem loc pred)))
+           (@log1p-%139-rev
+            (@log1p-%137-mem s137)
+            (@log1p-%138-loc s137)
+            (@log1p-%137-pred s137))))
+  :enable (@log1p-%137-expand-rev-as-@log1p-%138-rev @log1p-%138-rev @log1p-%138-loc @log1p-%138-val))
+(defruled @log1p-%137-expand-rev-as-@log1p-succ137-rev
+  (equal (@log1p-%137-rev mem loc pred)
+         (let ((s137 (list mem loc pred)))
+           (@log1p-succ137-rev
+            (@log1p-%137-mem s137)
+            (@log1p-%139-loc s137)
+            (@log1p-%137-pred s137))))
+  :enable (@log1p-%137-expand-rev-as-@log1p-%139-rev @log1p-%139-rev @log1p-%139-loc @log1p-%139-val))
+(defruled @log1p-%137-expand-rev-as-fwd
+  (equal (@log1p-%137-rev mem loc pred)
+         (@log1p-%137-fwd mem loc pred))
+  :enable (@log1p-%137-expand-rev-as-@log1p-succ137-rev @log1p-succ137-rev @log1p-succ137-lab @log1p-%137-fwd))
+
 (defund @log1p-%137-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2029,15 +3381,6 @@
     (loc (s '%139 (icmp-eq-i32 (g '%138 loc) 0) loc))
     (succ (case (g '%139 loc) (-1 '%140) (0 '%142))))
   (mv succ mem loc)))
-
-(defruled @log1p-%137-expand-bb
-  (equal (@log1p-%137-bb mem loc pred)
-         (@log1p-%137-rev mem loc pred))
-  :enable (@log1p-%137-bb @log1p-%137-rev
-    @log1p-%138-rev
-    @log1p-%139-rev
-    @log1p-succ137-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%140-mem (s140)
   (car s140))
@@ -2055,6 +3398,10 @@
   (declare (ignore s140))
   '%239)
 
+(defund @log1p-%140-fwd (mem loc pred)
+  (let ((s140 (list mem loc pred)))
+    (mv (@log1p-succ140-lab s140) (@log1p-m140.1-mem s140) (@log1p-%141-loc s140))))
+
 (defund @log1p-succ140-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -2066,6 +3413,35 @@
 (defund @log1p-%140-rev (mem loc pred)
   (@log1p-%141-rev mem loc pred))
 
+(defruled @log1p-%140-expand-rev-as-@log1p-%141-rev
+  (equal (@log1p-%140-rev mem loc pred)
+         (let ((s140 (list mem loc pred)))
+           (@log1p-%141-rev
+            (@log1p-%140-mem s140)
+            (@log1p-%140-loc s140)
+            (@log1p-%140-pred s140))))
+  :enable (@log1p-%140-rev @log1p-%140-mem @log1p-%140-loc @log1p-%140-pred))
+(defruled @log1p-%140-expand-rev-as-@log1p-m140.1-rev
+  (equal (@log1p-%140-rev mem loc pred)
+         (let ((s140 (list mem loc pred)))
+           (@log1p-m140.1-rev
+            (@log1p-%140-mem s140)
+            (@log1p-%141-loc s140)
+            (@log1p-%140-pred s140))))
+  :enable (@log1p-%140-expand-rev-as-@log1p-%141-rev @log1p-%141-rev @log1p-%141-loc @log1p-%141-val))
+(defruled @log1p-%140-expand-rev-as-@log1p-succ140-rev
+  (equal (@log1p-%140-rev mem loc pred)
+         (let ((s140 (list mem loc pred)))
+           (@log1p-succ140-rev
+            (@log1p-m140.1-mem s140)
+            (@log1p-%141-loc s140)
+            (@log1p-%140-pred s140))))
+  :enable (@log1p-%140-expand-rev-as-@log1p-m140.1-rev @log1p-m140.1-rev @log1p-m140.1-mem))
+(defruled @log1p-%140-expand-rev-as-fwd
+  (equal (@log1p-%140-rev mem loc pred)
+         (@log1p-%140-fwd mem loc pred))
+  :enable (@log1p-%140-expand-rev-as-@log1p-succ140-rev @log1p-succ140-rev @log1p-succ140-lab @log1p-%140-fwd))
+
 (defund @log1p-%140-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2073,15 +3449,6 @@
     (mem (store-double (g '%141 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%140-expand-bb
-  (equal (@log1p-%140-bb mem loc pred)
-         (@log1p-%140-rev mem loc pred))
-  :enable (@log1p-%140-bb @log1p-%140-rev
-    @log1p-%141-rev
-    @log1p-m140.1-rev
-    @log1p-succ140-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%142-mem (s142)
   (car s142))
@@ -2137,6 +3504,10 @@
   (declare (ignore s142))
   '%239)
 
+(defund @log1p-%142-fwd (mem loc pred)
+  (let ((s142 (list mem loc pred)))
+    (mv (@log1p-succ142-lab s142) (@log1p-m142.2-mem s142) (@log1p-%152-loc s142))))
+
 (defund @log1p-succ142-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -2168,6 +3539,115 @@
 (defund @log1p-%142-rev (mem loc pred)
   (@log1p-%143-rev mem loc pred))
 
+(defruled @log1p-%142-expand-rev-as-@log1p-%143-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%143-rev
+            (@log1p-%142-mem s142)
+            (@log1p-%142-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-rev @log1p-%142-mem @log1p-%142-loc @log1p-%142-pred))
+(defruled @log1p-%142-expand-rev-as-@log1p-%144-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%144-rev
+            (@log1p-%142-mem s142)
+            (@log1p-%143-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%143-rev @log1p-%143-rev @log1p-%143-loc @log1p-%143-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%145-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%145-rev
+            (@log1p-%142-mem s142)
+            (@log1p-%144-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%144-rev @log1p-%144-rev @log1p-%144-loc @log1p-%144-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%146-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%146-rev
+            (@log1p-%142-mem s142)
+            (@log1p-%145-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%145-rev @log1p-%145-rev @log1p-%145-loc @log1p-%145-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%147-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%147-rev
+            (@log1p-%142-mem s142)
+            (@log1p-%146-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%146-rev @log1p-%146-rev @log1p-%146-loc @log1p-%146-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-m142.1-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-m142.1-rev
+            (@log1p-%142-mem s142)
+            (@log1p-%147-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%147-rev @log1p-%147-rev @log1p-%147-loc @log1p-%147-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%148-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%148-rev
+            (@log1p-m142.1-mem s142)
+            (@log1p-%147-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-m142.1-rev @log1p-m142.1-rev @log1p-m142.1-mem))
+(defruled @log1p-%142-expand-rev-as-@log1p-%149-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%149-rev
+            (@log1p-m142.1-mem s142)
+            (@log1p-%148-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%148-rev @log1p-%148-rev @log1p-%148-loc @log1p-%148-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%150-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%150-rev
+            (@log1p-m142.1-mem s142)
+            (@log1p-%149-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%149-rev @log1p-%149-rev @log1p-%149-loc @log1p-%149-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%151-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%151-rev
+            (@log1p-m142.1-mem s142)
+            (@log1p-%150-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%150-rev @log1p-%150-rev @log1p-%150-loc @log1p-%150-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-%152-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-%152-rev
+            (@log1p-m142.1-mem s142)
+            (@log1p-%151-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%151-rev @log1p-%151-rev @log1p-%151-loc @log1p-%151-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-m142.2-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-m142.2-rev
+            (@log1p-m142.1-mem s142)
+            (@log1p-%152-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-%152-rev @log1p-%152-rev @log1p-%152-loc @log1p-%152-val))
+(defruled @log1p-%142-expand-rev-as-@log1p-succ142-rev
+  (equal (@log1p-%142-rev mem loc pred)
+         (let ((s142 (list mem loc pred)))
+           (@log1p-succ142-rev
+            (@log1p-m142.2-mem s142)
+            (@log1p-%152-loc s142)
+            (@log1p-%142-pred s142))))
+  :enable (@log1p-%142-expand-rev-as-@log1p-m142.2-rev @log1p-m142.2-rev @log1p-m142.2-mem))
+(defruled @log1p-%142-expand-rev-as-fwd
+  (equal (@log1p-%142-rev mem loc pred)
+         (@log1p-%142-fwd mem loc pred))
+  :enable (@log1p-%142-expand-rev-as-@log1p-succ142-rev @log1p-succ142-rev @log1p-succ142-lab @log1p-%142-fwd))
+
 (defund @log1p-%142-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2185,25 +3665,6 @@
     (mem (store-double (g '%152 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%142-expand-bb
-  (equal (@log1p-%142-bb mem loc pred)
-         (@log1p-%142-rev mem loc pred))
-  :enable (@log1p-%142-bb @log1p-%142-rev
-    @log1p-%143-rev
-    @log1p-%144-rev
-    @log1p-%145-rev
-    @log1p-%146-rev
-    @log1p-%147-rev
-    @log1p-m142.1-rev
-    @log1p-%148-rev
-    @log1p-%149-rev
-    @log1p-%150-rev
-    @log1p-%151-rev
-    @log1p-%152-rev
-    @log1p-m142.2-rev
-    @log1p-succ142-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%153-mem (s153)
   (car s153))
@@ -2244,6 +3705,10 @@
 (defund @log1p-succ153-lab (s153)
   (case (g '%160 (@log1p-%160-loc s153)) (-1 '%161) (0 '%165)))
 
+(defund @log1p-%153-fwd (mem loc pred)
+  (let ((s153 (list mem loc pred)))
+    (mv (@log1p-succ153-lab s153) (@log1p-m153.1-mem s153) (@log1p-%160-loc s153))))
+
 (defund @log1p-succ153-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%160 loc) (-1 '%161) (0 '%165)) mem loc))
@@ -2267,6 +3732,83 @@
 (defund @log1p-%153-rev (mem loc pred)
   (@log1p-%154-rev mem loc pred))
 
+(defruled @log1p-%153-expand-rev-as-@log1p-%154-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%154-rev
+            (@log1p-%153-mem s153)
+            (@log1p-%153-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-rev @log1p-%153-mem @log1p-%153-loc @log1p-%153-pred))
+(defruled @log1p-%153-expand-rev-as-@log1p-%155-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%155-rev
+            (@log1p-%153-mem s153)
+            (@log1p-%154-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%154-rev @log1p-%154-rev @log1p-%154-loc @log1p-%154-val))
+(defruled @log1p-%153-expand-rev-as-@log1p-%156-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%156-rev
+            (@log1p-%153-mem s153)
+            (@log1p-%155-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%155-rev @log1p-%155-rev @log1p-%155-loc @log1p-%155-val))
+(defruled @log1p-%153-expand-rev-as-@log1p-%157-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%157-rev
+            (@log1p-%153-mem s153)
+            (@log1p-%156-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%156-rev @log1p-%156-rev @log1p-%156-loc @log1p-%156-val))
+(defruled @log1p-%153-expand-rev-as-@log1p-%158-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%158-rev
+            (@log1p-%153-mem s153)
+            (@log1p-%157-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%157-rev @log1p-%157-rev @log1p-%157-loc @log1p-%157-val))
+(defruled @log1p-%153-expand-rev-as-@log1p-m153.1-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-m153.1-rev
+            (@log1p-%153-mem s153)
+            (@log1p-%158-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%158-rev @log1p-%158-rev @log1p-%158-loc @log1p-%158-val))
+(defruled @log1p-%153-expand-rev-as-@log1p-%159-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%159-rev
+            (@log1p-m153.1-mem s153)
+            (@log1p-%158-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-m153.1-rev @log1p-m153.1-rev @log1p-m153.1-mem))
+(defruled @log1p-%153-expand-rev-as-@log1p-%160-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-%160-rev
+            (@log1p-m153.1-mem s153)
+            (@log1p-%159-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%159-rev @log1p-%159-rev @log1p-%159-loc @log1p-%159-val))
+(defruled @log1p-%153-expand-rev-as-@log1p-succ153-rev
+  (equal (@log1p-%153-rev mem loc pred)
+         (let ((s153 (list mem loc pred)))
+           (@log1p-succ153-rev
+            (@log1p-m153.1-mem s153)
+            (@log1p-%160-loc s153)
+            (@log1p-%153-pred s153))))
+  :enable (@log1p-%153-expand-rev-as-@log1p-%160-rev @log1p-%160-rev @log1p-%160-loc @log1p-%160-val))
+(defruled @log1p-%153-expand-rev-as-fwd
+  (equal (@log1p-%153-rev mem loc pred)
+         (@log1p-%153-fwd mem loc pred))
+  :enable (@log1p-%153-expand-rev-as-@log1p-succ153-rev @log1p-succ153-rev @log1p-succ153-lab @log1p-%153-fwd))
+
 (defund @log1p-%153-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2280,21 +3822,6 @@
     (loc (s '%160 (icmp-eq-i32 (g '%159 loc) 0) loc))
     (succ (case (g '%160 loc) (-1 '%161) (0 '%165))))
   (mv succ mem loc)))
-
-(defruled @log1p-%153-expand-bb
-  (equal (@log1p-%153-bb mem loc pred)
-         (@log1p-%153-rev mem loc pred))
-  :enable (@log1p-%153-bb @log1p-%153-rev
-    @log1p-%154-rev
-    @log1p-%155-rev
-    @log1p-%156-rev
-    @log1p-%157-rev
-    @log1p-%158-rev
-    @log1p-m153.1-rev
-    @log1p-%159-rev
-    @log1p-%160-rev
-    @log1p-succ153-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%161-mem (s161)
   (car s161))
@@ -2320,6 +3847,10 @@
   (declare (ignore s161))
   '%239)
 
+(defund @log1p-%161-fwd (mem loc pred)
+  (let ((s161 (list mem loc pred)))
+    (mv (@log1p-succ161-lab s161) (@log1p-m161.1-mem s161) (@log1p-%164-loc s161))))
+
 (defund @log1p-succ161-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -2335,6 +3866,51 @@
 (defund @log1p-%161-rev (mem loc pred)
   (@log1p-%162-rev mem loc pred))
 
+(defruled @log1p-%161-expand-rev-as-@log1p-%162-rev
+  (equal (@log1p-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@log1p-%162-rev
+            (@log1p-%161-mem s161)
+            (@log1p-%161-loc s161)
+            (@log1p-%161-pred s161))))
+  :enable (@log1p-%161-rev @log1p-%161-mem @log1p-%161-loc @log1p-%161-pred))
+(defruled @log1p-%161-expand-rev-as-@log1p-%163-rev
+  (equal (@log1p-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@log1p-%163-rev
+            (@log1p-%161-mem s161)
+            (@log1p-%162-loc s161)
+            (@log1p-%161-pred s161))))
+  :enable (@log1p-%161-expand-rev-as-@log1p-%162-rev @log1p-%162-rev @log1p-%162-loc @log1p-%162-val))
+(defruled @log1p-%161-expand-rev-as-@log1p-%164-rev
+  (equal (@log1p-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@log1p-%164-rev
+            (@log1p-%161-mem s161)
+            (@log1p-%163-loc s161)
+            (@log1p-%161-pred s161))))
+  :enable (@log1p-%161-expand-rev-as-@log1p-%163-rev @log1p-%163-rev @log1p-%163-loc @log1p-%163-val))
+(defruled @log1p-%161-expand-rev-as-@log1p-m161.1-rev
+  (equal (@log1p-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@log1p-m161.1-rev
+            (@log1p-%161-mem s161)
+            (@log1p-%164-loc s161)
+            (@log1p-%161-pred s161))))
+  :enable (@log1p-%161-expand-rev-as-@log1p-%164-rev @log1p-%164-rev @log1p-%164-loc @log1p-%164-val))
+(defruled @log1p-%161-expand-rev-as-@log1p-succ161-rev
+  (equal (@log1p-%161-rev mem loc pred)
+         (let ((s161 (list mem loc pred)))
+           (@log1p-succ161-rev
+            (@log1p-m161.1-mem s161)
+            (@log1p-%164-loc s161)
+            (@log1p-%161-pred s161))))
+  :enable (@log1p-%161-expand-rev-as-@log1p-m161.1-rev @log1p-m161.1-rev @log1p-m161.1-mem))
+(defruled @log1p-%161-expand-rev-as-fwd
+  (equal (@log1p-%161-rev mem loc pred)
+         (@log1p-%161-fwd mem loc pred))
+  :enable (@log1p-%161-expand-rev-as-@log1p-succ161-rev @log1p-succ161-rev @log1p-succ161-lab @log1p-%161-fwd))
+
 (defund @log1p-%161-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2344,17 +3920,6 @@
     (mem (store-double (g '%164 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%161-expand-bb
-  (equal (@log1p-%161-bb mem loc pred)
-         (@log1p-%161-rev mem loc pred))
-  :enable (@log1p-%161-bb @log1p-%161-rev
-    @log1p-%162-rev
-    @log1p-%163-rev
-    @log1p-%164-rev
-    @log1p-m161.1-rev
-    @log1p-succ161-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%165-mem (s165)
   (car s165))
@@ -2420,6 +3985,10 @@
   (declare (ignore s165))
   '%239)
 
+(defund @log1p-%165-fwd (mem loc pred)
+  (let ((s165 (list mem loc pred)))
+    (mv (@log1p-succ165-lab s165) (@log1p-m165.1-mem s165) (@log1p-%178-loc s165))))
+
 (defund @log1p-succ165-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -2455,6 +4024,131 @@
 (defund @log1p-%165-rev (mem loc pred)
   (@log1p-%166-rev mem loc pred))
 
+(defruled @log1p-%165-expand-rev-as-@log1p-%166-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%166-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%165-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-rev @log1p-%165-mem @log1p-%165-loc @log1p-%165-pred))
+(defruled @log1p-%165-expand-rev-as-@log1p-%167-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%167-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%166-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%166-rev @log1p-%166-rev @log1p-%166-loc @log1p-%166-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%168-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%168-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%167-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%167-rev @log1p-%167-rev @log1p-%167-loc @log1p-%167-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%169-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%169-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%168-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%168-rev @log1p-%168-rev @log1p-%168-loc @log1p-%168-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%170-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%170-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%169-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%169-rev @log1p-%169-rev @log1p-%169-loc @log1p-%169-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%171-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%171-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%170-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%170-rev @log1p-%170-rev @log1p-%170-loc @log1p-%170-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%172-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%172-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%171-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%171-rev @log1p-%171-rev @log1p-%171-loc @log1p-%171-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%173-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%173-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%172-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%172-rev @log1p-%172-rev @log1p-%172-loc @log1p-%172-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%174-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%174-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%173-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%173-rev @log1p-%173-rev @log1p-%173-loc @log1p-%173-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%175-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%175-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%174-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%174-rev @log1p-%174-rev @log1p-%174-loc @log1p-%174-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%176-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%176-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%175-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%175-rev @log1p-%175-rev @log1p-%175-loc @log1p-%175-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%177-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%177-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%176-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%176-rev @log1p-%176-rev @log1p-%176-loc @log1p-%176-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-%178-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-%178-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%177-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%177-rev @log1p-%177-rev @log1p-%177-loc @log1p-%177-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-m165.1-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-m165.1-rev
+            (@log1p-%165-mem s165)
+            (@log1p-%178-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-%178-rev @log1p-%178-rev @log1p-%178-loc @log1p-%178-val))
+(defruled @log1p-%165-expand-rev-as-@log1p-succ165-rev
+  (equal (@log1p-%165-rev mem loc pred)
+         (let ((s165 (list mem loc pred)))
+           (@log1p-succ165-rev
+            (@log1p-m165.1-mem s165)
+            (@log1p-%178-loc s165)
+            (@log1p-%165-pred s165))))
+  :enable (@log1p-%165-expand-rev-as-@log1p-m165.1-rev @log1p-m165.1-rev @log1p-m165.1-mem))
+(defruled @log1p-%165-expand-rev-as-fwd
+  (equal (@log1p-%165-rev mem loc pred)
+         (@log1p-%165-fwd mem loc pred))
+  :enable (@log1p-%165-expand-rev-as-@log1p-succ165-rev @log1p-succ165-rev @log1p-succ165-lab @log1p-%165-fwd))
+
 (defund @log1p-%165-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2474,27 +4168,6 @@
     (mem (store-double (g '%178 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%165-expand-bb
-  (equal (@log1p-%165-bb mem loc pred)
-         (@log1p-%165-rev mem loc pred))
-  :enable (@log1p-%165-bb @log1p-%165-rev
-    @log1p-%166-rev
-    @log1p-%167-rev
-    @log1p-%168-rev
-    @log1p-%169-rev
-    @log1p-%170-rev
-    @log1p-%171-rev
-    @log1p-%172-rev
-    @log1p-%173-rev
-    @log1p-%174-rev
-    @log1p-%175-rev
-    @log1p-%176-rev
-    @log1p-%177-rev
-    @log1p-%178-rev
-    @log1p-m165.1-rev
-    @log1p-succ165-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%179-mem (s179)
   (car s179))
@@ -2627,6 +4300,10 @@
 (defund @log1p-succ179-lab (s179)
   (case (g '%208 (@log1p-%208-loc s179)) (-1 '%209) (0 '%219)))
 
+(defund @log1p-%179-fwd (mem loc pred)
+  (let ((s179 (list mem loc pred)))
+    (mv (@log1p-succ179-lab s179) (@log1p-m179.3-mem s179) (@log1p-%208-loc s179))))
+
 (defund @log1p-succ179-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%208 loc) (-1 '%209) (0 '%219)) mem loc))
@@ -2698,6 +4375,275 @@
 (defund @log1p-%179-rev (mem loc pred)
   (@log1p-%180-rev mem loc pred))
 
+(defruled @log1p-%179-expand-rev-as-@log1p-%180-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%180-rev
+            (@log1p-%179-mem s179)
+            (@log1p-%179-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-rev @log1p-%179-mem @log1p-%179-loc @log1p-%179-pred))
+(defruled @log1p-%179-expand-rev-as-@log1p-%181-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%181-rev
+            (@log1p-%179-mem s179)
+            (@log1p-%180-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%180-rev @log1p-%180-rev @log1p-%180-loc @log1p-%180-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%182-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%182-rev
+            (@log1p-%179-mem s179)
+            (@log1p-%181-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%181-rev @log1p-%181-rev @log1p-%181-loc @log1p-%181-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%183-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%183-rev
+            (@log1p-%179-mem s179)
+            (@log1p-%182-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%182-rev @log1p-%182-rev @log1p-%182-loc @log1p-%182-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-m179.1-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-m179.1-rev
+            (@log1p-%179-mem s179)
+            (@log1p-%183-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%183-rev @log1p-%183-rev @log1p-%183-loc @log1p-%183-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%184-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%184-rev
+            (@log1p-m179.1-mem s179)
+            (@log1p-%183-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-m179.1-rev @log1p-m179.1-rev @log1p-m179.1-mem))
+(defruled @log1p-%179-expand-rev-as-@log1p-%185-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%185-rev
+            (@log1p-m179.1-mem s179)
+            (@log1p-%184-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%184-rev @log1p-%184-rev @log1p-%184-loc @log1p-%184-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%186-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%186-rev
+            (@log1p-m179.1-mem s179)
+            (@log1p-%185-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%185-rev @log1p-%185-rev @log1p-%185-loc @log1p-%185-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-m179.2-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-m179.2-rev
+            (@log1p-m179.1-mem s179)
+            (@log1p-%186-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%186-rev @log1p-%186-rev @log1p-%186-loc @log1p-%186-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%187-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%187-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%186-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-m179.2-rev @log1p-m179.2-rev @log1p-m179.2-mem))
+(defruled @log1p-%179-expand-rev-as-@log1p-%188-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%188-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%187-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%187-rev @log1p-%187-rev @log1p-%187-loc @log1p-%187-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%189-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%189-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%188-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%188-rev @log1p-%188-rev @log1p-%188-loc @log1p-%188-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%190-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%190-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%189-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%189-rev @log1p-%189-rev @log1p-%189-loc @log1p-%189-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%191-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%191-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%190-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%190-rev @log1p-%190-rev @log1p-%190-loc @log1p-%190-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%192-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%192-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%191-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%191-rev @log1p-%191-rev @log1p-%191-loc @log1p-%191-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%193-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%193-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%192-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%192-rev @log1p-%192-rev @log1p-%192-loc @log1p-%192-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%194-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%194-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%193-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%193-rev @log1p-%193-rev @log1p-%193-loc @log1p-%193-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%195-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%195-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%194-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%194-rev @log1p-%194-rev @log1p-%194-loc @log1p-%194-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%196-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%196-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%195-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%195-rev @log1p-%195-rev @log1p-%195-loc @log1p-%195-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%197-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%197-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%196-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%196-rev @log1p-%196-rev @log1p-%196-loc @log1p-%196-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%198-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%198-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%197-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%197-rev @log1p-%197-rev @log1p-%197-loc @log1p-%197-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%199-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%199-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%198-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%198-rev @log1p-%198-rev @log1p-%198-loc @log1p-%198-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%200-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%200-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%199-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%199-rev @log1p-%199-rev @log1p-%199-loc @log1p-%199-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%201-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%201-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%200-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%200-rev @log1p-%200-rev @log1p-%200-loc @log1p-%200-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%202-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%202-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%201-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%201-rev @log1p-%201-rev @log1p-%201-loc @log1p-%201-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%203-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%203-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%202-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%202-rev @log1p-%202-rev @log1p-%202-loc @log1p-%202-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%204-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%204-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%203-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%203-rev @log1p-%203-rev @log1p-%203-loc @log1p-%203-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%205-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%205-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%204-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%204-rev @log1p-%204-rev @log1p-%204-loc @log1p-%204-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%206-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%206-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%205-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%205-rev @log1p-%205-rev @log1p-%205-loc @log1p-%205-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-m179.3-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-m179.3-rev
+            (@log1p-m179.2-mem s179)
+            (@log1p-%206-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%206-rev @log1p-%206-rev @log1p-%206-loc @log1p-%206-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-%207-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%207-rev
+            (@log1p-m179.3-mem s179)
+            (@log1p-%206-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-m179.3-rev @log1p-m179.3-rev @log1p-m179.3-mem))
+(defruled @log1p-%179-expand-rev-as-@log1p-%208-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-%208-rev
+            (@log1p-m179.3-mem s179)
+            (@log1p-%207-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%207-rev @log1p-%207-rev @log1p-%207-loc @log1p-%207-val))
+(defruled @log1p-%179-expand-rev-as-@log1p-succ179-rev
+  (equal (@log1p-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@log1p-succ179-rev
+            (@log1p-m179.3-mem s179)
+            (@log1p-%208-loc s179)
+            (@log1p-%179-pred s179))))
+  :enable (@log1p-%179-expand-rev-as-@log1p-%208-rev @log1p-%208-rev @log1p-%208-loc @log1p-%208-val))
+(defruled @log1p-%179-expand-rev-as-fwd
+  (equal (@log1p-%179-rev mem loc pred)
+         (@log1p-%179-fwd mem loc pred))
+  :enable (@log1p-%179-expand-rev-as-@log1p-succ179-rev @log1p-succ179-rev @log1p-succ179-lab @log1p-%179-fwd))
+
 (defund @log1p-%179-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2735,45 +4681,6 @@
     (loc (s '%208 (icmp-eq-i32 (g '%207 loc) 0) loc))
     (succ (case (g '%208 loc) (-1 '%209) (0 '%219))))
   (mv succ mem loc)))
-
-(defruled @log1p-%179-expand-bb
-  (equal (@log1p-%179-bb mem loc pred)
-         (@log1p-%179-rev mem loc pred))
-  :enable (@log1p-%179-bb @log1p-%179-rev
-    @log1p-%180-rev
-    @log1p-%181-rev
-    @log1p-%182-rev
-    @log1p-%183-rev
-    @log1p-m179.1-rev
-    @log1p-%184-rev
-    @log1p-%185-rev
-    @log1p-%186-rev
-    @log1p-m179.2-rev
-    @log1p-%187-rev
-    @log1p-%188-rev
-    @log1p-%189-rev
-    @log1p-%190-rev
-    @log1p-%191-rev
-    @log1p-%192-rev
-    @log1p-%193-rev
-    @log1p-%194-rev
-    @log1p-%195-rev
-    @log1p-%196-rev
-    @log1p-%197-rev
-    @log1p-%198-rev
-    @log1p-%199-rev
-    @log1p-%200-rev
-    @log1p-%201-rev
-    @log1p-%202-rev
-    @log1p-%203-rev
-    @log1p-%204-rev
-    @log1p-%205-rev
-    @log1p-%206-rev
-    @log1p-m179.3-rev
-    @log1p-%207-rev
-    @log1p-%208-rev
-    @log1p-succ179-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%209-mem (s209)
   (car s209))
@@ -2823,6 +4730,10 @@
   (declare (ignore s209))
   '%239)
 
+(defund @log1p-%209-fwd (mem loc pred)
+  (let ((s209 (list mem loc pred)))
+    (mv (@log1p-succ209-lab s209) (@log1p-m209.1-mem s209) (@log1p-%218-loc s209))))
+
 (defund @log1p-succ209-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -2850,6 +4761,99 @@
 (defund @log1p-%209-rev (mem loc pred)
   (@log1p-%210-rev mem loc pred))
 
+(defruled @log1p-%209-expand-rev-as-@log1p-%210-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%210-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%209-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-rev @log1p-%209-mem @log1p-%209-loc @log1p-%209-pred))
+(defruled @log1p-%209-expand-rev-as-@log1p-%211-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%211-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%210-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%210-rev @log1p-%210-rev @log1p-%210-loc @log1p-%210-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%212-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%212-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%211-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%211-rev @log1p-%211-rev @log1p-%211-loc @log1p-%211-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%213-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%213-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%212-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%212-rev @log1p-%212-rev @log1p-%212-loc @log1p-%212-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%214-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%214-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%213-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%213-rev @log1p-%213-rev @log1p-%213-loc @log1p-%213-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%215-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%215-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%214-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%214-rev @log1p-%214-rev @log1p-%214-loc @log1p-%214-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%216-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%216-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%215-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%215-rev @log1p-%215-rev @log1p-%215-loc @log1p-%215-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%217-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%217-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%216-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%216-rev @log1p-%216-rev @log1p-%216-loc @log1p-%216-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-%218-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-%218-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%217-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%217-rev @log1p-%217-rev @log1p-%217-loc @log1p-%217-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-m209.1-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-m209.1-rev
+            (@log1p-%209-mem s209)
+            (@log1p-%218-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-%218-rev @log1p-%218-rev @log1p-%218-loc @log1p-%218-val))
+(defruled @log1p-%209-expand-rev-as-@log1p-succ209-rev
+  (equal (@log1p-%209-rev mem loc pred)
+         (let ((s209 (list mem loc pred)))
+           (@log1p-succ209-rev
+            (@log1p-m209.1-mem s209)
+            (@log1p-%218-loc s209)
+            (@log1p-%209-pred s209))))
+  :enable (@log1p-%209-expand-rev-as-@log1p-m209.1-rev @log1p-m209.1-rev @log1p-m209.1-mem))
+(defruled @log1p-%209-expand-rev-as-fwd
+  (equal (@log1p-%209-rev mem loc pred)
+         (@log1p-%209-fwd mem loc pred))
+  :enable (@log1p-%209-expand-rev-as-@log1p-succ209-rev @log1p-succ209-rev @log1p-succ209-lab @log1p-%209-fwd))
+
 (defund @log1p-%209-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2865,23 +4869,6 @@
     (mem (store-double (g '%218 loc) (g '%1 loc) mem))
     (succ '%239))
   (mv succ mem loc)))
-
-(defruled @log1p-%209-expand-bb
-  (equal (@log1p-%209-bb mem loc pred)
-         (@log1p-%209-rev mem loc pred))
-  :enable (@log1p-%209-bb @log1p-%209-rev
-    @log1p-%210-rev
-    @log1p-%211-rev
-    @log1p-%212-rev
-    @log1p-%213-rev
-    @log1p-%214-rev
-    @log1p-%215-rev
-    @log1p-%216-rev
-    @log1p-%217-rev
-    @log1p-%218-rev
-    @log1p-m209.1-rev
-    @log1p-succ209-rev)
-  :disable s-diff-s)
 
 (defund @log1p-%219-mem (s219)
   (car s219))
@@ -2971,6 +4958,10 @@
   (declare (ignore s219))
   '%239)
 
+(defund @log1p-%219-fwd (mem loc pred)
+  (let ((s219 (list mem loc pred)))
+    (mv (@log1p-succ219-lab s219) (@log1p-m219.1-mem s219) (@log1p-%238-loc s219))))
+
 (defund @log1p-succ219-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%239 mem loc))
@@ -3018,6 +5009,179 @@
 (defund @log1p-%219-rev (mem loc pred)
   (@log1p-%220-rev mem loc pred))
 
+(defruled @log1p-%219-expand-rev-as-@log1p-%220-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%220-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%219-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-rev @log1p-%219-mem @log1p-%219-loc @log1p-%219-pred))
+(defruled @log1p-%219-expand-rev-as-@log1p-%221-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%221-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%220-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%220-rev @log1p-%220-rev @log1p-%220-loc @log1p-%220-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%222-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%222-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%221-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%221-rev @log1p-%221-rev @log1p-%221-loc @log1p-%221-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%223-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%223-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%222-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%222-rev @log1p-%222-rev @log1p-%222-loc @log1p-%222-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%224-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%224-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%223-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%223-rev @log1p-%223-rev @log1p-%223-loc @log1p-%223-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%225-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%225-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%224-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%224-rev @log1p-%224-rev @log1p-%224-loc @log1p-%224-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%226-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%226-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%225-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%225-rev @log1p-%225-rev @log1p-%225-loc @log1p-%225-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%227-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%227-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%226-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%226-rev @log1p-%226-rev @log1p-%226-loc @log1p-%226-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%228-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%228-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%227-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%227-rev @log1p-%227-rev @log1p-%227-loc @log1p-%227-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%229-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%229-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%228-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%228-rev @log1p-%228-rev @log1p-%228-loc @log1p-%228-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%230-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%230-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%229-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%229-rev @log1p-%229-rev @log1p-%229-loc @log1p-%229-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%231-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%231-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%230-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%230-rev @log1p-%230-rev @log1p-%230-loc @log1p-%230-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%232-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%232-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%231-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%231-rev @log1p-%231-rev @log1p-%231-loc @log1p-%231-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%233-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%233-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%232-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%232-rev @log1p-%232-rev @log1p-%232-loc @log1p-%232-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%234-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%234-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%233-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%233-rev @log1p-%233-rev @log1p-%233-loc @log1p-%233-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%235-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%235-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%234-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%234-rev @log1p-%234-rev @log1p-%234-loc @log1p-%234-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%236-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%236-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%235-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%235-rev @log1p-%235-rev @log1p-%235-loc @log1p-%235-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%237-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%237-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%236-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%236-rev @log1p-%236-rev @log1p-%236-loc @log1p-%236-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-%238-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-%238-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%237-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%237-rev @log1p-%237-rev @log1p-%237-loc @log1p-%237-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-m219.1-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-m219.1-rev
+            (@log1p-%219-mem s219)
+            (@log1p-%238-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-%238-rev @log1p-%238-rev @log1p-%238-loc @log1p-%238-val))
+(defruled @log1p-%219-expand-rev-as-@log1p-succ219-rev
+  (equal (@log1p-%219-rev mem loc pred)
+         (let ((s219 (list mem loc pred)))
+           (@log1p-succ219-rev
+            (@log1p-m219.1-mem s219)
+            (@log1p-%238-loc s219)
+            (@log1p-%219-pred s219))))
+  :enable (@log1p-%219-expand-rev-as-@log1p-m219.1-rev @log1p-m219.1-rev @log1p-m219.1-mem))
+(defruled @log1p-%219-expand-rev-as-fwd
+  (equal (@log1p-%219-rev mem loc pred)
+         (@log1p-%219-fwd mem loc pred))
+  :enable (@log1p-%219-expand-rev-as-@log1p-succ219-rev @log1p-succ219-rev @log1p-succ219-lab @log1p-%219-fwd))
+
 (defund @log1p-%219-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3044,33 +5208,6 @@
     (succ '%239))
   (mv succ mem loc)))
 
-(defruled @log1p-%219-expand-bb
-  (equal (@log1p-%219-bb mem loc pred)
-         (@log1p-%219-rev mem loc pred))
-  :enable (@log1p-%219-bb @log1p-%219-rev
-    @log1p-%220-rev
-    @log1p-%221-rev
-    @log1p-%222-rev
-    @log1p-%223-rev
-    @log1p-%224-rev
-    @log1p-%225-rev
-    @log1p-%226-rev
-    @log1p-%227-rev
-    @log1p-%228-rev
-    @log1p-%229-rev
-    @log1p-%230-rev
-    @log1p-%231-rev
-    @log1p-%232-rev
-    @log1p-%233-rev
-    @log1p-%234-rev
-    @log1p-%235-rev
-    @log1p-%236-rev
-    @log1p-%237-rev
-    @log1p-%238-rev
-    @log1p-m219.1-rev
-    @log1p-succ219-rev)
-  :disable s-diff-s)
-
 (defund @log1p-%239-mem (s239)
   (car s239))
 (defund @log1p-%239-loc (s239)
@@ -3085,6 +5222,10 @@
   (declare (ignore s239))
   'ret)
 
+(defund @log1p-%239-fwd (mem loc pred)
+  (let ((s239 (list mem loc pred)))
+    (mv (@log1p-succ239-lab s239) (@log1p-%239-mem s239) (@log1p-%240-loc s239))))
+
 (defund @log1p-succ239-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -3094,20 +5235,33 @@
 (defund @log1p-%239-rev (mem loc pred)
   (@log1p-%240-rev mem loc pred))
 
+(defruled @log1p-%239-expand-rev-as-@log1p-%240-rev
+  (equal (@log1p-%239-rev mem loc pred)
+         (let ((s239 (list mem loc pred)))
+           (@log1p-%240-rev
+            (@log1p-%239-mem s239)
+            (@log1p-%239-loc s239)
+            (@log1p-%239-pred s239))))
+  :enable (@log1p-%239-rev @log1p-%239-mem @log1p-%239-loc @log1p-%239-pred))
+(defruled @log1p-%239-expand-rev-as-@log1p-succ239-rev
+  (equal (@log1p-%239-rev mem loc pred)
+         (let ((s239 (list mem loc pred)))
+           (@log1p-succ239-rev
+            (@log1p-%239-mem s239)
+            (@log1p-%240-loc s239)
+            (@log1p-%239-pred s239))))
+  :enable (@log1p-%239-expand-rev-as-@log1p-%240-rev @log1p-%240-rev @log1p-%240-loc @log1p-%240-val))
+(defruled @log1p-%239-expand-rev-as-fwd
+  (equal (@log1p-%239-rev mem loc pred)
+         (@log1p-%239-fwd mem loc pred))
+  :enable (@log1p-%239-expand-rev-as-@log1p-succ239-rev @log1p-succ239-rev @log1p-succ239-lab @log1p-%239-fwd))
+
 (defund @log1p-%239-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%240 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @log1p-%239-expand-bb
-  (equal (@log1p-%239-bb mem loc pred)
-         (@log1p-%239-rev mem loc pred))
-  :enable (@log1p-%239-bb @log1p-%239-rev
-    @log1p-%240-rev
-    @log1p-succ239-rev)
-  :disable s-diff-s)
 
 (defund @log1p-step (label mem loc pred)
   (case label

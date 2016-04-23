@@ -44,6 +44,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @fabs-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@fabs-succ0-lab s0) (@fabs-m0.2-mem s0) (@fabs-%6-loc s0))))
+
 (defund @fabs-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -67,6 +71,83 @@
 (defund @fabs-%0-rev (mem loc pred)
   (@fabs-%1-rev mem loc pred))
 
+(defruled @fabs-%0-expand-rev-as-@fabs-%1-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-%1-rev
+            (@fabs-%0-mem s0)
+            (@fabs-%0-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-rev @fabs-%0-mem @fabs-%0-loc @fabs-%0-pred))
+(defruled @fabs-%0-expand-rev-as-@fabs-m0.1-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-m0.1-rev
+            (@fabs-%1-mem s0)
+            (@fabs-%1-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-%1-rev @fabs-%1-rev @fabs-%1-mem @fabs-%1-loc))
+(defruled @fabs-%0-expand-rev-as-@fabs-%2-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-%2-rev
+            (@fabs-m0.1-mem s0)
+            (@fabs-%1-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-m0.1-rev @fabs-m0.1-rev @fabs-m0.1-mem))
+(defruled @fabs-%0-expand-rev-as-@fabs-%3-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-%3-rev
+            (@fabs-m0.1-mem s0)
+            (@fabs-%2-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-%2-rev @fabs-%2-rev @fabs-%2-loc @fabs-%2-val))
+(defruled @fabs-%0-expand-rev-as-@fabs-%4-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-%4-rev
+            (@fabs-m0.1-mem s0)
+            (@fabs-%3-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-%3-rev @fabs-%3-rev @fabs-%3-loc @fabs-%3-val))
+(defruled @fabs-%0-expand-rev-as-@fabs-%5-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-%5-rev
+            (@fabs-m0.1-mem s0)
+            (@fabs-%4-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-%4-rev @fabs-%4-rev @fabs-%4-loc @fabs-%4-val))
+(defruled @fabs-%0-expand-rev-as-@fabs-m0.2-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-m0.2-rev
+            (@fabs-m0.1-mem s0)
+            (@fabs-%5-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-%5-rev @fabs-%5-rev @fabs-%5-loc @fabs-%5-val))
+(defruled @fabs-%0-expand-rev-as-@fabs-%6-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-%6-rev
+            (@fabs-m0.2-mem s0)
+            (@fabs-%5-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-m0.2-rev @fabs-m0.2-rev @fabs-m0.2-mem))
+(defruled @fabs-%0-expand-rev-as-@fabs-succ0-rev
+  (equal (@fabs-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@fabs-succ0-rev
+            (@fabs-m0.2-mem s0)
+            (@fabs-%6-loc s0)
+            (@fabs-%0-pred s0))))
+  :enable (@fabs-%0-expand-rev-as-@fabs-%6-rev @fabs-%6-rev @fabs-%6-loc @fabs-%6-val))
+(defruled @fabs-%0-expand-rev-as-fwd
+  (equal (@fabs-%0-rev mem loc pred)
+         (@fabs-%0-fwd mem loc pred))
+  :enable (@fabs-%0-expand-rev-as-@fabs-succ0-rev @fabs-succ0-rev @fabs-succ0-lab @fabs-%0-fwd))
+
 (defund @fabs-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -81,21 +162,6 @@
     (loc (s '%6 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @fabs-%0-expand-bb
-  (equal (@fabs-%0-bb mem loc pred)
-         (@fabs-%0-rev mem loc pred))
-  :enable (@fabs-%0-bb @fabs-%0-rev
-    @fabs-%1-rev
-    @fabs-m0.1-rev
-    @fabs-%2-rev
-    @fabs-%3-rev
-    @fabs-%4-rev
-    @fabs-%5-rev
-    @fabs-m0.2-rev
-    @fabs-%6-rev
-    @fabs-succ0-rev)
-  :disable s-diff-s)
 
 (defund @fabs-step (label mem loc pred)
   (case label

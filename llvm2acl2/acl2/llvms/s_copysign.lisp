@@ -78,6 +78,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @copysign-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@copysign-succ0-lab s0) (@copysign-m0.3-mem s0) (@copysign-%14-loc s0))))
+
 (defund @copysign-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -119,6 +123,155 @@
 (defund @copysign-%0-rev (mem loc pred)
   (@copysign-%1-rev mem loc pred))
 
+(defruled @copysign-%0-expand-rev-as-@copysign-%1-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%1-rev
+            (@copysign-%0-mem s0)
+            (@copysign-%0-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-rev @copysign-%0-mem @copysign-%0-loc @copysign-%0-pred))
+(defruled @copysign-%0-expand-rev-as-@copysign-%2-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%2-rev
+            (@copysign-%1-mem s0)
+            (@copysign-%1-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%1-rev @copysign-%1-rev @copysign-%1-mem @copysign-%1-loc))
+(defruled @copysign-%0-expand-rev-as-@copysign-m0.1-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-m0.1-rev
+            (@copysign-%2-mem s0)
+            (@copysign-%2-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%2-rev @copysign-%2-rev @copysign-%2-mem @copysign-%2-loc))
+(defruled @copysign-%0-expand-rev-as-@copysign-m0.2-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-m0.2-rev
+            (@copysign-m0.1-mem s0)
+            (@copysign-%2-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-m0.1-rev @copysign-m0.1-rev @copysign-m0.1-mem))
+(defruled @copysign-%0-expand-rev-as-@copysign-%3-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%3-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%2-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-m0.2-rev @copysign-m0.2-rev @copysign-m0.2-mem))
+(defruled @copysign-%0-expand-rev-as-@copysign-%4-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%4-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%3-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%3-rev @copysign-%3-rev @copysign-%3-loc @copysign-%3-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%5-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%5-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%4-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%4-rev @copysign-%4-rev @copysign-%4-loc @copysign-%4-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%6-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%6-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%5-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%5-rev @copysign-%5-rev @copysign-%5-loc @copysign-%5-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%7-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%7-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%6-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%6-rev @copysign-%6-rev @copysign-%6-loc @copysign-%6-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%8-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%8-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%7-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%7-rev @copysign-%7-rev @copysign-%7-loc @copysign-%7-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%9-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%9-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%8-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%8-rev @copysign-%8-rev @copysign-%8-loc @copysign-%8-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%10-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%10-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%9-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%9-rev @copysign-%9-rev @copysign-%9-loc @copysign-%9-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%11-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%11-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%10-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%10-rev @copysign-%10-rev @copysign-%10-loc @copysign-%10-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%12-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%12-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%11-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%11-rev @copysign-%11-rev @copysign-%11-loc @copysign-%11-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%13-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%13-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%12-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%12-rev @copysign-%12-rev @copysign-%12-loc @copysign-%12-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-m0.3-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-m0.3-rev
+            (@copysign-m0.2-mem s0)
+            (@copysign-%13-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%13-rev @copysign-%13-rev @copysign-%13-loc @copysign-%13-val))
+(defruled @copysign-%0-expand-rev-as-@copysign-%14-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-%14-rev
+            (@copysign-m0.3-mem s0)
+            (@copysign-%13-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-m0.3-rev @copysign-m0.3-rev @copysign-m0.3-mem))
+(defruled @copysign-%0-expand-rev-as-@copysign-succ0-rev
+  (equal (@copysign-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@copysign-succ0-rev
+            (@copysign-m0.3-mem s0)
+            (@copysign-%14-loc s0)
+            (@copysign-%0-pred s0))))
+  :enable (@copysign-%0-expand-rev-as-@copysign-%14-rev @copysign-%14-rev @copysign-%14-loc @copysign-%14-val))
+(defruled @copysign-%0-expand-rev-as-fwd
+  (equal (@copysign-%0-rev mem loc pred)
+         (@copysign-%0-fwd mem loc pred))
+  :enable (@copysign-%0-expand-rev-as-@copysign-succ0-rev @copysign-succ0-rev @copysign-succ0-lab @copysign-%0-fwd))
+
 (defund @copysign-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -143,30 +296,6 @@
     (loc (s '%14 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @copysign-%0-expand-bb
-  (equal (@copysign-%0-bb mem loc pred)
-         (@copysign-%0-rev mem loc pred))
-  :enable (@copysign-%0-bb @copysign-%0-rev
-    @copysign-%1-rev
-    @copysign-%2-rev
-    @copysign-m0.1-rev
-    @copysign-m0.2-rev
-    @copysign-%3-rev
-    @copysign-%4-rev
-    @copysign-%5-rev
-    @copysign-%6-rev
-    @copysign-%7-rev
-    @copysign-%8-rev
-    @copysign-%9-rev
-    @copysign-%10-rev
-    @copysign-%11-rev
-    @copysign-%12-rev
-    @copysign-%13-rev
-    @copysign-m0.3-rev
-    @copysign-%14-rev
-    @copysign-succ0-rev)
-  :disable s-diff-s)
 
 (defund @copysign-step (label mem loc pred)
   (case label

@@ -106,6 +106,10 @@
 (defund @__ieee754_exp-succ0-lab (s0)
   (case (g '%12 (@__ieee754_exp-%12-loc s0)) (-1 '%13) (0 '%44)))
 
+(defund @__ieee754_exp-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ0-lab s0) (@__ieee754_exp-m0.4-mem s0) (@__ieee754_exp-%12-loc s0))))
+
 (defund @__ieee754_exp-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%12 loc) (-1 '%13) (0 '%44)) mem loc))
@@ -161,6 +165,211 @@
 (defund @__ieee754_exp-%0-rev (mem loc pred)
   (@__ieee754_exp-%1-rev mem loc pred))
 
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%1-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%1-rev
+            (@__ieee754_exp-%0-mem s0)
+            (@__ieee754_exp-%0-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-rev @__ieee754_exp-%0-mem @__ieee754_exp-%0-loc @__ieee754_exp-%0-pred))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%2-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%2-rev
+            (@__ieee754_exp-%1-mem s0)
+            (@__ieee754_exp-%1-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%1-rev @__ieee754_exp-%1-rev @__ieee754_exp-%1-mem @__ieee754_exp-%1-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%y-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%y-rev
+            (@__ieee754_exp-%2-mem s0)
+            (@__ieee754_exp-%2-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%2-rev @__ieee754_exp-%2-rev @__ieee754_exp-%2-mem @__ieee754_exp-%2-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%hi-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%hi-rev
+            (@__ieee754_exp-%y-mem s0)
+            (@__ieee754_exp-%y-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%y-rev @__ieee754_exp-%y-rev @__ieee754_exp-%y-mem @__ieee754_exp-%y-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%lo-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%lo-rev
+            (@__ieee754_exp-%hi-mem s0)
+            (@__ieee754_exp-%hi-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%hi-rev @__ieee754_exp-%hi-rev @__ieee754_exp-%hi-mem @__ieee754_exp-%hi-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%c-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%c-rev
+            (@__ieee754_exp-%lo-mem s0)
+            (@__ieee754_exp-%lo-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%lo-rev @__ieee754_exp-%lo-rev @__ieee754_exp-%lo-mem @__ieee754_exp-%lo-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%t-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%t-rev
+            (@__ieee754_exp-%c-mem s0)
+            (@__ieee754_exp-%c-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%c-rev @__ieee754_exp-%c-rev @__ieee754_exp-%c-mem @__ieee754_exp-%c-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%k-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%k-rev
+            (@__ieee754_exp-%t-mem s0)
+            (@__ieee754_exp-%t-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%t-rev @__ieee754_exp-%t-rev @__ieee754_exp-%t-mem @__ieee754_exp-%t-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%xsb-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%xsb-rev
+            (@__ieee754_exp-%k-mem s0)
+            (@__ieee754_exp-%k-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%k-rev @__ieee754_exp-%k-rev @__ieee754_exp-%k-mem @__ieee754_exp-%k-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%hx-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%hx-rev
+            (@__ieee754_exp-%xsb-mem s0)
+            (@__ieee754_exp-%xsb-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%xsb-rev @__ieee754_exp-%xsb-rev @__ieee754_exp-%xsb-mem @__ieee754_exp-%xsb-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.1-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-m0.1-rev
+            (@__ieee754_exp-%hx-mem s0)
+            (@__ieee754_exp-%hx-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%hx-rev @__ieee754_exp-%hx-rev @__ieee754_exp-%hx-mem @__ieee754_exp-%hx-loc))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%3-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%3-rev
+            (@__ieee754_exp-m0.1-mem s0)
+            (@__ieee754_exp-%hx-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.1-rev @__ieee754_exp-m0.1-rev @__ieee754_exp-m0.1-mem))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%4-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%4-rev
+            (@__ieee754_exp-m0.1-mem s0)
+            (@__ieee754_exp-%3-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%3-rev @__ieee754_exp-%3-rev @__ieee754_exp-%3-loc @__ieee754_exp-%3-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%5-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%5-rev
+            (@__ieee754_exp-m0.1-mem s0)
+            (@__ieee754_exp-%4-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%4-rev @__ieee754_exp-%4-rev @__ieee754_exp-%4-loc @__ieee754_exp-%4-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.2-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-m0.2-rev
+            (@__ieee754_exp-m0.1-mem s0)
+            (@__ieee754_exp-%5-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%5-rev @__ieee754_exp-%5-rev @__ieee754_exp-%5-loc @__ieee754_exp-%5-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%6-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%6-rev
+            (@__ieee754_exp-m0.2-mem s0)
+            (@__ieee754_exp-%5-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.2-rev @__ieee754_exp-m0.2-rev @__ieee754_exp-m0.2-mem))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%7-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%7-rev
+            (@__ieee754_exp-m0.2-mem s0)
+            (@__ieee754_exp-%6-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%6-rev @__ieee754_exp-%6-rev @__ieee754_exp-%6-loc @__ieee754_exp-%6-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%8-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%8-rev
+            (@__ieee754_exp-m0.2-mem s0)
+            (@__ieee754_exp-%7-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%7-rev @__ieee754_exp-%7-rev @__ieee754_exp-%7-loc @__ieee754_exp-%7-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.3-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-m0.3-rev
+            (@__ieee754_exp-m0.2-mem s0)
+            (@__ieee754_exp-%8-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%8-rev @__ieee754_exp-%8-rev @__ieee754_exp-%8-loc @__ieee754_exp-%8-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%9-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%9-rev
+            (@__ieee754_exp-m0.3-mem s0)
+            (@__ieee754_exp-%8-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.3-rev @__ieee754_exp-m0.3-rev @__ieee754_exp-m0.3-mem))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%10-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%10-rev
+            (@__ieee754_exp-m0.3-mem s0)
+            (@__ieee754_exp-%9-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%9-rev @__ieee754_exp-%9-rev @__ieee754_exp-%9-loc @__ieee754_exp-%9-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.4-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-m0.4-rev
+            (@__ieee754_exp-m0.3-mem s0)
+            (@__ieee754_exp-%10-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%10-rev @__ieee754_exp-%10-rev @__ieee754_exp-%10-loc @__ieee754_exp-%10-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%11-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%11-rev
+            (@__ieee754_exp-m0.4-mem s0)
+            (@__ieee754_exp-%10-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-m0.4-rev @__ieee754_exp-m0.4-rev @__ieee754_exp-m0.4-mem))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%12-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-%12-rev
+            (@__ieee754_exp-m0.4-mem s0)
+            (@__ieee754_exp-%11-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%11-rev @__ieee754_exp-%11-rev @__ieee754_exp-%11-loc @__ieee754_exp-%11-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-succ0-rev
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_exp-succ0-rev
+            (@__ieee754_exp-m0.4-mem s0)
+            (@__ieee754_exp-%12-loc s0)
+            (@__ieee754_exp-%0-pred s0))))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-%12-rev @__ieee754_exp-%12-rev @__ieee754_exp-%12-loc @__ieee754_exp-%12-val))
+(defruled @__ieee754_exp-%0-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%0-rev mem loc pred)
+         (@__ieee754_exp-%0-fwd mem loc pred))
+  :enable (@__ieee754_exp-%0-expand-rev-as-@__ieee754_exp-succ0-rev @__ieee754_exp-succ0-rev @__ieee754_exp-succ0-lab @__ieee754_exp-%0-fwd))
+
 (defund @__ieee754_exp-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -201,37 +410,6 @@
     (succ (case (g '%12 loc) (-1 '%13) (0 '%44))))
   (mv succ mem loc)))
 
-(defruled @__ieee754_exp-%0-expand-bb
-  (equal (@__ieee754_exp-%0-bb mem loc pred)
-         (@__ieee754_exp-%0-rev mem loc pred))
-  :enable (@__ieee754_exp-%0-bb @__ieee754_exp-%0-rev
-    @__ieee754_exp-%1-rev
-    @__ieee754_exp-%2-rev
-    @__ieee754_exp-%y-rev
-    @__ieee754_exp-%hi-rev
-    @__ieee754_exp-%lo-rev
-    @__ieee754_exp-%c-rev
-    @__ieee754_exp-%t-rev
-    @__ieee754_exp-%k-rev
-    @__ieee754_exp-%xsb-rev
-    @__ieee754_exp-%hx-rev
-    @__ieee754_exp-m0.1-rev
-    @__ieee754_exp-%3-rev
-    @__ieee754_exp-%4-rev
-    @__ieee754_exp-%5-rev
-    @__ieee754_exp-m0.2-rev
-    @__ieee754_exp-%6-rev
-    @__ieee754_exp-%7-rev
-    @__ieee754_exp-%8-rev
-    @__ieee754_exp-m0.3-rev
-    @__ieee754_exp-%9-rev
-    @__ieee754_exp-%10-rev
-    @__ieee754_exp-m0.4-rev
-    @__ieee754_exp-%11-rev
-    @__ieee754_exp-%12-rev
-    @__ieee754_exp-succ0-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_exp-%13-mem (s13)
   (car s13))
 (defund @__ieee754_exp-%13-loc (s13)
@@ -249,6 +427,10 @@
 (defund @__ieee754_exp-succ13-lab (s13)
   (case (g '%15 (@__ieee754_exp-%15-loc s13)) (-1 '%16) (0 '%35)))
 
+(defund @__ieee754_exp-%13-fwd (mem loc pred)
+  (let ((s13 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ13-lab s13) (@__ieee754_exp-%13-mem s13) (@__ieee754_exp-%15-loc s13))))
+
 (defund @__ieee754_exp-succ13-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%15 loc) (-1 '%16) (0 '%35)) mem loc))
@@ -260,6 +442,35 @@
 (defund @__ieee754_exp-%13-rev (mem loc pred)
   (@__ieee754_exp-%14-rev mem loc pred))
 
+(defruled @__ieee754_exp-%13-expand-rev-as-@__ieee754_exp-%14-rev
+  (equal (@__ieee754_exp-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@__ieee754_exp-%14-rev
+            (@__ieee754_exp-%13-mem s13)
+            (@__ieee754_exp-%13-loc s13)
+            (@__ieee754_exp-%13-pred s13))))
+  :enable (@__ieee754_exp-%13-rev @__ieee754_exp-%13-mem @__ieee754_exp-%13-loc @__ieee754_exp-%13-pred))
+(defruled @__ieee754_exp-%13-expand-rev-as-@__ieee754_exp-%15-rev
+  (equal (@__ieee754_exp-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@__ieee754_exp-%15-rev
+            (@__ieee754_exp-%13-mem s13)
+            (@__ieee754_exp-%14-loc s13)
+            (@__ieee754_exp-%13-pred s13))))
+  :enable (@__ieee754_exp-%13-expand-rev-as-@__ieee754_exp-%14-rev @__ieee754_exp-%14-rev @__ieee754_exp-%14-loc @__ieee754_exp-%14-val))
+(defruled @__ieee754_exp-%13-expand-rev-as-@__ieee754_exp-succ13-rev
+  (equal (@__ieee754_exp-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@__ieee754_exp-succ13-rev
+            (@__ieee754_exp-%13-mem s13)
+            (@__ieee754_exp-%15-loc s13)
+            (@__ieee754_exp-%13-pred s13))))
+  :enable (@__ieee754_exp-%13-expand-rev-as-@__ieee754_exp-%15-rev @__ieee754_exp-%15-rev @__ieee754_exp-%15-loc @__ieee754_exp-%15-val))
+(defruled @__ieee754_exp-%13-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%13-rev mem loc pred)
+         (@__ieee754_exp-%13-fwd mem loc pred))
+  :enable (@__ieee754_exp-%13-expand-rev-as-@__ieee754_exp-succ13-rev @__ieee754_exp-succ13-rev @__ieee754_exp-succ13-lab @__ieee754_exp-%13-fwd))
+
 (defund @__ieee754_exp-%13-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -267,15 +478,6 @@
     (loc (s '%15 (icmp-uge-i32 (g '%14 loc) 2146435072) loc))
     (succ (case (g '%15 loc) (-1 '%16) (0 '%35))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%13-expand-bb
-  (equal (@__ieee754_exp-%13-bb mem loc pred)
-         (@__ieee754_exp-%13-rev mem loc pred))
-  :enable (@__ieee754_exp-%13-bb @__ieee754_exp-%13-rev
-    @__ieee754_exp-%14-rev
-    @__ieee754_exp-%15-rev
-    @__ieee754_exp-succ13-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%16-mem (s16)
   (car s16))
@@ -310,6 +512,10 @@
 (defund @__ieee754_exp-succ16-lab (s16)
   (case (g '%22 (@__ieee754_exp-%22-loc s16)) (-1 '%23) (0 '%27)))
 
+(defund @__ieee754_exp-%16-fwd (mem loc pred)
+  (let ((s16 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ16-lab s16) (@__ieee754_exp-%16-mem s16) (@__ieee754_exp-%22-loc s16))))
+
 (defund @__ieee754_exp-succ16-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%22 loc) (-1 '%23) (0 '%27)) mem loc))
@@ -329,6 +535,67 @@
 (defund @__ieee754_exp-%16-rev (mem loc pred)
   (@__ieee754_exp-%17-rev mem loc pred))
 
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%17-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-%17-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%16-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-rev @__ieee754_exp-%16-mem @__ieee754_exp-%16-loc @__ieee754_exp-%16-pred))
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%18-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-%18-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%17-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%17-rev @__ieee754_exp-%17-rev @__ieee754_exp-%17-loc @__ieee754_exp-%17-val))
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%19-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-%19-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%18-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%18-rev @__ieee754_exp-%18-rev @__ieee754_exp-%18-loc @__ieee754_exp-%18-val))
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%20-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-%20-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%19-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%19-rev @__ieee754_exp-%19-rev @__ieee754_exp-%19-loc @__ieee754_exp-%19-val))
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%21-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-%21-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%20-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%20-rev @__ieee754_exp-%20-rev @__ieee754_exp-%20-loc @__ieee754_exp-%20-val))
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%22-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-%22-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%21-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%21-rev @__ieee754_exp-%21-rev @__ieee754_exp-%21-loc @__ieee754_exp-%21-val))
+(defruled @__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-succ16-rev
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__ieee754_exp-succ16-rev
+            (@__ieee754_exp-%16-mem s16)
+            (@__ieee754_exp-%22-loc s16)
+            (@__ieee754_exp-%16-pred s16))))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-%22-rev @__ieee754_exp-%22-rev @__ieee754_exp-%22-loc @__ieee754_exp-%22-val))
+(defruled @__ieee754_exp-%16-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%16-rev mem loc pred)
+         (@__ieee754_exp-%16-fwd mem loc pred))
+  :enable (@__ieee754_exp-%16-expand-rev-as-@__ieee754_exp-succ16-rev @__ieee754_exp-succ16-rev @__ieee754_exp-succ16-lab @__ieee754_exp-%16-fwd))
+
 (defund @__ieee754_exp-%16-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -340,19 +607,6 @@
     (loc (s '%22 (icmp-ne-i32 (g '%21 loc) 0) loc))
     (succ (case (g '%22 loc) (-1 '%23) (0 '%27))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%16-expand-bb
-  (equal (@__ieee754_exp-%16-bb mem loc pred)
-         (@__ieee754_exp-%16-rev mem loc pred))
-  :enable (@__ieee754_exp-%16-bb @__ieee754_exp-%16-rev
-    @__ieee754_exp-%17-rev
-    @__ieee754_exp-%18-rev
-    @__ieee754_exp-%19-rev
-    @__ieee754_exp-%20-rev
-    @__ieee754_exp-%21-rev
-    @__ieee754_exp-%22-rev
-    @__ieee754_exp-succ16-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%23-mem (s23)
   (car s23))
@@ -378,6 +632,10 @@
   (declare (ignore s23))
   '%166)
 
+(defund @__ieee754_exp-%23-fwd (mem loc pred)
+  (let ((s23 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ23-lab s23) (@__ieee754_exp-m23.1-mem s23) (@__ieee754_exp-%26-loc s23))))
+
 (defund @__ieee754_exp-succ23-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -393,6 +651,51 @@
 (defund @__ieee754_exp-%23-rev (mem loc pred)
   (@__ieee754_exp-%24-rev mem loc pred))
 
+(defruled @__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-%24-rev
+  (equal (@__ieee754_exp-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@__ieee754_exp-%24-rev
+            (@__ieee754_exp-%23-mem s23)
+            (@__ieee754_exp-%23-loc s23)
+            (@__ieee754_exp-%23-pred s23))))
+  :enable (@__ieee754_exp-%23-rev @__ieee754_exp-%23-mem @__ieee754_exp-%23-loc @__ieee754_exp-%23-pred))
+(defruled @__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-%25-rev
+  (equal (@__ieee754_exp-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@__ieee754_exp-%25-rev
+            (@__ieee754_exp-%23-mem s23)
+            (@__ieee754_exp-%24-loc s23)
+            (@__ieee754_exp-%23-pred s23))))
+  :enable (@__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-%24-rev @__ieee754_exp-%24-rev @__ieee754_exp-%24-loc @__ieee754_exp-%24-val))
+(defruled @__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-%26-rev
+  (equal (@__ieee754_exp-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@__ieee754_exp-%26-rev
+            (@__ieee754_exp-%23-mem s23)
+            (@__ieee754_exp-%25-loc s23)
+            (@__ieee754_exp-%23-pred s23))))
+  :enable (@__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-%25-rev @__ieee754_exp-%25-rev @__ieee754_exp-%25-loc @__ieee754_exp-%25-val))
+(defruled @__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-m23.1-rev
+  (equal (@__ieee754_exp-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@__ieee754_exp-m23.1-rev
+            (@__ieee754_exp-%23-mem s23)
+            (@__ieee754_exp-%26-loc s23)
+            (@__ieee754_exp-%23-pred s23))))
+  :enable (@__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-%26-rev @__ieee754_exp-%26-rev @__ieee754_exp-%26-loc @__ieee754_exp-%26-val))
+(defruled @__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-succ23-rev
+  (equal (@__ieee754_exp-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@__ieee754_exp-succ23-rev
+            (@__ieee754_exp-m23.1-mem s23)
+            (@__ieee754_exp-%26-loc s23)
+            (@__ieee754_exp-%23-pred s23))))
+  :enable (@__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-m23.1-rev @__ieee754_exp-m23.1-rev @__ieee754_exp-m23.1-mem))
+(defruled @__ieee754_exp-%23-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%23-rev mem loc pred)
+         (@__ieee754_exp-%23-fwd mem loc pred))
+  :enable (@__ieee754_exp-%23-expand-rev-as-@__ieee754_exp-succ23-rev @__ieee754_exp-succ23-rev @__ieee754_exp-succ23-lab @__ieee754_exp-%23-fwd))
+
 (defund @__ieee754_exp-%23-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -402,17 +705,6 @@
     (mem (store-double (g '%26 loc) (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%23-expand-bb
-  (equal (@__ieee754_exp-%23-bb mem loc pred)
-         (@__ieee754_exp-%23-rev mem loc pred))
-  :enable (@__ieee754_exp-%23-bb @__ieee754_exp-%23-rev
-    @__ieee754_exp-%24-rev
-    @__ieee754_exp-%25-rev
-    @__ieee754_exp-%26-rev
-    @__ieee754_exp-m23.1-rev
-    @__ieee754_exp-succ23-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%27-mem (s27)
   (car s27))
@@ -431,6 +723,10 @@
 (defund @__ieee754_exp-succ27-lab (s27)
   (case (g '%29 (@__ieee754_exp-%29-loc s27)) (-1 '%30) (0 '%32)))
 
+(defund @__ieee754_exp-%27-fwd (mem loc pred)
+  (let ((s27 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ27-lab s27) (@__ieee754_exp-%27-mem s27) (@__ieee754_exp-%29-loc s27))))
+
 (defund @__ieee754_exp-succ27-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%29 loc) (-1 '%30) (0 '%32)) mem loc))
@@ -442,6 +738,35 @@
 (defund @__ieee754_exp-%27-rev (mem loc pred)
   (@__ieee754_exp-%28-rev mem loc pred))
 
+(defruled @__ieee754_exp-%27-expand-rev-as-@__ieee754_exp-%28-rev
+  (equal (@__ieee754_exp-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@__ieee754_exp-%28-rev
+            (@__ieee754_exp-%27-mem s27)
+            (@__ieee754_exp-%27-loc s27)
+            (@__ieee754_exp-%27-pred s27))))
+  :enable (@__ieee754_exp-%27-rev @__ieee754_exp-%27-mem @__ieee754_exp-%27-loc @__ieee754_exp-%27-pred))
+(defruled @__ieee754_exp-%27-expand-rev-as-@__ieee754_exp-%29-rev
+  (equal (@__ieee754_exp-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@__ieee754_exp-%29-rev
+            (@__ieee754_exp-%27-mem s27)
+            (@__ieee754_exp-%28-loc s27)
+            (@__ieee754_exp-%27-pred s27))))
+  :enable (@__ieee754_exp-%27-expand-rev-as-@__ieee754_exp-%28-rev @__ieee754_exp-%28-rev @__ieee754_exp-%28-loc @__ieee754_exp-%28-val))
+(defruled @__ieee754_exp-%27-expand-rev-as-@__ieee754_exp-succ27-rev
+  (equal (@__ieee754_exp-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@__ieee754_exp-succ27-rev
+            (@__ieee754_exp-%27-mem s27)
+            (@__ieee754_exp-%29-loc s27)
+            (@__ieee754_exp-%27-pred s27))))
+  :enable (@__ieee754_exp-%27-expand-rev-as-@__ieee754_exp-%29-rev @__ieee754_exp-%29-rev @__ieee754_exp-%29-loc @__ieee754_exp-%29-val))
+(defruled @__ieee754_exp-%27-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%27-rev mem loc pred)
+         (@__ieee754_exp-%27-fwd mem loc pred))
+  :enable (@__ieee754_exp-%27-expand-rev-as-@__ieee754_exp-succ27-rev @__ieee754_exp-succ27-rev @__ieee754_exp-succ27-lab @__ieee754_exp-%27-fwd))
+
 (defund @__ieee754_exp-%27-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -449,15 +774,6 @@
     (loc (s '%29 (icmp-eq-i32 (g '%28 loc) 0) loc))
     (succ (case (g '%29 loc) (-1 '%30) (0 '%32))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%27-expand-bb
-  (equal (@__ieee754_exp-%27-bb mem loc pred)
-         (@__ieee754_exp-%27-rev mem loc pred))
-  :enable (@__ieee754_exp-%27-bb @__ieee754_exp-%27-rev
-    @__ieee754_exp-%28-rev
-    @__ieee754_exp-%29-rev
-    @__ieee754_exp-succ27-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%30-mem (s30)
   (car s30))
@@ -473,6 +789,10 @@
   (declare (ignore s30))
   '%33)
 
+(defund @__ieee754_exp-%30-fwd (mem loc pred)
+  (let ((s30 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ30-lab s30) (@__ieee754_exp-%30-mem s30) (@__ieee754_exp-%31-loc s30))))
+
 (defund @__ieee754_exp-succ30-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%33 mem loc))
@@ -482,20 +802,33 @@
 (defund @__ieee754_exp-%30-rev (mem loc pred)
   (@__ieee754_exp-%31-rev mem loc pred))
 
+(defruled @__ieee754_exp-%30-expand-rev-as-@__ieee754_exp-%31-rev
+  (equal (@__ieee754_exp-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_exp-%31-rev
+            (@__ieee754_exp-%30-mem s30)
+            (@__ieee754_exp-%30-loc s30)
+            (@__ieee754_exp-%30-pred s30))))
+  :enable (@__ieee754_exp-%30-rev @__ieee754_exp-%30-mem @__ieee754_exp-%30-loc @__ieee754_exp-%30-pred))
+(defruled @__ieee754_exp-%30-expand-rev-as-@__ieee754_exp-succ30-rev
+  (equal (@__ieee754_exp-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_exp-succ30-rev
+            (@__ieee754_exp-%30-mem s30)
+            (@__ieee754_exp-%31-loc s30)
+            (@__ieee754_exp-%30-pred s30))))
+  :enable (@__ieee754_exp-%30-expand-rev-as-@__ieee754_exp-%31-rev @__ieee754_exp-%31-rev @__ieee754_exp-%31-loc @__ieee754_exp-%31-val))
+(defruled @__ieee754_exp-%30-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%30-rev mem loc pred)
+         (@__ieee754_exp-%30-fwd mem loc pred))
+  :enable (@__ieee754_exp-%30-expand-rev-as-@__ieee754_exp-succ30-rev @__ieee754_exp-succ30-rev @__ieee754_exp-succ30-lab @__ieee754_exp-%30-fwd))
+
 (defund @__ieee754_exp-%30-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%31 (load-double (g '%2 loc) mem) loc))
     (succ '%33))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%30-expand-bb
-  (equal (@__ieee754_exp-%30-bb mem loc pred)
-         (@__ieee754_exp-%30-rev mem loc pred))
-  :enable (@__ieee754_exp-%30-bb @__ieee754_exp-%30-rev
-    @__ieee754_exp-%31-rev
-    @__ieee754_exp-succ30-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%32-mem (s32)
   (car s32))
@@ -507,6 +840,10 @@
   (declare (ignore s32))
   '%33)
 
+(defund @__ieee754_exp-%32-fwd (mem loc pred)
+  (let ((s32 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ32-lab s32) (@__ieee754_exp-%32-mem s32) (@__ieee754_exp-%32-loc s32))))
+
 (defund @__ieee754_exp-succ32-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%33 mem loc))
@@ -514,18 +851,24 @@
 (defund @__ieee754_exp-%32-rev (mem loc pred)
   (@__ieee754_exp-succ32-rev mem loc pred))
 
+(defruled @__ieee754_exp-%32-expand-rev-as-@__ieee754_exp-succ32-rev
+  (equal (@__ieee754_exp-%32-rev mem loc pred)
+         (let ((s32 (list mem loc pred)))
+           (@__ieee754_exp-succ32-rev
+            (@__ieee754_exp-%32-mem s32)
+            (@__ieee754_exp-%32-loc s32)
+            (@__ieee754_exp-%32-pred s32))))
+  :enable (@__ieee754_exp-%32-rev @__ieee754_exp-%32-mem @__ieee754_exp-%32-loc @__ieee754_exp-%32-pred))
+(defruled @__ieee754_exp-%32-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%32-rev mem loc pred)
+         (@__ieee754_exp-%32-fwd mem loc pred))
+  :enable (@__ieee754_exp-%32-expand-rev-as-@__ieee754_exp-succ32-rev @__ieee754_exp-succ32-rev @__ieee754_exp-succ32-lab @__ieee754_exp-%32-fwd))
+
 (defund @__ieee754_exp-%32-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%33))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%32-expand-bb
-  (equal (@__ieee754_exp-%32-bb mem loc pred)
-         (@__ieee754_exp-%32-rev mem loc pred))
-  :enable (@__ieee754_exp-%32-bb @__ieee754_exp-%32-rev
-    @__ieee754_exp-succ32-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%33-mem (s33)
   (car s33))
@@ -543,6 +886,10 @@
   (declare (ignore s33))
   '%166)
 
+(defund @__ieee754_exp-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ33-lab s33) (@__ieee754_exp-m33.1-mem s33) (@__ieee754_exp-%34-loc s33))))
+
 (defund @__ieee754_exp-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -554,21 +901,41 @@
 (defund @__ieee754_exp-%33-rev (mem loc pred)
   (@__ieee754_exp-%34-rev mem loc pred))
 
+(defruled @__ieee754_exp-%33-expand-rev-as-@__ieee754_exp-%34-rev
+  (equal (@__ieee754_exp-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_exp-%34-rev
+            (@__ieee754_exp-%33-mem s33)
+            (@__ieee754_exp-%33-loc s33)
+            (@__ieee754_exp-%33-pred s33))))
+  :enable (@__ieee754_exp-%33-rev @__ieee754_exp-%33-mem @__ieee754_exp-%33-loc @__ieee754_exp-%33-pred))
+(defruled @__ieee754_exp-%33-expand-rev-as-@__ieee754_exp-m33.1-rev
+  (equal (@__ieee754_exp-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_exp-m33.1-rev
+            (@__ieee754_exp-%33-mem s33)
+            (@__ieee754_exp-%34-loc s33)
+            (@__ieee754_exp-%33-pred s33))))
+  :enable (@__ieee754_exp-%33-expand-rev-as-@__ieee754_exp-%34-rev @__ieee754_exp-%34-rev @__ieee754_exp-%34-loc @__ieee754_exp-%34-val))
+(defruled @__ieee754_exp-%33-expand-rev-as-@__ieee754_exp-succ33-rev
+  (equal (@__ieee754_exp-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_exp-succ33-rev
+            (@__ieee754_exp-m33.1-mem s33)
+            (@__ieee754_exp-%34-loc s33)
+            (@__ieee754_exp-%33-pred s33))))
+  :enable (@__ieee754_exp-%33-expand-rev-as-@__ieee754_exp-m33.1-rev @__ieee754_exp-m33.1-rev @__ieee754_exp-m33.1-mem))
+(defruled @__ieee754_exp-%33-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%33-rev mem loc pred)
+         (@__ieee754_exp-%33-fwd mem loc pred))
+  :enable (@__ieee754_exp-%33-expand-rev-as-@__ieee754_exp-succ33-rev @__ieee754_exp-succ33-rev @__ieee754_exp-succ33-lab @__ieee754_exp-%33-fwd))
+
 (defund @__ieee754_exp-%33-bb (mem loc pred)
   (b* (
     (loc (s '%34 (case pred (%30 (g '%31 loc)) (%32 #x0000000000000000)) loc))
     (mem (store-double (g '%34 loc) (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%33-expand-bb
-  (equal (@__ieee754_exp-%33-bb mem loc pred)
-         (@__ieee754_exp-%33-rev mem loc pred))
-  :enable (@__ieee754_exp-%33-bb @__ieee754_exp-%33-rev
-    @__ieee754_exp-%34-rev
-    @__ieee754_exp-m33.1-rev
-    @__ieee754_exp-succ33-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%35-mem (s35)
   (car s35))
@@ -587,6 +954,10 @@
 (defund @__ieee754_exp-succ35-lab (s35)
   (case (g '%37 (@__ieee754_exp-%37-loc s35)) (-1 '%38) (0 '%39)))
 
+(defund @__ieee754_exp-%35-fwd (mem loc pred)
+  (let ((s35 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ35-lab s35) (@__ieee754_exp-%35-mem s35) (@__ieee754_exp-%37-loc s35))))
+
 (defund @__ieee754_exp-succ35-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%37 loc) (-1 '%38) (0 '%39)) mem loc))
@@ -598,6 +969,35 @@
 (defund @__ieee754_exp-%35-rev (mem loc pred)
   (@__ieee754_exp-%36-rev mem loc pred))
 
+(defruled @__ieee754_exp-%35-expand-rev-as-@__ieee754_exp-%36-rev
+  (equal (@__ieee754_exp-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__ieee754_exp-%36-rev
+            (@__ieee754_exp-%35-mem s35)
+            (@__ieee754_exp-%35-loc s35)
+            (@__ieee754_exp-%35-pred s35))))
+  :enable (@__ieee754_exp-%35-rev @__ieee754_exp-%35-mem @__ieee754_exp-%35-loc @__ieee754_exp-%35-pred))
+(defruled @__ieee754_exp-%35-expand-rev-as-@__ieee754_exp-%37-rev
+  (equal (@__ieee754_exp-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__ieee754_exp-%37-rev
+            (@__ieee754_exp-%35-mem s35)
+            (@__ieee754_exp-%36-loc s35)
+            (@__ieee754_exp-%35-pred s35))))
+  :enable (@__ieee754_exp-%35-expand-rev-as-@__ieee754_exp-%36-rev @__ieee754_exp-%36-rev @__ieee754_exp-%36-loc @__ieee754_exp-%36-val))
+(defruled @__ieee754_exp-%35-expand-rev-as-@__ieee754_exp-succ35-rev
+  (equal (@__ieee754_exp-%35-rev mem loc pred)
+         (let ((s35 (list mem loc pred)))
+           (@__ieee754_exp-succ35-rev
+            (@__ieee754_exp-%35-mem s35)
+            (@__ieee754_exp-%37-loc s35)
+            (@__ieee754_exp-%35-pred s35))))
+  :enable (@__ieee754_exp-%35-expand-rev-as-@__ieee754_exp-%37-rev @__ieee754_exp-%37-rev @__ieee754_exp-%37-loc @__ieee754_exp-%37-val))
+(defruled @__ieee754_exp-%35-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%35-rev mem loc pred)
+         (@__ieee754_exp-%35-fwd mem loc pred))
+  :enable (@__ieee754_exp-%35-expand-rev-as-@__ieee754_exp-succ35-rev @__ieee754_exp-succ35-rev @__ieee754_exp-succ35-lab @__ieee754_exp-%35-fwd))
+
 (defund @__ieee754_exp-%35-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -605,15 +1005,6 @@
     (loc (s '%37 (fcmp-ogt-double (g '%36 loc) #x40862E42FEFA39EF) loc))
     (succ (case (g '%37 loc) (-1 '%38) (0 '%39))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%35-expand-bb
-  (equal (@__ieee754_exp-%35-bb mem loc pred)
-         (@__ieee754_exp-%35-rev mem loc pred))
-  :enable (@__ieee754_exp-%35-bb @__ieee754_exp-%35-rev
-    @__ieee754_exp-%36-rev
-    @__ieee754_exp-%37-rev
-    @__ieee754_exp-succ35-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%38-mem (s38)
   (car s38))
@@ -627,6 +1018,10 @@
   (declare (ignore s38))
   '%166)
 
+(defund @__ieee754_exp-%38-fwd (mem loc pred)
+  (let ((s38 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ38-lab s38) (@__ieee754_exp-m38.1-mem s38) (@__ieee754_exp-%38-loc s38))))
+
 (defund @__ieee754_exp-succ38-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -636,20 +1031,33 @@
 (defund @__ieee754_exp-%38-rev (mem loc pred)
   (@__ieee754_exp-m38.1-rev mem loc pred))
 
+(defruled @__ieee754_exp-%38-expand-rev-as-@__ieee754_exp-m38.1-rev
+  (equal (@__ieee754_exp-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@__ieee754_exp-m38.1-rev
+            (@__ieee754_exp-%38-mem s38)
+            (@__ieee754_exp-%38-loc s38)
+            (@__ieee754_exp-%38-pred s38))))
+  :enable (@__ieee754_exp-%38-rev @__ieee754_exp-%38-mem @__ieee754_exp-%38-loc @__ieee754_exp-%38-pred))
+(defruled @__ieee754_exp-%38-expand-rev-as-@__ieee754_exp-succ38-rev
+  (equal (@__ieee754_exp-%38-rev mem loc pred)
+         (let ((s38 (list mem loc pred)))
+           (@__ieee754_exp-succ38-rev
+            (@__ieee754_exp-m38.1-mem s38)
+            (@__ieee754_exp-%38-loc s38)
+            (@__ieee754_exp-%38-pred s38))))
+  :enable (@__ieee754_exp-%38-expand-rev-as-@__ieee754_exp-m38.1-rev @__ieee754_exp-m38.1-rev @__ieee754_exp-m38.1-mem))
+(defruled @__ieee754_exp-%38-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%38-rev mem loc pred)
+         (@__ieee754_exp-%38-fwd mem loc pred))
+  :enable (@__ieee754_exp-%38-expand-rev-as-@__ieee754_exp-succ38-rev @__ieee754_exp-succ38-rev @__ieee754_exp-succ38-lab @__ieee754_exp-%38-fwd))
+
 (defund @__ieee754_exp-%38-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x7FF0000000000000 (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%38-expand-bb
-  (equal (@__ieee754_exp-%38-bb mem loc pred)
-         (@__ieee754_exp-%38-rev mem loc pred))
-  :enable (@__ieee754_exp-%38-bb @__ieee754_exp-%38-rev
-    @__ieee754_exp-m38.1-rev
-    @__ieee754_exp-succ38-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%39-mem (s39)
   (car s39))
@@ -668,6 +1076,10 @@
 (defund @__ieee754_exp-succ39-lab (s39)
   (case (g '%41 (@__ieee754_exp-%41-loc s39)) (-1 '%42) (0 '%43)))
 
+(defund @__ieee754_exp-%39-fwd (mem loc pred)
+  (let ((s39 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ39-lab s39) (@__ieee754_exp-%39-mem s39) (@__ieee754_exp-%41-loc s39))))
+
 (defund @__ieee754_exp-succ39-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%41 loc) (-1 '%42) (0 '%43)) mem loc))
@@ -679,6 +1091,35 @@
 (defund @__ieee754_exp-%39-rev (mem loc pred)
   (@__ieee754_exp-%40-rev mem loc pred))
 
+(defruled @__ieee754_exp-%39-expand-rev-as-@__ieee754_exp-%40-rev
+  (equal (@__ieee754_exp-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__ieee754_exp-%40-rev
+            (@__ieee754_exp-%39-mem s39)
+            (@__ieee754_exp-%39-loc s39)
+            (@__ieee754_exp-%39-pred s39))))
+  :enable (@__ieee754_exp-%39-rev @__ieee754_exp-%39-mem @__ieee754_exp-%39-loc @__ieee754_exp-%39-pred))
+(defruled @__ieee754_exp-%39-expand-rev-as-@__ieee754_exp-%41-rev
+  (equal (@__ieee754_exp-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__ieee754_exp-%41-rev
+            (@__ieee754_exp-%39-mem s39)
+            (@__ieee754_exp-%40-loc s39)
+            (@__ieee754_exp-%39-pred s39))))
+  :enable (@__ieee754_exp-%39-expand-rev-as-@__ieee754_exp-%40-rev @__ieee754_exp-%40-rev @__ieee754_exp-%40-loc @__ieee754_exp-%40-val))
+(defruled @__ieee754_exp-%39-expand-rev-as-@__ieee754_exp-succ39-rev
+  (equal (@__ieee754_exp-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__ieee754_exp-succ39-rev
+            (@__ieee754_exp-%39-mem s39)
+            (@__ieee754_exp-%41-loc s39)
+            (@__ieee754_exp-%39-pred s39))))
+  :enable (@__ieee754_exp-%39-expand-rev-as-@__ieee754_exp-%41-rev @__ieee754_exp-%41-rev @__ieee754_exp-%41-loc @__ieee754_exp-%41-val))
+(defruled @__ieee754_exp-%39-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%39-rev mem loc pred)
+         (@__ieee754_exp-%39-fwd mem loc pred))
+  :enable (@__ieee754_exp-%39-expand-rev-as-@__ieee754_exp-succ39-rev @__ieee754_exp-succ39-rev @__ieee754_exp-succ39-lab @__ieee754_exp-%39-fwd))
+
 (defund @__ieee754_exp-%39-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -686,15 +1127,6 @@
     (loc (s '%41 (fcmp-olt-double (g '%40 loc) #xC0874910D52D3051) loc))
     (succ (case (g '%41 loc) (-1 '%42) (0 '%43))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%39-expand-bb
-  (equal (@__ieee754_exp-%39-bb mem loc pred)
-         (@__ieee754_exp-%39-rev mem loc pred))
-  :enable (@__ieee754_exp-%39-bb @__ieee754_exp-%39-rev
-    @__ieee754_exp-%40-rev
-    @__ieee754_exp-%41-rev
-    @__ieee754_exp-succ39-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%42-mem (s42)
   (car s42))
@@ -708,6 +1140,10 @@
   (declare (ignore s42))
   '%166)
 
+(defund @__ieee754_exp-%42-fwd (mem loc pred)
+  (let ((s42 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ42-lab s42) (@__ieee754_exp-m42.1-mem s42) (@__ieee754_exp-%42-loc s42))))
+
 (defund @__ieee754_exp-succ42-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -717,20 +1153,33 @@
 (defund @__ieee754_exp-%42-rev (mem loc pred)
   (@__ieee754_exp-m42.1-rev mem loc pred))
 
+(defruled @__ieee754_exp-%42-expand-rev-as-@__ieee754_exp-m42.1-rev
+  (equal (@__ieee754_exp-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@__ieee754_exp-m42.1-rev
+            (@__ieee754_exp-%42-mem s42)
+            (@__ieee754_exp-%42-loc s42)
+            (@__ieee754_exp-%42-pred s42))))
+  :enable (@__ieee754_exp-%42-rev @__ieee754_exp-%42-mem @__ieee754_exp-%42-loc @__ieee754_exp-%42-pred))
+(defruled @__ieee754_exp-%42-expand-rev-as-@__ieee754_exp-succ42-rev
+  (equal (@__ieee754_exp-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@__ieee754_exp-succ42-rev
+            (@__ieee754_exp-m42.1-mem s42)
+            (@__ieee754_exp-%42-loc s42)
+            (@__ieee754_exp-%42-pred s42))))
+  :enable (@__ieee754_exp-%42-expand-rev-as-@__ieee754_exp-m42.1-rev @__ieee754_exp-m42.1-rev @__ieee754_exp-m42.1-mem))
+(defruled @__ieee754_exp-%42-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%42-rev mem loc pred)
+         (@__ieee754_exp-%42-fwd mem loc pred))
+  :enable (@__ieee754_exp-%42-expand-rev-as-@__ieee754_exp-succ42-rev @__ieee754_exp-succ42-rev @__ieee754_exp-succ42-lab @__ieee754_exp-%42-fwd))
+
 (defund @__ieee754_exp-%42-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x0000000000000000 (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%42-expand-bb
-  (equal (@__ieee754_exp-%42-bb mem loc pred)
-         (@__ieee754_exp-%42-rev mem loc pred))
-  :enable (@__ieee754_exp-%42-bb @__ieee754_exp-%42-rev
-    @__ieee754_exp-m42.1-rev
-    @__ieee754_exp-succ42-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%43-mem (s43)
   (car s43))
@@ -742,6 +1191,10 @@
   (declare (ignore s43))
   '%44)
 
+(defund @__ieee754_exp-%43-fwd (mem loc pred)
+  (let ((s43 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ43-lab s43) (@__ieee754_exp-%43-mem s43) (@__ieee754_exp-%43-loc s43))))
+
 (defund @__ieee754_exp-succ43-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%44 mem loc))
@@ -749,18 +1202,24 @@
 (defund @__ieee754_exp-%43-rev (mem loc pred)
   (@__ieee754_exp-succ43-rev mem loc pred))
 
+(defruled @__ieee754_exp-%43-expand-rev-as-@__ieee754_exp-succ43-rev
+  (equal (@__ieee754_exp-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_exp-succ43-rev
+            (@__ieee754_exp-%43-mem s43)
+            (@__ieee754_exp-%43-loc s43)
+            (@__ieee754_exp-%43-pred s43))))
+  :enable (@__ieee754_exp-%43-rev @__ieee754_exp-%43-mem @__ieee754_exp-%43-loc @__ieee754_exp-%43-pred))
+(defruled @__ieee754_exp-%43-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%43-rev mem loc pred)
+         (@__ieee754_exp-%43-fwd mem loc pred))
+  :enable (@__ieee754_exp-%43-expand-rev-as-@__ieee754_exp-succ43-rev @__ieee754_exp-succ43-rev @__ieee754_exp-succ43-lab @__ieee754_exp-%43-fwd))
+
 (defund @__ieee754_exp-%43-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%44))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%43-expand-bb
-  (equal (@__ieee754_exp-%43-bb mem loc pred)
-         (@__ieee754_exp-%43-rev mem loc pred))
-  :enable (@__ieee754_exp-%43-bb @__ieee754_exp-%43-rev
-    @__ieee754_exp-succ43-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%44-mem (s44)
   (car s44))
@@ -779,6 +1238,10 @@
 (defund @__ieee754_exp-succ44-lab (s44)
   (case (g '%46 (@__ieee754_exp-%46-loc s44)) (-1 '%47) (0 '%88)))
 
+(defund @__ieee754_exp-%44-fwd (mem loc pred)
+  (let ((s44 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ44-lab s44) (@__ieee754_exp-%44-mem s44) (@__ieee754_exp-%46-loc s44))))
+
 (defund @__ieee754_exp-succ44-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%46 loc) (-1 '%47) (0 '%88)) mem loc))
@@ -790,6 +1253,35 @@
 (defund @__ieee754_exp-%44-rev (mem loc pred)
   (@__ieee754_exp-%45-rev mem loc pred))
 
+(defruled @__ieee754_exp-%44-expand-rev-as-@__ieee754_exp-%45-rev
+  (equal (@__ieee754_exp-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@__ieee754_exp-%45-rev
+            (@__ieee754_exp-%44-mem s44)
+            (@__ieee754_exp-%44-loc s44)
+            (@__ieee754_exp-%44-pred s44))))
+  :enable (@__ieee754_exp-%44-rev @__ieee754_exp-%44-mem @__ieee754_exp-%44-loc @__ieee754_exp-%44-pred))
+(defruled @__ieee754_exp-%44-expand-rev-as-@__ieee754_exp-%46-rev
+  (equal (@__ieee754_exp-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@__ieee754_exp-%46-rev
+            (@__ieee754_exp-%44-mem s44)
+            (@__ieee754_exp-%45-loc s44)
+            (@__ieee754_exp-%44-pred s44))))
+  :enable (@__ieee754_exp-%44-expand-rev-as-@__ieee754_exp-%45-rev @__ieee754_exp-%45-rev @__ieee754_exp-%45-loc @__ieee754_exp-%45-val))
+(defruled @__ieee754_exp-%44-expand-rev-as-@__ieee754_exp-succ44-rev
+  (equal (@__ieee754_exp-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@__ieee754_exp-succ44-rev
+            (@__ieee754_exp-%44-mem s44)
+            (@__ieee754_exp-%46-loc s44)
+            (@__ieee754_exp-%44-pred s44))))
+  :enable (@__ieee754_exp-%44-expand-rev-as-@__ieee754_exp-%46-rev @__ieee754_exp-%46-rev @__ieee754_exp-%46-loc @__ieee754_exp-%46-val))
+(defruled @__ieee754_exp-%44-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%44-rev mem loc pred)
+         (@__ieee754_exp-%44-fwd mem loc pred))
+  :enable (@__ieee754_exp-%44-expand-rev-as-@__ieee754_exp-succ44-rev @__ieee754_exp-succ44-rev @__ieee754_exp-succ44-lab @__ieee754_exp-%44-fwd))
+
 (defund @__ieee754_exp-%44-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -797,15 +1289,6 @@
     (loc (s '%46 (icmp-ugt-i32 (g '%45 loc) 1071001154) loc))
     (succ (case (g '%46 loc) (-1 '%47) (0 '%88))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%44-expand-bb
-  (equal (@__ieee754_exp-%44-bb mem loc pred)
-         (@__ieee754_exp-%44-rev mem loc pred))
-  :enable (@__ieee754_exp-%44-bb @__ieee754_exp-%44-rev
-    @__ieee754_exp-%45-rev
-    @__ieee754_exp-%46-rev
-    @__ieee754_exp-succ44-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%47-mem (s47)
   (car s47))
@@ -824,6 +1307,10 @@
 (defund @__ieee754_exp-succ47-lab (s47)
   (case (g '%49 (@__ieee754_exp-%49-loc s47)) (-1 '%50) (0 '%65)))
 
+(defund @__ieee754_exp-%47-fwd (mem loc pred)
+  (let ((s47 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ47-lab s47) (@__ieee754_exp-%47-mem s47) (@__ieee754_exp-%49-loc s47))))
+
 (defund @__ieee754_exp-succ47-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%49 loc) (-1 '%50) (0 '%65)) mem loc))
@@ -835,6 +1322,35 @@
 (defund @__ieee754_exp-%47-rev (mem loc pred)
   (@__ieee754_exp-%48-rev mem loc pred))
 
+(defruled @__ieee754_exp-%47-expand-rev-as-@__ieee754_exp-%48-rev
+  (equal (@__ieee754_exp-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__ieee754_exp-%48-rev
+            (@__ieee754_exp-%47-mem s47)
+            (@__ieee754_exp-%47-loc s47)
+            (@__ieee754_exp-%47-pred s47))))
+  :enable (@__ieee754_exp-%47-rev @__ieee754_exp-%47-mem @__ieee754_exp-%47-loc @__ieee754_exp-%47-pred))
+(defruled @__ieee754_exp-%47-expand-rev-as-@__ieee754_exp-%49-rev
+  (equal (@__ieee754_exp-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__ieee754_exp-%49-rev
+            (@__ieee754_exp-%47-mem s47)
+            (@__ieee754_exp-%48-loc s47)
+            (@__ieee754_exp-%47-pred s47))))
+  :enable (@__ieee754_exp-%47-expand-rev-as-@__ieee754_exp-%48-rev @__ieee754_exp-%48-rev @__ieee754_exp-%48-loc @__ieee754_exp-%48-val))
+(defruled @__ieee754_exp-%47-expand-rev-as-@__ieee754_exp-succ47-rev
+  (equal (@__ieee754_exp-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__ieee754_exp-succ47-rev
+            (@__ieee754_exp-%47-mem s47)
+            (@__ieee754_exp-%49-loc s47)
+            (@__ieee754_exp-%47-pred s47))))
+  :enable (@__ieee754_exp-%47-expand-rev-as-@__ieee754_exp-%49-rev @__ieee754_exp-%49-rev @__ieee754_exp-%49-loc @__ieee754_exp-%49-val))
+(defruled @__ieee754_exp-%47-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%47-rev mem loc pred)
+         (@__ieee754_exp-%47-fwd mem loc pred))
+  :enable (@__ieee754_exp-%47-expand-rev-as-@__ieee754_exp-succ47-rev @__ieee754_exp-succ47-rev @__ieee754_exp-succ47-lab @__ieee754_exp-%47-fwd))
+
 (defund @__ieee754_exp-%47-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -842,15 +1358,6 @@
     (loc (s '%49 (icmp-ult-i32 (g '%48 loc) 1072734898) loc))
     (succ (case (g '%49 loc) (-1 '%50) (0 '%65))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%47-expand-bb
-  (equal (@__ieee754_exp-%47-bb mem loc pred)
-         (@__ieee754_exp-%47-rev mem loc pred))
-  :enable (@__ieee754_exp-%47-bb @__ieee754_exp-%47-rev
-    @__ieee754_exp-%48-rev
-    @__ieee754_exp-%49-rev
-    @__ieee754_exp-succ47-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%50-mem (s50)
   (car s50))
@@ -924,6 +1431,10 @@
   (declare (ignore s50))
   '%84)
 
+(defund @__ieee754_exp-%50-fwd (mem loc pred)
+  (let ((s50 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ50-lab s50) (@__ieee754_exp-m50.3-mem s50) (@__ieee754_exp-%64-loc s50))))
+
 (defund @__ieee754_exp-succ50-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%84 mem loc))
@@ -965,6 +1476,155 @@
 (defund @__ieee754_exp-%50-rev (mem loc pred)
   (@__ieee754_exp-%51-rev mem loc pred))
 
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%51-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%51-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%50-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-rev @__ieee754_exp-%50-mem @__ieee754_exp-%50-loc @__ieee754_exp-%50-pred))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%52-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%52-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%51-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%51-rev @__ieee754_exp-%51-rev @__ieee754_exp-%51-loc @__ieee754_exp-%51-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%53-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%53-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%52-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%52-rev @__ieee754_exp-%52-rev @__ieee754_exp-%52-loc @__ieee754_exp-%52-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%54-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%54-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%53-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%53-rev @__ieee754_exp-%53-rev @__ieee754_exp-%53-loc @__ieee754_exp-%53-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%55-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%55-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%54-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%54-rev @__ieee754_exp-%54-rev @__ieee754_exp-%54-loc @__ieee754_exp-%54-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%56-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%56-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%55-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%55-rev @__ieee754_exp-%55-rev @__ieee754_exp-%55-loc @__ieee754_exp-%55-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-m50.1-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-m50.1-rev
+            (@__ieee754_exp-%50-mem s50)
+            (@__ieee754_exp-%56-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%56-rev @__ieee754_exp-%56-rev @__ieee754_exp-%56-loc @__ieee754_exp-%56-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%57-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%57-rev
+            (@__ieee754_exp-m50.1-mem s50)
+            (@__ieee754_exp-%56-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-m50.1-rev @__ieee754_exp-m50.1-rev @__ieee754_exp-m50.1-mem))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%58-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%58-rev
+            (@__ieee754_exp-m50.1-mem s50)
+            (@__ieee754_exp-%57-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%57-rev @__ieee754_exp-%57-rev @__ieee754_exp-%57-loc @__ieee754_exp-%57-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%59-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%59-rev
+            (@__ieee754_exp-m50.1-mem s50)
+            (@__ieee754_exp-%58-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%58-rev @__ieee754_exp-%58-rev @__ieee754_exp-%58-loc @__ieee754_exp-%58-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%60-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%60-rev
+            (@__ieee754_exp-m50.1-mem s50)
+            (@__ieee754_exp-%59-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%59-rev @__ieee754_exp-%59-rev @__ieee754_exp-%59-loc @__ieee754_exp-%59-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-m50.2-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-m50.2-rev
+            (@__ieee754_exp-m50.1-mem s50)
+            (@__ieee754_exp-%60-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%60-rev @__ieee754_exp-%60-rev @__ieee754_exp-%60-loc @__ieee754_exp-%60-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%61-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%61-rev
+            (@__ieee754_exp-m50.2-mem s50)
+            (@__ieee754_exp-%60-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-m50.2-rev @__ieee754_exp-m50.2-rev @__ieee754_exp-m50.2-mem))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%62-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%62-rev
+            (@__ieee754_exp-m50.2-mem s50)
+            (@__ieee754_exp-%61-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%61-rev @__ieee754_exp-%61-rev @__ieee754_exp-%61-loc @__ieee754_exp-%61-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%63-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%63-rev
+            (@__ieee754_exp-m50.2-mem s50)
+            (@__ieee754_exp-%62-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%62-rev @__ieee754_exp-%62-rev @__ieee754_exp-%62-loc @__ieee754_exp-%62-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%64-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-%64-rev
+            (@__ieee754_exp-m50.2-mem s50)
+            (@__ieee754_exp-%63-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%63-rev @__ieee754_exp-%63-rev @__ieee754_exp-%63-loc @__ieee754_exp-%63-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-m50.3-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-m50.3-rev
+            (@__ieee754_exp-m50.2-mem s50)
+            (@__ieee754_exp-%64-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-%64-rev @__ieee754_exp-%64-rev @__ieee754_exp-%64-loc @__ieee754_exp-%64-val))
+(defruled @__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-succ50-rev
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@__ieee754_exp-succ50-rev
+            (@__ieee754_exp-m50.3-mem s50)
+            (@__ieee754_exp-%64-loc s50)
+            (@__ieee754_exp-%50-pred s50))))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-m50.3-rev @__ieee754_exp-m50.3-rev @__ieee754_exp-m50.3-mem))
+(defruled @__ieee754_exp-%50-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%50-rev mem loc pred)
+         (@__ieee754_exp-%50-fwd mem loc pred))
+  :enable (@__ieee754_exp-%50-expand-rev-as-@__ieee754_exp-succ50-rev @__ieee754_exp-succ50-rev @__ieee754_exp-succ50-lab @__ieee754_exp-%50-fwd))
+
 (defund @__ieee754_exp-%50-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -987,30 +1647,6 @@
     (mem (store-i32 (g '%64 loc) (g '%k loc) mem))
     (succ '%84))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%50-expand-bb
-  (equal (@__ieee754_exp-%50-bb mem loc pred)
-         (@__ieee754_exp-%50-rev mem loc pred))
-  :enable (@__ieee754_exp-%50-bb @__ieee754_exp-%50-rev
-    @__ieee754_exp-%51-rev
-    @__ieee754_exp-%52-rev
-    @__ieee754_exp-%53-rev
-    @__ieee754_exp-%54-rev
-    @__ieee754_exp-%55-rev
-    @__ieee754_exp-%56-rev
-    @__ieee754_exp-m50.1-rev
-    @__ieee754_exp-%57-rev
-    @__ieee754_exp-%58-rev
-    @__ieee754_exp-%59-rev
-    @__ieee754_exp-%60-rev
-    @__ieee754_exp-m50.2-rev
-    @__ieee754_exp-%61-rev
-    @__ieee754_exp-%62-rev
-    @__ieee754_exp-%63-rev
-    @__ieee754_exp-%64-rev
-    @__ieee754_exp-m50.3-rev
-    @__ieee754_exp-succ50-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%65-mem (s65)
   (car s65))
@@ -1102,6 +1738,10 @@
   (declare (ignore s65))
   '%84)
 
+(defund @__ieee754_exp-%65-fwd (mem loc pred)
+  (let ((s65 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ65-lab s65) (@__ieee754_exp-m65.4-mem s65) (@__ieee754_exp-%83-loc s65))))
+
 (defund @__ieee754_exp-succ65-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%84 mem loc))
@@ -1153,6 +1793,195 @@
 (defund @__ieee754_exp-%65-rev (mem loc pred)
   (@__ieee754_exp-%66-rev mem loc pred))
 
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%66-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%66-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%65-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-rev @__ieee754_exp-%65-mem @__ieee754_exp-%65-loc @__ieee754_exp-%65-pred))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%67-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%67-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%66-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%66-rev @__ieee754_exp-%66-rev @__ieee754_exp-%66-loc @__ieee754_exp-%66-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%68-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%68-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%67-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%67-rev @__ieee754_exp-%67-rev @__ieee754_exp-%67-loc @__ieee754_exp-%67-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%69-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%69-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%68-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%68-rev @__ieee754_exp-%68-rev @__ieee754_exp-%68-loc @__ieee754_exp-%68-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%70-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%70-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%69-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%69-rev @__ieee754_exp-%69-rev @__ieee754_exp-%69-loc @__ieee754_exp-%69-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%71-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%71-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%70-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%70-rev @__ieee754_exp-%70-rev @__ieee754_exp-%70-loc @__ieee754_exp-%70-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%72-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%72-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%71-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%71-rev @__ieee754_exp-%71-rev @__ieee754_exp-%71-loc @__ieee754_exp-%71-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%73-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%73-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%72-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%72-rev @__ieee754_exp-%72-rev @__ieee754_exp-%72-loc @__ieee754_exp-%72-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.1-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-m65.1-rev
+            (@__ieee754_exp-%65-mem s65)
+            (@__ieee754_exp-%73-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%73-rev @__ieee754_exp-%73-rev @__ieee754_exp-%73-loc @__ieee754_exp-%73-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%74-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%74-rev
+            (@__ieee754_exp-m65.1-mem s65)
+            (@__ieee754_exp-%73-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.1-rev @__ieee754_exp-m65.1-rev @__ieee754_exp-m65.1-mem))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%75-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%75-rev
+            (@__ieee754_exp-m65.1-mem s65)
+            (@__ieee754_exp-%74-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%74-rev @__ieee754_exp-%74-rev @__ieee754_exp-%74-loc @__ieee754_exp-%74-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.2-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-m65.2-rev
+            (@__ieee754_exp-m65.1-mem s65)
+            (@__ieee754_exp-%75-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%75-rev @__ieee754_exp-%75-rev @__ieee754_exp-%75-loc @__ieee754_exp-%75-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%76-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%76-rev
+            (@__ieee754_exp-m65.2-mem s65)
+            (@__ieee754_exp-%75-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.2-rev @__ieee754_exp-m65.2-rev @__ieee754_exp-m65.2-mem))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%77-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%77-rev
+            (@__ieee754_exp-m65.2-mem s65)
+            (@__ieee754_exp-%76-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%76-rev @__ieee754_exp-%76-rev @__ieee754_exp-%76-loc @__ieee754_exp-%76-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%78-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%78-rev
+            (@__ieee754_exp-m65.2-mem s65)
+            (@__ieee754_exp-%77-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%77-rev @__ieee754_exp-%77-rev @__ieee754_exp-%77-loc @__ieee754_exp-%77-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%79-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%79-rev
+            (@__ieee754_exp-m65.2-mem s65)
+            (@__ieee754_exp-%78-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%78-rev @__ieee754_exp-%78-rev @__ieee754_exp-%78-loc @__ieee754_exp-%78-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%80-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%80-rev
+            (@__ieee754_exp-m65.2-mem s65)
+            (@__ieee754_exp-%79-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%79-rev @__ieee754_exp-%79-rev @__ieee754_exp-%79-loc @__ieee754_exp-%79-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.3-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-m65.3-rev
+            (@__ieee754_exp-m65.2-mem s65)
+            (@__ieee754_exp-%80-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%80-rev @__ieee754_exp-%80-rev @__ieee754_exp-%80-loc @__ieee754_exp-%80-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%81-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%81-rev
+            (@__ieee754_exp-m65.3-mem s65)
+            (@__ieee754_exp-%80-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.3-rev @__ieee754_exp-m65.3-rev @__ieee754_exp-m65.3-mem))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%82-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%82-rev
+            (@__ieee754_exp-m65.3-mem s65)
+            (@__ieee754_exp-%81-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%81-rev @__ieee754_exp-%81-rev @__ieee754_exp-%81-loc @__ieee754_exp-%81-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%83-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-%83-rev
+            (@__ieee754_exp-m65.3-mem s65)
+            (@__ieee754_exp-%82-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%82-rev @__ieee754_exp-%82-rev @__ieee754_exp-%82-loc @__ieee754_exp-%82-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.4-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-m65.4-rev
+            (@__ieee754_exp-m65.3-mem s65)
+            (@__ieee754_exp-%83-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-%83-rev @__ieee754_exp-%83-rev @__ieee754_exp-%83-loc @__ieee754_exp-%83-val))
+(defruled @__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-succ65-rev
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@__ieee754_exp-succ65-rev
+            (@__ieee754_exp-m65.4-mem s65)
+            (@__ieee754_exp-%83-loc s65)
+            (@__ieee754_exp-%65-pred s65))))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-m65.4-rev @__ieee754_exp-m65.4-rev @__ieee754_exp-m65.4-mem))
+(defruled @__ieee754_exp-%65-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%65-rev mem loc pred)
+         (@__ieee754_exp-%65-fwd mem loc pred))
+  :enable (@__ieee754_exp-%65-expand-rev-as-@__ieee754_exp-succ65-rev @__ieee754_exp-succ65-rev @__ieee754_exp-succ65-lab @__ieee754_exp-%65-fwd))
+
 (defund @__ieee754_exp-%65-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1181,35 +2010,6 @@
     (succ '%84))
   (mv succ mem loc)))
 
-(defruled @__ieee754_exp-%65-expand-bb
-  (equal (@__ieee754_exp-%65-bb mem loc pred)
-         (@__ieee754_exp-%65-rev mem loc pred))
-  :enable (@__ieee754_exp-%65-bb @__ieee754_exp-%65-rev
-    @__ieee754_exp-%66-rev
-    @__ieee754_exp-%67-rev
-    @__ieee754_exp-%68-rev
-    @__ieee754_exp-%69-rev
-    @__ieee754_exp-%70-rev
-    @__ieee754_exp-%71-rev
-    @__ieee754_exp-%72-rev
-    @__ieee754_exp-%73-rev
-    @__ieee754_exp-m65.1-rev
-    @__ieee754_exp-%74-rev
-    @__ieee754_exp-%75-rev
-    @__ieee754_exp-m65.2-rev
-    @__ieee754_exp-%76-rev
-    @__ieee754_exp-%77-rev
-    @__ieee754_exp-%78-rev
-    @__ieee754_exp-%79-rev
-    @__ieee754_exp-%80-rev
-    @__ieee754_exp-m65.3-rev
-    @__ieee754_exp-%81-rev
-    @__ieee754_exp-%82-rev
-    @__ieee754_exp-%83-rev
-    @__ieee754_exp-m65.4-rev
-    @__ieee754_exp-succ65-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_exp-%84-mem (s84)
   (car s84))
 (defund @__ieee754_exp-%84-loc (s84)
@@ -1234,6 +2034,10 @@
   (declare (ignore s84))
   '%101)
 
+(defund @__ieee754_exp-%84-fwd (mem loc pred)
+  (let ((s84 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ84-lab s84) (@__ieee754_exp-m84.1-mem s84) (@__ieee754_exp-%87-loc s84))))
+
 (defund @__ieee754_exp-succ84-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%101 mem loc))
@@ -1249,6 +2053,51 @@
 (defund @__ieee754_exp-%84-rev (mem loc pred)
   (@__ieee754_exp-%85-rev mem loc pred))
 
+(defruled @__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-%85-rev
+  (equal (@__ieee754_exp-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__ieee754_exp-%85-rev
+            (@__ieee754_exp-%84-mem s84)
+            (@__ieee754_exp-%84-loc s84)
+            (@__ieee754_exp-%84-pred s84))))
+  :enable (@__ieee754_exp-%84-rev @__ieee754_exp-%84-mem @__ieee754_exp-%84-loc @__ieee754_exp-%84-pred))
+(defruled @__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-%86-rev
+  (equal (@__ieee754_exp-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__ieee754_exp-%86-rev
+            (@__ieee754_exp-%84-mem s84)
+            (@__ieee754_exp-%85-loc s84)
+            (@__ieee754_exp-%84-pred s84))))
+  :enable (@__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-%85-rev @__ieee754_exp-%85-rev @__ieee754_exp-%85-loc @__ieee754_exp-%85-val))
+(defruled @__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-%87-rev
+  (equal (@__ieee754_exp-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__ieee754_exp-%87-rev
+            (@__ieee754_exp-%84-mem s84)
+            (@__ieee754_exp-%86-loc s84)
+            (@__ieee754_exp-%84-pred s84))))
+  :enable (@__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-%86-rev @__ieee754_exp-%86-rev @__ieee754_exp-%86-loc @__ieee754_exp-%86-val))
+(defruled @__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-m84.1-rev
+  (equal (@__ieee754_exp-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__ieee754_exp-m84.1-rev
+            (@__ieee754_exp-%84-mem s84)
+            (@__ieee754_exp-%87-loc s84)
+            (@__ieee754_exp-%84-pred s84))))
+  :enable (@__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-%87-rev @__ieee754_exp-%87-rev @__ieee754_exp-%87-loc @__ieee754_exp-%87-val))
+(defruled @__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-succ84-rev
+  (equal (@__ieee754_exp-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__ieee754_exp-succ84-rev
+            (@__ieee754_exp-m84.1-mem s84)
+            (@__ieee754_exp-%87-loc s84)
+            (@__ieee754_exp-%84-pred s84))))
+  :enable (@__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-m84.1-rev @__ieee754_exp-m84.1-rev @__ieee754_exp-m84.1-mem))
+(defruled @__ieee754_exp-%84-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%84-rev mem loc pred)
+         (@__ieee754_exp-%84-fwd mem loc pred))
+  :enable (@__ieee754_exp-%84-expand-rev-as-@__ieee754_exp-succ84-rev @__ieee754_exp-succ84-rev @__ieee754_exp-succ84-lab @__ieee754_exp-%84-fwd))
+
 (defund @__ieee754_exp-%84-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1258,17 +2107,6 @@
     (mem (store-double (g '%87 loc) (g '%2 loc) mem))
     (succ '%101))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%84-expand-bb
-  (equal (@__ieee754_exp-%84-bb mem loc pred)
-         (@__ieee754_exp-%84-rev mem loc pred))
-  :enable (@__ieee754_exp-%84-bb @__ieee754_exp-%84-rev
-    @__ieee754_exp-%85-rev
-    @__ieee754_exp-%86-rev
-    @__ieee754_exp-%87-rev
-    @__ieee754_exp-m84.1-rev
-    @__ieee754_exp-succ84-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%88-mem (s88)
   (car s88))
@@ -1287,6 +2125,10 @@
 (defund @__ieee754_exp-succ88-lab (s88)
   (case (g '%90 (@__ieee754_exp-%90-loc s88)) (-1 '%91) (0 '%99)))
 
+(defund @__ieee754_exp-%88-fwd (mem loc pred)
+  (let ((s88 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ88-lab s88) (@__ieee754_exp-%88-mem s88) (@__ieee754_exp-%90-loc s88))))
+
 (defund @__ieee754_exp-succ88-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%90 loc) (-1 '%91) (0 '%99)) mem loc))
@@ -1298,6 +2140,35 @@
 (defund @__ieee754_exp-%88-rev (mem loc pred)
   (@__ieee754_exp-%89-rev mem loc pred))
 
+(defruled @__ieee754_exp-%88-expand-rev-as-@__ieee754_exp-%89-rev
+  (equal (@__ieee754_exp-%88-rev mem loc pred)
+         (let ((s88 (list mem loc pred)))
+           (@__ieee754_exp-%89-rev
+            (@__ieee754_exp-%88-mem s88)
+            (@__ieee754_exp-%88-loc s88)
+            (@__ieee754_exp-%88-pred s88))))
+  :enable (@__ieee754_exp-%88-rev @__ieee754_exp-%88-mem @__ieee754_exp-%88-loc @__ieee754_exp-%88-pred))
+(defruled @__ieee754_exp-%88-expand-rev-as-@__ieee754_exp-%90-rev
+  (equal (@__ieee754_exp-%88-rev mem loc pred)
+         (let ((s88 (list mem loc pred)))
+           (@__ieee754_exp-%90-rev
+            (@__ieee754_exp-%88-mem s88)
+            (@__ieee754_exp-%89-loc s88)
+            (@__ieee754_exp-%88-pred s88))))
+  :enable (@__ieee754_exp-%88-expand-rev-as-@__ieee754_exp-%89-rev @__ieee754_exp-%89-rev @__ieee754_exp-%89-loc @__ieee754_exp-%89-val))
+(defruled @__ieee754_exp-%88-expand-rev-as-@__ieee754_exp-succ88-rev
+  (equal (@__ieee754_exp-%88-rev mem loc pred)
+         (let ((s88 (list mem loc pred)))
+           (@__ieee754_exp-succ88-rev
+            (@__ieee754_exp-%88-mem s88)
+            (@__ieee754_exp-%90-loc s88)
+            (@__ieee754_exp-%88-pred s88))))
+  :enable (@__ieee754_exp-%88-expand-rev-as-@__ieee754_exp-%90-rev @__ieee754_exp-%90-rev @__ieee754_exp-%90-loc @__ieee754_exp-%90-val))
+(defruled @__ieee754_exp-%88-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%88-rev mem loc pred)
+         (@__ieee754_exp-%88-fwd mem loc pred))
+  :enable (@__ieee754_exp-%88-expand-rev-as-@__ieee754_exp-succ88-rev @__ieee754_exp-succ88-rev @__ieee754_exp-succ88-lab @__ieee754_exp-%88-fwd))
+
 (defund @__ieee754_exp-%88-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1305,15 +2176,6 @@
     (loc (s '%90 (icmp-ult-i32 (g '%89 loc) 1043333120) loc))
     (succ (case (g '%90 loc) (-1 '%91) (0 '%99))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%88-expand-bb
-  (equal (@__ieee754_exp-%88-bb mem loc pred)
-         (@__ieee754_exp-%88-rev mem loc pred))
-  :enable (@__ieee754_exp-%88-bb @__ieee754_exp-%88-rev
-    @__ieee754_exp-%89-rev
-    @__ieee754_exp-%90-rev
-    @__ieee754_exp-succ88-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%91-mem (s91)
   (car s91))
@@ -1336,6 +2198,10 @@
 (defund @__ieee754_exp-succ91-lab (s91)
   (case (g '%94 (@__ieee754_exp-%94-loc s91)) (-1 '%95) (0 '%98)))
 
+(defund @__ieee754_exp-%91-fwd (mem loc pred)
+  (let ((s91 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ91-lab s91) (@__ieee754_exp-%91-mem s91) (@__ieee754_exp-%94-loc s91))))
+
 (defund @__ieee754_exp-succ91-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%94 loc) (-1 '%95) (0 '%98)) mem loc))
@@ -1349,6 +2215,43 @@
 (defund @__ieee754_exp-%91-rev (mem loc pred)
   (@__ieee754_exp-%92-rev mem loc pred))
 
+(defruled @__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-%92-rev
+  (equal (@__ieee754_exp-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@__ieee754_exp-%92-rev
+            (@__ieee754_exp-%91-mem s91)
+            (@__ieee754_exp-%91-loc s91)
+            (@__ieee754_exp-%91-pred s91))))
+  :enable (@__ieee754_exp-%91-rev @__ieee754_exp-%91-mem @__ieee754_exp-%91-loc @__ieee754_exp-%91-pred))
+(defruled @__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-%93-rev
+  (equal (@__ieee754_exp-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@__ieee754_exp-%93-rev
+            (@__ieee754_exp-%91-mem s91)
+            (@__ieee754_exp-%92-loc s91)
+            (@__ieee754_exp-%91-pred s91))))
+  :enable (@__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-%92-rev @__ieee754_exp-%92-rev @__ieee754_exp-%92-loc @__ieee754_exp-%92-val))
+(defruled @__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-%94-rev
+  (equal (@__ieee754_exp-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@__ieee754_exp-%94-rev
+            (@__ieee754_exp-%91-mem s91)
+            (@__ieee754_exp-%93-loc s91)
+            (@__ieee754_exp-%91-pred s91))))
+  :enable (@__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-%93-rev @__ieee754_exp-%93-rev @__ieee754_exp-%93-loc @__ieee754_exp-%93-val))
+(defruled @__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-succ91-rev
+  (equal (@__ieee754_exp-%91-rev mem loc pred)
+         (let ((s91 (list mem loc pred)))
+           (@__ieee754_exp-succ91-rev
+            (@__ieee754_exp-%91-mem s91)
+            (@__ieee754_exp-%94-loc s91)
+            (@__ieee754_exp-%91-pred s91))))
+  :enable (@__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-%94-rev @__ieee754_exp-%94-rev @__ieee754_exp-%94-loc @__ieee754_exp-%94-val))
+(defruled @__ieee754_exp-%91-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%91-rev mem loc pred)
+         (@__ieee754_exp-%91-fwd mem loc pred))
+  :enable (@__ieee754_exp-%91-expand-rev-as-@__ieee754_exp-succ91-rev @__ieee754_exp-succ91-rev @__ieee754_exp-succ91-lab @__ieee754_exp-%91-fwd))
+
 (defund @__ieee754_exp-%91-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1357,16 +2260,6 @@
     (loc (s '%94 (fcmp-ogt-double (g '%93 loc) #x3ff0000000000000) loc))
     (succ (case (g '%94 loc) (-1 '%95) (0 '%98))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%91-expand-bb
-  (equal (@__ieee754_exp-%91-bb mem loc pred)
-         (@__ieee754_exp-%91-rev mem loc pred))
-  :enable (@__ieee754_exp-%91-bb @__ieee754_exp-%91-rev
-    @__ieee754_exp-%92-rev
-    @__ieee754_exp-%93-rev
-    @__ieee754_exp-%94-rev
-    @__ieee754_exp-succ91-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%95-mem (s95)
   (car s95))
@@ -1388,6 +2281,10 @@
   (declare (ignore s95))
   '%166)
 
+(defund @__ieee754_exp-%95-fwd (mem loc pred)
+  (let ((s95 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ95-lab s95) (@__ieee754_exp-m95.1-mem s95) (@__ieee754_exp-%97-loc s95))))
+
 (defund @__ieee754_exp-succ95-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -1401,6 +2298,43 @@
 (defund @__ieee754_exp-%95-rev (mem loc pred)
   (@__ieee754_exp-%96-rev mem loc pred))
 
+(defruled @__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-%96-rev
+  (equal (@__ieee754_exp-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_exp-%96-rev
+            (@__ieee754_exp-%95-mem s95)
+            (@__ieee754_exp-%95-loc s95)
+            (@__ieee754_exp-%95-pred s95))))
+  :enable (@__ieee754_exp-%95-rev @__ieee754_exp-%95-mem @__ieee754_exp-%95-loc @__ieee754_exp-%95-pred))
+(defruled @__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-%97-rev
+  (equal (@__ieee754_exp-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_exp-%97-rev
+            (@__ieee754_exp-%95-mem s95)
+            (@__ieee754_exp-%96-loc s95)
+            (@__ieee754_exp-%95-pred s95))))
+  :enable (@__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-%96-rev @__ieee754_exp-%96-rev @__ieee754_exp-%96-loc @__ieee754_exp-%96-val))
+(defruled @__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-m95.1-rev
+  (equal (@__ieee754_exp-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_exp-m95.1-rev
+            (@__ieee754_exp-%95-mem s95)
+            (@__ieee754_exp-%97-loc s95)
+            (@__ieee754_exp-%95-pred s95))))
+  :enable (@__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-%97-rev @__ieee754_exp-%97-rev @__ieee754_exp-%97-loc @__ieee754_exp-%97-val))
+(defruled @__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-succ95-rev
+  (equal (@__ieee754_exp-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_exp-succ95-rev
+            (@__ieee754_exp-m95.1-mem s95)
+            (@__ieee754_exp-%97-loc s95)
+            (@__ieee754_exp-%95-pred s95))))
+  :enable (@__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-m95.1-rev @__ieee754_exp-m95.1-rev @__ieee754_exp-m95.1-mem))
+(defruled @__ieee754_exp-%95-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%95-rev mem loc pred)
+         (@__ieee754_exp-%95-fwd mem loc pred))
+  :enable (@__ieee754_exp-%95-expand-rev-as-@__ieee754_exp-succ95-rev @__ieee754_exp-succ95-rev @__ieee754_exp-succ95-lab @__ieee754_exp-%95-fwd))
+
 (defund @__ieee754_exp-%95-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1409,16 +2343,6 @@
     (mem (store-double (g '%97 loc) (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%95-expand-bb
-  (equal (@__ieee754_exp-%95-bb mem loc pred)
-         (@__ieee754_exp-%95-rev mem loc pred))
-  :enable (@__ieee754_exp-%95-bb @__ieee754_exp-%95-rev
-    @__ieee754_exp-%96-rev
-    @__ieee754_exp-%97-rev
-    @__ieee754_exp-m95.1-rev
-    @__ieee754_exp-succ95-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%98-mem (s98)
   (car s98))
@@ -1430,6 +2354,10 @@
   (declare (ignore s98))
   '%100)
 
+(defund @__ieee754_exp-%98-fwd (mem loc pred)
+  (let ((s98 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ98-lab s98) (@__ieee754_exp-%98-mem s98) (@__ieee754_exp-%98-loc s98))))
+
 (defund @__ieee754_exp-succ98-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%100 mem loc))
@@ -1437,18 +2365,24 @@
 (defund @__ieee754_exp-%98-rev (mem loc pred)
   (@__ieee754_exp-succ98-rev mem loc pred))
 
+(defruled @__ieee754_exp-%98-expand-rev-as-@__ieee754_exp-succ98-rev
+  (equal (@__ieee754_exp-%98-rev mem loc pred)
+         (let ((s98 (list mem loc pred)))
+           (@__ieee754_exp-succ98-rev
+            (@__ieee754_exp-%98-mem s98)
+            (@__ieee754_exp-%98-loc s98)
+            (@__ieee754_exp-%98-pred s98))))
+  :enable (@__ieee754_exp-%98-rev @__ieee754_exp-%98-mem @__ieee754_exp-%98-loc @__ieee754_exp-%98-pred))
+(defruled @__ieee754_exp-%98-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%98-rev mem loc pred)
+         (@__ieee754_exp-%98-fwd mem loc pred))
+  :enable (@__ieee754_exp-%98-expand-rev-as-@__ieee754_exp-succ98-rev @__ieee754_exp-succ98-rev @__ieee754_exp-succ98-lab @__ieee754_exp-%98-fwd))
+
 (defund @__ieee754_exp-%98-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%100))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%98-expand-bb
-  (equal (@__ieee754_exp-%98-bb mem loc pred)
-         (@__ieee754_exp-%98-rev mem loc pred))
-  :enable (@__ieee754_exp-%98-bb @__ieee754_exp-%98-rev
-    @__ieee754_exp-succ98-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%99-mem (s99)
   (car s99))
@@ -1462,6 +2396,10 @@
   (declare (ignore s99))
   '%100)
 
+(defund @__ieee754_exp-%99-fwd (mem loc pred)
+  (let ((s99 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ99-lab s99) (@__ieee754_exp-m99.1-mem s99) (@__ieee754_exp-%99-loc s99))))
+
 (defund @__ieee754_exp-succ99-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%100 mem loc))
@@ -1471,20 +2409,33 @@
 (defund @__ieee754_exp-%99-rev (mem loc pred)
   (@__ieee754_exp-m99.1-rev mem loc pred))
 
+(defruled @__ieee754_exp-%99-expand-rev-as-@__ieee754_exp-m99.1-rev
+  (equal (@__ieee754_exp-%99-rev mem loc pred)
+         (let ((s99 (list mem loc pred)))
+           (@__ieee754_exp-m99.1-rev
+            (@__ieee754_exp-%99-mem s99)
+            (@__ieee754_exp-%99-loc s99)
+            (@__ieee754_exp-%99-pred s99))))
+  :enable (@__ieee754_exp-%99-rev @__ieee754_exp-%99-mem @__ieee754_exp-%99-loc @__ieee754_exp-%99-pred))
+(defruled @__ieee754_exp-%99-expand-rev-as-@__ieee754_exp-succ99-rev
+  (equal (@__ieee754_exp-%99-rev mem loc pred)
+         (let ((s99 (list mem loc pred)))
+           (@__ieee754_exp-succ99-rev
+            (@__ieee754_exp-m99.1-mem s99)
+            (@__ieee754_exp-%99-loc s99)
+            (@__ieee754_exp-%99-pred s99))))
+  :enable (@__ieee754_exp-%99-expand-rev-as-@__ieee754_exp-m99.1-rev @__ieee754_exp-m99.1-rev @__ieee754_exp-m99.1-mem))
+(defruled @__ieee754_exp-%99-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%99-rev mem loc pred)
+         (@__ieee754_exp-%99-fwd mem loc pred))
+  :enable (@__ieee754_exp-%99-expand-rev-as-@__ieee754_exp-succ99-rev @__ieee754_exp-succ99-rev @__ieee754_exp-succ99-lab @__ieee754_exp-%99-fwd))
+
 (defund @__ieee754_exp-%99-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 0 (g '%k loc) mem))
     (succ '%100))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%99-expand-bb
-  (equal (@__ieee754_exp-%99-bb mem loc pred)
-         (@__ieee754_exp-%99-rev mem loc pred))
-  :enable (@__ieee754_exp-%99-bb @__ieee754_exp-%99-rev
-    @__ieee754_exp-m99.1-rev
-    @__ieee754_exp-succ99-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%100-mem (s100)
   (car s100))
@@ -1496,6 +2447,10 @@
   (declare (ignore s100))
   '%101)
 
+(defund @__ieee754_exp-%100-fwd (mem loc pred)
+  (let ((s100 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ100-lab s100) (@__ieee754_exp-%100-mem s100) (@__ieee754_exp-%100-loc s100))))
+
 (defund @__ieee754_exp-succ100-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%101 mem loc))
@@ -1503,18 +2458,24 @@
 (defund @__ieee754_exp-%100-rev (mem loc pred)
   (@__ieee754_exp-succ100-rev mem loc pred))
 
+(defruled @__ieee754_exp-%100-expand-rev-as-@__ieee754_exp-succ100-rev
+  (equal (@__ieee754_exp-%100-rev mem loc pred)
+         (let ((s100 (list mem loc pred)))
+           (@__ieee754_exp-succ100-rev
+            (@__ieee754_exp-%100-mem s100)
+            (@__ieee754_exp-%100-loc s100)
+            (@__ieee754_exp-%100-pred s100))))
+  :enable (@__ieee754_exp-%100-rev @__ieee754_exp-%100-mem @__ieee754_exp-%100-loc @__ieee754_exp-%100-pred))
+(defruled @__ieee754_exp-%100-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%100-rev mem loc pred)
+         (@__ieee754_exp-%100-fwd mem loc pred))
+  :enable (@__ieee754_exp-%100-expand-rev-as-@__ieee754_exp-succ100-rev @__ieee754_exp-succ100-rev @__ieee754_exp-succ100-lab @__ieee754_exp-%100-fwd))
+
 (defund @__ieee754_exp-%100-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%101))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%100-expand-bb
-  (equal (@__ieee754_exp-%100-bb mem loc pred)
-         (@__ieee754_exp-%100-rev mem loc pred))
-  :enable (@__ieee754_exp-%100-bb @__ieee754_exp-%100-rev
-    @__ieee754_exp-succ100-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%101-mem (s101)
   (car s101))
@@ -1613,6 +2574,10 @@
 (defund @__ieee754_exp-succ101-lab (s101)
   (case (g '%122 (@__ieee754_exp-%122-loc s101)) (-1 '%123) (0 '%133)))
 
+(defund @__ieee754_exp-%101-fwd (mem loc pred)
+  (let ((s101 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ101-lab s101) (@__ieee754_exp-m101.2-mem s101) (@__ieee754_exp-%122-loc s101))))
+
 (defund @__ieee754_exp-succ101-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%122 loc) (-1 '%123) (0 '%133)) mem loc))
@@ -1666,6 +2631,203 @@
 (defund @__ieee754_exp-%101-rev (mem loc pred)
   (@__ieee754_exp-%102-rev mem loc pred))
 
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%102-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%102-rev
+            (@__ieee754_exp-%101-mem s101)
+            (@__ieee754_exp-%101-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-rev @__ieee754_exp-%101-mem @__ieee754_exp-%101-loc @__ieee754_exp-%101-pred))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%103-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%103-rev
+            (@__ieee754_exp-%101-mem s101)
+            (@__ieee754_exp-%102-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%102-rev @__ieee754_exp-%102-rev @__ieee754_exp-%102-loc @__ieee754_exp-%102-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%104-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%104-rev
+            (@__ieee754_exp-%101-mem s101)
+            (@__ieee754_exp-%103-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%103-rev @__ieee754_exp-%103-rev @__ieee754_exp-%103-loc @__ieee754_exp-%103-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-m101.1-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-m101.1-rev
+            (@__ieee754_exp-%101-mem s101)
+            (@__ieee754_exp-%104-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%104-rev @__ieee754_exp-%104-rev @__ieee754_exp-%104-loc @__ieee754_exp-%104-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%105-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%105-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%104-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-m101.1-rev @__ieee754_exp-m101.1-rev @__ieee754_exp-m101.1-mem))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%106-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%106-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%105-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%105-rev @__ieee754_exp-%105-rev @__ieee754_exp-%105-loc @__ieee754_exp-%105-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%107-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%107-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%106-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%106-rev @__ieee754_exp-%106-rev @__ieee754_exp-%106-loc @__ieee754_exp-%106-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%108-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%108-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%107-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%107-rev @__ieee754_exp-%107-rev @__ieee754_exp-%107-loc @__ieee754_exp-%107-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%109-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%109-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%108-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%108-rev @__ieee754_exp-%108-rev @__ieee754_exp-%108-loc @__ieee754_exp-%108-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%110-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%110-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%109-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%109-rev @__ieee754_exp-%109-rev @__ieee754_exp-%109-loc @__ieee754_exp-%109-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%111-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%111-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%110-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%110-rev @__ieee754_exp-%110-rev @__ieee754_exp-%110-loc @__ieee754_exp-%110-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%112-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%112-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%111-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%111-rev @__ieee754_exp-%111-rev @__ieee754_exp-%111-loc @__ieee754_exp-%111-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%113-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%113-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%112-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%112-rev @__ieee754_exp-%112-rev @__ieee754_exp-%112-loc @__ieee754_exp-%112-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%114-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%114-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%113-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%113-rev @__ieee754_exp-%113-rev @__ieee754_exp-%113-loc @__ieee754_exp-%113-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%115-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%115-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%114-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%114-rev @__ieee754_exp-%114-rev @__ieee754_exp-%114-loc @__ieee754_exp-%114-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%116-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%116-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%115-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%115-rev @__ieee754_exp-%115-rev @__ieee754_exp-%115-loc @__ieee754_exp-%115-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%117-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%117-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%116-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%116-rev @__ieee754_exp-%116-rev @__ieee754_exp-%116-loc @__ieee754_exp-%116-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%118-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%118-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%117-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%117-rev @__ieee754_exp-%117-rev @__ieee754_exp-%117-loc @__ieee754_exp-%117-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%119-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%119-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%118-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%118-rev @__ieee754_exp-%118-rev @__ieee754_exp-%118-loc @__ieee754_exp-%118-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%120-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%120-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%119-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%119-rev @__ieee754_exp-%119-rev @__ieee754_exp-%119-loc @__ieee754_exp-%119-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-m101.2-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-m101.2-rev
+            (@__ieee754_exp-m101.1-mem s101)
+            (@__ieee754_exp-%120-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%120-rev @__ieee754_exp-%120-rev @__ieee754_exp-%120-loc @__ieee754_exp-%120-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%121-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%121-rev
+            (@__ieee754_exp-m101.2-mem s101)
+            (@__ieee754_exp-%120-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-m101.2-rev @__ieee754_exp-m101.2-rev @__ieee754_exp-m101.2-mem))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%122-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-%122-rev
+            (@__ieee754_exp-m101.2-mem s101)
+            (@__ieee754_exp-%121-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%121-rev @__ieee754_exp-%121-rev @__ieee754_exp-%121-loc @__ieee754_exp-%121-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-succ101-rev
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@__ieee754_exp-succ101-rev
+            (@__ieee754_exp-m101.2-mem s101)
+            (@__ieee754_exp-%122-loc s101)
+            (@__ieee754_exp-%101-pred s101))))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-%122-rev @__ieee754_exp-%122-rev @__ieee754_exp-%122-loc @__ieee754_exp-%122-val))
+(defruled @__ieee754_exp-%101-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%101-rev mem loc pred)
+         (@__ieee754_exp-%101-fwd mem loc pred))
+  :enable (@__ieee754_exp-%101-expand-rev-as-@__ieee754_exp-succ101-rev @__ieee754_exp-succ101-rev @__ieee754_exp-succ101-lab @__ieee754_exp-%101-fwd))
+
 (defund @__ieee754_exp-%101-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1694,36 +2856,6 @@
     (loc (s '%122 (icmp-eq-i32 (g '%121 loc) 0) loc))
     (succ (case (g '%122 loc) (-1 '%123) (0 '%133))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%101-expand-bb
-  (equal (@__ieee754_exp-%101-bb mem loc pred)
-         (@__ieee754_exp-%101-rev mem loc pred))
-  :enable (@__ieee754_exp-%101-bb @__ieee754_exp-%101-rev
-    @__ieee754_exp-%102-rev
-    @__ieee754_exp-%103-rev
-    @__ieee754_exp-%104-rev
-    @__ieee754_exp-m101.1-rev
-    @__ieee754_exp-%105-rev
-    @__ieee754_exp-%106-rev
-    @__ieee754_exp-%107-rev
-    @__ieee754_exp-%108-rev
-    @__ieee754_exp-%109-rev
-    @__ieee754_exp-%110-rev
-    @__ieee754_exp-%111-rev
-    @__ieee754_exp-%112-rev
-    @__ieee754_exp-%113-rev
-    @__ieee754_exp-%114-rev
-    @__ieee754_exp-%115-rev
-    @__ieee754_exp-%116-rev
-    @__ieee754_exp-%117-rev
-    @__ieee754_exp-%118-rev
-    @__ieee754_exp-%119-rev
-    @__ieee754_exp-%120-rev
-    @__ieee754_exp-m101.2-rev
-    @__ieee754_exp-%121-rev
-    @__ieee754_exp-%122-rev
-    @__ieee754_exp-succ101-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%123-mem (s123)
   (car s123))
@@ -1773,6 +2905,10 @@
   (declare (ignore s123))
   '%166)
 
+(defund @__ieee754_exp-%123-fwd (mem loc pred)
+  (let ((s123 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ123-lab s123) (@__ieee754_exp-m123.1-mem s123) (@__ieee754_exp-%132-loc s123))))
+
 (defund @__ieee754_exp-succ123-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -1800,6 +2936,99 @@
 (defund @__ieee754_exp-%123-rev (mem loc pred)
   (@__ieee754_exp-%124-rev mem loc pred))
 
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%124-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%124-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%123-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-rev @__ieee754_exp-%123-mem @__ieee754_exp-%123-loc @__ieee754_exp-%123-pred))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%125-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%125-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%124-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%124-rev @__ieee754_exp-%124-rev @__ieee754_exp-%124-loc @__ieee754_exp-%124-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%126-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%126-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%125-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%125-rev @__ieee754_exp-%125-rev @__ieee754_exp-%125-loc @__ieee754_exp-%125-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%127-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%127-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%126-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%126-rev @__ieee754_exp-%126-rev @__ieee754_exp-%126-loc @__ieee754_exp-%126-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%128-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%128-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%127-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%127-rev @__ieee754_exp-%127-rev @__ieee754_exp-%127-loc @__ieee754_exp-%127-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%129-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%129-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%128-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%128-rev @__ieee754_exp-%128-rev @__ieee754_exp-%128-loc @__ieee754_exp-%128-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%130-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%130-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%129-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%129-rev @__ieee754_exp-%129-rev @__ieee754_exp-%129-loc @__ieee754_exp-%129-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%131-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%131-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%130-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%130-rev @__ieee754_exp-%130-rev @__ieee754_exp-%130-loc @__ieee754_exp-%130-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%132-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-%132-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%131-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%131-rev @__ieee754_exp-%131-rev @__ieee754_exp-%131-loc @__ieee754_exp-%131-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-m123.1-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-m123.1-rev
+            (@__ieee754_exp-%123-mem s123)
+            (@__ieee754_exp-%132-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-%132-rev @__ieee754_exp-%132-rev @__ieee754_exp-%132-loc @__ieee754_exp-%132-val))
+(defruled @__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-succ123-rev
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (let ((s123 (list mem loc pred)))
+           (@__ieee754_exp-succ123-rev
+            (@__ieee754_exp-m123.1-mem s123)
+            (@__ieee754_exp-%132-loc s123)
+            (@__ieee754_exp-%123-pred s123))))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-m123.1-rev @__ieee754_exp-m123.1-rev @__ieee754_exp-m123.1-mem))
+(defruled @__ieee754_exp-%123-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%123-rev mem loc pred)
+         (@__ieee754_exp-%123-fwd mem loc pred))
+  :enable (@__ieee754_exp-%123-expand-rev-as-@__ieee754_exp-succ123-rev @__ieee754_exp-succ123-rev @__ieee754_exp-succ123-lab @__ieee754_exp-%123-fwd))
+
 (defund @__ieee754_exp-%123-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1815,23 +3044,6 @@
     (mem (store-double (g '%132 loc) (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%123-expand-bb
-  (equal (@__ieee754_exp-%123-bb mem loc pred)
-         (@__ieee754_exp-%123-rev mem loc pred))
-  :enable (@__ieee754_exp-%123-bb @__ieee754_exp-%123-rev
-    @__ieee754_exp-%124-rev
-    @__ieee754_exp-%125-rev
-    @__ieee754_exp-%126-rev
-    @__ieee754_exp-%127-rev
-    @__ieee754_exp-%128-rev
-    @__ieee754_exp-%129-rev
-    @__ieee754_exp-%130-rev
-    @__ieee754_exp-%131-rev
-    @__ieee754_exp-%132-rev
-    @__ieee754_exp-m123.1-rev
-    @__ieee754_exp-succ123-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%133-mem (s133)
   (car s133))
@@ -1889,6 +3101,10 @@
   (declare (ignore s133))
   '%145)
 
+(defund @__ieee754_exp-%133-fwd (mem loc pred)
+  (let ((s133 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ133-lab s133) (@__ieee754_exp-m133.1-mem s133) (@__ieee754_exp-%144-loc s133))))
+
 (defund @__ieee754_exp-succ133-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%145 mem loc))
@@ -1920,6 +3136,115 @@
 (defund @__ieee754_exp-%133-rev (mem loc pred)
   (@__ieee754_exp-%134-rev mem loc pred))
 
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%134-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%134-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%133-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-rev @__ieee754_exp-%133-mem @__ieee754_exp-%133-loc @__ieee754_exp-%133-pred))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%135-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%135-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%134-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%134-rev @__ieee754_exp-%134-rev @__ieee754_exp-%134-loc @__ieee754_exp-%134-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%136-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%136-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%135-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%135-rev @__ieee754_exp-%135-rev @__ieee754_exp-%135-loc @__ieee754_exp-%135-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%137-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%137-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%136-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%136-rev @__ieee754_exp-%136-rev @__ieee754_exp-%136-loc @__ieee754_exp-%136-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%138-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%138-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%137-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%137-rev @__ieee754_exp-%137-rev @__ieee754_exp-%137-loc @__ieee754_exp-%137-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%139-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%139-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%138-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%138-rev @__ieee754_exp-%138-rev @__ieee754_exp-%138-loc @__ieee754_exp-%138-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%140-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%140-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%139-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%139-rev @__ieee754_exp-%139-rev @__ieee754_exp-%139-loc @__ieee754_exp-%139-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%141-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%141-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%140-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%140-rev @__ieee754_exp-%140-rev @__ieee754_exp-%140-loc @__ieee754_exp-%140-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%142-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%142-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%141-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%141-rev @__ieee754_exp-%141-rev @__ieee754_exp-%141-loc @__ieee754_exp-%141-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%143-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%143-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%142-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%142-rev @__ieee754_exp-%142-rev @__ieee754_exp-%142-loc @__ieee754_exp-%142-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%144-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-%144-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%143-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%143-rev @__ieee754_exp-%143-rev @__ieee754_exp-%143-loc @__ieee754_exp-%143-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-m133.1-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-m133.1-rev
+            (@__ieee754_exp-%133-mem s133)
+            (@__ieee754_exp-%144-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-%144-rev @__ieee754_exp-%144-rev @__ieee754_exp-%144-loc @__ieee754_exp-%144-val))
+(defruled @__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-succ133-rev
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (let ((s133 (list mem loc pred)))
+           (@__ieee754_exp-succ133-rev
+            (@__ieee754_exp-m133.1-mem s133)
+            (@__ieee754_exp-%144-loc s133)
+            (@__ieee754_exp-%133-pred s133))))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-m133.1-rev @__ieee754_exp-m133.1-rev @__ieee754_exp-m133.1-mem))
+(defruled @__ieee754_exp-%133-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%133-rev mem loc pred)
+         (@__ieee754_exp-%133-fwd mem loc pred))
+  :enable (@__ieee754_exp-%133-expand-rev-as-@__ieee754_exp-succ133-rev @__ieee754_exp-succ133-rev @__ieee754_exp-succ133-lab @__ieee754_exp-%133-fwd))
+
 (defund @__ieee754_exp-%133-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1938,25 +3263,6 @@
     (succ '%145))
   (mv succ mem loc)))
 
-(defruled @__ieee754_exp-%133-expand-bb
-  (equal (@__ieee754_exp-%133-bb mem loc pred)
-         (@__ieee754_exp-%133-rev mem loc pred))
-  :enable (@__ieee754_exp-%133-bb @__ieee754_exp-%133-rev
-    @__ieee754_exp-%134-rev
-    @__ieee754_exp-%135-rev
-    @__ieee754_exp-%136-rev
-    @__ieee754_exp-%137-rev
-    @__ieee754_exp-%138-rev
-    @__ieee754_exp-%139-rev
-    @__ieee754_exp-%140-rev
-    @__ieee754_exp-%141-rev
-    @__ieee754_exp-%142-rev
-    @__ieee754_exp-%143-rev
-    @__ieee754_exp-%144-rev
-    @__ieee754_exp-m133.1-rev
-    @__ieee754_exp-succ133-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_exp-%145-mem (s145)
   (car s145))
 (defund @__ieee754_exp-%145-loc (s145)
@@ -1974,6 +3280,10 @@
 (defund @__ieee754_exp-succ145-lab (s145)
   (case (g '%147 (@__ieee754_exp-%147-loc s145)) (-1 '%148) (0 '%156)))
 
+(defund @__ieee754_exp-%145-fwd (mem loc pred)
+  (let ((s145 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ145-lab s145) (@__ieee754_exp-%145-mem s145) (@__ieee754_exp-%147-loc s145))))
+
 (defund @__ieee754_exp-succ145-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%147 loc) (-1 '%148) (0 '%156)) mem loc))
@@ -1985,6 +3295,35 @@
 (defund @__ieee754_exp-%145-rev (mem loc pred)
   (@__ieee754_exp-%146-rev mem loc pred))
 
+(defruled @__ieee754_exp-%145-expand-rev-as-@__ieee754_exp-%146-rev
+  (equal (@__ieee754_exp-%145-rev mem loc pred)
+         (let ((s145 (list mem loc pred)))
+           (@__ieee754_exp-%146-rev
+            (@__ieee754_exp-%145-mem s145)
+            (@__ieee754_exp-%145-loc s145)
+            (@__ieee754_exp-%145-pred s145))))
+  :enable (@__ieee754_exp-%145-rev @__ieee754_exp-%145-mem @__ieee754_exp-%145-loc @__ieee754_exp-%145-pred))
+(defruled @__ieee754_exp-%145-expand-rev-as-@__ieee754_exp-%147-rev
+  (equal (@__ieee754_exp-%145-rev mem loc pred)
+         (let ((s145 (list mem loc pred)))
+           (@__ieee754_exp-%147-rev
+            (@__ieee754_exp-%145-mem s145)
+            (@__ieee754_exp-%146-loc s145)
+            (@__ieee754_exp-%145-pred s145))))
+  :enable (@__ieee754_exp-%145-expand-rev-as-@__ieee754_exp-%146-rev @__ieee754_exp-%146-rev @__ieee754_exp-%146-loc @__ieee754_exp-%146-val))
+(defruled @__ieee754_exp-%145-expand-rev-as-@__ieee754_exp-succ145-rev
+  (equal (@__ieee754_exp-%145-rev mem loc pred)
+         (let ((s145 (list mem loc pred)))
+           (@__ieee754_exp-succ145-rev
+            (@__ieee754_exp-%145-mem s145)
+            (@__ieee754_exp-%147-loc s145)
+            (@__ieee754_exp-%145-pred s145))))
+  :enable (@__ieee754_exp-%145-expand-rev-as-@__ieee754_exp-%147-rev @__ieee754_exp-%147-rev @__ieee754_exp-%147-loc @__ieee754_exp-%147-val))
+(defruled @__ieee754_exp-%145-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%145-rev mem loc pred)
+         (@__ieee754_exp-%145-fwd mem loc pred))
+  :enable (@__ieee754_exp-%145-expand-rev-as-@__ieee754_exp-succ145-rev @__ieee754_exp-succ145-rev @__ieee754_exp-succ145-lab @__ieee754_exp-%145-fwd))
+
 (defund @__ieee754_exp-%145-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1992,15 +3331,6 @@
     (loc (s '%147 (icmp-sge-i32 (g '%146 loc) -1021) loc))
     (succ (case (g '%147 loc) (-1 '%148) (0 '%156))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%145-expand-bb
-  (equal (@__ieee754_exp-%145-bb mem loc pred)
-         (@__ieee754_exp-%145-rev mem loc pred))
-  :enable (@__ieee754_exp-%145-bb @__ieee754_exp-%145-rev
-    @__ieee754_exp-%146-rev
-    @__ieee754_exp-%147-rev
-    @__ieee754_exp-succ145-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%148-mem (s148)
   (car s148))
@@ -2044,6 +3374,10 @@
   (declare (ignore s148))
   '%166)
 
+(defund @__ieee754_exp-%148-fwd (mem loc pred)
+  (let ((s148 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ148-lab s148) (@__ieee754_exp-m148.2-mem s148) (@__ieee754_exp-%155-loc s148))))
+
 (defund @__ieee754_exp-succ148-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -2069,6 +3403,91 @@
 (defund @__ieee754_exp-%148-rev (mem loc pred)
   (@__ieee754_exp-%149-rev mem loc pred))
 
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%149-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%149-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%148-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-rev @__ieee754_exp-%148-mem @__ieee754_exp-%148-loc @__ieee754_exp-%148-pred))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%150-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%150-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%149-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%149-rev @__ieee754_exp-%149-rev @__ieee754_exp-%149-loc @__ieee754_exp-%149-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%151-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%151-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%150-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%150-rev @__ieee754_exp-%150-rev @__ieee754_exp-%150-loc @__ieee754_exp-%150-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%152-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%152-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%151-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%151-rev @__ieee754_exp-%151-rev @__ieee754_exp-%151-loc @__ieee754_exp-%151-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%153-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%153-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%152-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%152-rev @__ieee754_exp-%152-rev @__ieee754_exp-%152-loc @__ieee754_exp-%152-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%154-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%154-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%153-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%153-rev @__ieee754_exp-%153-rev @__ieee754_exp-%153-loc @__ieee754_exp-%153-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-m148.1-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-m148.1-rev
+            (@__ieee754_exp-%148-mem s148)
+            (@__ieee754_exp-%154-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%154-rev @__ieee754_exp-%154-rev @__ieee754_exp-%154-loc @__ieee754_exp-%154-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%155-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-%155-rev
+            (@__ieee754_exp-m148.1-mem s148)
+            (@__ieee754_exp-%154-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-m148.1-rev @__ieee754_exp-m148.1-rev @__ieee754_exp-m148.1-mem))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-m148.2-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-m148.2-rev
+            (@__ieee754_exp-m148.1-mem s148)
+            (@__ieee754_exp-%155-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-%155-rev @__ieee754_exp-%155-rev @__ieee754_exp-%155-loc @__ieee754_exp-%155-val))
+(defruled @__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-succ148-rev
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (let ((s148 (list mem loc pred)))
+           (@__ieee754_exp-succ148-rev
+            (@__ieee754_exp-m148.2-mem s148)
+            (@__ieee754_exp-%155-loc s148)
+            (@__ieee754_exp-%148-pred s148))))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-m148.2-rev @__ieee754_exp-m148.2-rev @__ieee754_exp-m148.2-mem))
+(defruled @__ieee754_exp-%148-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%148-rev mem loc pred)
+         (@__ieee754_exp-%148-fwd mem loc pred))
+  :enable (@__ieee754_exp-%148-expand-rev-as-@__ieee754_exp-succ148-rev @__ieee754_exp-succ148-rev @__ieee754_exp-succ148-lab @__ieee754_exp-%148-fwd))
+
 (defund @__ieee754_exp-%148-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2083,22 +3502,6 @@
     (mem (store-double (g '%155 loc) (g '%1 loc) mem))
     (succ '%166))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%148-expand-bb
-  (equal (@__ieee754_exp-%148-bb mem loc pred)
-         (@__ieee754_exp-%148-rev mem loc pred))
-  :enable (@__ieee754_exp-%148-bb @__ieee754_exp-%148-rev
-    @__ieee754_exp-%149-rev
-    @__ieee754_exp-%150-rev
-    @__ieee754_exp-%151-rev
-    @__ieee754_exp-%152-rev
-    @__ieee754_exp-%153-rev
-    @__ieee754_exp-%154-rev
-    @__ieee754_exp-m148.1-rev
-    @__ieee754_exp-%155-rev
-    @__ieee754_exp-m148.2-rev
-    @__ieee754_exp-succ148-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-%156-mem (s156)
   (car s156))
@@ -2150,6 +3553,10 @@
   (declare (ignore s156))
   '%166)
 
+(defund @__ieee754_exp-%156-fwd (mem loc pred)
+  (let ((s156 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ156-lab s156) (@__ieee754_exp-m156.2-mem s156) (@__ieee754_exp-%165-loc s156))))
+
 (defund @__ieee754_exp-succ156-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%166 mem loc))
@@ -2179,6 +3586,107 @@
 (defund @__ieee754_exp-%156-rev (mem loc pred)
   (@__ieee754_exp-%157-rev mem loc pred))
 
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%157-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%157-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%156-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-rev @__ieee754_exp-%156-mem @__ieee754_exp-%156-loc @__ieee754_exp-%156-pred))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%158-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%158-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%157-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%157-rev @__ieee754_exp-%157-rev @__ieee754_exp-%157-loc @__ieee754_exp-%157-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%159-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%159-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%158-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%158-rev @__ieee754_exp-%158-rev @__ieee754_exp-%158-loc @__ieee754_exp-%158-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%160-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%160-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%159-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%159-rev @__ieee754_exp-%159-rev @__ieee754_exp-%159-loc @__ieee754_exp-%159-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%161-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%161-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%160-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%160-rev @__ieee754_exp-%160-rev @__ieee754_exp-%160-loc @__ieee754_exp-%160-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%162-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%162-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%161-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%161-rev @__ieee754_exp-%161-rev @__ieee754_exp-%161-loc @__ieee754_exp-%161-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%163-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%163-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%162-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%162-rev @__ieee754_exp-%162-rev @__ieee754_exp-%162-loc @__ieee754_exp-%162-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-m156.1-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-m156.1-rev
+            (@__ieee754_exp-%156-mem s156)
+            (@__ieee754_exp-%163-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%163-rev @__ieee754_exp-%163-rev @__ieee754_exp-%163-loc @__ieee754_exp-%163-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%164-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%164-rev
+            (@__ieee754_exp-m156.1-mem s156)
+            (@__ieee754_exp-%163-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-m156.1-rev @__ieee754_exp-m156.1-rev @__ieee754_exp-m156.1-mem))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%165-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-%165-rev
+            (@__ieee754_exp-m156.1-mem s156)
+            (@__ieee754_exp-%164-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%164-rev @__ieee754_exp-%164-rev @__ieee754_exp-%164-loc @__ieee754_exp-%164-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-m156.2-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-m156.2-rev
+            (@__ieee754_exp-m156.1-mem s156)
+            (@__ieee754_exp-%165-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-%165-rev @__ieee754_exp-%165-rev @__ieee754_exp-%165-loc @__ieee754_exp-%165-val))
+(defruled @__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-succ156-rev
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (let ((s156 (list mem loc pred)))
+           (@__ieee754_exp-succ156-rev
+            (@__ieee754_exp-m156.2-mem s156)
+            (@__ieee754_exp-%165-loc s156)
+            (@__ieee754_exp-%156-pred s156))))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-m156.2-rev @__ieee754_exp-m156.2-rev @__ieee754_exp-m156.2-mem))
+(defruled @__ieee754_exp-%156-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%156-rev mem loc pred)
+         (@__ieee754_exp-%156-fwd mem loc pred))
+  :enable (@__ieee754_exp-%156-expand-rev-as-@__ieee754_exp-succ156-rev @__ieee754_exp-succ156-rev @__ieee754_exp-succ156-lab @__ieee754_exp-%156-fwd))
+
 (defund @__ieee754_exp-%156-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2196,24 +3704,6 @@
     (succ '%166))
   (mv succ mem loc)))
 
-(defruled @__ieee754_exp-%156-expand-bb
-  (equal (@__ieee754_exp-%156-bb mem loc pred)
-         (@__ieee754_exp-%156-rev mem loc pred))
-  :enable (@__ieee754_exp-%156-bb @__ieee754_exp-%156-rev
-    @__ieee754_exp-%157-rev
-    @__ieee754_exp-%158-rev
-    @__ieee754_exp-%159-rev
-    @__ieee754_exp-%160-rev
-    @__ieee754_exp-%161-rev
-    @__ieee754_exp-%162-rev
-    @__ieee754_exp-%163-rev
-    @__ieee754_exp-m156.1-rev
-    @__ieee754_exp-%164-rev
-    @__ieee754_exp-%165-rev
-    @__ieee754_exp-m156.2-rev
-    @__ieee754_exp-succ156-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_exp-%166-mem (s166)
   (car s166))
 (defund @__ieee754_exp-%166-loc (s166)
@@ -2228,6 +3718,10 @@
   (declare (ignore s166))
   'ret)
 
+(defund @__ieee754_exp-%166-fwd (mem loc pred)
+  (let ((s166 (list mem loc pred)))
+    (mv (@__ieee754_exp-succ166-lab s166) (@__ieee754_exp-%166-mem s166) (@__ieee754_exp-%167-loc s166))))
+
 (defund @__ieee754_exp-succ166-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -2237,20 +3731,33 @@
 (defund @__ieee754_exp-%166-rev (mem loc pred)
   (@__ieee754_exp-%167-rev mem loc pred))
 
+(defruled @__ieee754_exp-%166-expand-rev-as-@__ieee754_exp-%167-rev
+  (equal (@__ieee754_exp-%166-rev mem loc pred)
+         (let ((s166 (list mem loc pred)))
+           (@__ieee754_exp-%167-rev
+            (@__ieee754_exp-%166-mem s166)
+            (@__ieee754_exp-%166-loc s166)
+            (@__ieee754_exp-%166-pred s166))))
+  :enable (@__ieee754_exp-%166-rev @__ieee754_exp-%166-mem @__ieee754_exp-%166-loc @__ieee754_exp-%166-pred))
+(defruled @__ieee754_exp-%166-expand-rev-as-@__ieee754_exp-succ166-rev
+  (equal (@__ieee754_exp-%166-rev mem loc pred)
+         (let ((s166 (list mem loc pred)))
+           (@__ieee754_exp-succ166-rev
+            (@__ieee754_exp-%166-mem s166)
+            (@__ieee754_exp-%167-loc s166)
+            (@__ieee754_exp-%166-pred s166))))
+  :enable (@__ieee754_exp-%166-expand-rev-as-@__ieee754_exp-%167-rev @__ieee754_exp-%167-rev @__ieee754_exp-%167-loc @__ieee754_exp-%167-val))
+(defruled @__ieee754_exp-%166-expand-rev-as-fwd
+  (equal (@__ieee754_exp-%166-rev mem loc pred)
+         (@__ieee754_exp-%166-fwd mem loc pred))
+  :enable (@__ieee754_exp-%166-expand-rev-as-@__ieee754_exp-succ166-rev @__ieee754_exp-succ166-rev @__ieee754_exp-succ166-lab @__ieee754_exp-%166-fwd))
+
 (defund @__ieee754_exp-%166-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%167 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @__ieee754_exp-%166-expand-bb
-  (equal (@__ieee754_exp-%166-bb mem loc pred)
-         (@__ieee754_exp-%166-rev mem loc pred))
-  :enable (@__ieee754_exp-%166-bb @__ieee754_exp-%166-rev
-    @__ieee754_exp-%167-rev
-    @__ieee754_exp-succ166-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_exp-step (label mem loc pred)
   (case label

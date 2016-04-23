@@ -98,6 +98,10 @@
 (defund @__ieee754_acos-succ0-lab (s0)
   (case (g '%9 (@__ieee754_acos-%9-loc s0)) (-1 '%10) (0 '%30)))
 
+(defund @__ieee754_acos-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ0-lab s0) (@__ieee754_acos-m0.3-mem s0) (@__ieee754_acos-%9-loc s0))))
+
 (defund @__ieee754_acos-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%30)) mem loc))
@@ -149,6 +153,195 @@
 (defund @__ieee754_acos-%0-rev (mem loc pred)
   (@__ieee754_acos-%1-rev mem loc pred))
 
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%1-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%1-rev
+            (@__ieee754_acos-%0-mem s0)
+            (@__ieee754_acos-%0-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-rev @__ieee754_acos-%0-mem @__ieee754_acos-%0-loc @__ieee754_acos-%0-pred))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%2-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%2-rev
+            (@__ieee754_acos-%1-mem s0)
+            (@__ieee754_acos-%1-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%1-rev @__ieee754_acos-%1-rev @__ieee754_acos-%1-mem @__ieee754_acos-%1-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%z-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%z-rev
+            (@__ieee754_acos-%2-mem s0)
+            (@__ieee754_acos-%2-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%2-rev @__ieee754_acos-%2-rev @__ieee754_acos-%2-mem @__ieee754_acos-%2-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%p-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%p-rev
+            (@__ieee754_acos-%z-mem s0)
+            (@__ieee754_acos-%z-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%z-rev @__ieee754_acos-%z-rev @__ieee754_acos-%z-mem @__ieee754_acos-%z-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%q-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%q-rev
+            (@__ieee754_acos-%p-mem s0)
+            (@__ieee754_acos-%p-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%p-rev @__ieee754_acos-%p-rev @__ieee754_acos-%p-mem @__ieee754_acos-%p-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%r-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%r-rev
+            (@__ieee754_acos-%q-mem s0)
+            (@__ieee754_acos-%q-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%q-rev @__ieee754_acos-%q-rev @__ieee754_acos-%q-mem @__ieee754_acos-%q-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%w-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%w-rev
+            (@__ieee754_acos-%r-mem s0)
+            (@__ieee754_acos-%r-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%r-rev @__ieee754_acos-%r-rev @__ieee754_acos-%r-mem @__ieee754_acos-%r-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%s-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%s-rev
+            (@__ieee754_acos-%w-mem s0)
+            (@__ieee754_acos-%w-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%w-rev @__ieee754_acos-%w-rev @__ieee754_acos-%w-mem @__ieee754_acos-%w-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%c-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%c-rev
+            (@__ieee754_acos-%s-mem s0)
+            (@__ieee754_acos-%s-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%s-rev @__ieee754_acos-%s-rev @__ieee754_acos-%s-mem @__ieee754_acos-%s-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%df-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%df-rev
+            (@__ieee754_acos-%c-mem s0)
+            (@__ieee754_acos-%c-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%c-rev @__ieee754_acos-%c-rev @__ieee754_acos-%c-mem @__ieee754_acos-%c-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%hx-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%hx-rev
+            (@__ieee754_acos-%df-mem s0)
+            (@__ieee754_acos-%df-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%df-rev @__ieee754_acos-%df-rev @__ieee754_acos-%df-mem @__ieee754_acos-%df-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%ix-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%ix-rev
+            (@__ieee754_acos-%hx-mem s0)
+            (@__ieee754_acos-%hx-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%hx-rev @__ieee754_acos-%hx-rev @__ieee754_acos-%hx-mem @__ieee754_acos-%hx-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-m0.1-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-m0.1-rev
+            (@__ieee754_acos-%ix-mem s0)
+            (@__ieee754_acos-%ix-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%ix-rev @__ieee754_acos-%ix-rev @__ieee754_acos-%ix-mem @__ieee754_acos-%ix-loc))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%3-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%3-rev
+            (@__ieee754_acos-m0.1-mem s0)
+            (@__ieee754_acos-%ix-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-m0.1-rev @__ieee754_acos-m0.1-rev @__ieee754_acos-m0.1-mem))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%4-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%4-rev
+            (@__ieee754_acos-m0.1-mem s0)
+            (@__ieee754_acos-%3-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%3-rev @__ieee754_acos-%3-rev @__ieee754_acos-%3-loc @__ieee754_acos-%3-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%5-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%5-rev
+            (@__ieee754_acos-m0.1-mem s0)
+            (@__ieee754_acos-%4-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%4-rev @__ieee754_acos-%4-rev @__ieee754_acos-%4-loc @__ieee754_acos-%4-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-m0.2-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-m0.2-rev
+            (@__ieee754_acos-m0.1-mem s0)
+            (@__ieee754_acos-%5-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%5-rev @__ieee754_acos-%5-rev @__ieee754_acos-%5-loc @__ieee754_acos-%5-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%6-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%6-rev
+            (@__ieee754_acos-m0.2-mem s0)
+            (@__ieee754_acos-%5-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-m0.2-rev @__ieee754_acos-m0.2-rev @__ieee754_acos-m0.2-mem))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%7-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%7-rev
+            (@__ieee754_acos-m0.2-mem s0)
+            (@__ieee754_acos-%6-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%6-rev @__ieee754_acos-%6-rev @__ieee754_acos-%6-loc @__ieee754_acos-%6-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-m0.3-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-m0.3-rev
+            (@__ieee754_acos-m0.2-mem s0)
+            (@__ieee754_acos-%7-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%7-rev @__ieee754_acos-%7-rev @__ieee754_acos-%7-loc @__ieee754_acos-%7-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%8-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%8-rev
+            (@__ieee754_acos-m0.3-mem s0)
+            (@__ieee754_acos-%7-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-m0.3-rev @__ieee754_acos-m0.3-rev @__ieee754_acos-m0.3-mem))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%9-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-%9-rev
+            (@__ieee754_acos-m0.3-mem s0)
+            (@__ieee754_acos-%8-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%8-rev @__ieee754_acos-%8-rev @__ieee754_acos-%8-loc @__ieee754_acos-%8-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-succ0-rev
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_acos-succ0-rev
+            (@__ieee754_acos-m0.3-mem s0)
+            (@__ieee754_acos-%9-loc s0)
+            (@__ieee754_acos-%0-pred s0))))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-%9-rev @__ieee754_acos-%9-rev @__ieee754_acos-%9-loc @__ieee754_acos-%9-val))
+(defruled @__ieee754_acos-%0-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%0-rev mem loc pred)
+         (@__ieee754_acos-%0-fwd mem loc pred))
+  :enable (@__ieee754_acos-%0-expand-rev-as-@__ieee754_acos-succ0-rev @__ieee754_acos-succ0-rev @__ieee754_acos-succ0-lab @__ieee754_acos-%0-fwd))
+
 (defund @__ieee754_acos-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -189,35 +382,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%30))))
   (mv succ mem loc)))
 
-(defruled @__ieee754_acos-%0-expand-bb
-  (equal (@__ieee754_acos-%0-bb mem loc pred)
-         (@__ieee754_acos-%0-rev mem loc pred))
-  :enable (@__ieee754_acos-%0-bb @__ieee754_acos-%0-rev
-    @__ieee754_acos-%1-rev
-    @__ieee754_acos-%2-rev
-    @__ieee754_acos-%z-rev
-    @__ieee754_acos-%p-rev
-    @__ieee754_acos-%q-rev
-    @__ieee754_acos-%r-rev
-    @__ieee754_acos-%w-rev
-    @__ieee754_acos-%s-rev
-    @__ieee754_acos-%c-rev
-    @__ieee754_acos-%df-rev
-    @__ieee754_acos-%hx-rev
-    @__ieee754_acos-%ix-rev
-    @__ieee754_acos-m0.1-rev
-    @__ieee754_acos-%3-rev
-    @__ieee754_acos-%4-rev
-    @__ieee754_acos-%5-rev
-    @__ieee754_acos-m0.2-rev
-    @__ieee754_acos-%6-rev
-    @__ieee754_acos-%7-rev
-    @__ieee754_acos-m0.3-rev
-    @__ieee754_acos-%8-rev
-    @__ieee754_acos-%9-rev
-    @__ieee754_acos-succ0-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_acos-%10-mem (s10)
   (car s10))
 (defund @__ieee754_acos-%10-loc (s10)
@@ -251,6 +415,10 @@
 (defund @__ieee754_acos-succ10-lab (s10)
   (case (g '%16 (@__ieee754_acos-%16-loc s10)) (-1 '%17) (0 '%22)))
 
+(defund @__ieee754_acos-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ10-lab s10) (@__ieee754_acos-%10-mem s10) (@__ieee754_acos-%16-loc s10))))
+
 (defund @__ieee754_acos-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%16 loc) (-1 '%17) (0 '%22)) mem loc))
@@ -270,6 +438,67 @@
 (defund @__ieee754_acos-%10-rev (mem loc pred)
   (@__ieee754_acos-%11-rev mem loc pred))
 
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%11-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-%11-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%10-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-rev @__ieee754_acos-%10-mem @__ieee754_acos-%10-loc @__ieee754_acos-%10-pred))
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%12-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-%12-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%11-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%11-rev @__ieee754_acos-%11-rev @__ieee754_acos-%11-loc @__ieee754_acos-%11-val))
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%13-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-%13-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%12-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%12-rev @__ieee754_acos-%12-rev @__ieee754_acos-%12-loc @__ieee754_acos-%12-val))
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%14-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-%14-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%13-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%13-rev @__ieee754_acos-%13-rev @__ieee754_acos-%13-loc @__ieee754_acos-%13-val))
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%15-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-%15-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%14-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%14-rev @__ieee754_acos-%14-rev @__ieee754_acos-%14-loc @__ieee754_acos-%14-val))
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%16-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-%16-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%15-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%15-rev @__ieee754_acos-%15-rev @__ieee754_acos-%15-loc @__ieee754_acos-%15-val))
+(defruled @__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-succ10-rev
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__ieee754_acos-succ10-rev
+            (@__ieee754_acos-%10-mem s10)
+            (@__ieee754_acos-%16-loc s10)
+            (@__ieee754_acos-%10-pred s10))))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-%16-rev @__ieee754_acos-%16-rev @__ieee754_acos-%16-loc @__ieee754_acos-%16-val))
+(defruled @__ieee754_acos-%10-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%10-rev mem loc pred)
+         (@__ieee754_acos-%10-fwd mem loc pred))
+  :enable (@__ieee754_acos-%10-expand-rev-as-@__ieee754_acos-succ10-rev @__ieee754_acos-succ10-rev @__ieee754_acos-succ10-lab @__ieee754_acos-%10-fwd))
+
 (defund @__ieee754_acos-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -281,19 +510,6 @@
     (loc (s '%16 (icmp-eq-i32 (g '%15 loc) 0) loc))
     (succ (case (g '%16 loc) (-1 '%17) (0 '%22))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%10-expand-bb
-  (equal (@__ieee754_acos-%10-bb mem loc pred)
-         (@__ieee754_acos-%10-rev mem loc pred))
-  :enable (@__ieee754_acos-%10-bb @__ieee754_acos-%10-rev
-    @__ieee754_acos-%11-rev
-    @__ieee754_acos-%12-rev
-    @__ieee754_acos-%13-rev
-    @__ieee754_acos-%14-rev
-    @__ieee754_acos-%15-rev
-    @__ieee754_acos-%16-rev
-    @__ieee754_acos-succ10-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%17-mem (s17)
   (car s17))
@@ -312,6 +528,10 @@
 (defund @__ieee754_acos-succ17-lab (s17)
   (case (g '%19 (@__ieee754_acos-%19-loc s17)) (-1 '%20) (0 '%21)))
 
+(defund @__ieee754_acos-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ17-lab s17) (@__ieee754_acos-%17-mem s17) (@__ieee754_acos-%19-loc s17))))
+
 (defund @__ieee754_acos-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%19 loc) (-1 '%20) (0 '%21)) mem loc))
@@ -323,6 +543,35 @@
 (defund @__ieee754_acos-%17-rev (mem loc pred)
   (@__ieee754_acos-%18-rev mem loc pred))
 
+(defruled @__ieee754_acos-%17-expand-rev-as-@__ieee754_acos-%18-rev
+  (equal (@__ieee754_acos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@__ieee754_acos-%18-rev
+            (@__ieee754_acos-%17-mem s17)
+            (@__ieee754_acos-%17-loc s17)
+            (@__ieee754_acos-%17-pred s17))))
+  :enable (@__ieee754_acos-%17-rev @__ieee754_acos-%17-mem @__ieee754_acos-%17-loc @__ieee754_acos-%17-pred))
+(defruled @__ieee754_acos-%17-expand-rev-as-@__ieee754_acos-%19-rev
+  (equal (@__ieee754_acos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@__ieee754_acos-%19-rev
+            (@__ieee754_acos-%17-mem s17)
+            (@__ieee754_acos-%18-loc s17)
+            (@__ieee754_acos-%17-pred s17))))
+  :enable (@__ieee754_acos-%17-expand-rev-as-@__ieee754_acos-%18-rev @__ieee754_acos-%18-rev @__ieee754_acos-%18-loc @__ieee754_acos-%18-val))
+(defruled @__ieee754_acos-%17-expand-rev-as-@__ieee754_acos-succ17-rev
+  (equal (@__ieee754_acos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@__ieee754_acos-succ17-rev
+            (@__ieee754_acos-%17-mem s17)
+            (@__ieee754_acos-%19-loc s17)
+            (@__ieee754_acos-%17-pred s17))))
+  :enable (@__ieee754_acos-%17-expand-rev-as-@__ieee754_acos-%19-rev @__ieee754_acos-%19-rev @__ieee754_acos-%19-loc @__ieee754_acos-%19-val))
+(defruled @__ieee754_acos-%17-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%17-rev mem loc pred)
+         (@__ieee754_acos-%17-fwd mem loc pred))
+  :enable (@__ieee754_acos-%17-expand-rev-as-@__ieee754_acos-succ17-rev @__ieee754_acos-succ17-rev @__ieee754_acos-succ17-lab @__ieee754_acos-%17-fwd))
+
 (defund @__ieee754_acos-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -330,15 +579,6 @@
     (loc (s '%19 (icmp-sgt-i32 (g '%18 loc) 0) loc))
     (succ (case (g '%19 loc) (-1 '%20) (0 '%21))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%17-expand-bb
-  (equal (@__ieee754_acos-%17-bb mem loc pred)
-         (@__ieee754_acos-%17-rev mem loc pred))
-  :enable (@__ieee754_acos-%17-bb @__ieee754_acos-%17-rev
-    @__ieee754_acos-%18-rev
-    @__ieee754_acos-%19-rev
-    @__ieee754_acos-succ17-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%20-mem (s20)
   (car s20))
@@ -352,6 +592,10 @@
   (declare (ignore s20))
   '%188)
 
+(defund @__ieee754_acos-%20-fwd (mem loc pred)
+  (let ((s20 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ20-lab s20) (@__ieee754_acos-m20.1-mem s20) (@__ieee754_acos-%20-loc s20))))
+
 (defund @__ieee754_acos-succ20-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -361,20 +605,33 @@
 (defund @__ieee754_acos-%20-rev (mem loc pred)
   (@__ieee754_acos-m20.1-rev mem loc pred))
 
+(defruled @__ieee754_acos-%20-expand-rev-as-@__ieee754_acos-m20.1-rev
+  (equal (@__ieee754_acos-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_acos-m20.1-rev
+            (@__ieee754_acos-%20-mem s20)
+            (@__ieee754_acos-%20-loc s20)
+            (@__ieee754_acos-%20-pred s20))))
+  :enable (@__ieee754_acos-%20-rev @__ieee754_acos-%20-mem @__ieee754_acos-%20-loc @__ieee754_acos-%20-pred))
+(defruled @__ieee754_acos-%20-expand-rev-as-@__ieee754_acos-succ20-rev
+  (equal (@__ieee754_acos-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_acos-succ20-rev
+            (@__ieee754_acos-m20.1-mem s20)
+            (@__ieee754_acos-%20-loc s20)
+            (@__ieee754_acos-%20-pred s20))))
+  :enable (@__ieee754_acos-%20-expand-rev-as-@__ieee754_acos-m20.1-rev @__ieee754_acos-m20.1-rev @__ieee754_acos-m20.1-mem))
+(defruled @__ieee754_acos-%20-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%20-rev mem loc pred)
+         (@__ieee754_acos-%20-fwd mem loc pred))
+  :enable (@__ieee754_acos-%20-expand-rev-as-@__ieee754_acos-succ20-rev @__ieee754_acos-succ20-rev @__ieee754_acos-succ20-lab @__ieee754_acos-%20-fwd))
+
 (defund @__ieee754_acos-%20-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x0000000000000000 (g '%1 loc) mem))
     (succ '%188))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%20-expand-bb
-  (equal (@__ieee754_acos-%20-bb mem loc pred)
-         (@__ieee754_acos-%20-rev mem loc pred))
-  :enable (@__ieee754_acos-%20-bb @__ieee754_acos-%20-rev
-    @__ieee754_acos-m20.1-rev
-    @__ieee754_acos-succ20-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%21-mem (s21)
   (car s21))
@@ -388,6 +645,10 @@
   (declare (ignore s21))
   '%188)
 
+(defund @__ieee754_acos-%21-fwd (mem loc pred)
+  (let ((s21 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ21-lab s21) (@__ieee754_acos-m21.1-mem s21) (@__ieee754_acos-%21-loc s21))))
+
 (defund @__ieee754_acos-succ21-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -397,20 +658,33 @@
 (defund @__ieee754_acos-%21-rev (mem loc pred)
   (@__ieee754_acos-m21.1-rev mem loc pred))
 
+(defruled @__ieee754_acos-%21-expand-rev-as-@__ieee754_acos-m21.1-rev
+  (equal (@__ieee754_acos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@__ieee754_acos-m21.1-rev
+            (@__ieee754_acos-%21-mem s21)
+            (@__ieee754_acos-%21-loc s21)
+            (@__ieee754_acos-%21-pred s21))))
+  :enable (@__ieee754_acos-%21-rev @__ieee754_acos-%21-mem @__ieee754_acos-%21-loc @__ieee754_acos-%21-pred))
+(defruled @__ieee754_acos-%21-expand-rev-as-@__ieee754_acos-succ21-rev
+  (equal (@__ieee754_acos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@__ieee754_acos-succ21-rev
+            (@__ieee754_acos-m21.1-mem s21)
+            (@__ieee754_acos-%21-loc s21)
+            (@__ieee754_acos-%21-pred s21))))
+  :enable (@__ieee754_acos-%21-expand-rev-as-@__ieee754_acos-m21.1-rev @__ieee754_acos-m21.1-rev @__ieee754_acos-m21.1-mem))
+(defruled @__ieee754_acos-%21-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%21-rev mem loc pred)
+         (@__ieee754_acos-%21-fwd mem loc pred))
+  :enable (@__ieee754_acos-%21-expand-rev-as-@__ieee754_acos-succ21-rev @__ieee754_acos-succ21-rev @__ieee754_acos-succ21-lab @__ieee754_acos-%21-fwd))
+
 (defund @__ieee754_acos-%21-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x400921FB54442D18 (g '%1 loc) mem))
     (succ '%188))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%21-expand-bb
-  (equal (@__ieee754_acos-%21-bb mem loc pred)
-         (@__ieee754_acos-%21-rev mem loc pred))
-  :enable (@__ieee754_acos-%21-bb @__ieee754_acos-%21-rev
-    @__ieee754_acos-m21.1-rev
-    @__ieee754_acos-succ21-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%22-mem (s22)
   (car s22))
@@ -452,6 +726,10 @@
   (declare (ignore s22))
   '%188)
 
+(defund @__ieee754_acos-%22-fwd (mem loc pred)
+  (let ((s22 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ22-lab s22) (@__ieee754_acos-m22.1-mem s22) (@__ieee754_acos-%29-loc s22))))
+
 (defund @__ieee754_acos-succ22-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -475,6 +753,83 @@
 (defund @__ieee754_acos-%22-rev (mem loc pred)
   (@__ieee754_acos-%23-rev mem loc pred))
 
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%23-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%23-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%22-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-rev @__ieee754_acos-%22-mem @__ieee754_acos-%22-loc @__ieee754_acos-%22-pred))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%24-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%24-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%23-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%23-rev @__ieee754_acos-%23-rev @__ieee754_acos-%23-loc @__ieee754_acos-%23-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%25-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%25-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%24-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%24-rev @__ieee754_acos-%24-rev @__ieee754_acos-%24-loc @__ieee754_acos-%24-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%26-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%26-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%25-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%25-rev @__ieee754_acos-%25-rev @__ieee754_acos-%25-loc @__ieee754_acos-%25-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%27-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%27-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%26-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%26-rev @__ieee754_acos-%26-rev @__ieee754_acos-%26-loc @__ieee754_acos-%26-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%28-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%28-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%27-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%27-rev @__ieee754_acos-%27-rev @__ieee754_acos-%27-loc @__ieee754_acos-%27-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%29-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-%29-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%28-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%28-rev @__ieee754_acos-%28-rev @__ieee754_acos-%28-loc @__ieee754_acos-%28-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-m22.1-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-m22.1-rev
+            (@__ieee754_acos-%22-mem s22)
+            (@__ieee754_acos-%29-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-%29-rev @__ieee754_acos-%29-rev @__ieee754_acos-%29-loc @__ieee754_acos-%29-val))
+(defruled @__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-succ22-rev
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (let ((s22 (list mem loc pred)))
+           (@__ieee754_acos-succ22-rev
+            (@__ieee754_acos-m22.1-mem s22)
+            (@__ieee754_acos-%29-loc s22)
+            (@__ieee754_acos-%22-pred s22))))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-m22.1-rev @__ieee754_acos-m22.1-rev @__ieee754_acos-m22.1-mem))
+(defruled @__ieee754_acos-%22-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%22-rev mem loc pred)
+         (@__ieee754_acos-%22-fwd mem loc pred))
+  :enable (@__ieee754_acos-%22-expand-rev-as-@__ieee754_acos-succ22-rev @__ieee754_acos-succ22-rev @__ieee754_acos-succ22-lab @__ieee754_acos-%22-fwd))
+
 (defund @__ieee754_acos-%22-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -488,21 +843,6 @@
     (mem (store-double (g '%29 loc) (g '%1 loc) mem))
     (succ '%188))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%22-expand-bb
-  (equal (@__ieee754_acos-%22-bb mem loc pred)
-         (@__ieee754_acos-%22-rev mem loc pred))
-  :enable (@__ieee754_acos-%22-bb @__ieee754_acos-%22-rev
-    @__ieee754_acos-%23-rev
-    @__ieee754_acos-%24-rev
-    @__ieee754_acos-%25-rev
-    @__ieee754_acos-%26-rev
-    @__ieee754_acos-%27-rev
-    @__ieee754_acos-%28-rev
-    @__ieee754_acos-%29-rev
-    @__ieee754_acos-m22.1-rev
-    @__ieee754_acos-succ22-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%30-mem (s30)
   (car s30))
@@ -521,6 +861,10 @@
 (defund @__ieee754_acos-succ30-lab (s30)
   (case (g '%32 (@__ieee754_acos-%32-loc s30)) (-1 '%33) (0 '%80)))
 
+(defund @__ieee754_acos-%30-fwd (mem loc pred)
+  (let ((s30 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ30-lab s30) (@__ieee754_acos-%30-mem s30) (@__ieee754_acos-%32-loc s30))))
+
 (defund @__ieee754_acos-succ30-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%32 loc) (-1 '%33) (0 '%80)) mem loc))
@@ -532,6 +876,35 @@
 (defund @__ieee754_acos-%30-rev (mem loc pred)
   (@__ieee754_acos-%31-rev mem loc pred))
 
+(defruled @__ieee754_acos-%30-expand-rev-as-@__ieee754_acos-%31-rev
+  (equal (@__ieee754_acos-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_acos-%31-rev
+            (@__ieee754_acos-%30-mem s30)
+            (@__ieee754_acos-%30-loc s30)
+            (@__ieee754_acos-%30-pred s30))))
+  :enable (@__ieee754_acos-%30-rev @__ieee754_acos-%30-mem @__ieee754_acos-%30-loc @__ieee754_acos-%30-pred))
+(defruled @__ieee754_acos-%30-expand-rev-as-@__ieee754_acos-%32-rev
+  (equal (@__ieee754_acos-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_acos-%32-rev
+            (@__ieee754_acos-%30-mem s30)
+            (@__ieee754_acos-%31-loc s30)
+            (@__ieee754_acos-%30-pred s30))))
+  :enable (@__ieee754_acos-%30-expand-rev-as-@__ieee754_acos-%31-rev @__ieee754_acos-%31-rev @__ieee754_acos-%31-loc @__ieee754_acos-%31-val))
+(defruled @__ieee754_acos-%30-expand-rev-as-@__ieee754_acos-succ30-rev
+  (equal (@__ieee754_acos-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_acos-succ30-rev
+            (@__ieee754_acos-%30-mem s30)
+            (@__ieee754_acos-%32-loc s30)
+            (@__ieee754_acos-%30-pred s30))))
+  :enable (@__ieee754_acos-%30-expand-rev-as-@__ieee754_acos-%32-rev @__ieee754_acos-%32-rev @__ieee754_acos-%32-loc @__ieee754_acos-%32-val))
+(defruled @__ieee754_acos-%30-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%30-rev mem loc pred)
+         (@__ieee754_acos-%30-fwd mem loc pred))
+  :enable (@__ieee754_acos-%30-expand-rev-as-@__ieee754_acos-succ30-rev @__ieee754_acos-succ30-rev @__ieee754_acos-succ30-lab @__ieee754_acos-%30-fwd))
+
 (defund @__ieee754_acos-%30-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -539,15 +912,6 @@
     (loc (s '%32 (icmp-slt-i32 (g '%31 loc) 1071644672) loc))
     (succ (case (g '%32 loc) (-1 '%33) (0 '%80))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%30-expand-bb
-  (equal (@__ieee754_acos-%30-bb mem loc pred)
-         (@__ieee754_acos-%30-rev mem loc pred))
-  :enable (@__ieee754_acos-%30-bb @__ieee754_acos-%30-rev
-    @__ieee754_acos-%31-rev
-    @__ieee754_acos-%32-rev
-    @__ieee754_acos-succ30-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%33-mem (s33)
   (car s33))
@@ -566,6 +930,10 @@
 (defund @__ieee754_acos-succ33-lab (s33)
   (case (g '%35 (@__ieee754_acos-%35-loc s33)) (-1 '%36) (0 '%37)))
 
+(defund @__ieee754_acos-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ33-lab s33) (@__ieee754_acos-%33-mem s33) (@__ieee754_acos-%35-loc s33))))
+
 (defund @__ieee754_acos-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%35 loc) (-1 '%36) (0 '%37)) mem loc))
@@ -577,6 +945,35 @@
 (defund @__ieee754_acos-%33-rev (mem loc pred)
   (@__ieee754_acos-%34-rev mem loc pred))
 
+(defruled @__ieee754_acos-%33-expand-rev-as-@__ieee754_acos-%34-rev
+  (equal (@__ieee754_acos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_acos-%34-rev
+            (@__ieee754_acos-%33-mem s33)
+            (@__ieee754_acos-%33-loc s33)
+            (@__ieee754_acos-%33-pred s33))))
+  :enable (@__ieee754_acos-%33-rev @__ieee754_acos-%33-mem @__ieee754_acos-%33-loc @__ieee754_acos-%33-pred))
+(defruled @__ieee754_acos-%33-expand-rev-as-@__ieee754_acos-%35-rev
+  (equal (@__ieee754_acos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_acos-%35-rev
+            (@__ieee754_acos-%33-mem s33)
+            (@__ieee754_acos-%34-loc s33)
+            (@__ieee754_acos-%33-pred s33))))
+  :enable (@__ieee754_acos-%33-expand-rev-as-@__ieee754_acos-%34-rev @__ieee754_acos-%34-rev @__ieee754_acos-%34-loc @__ieee754_acos-%34-val))
+(defruled @__ieee754_acos-%33-expand-rev-as-@__ieee754_acos-succ33-rev
+  (equal (@__ieee754_acos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_acos-succ33-rev
+            (@__ieee754_acos-%33-mem s33)
+            (@__ieee754_acos-%35-loc s33)
+            (@__ieee754_acos-%33-pred s33))))
+  :enable (@__ieee754_acos-%33-expand-rev-as-@__ieee754_acos-%35-rev @__ieee754_acos-%35-rev @__ieee754_acos-%35-loc @__ieee754_acos-%35-val))
+(defruled @__ieee754_acos-%33-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%33-rev mem loc pred)
+         (@__ieee754_acos-%33-fwd mem loc pred))
+  :enable (@__ieee754_acos-%33-expand-rev-as-@__ieee754_acos-succ33-rev @__ieee754_acos-succ33-rev @__ieee754_acos-succ33-lab @__ieee754_acos-%33-fwd))
+
 (defund @__ieee754_acos-%33-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -584,15 +981,6 @@
     (loc (s '%35 (icmp-sle-i32 (g '%34 loc) 1012924416) loc))
     (succ (case (g '%35 loc) (-1 '%36) (0 '%37))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%33-expand-bb
-  (equal (@__ieee754_acos-%33-bb mem loc pred)
-         (@__ieee754_acos-%33-rev mem loc pred))
-  :enable (@__ieee754_acos-%33-bb @__ieee754_acos-%33-rev
-    @__ieee754_acos-%34-rev
-    @__ieee754_acos-%35-rev
-    @__ieee754_acos-succ33-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%36-mem (s36)
   (car s36))
@@ -606,6 +994,10 @@
   (declare (ignore s36))
   '%188)
 
+(defund @__ieee754_acos-%36-fwd (mem loc pred)
+  (let ((s36 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ36-lab s36) (@__ieee754_acos-m36.1-mem s36) (@__ieee754_acos-%36-loc s36))))
+
 (defund @__ieee754_acos-succ36-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -615,20 +1007,33 @@
 (defund @__ieee754_acos-%36-rev (mem loc pred)
   (@__ieee754_acos-m36.1-rev mem loc pred))
 
+(defruled @__ieee754_acos-%36-expand-rev-as-@__ieee754_acos-m36.1-rev
+  (equal (@__ieee754_acos-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@__ieee754_acos-m36.1-rev
+            (@__ieee754_acos-%36-mem s36)
+            (@__ieee754_acos-%36-loc s36)
+            (@__ieee754_acos-%36-pred s36))))
+  :enable (@__ieee754_acos-%36-rev @__ieee754_acos-%36-mem @__ieee754_acos-%36-loc @__ieee754_acos-%36-pred))
+(defruled @__ieee754_acos-%36-expand-rev-as-@__ieee754_acos-succ36-rev
+  (equal (@__ieee754_acos-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@__ieee754_acos-succ36-rev
+            (@__ieee754_acos-m36.1-mem s36)
+            (@__ieee754_acos-%36-loc s36)
+            (@__ieee754_acos-%36-pred s36))))
+  :enable (@__ieee754_acos-%36-expand-rev-as-@__ieee754_acos-m36.1-rev @__ieee754_acos-m36.1-rev @__ieee754_acos-m36.1-mem))
+(defruled @__ieee754_acos-%36-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%36-rev mem loc pred)
+         (@__ieee754_acos-%36-fwd mem loc pred))
+  :enable (@__ieee754_acos-%36-expand-rev-as-@__ieee754_acos-succ36-rev @__ieee754_acos-succ36-rev @__ieee754_acos-succ36-lab @__ieee754_acos-%36-fwd))
+
 (defund @__ieee754_acos-%36-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x3FF921FB54442D18 (g '%1 loc) mem))
     (succ '%188))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%36-expand-bb
-  (equal (@__ieee754_acos-%36-bb mem loc pred)
-         (@__ieee754_acos-%36-rev mem loc pred))
-  :enable (@__ieee754_acos-%36-bb @__ieee754_acos-%36-rev
-    @__ieee754_acos-m36.1-rev
-    @__ieee754_acos-succ36-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%37-mem (s37)
   (car s37))
@@ -818,6 +1223,10 @@
   (declare (ignore s37))
   '%188)
 
+(defund @__ieee754_acos-%37-fwd (mem loc pred)
+  (let ((s37 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ37-lab s37) (@__ieee754_acos-m37.5-mem s37) (@__ieee754_acos-%79-loc s37))))
+
 (defund @__ieee754_acos-succ37-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -919,6 +1328,395 @@
 (defund @__ieee754_acos-%37-rev (mem loc pred)
   (@__ieee754_acos-%38-rev mem loc pred))
 
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%38-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%38-rev
+            (@__ieee754_acos-%37-mem s37)
+            (@__ieee754_acos-%37-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-rev @__ieee754_acos-%37-mem @__ieee754_acos-%37-loc @__ieee754_acos-%37-pred))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%39-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%39-rev
+            (@__ieee754_acos-%37-mem s37)
+            (@__ieee754_acos-%38-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%38-rev @__ieee754_acos-%38-rev @__ieee754_acos-%38-loc @__ieee754_acos-%38-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%40-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%40-rev
+            (@__ieee754_acos-%37-mem s37)
+            (@__ieee754_acos-%39-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%39-rev @__ieee754_acos-%39-rev @__ieee754_acos-%39-loc @__ieee754_acos-%39-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.1-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-m37.1-rev
+            (@__ieee754_acos-%37-mem s37)
+            (@__ieee754_acos-%40-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%40-rev @__ieee754_acos-%40-rev @__ieee754_acos-%40-loc @__ieee754_acos-%40-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%41-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%41-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%40-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.1-rev @__ieee754_acos-m37.1-rev @__ieee754_acos-m37.1-mem))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%42-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%42-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%41-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%41-rev @__ieee754_acos-%41-rev @__ieee754_acos-%41-loc @__ieee754_acos-%41-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%43-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%43-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%42-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%42-rev @__ieee754_acos-%42-rev @__ieee754_acos-%42-loc @__ieee754_acos-%42-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%44-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%44-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%43-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%43-rev @__ieee754_acos-%43-rev @__ieee754_acos-%43-loc @__ieee754_acos-%43-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%45-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%45-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%44-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%44-rev @__ieee754_acos-%44-rev @__ieee754_acos-%44-loc @__ieee754_acos-%44-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%46-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%46-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%45-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%45-rev @__ieee754_acos-%45-rev @__ieee754_acos-%45-loc @__ieee754_acos-%45-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%47-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%47-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%46-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%46-rev @__ieee754_acos-%46-rev @__ieee754_acos-%46-loc @__ieee754_acos-%46-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%48-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%48-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%47-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%47-rev @__ieee754_acos-%47-rev @__ieee754_acos-%47-loc @__ieee754_acos-%47-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%49-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%49-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%48-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%48-rev @__ieee754_acos-%48-rev @__ieee754_acos-%48-loc @__ieee754_acos-%48-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%50-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%50-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%49-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%49-rev @__ieee754_acos-%49-rev @__ieee754_acos-%49-loc @__ieee754_acos-%49-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%51-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%51-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%50-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%50-rev @__ieee754_acos-%50-rev @__ieee754_acos-%50-loc @__ieee754_acos-%50-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%52-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%52-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%51-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%51-rev @__ieee754_acos-%51-rev @__ieee754_acos-%51-loc @__ieee754_acos-%51-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%53-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%53-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%52-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%52-rev @__ieee754_acos-%52-rev @__ieee754_acos-%52-loc @__ieee754_acos-%52-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%54-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%54-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%53-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%53-rev @__ieee754_acos-%53-rev @__ieee754_acos-%53-loc @__ieee754_acos-%53-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%55-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%55-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%54-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%54-rev @__ieee754_acos-%54-rev @__ieee754_acos-%54-loc @__ieee754_acos-%54-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%56-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%56-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%55-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%55-rev @__ieee754_acos-%55-rev @__ieee754_acos-%55-loc @__ieee754_acos-%55-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%57-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%57-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%56-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%56-rev @__ieee754_acos-%56-rev @__ieee754_acos-%56-loc @__ieee754_acos-%56-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.2-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-m37.2-rev
+            (@__ieee754_acos-m37.1-mem s37)
+            (@__ieee754_acos-%57-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%57-rev @__ieee754_acos-%57-rev @__ieee754_acos-%57-loc @__ieee754_acos-%57-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%58-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%58-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%57-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.2-rev @__ieee754_acos-m37.2-rev @__ieee754_acos-m37.2-mem))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%59-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%59-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%58-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%58-rev @__ieee754_acos-%58-rev @__ieee754_acos-%58-loc @__ieee754_acos-%58-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%60-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%60-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%59-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%59-rev @__ieee754_acos-%59-rev @__ieee754_acos-%59-loc @__ieee754_acos-%59-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%61-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%61-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%60-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%60-rev @__ieee754_acos-%60-rev @__ieee754_acos-%60-loc @__ieee754_acos-%60-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%62-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%62-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%61-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%61-rev @__ieee754_acos-%61-rev @__ieee754_acos-%61-loc @__ieee754_acos-%61-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%63-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%63-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%62-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%62-rev @__ieee754_acos-%62-rev @__ieee754_acos-%62-loc @__ieee754_acos-%62-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%64-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%64-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%63-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%63-rev @__ieee754_acos-%63-rev @__ieee754_acos-%63-loc @__ieee754_acos-%63-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%65-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%65-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%64-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%64-rev @__ieee754_acos-%64-rev @__ieee754_acos-%64-loc @__ieee754_acos-%64-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%66-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%66-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%65-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%65-rev @__ieee754_acos-%65-rev @__ieee754_acos-%65-loc @__ieee754_acos-%65-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%67-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%67-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%66-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%66-rev @__ieee754_acos-%66-rev @__ieee754_acos-%66-loc @__ieee754_acos-%66-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%68-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%68-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%67-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%67-rev @__ieee754_acos-%67-rev @__ieee754_acos-%67-loc @__ieee754_acos-%67-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%69-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%69-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%68-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%68-rev @__ieee754_acos-%68-rev @__ieee754_acos-%68-loc @__ieee754_acos-%68-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.3-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-m37.3-rev
+            (@__ieee754_acos-m37.2-mem s37)
+            (@__ieee754_acos-%69-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%69-rev @__ieee754_acos-%69-rev @__ieee754_acos-%69-loc @__ieee754_acos-%69-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%70-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%70-rev
+            (@__ieee754_acos-m37.3-mem s37)
+            (@__ieee754_acos-%69-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.3-rev @__ieee754_acos-m37.3-rev @__ieee754_acos-m37.3-mem))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%71-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%71-rev
+            (@__ieee754_acos-m37.3-mem s37)
+            (@__ieee754_acos-%70-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%70-rev @__ieee754_acos-%70-rev @__ieee754_acos-%70-loc @__ieee754_acos-%70-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%72-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%72-rev
+            (@__ieee754_acos-m37.3-mem s37)
+            (@__ieee754_acos-%71-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%71-rev @__ieee754_acos-%71-rev @__ieee754_acos-%71-loc @__ieee754_acos-%71-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.4-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-m37.4-rev
+            (@__ieee754_acos-m37.3-mem s37)
+            (@__ieee754_acos-%72-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%72-rev @__ieee754_acos-%72-rev @__ieee754_acos-%72-loc @__ieee754_acos-%72-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%73-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%73-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%72-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.4-rev @__ieee754_acos-m37.4-rev @__ieee754_acos-m37.4-mem))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%74-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%74-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%73-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%73-rev @__ieee754_acos-%73-rev @__ieee754_acos-%73-loc @__ieee754_acos-%73-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%75-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%75-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%74-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%74-rev @__ieee754_acos-%74-rev @__ieee754_acos-%74-loc @__ieee754_acos-%74-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%76-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%76-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%75-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%75-rev @__ieee754_acos-%75-rev @__ieee754_acos-%75-loc @__ieee754_acos-%75-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%77-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%77-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%76-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%76-rev @__ieee754_acos-%76-rev @__ieee754_acos-%76-loc @__ieee754_acos-%76-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%78-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%78-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%77-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%77-rev @__ieee754_acos-%77-rev @__ieee754_acos-%77-loc @__ieee754_acos-%77-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%79-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-%79-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%78-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%78-rev @__ieee754_acos-%78-rev @__ieee754_acos-%78-loc @__ieee754_acos-%78-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.5-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-m37.5-rev
+            (@__ieee754_acos-m37.4-mem s37)
+            (@__ieee754_acos-%79-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-%79-rev @__ieee754_acos-%79-rev @__ieee754_acos-%79-loc @__ieee754_acos-%79-val))
+(defruled @__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-succ37-rev
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (let ((s37 (list mem loc pred)))
+           (@__ieee754_acos-succ37-rev
+            (@__ieee754_acos-m37.5-mem s37)
+            (@__ieee754_acos-%79-loc s37)
+            (@__ieee754_acos-%37-pred s37))))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-m37.5-rev @__ieee754_acos-m37.5-rev @__ieee754_acos-m37.5-mem))
+(defruled @__ieee754_acos-%37-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%37-rev mem loc pred)
+         (@__ieee754_acos-%37-fwd mem loc pred))
+  :enable (@__ieee754_acos-%37-expand-rev-as-@__ieee754_acos-succ37-rev @__ieee754_acos-succ37-rev @__ieee754_acos-succ37-lab @__ieee754_acos-%37-fwd))
+
 (defund @__ieee754_acos-%37-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -972,60 +1770,6 @@
     (succ '%188))
   (mv succ mem loc)))
 
-(defruled @__ieee754_acos-%37-expand-bb
-  (equal (@__ieee754_acos-%37-bb mem loc pred)
-         (@__ieee754_acos-%37-rev mem loc pred))
-  :enable (@__ieee754_acos-%37-bb @__ieee754_acos-%37-rev
-    @__ieee754_acos-%38-rev
-    @__ieee754_acos-%39-rev
-    @__ieee754_acos-%40-rev
-    @__ieee754_acos-m37.1-rev
-    @__ieee754_acos-%41-rev
-    @__ieee754_acos-%42-rev
-    @__ieee754_acos-%43-rev
-    @__ieee754_acos-%44-rev
-    @__ieee754_acos-%45-rev
-    @__ieee754_acos-%46-rev
-    @__ieee754_acos-%47-rev
-    @__ieee754_acos-%48-rev
-    @__ieee754_acos-%49-rev
-    @__ieee754_acos-%50-rev
-    @__ieee754_acos-%51-rev
-    @__ieee754_acos-%52-rev
-    @__ieee754_acos-%53-rev
-    @__ieee754_acos-%54-rev
-    @__ieee754_acos-%55-rev
-    @__ieee754_acos-%56-rev
-    @__ieee754_acos-%57-rev
-    @__ieee754_acos-m37.2-rev
-    @__ieee754_acos-%58-rev
-    @__ieee754_acos-%59-rev
-    @__ieee754_acos-%60-rev
-    @__ieee754_acos-%61-rev
-    @__ieee754_acos-%62-rev
-    @__ieee754_acos-%63-rev
-    @__ieee754_acos-%64-rev
-    @__ieee754_acos-%65-rev
-    @__ieee754_acos-%66-rev
-    @__ieee754_acos-%67-rev
-    @__ieee754_acos-%68-rev
-    @__ieee754_acos-%69-rev
-    @__ieee754_acos-m37.3-rev
-    @__ieee754_acos-%70-rev
-    @__ieee754_acos-%71-rev
-    @__ieee754_acos-%72-rev
-    @__ieee754_acos-m37.4-rev
-    @__ieee754_acos-%73-rev
-    @__ieee754_acos-%74-rev
-    @__ieee754_acos-%75-rev
-    @__ieee754_acos-%76-rev
-    @__ieee754_acos-%77-rev
-    @__ieee754_acos-%78-rev
-    @__ieee754_acos-%79-rev
-    @__ieee754_acos-m37.5-rev
-    @__ieee754_acos-succ37-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_acos-%80-mem (s80)
   (car s80))
 (defund @__ieee754_acos-%80-loc (s80)
@@ -1043,6 +1787,10 @@
 (defund @__ieee754_acos-succ80-lab (s80)
   (case (g '%82 (@__ieee754_acos-%82-loc s80)) (-1 '%83) (0 '%130)))
 
+(defund @__ieee754_acos-%80-fwd (mem loc pred)
+  (let ((s80 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ80-lab s80) (@__ieee754_acos-%80-mem s80) (@__ieee754_acos-%82-loc s80))))
+
 (defund @__ieee754_acos-succ80-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%82 loc) (-1 '%83) (0 '%130)) mem loc))
@@ -1054,6 +1802,35 @@
 (defund @__ieee754_acos-%80-rev (mem loc pred)
   (@__ieee754_acos-%81-rev mem loc pred))
 
+(defruled @__ieee754_acos-%80-expand-rev-as-@__ieee754_acos-%81-rev
+  (equal (@__ieee754_acos-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@__ieee754_acos-%81-rev
+            (@__ieee754_acos-%80-mem s80)
+            (@__ieee754_acos-%80-loc s80)
+            (@__ieee754_acos-%80-pred s80))))
+  :enable (@__ieee754_acos-%80-rev @__ieee754_acos-%80-mem @__ieee754_acos-%80-loc @__ieee754_acos-%80-pred))
+(defruled @__ieee754_acos-%80-expand-rev-as-@__ieee754_acos-%82-rev
+  (equal (@__ieee754_acos-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@__ieee754_acos-%82-rev
+            (@__ieee754_acos-%80-mem s80)
+            (@__ieee754_acos-%81-loc s80)
+            (@__ieee754_acos-%80-pred s80))))
+  :enable (@__ieee754_acos-%80-expand-rev-as-@__ieee754_acos-%81-rev @__ieee754_acos-%81-rev @__ieee754_acos-%81-loc @__ieee754_acos-%81-val))
+(defruled @__ieee754_acos-%80-expand-rev-as-@__ieee754_acos-succ80-rev
+  (equal (@__ieee754_acos-%80-rev mem loc pred)
+         (let ((s80 (list mem loc pred)))
+           (@__ieee754_acos-succ80-rev
+            (@__ieee754_acos-%80-mem s80)
+            (@__ieee754_acos-%82-loc s80)
+            (@__ieee754_acos-%80-pred s80))))
+  :enable (@__ieee754_acos-%80-expand-rev-as-@__ieee754_acos-%82-rev @__ieee754_acos-%82-rev @__ieee754_acos-%82-loc @__ieee754_acos-%82-val))
+(defruled @__ieee754_acos-%80-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%80-rev mem loc pred)
+         (@__ieee754_acos-%80-fwd mem loc pred))
+  :enable (@__ieee754_acos-%80-expand-rev-as-@__ieee754_acos-succ80-rev @__ieee754_acos-succ80-rev @__ieee754_acos-succ80-lab @__ieee754_acos-%80-fwd))
+
 (defund @__ieee754_acos-%80-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1061,15 +1838,6 @@
     (loc (s '%82 (icmp-slt-i32 (g '%81 loc) 0) loc))
     (succ (case (g '%82 loc) (-1 '%83) (0 '%130))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%80-expand-bb
-  (equal (@__ieee754_acos-%80-bb mem loc pred)
-         (@__ieee754_acos-%80-rev mem loc pred))
-  :enable (@__ieee754_acos-%80-bb @__ieee754_acos-%80-rev
-    @__ieee754_acos-%81-rev
-    @__ieee754_acos-%82-rev
-    @__ieee754_acos-succ80-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%83-mem (s83)
   (car s83))
@@ -1279,6 +2047,10 @@
   (declare (ignore s83))
   '%188)
 
+(defund @__ieee754_acos-%83-fwd (mem loc pred)
+  (let ((s83 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ83-lab s83) (@__ieee754_acos-m83.7-mem s83) (@__ieee754_acos-%129-loc s83))))
+
 (defund @__ieee754_acos-succ83-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -1392,6 +2164,443 @@
 (defund @__ieee754_acos-%83-rev (mem loc pred)
   (@__ieee754_acos-%84-rev mem loc pred))
 
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%84-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%84-rev
+            (@__ieee754_acos-%83-mem s83)
+            (@__ieee754_acos-%83-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-rev @__ieee754_acos-%83-mem @__ieee754_acos-%83-loc @__ieee754_acos-%83-pred))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%85-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%85-rev
+            (@__ieee754_acos-%83-mem s83)
+            (@__ieee754_acos-%84-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%84-rev @__ieee754_acos-%84-rev @__ieee754_acos-%84-loc @__ieee754_acos-%84-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%86-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%86-rev
+            (@__ieee754_acos-%83-mem s83)
+            (@__ieee754_acos-%85-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%85-rev @__ieee754_acos-%85-rev @__ieee754_acos-%85-loc @__ieee754_acos-%85-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.1-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.1-rev
+            (@__ieee754_acos-%83-mem s83)
+            (@__ieee754_acos-%86-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%86-rev @__ieee754_acos-%86-rev @__ieee754_acos-%86-loc @__ieee754_acos-%86-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%87-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%87-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%86-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.1-rev @__ieee754_acos-m83.1-rev @__ieee754_acos-m83.1-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%88-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%88-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%87-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%87-rev @__ieee754_acos-%87-rev @__ieee754_acos-%87-loc @__ieee754_acos-%87-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%89-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%89-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%88-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%88-rev @__ieee754_acos-%88-rev @__ieee754_acos-%88-loc @__ieee754_acos-%88-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%90-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%90-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%89-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%89-rev @__ieee754_acos-%89-rev @__ieee754_acos-%89-loc @__ieee754_acos-%89-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%91-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%91-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%90-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%90-rev @__ieee754_acos-%90-rev @__ieee754_acos-%90-loc @__ieee754_acos-%90-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%92-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%92-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%91-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%91-rev @__ieee754_acos-%91-rev @__ieee754_acos-%91-loc @__ieee754_acos-%91-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%93-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%93-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%92-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%92-rev @__ieee754_acos-%92-rev @__ieee754_acos-%92-loc @__ieee754_acos-%92-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%94-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%94-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%93-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%93-rev @__ieee754_acos-%93-rev @__ieee754_acos-%93-loc @__ieee754_acos-%93-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%95-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%95-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%94-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%94-rev @__ieee754_acos-%94-rev @__ieee754_acos-%94-loc @__ieee754_acos-%94-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%96-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%96-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%95-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%95-rev @__ieee754_acos-%95-rev @__ieee754_acos-%95-loc @__ieee754_acos-%95-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%97-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%97-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%96-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%96-rev @__ieee754_acos-%96-rev @__ieee754_acos-%96-loc @__ieee754_acos-%96-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%98-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%98-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%97-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%97-rev @__ieee754_acos-%97-rev @__ieee754_acos-%97-loc @__ieee754_acos-%97-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%99-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%99-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%98-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%98-rev @__ieee754_acos-%98-rev @__ieee754_acos-%98-loc @__ieee754_acos-%98-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%100-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%100-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%99-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%99-rev @__ieee754_acos-%99-rev @__ieee754_acos-%99-loc @__ieee754_acos-%99-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%101-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%101-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%100-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%100-rev @__ieee754_acos-%100-rev @__ieee754_acos-%100-loc @__ieee754_acos-%100-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%102-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%102-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%101-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%101-rev @__ieee754_acos-%101-rev @__ieee754_acos-%101-loc @__ieee754_acos-%101-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%103-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%103-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%102-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%102-rev @__ieee754_acos-%102-rev @__ieee754_acos-%102-loc @__ieee754_acos-%102-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.2-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.2-rev
+            (@__ieee754_acos-m83.1-mem s83)
+            (@__ieee754_acos-%103-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%103-rev @__ieee754_acos-%103-rev @__ieee754_acos-%103-loc @__ieee754_acos-%103-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%104-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%104-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%103-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.2-rev @__ieee754_acos-m83.2-rev @__ieee754_acos-m83.2-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%105-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%105-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%104-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%104-rev @__ieee754_acos-%104-rev @__ieee754_acos-%104-loc @__ieee754_acos-%104-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%106-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%106-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%105-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%105-rev @__ieee754_acos-%105-rev @__ieee754_acos-%105-loc @__ieee754_acos-%105-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%107-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%107-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%106-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%106-rev @__ieee754_acos-%106-rev @__ieee754_acos-%106-loc @__ieee754_acos-%106-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%108-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%108-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%107-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%107-rev @__ieee754_acos-%107-rev @__ieee754_acos-%107-loc @__ieee754_acos-%107-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%109-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%109-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%108-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%108-rev @__ieee754_acos-%108-rev @__ieee754_acos-%108-loc @__ieee754_acos-%108-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%110-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%110-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%109-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%109-rev @__ieee754_acos-%109-rev @__ieee754_acos-%109-loc @__ieee754_acos-%109-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%111-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%111-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%110-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%110-rev @__ieee754_acos-%110-rev @__ieee754_acos-%110-loc @__ieee754_acos-%110-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%112-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%112-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%111-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%111-rev @__ieee754_acos-%111-rev @__ieee754_acos-%111-loc @__ieee754_acos-%111-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%113-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%113-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%112-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%112-rev @__ieee754_acos-%112-rev @__ieee754_acos-%112-loc @__ieee754_acos-%112-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%114-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%114-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%113-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%113-rev @__ieee754_acos-%113-rev @__ieee754_acos-%113-loc @__ieee754_acos-%113-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%115-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%115-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%114-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%114-rev @__ieee754_acos-%114-rev @__ieee754_acos-%114-loc @__ieee754_acos-%114-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.3-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.3-rev
+            (@__ieee754_acos-m83.2-mem s83)
+            (@__ieee754_acos-%115-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%115-rev @__ieee754_acos-%115-rev @__ieee754_acos-%115-loc @__ieee754_acos-%115-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%116-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%116-rev
+            (@__ieee754_acos-m83.3-mem s83)
+            (@__ieee754_acos-%115-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.3-rev @__ieee754_acos-m83.3-rev @__ieee754_acos-m83.3-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%117-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%117-rev
+            (@__ieee754_acos-m83.3-mem s83)
+            (@__ieee754_acos-%116-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%116-rev @__ieee754_acos-%116-rev @__ieee754_acos-%116-loc @__ieee754_acos-%116-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.4-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.4-rev
+            (@__ieee754_acos-m83.3-mem s83)
+            (@__ieee754_acos-%117-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%117-rev @__ieee754_acos-%117-rev @__ieee754_acos-%117-loc @__ieee754_acos-%117-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%118-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%118-rev
+            (@__ieee754_acos-m83.4-mem s83)
+            (@__ieee754_acos-%117-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.4-rev @__ieee754_acos-m83.4-rev @__ieee754_acos-m83.4-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%119-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%119-rev
+            (@__ieee754_acos-m83.4-mem s83)
+            (@__ieee754_acos-%118-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%118-rev @__ieee754_acos-%118-rev @__ieee754_acos-%118-loc @__ieee754_acos-%118-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%120-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%120-rev
+            (@__ieee754_acos-m83.4-mem s83)
+            (@__ieee754_acos-%119-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%119-rev @__ieee754_acos-%119-rev @__ieee754_acos-%119-loc @__ieee754_acos-%119-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.5-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.5-rev
+            (@__ieee754_acos-m83.4-mem s83)
+            (@__ieee754_acos-%120-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%120-rev @__ieee754_acos-%120-rev @__ieee754_acos-%120-loc @__ieee754_acos-%120-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%121-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%121-rev
+            (@__ieee754_acos-m83.5-mem s83)
+            (@__ieee754_acos-%120-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.5-rev @__ieee754_acos-m83.5-rev @__ieee754_acos-m83.5-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%122-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%122-rev
+            (@__ieee754_acos-m83.5-mem s83)
+            (@__ieee754_acos-%121-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%121-rev @__ieee754_acos-%121-rev @__ieee754_acos-%121-loc @__ieee754_acos-%121-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%123-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%123-rev
+            (@__ieee754_acos-m83.5-mem s83)
+            (@__ieee754_acos-%122-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%122-rev @__ieee754_acos-%122-rev @__ieee754_acos-%122-loc @__ieee754_acos-%122-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%124-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%124-rev
+            (@__ieee754_acos-m83.5-mem s83)
+            (@__ieee754_acos-%123-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%123-rev @__ieee754_acos-%123-rev @__ieee754_acos-%123-loc @__ieee754_acos-%123-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.6-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.6-rev
+            (@__ieee754_acos-m83.5-mem s83)
+            (@__ieee754_acos-%124-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%124-rev @__ieee754_acos-%124-rev @__ieee754_acos-%124-loc @__ieee754_acos-%124-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%125-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%125-rev
+            (@__ieee754_acos-m83.6-mem s83)
+            (@__ieee754_acos-%124-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.6-rev @__ieee754_acos-m83.6-rev @__ieee754_acos-m83.6-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%126-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%126-rev
+            (@__ieee754_acos-m83.6-mem s83)
+            (@__ieee754_acos-%125-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%125-rev @__ieee754_acos-%125-rev @__ieee754_acos-%125-loc @__ieee754_acos-%125-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%127-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%127-rev
+            (@__ieee754_acos-m83.6-mem s83)
+            (@__ieee754_acos-%126-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%126-rev @__ieee754_acos-%126-rev @__ieee754_acos-%126-loc @__ieee754_acos-%126-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%128-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%128-rev
+            (@__ieee754_acos-m83.6-mem s83)
+            (@__ieee754_acos-%127-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%127-rev @__ieee754_acos-%127-rev @__ieee754_acos-%127-loc @__ieee754_acos-%127-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%129-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-%129-rev
+            (@__ieee754_acos-m83.6-mem s83)
+            (@__ieee754_acos-%128-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%128-rev @__ieee754_acos-%128-rev @__ieee754_acos-%128-loc @__ieee754_acos-%128-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.7-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-m83.7-rev
+            (@__ieee754_acos-m83.6-mem s83)
+            (@__ieee754_acos-%129-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-%129-rev @__ieee754_acos-%129-rev @__ieee754_acos-%129-loc @__ieee754_acos-%129-val))
+(defruled @__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-succ83-rev
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (let ((s83 (list mem loc pred)))
+           (@__ieee754_acos-succ83-rev
+            (@__ieee754_acos-m83.7-mem s83)
+            (@__ieee754_acos-%129-loc s83)
+            (@__ieee754_acos-%83-pred s83))))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-m83.7-rev @__ieee754_acos-m83.7-rev @__ieee754_acos-m83.7-mem))
+(defruled @__ieee754_acos-%83-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%83-rev mem loc pred)
+         (@__ieee754_acos-%83-fwd mem loc pred))
+  :enable (@__ieee754_acos-%83-expand-rev-as-@__ieee754_acos-succ83-rev @__ieee754_acos-succ83-rev @__ieee754_acos-succ83-lab @__ieee754_acos-%83-fwd))
+
 (defund @__ieee754_acos-%83-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1450,66 +2659,6 @@
     (mem (store-double (g '%129 loc) (g '%1 loc) mem))
     (succ '%188))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%83-expand-bb
-  (equal (@__ieee754_acos-%83-bb mem loc pred)
-         (@__ieee754_acos-%83-rev mem loc pred))
-  :enable (@__ieee754_acos-%83-bb @__ieee754_acos-%83-rev
-    @__ieee754_acos-%84-rev
-    @__ieee754_acos-%85-rev
-    @__ieee754_acos-%86-rev
-    @__ieee754_acos-m83.1-rev
-    @__ieee754_acos-%87-rev
-    @__ieee754_acos-%88-rev
-    @__ieee754_acos-%89-rev
-    @__ieee754_acos-%90-rev
-    @__ieee754_acos-%91-rev
-    @__ieee754_acos-%92-rev
-    @__ieee754_acos-%93-rev
-    @__ieee754_acos-%94-rev
-    @__ieee754_acos-%95-rev
-    @__ieee754_acos-%96-rev
-    @__ieee754_acos-%97-rev
-    @__ieee754_acos-%98-rev
-    @__ieee754_acos-%99-rev
-    @__ieee754_acos-%100-rev
-    @__ieee754_acos-%101-rev
-    @__ieee754_acos-%102-rev
-    @__ieee754_acos-%103-rev
-    @__ieee754_acos-m83.2-rev
-    @__ieee754_acos-%104-rev
-    @__ieee754_acos-%105-rev
-    @__ieee754_acos-%106-rev
-    @__ieee754_acos-%107-rev
-    @__ieee754_acos-%108-rev
-    @__ieee754_acos-%109-rev
-    @__ieee754_acos-%110-rev
-    @__ieee754_acos-%111-rev
-    @__ieee754_acos-%112-rev
-    @__ieee754_acos-%113-rev
-    @__ieee754_acos-%114-rev
-    @__ieee754_acos-%115-rev
-    @__ieee754_acos-m83.3-rev
-    @__ieee754_acos-%116-rev
-    @__ieee754_acos-%117-rev
-    @__ieee754_acos-m83.4-rev
-    @__ieee754_acos-%118-rev
-    @__ieee754_acos-%119-rev
-    @__ieee754_acos-%120-rev
-    @__ieee754_acos-m83.5-rev
-    @__ieee754_acos-%121-rev
-    @__ieee754_acos-%122-rev
-    @__ieee754_acos-%123-rev
-    @__ieee754_acos-%124-rev
-    @__ieee754_acos-m83.6-rev
-    @__ieee754_acos-%125-rev
-    @__ieee754_acos-%126-rev
-    @__ieee754_acos-%127-rev
-    @__ieee754_acos-%128-rev
-    @__ieee754_acos-%129-rev
-    @__ieee754_acos-m83.7-rev
-    @__ieee754_acos-succ83-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-%130-mem (s130)
   (car s130))
@@ -1769,6 +2918,10 @@
   (declare (ignore s130))
   '%188)
 
+(defund @__ieee754_acos-%130-fwd (mem loc pred)
+  (let ((s130 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ130-lab s130) (@__ieee754_acos-m130.10-mem s130) (@__ieee754_acos-%187-loc s130))))
+
 (defund @__ieee754_acos-succ130-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%188 mem loc))
@@ -1910,6 +3063,555 @@
 (defund @__ieee754_acos-%130-rev (mem loc pred)
   (@__ieee754_acos-%131-rev mem loc pred))
 
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%131-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%131-rev
+            (@__ieee754_acos-%130-mem s130)
+            (@__ieee754_acos-%130-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-rev @__ieee754_acos-%130-mem @__ieee754_acos-%130-loc @__ieee754_acos-%130-pred))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%132-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%132-rev
+            (@__ieee754_acos-%130-mem s130)
+            (@__ieee754_acos-%131-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%131-rev @__ieee754_acos-%131-rev @__ieee754_acos-%131-loc @__ieee754_acos-%131-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%133-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%133-rev
+            (@__ieee754_acos-%130-mem s130)
+            (@__ieee754_acos-%132-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%132-rev @__ieee754_acos-%132-rev @__ieee754_acos-%132-loc @__ieee754_acos-%132-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.1-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.1-rev
+            (@__ieee754_acos-%130-mem s130)
+            (@__ieee754_acos-%133-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%133-rev @__ieee754_acos-%133-rev @__ieee754_acos-%133-loc @__ieee754_acos-%133-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%134-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%134-rev
+            (@__ieee754_acos-m130.1-mem s130)
+            (@__ieee754_acos-%133-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.1-rev @__ieee754_acos-m130.1-rev @__ieee754_acos-m130.1-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%135-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%135-rev
+            (@__ieee754_acos-m130.1-mem s130)
+            (@__ieee754_acos-%134-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%134-rev @__ieee754_acos-%134-rev @__ieee754_acos-%134-loc @__ieee754_acos-%134-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.2-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.2-rev
+            (@__ieee754_acos-m130.1-mem s130)
+            (@__ieee754_acos-%135-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%135-rev @__ieee754_acos-%135-rev @__ieee754_acos-%135-loc @__ieee754_acos-%135-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%136-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%136-rev
+            (@__ieee754_acos-m130.2-mem s130)
+            (@__ieee754_acos-%135-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.2-rev @__ieee754_acos-m130.2-rev @__ieee754_acos-m130.2-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.3-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.3-rev
+            (@__ieee754_acos-m130.2-mem s130)
+            (@__ieee754_acos-%136-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%136-rev @__ieee754_acos-%136-rev @__ieee754_acos-%136-loc @__ieee754_acos-%136-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%137-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%137-rev
+            (@__ieee754_acos-m130.3-mem s130)
+            (@__ieee754_acos-%136-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.3-rev @__ieee754_acos-m130.3-rev @__ieee754_acos-m130.3-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.4-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.4-rev
+            (@__ieee754_acos-m130.3-mem s130)
+            (@__ieee754_acos-%137-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%137-rev @__ieee754_acos-%137-rev @__ieee754_acos-%137-loc @__ieee754_acos-%137-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%138-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%138-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%137-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.4-rev @__ieee754_acos-m130.4-rev @__ieee754_acos-m130.4-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%139-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%139-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%138-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%138-rev @__ieee754_acos-%138-rev @__ieee754_acos-%138-loc @__ieee754_acos-%138-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%140-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%140-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%139-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%139-rev @__ieee754_acos-%139-rev @__ieee754_acos-%139-loc @__ieee754_acos-%139-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%141-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%141-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%140-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%140-rev @__ieee754_acos-%140-rev @__ieee754_acos-%140-loc @__ieee754_acos-%140-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%142-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%142-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%141-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%141-rev @__ieee754_acos-%141-rev @__ieee754_acos-%141-loc @__ieee754_acos-%141-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%143-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%143-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%142-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%142-rev @__ieee754_acos-%142-rev @__ieee754_acos-%142-loc @__ieee754_acos-%142-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%144-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%144-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%143-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%143-rev @__ieee754_acos-%143-rev @__ieee754_acos-%143-loc @__ieee754_acos-%143-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%145-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%145-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%144-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%144-rev @__ieee754_acos-%144-rev @__ieee754_acos-%144-loc @__ieee754_acos-%144-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%146-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%146-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%145-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%145-rev @__ieee754_acos-%145-rev @__ieee754_acos-%145-loc @__ieee754_acos-%145-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.5-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.5-rev
+            (@__ieee754_acos-m130.4-mem s130)
+            (@__ieee754_acos-%146-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%146-rev @__ieee754_acos-%146-rev @__ieee754_acos-%146-loc @__ieee754_acos-%146-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%147-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%147-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%146-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.5-rev @__ieee754_acos-m130.5-rev @__ieee754_acos-m130.5-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%148-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%148-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%147-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%147-rev @__ieee754_acos-%147-rev @__ieee754_acos-%147-loc @__ieee754_acos-%147-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%149-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%149-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%148-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%148-rev @__ieee754_acos-%148-rev @__ieee754_acos-%148-loc @__ieee754_acos-%148-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%150-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%150-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%149-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%149-rev @__ieee754_acos-%149-rev @__ieee754_acos-%149-loc @__ieee754_acos-%149-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%151-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%151-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%150-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%150-rev @__ieee754_acos-%150-rev @__ieee754_acos-%150-loc @__ieee754_acos-%150-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%152-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%152-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%151-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%151-rev @__ieee754_acos-%151-rev @__ieee754_acos-%151-loc @__ieee754_acos-%151-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%153-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%153-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%152-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%152-rev @__ieee754_acos-%152-rev @__ieee754_acos-%152-loc @__ieee754_acos-%152-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%154-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%154-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%153-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%153-rev @__ieee754_acos-%153-rev @__ieee754_acos-%153-loc @__ieee754_acos-%153-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%155-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%155-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%154-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%154-rev @__ieee754_acos-%154-rev @__ieee754_acos-%154-loc @__ieee754_acos-%154-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%156-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%156-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%155-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%155-rev @__ieee754_acos-%155-rev @__ieee754_acos-%155-loc @__ieee754_acos-%155-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%157-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%157-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%156-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%156-rev @__ieee754_acos-%156-rev @__ieee754_acos-%156-loc @__ieee754_acos-%156-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%158-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%158-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%157-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%157-rev @__ieee754_acos-%157-rev @__ieee754_acos-%157-loc @__ieee754_acos-%157-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%159-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%159-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%158-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%158-rev @__ieee754_acos-%158-rev @__ieee754_acos-%158-loc @__ieee754_acos-%158-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%160-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%160-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%159-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%159-rev @__ieee754_acos-%159-rev @__ieee754_acos-%159-loc @__ieee754_acos-%159-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%161-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%161-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%160-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%160-rev @__ieee754_acos-%160-rev @__ieee754_acos-%160-loc @__ieee754_acos-%160-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%162-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%162-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%161-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%161-rev @__ieee754_acos-%161-rev @__ieee754_acos-%161-loc @__ieee754_acos-%161-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%163-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%163-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%162-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%162-rev @__ieee754_acos-%162-rev @__ieee754_acos-%162-loc @__ieee754_acos-%162-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.6-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.6-rev
+            (@__ieee754_acos-m130.5-mem s130)
+            (@__ieee754_acos-%163-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%163-rev @__ieee754_acos-%163-rev @__ieee754_acos-%163-loc @__ieee754_acos-%163-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%164-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%164-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%163-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.6-rev @__ieee754_acos-m130.6-rev @__ieee754_acos-m130.6-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%165-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%165-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%164-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%164-rev @__ieee754_acos-%164-rev @__ieee754_acos-%164-loc @__ieee754_acos-%164-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%166-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%166-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%165-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%165-rev @__ieee754_acos-%165-rev @__ieee754_acos-%165-loc @__ieee754_acos-%165-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%167-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%167-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%166-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%166-rev @__ieee754_acos-%166-rev @__ieee754_acos-%166-loc @__ieee754_acos-%166-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%168-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%168-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%167-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%167-rev @__ieee754_acos-%167-rev @__ieee754_acos-%167-loc @__ieee754_acos-%167-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%169-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%169-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%168-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%168-rev @__ieee754_acos-%168-rev @__ieee754_acos-%168-loc @__ieee754_acos-%168-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%170-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%170-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%169-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%169-rev @__ieee754_acos-%169-rev @__ieee754_acos-%169-loc @__ieee754_acos-%169-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%171-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%171-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%170-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%170-rev @__ieee754_acos-%170-rev @__ieee754_acos-%170-loc @__ieee754_acos-%170-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%172-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%172-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%171-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%171-rev @__ieee754_acos-%171-rev @__ieee754_acos-%171-loc @__ieee754_acos-%171-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%173-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%173-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%172-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%172-rev @__ieee754_acos-%172-rev @__ieee754_acos-%172-loc @__ieee754_acos-%172-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%174-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%174-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%173-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%173-rev @__ieee754_acos-%173-rev @__ieee754_acos-%173-loc @__ieee754_acos-%173-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%175-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%175-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%174-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%174-rev @__ieee754_acos-%174-rev @__ieee754_acos-%174-loc @__ieee754_acos-%174-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.7-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.7-rev
+            (@__ieee754_acos-m130.6-mem s130)
+            (@__ieee754_acos-%175-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%175-rev @__ieee754_acos-%175-rev @__ieee754_acos-%175-loc @__ieee754_acos-%175-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%176-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%176-rev
+            (@__ieee754_acos-m130.7-mem s130)
+            (@__ieee754_acos-%175-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.7-rev @__ieee754_acos-m130.7-rev @__ieee754_acos-m130.7-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%177-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%177-rev
+            (@__ieee754_acos-m130.7-mem s130)
+            (@__ieee754_acos-%176-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%176-rev @__ieee754_acos-%176-rev @__ieee754_acos-%176-loc @__ieee754_acos-%176-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%178-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%178-rev
+            (@__ieee754_acos-m130.7-mem s130)
+            (@__ieee754_acos-%177-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%177-rev @__ieee754_acos-%177-rev @__ieee754_acos-%177-loc @__ieee754_acos-%177-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.8-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.8-rev
+            (@__ieee754_acos-m130.7-mem s130)
+            (@__ieee754_acos-%178-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%178-rev @__ieee754_acos-%178-rev @__ieee754_acos-%178-loc @__ieee754_acos-%178-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%179-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%179-rev
+            (@__ieee754_acos-m130.8-mem s130)
+            (@__ieee754_acos-%178-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.8-rev @__ieee754_acos-m130.8-rev @__ieee754_acos-m130.8-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%180-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%180-rev
+            (@__ieee754_acos-m130.8-mem s130)
+            (@__ieee754_acos-%179-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%179-rev @__ieee754_acos-%179-rev @__ieee754_acos-%179-loc @__ieee754_acos-%179-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%181-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%181-rev
+            (@__ieee754_acos-m130.8-mem s130)
+            (@__ieee754_acos-%180-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%180-rev @__ieee754_acos-%180-rev @__ieee754_acos-%180-loc @__ieee754_acos-%180-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%182-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%182-rev
+            (@__ieee754_acos-m130.8-mem s130)
+            (@__ieee754_acos-%181-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%181-rev @__ieee754_acos-%181-rev @__ieee754_acos-%181-loc @__ieee754_acos-%181-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%183-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%183-rev
+            (@__ieee754_acos-m130.8-mem s130)
+            (@__ieee754_acos-%182-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%182-rev @__ieee754_acos-%182-rev @__ieee754_acos-%182-loc @__ieee754_acos-%182-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.9-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.9-rev
+            (@__ieee754_acos-m130.8-mem s130)
+            (@__ieee754_acos-%183-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%183-rev @__ieee754_acos-%183-rev @__ieee754_acos-%183-loc @__ieee754_acos-%183-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%184-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%184-rev
+            (@__ieee754_acos-m130.9-mem s130)
+            (@__ieee754_acos-%183-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.9-rev @__ieee754_acos-m130.9-rev @__ieee754_acos-m130.9-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%185-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%185-rev
+            (@__ieee754_acos-m130.9-mem s130)
+            (@__ieee754_acos-%184-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%184-rev @__ieee754_acos-%184-rev @__ieee754_acos-%184-loc @__ieee754_acos-%184-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%186-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%186-rev
+            (@__ieee754_acos-m130.9-mem s130)
+            (@__ieee754_acos-%185-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%185-rev @__ieee754_acos-%185-rev @__ieee754_acos-%185-loc @__ieee754_acos-%185-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%187-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-%187-rev
+            (@__ieee754_acos-m130.9-mem s130)
+            (@__ieee754_acos-%186-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%186-rev @__ieee754_acos-%186-rev @__ieee754_acos-%186-loc @__ieee754_acos-%186-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.10-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-m130.10-rev
+            (@__ieee754_acos-m130.9-mem s130)
+            (@__ieee754_acos-%187-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-%187-rev @__ieee754_acos-%187-rev @__ieee754_acos-%187-loc @__ieee754_acos-%187-val))
+(defruled @__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-succ130-rev
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (let ((s130 (list mem loc pred)))
+           (@__ieee754_acos-succ130-rev
+            (@__ieee754_acos-m130.10-mem s130)
+            (@__ieee754_acos-%187-loc s130)
+            (@__ieee754_acos-%130-pred s130))))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-m130.10-rev @__ieee754_acos-m130.10-rev @__ieee754_acos-m130.10-mem))
+(defruled @__ieee754_acos-%130-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%130-rev mem loc pred)
+         (@__ieee754_acos-%130-fwd mem loc pred))
+  :enable (@__ieee754_acos-%130-expand-rev-as-@__ieee754_acos-succ130-rev @__ieee754_acos-succ130-rev @__ieee754_acos-succ130-lab @__ieee754_acos-%130-fwd))
+
 (defund @__ieee754_acos-%130-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1983,80 +3685,6 @@
     (succ '%188))
   (mv succ mem loc)))
 
-(defruled @__ieee754_acos-%130-expand-bb
-  (equal (@__ieee754_acos-%130-bb mem loc pred)
-         (@__ieee754_acos-%130-rev mem loc pred))
-  :enable (@__ieee754_acos-%130-bb @__ieee754_acos-%130-rev
-    @__ieee754_acos-%131-rev
-    @__ieee754_acos-%132-rev
-    @__ieee754_acos-%133-rev
-    @__ieee754_acos-m130.1-rev
-    @__ieee754_acos-%134-rev
-    @__ieee754_acos-%135-rev
-    @__ieee754_acos-m130.2-rev
-    @__ieee754_acos-%136-rev
-    @__ieee754_acos-m130.3-rev
-    @__ieee754_acos-%137-rev
-    @__ieee754_acos-m130.4-rev
-    @__ieee754_acos-%138-rev
-    @__ieee754_acos-%139-rev
-    @__ieee754_acos-%140-rev
-    @__ieee754_acos-%141-rev
-    @__ieee754_acos-%142-rev
-    @__ieee754_acos-%143-rev
-    @__ieee754_acos-%144-rev
-    @__ieee754_acos-%145-rev
-    @__ieee754_acos-%146-rev
-    @__ieee754_acos-m130.5-rev
-    @__ieee754_acos-%147-rev
-    @__ieee754_acos-%148-rev
-    @__ieee754_acos-%149-rev
-    @__ieee754_acos-%150-rev
-    @__ieee754_acos-%151-rev
-    @__ieee754_acos-%152-rev
-    @__ieee754_acos-%153-rev
-    @__ieee754_acos-%154-rev
-    @__ieee754_acos-%155-rev
-    @__ieee754_acos-%156-rev
-    @__ieee754_acos-%157-rev
-    @__ieee754_acos-%158-rev
-    @__ieee754_acos-%159-rev
-    @__ieee754_acos-%160-rev
-    @__ieee754_acos-%161-rev
-    @__ieee754_acos-%162-rev
-    @__ieee754_acos-%163-rev
-    @__ieee754_acos-m130.6-rev
-    @__ieee754_acos-%164-rev
-    @__ieee754_acos-%165-rev
-    @__ieee754_acos-%166-rev
-    @__ieee754_acos-%167-rev
-    @__ieee754_acos-%168-rev
-    @__ieee754_acos-%169-rev
-    @__ieee754_acos-%170-rev
-    @__ieee754_acos-%171-rev
-    @__ieee754_acos-%172-rev
-    @__ieee754_acos-%173-rev
-    @__ieee754_acos-%174-rev
-    @__ieee754_acos-%175-rev
-    @__ieee754_acos-m130.7-rev
-    @__ieee754_acos-%176-rev
-    @__ieee754_acos-%177-rev
-    @__ieee754_acos-%178-rev
-    @__ieee754_acos-m130.8-rev
-    @__ieee754_acos-%179-rev
-    @__ieee754_acos-%180-rev
-    @__ieee754_acos-%181-rev
-    @__ieee754_acos-%182-rev
-    @__ieee754_acos-%183-rev
-    @__ieee754_acos-m130.9-rev
-    @__ieee754_acos-%184-rev
-    @__ieee754_acos-%185-rev
-    @__ieee754_acos-%186-rev
-    @__ieee754_acos-%187-rev
-    @__ieee754_acos-m130.10-rev
-    @__ieee754_acos-succ130-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_acos-%188-mem (s188)
   (car s188))
 (defund @__ieee754_acos-%188-loc (s188)
@@ -2071,6 +3699,10 @@
   (declare (ignore s188))
   'ret)
 
+(defund @__ieee754_acos-%188-fwd (mem loc pred)
+  (let ((s188 (list mem loc pred)))
+    (mv (@__ieee754_acos-succ188-lab s188) (@__ieee754_acos-%188-mem s188) (@__ieee754_acos-%189-loc s188))))
+
 (defund @__ieee754_acos-succ188-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -2080,20 +3712,33 @@
 (defund @__ieee754_acos-%188-rev (mem loc pred)
   (@__ieee754_acos-%189-rev mem loc pred))
 
+(defruled @__ieee754_acos-%188-expand-rev-as-@__ieee754_acos-%189-rev
+  (equal (@__ieee754_acos-%188-rev mem loc pred)
+         (let ((s188 (list mem loc pred)))
+           (@__ieee754_acos-%189-rev
+            (@__ieee754_acos-%188-mem s188)
+            (@__ieee754_acos-%188-loc s188)
+            (@__ieee754_acos-%188-pred s188))))
+  :enable (@__ieee754_acos-%188-rev @__ieee754_acos-%188-mem @__ieee754_acos-%188-loc @__ieee754_acos-%188-pred))
+(defruled @__ieee754_acos-%188-expand-rev-as-@__ieee754_acos-succ188-rev
+  (equal (@__ieee754_acos-%188-rev mem loc pred)
+         (let ((s188 (list mem loc pred)))
+           (@__ieee754_acos-succ188-rev
+            (@__ieee754_acos-%188-mem s188)
+            (@__ieee754_acos-%189-loc s188)
+            (@__ieee754_acos-%188-pred s188))))
+  :enable (@__ieee754_acos-%188-expand-rev-as-@__ieee754_acos-%189-rev @__ieee754_acos-%189-rev @__ieee754_acos-%189-loc @__ieee754_acos-%189-val))
+(defruled @__ieee754_acos-%188-expand-rev-as-fwd
+  (equal (@__ieee754_acos-%188-rev mem loc pred)
+         (@__ieee754_acos-%188-fwd mem loc pred))
+  :enable (@__ieee754_acos-%188-expand-rev-as-@__ieee754_acos-succ188-rev @__ieee754_acos-succ188-rev @__ieee754_acos-succ188-lab @__ieee754_acos-%188-fwd))
+
 (defund @__ieee754_acos-%188-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%189 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @__ieee754_acos-%188-expand-bb
-  (equal (@__ieee754_acos-%188-bb mem loc pred)
-         (@__ieee754_acos-%188-rev mem loc pred))
-  :enable (@__ieee754_acos-%188-bb @__ieee754_acos-%188-rev
-    @__ieee754_acos-%189-rev
-    @__ieee754_acos-succ188-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_acos-step (label mem loc pred)
   (case label

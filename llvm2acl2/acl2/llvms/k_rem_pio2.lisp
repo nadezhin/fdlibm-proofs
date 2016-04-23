@@ -187,6 +187,10 @@
 (defund @__kernel_rem_pio2-succ0-lab (s0)
   (case (g '%18 (@__kernel_rem_pio2-%18-loc s0)) (-1 '%19) (0 '%20)))
 
+(defund @__kernel_rem_pio2-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ0-lab s0) (@__kernel_rem_pio2-m0.10-mem s0) (@__kernel_rem_pio2-%18-loc s0))))
+
 (defund @__kernel_rem_pio2-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%18 loc) (-1 '%19) (0 '%20)) mem loc))
@@ -288,6 +292,395 @@
 (defund @__kernel_rem_pio2-%0-rev (mem loc pred)
   (@__kernel_rem_pio2-%1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%1-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%1-rev
+            (@__kernel_rem_pio2-%0-mem s0)
+            (@__kernel_rem_pio2-%0-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-rev @__kernel_rem_pio2-%0-mem @__kernel_rem_pio2-%0-loc @__kernel_rem_pio2-%0-pred))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%2-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%2-rev
+            (@__kernel_rem_pio2-%1-mem s0)
+            (@__kernel_rem_pio2-%1-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%1-rev @__kernel_rem_pio2-%1-rev @__kernel_rem_pio2-%1-mem @__kernel_rem_pio2-%1-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%3-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%3-rev
+            (@__kernel_rem_pio2-%2-mem s0)
+            (@__kernel_rem_pio2-%2-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%2-rev @__kernel_rem_pio2-%2-rev @__kernel_rem_pio2-%2-mem @__kernel_rem_pio2-%2-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%4-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%4-rev
+            (@__kernel_rem_pio2-%3-mem s0)
+            (@__kernel_rem_pio2-%3-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%3-rev @__kernel_rem_pio2-%3-rev @__kernel_rem_pio2-%3-mem @__kernel_rem_pio2-%3-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%5-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%5-rev
+            (@__kernel_rem_pio2-%4-mem s0)
+            (@__kernel_rem_pio2-%4-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%4-rev @__kernel_rem_pio2-%4-rev @__kernel_rem_pio2-%4-mem @__kernel_rem_pio2-%4-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%6-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%6-rev
+            (@__kernel_rem_pio2-%5-mem s0)
+            (@__kernel_rem_pio2-%5-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%5-rev @__kernel_rem_pio2-%5-rev @__kernel_rem_pio2-%5-mem @__kernel_rem_pio2-%5-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jz-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%jz-rev
+            (@__kernel_rem_pio2-%6-mem s0)
+            (@__kernel_rem_pio2-%6-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%6-rev @__kernel_rem_pio2-%6-rev @__kernel_rem_pio2-%6-mem @__kernel_rem_pio2-%6-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jx-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%jx-rev
+            (@__kernel_rem_pio2-%jz-mem s0)
+            (@__kernel_rem_pio2-%jz-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jz-rev @__kernel_rem_pio2-%jz-rev @__kernel_rem_pio2-%jz-mem @__kernel_rem_pio2-%jz-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jv-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%jv-rev
+            (@__kernel_rem_pio2-%jx-mem s0)
+            (@__kernel_rem_pio2-%jx-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jx-rev @__kernel_rem_pio2-%jx-rev @__kernel_rem_pio2-%jx-mem @__kernel_rem_pio2-%jx-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jp-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%jp-rev
+            (@__kernel_rem_pio2-%jv-mem s0)
+            (@__kernel_rem_pio2-%jv-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jv-rev @__kernel_rem_pio2-%jv-rev @__kernel_rem_pio2-%jv-mem @__kernel_rem_pio2-%jv-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jk-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%jk-rev
+            (@__kernel_rem_pio2-%jp-mem s0)
+            (@__kernel_rem_pio2-%jp-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jp-rev @__kernel_rem_pio2-%jp-rev @__kernel_rem_pio2-%jp-mem @__kernel_rem_pio2-%jp-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%carry-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%carry-rev
+            (@__kernel_rem_pio2-%jk-mem s0)
+            (@__kernel_rem_pio2-%jk-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%jk-rev @__kernel_rem_pio2-%jk-rev @__kernel_rem_pio2-%jk-mem @__kernel_rem_pio2-%jk-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%n-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%n-rev
+            (@__kernel_rem_pio2-%carry-mem s0)
+            (@__kernel_rem_pio2-%carry-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%carry-rev @__kernel_rem_pio2-%carry-rev @__kernel_rem_pio2-%carry-mem @__kernel_rem_pio2-%carry-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%iq-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%iq-rev
+            (@__kernel_rem_pio2-%n-mem s0)
+            (@__kernel_rem_pio2-%n-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%n-rev @__kernel_rem_pio2-%n-rev @__kernel_rem_pio2-%n-mem @__kernel_rem_pio2-%n-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%i-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%i-rev
+            (@__kernel_rem_pio2-%iq-mem s0)
+            (@__kernel_rem_pio2-%iq-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%iq-rev @__kernel_rem_pio2-%iq-rev @__kernel_rem_pio2-%iq-mem @__kernel_rem_pio2-%iq-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%j-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%j-rev
+            (@__kernel_rem_pio2-%i-mem s0)
+            (@__kernel_rem_pio2-%i-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%i-rev @__kernel_rem_pio2-%i-rev @__kernel_rem_pio2-%i-mem @__kernel_rem_pio2-%i-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%k-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%k-rev
+            (@__kernel_rem_pio2-%j-mem s0)
+            (@__kernel_rem_pio2-%j-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%j-rev @__kernel_rem_pio2-%j-rev @__kernel_rem_pio2-%j-mem @__kernel_rem_pio2-%j-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%m-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%m-rev
+            (@__kernel_rem_pio2-%k-mem s0)
+            (@__kernel_rem_pio2-%k-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%k-rev @__kernel_rem_pio2-%k-rev @__kernel_rem_pio2-%k-mem @__kernel_rem_pio2-%k-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%q0-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%q0-rev
+            (@__kernel_rem_pio2-%m-mem s0)
+            (@__kernel_rem_pio2-%m-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%m-rev @__kernel_rem_pio2-%m-rev @__kernel_rem_pio2-%m-mem @__kernel_rem_pio2-%m-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%ih-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%ih-rev
+            (@__kernel_rem_pio2-%q0-mem s0)
+            (@__kernel_rem_pio2-%q0-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%q0-rev @__kernel_rem_pio2-%q0-rev @__kernel_rem_pio2-%q0-mem @__kernel_rem_pio2-%q0-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%z-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%z-rev
+            (@__kernel_rem_pio2-%ih-mem s0)
+            (@__kernel_rem_pio2-%ih-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%ih-rev @__kernel_rem_pio2-%ih-rev @__kernel_rem_pio2-%ih-mem @__kernel_rem_pio2-%ih-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%fw-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%fw-rev
+            (@__kernel_rem_pio2-%z-mem s0)
+            (@__kernel_rem_pio2-%z-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%z-rev @__kernel_rem_pio2-%z-rev @__kernel_rem_pio2-%z-mem @__kernel_rem_pio2-%z-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%f-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%f-rev
+            (@__kernel_rem_pio2-%fw-mem s0)
+            (@__kernel_rem_pio2-%fw-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%fw-rev @__kernel_rem_pio2-%fw-rev @__kernel_rem_pio2-%fw-mem @__kernel_rem_pio2-%fw-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%fq-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%fq-rev
+            (@__kernel_rem_pio2-%f-mem s0)
+            (@__kernel_rem_pio2-%f-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%f-rev @__kernel_rem_pio2-%f-rev @__kernel_rem_pio2-%f-mem @__kernel_rem_pio2-%f-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%q-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%q-rev
+            (@__kernel_rem_pio2-%fq-mem s0)
+            (@__kernel_rem_pio2-%fq-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%fq-rev @__kernel_rem_pio2-%fq-rev @__kernel_rem_pio2-%fq-mem @__kernel_rem_pio2-%fq-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.1-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.1-rev
+            (@__kernel_rem_pio2-%q-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%q-rev @__kernel_rem_pio2-%q-rev @__kernel_rem_pio2-%q-mem @__kernel_rem_pio2-%q-loc))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.2-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.2-rev
+            (@__kernel_rem_pio2-m0.1-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.1-rev @__kernel_rem_pio2-m0.1-rev @__kernel_rem_pio2-m0.1-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.3-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.3-rev
+            (@__kernel_rem_pio2-m0.2-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.2-rev @__kernel_rem_pio2-m0.2-rev @__kernel_rem_pio2-m0.2-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.4-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.4-rev
+            (@__kernel_rem_pio2-m0.3-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.3-rev @__kernel_rem_pio2-m0.3-rev @__kernel_rem_pio2-m0.3-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.5-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.5-rev
+            (@__kernel_rem_pio2-m0.4-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.4-rev @__kernel_rem_pio2-m0.4-rev @__kernel_rem_pio2-m0.4-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.6-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.6-rev
+            (@__kernel_rem_pio2-m0.5-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.5-rev @__kernel_rem_pio2-m0.5-rev @__kernel_rem_pio2-m0.5-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%7-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%7-rev
+            (@__kernel_rem_pio2-m0.6-mem s0)
+            (@__kernel_rem_pio2-%q-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.6-rev @__kernel_rem_pio2-m0.6-rev @__kernel_rem_pio2-m0.6-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%8-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%8-rev
+            (@__kernel_rem_pio2-m0.6-mem s0)
+            (@__kernel_rem_pio2-%7-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%7-rev @__kernel_rem_pio2-%7-rev @__kernel_rem_pio2-%7-loc @__kernel_rem_pio2-%7-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%9-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%9-rev
+            (@__kernel_rem_pio2-m0.6-mem s0)
+            (@__kernel_rem_pio2-%8-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%8-rev @__kernel_rem_pio2-%8-rev @__kernel_rem_pio2-%8-loc @__kernel_rem_pio2-%8-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%10-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%10-rev
+            (@__kernel_rem_pio2-m0.6-mem s0)
+            (@__kernel_rem_pio2-%9-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%9-rev @__kernel_rem_pio2-%9-rev @__kernel_rem_pio2-%9-loc @__kernel_rem_pio2-%9-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.7-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.7-rev
+            (@__kernel_rem_pio2-m0.6-mem s0)
+            (@__kernel_rem_pio2-%10-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%10-rev @__kernel_rem_pio2-%10-rev @__kernel_rem_pio2-%10-loc @__kernel_rem_pio2-%10-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%11-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%11-rev
+            (@__kernel_rem_pio2-m0.7-mem s0)
+            (@__kernel_rem_pio2-%10-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.7-rev @__kernel_rem_pio2-m0.7-rev @__kernel_rem_pio2-m0.7-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.8-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.8-rev
+            (@__kernel_rem_pio2-m0.7-mem s0)
+            (@__kernel_rem_pio2-%11-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%11-rev @__kernel_rem_pio2-%11-rev @__kernel_rem_pio2-%11-loc @__kernel_rem_pio2-%11-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%12-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%12-rev
+            (@__kernel_rem_pio2-m0.8-mem s0)
+            (@__kernel_rem_pio2-%11-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.8-rev @__kernel_rem_pio2-m0.8-rev @__kernel_rem_pio2-m0.8-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%13-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%13-rev
+            (@__kernel_rem_pio2-m0.8-mem s0)
+            (@__kernel_rem_pio2-%12-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%12-rev @__kernel_rem_pio2-%12-rev @__kernel_rem_pio2-%12-loc @__kernel_rem_pio2-%12-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.9-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.9-rev
+            (@__kernel_rem_pio2-m0.8-mem s0)
+            (@__kernel_rem_pio2-%13-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%13-rev @__kernel_rem_pio2-%13-rev @__kernel_rem_pio2-%13-loc @__kernel_rem_pio2-%13-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%14-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%14-rev
+            (@__kernel_rem_pio2-m0.9-mem s0)
+            (@__kernel_rem_pio2-%13-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.9-rev @__kernel_rem_pio2-m0.9-rev @__kernel_rem_pio2-m0.9-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%15-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%15-rev
+            (@__kernel_rem_pio2-m0.9-mem s0)
+            (@__kernel_rem_pio2-%14-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%14-rev @__kernel_rem_pio2-%14-rev @__kernel_rem_pio2-%14-loc @__kernel_rem_pio2-%14-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%16-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%16-rev
+            (@__kernel_rem_pio2-m0.9-mem s0)
+            (@__kernel_rem_pio2-%15-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%15-rev @__kernel_rem_pio2-%15-rev @__kernel_rem_pio2-%15-loc @__kernel_rem_pio2-%15-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.10-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-m0.10-rev
+            (@__kernel_rem_pio2-m0.9-mem s0)
+            (@__kernel_rem_pio2-%16-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%16-rev @__kernel_rem_pio2-%16-rev @__kernel_rem_pio2-%16-loc @__kernel_rem_pio2-%16-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%17-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%17-rev
+            (@__kernel_rem_pio2-m0.10-mem s0)
+            (@__kernel_rem_pio2-%16-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-m0.10-rev @__kernel_rem_pio2-m0.10-rev @__kernel_rem_pio2-m0.10-mem))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%18-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-%18-rev
+            (@__kernel_rem_pio2-m0.10-mem s0)
+            (@__kernel_rem_pio2-%17-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%17-rev @__kernel_rem_pio2-%17-rev @__kernel_rem_pio2-%17-loc @__kernel_rem_pio2-%17-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-succ0-rev
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ0-rev
+            (@__kernel_rem_pio2-m0.10-mem s0)
+            (@__kernel_rem_pio2-%18-loc s0)
+            (@__kernel_rem_pio2-%0-pred s0))))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-%18-rev @__kernel_rem_pio2-%18-rev @__kernel_rem_pio2-%18-loc @__kernel_rem_pio2-%18-val))
+(defruled @__kernel_rem_pio2-%0-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%0-rev mem loc pred)
+         (@__kernel_rem_pio2-%0-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%0-expand-rev-as-@__kernel_rem_pio2-succ0-rev @__kernel_rem_pio2-succ0-rev @__kernel_rem_pio2-succ0-lab @__kernel_rem_pio2-%0-fwd))
+
 (defund @__kernel_rem_pio2-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -366,60 +759,6 @@
     (succ (case (g '%18 loc) (-1 '%19) (0 '%20))))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%0-expand-bb
-  (equal (@__kernel_rem_pio2-%0-bb mem loc pred)
-         (@__kernel_rem_pio2-%0-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%0-bb @__kernel_rem_pio2-%0-rev
-    @__kernel_rem_pio2-%1-rev
-    @__kernel_rem_pio2-%2-rev
-    @__kernel_rem_pio2-%3-rev
-    @__kernel_rem_pio2-%4-rev
-    @__kernel_rem_pio2-%5-rev
-    @__kernel_rem_pio2-%6-rev
-    @__kernel_rem_pio2-%jz-rev
-    @__kernel_rem_pio2-%jx-rev
-    @__kernel_rem_pio2-%jv-rev
-    @__kernel_rem_pio2-%jp-rev
-    @__kernel_rem_pio2-%jk-rev
-    @__kernel_rem_pio2-%carry-rev
-    @__kernel_rem_pio2-%n-rev
-    @__kernel_rem_pio2-%iq-rev
-    @__kernel_rem_pio2-%i-rev
-    @__kernel_rem_pio2-%j-rev
-    @__kernel_rem_pio2-%k-rev
-    @__kernel_rem_pio2-%m-rev
-    @__kernel_rem_pio2-%q0-rev
-    @__kernel_rem_pio2-%ih-rev
-    @__kernel_rem_pio2-%z-rev
-    @__kernel_rem_pio2-%fw-rev
-    @__kernel_rem_pio2-%f-rev
-    @__kernel_rem_pio2-%fq-rev
-    @__kernel_rem_pio2-%q-rev
-    @__kernel_rem_pio2-m0.1-rev
-    @__kernel_rem_pio2-m0.2-rev
-    @__kernel_rem_pio2-m0.3-rev
-    @__kernel_rem_pio2-m0.4-rev
-    @__kernel_rem_pio2-m0.5-rev
-    @__kernel_rem_pio2-m0.6-rev
-    @__kernel_rem_pio2-%7-rev
-    @__kernel_rem_pio2-%8-rev
-    @__kernel_rem_pio2-%9-rev
-    @__kernel_rem_pio2-%10-rev
-    @__kernel_rem_pio2-m0.7-rev
-    @__kernel_rem_pio2-%11-rev
-    @__kernel_rem_pio2-m0.8-rev
-    @__kernel_rem_pio2-%12-rev
-    @__kernel_rem_pio2-%13-rev
-    @__kernel_rem_pio2-m0.9-rev
-    @__kernel_rem_pio2-%14-rev
-    @__kernel_rem_pio2-%15-rev
-    @__kernel_rem_pio2-%16-rev
-    @__kernel_rem_pio2-m0.10-rev
-    @__kernel_rem_pio2-%17-rev
-    @__kernel_rem_pio2-%18-rev
-    @__kernel_rem_pio2-succ0-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%19-mem (s19)
   (car s19))
 (defund @__kernel_rem_pio2-%19-loc (s19)
@@ -432,6 +771,10 @@
   (declare (ignore s19))
   '%20)
 
+(defund @__kernel_rem_pio2-%19-fwd (mem loc pred)
+  (let ((s19 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ19-lab s19) (@__kernel_rem_pio2-m19.1-mem s19) (@__kernel_rem_pio2-%19-loc s19))))
+
 (defund @__kernel_rem_pio2-succ19-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%20 mem loc))
@@ -441,20 +784,33 @@
 (defund @__kernel_rem_pio2-%19-rev (mem loc pred)
   (@__kernel_rem_pio2-m19.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%19-expand-rev-as-@__kernel_rem_pio2-m19.1-rev
+  (equal (@__kernel_rem_pio2-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@__kernel_rem_pio2-m19.1-rev
+            (@__kernel_rem_pio2-%19-mem s19)
+            (@__kernel_rem_pio2-%19-loc s19)
+            (@__kernel_rem_pio2-%19-pred s19))))
+  :enable (@__kernel_rem_pio2-%19-rev @__kernel_rem_pio2-%19-mem @__kernel_rem_pio2-%19-loc @__kernel_rem_pio2-%19-pred))
+(defruled @__kernel_rem_pio2-%19-expand-rev-as-@__kernel_rem_pio2-succ19-rev
+  (equal (@__kernel_rem_pio2-%19-rev mem loc pred)
+         (let ((s19 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ19-rev
+            (@__kernel_rem_pio2-m19.1-mem s19)
+            (@__kernel_rem_pio2-%19-loc s19)
+            (@__kernel_rem_pio2-%19-pred s19))))
+  :enable (@__kernel_rem_pio2-%19-expand-rev-as-@__kernel_rem_pio2-m19.1-rev @__kernel_rem_pio2-m19.1-rev @__kernel_rem_pio2-m19.1-mem))
+(defruled @__kernel_rem_pio2-%19-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%19-rev mem loc pred)
+         (@__kernel_rem_pio2-%19-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%19-expand-rev-as-@__kernel_rem_pio2-succ19-rev @__kernel_rem_pio2-succ19-rev @__kernel_rem_pio2-succ19-lab @__kernel_rem_pio2-%19-fwd))
+
 (defund @__kernel_rem_pio2-%19-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 0 (g '%jv loc) mem))
     (succ '%20))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%19-expand-bb
-  (equal (@__kernel_rem_pio2-%19-bb mem loc pred)
-         (@__kernel_rem_pio2-%19-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%19-bb @__kernel_rem_pio2-%19-rev
-    @__kernel_rem_pio2-m19.1-rev
-    @__kernel_rem_pio2-succ19-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%20-mem (s20)
   (car s20))
@@ -518,6 +874,10 @@
   (declare (ignore s20))
   '%32)
 
+(defund @__kernel_rem_pio2-%20-fwd (mem loc pred)
+  (let ((s20 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ20-lab s20) (@__kernel_rem_pio2-m20.4-mem s20) (@__kernel_rem_pio2-%31-loc s20))))
+
 (defund @__kernel_rem_pio2-succ20-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%32 mem loc))
@@ -555,6 +915,139 @@
 (defund @__kernel_rem_pio2-%20-rev (mem loc pred)
   (@__kernel_rem_pio2-%21-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%21-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%21-rev
+            (@__kernel_rem_pio2-%20-mem s20)
+            (@__kernel_rem_pio2-%20-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-rev @__kernel_rem_pio2-%20-mem @__kernel_rem_pio2-%20-loc @__kernel_rem_pio2-%20-pred))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%22-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%22-rev
+            (@__kernel_rem_pio2-%20-mem s20)
+            (@__kernel_rem_pio2-%21-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%21-rev @__kernel_rem_pio2-%21-rev @__kernel_rem_pio2-%21-loc @__kernel_rem_pio2-%21-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%23-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%23-rev
+            (@__kernel_rem_pio2-%20-mem s20)
+            (@__kernel_rem_pio2-%22-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%22-rev @__kernel_rem_pio2-%22-rev @__kernel_rem_pio2-%22-loc @__kernel_rem_pio2-%22-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%24-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%24-rev
+            (@__kernel_rem_pio2-%20-mem s20)
+            (@__kernel_rem_pio2-%23-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%23-rev @__kernel_rem_pio2-%23-rev @__kernel_rem_pio2-%23-loc @__kernel_rem_pio2-%23-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%25-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%25-rev
+            (@__kernel_rem_pio2-%20-mem s20)
+            (@__kernel_rem_pio2-%24-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%24-rev @__kernel_rem_pio2-%24-rev @__kernel_rem_pio2-%24-loc @__kernel_rem_pio2-%24-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.1-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-m20.1-rev
+            (@__kernel_rem_pio2-%20-mem s20)
+            (@__kernel_rem_pio2-%25-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%25-rev @__kernel_rem_pio2-%25-rev @__kernel_rem_pio2-%25-loc @__kernel_rem_pio2-%25-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%26-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%26-rev
+            (@__kernel_rem_pio2-m20.1-mem s20)
+            (@__kernel_rem_pio2-%25-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.1-rev @__kernel_rem_pio2-m20.1-rev @__kernel_rem_pio2-m20.1-mem))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%27-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%27-rev
+            (@__kernel_rem_pio2-m20.1-mem s20)
+            (@__kernel_rem_pio2-%26-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%26-rev @__kernel_rem_pio2-%26-rev @__kernel_rem_pio2-%26-loc @__kernel_rem_pio2-%26-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%28-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%28-rev
+            (@__kernel_rem_pio2-m20.1-mem s20)
+            (@__kernel_rem_pio2-%27-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%27-rev @__kernel_rem_pio2-%27-rev @__kernel_rem_pio2-%27-loc @__kernel_rem_pio2-%27-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.2-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-m20.2-rev
+            (@__kernel_rem_pio2-m20.1-mem s20)
+            (@__kernel_rem_pio2-%28-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%28-rev @__kernel_rem_pio2-%28-rev @__kernel_rem_pio2-%28-loc @__kernel_rem_pio2-%28-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%29-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%29-rev
+            (@__kernel_rem_pio2-m20.2-mem s20)
+            (@__kernel_rem_pio2-%28-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.2-rev @__kernel_rem_pio2-m20.2-rev @__kernel_rem_pio2-m20.2-mem))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%30-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%30-rev
+            (@__kernel_rem_pio2-m20.2-mem s20)
+            (@__kernel_rem_pio2-%29-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%29-rev @__kernel_rem_pio2-%29-rev @__kernel_rem_pio2-%29-loc @__kernel_rem_pio2-%29-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%31-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-%31-rev
+            (@__kernel_rem_pio2-m20.2-mem s20)
+            (@__kernel_rem_pio2-%30-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%30-rev @__kernel_rem_pio2-%30-rev @__kernel_rem_pio2-%30-loc @__kernel_rem_pio2-%30-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.3-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-m20.3-rev
+            (@__kernel_rem_pio2-m20.2-mem s20)
+            (@__kernel_rem_pio2-%31-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-%31-rev @__kernel_rem_pio2-%31-rev @__kernel_rem_pio2-%31-loc @__kernel_rem_pio2-%31-val))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.4-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-m20.4-rev
+            (@__kernel_rem_pio2-m20.3-mem s20)
+            (@__kernel_rem_pio2-%31-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.3-rev @__kernel_rem_pio2-m20.3-rev @__kernel_rem_pio2-m20.3-mem))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-succ20-rev
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ20-rev
+            (@__kernel_rem_pio2-m20.4-mem s20)
+            (@__kernel_rem_pio2-%31-loc s20)
+            (@__kernel_rem_pio2-%20-pred s20))))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-m20.4-rev @__kernel_rem_pio2-m20.4-rev @__kernel_rem_pio2-m20.4-mem))
+(defruled @__kernel_rem_pio2-%20-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%20-rev mem loc pred)
+         (@__kernel_rem_pio2-%20-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%20-expand-rev-as-@__kernel_rem_pio2-succ20-rev @__kernel_rem_pio2-succ20-rev @__kernel_rem_pio2-succ20-lab @__kernel_rem_pio2-%20-fwd))
+
 (defund @__kernel_rem_pio2-%20-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -575,28 +1068,6 @@
     (mem (store-i32 0 (g '%i loc) mem))
     (succ '%32))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%20-expand-bb
-  (equal (@__kernel_rem_pio2-%20-bb mem loc pred)
-         (@__kernel_rem_pio2-%20-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%20-bb @__kernel_rem_pio2-%20-rev
-    @__kernel_rem_pio2-%21-rev
-    @__kernel_rem_pio2-%22-rev
-    @__kernel_rem_pio2-%23-rev
-    @__kernel_rem_pio2-%24-rev
-    @__kernel_rem_pio2-%25-rev
-    @__kernel_rem_pio2-m20.1-rev
-    @__kernel_rem_pio2-%26-rev
-    @__kernel_rem_pio2-%27-rev
-    @__kernel_rem_pio2-%28-rev
-    @__kernel_rem_pio2-m20.2-rev
-    @__kernel_rem_pio2-%29-rev
-    @__kernel_rem_pio2-%30-rev
-    @__kernel_rem_pio2-%31-rev
-    @__kernel_rem_pio2-m20.3-rev
-    @__kernel_rem_pio2-m20.4-rev
-    @__kernel_rem_pio2-succ20-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%32-mem (s32)
   (car s32))
@@ -619,6 +1090,10 @@
 (defund @__kernel_rem_pio2-succ32-lab (s32)
   (case (g '%35 (@__kernel_rem_pio2-%35-loc s32)) (-1 '%36) (0 '%57)))
 
+(defund @__kernel_rem_pio2-%32-fwd (mem loc pred)
+  (let ((s32 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ32-lab s32) (@__kernel_rem_pio2-%32-mem s32) (@__kernel_rem_pio2-%35-loc s32))))
+
 (defund @__kernel_rem_pio2-succ32-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%35 loc) (-1 '%36) (0 '%57)) mem loc))
@@ -632,6 +1107,43 @@
 (defund @__kernel_rem_pio2-%32-rev (mem loc pred)
   (@__kernel_rem_pio2-%33-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-%33-rev
+  (equal (@__kernel_rem_pio2-%32-rev mem loc pred)
+         (let ((s32 (list mem loc pred)))
+           (@__kernel_rem_pio2-%33-rev
+            (@__kernel_rem_pio2-%32-mem s32)
+            (@__kernel_rem_pio2-%32-loc s32)
+            (@__kernel_rem_pio2-%32-pred s32))))
+  :enable (@__kernel_rem_pio2-%32-rev @__kernel_rem_pio2-%32-mem @__kernel_rem_pio2-%32-loc @__kernel_rem_pio2-%32-pred))
+(defruled @__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-%34-rev
+  (equal (@__kernel_rem_pio2-%32-rev mem loc pred)
+         (let ((s32 (list mem loc pred)))
+           (@__kernel_rem_pio2-%34-rev
+            (@__kernel_rem_pio2-%32-mem s32)
+            (@__kernel_rem_pio2-%33-loc s32)
+            (@__kernel_rem_pio2-%32-pred s32))))
+  :enable (@__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-%33-rev @__kernel_rem_pio2-%33-rev @__kernel_rem_pio2-%33-loc @__kernel_rem_pio2-%33-val))
+(defruled @__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-%35-rev
+  (equal (@__kernel_rem_pio2-%32-rev mem loc pred)
+         (let ((s32 (list mem loc pred)))
+           (@__kernel_rem_pio2-%35-rev
+            (@__kernel_rem_pio2-%32-mem s32)
+            (@__kernel_rem_pio2-%34-loc s32)
+            (@__kernel_rem_pio2-%32-pred s32))))
+  :enable (@__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-%34-rev @__kernel_rem_pio2-%34-rev @__kernel_rem_pio2-%34-loc @__kernel_rem_pio2-%34-val))
+(defruled @__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-succ32-rev
+  (equal (@__kernel_rem_pio2-%32-rev mem loc pred)
+         (let ((s32 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ32-rev
+            (@__kernel_rem_pio2-%32-mem s32)
+            (@__kernel_rem_pio2-%35-loc s32)
+            (@__kernel_rem_pio2-%32-pred s32))))
+  :enable (@__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-%35-rev @__kernel_rem_pio2-%35-rev @__kernel_rem_pio2-%35-loc @__kernel_rem_pio2-%35-val))
+(defruled @__kernel_rem_pio2-%32-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%32-rev mem loc pred)
+         (@__kernel_rem_pio2-%32-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%32-expand-rev-as-@__kernel_rem_pio2-succ32-rev @__kernel_rem_pio2-succ32-rev @__kernel_rem_pio2-succ32-lab @__kernel_rem_pio2-%32-fwd))
+
 (defund @__kernel_rem_pio2-%32-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -640,16 +1152,6 @@
     (loc (s '%35 (icmp-sle-i32 (g '%33 loc) (g '%34 loc)) loc))
     (succ (case (g '%35 loc) (-1 '%36) (0 '%57))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%32-expand-bb
-  (equal (@__kernel_rem_pio2-%32-bb mem loc pred)
-         (@__kernel_rem_pio2-%32-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%32-bb @__kernel_rem_pio2-%32-rev
-    @__kernel_rem_pio2-%33-rev
-    @__kernel_rem_pio2-%34-rev
-    @__kernel_rem_pio2-%35-rev
-    @__kernel_rem_pio2-succ32-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%36-mem (s36)
   (car s36))
@@ -668,6 +1170,10 @@
 (defund @__kernel_rem_pio2-succ36-lab (s36)
   (case (g '%38 (@__kernel_rem_pio2-%38-loc s36)) (-1 '%39) (0 '%40)))
 
+(defund @__kernel_rem_pio2-%36-fwd (mem loc pred)
+  (let ((s36 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ36-lab s36) (@__kernel_rem_pio2-%36-mem s36) (@__kernel_rem_pio2-%38-loc s36))))
+
 (defund @__kernel_rem_pio2-succ36-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%38 loc) (-1 '%39) (0 '%40)) mem loc))
@@ -679,6 +1185,35 @@
 (defund @__kernel_rem_pio2-%36-rev (mem loc pred)
   (@__kernel_rem_pio2-%37-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%36-expand-rev-as-@__kernel_rem_pio2-%37-rev
+  (equal (@__kernel_rem_pio2-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@__kernel_rem_pio2-%37-rev
+            (@__kernel_rem_pio2-%36-mem s36)
+            (@__kernel_rem_pio2-%36-loc s36)
+            (@__kernel_rem_pio2-%36-pred s36))))
+  :enable (@__kernel_rem_pio2-%36-rev @__kernel_rem_pio2-%36-mem @__kernel_rem_pio2-%36-loc @__kernel_rem_pio2-%36-pred))
+(defruled @__kernel_rem_pio2-%36-expand-rev-as-@__kernel_rem_pio2-%38-rev
+  (equal (@__kernel_rem_pio2-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@__kernel_rem_pio2-%38-rev
+            (@__kernel_rem_pio2-%36-mem s36)
+            (@__kernel_rem_pio2-%37-loc s36)
+            (@__kernel_rem_pio2-%36-pred s36))))
+  :enable (@__kernel_rem_pio2-%36-expand-rev-as-@__kernel_rem_pio2-%37-rev @__kernel_rem_pio2-%37-rev @__kernel_rem_pio2-%37-loc @__kernel_rem_pio2-%37-val))
+(defruled @__kernel_rem_pio2-%36-expand-rev-as-@__kernel_rem_pio2-succ36-rev
+  (equal (@__kernel_rem_pio2-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ36-rev
+            (@__kernel_rem_pio2-%36-mem s36)
+            (@__kernel_rem_pio2-%38-loc s36)
+            (@__kernel_rem_pio2-%36-pred s36))))
+  :enable (@__kernel_rem_pio2-%36-expand-rev-as-@__kernel_rem_pio2-%38-rev @__kernel_rem_pio2-%38-rev @__kernel_rem_pio2-%38-loc @__kernel_rem_pio2-%38-val))
+(defruled @__kernel_rem_pio2-%36-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%36-rev mem loc pred)
+         (@__kernel_rem_pio2-%36-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%36-expand-rev-as-@__kernel_rem_pio2-succ36-rev @__kernel_rem_pio2-succ36-rev @__kernel_rem_pio2-succ36-lab @__kernel_rem_pio2-%36-fwd))
+
 (defund @__kernel_rem_pio2-%36-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -686,15 +1221,6 @@
     (loc (s '%38 (icmp-slt-i32 (g '%37 loc) 0) loc))
     (succ (case (g '%38 loc) (-1 '%39) (0 '%40))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%36-expand-bb
-  (equal (@__kernel_rem_pio2-%36-bb mem loc pred)
-         (@__kernel_rem_pio2-%36-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%36-bb @__kernel_rem_pio2-%36-rev
-    @__kernel_rem_pio2-%37-rev
-    @__kernel_rem_pio2-%38-rev
-    @__kernel_rem_pio2-succ36-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%39-mem (s39)
   (car s39))
@@ -706,6 +1232,10 @@
   (declare (ignore s39))
   '%47)
 
+(defund @__kernel_rem_pio2-%39-fwd (mem loc pred)
+  (let ((s39 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ39-lab s39) (@__kernel_rem_pio2-%39-mem s39) (@__kernel_rem_pio2-%39-loc s39))))
+
 (defund @__kernel_rem_pio2-succ39-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%47 mem loc))
@@ -713,18 +1243,24 @@
 (defund @__kernel_rem_pio2-%39-rev (mem loc pred)
   (@__kernel_rem_pio2-succ39-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%39-expand-rev-as-@__kernel_rem_pio2-succ39-rev
+  (equal (@__kernel_rem_pio2-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ39-rev
+            (@__kernel_rem_pio2-%39-mem s39)
+            (@__kernel_rem_pio2-%39-loc s39)
+            (@__kernel_rem_pio2-%39-pred s39))))
+  :enable (@__kernel_rem_pio2-%39-rev @__kernel_rem_pio2-%39-mem @__kernel_rem_pio2-%39-loc @__kernel_rem_pio2-%39-pred))
+(defruled @__kernel_rem_pio2-%39-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%39-rev mem loc pred)
+         (@__kernel_rem_pio2-%39-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%39-expand-rev-as-@__kernel_rem_pio2-succ39-rev @__kernel_rem_pio2-succ39-rev @__kernel_rem_pio2-succ39-lab @__kernel_rem_pio2-%39-fwd))
+
 (defund @__kernel_rem_pio2-%39-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%47))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%39-expand-bb
-  (equal (@__kernel_rem_pio2-%39-bb mem loc pred)
-         (@__kernel_rem_pio2-%39-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%39-bb @__kernel_rem_pio2-%39-rev
-    @__kernel_rem_pio2-succ39-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%40-mem (s40)
   (car s40))
@@ -760,6 +1296,10 @@
   (declare (ignore s40))
   '%47)
 
+(defund @__kernel_rem_pio2-%40-fwd (mem loc pred)
+  (let ((s40 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ40-lab s40) (@__kernel_rem_pio2-%40-mem s40) (@__kernel_rem_pio2-%46-loc s40))))
+
 (defund @__kernel_rem_pio2-succ40-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%47 mem loc))
@@ -779,6 +1319,67 @@
 (defund @__kernel_rem_pio2-%40-rev (mem loc pred)
   (@__kernel_rem_pio2-%41-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%41-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-%41-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%40-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-rev @__kernel_rem_pio2-%40-mem @__kernel_rem_pio2-%40-loc @__kernel_rem_pio2-%40-pred))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%42-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-%42-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%41-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%41-rev @__kernel_rem_pio2-%41-rev @__kernel_rem_pio2-%41-loc @__kernel_rem_pio2-%41-val))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%43-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-%43-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%42-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%42-rev @__kernel_rem_pio2-%42-rev @__kernel_rem_pio2-%42-loc @__kernel_rem_pio2-%42-val))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%44-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-%44-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%43-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%43-rev @__kernel_rem_pio2-%43-rev @__kernel_rem_pio2-%43-loc @__kernel_rem_pio2-%43-val))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%45-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-%45-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%44-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%44-rev @__kernel_rem_pio2-%44-rev @__kernel_rem_pio2-%44-loc @__kernel_rem_pio2-%44-val))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%46-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-%46-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%45-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%45-rev @__kernel_rem_pio2-%45-rev @__kernel_rem_pio2-%45-loc @__kernel_rem_pio2-%45-val))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-succ40-rev
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ40-rev
+            (@__kernel_rem_pio2-%40-mem s40)
+            (@__kernel_rem_pio2-%46-loc s40)
+            (@__kernel_rem_pio2-%40-pred s40))))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-%46-rev @__kernel_rem_pio2-%46-rev @__kernel_rem_pio2-%46-loc @__kernel_rem_pio2-%46-val))
+(defruled @__kernel_rem_pio2-%40-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%40-rev mem loc pred)
+         (@__kernel_rem_pio2-%40-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%40-expand-rev-as-@__kernel_rem_pio2-succ40-rev @__kernel_rem_pio2-succ40-rev @__kernel_rem_pio2-succ40-lab @__kernel_rem_pio2-%40-fwd))
+
 (defund @__kernel_rem_pio2-%40-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -790,19 +1391,6 @@
     (loc (s '%46 (sitofp-i32-to-double (g '%45 loc)) loc))
     (succ '%47))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%40-expand-bb
-  (equal (@__kernel_rem_pio2-%40-bb mem loc pred)
-         (@__kernel_rem_pio2-%40-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%40-bb @__kernel_rem_pio2-%40-rev
-    @__kernel_rem_pio2-%41-rev
-    @__kernel_rem_pio2-%42-rev
-    @__kernel_rem_pio2-%43-rev
-    @__kernel_rem_pio2-%44-rev
-    @__kernel_rem_pio2-%45-rev
-    @__kernel_rem_pio2-%46-rev
-    @__kernel_rem_pio2-succ40-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%47-mem (s47)
   (car s47))
@@ -832,6 +1420,10 @@
   (declare (ignore s47))
   '%52)
 
+(defund @__kernel_rem_pio2-%47-fwd (mem loc pred)
+  (let ((s47 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ47-lab s47) (@__kernel_rem_pio2-m47.1-mem s47) (@__kernel_rem_pio2-%51-loc s47))))
+
 (defund @__kernel_rem_pio2-succ47-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%52 mem loc))
@@ -849,6 +1441,59 @@
 (defund @__kernel_rem_pio2-%47-rev (mem loc pred)
   (@__kernel_rem_pio2-%48-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%48-rev
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__kernel_rem_pio2-%48-rev
+            (@__kernel_rem_pio2-%47-mem s47)
+            (@__kernel_rem_pio2-%47-loc s47)
+            (@__kernel_rem_pio2-%47-pred s47))))
+  :enable (@__kernel_rem_pio2-%47-rev @__kernel_rem_pio2-%47-mem @__kernel_rem_pio2-%47-loc @__kernel_rem_pio2-%47-pred))
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%49-rev
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__kernel_rem_pio2-%49-rev
+            (@__kernel_rem_pio2-%47-mem s47)
+            (@__kernel_rem_pio2-%48-loc s47)
+            (@__kernel_rem_pio2-%47-pred s47))))
+  :enable (@__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%48-rev @__kernel_rem_pio2-%48-rev @__kernel_rem_pio2-%48-loc @__kernel_rem_pio2-%48-val))
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%50-rev
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__kernel_rem_pio2-%50-rev
+            (@__kernel_rem_pio2-%47-mem s47)
+            (@__kernel_rem_pio2-%49-loc s47)
+            (@__kernel_rem_pio2-%47-pred s47))))
+  :enable (@__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%49-rev @__kernel_rem_pio2-%49-rev @__kernel_rem_pio2-%49-loc @__kernel_rem_pio2-%49-val))
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%51-rev
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__kernel_rem_pio2-%51-rev
+            (@__kernel_rem_pio2-%47-mem s47)
+            (@__kernel_rem_pio2-%50-loc s47)
+            (@__kernel_rem_pio2-%47-pred s47))))
+  :enable (@__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%50-rev @__kernel_rem_pio2-%50-rev @__kernel_rem_pio2-%50-loc @__kernel_rem_pio2-%50-val))
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-m47.1-rev
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__kernel_rem_pio2-m47.1-rev
+            (@__kernel_rem_pio2-%47-mem s47)
+            (@__kernel_rem_pio2-%51-loc s47)
+            (@__kernel_rem_pio2-%47-pred s47))))
+  :enable (@__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-%51-rev @__kernel_rem_pio2-%51-rev @__kernel_rem_pio2-%51-loc @__kernel_rem_pio2-%51-val))
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-succ47-rev
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ47-rev
+            (@__kernel_rem_pio2-m47.1-mem s47)
+            (@__kernel_rem_pio2-%51-loc s47)
+            (@__kernel_rem_pio2-%47-pred s47))))
+  :enable (@__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-m47.1-rev @__kernel_rem_pio2-m47.1-rev @__kernel_rem_pio2-m47.1-mem))
+(defruled @__kernel_rem_pio2-%47-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%47-rev mem loc pred)
+         (@__kernel_rem_pio2-%47-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%47-expand-rev-as-@__kernel_rem_pio2-succ47-rev @__kernel_rem_pio2-succ47-rev @__kernel_rem_pio2-succ47-lab @__kernel_rem_pio2-%47-fwd))
+
 (defund @__kernel_rem_pio2-%47-bb (mem loc pred)
   (b* (
     (loc (s '%48 (case pred (%39 #x0000000000000000) (%40 (g '%46 loc))) loc))
@@ -858,18 +1503,6 @@
     (mem (store-double (g '%48 loc) (g '%51 loc) mem))
     (succ '%52))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%47-expand-bb
-  (equal (@__kernel_rem_pio2-%47-bb mem loc pred)
-         (@__kernel_rem_pio2-%47-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%47-bb @__kernel_rem_pio2-%47-rev
-    @__kernel_rem_pio2-%48-rev
-    @__kernel_rem_pio2-%49-rev
-    @__kernel_rem_pio2-%50-rev
-    @__kernel_rem_pio2-%51-rev
-    @__kernel_rem_pio2-m47.1-rev
-    @__kernel_rem_pio2-succ47-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%52-mem (s52)
   (car s52))
@@ -901,6 +1534,10 @@
   (declare (ignore s52))
   '%32)
 
+(defund @__kernel_rem_pio2-%52-fwd (mem loc pred)
+  (let ((s52 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ52-lab s52) (@__kernel_rem_pio2-m52.2-mem s52) (@__kernel_rem_pio2-%56-loc s52))))
+
 (defund @__kernel_rem_pio2-succ52-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%32 mem loc))
@@ -920,6 +1557,67 @@
 (defund @__kernel_rem_pio2-%52-rev (mem loc pred)
   (@__kernel_rem_pio2-%53-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%53-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-%53-rev
+            (@__kernel_rem_pio2-%52-mem s52)
+            (@__kernel_rem_pio2-%52-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-rev @__kernel_rem_pio2-%52-mem @__kernel_rem_pio2-%52-loc @__kernel_rem_pio2-%52-pred))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%54-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-%54-rev
+            (@__kernel_rem_pio2-%52-mem s52)
+            (@__kernel_rem_pio2-%53-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%53-rev @__kernel_rem_pio2-%53-rev @__kernel_rem_pio2-%53-loc @__kernel_rem_pio2-%53-val))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-m52.1-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-m52.1-rev
+            (@__kernel_rem_pio2-%52-mem s52)
+            (@__kernel_rem_pio2-%54-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%54-rev @__kernel_rem_pio2-%54-rev @__kernel_rem_pio2-%54-loc @__kernel_rem_pio2-%54-val))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%55-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-%55-rev
+            (@__kernel_rem_pio2-m52.1-mem s52)
+            (@__kernel_rem_pio2-%54-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-m52.1-rev @__kernel_rem_pio2-m52.1-rev @__kernel_rem_pio2-m52.1-mem))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%56-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-%56-rev
+            (@__kernel_rem_pio2-m52.1-mem s52)
+            (@__kernel_rem_pio2-%55-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%55-rev @__kernel_rem_pio2-%55-rev @__kernel_rem_pio2-%55-loc @__kernel_rem_pio2-%55-val))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-m52.2-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-m52.2-rev
+            (@__kernel_rem_pio2-m52.1-mem s52)
+            (@__kernel_rem_pio2-%56-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-%56-rev @__kernel_rem_pio2-%56-rev @__kernel_rem_pio2-%56-loc @__kernel_rem_pio2-%56-val))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-succ52-rev
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ52-rev
+            (@__kernel_rem_pio2-m52.2-mem s52)
+            (@__kernel_rem_pio2-%56-loc s52)
+            (@__kernel_rem_pio2-%52-pred s52))))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-m52.2-rev @__kernel_rem_pio2-m52.2-rev @__kernel_rem_pio2-m52.2-mem))
+(defruled @__kernel_rem_pio2-%52-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%52-rev mem loc pred)
+         (@__kernel_rem_pio2-%52-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%52-expand-rev-as-@__kernel_rem_pio2-succ52-rev @__kernel_rem_pio2-succ52-rev @__kernel_rem_pio2-succ52-lab @__kernel_rem_pio2-%52-fwd))
+
 (defund @__kernel_rem_pio2-%52-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -931,19 +1629,6 @@
     (mem (store-i32 (g '%56 loc) (g '%j loc) mem))
     (succ '%32))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%52-expand-bb
-  (equal (@__kernel_rem_pio2-%52-bb mem loc pred)
-         (@__kernel_rem_pio2-%52-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%52-bb @__kernel_rem_pio2-%52-rev
-    @__kernel_rem_pio2-%53-rev
-    @__kernel_rem_pio2-%54-rev
-    @__kernel_rem_pio2-m52.1-rev
-    @__kernel_rem_pio2-%55-rev
-    @__kernel_rem_pio2-%56-rev
-    @__kernel_rem_pio2-m52.2-rev
-    @__kernel_rem_pio2-succ52-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%57-mem (s57)
   (car s57))
@@ -957,6 +1642,10 @@
   (declare (ignore s57))
   '%58)
 
+(defund @__kernel_rem_pio2-%57-fwd (mem loc pred)
+  (let ((s57 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ57-lab s57) (@__kernel_rem_pio2-m57.1-mem s57) (@__kernel_rem_pio2-%57-loc s57))))
+
 (defund @__kernel_rem_pio2-succ57-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%58 mem loc))
@@ -966,20 +1655,33 @@
 (defund @__kernel_rem_pio2-%57-rev (mem loc pred)
   (@__kernel_rem_pio2-m57.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%57-expand-rev-as-@__kernel_rem_pio2-m57.1-rev
+  (equal (@__kernel_rem_pio2-%57-rev mem loc pred)
+         (let ((s57 (list mem loc pred)))
+           (@__kernel_rem_pio2-m57.1-rev
+            (@__kernel_rem_pio2-%57-mem s57)
+            (@__kernel_rem_pio2-%57-loc s57)
+            (@__kernel_rem_pio2-%57-pred s57))))
+  :enable (@__kernel_rem_pio2-%57-rev @__kernel_rem_pio2-%57-mem @__kernel_rem_pio2-%57-loc @__kernel_rem_pio2-%57-pred))
+(defruled @__kernel_rem_pio2-%57-expand-rev-as-@__kernel_rem_pio2-succ57-rev
+  (equal (@__kernel_rem_pio2-%57-rev mem loc pred)
+         (let ((s57 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ57-rev
+            (@__kernel_rem_pio2-m57.1-mem s57)
+            (@__kernel_rem_pio2-%57-loc s57)
+            (@__kernel_rem_pio2-%57-pred s57))))
+  :enable (@__kernel_rem_pio2-%57-expand-rev-as-@__kernel_rem_pio2-m57.1-rev @__kernel_rem_pio2-m57.1-rev @__kernel_rem_pio2-m57.1-mem))
+(defruled @__kernel_rem_pio2-%57-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%57-rev mem loc pred)
+         (@__kernel_rem_pio2-%57-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%57-expand-rev-as-@__kernel_rem_pio2-succ57-rev @__kernel_rem_pio2-succ57-rev @__kernel_rem_pio2-succ57-lab @__kernel_rem_pio2-%57-fwd))
+
 (defund @__kernel_rem_pio2-%57-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 0 (g '%i loc) mem))
     (succ '%58))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%57-expand-bb
-  (equal (@__kernel_rem_pio2-%57-bb mem loc pred)
-         (@__kernel_rem_pio2-%57-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%57-bb @__kernel_rem_pio2-%57-rev
-    @__kernel_rem_pio2-m57.1-rev
-    @__kernel_rem_pio2-succ57-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%58-mem (s58)
   (car s58))
@@ -1002,6 +1704,10 @@
 (defund @__kernel_rem_pio2-succ58-lab (s58)
   (case (g '%61 (@__kernel_rem_pio2-%61-loc s58)) (-1 '%62) (0 '%95)))
 
+(defund @__kernel_rem_pio2-%58-fwd (mem loc pred)
+  (let ((s58 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ58-lab s58) (@__kernel_rem_pio2-%58-mem s58) (@__kernel_rem_pio2-%61-loc s58))))
+
 (defund @__kernel_rem_pio2-succ58-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%61 loc) (-1 '%62) (0 '%95)) mem loc))
@@ -1015,6 +1721,43 @@
 (defund @__kernel_rem_pio2-%58-rev (mem loc pred)
   (@__kernel_rem_pio2-%59-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-%59-rev
+  (equal (@__kernel_rem_pio2-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@__kernel_rem_pio2-%59-rev
+            (@__kernel_rem_pio2-%58-mem s58)
+            (@__kernel_rem_pio2-%58-loc s58)
+            (@__kernel_rem_pio2-%58-pred s58))))
+  :enable (@__kernel_rem_pio2-%58-rev @__kernel_rem_pio2-%58-mem @__kernel_rem_pio2-%58-loc @__kernel_rem_pio2-%58-pred))
+(defruled @__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-%60-rev
+  (equal (@__kernel_rem_pio2-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@__kernel_rem_pio2-%60-rev
+            (@__kernel_rem_pio2-%58-mem s58)
+            (@__kernel_rem_pio2-%59-loc s58)
+            (@__kernel_rem_pio2-%58-pred s58))))
+  :enable (@__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-%59-rev @__kernel_rem_pio2-%59-rev @__kernel_rem_pio2-%59-loc @__kernel_rem_pio2-%59-val))
+(defruled @__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-%61-rev
+  (equal (@__kernel_rem_pio2-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@__kernel_rem_pio2-%61-rev
+            (@__kernel_rem_pio2-%58-mem s58)
+            (@__kernel_rem_pio2-%60-loc s58)
+            (@__kernel_rem_pio2-%58-pred s58))))
+  :enable (@__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-%60-rev @__kernel_rem_pio2-%60-rev @__kernel_rem_pio2-%60-loc @__kernel_rem_pio2-%60-val))
+(defruled @__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-succ58-rev
+  (equal (@__kernel_rem_pio2-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ58-rev
+            (@__kernel_rem_pio2-%58-mem s58)
+            (@__kernel_rem_pio2-%61-loc s58)
+            (@__kernel_rem_pio2-%58-pred s58))))
+  :enable (@__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-%61-rev @__kernel_rem_pio2-%61-rev @__kernel_rem_pio2-%61-loc @__kernel_rem_pio2-%61-val))
+(defruled @__kernel_rem_pio2-%58-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%58-rev mem loc pred)
+         (@__kernel_rem_pio2-%58-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%58-expand-rev-as-@__kernel_rem_pio2-succ58-rev @__kernel_rem_pio2-succ58-rev @__kernel_rem_pio2-succ58-lab @__kernel_rem_pio2-%58-fwd))
+
 (defund @__kernel_rem_pio2-%58-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1023,16 +1766,6 @@
     (loc (s '%61 (icmp-sle-i32 (g '%59 loc) (g '%60 loc)) loc))
     (succ (case (g '%61 loc) (-1 '%62) (0 '%95))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%58-expand-bb
-  (equal (@__kernel_rem_pio2-%58-bb mem loc pred)
-         (@__kernel_rem_pio2-%58-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%58-bb @__kernel_rem_pio2-%58-rev
-    @__kernel_rem_pio2-%59-rev
-    @__kernel_rem_pio2-%60-rev
-    @__kernel_rem_pio2-%61-rev
-    @__kernel_rem_pio2-succ58-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%62-mem (s62)
   (car s62))
@@ -1048,6 +1781,10 @@
   (declare (ignore s62))
   '%63)
 
+(defund @__kernel_rem_pio2-%62-fwd (mem loc pred)
+  (let ((s62 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ62-lab s62) (@__kernel_rem_pio2-m62.2-mem s62) (@__kernel_rem_pio2-%62-loc s62))))
+
 (defund @__kernel_rem_pio2-succ62-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%63 mem loc))
@@ -1059,6 +1796,35 @@
 (defund @__kernel_rem_pio2-%62-rev (mem loc pred)
   (@__kernel_rem_pio2-m62.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%62-expand-rev-as-@__kernel_rem_pio2-m62.1-rev
+  (equal (@__kernel_rem_pio2-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__kernel_rem_pio2-m62.1-rev
+            (@__kernel_rem_pio2-%62-mem s62)
+            (@__kernel_rem_pio2-%62-loc s62)
+            (@__kernel_rem_pio2-%62-pred s62))))
+  :enable (@__kernel_rem_pio2-%62-rev @__kernel_rem_pio2-%62-mem @__kernel_rem_pio2-%62-loc @__kernel_rem_pio2-%62-pred))
+(defruled @__kernel_rem_pio2-%62-expand-rev-as-@__kernel_rem_pio2-m62.2-rev
+  (equal (@__kernel_rem_pio2-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__kernel_rem_pio2-m62.2-rev
+            (@__kernel_rem_pio2-m62.1-mem s62)
+            (@__kernel_rem_pio2-%62-loc s62)
+            (@__kernel_rem_pio2-%62-pred s62))))
+  :enable (@__kernel_rem_pio2-%62-expand-rev-as-@__kernel_rem_pio2-m62.1-rev @__kernel_rem_pio2-m62.1-rev @__kernel_rem_pio2-m62.1-mem))
+(defruled @__kernel_rem_pio2-%62-expand-rev-as-@__kernel_rem_pio2-succ62-rev
+  (equal (@__kernel_rem_pio2-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ62-rev
+            (@__kernel_rem_pio2-m62.2-mem s62)
+            (@__kernel_rem_pio2-%62-loc s62)
+            (@__kernel_rem_pio2-%62-pred s62))))
+  :enable (@__kernel_rem_pio2-%62-expand-rev-as-@__kernel_rem_pio2-m62.2-rev @__kernel_rem_pio2-m62.2-rev @__kernel_rem_pio2-m62.2-mem))
+(defruled @__kernel_rem_pio2-%62-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%62-rev mem loc pred)
+         (@__kernel_rem_pio2-%62-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%62-expand-rev-as-@__kernel_rem_pio2-succ62-rev @__kernel_rem_pio2-succ62-rev @__kernel_rem_pio2-succ62-lab @__kernel_rem_pio2-%62-fwd))
+
 (defund @__kernel_rem_pio2-%62-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1066,15 +1832,6 @@
     (mem (store-double #x0000000000000000 (g '%fw loc) mem))
     (succ '%63))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%62-expand-bb
-  (equal (@__kernel_rem_pio2-%62-bb mem loc pred)
-         (@__kernel_rem_pio2-%62-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%62-bb @__kernel_rem_pio2-%62-rev
-    @__kernel_rem_pio2-m62.1-rev
-    @__kernel_rem_pio2-m62.2-rev
-    @__kernel_rem_pio2-succ62-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%63-mem (s63)
   (car s63))
@@ -1097,6 +1854,10 @@
 (defund @__kernel_rem_pio2-succ63-lab (s63)
   (case (g '%66 (@__kernel_rem_pio2-%66-loc s63)) (-1 '%67) (0 '%87)))
 
+(defund @__kernel_rem_pio2-%63-fwd (mem loc pred)
+  (let ((s63 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ63-lab s63) (@__kernel_rem_pio2-%63-mem s63) (@__kernel_rem_pio2-%66-loc s63))))
+
 (defund @__kernel_rem_pio2-succ63-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%66 loc) (-1 '%67) (0 '%87)) mem loc))
@@ -1110,6 +1871,43 @@
 (defund @__kernel_rem_pio2-%63-rev (mem loc pred)
   (@__kernel_rem_pio2-%64-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-%64-rev
+  (equal (@__kernel_rem_pio2-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@__kernel_rem_pio2-%64-rev
+            (@__kernel_rem_pio2-%63-mem s63)
+            (@__kernel_rem_pio2-%63-loc s63)
+            (@__kernel_rem_pio2-%63-pred s63))))
+  :enable (@__kernel_rem_pio2-%63-rev @__kernel_rem_pio2-%63-mem @__kernel_rem_pio2-%63-loc @__kernel_rem_pio2-%63-pred))
+(defruled @__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-%65-rev
+  (equal (@__kernel_rem_pio2-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@__kernel_rem_pio2-%65-rev
+            (@__kernel_rem_pio2-%63-mem s63)
+            (@__kernel_rem_pio2-%64-loc s63)
+            (@__kernel_rem_pio2-%63-pred s63))))
+  :enable (@__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-%64-rev @__kernel_rem_pio2-%64-rev @__kernel_rem_pio2-%64-loc @__kernel_rem_pio2-%64-val))
+(defruled @__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-%66-rev
+  (equal (@__kernel_rem_pio2-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@__kernel_rem_pio2-%66-rev
+            (@__kernel_rem_pio2-%63-mem s63)
+            (@__kernel_rem_pio2-%65-loc s63)
+            (@__kernel_rem_pio2-%63-pred s63))))
+  :enable (@__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-%65-rev @__kernel_rem_pio2-%65-rev @__kernel_rem_pio2-%65-loc @__kernel_rem_pio2-%65-val))
+(defruled @__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-succ63-rev
+  (equal (@__kernel_rem_pio2-%63-rev mem loc pred)
+         (let ((s63 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ63-rev
+            (@__kernel_rem_pio2-%63-mem s63)
+            (@__kernel_rem_pio2-%66-loc s63)
+            (@__kernel_rem_pio2-%63-pred s63))))
+  :enable (@__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-%66-rev @__kernel_rem_pio2-%66-rev @__kernel_rem_pio2-%66-loc @__kernel_rem_pio2-%66-val))
+(defruled @__kernel_rem_pio2-%63-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%63-rev mem loc pred)
+         (@__kernel_rem_pio2-%63-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%63-expand-rev-as-@__kernel_rem_pio2-succ63-rev @__kernel_rem_pio2-succ63-rev @__kernel_rem_pio2-succ63-lab @__kernel_rem_pio2-%63-fwd))
+
 (defund @__kernel_rem_pio2-%63-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1118,16 +1916,6 @@
     (loc (s '%66 (icmp-sle-i32 (g '%64 loc) (g '%65 loc)) loc))
     (succ (case (g '%66 loc) (-1 '%67) (0 '%87))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%63-expand-bb
-  (equal (@__kernel_rem_pio2-%63-bb mem loc pred)
-         (@__kernel_rem_pio2-%63-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%63-bb @__kernel_rem_pio2-%63-rev
-    @__kernel_rem_pio2-%64-rev
-    @__kernel_rem_pio2-%65-rev
-    @__kernel_rem_pio2-%66-rev
-    @__kernel_rem_pio2-succ63-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%67-mem (s67)
   (car s67))
@@ -1205,6 +1993,10 @@
   (declare (ignore s67))
   '%84)
 
+(defund @__kernel_rem_pio2-%67-fwd (mem loc pred)
+  (let ((s67 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ67-lab s67) (@__kernel_rem_pio2-m67.1-mem s67) (@__kernel_rem_pio2-%83-loc s67))))
+
 (defund @__kernel_rem_pio2-succ67-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%84 mem loc))
@@ -1246,6 +2038,155 @@
 (defund @__kernel_rem_pio2-%67-rev (mem loc pred)
   (@__kernel_rem_pio2-%68-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%68-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%68-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%67-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-rev @__kernel_rem_pio2-%67-mem @__kernel_rem_pio2-%67-loc @__kernel_rem_pio2-%67-pred))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%69-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%69-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%68-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%68-rev @__kernel_rem_pio2-%68-rev @__kernel_rem_pio2-%68-loc @__kernel_rem_pio2-%68-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%70-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%70-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%69-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%69-rev @__kernel_rem_pio2-%69-rev @__kernel_rem_pio2-%69-loc @__kernel_rem_pio2-%69-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%71-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%71-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%70-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%70-rev @__kernel_rem_pio2-%70-rev @__kernel_rem_pio2-%70-loc @__kernel_rem_pio2-%70-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%72-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%72-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%71-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%71-rev @__kernel_rem_pio2-%71-rev @__kernel_rem_pio2-%71-loc @__kernel_rem_pio2-%71-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%73-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%73-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%72-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%72-rev @__kernel_rem_pio2-%72-rev @__kernel_rem_pio2-%72-loc @__kernel_rem_pio2-%72-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%74-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%74-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%73-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%73-rev @__kernel_rem_pio2-%73-rev @__kernel_rem_pio2-%73-loc @__kernel_rem_pio2-%73-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%75-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%75-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%74-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%74-rev @__kernel_rem_pio2-%74-rev @__kernel_rem_pio2-%74-loc @__kernel_rem_pio2-%74-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%76-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%76-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%75-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%75-rev @__kernel_rem_pio2-%75-rev @__kernel_rem_pio2-%75-loc @__kernel_rem_pio2-%75-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%77-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%77-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%76-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%76-rev @__kernel_rem_pio2-%76-rev @__kernel_rem_pio2-%76-loc @__kernel_rem_pio2-%76-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%78-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%78-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%77-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%77-rev @__kernel_rem_pio2-%77-rev @__kernel_rem_pio2-%77-loc @__kernel_rem_pio2-%77-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%79-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%79-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%78-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%78-rev @__kernel_rem_pio2-%78-rev @__kernel_rem_pio2-%78-loc @__kernel_rem_pio2-%78-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%80-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%80-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%79-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%79-rev @__kernel_rem_pio2-%79-rev @__kernel_rem_pio2-%79-loc @__kernel_rem_pio2-%79-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%81-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%81-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%80-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%80-rev @__kernel_rem_pio2-%80-rev @__kernel_rem_pio2-%80-loc @__kernel_rem_pio2-%80-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%82-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%82-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%81-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%81-rev @__kernel_rem_pio2-%81-rev @__kernel_rem_pio2-%81-loc @__kernel_rem_pio2-%81-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%83-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-%83-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%82-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%82-rev @__kernel_rem_pio2-%82-rev @__kernel_rem_pio2-%82-loc @__kernel_rem_pio2-%82-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-m67.1-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-m67.1-rev
+            (@__kernel_rem_pio2-%67-mem s67)
+            (@__kernel_rem_pio2-%83-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-%83-rev @__kernel_rem_pio2-%83-rev @__kernel_rem_pio2-%83-loc @__kernel_rem_pio2-%83-val))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-succ67-rev
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (let ((s67 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ67-rev
+            (@__kernel_rem_pio2-m67.1-mem s67)
+            (@__kernel_rem_pio2-%83-loc s67)
+            (@__kernel_rem_pio2-%67-pred s67))))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-m67.1-rev @__kernel_rem_pio2-m67.1-rev @__kernel_rem_pio2-m67.1-mem))
+(defruled @__kernel_rem_pio2-%67-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%67-rev mem loc pred)
+         (@__kernel_rem_pio2-%67-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%67-expand-rev-as-@__kernel_rem_pio2-succ67-rev @__kernel_rem_pio2-succ67-rev @__kernel_rem_pio2-succ67-lab @__kernel_rem_pio2-%67-fwd))
+
 (defund @__kernel_rem_pio2-%67-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1269,30 +2210,6 @@
     (succ '%84))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%67-expand-bb
-  (equal (@__kernel_rem_pio2-%67-bb mem loc pred)
-         (@__kernel_rem_pio2-%67-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%67-bb @__kernel_rem_pio2-%67-rev
-    @__kernel_rem_pio2-%68-rev
-    @__kernel_rem_pio2-%69-rev
-    @__kernel_rem_pio2-%70-rev
-    @__kernel_rem_pio2-%71-rev
-    @__kernel_rem_pio2-%72-rev
-    @__kernel_rem_pio2-%73-rev
-    @__kernel_rem_pio2-%74-rev
-    @__kernel_rem_pio2-%75-rev
-    @__kernel_rem_pio2-%76-rev
-    @__kernel_rem_pio2-%77-rev
-    @__kernel_rem_pio2-%78-rev
-    @__kernel_rem_pio2-%79-rev
-    @__kernel_rem_pio2-%80-rev
-    @__kernel_rem_pio2-%81-rev
-    @__kernel_rem_pio2-%82-rev
-    @__kernel_rem_pio2-%83-rev
-    @__kernel_rem_pio2-m67.1-rev
-    @__kernel_rem_pio2-succ67-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%84-mem (s84)
   (car s84))
 (defund @__kernel_rem_pio2-%84-loc (s84)
@@ -1313,6 +2230,10 @@
   (declare (ignore s84))
   '%63)
 
+(defund @__kernel_rem_pio2-%84-fwd (mem loc pred)
+  (let ((s84 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ84-lab s84) (@__kernel_rem_pio2-m84.1-mem s84) (@__kernel_rem_pio2-%86-loc s84))))
+
 (defund @__kernel_rem_pio2-succ84-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%63 mem loc))
@@ -1326,6 +2247,43 @@
 (defund @__kernel_rem_pio2-%84-rev (mem loc pred)
   (@__kernel_rem_pio2-%85-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-%85-rev
+  (equal (@__kernel_rem_pio2-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__kernel_rem_pio2-%85-rev
+            (@__kernel_rem_pio2-%84-mem s84)
+            (@__kernel_rem_pio2-%84-loc s84)
+            (@__kernel_rem_pio2-%84-pred s84))))
+  :enable (@__kernel_rem_pio2-%84-rev @__kernel_rem_pio2-%84-mem @__kernel_rem_pio2-%84-loc @__kernel_rem_pio2-%84-pred))
+(defruled @__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-%86-rev
+  (equal (@__kernel_rem_pio2-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__kernel_rem_pio2-%86-rev
+            (@__kernel_rem_pio2-%84-mem s84)
+            (@__kernel_rem_pio2-%85-loc s84)
+            (@__kernel_rem_pio2-%84-pred s84))))
+  :enable (@__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-%85-rev @__kernel_rem_pio2-%85-rev @__kernel_rem_pio2-%85-loc @__kernel_rem_pio2-%85-val))
+(defruled @__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-m84.1-rev
+  (equal (@__kernel_rem_pio2-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__kernel_rem_pio2-m84.1-rev
+            (@__kernel_rem_pio2-%84-mem s84)
+            (@__kernel_rem_pio2-%86-loc s84)
+            (@__kernel_rem_pio2-%84-pred s84))))
+  :enable (@__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-%86-rev @__kernel_rem_pio2-%86-rev @__kernel_rem_pio2-%86-loc @__kernel_rem_pio2-%86-val))
+(defruled @__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-succ84-rev
+  (equal (@__kernel_rem_pio2-%84-rev mem loc pred)
+         (let ((s84 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ84-rev
+            (@__kernel_rem_pio2-m84.1-mem s84)
+            (@__kernel_rem_pio2-%86-loc s84)
+            (@__kernel_rem_pio2-%84-pred s84))))
+  :enable (@__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-m84.1-rev @__kernel_rem_pio2-m84.1-rev @__kernel_rem_pio2-m84.1-mem))
+(defruled @__kernel_rem_pio2-%84-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%84-rev mem loc pred)
+         (@__kernel_rem_pio2-%84-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%84-expand-rev-as-@__kernel_rem_pio2-succ84-rev @__kernel_rem_pio2-succ84-rev @__kernel_rem_pio2-succ84-lab @__kernel_rem_pio2-%84-fwd))
+
 (defund @__kernel_rem_pio2-%84-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1334,16 +2292,6 @@
     (mem (store-i32 (g '%86 loc) (g '%j loc) mem))
     (succ '%63))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%84-expand-bb
-  (equal (@__kernel_rem_pio2-%84-bb mem loc pred)
-         (@__kernel_rem_pio2-%84-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%84-bb @__kernel_rem_pio2-%84-rev
-    @__kernel_rem_pio2-%85-rev
-    @__kernel_rem_pio2-%86-rev
-    @__kernel_rem_pio2-m84.1-rev
-    @__kernel_rem_pio2-succ84-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%87-mem (s87)
   (car s87))
@@ -1373,6 +2321,10 @@
   (declare (ignore s87))
   '%92)
 
+(defund @__kernel_rem_pio2-%87-fwd (mem loc pred)
+  (let ((s87 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ87-lab s87) (@__kernel_rem_pio2-m87.1-mem s87) (@__kernel_rem_pio2-%91-loc s87))))
+
 (defund @__kernel_rem_pio2-succ87-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%92 mem loc))
@@ -1390,6 +2342,59 @@
 (defund @__kernel_rem_pio2-%87-rev (mem loc pred)
   (@__kernel_rem_pio2-%88-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%88-rev
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@__kernel_rem_pio2-%88-rev
+            (@__kernel_rem_pio2-%87-mem s87)
+            (@__kernel_rem_pio2-%87-loc s87)
+            (@__kernel_rem_pio2-%87-pred s87))))
+  :enable (@__kernel_rem_pio2-%87-rev @__kernel_rem_pio2-%87-mem @__kernel_rem_pio2-%87-loc @__kernel_rem_pio2-%87-pred))
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%89-rev
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@__kernel_rem_pio2-%89-rev
+            (@__kernel_rem_pio2-%87-mem s87)
+            (@__kernel_rem_pio2-%88-loc s87)
+            (@__kernel_rem_pio2-%87-pred s87))))
+  :enable (@__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%88-rev @__kernel_rem_pio2-%88-rev @__kernel_rem_pio2-%88-loc @__kernel_rem_pio2-%88-val))
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%90-rev
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@__kernel_rem_pio2-%90-rev
+            (@__kernel_rem_pio2-%87-mem s87)
+            (@__kernel_rem_pio2-%89-loc s87)
+            (@__kernel_rem_pio2-%87-pred s87))))
+  :enable (@__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%89-rev @__kernel_rem_pio2-%89-rev @__kernel_rem_pio2-%89-loc @__kernel_rem_pio2-%89-val))
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%91-rev
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@__kernel_rem_pio2-%91-rev
+            (@__kernel_rem_pio2-%87-mem s87)
+            (@__kernel_rem_pio2-%90-loc s87)
+            (@__kernel_rem_pio2-%87-pred s87))))
+  :enable (@__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%90-rev @__kernel_rem_pio2-%90-rev @__kernel_rem_pio2-%90-loc @__kernel_rem_pio2-%90-val))
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-m87.1-rev
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@__kernel_rem_pio2-m87.1-rev
+            (@__kernel_rem_pio2-%87-mem s87)
+            (@__kernel_rem_pio2-%91-loc s87)
+            (@__kernel_rem_pio2-%87-pred s87))))
+  :enable (@__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-%91-rev @__kernel_rem_pio2-%91-rev @__kernel_rem_pio2-%91-loc @__kernel_rem_pio2-%91-val))
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-succ87-rev
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ87-rev
+            (@__kernel_rem_pio2-m87.1-mem s87)
+            (@__kernel_rem_pio2-%91-loc s87)
+            (@__kernel_rem_pio2-%87-pred s87))))
+  :enable (@__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-m87.1-rev @__kernel_rem_pio2-m87.1-rev @__kernel_rem_pio2-m87.1-mem))
+(defruled @__kernel_rem_pio2-%87-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%87-rev mem loc pred)
+         (@__kernel_rem_pio2-%87-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%87-expand-rev-as-@__kernel_rem_pio2-succ87-rev @__kernel_rem_pio2-succ87-rev @__kernel_rem_pio2-succ87-lab @__kernel_rem_pio2-%87-fwd))
+
 (defund @__kernel_rem_pio2-%87-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1400,18 +2405,6 @@
     (mem (store-double (g '%88 loc) (g '%91 loc) mem))
     (succ '%92))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%87-expand-bb
-  (equal (@__kernel_rem_pio2-%87-bb mem loc pred)
-         (@__kernel_rem_pio2-%87-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%87-bb @__kernel_rem_pio2-%87-rev
-    @__kernel_rem_pio2-%88-rev
-    @__kernel_rem_pio2-%89-rev
-    @__kernel_rem_pio2-%90-rev
-    @__kernel_rem_pio2-%91-rev
-    @__kernel_rem_pio2-m87.1-rev
-    @__kernel_rem_pio2-succ87-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%92-mem (s92)
   (car s92))
@@ -1433,6 +2426,10 @@
   (declare (ignore s92))
   '%58)
 
+(defund @__kernel_rem_pio2-%92-fwd (mem loc pred)
+  (let ((s92 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ92-lab s92) (@__kernel_rem_pio2-m92.1-mem s92) (@__kernel_rem_pio2-%94-loc s92))))
+
 (defund @__kernel_rem_pio2-succ92-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%58 mem loc))
@@ -1446,6 +2443,43 @@
 (defund @__kernel_rem_pio2-%92-rev (mem loc pred)
   (@__kernel_rem_pio2-%93-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-%93-rev
+  (equal (@__kernel_rem_pio2-%92-rev mem loc pred)
+         (let ((s92 (list mem loc pred)))
+           (@__kernel_rem_pio2-%93-rev
+            (@__kernel_rem_pio2-%92-mem s92)
+            (@__kernel_rem_pio2-%92-loc s92)
+            (@__kernel_rem_pio2-%92-pred s92))))
+  :enable (@__kernel_rem_pio2-%92-rev @__kernel_rem_pio2-%92-mem @__kernel_rem_pio2-%92-loc @__kernel_rem_pio2-%92-pred))
+(defruled @__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-%94-rev
+  (equal (@__kernel_rem_pio2-%92-rev mem loc pred)
+         (let ((s92 (list mem loc pred)))
+           (@__kernel_rem_pio2-%94-rev
+            (@__kernel_rem_pio2-%92-mem s92)
+            (@__kernel_rem_pio2-%93-loc s92)
+            (@__kernel_rem_pio2-%92-pred s92))))
+  :enable (@__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-%93-rev @__kernel_rem_pio2-%93-rev @__kernel_rem_pio2-%93-loc @__kernel_rem_pio2-%93-val))
+(defruled @__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-m92.1-rev
+  (equal (@__kernel_rem_pio2-%92-rev mem loc pred)
+         (let ((s92 (list mem loc pred)))
+           (@__kernel_rem_pio2-m92.1-rev
+            (@__kernel_rem_pio2-%92-mem s92)
+            (@__kernel_rem_pio2-%94-loc s92)
+            (@__kernel_rem_pio2-%92-pred s92))))
+  :enable (@__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-%94-rev @__kernel_rem_pio2-%94-rev @__kernel_rem_pio2-%94-loc @__kernel_rem_pio2-%94-val))
+(defruled @__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-succ92-rev
+  (equal (@__kernel_rem_pio2-%92-rev mem loc pred)
+         (let ((s92 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ92-rev
+            (@__kernel_rem_pio2-m92.1-mem s92)
+            (@__kernel_rem_pio2-%94-loc s92)
+            (@__kernel_rem_pio2-%92-pred s92))))
+  :enable (@__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-m92.1-rev @__kernel_rem_pio2-m92.1-rev @__kernel_rem_pio2-m92.1-mem))
+(defruled @__kernel_rem_pio2-%92-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%92-rev mem loc pred)
+         (@__kernel_rem_pio2-%92-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%92-expand-rev-as-@__kernel_rem_pio2-succ92-rev @__kernel_rem_pio2-succ92-rev @__kernel_rem_pio2-succ92-lab @__kernel_rem_pio2-%92-fwd))
+
 (defund @__kernel_rem_pio2-%92-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1454,16 +2488,6 @@
     (mem (store-i32 (g '%94 loc) (g '%i loc) mem))
     (succ '%58))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%92-expand-bb
-  (equal (@__kernel_rem_pio2-%92-bb mem loc pred)
-         (@__kernel_rem_pio2-%92-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%92-bb @__kernel_rem_pio2-%92-rev
-    @__kernel_rem_pio2-%93-rev
-    @__kernel_rem_pio2-%94-rev
-    @__kernel_rem_pio2-m92.1-rev
-    @__kernel_rem_pio2-succ92-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%95-mem (s95)
   (car s95))
@@ -1481,6 +2505,10 @@
   (declare (ignore s95))
   '%97)
 
+(defund @__kernel_rem_pio2-%95-fwd (mem loc pred)
+  (let ((s95 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ95-lab s95) (@__kernel_rem_pio2-m95.1-mem s95) (@__kernel_rem_pio2-%96-loc s95))))
+
 (defund @__kernel_rem_pio2-succ95-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%97 mem loc))
@@ -1492,6 +2520,35 @@
 (defund @__kernel_rem_pio2-%95-rev (mem loc pred)
   (@__kernel_rem_pio2-%96-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%95-expand-rev-as-@__kernel_rem_pio2-%96-rev
+  (equal (@__kernel_rem_pio2-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__kernel_rem_pio2-%96-rev
+            (@__kernel_rem_pio2-%95-mem s95)
+            (@__kernel_rem_pio2-%95-loc s95)
+            (@__kernel_rem_pio2-%95-pred s95))))
+  :enable (@__kernel_rem_pio2-%95-rev @__kernel_rem_pio2-%95-mem @__kernel_rem_pio2-%95-loc @__kernel_rem_pio2-%95-pred))
+(defruled @__kernel_rem_pio2-%95-expand-rev-as-@__kernel_rem_pio2-m95.1-rev
+  (equal (@__kernel_rem_pio2-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__kernel_rem_pio2-m95.1-rev
+            (@__kernel_rem_pio2-%95-mem s95)
+            (@__kernel_rem_pio2-%96-loc s95)
+            (@__kernel_rem_pio2-%95-pred s95))))
+  :enable (@__kernel_rem_pio2-%95-expand-rev-as-@__kernel_rem_pio2-%96-rev @__kernel_rem_pio2-%96-rev @__kernel_rem_pio2-%96-loc @__kernel_rem_pio2-%96-val))
+(defruled @__kernel_rem_pio2-%95-expand-rev-as-@__kernel_rem_pio2-succ95-rev
+  (equal (@__kernel_rem_pio2-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ95-rev
+            (@__kernel_rem_pio2-m95.1-mem s95)
+            (@__kernel_rem_pio2-%96-loc s95)
+            (@__kernel_rem_pio2-%95-pred s95))))
+  :enable (@__kernel_rem_pio2-%95-expand-rev-as-@__kernel_rem_pio2-m95.1-rev @__kernel_rem_pio2-m95.1-rev @__kernel_rem_pio2-m95.1-mem))
+(defruled @__kernel_rem_pio2-%95-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%95-rev mem loc pred)
+         (@__kernel_rem_pio2-%95-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%95-expand-rev-as-@__kernel_rem_pio2-succ95-rev @__kernel_rem_pio2-succ95-rev @__kernel_rem_pio2-succ95-lab @__kernel_rem_pio2-%95-fwd))
+
 (defund @__kernel_rem_pio2-%95-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1499,15 +2556,6 @@
     (mem (store-i32 (g '%96 loc) (g '%jz loc) mem))
     (succ '%97))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%95-expand-bb
-  (equal (@__kernel_rem_pio2-%95-bb mem loc pred)
-         (@__kernel_rem_pio2-%95-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%95-bb @__kernel_rem_pio2-%95-rev
-    @__kernel_rem_pio2-%96-rev
-    @__kernel_rem_pio2-m95.1-rev
-    @__kernel_rem_pio2-succ95-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%97-mem (s97)
   (car s97))
@@ -1545,6 +2593,10 @@
   (declare (ignore s97))
   '%103)
 
+(defund @__kernel_rem_pio2-%97-fwd (mem loc pred)
+  (let ((s97 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ97-lab s97) (@__kernel_rem_pio2-m97.3-mem s97) (@__kernel_rem_pio2-%102-loc s97))))
+
 (defund @__kernel_rem_pio2-succ97-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%103 mem loc))
@@ -1568,6 +2620,83 @@
 (defund @__kernel_rem_pio2-%97-rev (mem loc pred)
   (@__kernel_rem_pio2-m97.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-m97.1-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-m97.1-rev
+            (@__kernel_rem_pio2-%97-mem s97)
+            (@__kernel_rem_pio2-%97-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-rev @__kernel_rem_pio2-%97-mem @__kernel_rem_pio2-%97-loc @__kernel_rem_pio2-%97-pred))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%98-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-%98-rev
+            (@__kernel_rem_pio2-m97.1-mem s97)
+            (@__kernel_rem_pio2-%97-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-m97.1-rev @__kernel_rem_pio2-m97.1-rev @__kernel_rem_pio2-m97.1-mem))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-m97.2-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-m97.2-rev
+            (@__kernel_rem_pio2-m97.1-mem s97)
+            (@__kernel_rem_pio2-%98-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%98-rev @__kernel_rem_pio2-%98-rev @__kernel_rem_pio2-%98-loc @__kernel_rem_pio2-%98-val))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%99-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-%99-rev
+            (@__kernel_rem_pio2-m97.2-mem s97)
+            (@__kernel_rem_pio2-%98-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-m97.2-rev @__kernel_rem_pio2-m97.2-rev @__kernel_rem_pio2-m97.2-mem))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%100-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-%100-rev
+            (@__kernel_rem_pio2-m97.2-mem s97)
+            (@__kernel_rem_pio2-%99-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%99-rev @__kernel_rem_pio2-%99-rev @__kernel_rem_pio2-%99-loc @__kernel_rem_pio2-%99-val))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%101-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-%101-rev
+            (@__kernel_rem_pio2-m97.2-mem s97)
+            (@__kernel_rem_pio2-%100-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%100-rev @__kernel_rem_pio2-%100-rev @__kernel_rem_pio2-%100-loc @__kernel_rem_pio2-%100-val))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%102-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-%102-rev
+            (@__kernel_rem_pio2-m97.2-mem s97)
+            (@__kernel_rem_pio2-%101-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%101-rev @__kernel_rem_pio2-%101-rev @__kernel_rem_pio2-%101-loc @__kernel_rem_pio2-%101-val))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-m97.3-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-m97.3-rev
+            (@__kernel_rem_pio2-m97.2-mem s97)
+            (@__kernel_rem_pio2-%102-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-%102-rev @__kernel_rem_pio2-%102-rev @__kernel_rem_pio2-%102-loc @__kernel_rem_pio2-%102-val))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-succ97-rev
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (let ((s97 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ97-rev
+            (@__kernel_rem_pio2-m97.3-mem s97)
+            (@__kernel_rem_pio2-%102-loc s97)
+            (@__kernel_rem_pio2-%97-pred s97))))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-m97.3-rev @__kernel_rem_pio2-m97.3-rev @__kernel_rem_pio2-m97.3-mem))
+(defruled @__kernel_rem_pio2-%97-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%97-rev mem loc pred)
+         (@__kernel_rem_pio2-%97-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%97-expand-rev-as-@__kernel_rem_pio2-succ97-rev @__kernel_rem_pio2-succ97-rev @__kernel_rem_pio2-succ97-lab @__kernel_rem_pio2-%97-fwd))
+
 (defund @__kernel_rem_pio2-%97-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1581,21 +2710,6 @@
     (mem (store-double (g '%102 loc) (g '%z loc) mem))
     (succ '%103))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%97-expand-bb
-  (equal (@__kernel_rem_pio2-%97-bb mem loc pred)
-         (@__kernel_rem_pio2-%97-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%97-bb @__kernel_rem_pio2-%97-rev
-    @__kernel_rem_pio2-m97.1-rev
-    @__kernel_rem_pio2-%98-rev
-    @__kernel_rem_pio2-m97.2-rev
-    @__kernel_rem_pio2-%99-rev
-    @__kernel_rem_pio2-%100-rev
-    @__kernel_rem_pio2-%101-rev
-    @__kernel_rem_pio2-%102-rev
-    @__kernel_rem_pio2-m97.3-rev
-    @__kernel_rem_pio2-succ97-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%103-mem (s103)
   (car s103))
@@ -1614,6 +2728,10 @@
 (defund @__kernel_rem_pio2-succ103-lab (s103)
   (case (g '%105 (@__kernel_rem_pio2-%105-loc s103)) (-1 '%106) (0 '%131)))
 
+(defund @__kernel_rem_pio2-%103-fwd (mem loc pred)
+  (let ((s103 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ103-lab s103) (@__kernel_rem_pio2-%103-mem s103) (@__kernel_rem_pio2-%105-loc s103))))
+
 (defund @__kernel_rem_pio2-succ103-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%105 loc) (-1 '%106) (0 '%131)) mem loc))
@@ -1625,6 +2743,35 @@
 (defund @__kernel_rem_pio2-%103-rev (mem loc pred)
   (@__kernel_rem_pio2-%104-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%103-expand-rev-as-@__kernel_rem_pio2-%104-rev
+  (equal (@__kernel_rem_pio2-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@__kernel_rem_pio2-%104-rev
+            (@__kernel_rem_pio2-%103-mem s103)
+            (@__kernel_rem_pio2-%103-loc s103)
+            (@__kernel_rem_pio2-%103-pred s103))))
+  :enable (@__kernel_rem_pio2-%103-rev @__kernel_rem_pio2-%103-mem @__kernel_rem_pio2-%103-loc @__kernel_rem_pio2-%103-pred))
+(defruled @__kernel_rem_pio2-%103-expand-rev-as-@__kernel_rem_pio2-%105-rev
+  (equal (@__kernel_rem_pio2-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@__kernel_rem_pio2-%105-rev
+            (@__kernel_rem_pio2-%103-mem s103)
+            (@__kernel_rem_pio2-%104-loc s103)
+            (@__kernel_rem_pio2-%103-pred s103))))
+  :enable (@__kernel_rem_pio2-%103-expand-rev-as-@__kernel_rem_pio2-%104-rev @__kernel_rem_pio2-%104-rev @__kernel_rem_pio2-%104-loc @__kernel_rem_pio2-%104-val))
+(defruled @__kernel_rem_pio2-%103-expand-rev-as-@__kernel_rem_pio2-succ103-rev
+  (equal (@__kernel_rem_pio2-%103-rev mem loc pred)
+         (let ((s103 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ103-rev
+            (@__kernel_rem_pio2-%103-mem s103)
+            (@__kernel_rem_pio2-%105-loc s103)
+            (@__kernel_rem_pio2-%103-pred s103))))
+  :enable (@__kernel_rem_pio2-%103-expand-rev-as-@__kernel_rem_pio2-%105-rev @__kernel_rem_pio2-%105-rev @__kernel_rem_pio2-%105-loc @__kernel_rem_pio2-%105-val))
+(defruled @__kernel_rem_pio2-%103-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%103-rev mem loc pred)
+         (@__kernel_rem_pio2-%103-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%103-expand-rev-as-@__kernel_rem_pio2-succ103-rev @__kernel_rem_pio2-succ103-rev @__kernel_rem_pio2-succ103-lab @__kernel_rem_pio2-%103-fwd))
+
 (defund @__kernel_rem_pio2-%103-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1632,15 +2779,6 @@
     (loc (s '%105 (icmp-sgt-i32 (g '%104 loc) 0) loc))
     (succ (case (g '%105 loc) (-1 '%106) (0 '%131))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%103-expand-bb
-  (equal (@__kernel_rem_pio2-%103-bb mem loc pred)
-         (@__kernel_rem_pio2-%103-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%103-bb @__kernel_rem_pio2-%103-rev
-    @__kernel_rem_pio2-%104-rev
-    @__kernel_rem_pio2-%105-rev
-    @__kernel_rem_pio2-succ103-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%106-mem (s106)
   (car s106))
@@ -1734,6 +2872,10 @@
   (declare (ignore s106))
   '%126)
 
+(defund @__kernel_rem_pio2-%106-fwd (mem loc pred)
+  (let ((s106 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ106-lab s106) (@__kernel_rem_pio2-m106.3-mem s106) (@__kernel_rem_pio2-%125-loc s106))))
+
 (defund @__kernel_rem_pio2-succ106-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%126 mem loc))
@@ -1785,6 +2927,195 @@
 (defund @__kernel_rem_pio2-%106-rev (mem loc pred)
   (@__kernel_rem_pio2-%107-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%107-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%107-rev
+            (@__kernel_rem_pio2-%106-mem s106)
+            (@__kernel_rem_pio2-%106-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-rev @__kernel_rem_pio2-%106-mem @__kernel_rem_pio2-%106-loc @__kernel_rem_pio2-%106-pred))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%108-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%108-rev
+            (@__kernel_rem_pio2-%106-mem s106)
+            (@__kernel_rem_pio2-%107-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%107-rev @__kernel_rem_pio2-%107-rev @__kernel_rem_pio2-%107-loc @__kernel_rem_pio2-%107-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%109-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%109-rev
+            (@__kernel_rem_pio2-%106-mem s106)
+            (@__kernel_rem_pio2-%108-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%108-rev @__kernel_rem_pio2-%108-rev @__kernel_rem_pio2-%108-loc @__kernel_rem_pio2-%108-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%110-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%110-rev
+            (@__kernel_rem_pio2-%106-mem s106)
+            (@__kernel_rem_pio2-%109-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%109-rev @__kernel_rem_pio2-%109-rev @__kernel_rem_pio2-%109-loc @__kernel_rem_pio2-%109-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-m106.1-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-m106.1-rev
+            (@__kernel_rem_pio2-%106-mem s106)
+            (@__kernel_rem_pio2-%110-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%110-rev @__kernel_rem_pio2-%110-rev @__kernel_rem_pio2-%110-loc @__kernel_rem_pio2-%110-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%111-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%111-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%110-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-m106.1-rev @__kernel_rem_pio2-m106.1-rev @__kernel_rem_pio2-m106.1-mem))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%112-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%112-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%111-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%111-rev @__kernel_rem_pio2-%111-rev @__kernel_rem_pio2-%111-loc @__kernel_rem_pio2-%111-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%113-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%113-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%112-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%112-rev @__kernel_rem_pio2-%112-rev @__kernel_rem_pio2-%112-loc @__kernel_rem_pio2-%112-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%114-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%114-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%113-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%113-rev @__kernel_rem_pio2-%113-rev @__kernel_rem_pio2-%113-loc @__kernel_rem_pio2-%113-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%115-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%115-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%114-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%114-rev @__kernel_rem_pio2-%114-rev @__kernel_rem_pio2-%114-loc @__kernel_rem_pio2-%114-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%116-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%116-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%115-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%115-rev @__kernel_rem_pio2-%115-rev @__kernel_rem_pio2-%115-loc @__kernel_rem_pio2-%115-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%117-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%117-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%116-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%116-rev @__kernel_rem_pio2-%116-rev @__kernel_rem_pio2-%116-loc @__kernel_rem_pio2-%116-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%118-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%118-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%117-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%117-rev @__kernel_rem_pio2-%117-rev @__kernel_rem_pio2-%117-loc @__kernel_rem_pio2-%117-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-m106.2-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-m106.2-rev
+            (@__kernel_rem_pio2-m106.1-mem s106)
+            (@__kernel_rem_pio2-%118-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%118-rev @__kernel_rem_pio2-%118-rev @__kernel_rem_pio2-%118-loc @__kernel_rem_pio2-%118-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%119-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%119-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%118-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-m106.2-rev @__kernel_rem_pio2-m106.2-rev @__kernel_rem_pio2-m106.2-mem))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%120-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%120-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%119-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%119-rev @__kernel_rem_pio2-%119-rev @__kernel_rem_pio2-%119-loc @__kernel_rem_pio2-%119-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%121-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%121-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%120-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%120-rev @__kernel_rem_pio2-%120-rev @__kernel_rem_pio2-%120-loc @__kernel_rem_pio2-%120-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%122-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%122-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%121-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%121-rev @__kernel_rem_pio2-%121-rev @__kernel_rem_pio2-%121-loc @__kernel_rem_pio2-%121-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%123-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%123-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%122-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%122-rev @__kernel_rem_pio2-%122-rev @__kernel_rem_pio2-%122-loc @__kernel_rem_pio2-%122-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%124-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%124-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%123-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%123-rev @__kernel_rem_pio2-%123-rev @__kernel_rem_pio2-%123-loc @__kernel_rem_pio2-%123-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%125-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-%125-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%124-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%124-rev @__kernel_rem_pio2-%124-rev @__kernel_rem_pio2-%124-loc @__kernel_rem_pio2-%124-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-m106.3-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-m106.3-rev
+            (@__kernel_rem_pio2-m106.2-mem s106)
+            (@__kernel_rem_pio2-%125-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-%125-rev @__kernel_rem_pio2-%125-rev @__kernel_rem_pio2-%125-loc @__kernel_rem_pio2-%125-val))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-succ106-rev
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (let ((s106 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ106-rev
+            (@__kernel_rem_pio2-m106.3-mem s106)
+            (@__kernel_rem_pio2-%125-loc s106)
+            (@__kernel_rem_pio2-%106-pred s106))))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-m106.3-rev @__kernel_rem_pio2-m106.3-rev @__kernel_rem_pio2-m106.3-mem))
+(defruled @__kernel_rem_pio2-%106-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%106-rev mem loc pred)
+         (@__kernel_rem_pio2-%106-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%106-expand-rev-as-@__kernel_rem_pio2-succ106-rev @__kernel_rem_pio2-succ106-rev @__kernel_rem_pio2-succ106-lab @__kernel_rem_pio2-%106-fwd))
+
 (defund @__kernel_rem_pio2-%106-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1812,35 +3143,6 @@
     (mem (store-double (g '%125 loc) (g '%z loc) mem))
     (succ '%126))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%106-expand-bb
-  (equal (@__kernel_rem_pio2-%106-bb mem loc pred)
-         (@__kernel_rem_pio2-%106-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%106-bb @__kernel_rem_pio2-%106-rev
-    @__kernel_rem_pio2-%107-rev
-    @__kernel_rem_pio2-%108-rev
-    @__kernel_rem_pio2-%109-rev
-    @__kernel_rem_pio2-%110-rev
-    @__kernel_rem_pio2-m106.1-rev
-    @__kernel_rem_pio2-%111-rev
-    @__kernel_rem_pio2-%112-rev
-    @__kernel_rem_pio2-%113-rev
-    @__kernel_rem_pio2-%114-rev
-    @__kernel_rem_pio2-%115-rev
-    @__kernel_rem_pio2-%116-rev
-    @__kernel_rem_pio2-%117-rev
-    @__kernel_rem_pio2-%118-rev
-    @__kernel_rem_pio2-m106.2-rev
-    @__kernel_rem_pio2-%119-rev
-    @__kernel_rem_pio2-%120-rev
-    @__kernel_rem_pio2-%121-rev
-    @__kernel_rem_pio2-%122-rev
-    @__kernel_rem_pio2-%123-rev
-    @__kernel_rem_pio2-%124-rev
-    @__kernel_rem_pio2-%125-rev
-    @__kernel_rem_pio2-m106.3-rev
-    @__kernel_rem_pio2-succ106-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%126-mem (s126)
   (car s126))
@@ -1872,6 +3174,10 @@
   (declare (ignore s126))
   '%103)
 
+(defund @__kernel_rem_pio2-%126-fwd (mem loc pred)
+  (let ((s126 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ126-lab s126) (@__kernel_rem_pio2-m126.2-mem s126) (@__kernel_rem_pio2-%130-loc s126))))
+
 (defund @__kernel_rem_pio2-succ126-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%103 mem loc))
@@ -1891,6 +3197,67 @@
 (defund @__kernel_rem_pio2-%126-rev (mem loc pred)
   (@__kernel_rem_pio2-%127-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%127-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-%127-rev
+            (@__kernel_rem_pio2-%126-mem s126)
+            (@__kernel_rem_pio2-%126-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-rev @__kernel_rem_pio2-%126-mem @__kernel_rem_pio2-%126-loc @__kernel_rem_pio2-%126-pred))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%128-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-%128-rev
+            (@__kernel_rem_pio2-%126-mem s126)
+            (@__kernel_rem_pio2-%127-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%127-rev @__kernel_rem_pio2-%127-rev @__kernel_rem_pio2-%127-loc @__kernel_rem_pio2-%127-val))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-m126.1-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-m126.1-rev
+            (@__kernel_rem_pio2-%126-mem s126)
+            (@__kernel_rem_pio2-%128-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%128-rev @__kernel_rem_pio2-%128-rev @__kernel_rem_pio2-%128-loc @__kernel_rem_pio2-%128-val))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%129-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-%129-rev
+            (@__kernel_rem_pio2-m126.1-mem s126)
+            (@__kernel_rem_pio2-%128-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-m126.1-rev @__kernel_rem_pio2-m126.1-rev @__kernel_rem_pio2-m126.1-mem))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%130-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-%130-rev
+            (@__kernel_rem_pio2-m126.1-mem s126)
+            (@__kernel_rem_pio2-%129-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%129-rev @__kernel_rem_pio2-%129-rev @__kernel_rem_pio2-%129-loc @__kernel_rem_pio2-%129-val))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-m126.2-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-m126.2-rev
+            (@__kernel_rem_pio2-m126.1-mem s126)
+            (@__kernel_rem_pio2-%130-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-%130-rev @__kernel_rem_pio2-%130-rev @__kernel_rem_pio2-%130-loc @__kernel_rem_pio2-%130-val))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-succ126-rev
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (let ((s126 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ126-rev
+            (@__kernel_rem_pio2-m126.2-mem s126)
+            (@__kernel_rem_pio2-%130-loc s126)
+            (@__kernel_rem_pio2-%126-pred s126))))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-m126.2-rev @__kernel_rem_pio2-m126.2-rev @__kernel_rem_pio2-m126.2-mem))
+(defruled @__kernel_rem_pio2-%126-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%126-rev mem loc pred)
+         (@__kernel_rem_pio2-%126-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%126-expand-rev-as-@__kernel_rem_pio2-succ126-rev @__kernel_rem_pio2-succ126-rev @__kernel_rem_pio2-succ126-lab @__kernel_rem_pio2-%126-fwd))
+
 (defund @__kernel_rem_pio2-%126-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1902,19 +3269,6 @@
     (mem (store-i32 (g '%130 loc) (g '%j loc) mem))
     (succ '%103))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%126-expand-bb
-  (equal (@__kernel_rem_pio2-%126-bb mem loc pred)
-         (@__kernel_rem_pio2-%126-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%126-bb @__kernel_rem_pio2-%126-rev
-    @__kernel_rem_pio2-%127-rev
-    @__kernel_rem_pio2-%128-rev
-    @__kernel_rem_pio2-m126.1-rev
-    @__kernel_rem_pio2-%129-rev
-    @__kernel_rem_pio2-%130-rev
-    @__kernel_rem_pio2-m126.2-rev
-    @__kernel_rem_pio2-succ126-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%131-mem (s131)
   (car s131))
@@ -2003,6 +3357,10 @@
 (defund @__kernel_rem_pio2-succ131-lab (s131)
   (case (g '%148 (@__kernel_rem_pio2-%148-loc s131)) (-1 '%149) (0 '%179)))
 
+(defund @__kernel_rem_pio2-%131-fwd (mem loc pred)
+  (let ((s131 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ131-lab s131) (@__kernel_rem_pio2-m131.5-mem s131) (@__kernel_rem_pio2-%148-loc s131))))
+
 (defund @__kernel_rem_pio2-succ131-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%148 loc) (-1 '%149) (0 '%179)) mem loc))
@@ -2054,6 +3412,195 @@
 (defund @__kernel_rem_pio2-%131-rev (mem loc pred)
   (@__kernel_rem_pio2-%132-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%132-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%132-rev
+            (@__kernel_rem_pio2-%131-mem s131)
+            (@__kernel_rem_pio2-%131-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-rev @__kernel_rem_pio2-%131-mem @__kernel_rem_pio2-%131-loc @__kernel_rem_pio2-%131-pred))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%133-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%133-rev
+            (@__kernel_rem_pio2-%131-mem s131)
+            (@__kernel_rem_pio2-%132-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%132-rev @__kernel_rem_pio2-%132-rev @__kernel_rem_pio2-%132-loc @__kernel_rem_pio2-%132-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%134-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%134-rev
+            (@__kernel_rem_pio2-%131-mem s131)
+            (@__kernel_rem_pio2-%133-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%133-rev @__kernel_rem_pio2-%133-rev @__kernel_rem_pio2-%133-loc @__kernel_rem_pio2-%133-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.1-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-m131.1-rev
+            (@__kernel_rem_pio2-%131-mem s131)
+            (@__kernel_rem_pio2-%134-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%134-rev @__kernel_rem_pio2-%134-rev @__kernel_rem_pio2-%134-loc @__kernel_rem_pio2-%134-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%135-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%135-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%134-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.1-rev @__kernel_rem_pio2-m131.1-rev @__kernel_rem_pio2-m131.1-mem))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%136-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%136-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%135-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%135-rev @__kernel_rem_pio2-%135-rev @__kernel_rem_pio2-%135-loc @__kernel_rem_pio2-%135-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%137-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%137-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%136-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%136-rev @__kernel_rem_pio2-%136-rev @__kernel_rem_pio2-%136-loc @__kernel_rem_pio2-%136-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%138-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%138-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%137-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%137-rev @__kernel_rem_pio2-%137-rev @__kernel_rem_pio2-%137-loc @__kernel_rem_pio2-%137-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%139-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%139-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%138-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%138-rev @__kernel_rem_pio2-%138-rev @__kernel_rem_pio2-%138-loc @__kernel_rem_pio2-%138-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%140-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%140-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%139-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%139-rev @__kernel_rem_pio2-%139-rev @__kernel_rem_pio2-%139-loc @__kernel_rem_pio2-%139-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.2-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-m131.2-rev
+            (@__kernel_rem_pio2-m131.1-mem s131)
+            (@__kernel_rem_pio2-%140-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%140-rev @__kernel_rem_pio2-%140-rev @__kernel_rem_pio2-%140-loc @__kernel_rem_pio2-%140-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%141-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%141-rev
+            (@__kernel_rem_pio2-m131.2-mem s131)
+            (@__kernel_rem_pio2-%140-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.2-rev @__kernel_rem_pio2-m131.2-rev @__kernel_rem_pio2-m131.2-mem))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%142-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%142-rev
+            (@__kernel_rem_pio2-m131.2-mem s131)
+            (@__kernel_rem_pio2-%141-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%141-rev @__kernel_rem_pio2-%141-rev @__kernel_rem_pio2-%141-loc @__kernel_rem_pio2-%141-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.3-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-m131.3-rev
+            (@__kernel_rem_pio2-m131.2-mem s131)
+            (@__kernel_rem_pio2-%142-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%142-rev @__kernel_rem_pio2-%142-rev @__kernel_rem_pio2-%142-loc @__kernel_rem_pio2-%142-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%143-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%143-rev
+            (@__kernel_rem_pio2-m131.3-mem s131)
+            (@__kernel_rem_pio2-%142-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.3-rev @__kernel_rem_pio2-m131.3-rev @__kernel_rem_pio2-m131.3-mem))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%144-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%144-rev
+            (@__kernel_rem_pio2-m131.3-mem s131)
+            (@__kernel_rem_pio2-%143-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%143-rev @__kernel_rem_pio2-%143-rev @__kernel_rem_pio2-%143-loc @__kernel_rem_pio2-%143-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%145-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%145-rev
+            (@__kernel_rem_pio2-m131.3-mem s131)
+            (@__kernel_rem_pio2-%144-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%144-rev @__kernel_rem_pio2-%144-rev @__kernel_rem_pio2-%144-loc @__kernel_rem_pio2-%144-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%146-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%146-rev
+            (@__kernel_rem_pio2-m131.3-mem s131)
+            (@__kernel_rem_pio2-%145-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%145-rev @__kernel_rem_pio2-%145-rev @__kernel_rem_pio2-%145-loc @__kernel_rem_pio2-%145-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.4-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-m131.4-rev
+            (@__kernel_rem_pio2-m131.3-mem s131)
+            (@__kernel_rem_pio2-%146-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%146-rev @__kernel_rem_pio2-%146-rev @__kernel_rem_pio2-%146-loc @__kernel_rem_pio2-%146-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.5-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-m131.5-rev
+            (@__kernel_rem_pio2-m131.4-mem s131)
+            (@__kernel_rem_pio2-%146-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.4-rev @__kernel_rem_pio2-m131.4-rev @__kernel_rem_pio2-m131.4-mem))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%147-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%147-rev
+            (@__kernel_rem_pio2-m131.5-mem s131)
+            (@__kernel_rem_pio2-%146-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-m131.5-rev @__kernel_rem_pio2-m131.5-rev @__kernel_rem_pio2-m131.5-mem))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%148-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-%148-rev
+            (@__kernel_rem_pio2-m131.5-mem s131)
+            (@__kernel_rem_pio2-%147-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%147-rev @__kernel_rem_pio2-%147-rev @__kernel_rem_pio2-%147-loc @__kernel_rem_pio2-%147-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-succ131-rev
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ131-rev
+            (@__kernel_rem_pio2-m131.5-mem s131)
+            (@__kernel_rem_pio2-%148-loc s131)
+            (@__kernel_rem_pio2-%131-pred s131))))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-%148-rev @__kernel_rem_pio2-%148-rev @__kernel_rem_pio2-%148-loc @__kernel_rem_pio2-%148-val))
+(defruled @__kernel_rem_pio2-%131-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%131-rev mem loc pred)
+         (@__kernel_rem_pio2-%131-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%131-expand-rev-as-@__kernel_rem_pio2-succ131-rev @__kernel_rem_pio2-succ131-rev @__kernel_rem_pio2-succ131-lab @__kernel_rem_pio2-%131-fwd))
+
 (defund @__kernel_rem_pio2-%131-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2081,35 +3628,6 @@
     (loc (s '%148 (icmp-sgt-i32 (g '%147 loc) 0) loc))
     (succ (case (g '%148 loc) (-1 '%149) (0 '%179))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%131-expand-bb
-  (equal (@__kernel_rem_pio2-%131-bb mem loc pred)
-         (@__kernel_rem_pio2-%131-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%131-bb @__kernel_rem_pio2-%131-rev
-    @__kernel_rem_pio2-%132-rev
-    @__kernel_rem_pio2-%133-rev
-    @__kernel_rem_pio2-%134-rev
-    @__kernel_rem_pio2-m131.1-rev
-    @__kernel_rem_pio2-%135-rev
-    @__kernel_rem_pio2-%136-rev
-    @__kernel_rem_pio2-%137-rev
-    @__kernel_rem_pio2-%138-rev
-    @__kernel_rem_pio2-%139-rev
-    @__kernel_rem_pio2-%140-rev
-    @__kernel_rem_pio2-m131.2-rev
-    @__kernel_rem_pio2-%141-rev
-    @__kernel_rem_pio2-%142-rev
-    @__kernel_rem_pio2-m131.3-rev
-    @__kernel_rem_pio2-%143-rev
-    @__kernel_rem_pio2-%144-rev
-    @__kernel_rem_pio2-%145-rev
-    @__kernel_rem_pio2-%146-rev
-    @__kernel_rem_pio2-m131.4-rev
-    @__kernel_rem_pio2-m131.5-rev
-    @__kernel_rem_pio2-%147-rev
-    @__kernel_rem_pio2-%148-rev
-    @__kernel_rem_pio2-succ131-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%149-mem (s149)
   (car s149))
@@ -2245,6 +3763,10 @@
   (declare (ignore s149))
   '%195)
 
+(defund @__kernel_rem_pio2-%149-fwd (mem loc pred)
+  (let ((s149 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ149-lab s149) (@__kernel_rem_pio2-m149.4-mem s149) (@__kernel_rem_pio2-%178-loc s149))))
+
 (defund @__kernel_rem_pio2-succ149-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%195 mem loc))
@@ -2318,6 +3840,283 @@
 (defund @__kernel_rem_pio2-%149-rev (mem loc pred)
   (@__kernel_rem_pio2-%150-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%150-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%150-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%149-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-rev @__kernel_rem_pio2-%149-mem @__kernel_rem_pio2-%149-loc @__kernel_rem_pio2-%149-pred))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%151-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%151-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%150-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%150-rev @__kernel_rem_pio2-%150-rev @__kernel_rem_pio2-%150-loc @__kernel_rem_pio2-%150-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%152-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%152-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%151-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%151-rev @__kernel_rem_pio2-%151-rev @__kernel_rem_pio2-%151-loc @__kernel_rem_pio2-%151-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%153-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%153-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%152-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%152-rev @__kernel_rem_pio2-%152-rev @__kernel_rem_pio2-%152-loc @__kernel_rem_pio2-%152-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%154-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%154-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%153-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%153-rev @__kernel_rem_pio2-%153-rev @__kernel_rem_pio2-%153-loc @__kernel_rem_pio2-%153-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%155-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%155-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%154-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%154-rev @__kernel_rem_pio2-%154-rev @__kernel_rem_pio2-%154-loc @__kernel_rem_pio2-%154-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%156-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%156-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%155-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%155-rev @__kernel_rem_pio2-%155-rev @__kernel_rem_pio2-%155-loc @__kernel_rem_pio2-%155-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%157-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%157-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%156-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%156-rev @__kernel_rem_pio2-%156-rev @__kernel_rem_pio2-%156-loc @__kernel_rem_pio2-%156-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.1-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-m149.1-rev
+            (@__kernel_rem_pio2-%149-mem s149)
+            (@__kernel_rem_pio2-%157-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%157-rev @__kernel_rem_pio2-%157-rev @__kernel_rem_pio2-%157-loc @__kernel_rem_pio2-%157-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%158-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%158-rev
+            (@__kernel_rem_pio2-m149.1-mem s149)
+            (@__kernel_rem_pio2-%157-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.1-rev @__kernel_rem_pio2-m149.1-rev @__kernel_rem_pio2-m149.1-mem))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%159-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%159-rev
+            (@__kernel_rem_pio2-m149.1-mem s149)
+            (@__kernel_rem_pio2-%158-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%158-rev @__kernel_rem_pio2-%158-rev @__kernel_rem_pio2-%158-loc @__kernel_rem_pio2-%158-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%160-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%160-rev
+            (@__kernel_rem_pio2-m149.1-mem s149)
+            (@__kernel_rem_pio2-%159-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%159-rev @__kernel_rem_pio2-%159-rev @__kernel_rem_pio2-%159-loc @__kernel_rem_pio2-%159-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.2-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-m149.2-rev
+            (@__kernel_rem_pio2-m149.1-mem s149)
+            (@__kernel_rem_pio2-%160-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%160-rev @__kernel_rem_pio2-%160-rev @__kernel_rem_pio2-%160-loc @__kernel_rem_pio2-%160-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%161-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%161-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%160-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.2-rev @__kernel_rem_pio2-m149.2-rev @__kernel_rem_pio2-m149.2-mem))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%162-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%162-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%161-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%161-rev @__kernel_rem_pio2-%161-rev @__kernel_rem_pio2-%161-loc @__kernel_rem_pio2-%161-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%163-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%163-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%162-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%162-rev @__kernel_rem_pio2-%162-rev @__kernel_rem_pio2-%162-loc @__kernel_rem_pio2-%162-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%164-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%164-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%163-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%163-rev @__kernel_rem_pio2-%163-rev @__kernel_rem_pio2-%163-loc @__kernel_rem_pio2-%163-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%165-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%165-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%164-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%164-rev @__kernel_rem_pio2-%164-rev @__kernel_rem_pio2-%164-loc @__kernel_rem_pio2-%164-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%166-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%166-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%165-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%165-rev @__kernel_rem_pio2-%165-rev @__kernel_rem_pio2-%165-loc @__kernel_rem_pio2-%165-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%167-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%167-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%166-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%166-rev @__kernel_rem_pio2-%166-rev @__kernel_rem_pio2-%166-loc @__kernel_rem_pio2-%166-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%168-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%168-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%167-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%167-rev @__kernel_rem_pio2-%167-rev @__kernel_rem_pio2-%167-loc @__kernel_rem_pio2-%167-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%169-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%169-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%168-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%168-rev @__kernel_rem_pio2-%168-rev @__kernel_rem_pio2-%168-loc @__kernel_rem_pio2-%168-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%170-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%170-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%169-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%169-rev @__kernel_rem_pio2-%169-rev @__kernel_rem_pio2-%169-loc @__kernel_rem_pio2-%169-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.3-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-m149.3-rev
+            (@__kernel_rem_pio2-m149.2-mem s149)
+            (@__kernel_rem_pio2-%170-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%170-rev @__kernel_rem_pio2-%170-rev @__kernel_rem_pio2-%170-loc @__kernel_rem_pio2-%170-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%171-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%171-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%170-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.3-rev @__kernel_rem_pio2-m149.3-rev @__kernel_rem_pio2-m149.3-mem))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%172-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%172-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%171-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%171-rev @__kernel_rem_pio2-%171-rev @__kernel_rem_pio2-%171-loc @__kernel_rem_pio2-%171-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%173-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%173-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%172-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%172-rev @__kernel_rem_pio2-%172-rev @__kernel_rem_pio2-%172-loc @__kernel_rem_pio2-%172-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%174-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%174-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%173-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%173-rev @__kernel_rem_pio2-%173-rev @__kernel_rem_pio2-%173-loc @__kernel_rem_pio2-%173-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%175-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%175-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%174-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%174-rev @__kernel_rem_pio2-%174-rev @__kernel_rem_pio2-%174-loc @__kernel_rem_pio2-%174-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%176-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%176-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%175-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%175-rev @__kernel_rem_pio2-%175-rev @__kernel_rem_pio2-%175-loc @__kernel_rem_pio2-%175-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%177-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%177-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%176-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%176-rev @__kernel_rem_pio2-%176-rev @__kernel_rem_pio2-%176-loc @__kernel_rem_pio2-%176-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%178-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-%178-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%177-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%177-rev @__kernel_rem_pio2-%177-rev @__kernel_rem_pio2-%177-loc @__kernel_rem_pio2-%177-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.4-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-m149.4-rev
+            (@__kernel_rem_pio2-m149.3-mem s149)
+            (@__kernel_rem_pio2-%178-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-%178-rev @__kernel_rem_pio2-%178-rev @__kernel_rem_pio2-%178-loc @__kernel_rem_pio2-%178-val))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-succ149-rev
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (let ((s149 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ149-rev
+            (@__kernel_rem_pio2-m149.4-mem s149)
+            (@__kernel_rem_pio2-%178-loc s149)
+            (@__kernel_rem_pio2-%149-pred s149))))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-m149.4-rev @__kernel_rem_pio2-m149.4-rev @__kernel_rem_pio2-m149.4-mem))
+(defruled @__kernel_rem_pio2-%149-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%149-rev mem loc pred)
+         (@__kernel_rem_pio2-%149-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%149-expand-rev-as-@__kernel_rem_pio2-succ149-rev @__kernel_rem_pio2-succ149-rev @__kernel_rem_pio2-succ149-lab @__kernel_rem_pio2-%149-fwd))
+
 (defund @__kernel_rem_pio2-%149-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2357,46 +4156,6 @@
     (succ '%195))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%149-expand-bb
-  (equal (@__kernel_rem_pio2-%149-bb mem loc pred)
-         (@__kernel_rem_pio2-%149-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%149-bb @__kernel_rem_pio2-%149-rev
-    @__kernel_rem_pio2-%150-rev
-    @__kernel_rem_pio2-%151-rev
-    @__kernel_rem_pio2-%152-rev
-    @__kernel_rem_pio2-%153-rev
-    @__kernel_rem_pio2-%154-rev
-    @__kernel_rem_pio2-%155-rev
-    @__kernel_rem_pio2-%156-rev
-    @__kernel_rem_pio2-%157-rev
-    @__kernel_rem_pio2-m149.1-rev
-    @__kernel_rem_pio2-%158-rev
-    @__kernel_rem_pio2-%159-rev
-    @__kernel_rem_pio2-%160-rev
-    @__kernel_rem_pio2-m149.2-rev
-    @__kernel_rem_pio2-%161-rev
-    @__kernel_rem_pio2-%162-rev
-    @__kernel_rem_pio2-%163-rev
-    @__kernel_rem_pio2-%164-rev
-    @__kernel_rem_pio2-%165-rev
-    @__kernel_rem_pio2-%166-rev
-    @__kernel_rem_pio2-%167-rev
-    @__kernel_rem_pio2-%168-rev
-    @__kernel_rem_pio2-%169-rev
-    @__kernel_rem_pio2-%170-rev
-    @__kernel_rem_pio2-m149.3-rev
-    @__kernel_rem_pio2-%171-rev
-    @__kernel_rem_pio2-%172-rev
-    @__kernel_rem_pio2-%173-rev
-    @__kernel_rem_pio2-%174-rev
-    @__kernel_rem_pio2-%175-rev
-    @__kernel_rem_pio2-%176-rev
-    @__kernel_rem_pio2-%177-rev
-    @__kernel_rem_pio2-%178-rev
-    @__kernel_rem_pio2-m149.4-rev
-    @__kernel_rem_pio2-succ149-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%179-mem (s179)
   (car s179))
 (defund @__kernel_rem_pio2-%179-loc (s179)
@@ -2414,6 +4173,10 @@
 (defund @__kernel_rem_pio2-succ179-lab (s179)
   (case (g '%181 (@__kernel_rem_pio2-%181-loc s179)) (-1 '%182) (0 '%189)))
 
+(defund @__kernel_rem_pio2-%179-fwd (mem loc pred)
+  (let ((s179 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ179-lab s179) (@__kernel_rem_pio2-%179-mem s179) (@__kernel_rem_pio2-%181-loc s179))))
+
 (defund @__kernel_rem_pio2-succ179-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%181 loc) (-1 '%182) (0 '%189)) mem loc))
@@ -2425,6 +4188,35 @@
 (defund @__kernel_rem_pio2-%179-rev (mem loc pred)
   (@__kernel_rem_pio2-%180-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%179-expand-rev-as-@__kernel_rem_pio2-%180-rev
+  (equal (@__kernel_rem_pio2-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@__kernel_rem_pio2-%180-rev
+            (@__kernel_rem_pio2-%179-mem s179)
+            (@__kernel_rem_pio2-%179-loc s179)
+            (@__kernel_rem_pio2-%179-pred s179))))
+  :enable (@__kernel_rem_pio2-%179-rev @__kernel_rem_pio2-%179-mem @__kernel_rem_pio2-%179-loc @__kernel_rem_pio2-%179-pred))
+(defruled @__kernel_rem_pio2-%179-expand-rev-as-@__kernel_rem_pio2-%181-rev
+  (equal (@__kernel_rem_pio2-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@__kernel_rem_pio2-%181-rev
+            (@__kernel_rem_pio2-%179-mem s179)
+            (@__kernel_rem_pio2-%180-loc s179)
+            (@__kernel_rem_pio2-%179-pred s179))))
+  :enable (@__kernel_rem_pio2-%179-expand-rev-as-@__kernel_rem_pio2-%180-rev @__kernel_rem_pio2-%180-rev @__kernel_rem_pio2-%180-loc @__kernel_rem_pio2-%180-val))
+(defruled @__kernel_rem_pio2-%179-expand-rev-as-@__kernel_rem_pio2-succ179-rev
+  (equal (@__kernel_rem_pio2-%179-rev mem loc pred)
+         (let ((s179 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ179-rev
+            (@__kernel_rem_pio2-%179-mem s179)
+            (@__kernel_rem_pio2-%181-loc s179)
+            (@__kernel_rem_pio2-%179-pred s179))))
+  :enable (@__kernel_rem_pio2-%179-expand-rev-as-@__kernel_rem_pio2-%181-rev @__kernel_rem_pio2-%181-rev @__kernel_rem_pio2-%181-loc @__kernel_rem_pio2-%181-val))
+(defruled @__kernel_rem_pio2-%179-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%179-rev mem loc pred)
+         (@__kernel_rem_pio2-%179-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%179-expand-rev-as-@__kernel_rem_pio2-succ179-rev @__kernel_rem_pio2-succ179-rev @__kernel_rem_pio2-succ179-lab @__kernel_rem_pio2-%179-fwd))
+
 (defund @__kernel_rem_pio2-%179-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2432,15 +4224,6 @@
     (loc (s '%181 (icmp-eq-i32 (g '%180 loc) 0) loc))
     (succ (case (g '%181 loc) (-1 '%182) (0 '%189))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%179-expand-bb
-  (equal (@__kernel_rem_pio2-%179-bb mem loc pred)
-         (@__kernel_rem_pio2-%179-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%179-bb @__kernel_rem_pio2-%179-rev
-    @__kernel_rem_pio2-%180-rev
-    @__kernel_rem_pio2-%181-rev
-    @__kernel_rem_pio2-succ179-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%182-mem (s182)
   (car s182))
@@ -2478,6 +4261,10 @@
   (declare (ignore s182))
   '%194)
 
+(defund @__kernel_rem_pio2-%182-fwd (mem loc pred)
+  (let ((s182 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ182-lab s182) (@__kernel_rem_pio2-m182.1-mem s182) (@__kernel_rem_pio2-%188-loc s182))))
+
 (defund @__kernel_rem_pio2-succ182-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%194 mem loc))
@@ -2499,6 +4286,75 @@
 (defund @__kernel_rem_pio2-%182-rev (mem loc pred)
   (@__kernel_rem_pio2-%183-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%183-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-%183-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%182-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-rev @__kernel_rem_pio2-%182-mem @__kernel_rem_pio2-%182-loc @__kernel_rem_pio2-%182-pred))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%184-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-%184-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%183-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%183-rev @__kernel_rem_pio2-%183-rev @__kernel_rem_pio2-%183-loc @__kernel_rem_pio2-%183-val))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%185-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-%185-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%184-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%184-rev @__kernel_rem_pio2-%184-rev @__kernel_rem_pio2-%184-loc @__kernel_rem_pio2-%184-val))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%186-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-%186-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%185-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%185-rev @__kernel_rem_pio2-%185-rev @__kernel_rem_pio2-%185-loc @__kernel_rem_pio2-%185-val))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%187-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-%187-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%186-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%186-rev @__kernel_rem_pio2-%186-rev @__kernel_rem_pio2-%186-loc @__kernel_rem_pio2-%186-val))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%188-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-%188-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%187-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%187-rev @__kernel_rem_pio2-%187-rev @__kernel_rem_pio2-%187-loc @__kernel_rem_pio2-%187-val))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-m182.1-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-m182.1-rev
+            (@__kernel_rem_pio2-%182-mem s182)
+            (@__kernel_rem_pio2-%188-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-%188-rev @__kernel_rem_pio2-%188-rev @__kernel_rem_pio2-%188-loc @__kernel_rem_pio2-%188-val))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-succ182-rev
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (let ((s182 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ182-rev
+            (@__kernel_rem_pio2-m182.1-mem s182)
+            (@__kernel_rem_pio2-%188-loc s182)
+            (@__kernel_rem_pio2-%182-pred s182))))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-m182.1-rev @__kernel_rem_pio2-m182.1-rev @__kernel_rem_pio2-m182.1-mem))
+(defruled @__kernel_rem_pio2-%182-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%182-rev mem loc pred)
+         (@__kernel_rem_pio2-%182-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%182-expand-rev-as-@__kernel_rem_pio2-succ182-rev @__kernel_rem_pio2-succ182-rev @__kernel_rem_pio2-succ182-lab @__kernel_rem_pio2-%182-fwd))
+
 (defund @__kernel_rem_pio2-%182-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2511,20 +4367,6 @@
     (mem (store-i32 (g '%188 loc) (g '%ih loc) mem))
     (succ '%194))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%182-expand-bb
-  (equal (@__kernel_rem_pio2-%182-bb mem loc pred)
-         (@__kernel_rem_pio2-%182-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%182-bb @__kernel_rem_pio2-%182-rev
-    @__kernel_rem_pio2-%183-rev
-    @__kernel_rem_pio2-%184-rev
-    @__kernel_rem_pio2-%185-rev
-    @__kernel_rem_pio2-%186-rev
-    @__kernel_rem_pio2-%187-rev
-    @__kernel_rem_pio2-%188-rev
-    @__kernel_rem_pio2-m182.1-rev
-    @__kernel_rem_pio2-succ182-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%189-mem (s189)
   (car s189))
@@ -2543,6 +4385,10 @@
 (defund @__kernel_rem_pio2-succ189-lab (s189)
   (case (g '%191 (@__kernel_rem_pio2-%191-loc s189)) (-1 '%192) (0 '%193)))
 
+(defund @__kernel_rem_pio2-%189-fwd (mem loc pred)
+  (let ((s189 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ189-lab s189) (@__kernel_rem_pio2-%189-mem s189) (@__kernel_rem_pio2-%191-loc s189))))
+
 (defund @__kernel_rem_pio2-succ189-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%191 loc) (-1 '%192) (0 '%193)) mem loc))
@@ -2554,6 +4400,35 @@
 (defund @__kernel_rem_pio2-%189-rev (mem loc pred)
   (@__kernel_rem_pio2-%190-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%189-expand-rev-as-@__kernel_rem_pio2-%190-rev
+  (equal (@__kernel_rem_pio2-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_rem_pio2-%190-rev
+            (@__kernel_rem_pio2-%189-mem s189)
+            (@__kernel_rem_pio2-%189-loc s189)
+            (@__kernel_rem_pio2-%189-pred s189))))
+  :enable (@__kernel_rem_pio2-%189-rev @__kernel_rem_pio2-%189-mem @__kernel_rem_pio2-%189-loc @__kernel_rem_pio2-%189-pred))
+(defruled @__kernel_rem_pio2-%189-expand-rev-as-@__kernel_rem_pio2-%191-rev
+  (equal (@__kernel_rem_pio2-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_rem_pio2-%191-rev
+            (@__kernel_rem_pio2-%189-mem s189)
+            (@__kernel_rem_pio2-%190-loc s189)
+            (@__kernel_rem_pio2-%189-pred s189))))
+  :enable (@__kernel_rem_pio2-%189-expand-rev-as-@__kernel_rem_pio2-%190-rev @__kernel_rem_pio2-%190-rev @__kernel_rem_pio2-%190-loc @__kernel_rem_pio2-%190-val))
+(defruled @__kernel_rem_pio2-%189-expand-rev-as-@__kernel_rem_pio2-succ189-rev
+  (equal (@__kernel_rem_pio2-%189-rev mem loc pred)
+         (let ((s189 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ189-rev
+            (@__kernel_rem_pio2-%189-mem s189)
+            (@__kernel_rem_pio2-%191-loc s189)
+            (@__kernel_rem_pio2-%189-pred s189))))
+  :enable (@__kernel_rem_pio2-%189-expand-rev-as-@__kernel_rem_pio2-%191-rev @__kernel_rem_pio2-%191-rev @__kernel_rem_pio2-%191-loc @__kernel_rem_pio2-%191-val))
+(defruled @__kernel_rem_pio2-%189-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%189-rev mem loc pred)
+         (@__kernel_rem_pio2-%189-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%189-expand-rev-as-@__kernel_rem_pio2-succ189-rev @__kernel_rem_pio2-succ189-rev @__kernel_rem_pio2-succ189-lab @__kernel_rem_pio2-%189-fwd))
+
 (defund @__kernel_rem_pio2-%189-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2561,15 +4436,6 @@
     (loc (s '%191 (fcmp-oge-double (g '%190 loc) #x3fe0000000000000) loc))
     (succ (case (g '%191 loc) (-1 '%192) (0 '%193))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%189-expand-bb
-  (equal (@__kernel_rem_pio2-%189-bb mem loc pred)
-         (@__kernel_rem_pio2-%189-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%189-bb @__kernel_rem_pio2-%189-rev
-    @__kernel_rem_pio2-%190-rev
-    @__kernel_rem_pio2-%191-rev
-    @__kernel_rem_pio2-succ189-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%192-mem (s192)
   (car s192))
@@ -2583,6 +4449,10 @@
   (declare (ignore s192))
   '%193)
 
+(defund @__kernel_rem_pio2-%192-fwd (mem loc pred)
+  (let ((s192 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ192-lab s192) (@__kernel_rem_pio2-m192.1-mem s192) (@__kernel_rem_pio2-%192-loc s192))))
+
 (defund @__kernel_rem_pio2-succ192-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%193 mem loc))
@@ -2592,20 +4462,33 @@
 (defund @__kernel_rem_pio2-%192-rev (mem loc pred)
   (@__kernel_rem_pio2-m192.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%192-expand-rev-as-@__kernel_rem_pio2-m192.1-rev
+  (equal (@__kernel_rem_pio2-%192-rev mem loc pred)
+         (let ((s192 (list mem loc pred)))
+           (@__kernel_rem_pio2-m192.1-rev
+            (@__kernel_rem_pio2-%192-mem s192)
+            (@__kernel_rem_pio2-%192-loc s192)
+            (@__kernel_rem_pio2-%192-pred s192))))
+  :enable (@__kernel_rem_pio2-%192-rev @__kernel_rem_pio2-%192-mem @__kernel_rem_pio2-%192-loc @__kernel_rem_pio2-%192-pred))
+(defruled @__kernel_rem_pio2-%192-expand-rev-as-@__kernel_rem_pio2-succ192-rev
+  (equal (@__kernel_rem_pio2-%192-rev mem loc pred)
+         (let ((s192 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ192-rev
+            (@__kernel_rem_pio2-m192.1-mem s192)
+            (@__kernel_rem_pio2-%192-loc s192)
+            (@__kernel_rem_pio2-%192-pred s192))))
+  :enable (@__kernel_rem_pio2-%192-expand-rev-as-@__kernel_rem_pio2-m192.1-rev @__kernel_rem_pio2-m192.1-rev @__kernel_rem_pio2-m192.1-mem))
+(defruled @__kernel_rem_pio2-%192-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%192-rev mem loc pred)
+         (@__kernel_rem_pio2-%192-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%192-expand-rev-as-@__kernel_rem_pio2-succ192-rev @__kernel_rem_pio2-succ192-rev @__kernel_rem_pio2-succ192-lab @__kernel_rem_pio2-%192-fwd))
+
 (defund @__kernel_rem_pio2-%192-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 2 (g '%ih loc) mem))
     (succ '%193))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%192-expand-bb
-  (equal (@__kernel_rem_pio2-%192-bb mem loc pred)
-         (@__kernel_rem_pio2-%192-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%192-bb @__kernel_rem_pio2-%192-rev
-    @__kernel_rem_pio2-m192.1-rev
-    @__kernel_rem_pio2-succ192-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%193-mem (s193)
   (car s193))
@@ -2617,6 +4500,10 @@
   (declare (ignore s193))
   '%194)
 
+(defund @__kernel_rem_pio2-%193-fwd (mem loc pred)
+  (let ((s193 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ193-lab s193) (@__kernel_rem_pio2-%193-mem s193) (@__kernel_rem_pio2-%193-loc s193))))
+
 (defund @__kernel_rem_pio2-succ193-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%194 mem loc))
@@ -2624,18 +4511,24 @@
 (defund @__kernel_rem_pio2-%193-rev (mem loc pred)
   (@__kernel_rem_pio2-succ193-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%193-expand-rev-as-@__kernel_rem_pio2-succ193-rev
+  (equal (@__kernel_rem_pio2-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ193-rev
+            (@__kernel_rem_pio2-%193-mem s193)
+            (@__kernel_rem_pio2-%193-loc s193)
+            (@__kernel_rem_pio2-%193-pred s193))))
+  :enable (@__kernel_rem_pio2-%193-rev @__kernel_rem_pio2-%193-mem @__kernel_rem_pio2-%193-loc @__kernel_rem_pio2-%193-pred))
+(defruled @__kernel_rem_pio2-%193-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%193-rev mem loc pred)
+         (@__kernel_rem_pio2-%193-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%193-expand-rev-as-@__kernel_rem_pio2-succ193-rev @__kernel_rem_pio2-succ193-rev @__kernel_rem_pio2-succ193-lab @__kernel_rem_pio2-%193-fwd))
+
 (defund @__kernel_rem_pio2-%193-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%194))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%193-expand-bb
-  (equal (@__kernel_rem_pio2-%193-bb mem loc pred)
-         (@__kernel_rem_pio2-%193-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%193-bb @__kernel_rem_pio2-%193-rev
-    @__kernel_rem_pio2-succ193-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%194-mem (s194)
   (car s194))
@@ -2647,6 +4540,10 @@
   (declare (ignore s194))
   '%195)
 
+(defund @__kernel_rem_pio2-%194-fwd (mem loc pred)
+  (let ((s194 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ194-lab s194) (@__kernel_rem_pio2-%194-mem s194) (@__kernel_rem_pio2-%194-loc s194))))
+
 (defund @__kernel_rem_pio2-succ194-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%195 mem loc))
@@ -2654,18 +4551,24 @@
 (defund @__kernel_rem_pio2-%194-rev (mem loc pred)
   (@__kernel_rem_pio2-succ194-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%194-expand-rev-as-@__kernel_rem_pio2-succ194-rev
+  (equal (@__kernel_rem_pio2-%194-rev mem loc pred)
+         (let ((s194 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ194-rev
+            (@__kernel_rem_pio2-%194-mem s194)
+            (@__kernel_rem_pio2-%194-loc s194)
+            (@__kernel_rem_pio2-%194-pred s194))))
+  :enable (@__kernel_rem_pio2-%194-rev @__kernel_rem_pio2-%194-mem @__kernel_rem_pio2-%194-loc @__kernel_rem_pio2-%194-pred))
+(defruled @__kernel_rem_pio2-%194-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%194-rev mem loc pred)
+         (@__kernel_rem_pio2-%194-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%194-expand-rev-as-@__kernel_rem_pio2-succ194-rev @__kernel_rem_pio2-succ194-rev @__kernel_rem_pio2-succ194-lab @__kernel_rem_pio2-%194-fwd))
+
 (defund @__kernel_rem_pio2-%194-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%195))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%194-expand-bb
-  (equal (@__kernel_rem_pio2-%194-bb mem loc pred)
-         (@__kernel_rem_pio2-%194-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%194-bb @__kernel_rem_pio2-%194-rev
-    @__kernel_rem_pio2-succ194-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%195-mem (s195)
   (car s195))
@@ -2684,6 +4587,10 @@
 (defund @__kernel_rem_pio2-succ195-lab (s195)
   (case (g '%197 (@__kernel_rem_pio2-%197-loc s195)) (-1 '%198) (0 '%267)))
 
+(defund @__kernel_rem_pio2-%195-fwd (mem loc pred)
+  (let ((s195 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ195-lab s195) (@__kernel_rem_pio2-%195-mem s195) (@__kernel_rem_pio2-%197-loc s195))))
+
 (defund @__kernel_rem_pio2-succ195-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%197 loc) (-1 '%198) (0 '%267)) mem loc))
@@ -2695,6 +4602,35 @@
 (defund @__kernel_rem_pio2-%195-rev (mem loc pred)
   (@__kernel_rem_pio2-%196-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%195-expand-rev-as-@__kernel_rem_pio2-%196-rev
+  (equal (@__kernel_rem_pio2-%195-rev mem loc pred)
+         (let ((s195 (list mem loc pred)))
+           (@__kernel_rem_pio2-%196-rev
+            (@__kernel_rem_pio2-%195-mem s195)
+            (@__kernel_rem_pio2-%195-loc s195)
+            (@__kernel_rem_pio2-%195-pred s195))))
+  :enable (@__kernel_rem_pio2-%195-rev @__kernel_rem_pio2-%195-mem @__kernel_rem_pio2-%195-loc @__kernel_rem_pio2-%195-pred))
+(defruled @__kernel_rem_pio2-%195-expand-rev-as-@__kernel_rem_pio2-%197-rev
+  (equal (@__kernel_rem_pio2-%195-rev mem loc pred)
+         (let ((s195 (list mem loc pred)))
+           (@__kernel_rem_pio2-%197-rev
+            (@__kernel_rem_pio2-%195-mem s195)
+            (@__kernel_rem_pio2-%196-loc s195)
+            (@__kernel_rem_pio2-%195-pred s195))))
+  :enable (@__kernel_rem_pio2-%195-expand-rev-as-@__kernel_rem_pio2-%196-rev @__kernel_rem_pio2-%196-rev @__kernel_rem_pio2-%196-loc @__kernel_rem_pio2-%196-val))
+(defruled @__kernel_rem_pio2-%195-expand-rev-as-@__kernel_rem_pio2-succ195-rev
+  (equal (@__kernel_rem_pio2-%195-rev mem loc pred)
+         (let ((s195 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ195-rev
+            (@__kernel_rem_pio2-%195-mem s195)
+            (@__kernel_rem_pio2-%197-loc s195)
+            (@__kernel_rem_pio2-%195-pred s195))))
+  :enable (@__kernel_rem_pio2-%195-expand-rev-as-@__kernel_rem_pio2-%197-rev @__kernel_rem_pio2-%197-rev @__kernel_rem_pio2-%197-loc @__kernel_rem_pio2-%197-val))
+(defruled @__kernel_rem_pio2-%195-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%195-rev mem loc pred)
+         (@__kernel_rem_pio2-%195-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%195-expand-rev-as-@__kernel_rem_pio2-succ195-rev @__kernel_rem_pio2-succ195-rev @__kernel_rem_pio2-succ195-lab @__kernel_rem_pio2-%195-fwd))
+
 (defund @__kernel_rem_pio2-%195-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2702,15 +4638,6 @@
     (loc (s '%197 (icmp-sgt-i32 (g '%196 loc) 0) loc))
     (succ (case (g '%197 loc) (-1 '%198) (0 '%267))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%195-expand-bb
-  (equal (@__kernel_rem_pio2-%195-bb mem loc pred)
-         (@__kernel_rem_pio2-%195-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%195-bb @__kernel_rem_pio2-%195-rev
-    @__kernel_rem_pio2-%196-rev
-    @__kernel_rem_pio2-%197-rev
-    @__kernel_rem_pio2-succ195-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%198-mem (s198)
   (car s198))
@@ -2736,6 +4663,10 @@
   (declare (ignore s198))
   '%201)
 
+(defund @__kernel_rem_pio2-%198-fwd (mem loc pred)
+  (let ((s198 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ198-lab s198) (@__kernel_rem_pio2-m198.3-mem s198) (@__kernel_rem_pio2-%200-loc s198))))
+
 (defund @__kernel_rem_pio2-succ198-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%201 mem loc))
@@ -2753,6 +4684,59 @@
 (defund @__kernel_rem_pio2-%198-rev (mem loc pred)
   (@__kernel_rem_pio2-%199-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-%199-rev
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (let ((s198 (list mem loc pred)))
+           (@__kernel_rem_pio2-%199-rev
+            (@__kernel_rem_pio2-%198-mem s198)
+            (@__kernel_rem_pio2-%198-loc s198)
+            (@__kernel_rem_pio2-%198-pred s198))))
+  :enable (@__kernel_rem_pio2-%198-rev @__kernel_rem_pio2-%198-mem @__kernel_rem_pio2-%198-loc @__kernel_rem_pio2-%198-pred))
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-%200-rev
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (let ((s198 (list mem loc pred)))
+           (@__kernel_rem_pio2-%200-rev
+            (@__kernel_rem_pio2-%198-mem s198)
+            (@__kernel_rem_pio2-%199-loc s198)
+            (@__kernel_rem_pio2-%198-pred s198))))
+  :enable (@__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-%199-rev @__kernel_rem_pio2-%199-rev @__kernel_rem_pio2-%199-loc @__kernel_rem_pio2-%199-val))
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-m198.1-rev
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (let ((s198 (list mem loc pred)))
+           (@__kernel_rem_pio2-m198.1-rev
+            (@__kernel_rem_pio2-%198-mem s198)
+            (@__kernel_rem_pio2-%200-loc s198)
+            (@__kernel_rem_pio2-%198-pred s198))))
+  :enable (@__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-%200-rev @__kernel_rem_pio2-%200-rev @__kernel_rem_pio2-%200-loc @__kernel_rem_pio2-%200-val))
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-m198.2-rev
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (let ((s198 (list mem loc pred)))
+           (@__kernel_rem_pio2-m198.2-rev
+            (@__kernel_rem_pio2-m198.1-mem s198)
+            (@__kernel_rem_pio2-%200-loc s198)
+            (@__kernel_rem_pio2-%198-pred s198))))
+  :enable (@__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-m198.1-rev @__kernel_rem_pio2-m198.1-rev @__kernel_rem_pio2-m198.1-mem))
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-m198.3-rev
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (let ((s198 (list mem loc pred)))
+           (@__kernel_rem_pio2-m198.3-rev
+            (@__kernel_rem_pio2-m198.2-mem s198)
+            (@__kernel_rem_pio2-%200-loc s198)
+            (@__kernel_rem_pio2-%198-pred s198))))
+  :enable (@__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-m198.2-rev @__kernel_rem_pio2-m198.2-rev @__kernel_rem_pio2-m198.2-mem))
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-succ198-rev
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (let ((s198 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ198-rev
+            (@__kernel_rem_pio2-m198.3-mem s198)
+            (@__kernel_rem_pio2-%200-loc s198)
+            (@__kernel_rem_pio2-%198-pred s198))))
+  :enable (@__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-m198.3-rev @__kernel_rem_pio2-m198.3-rev @__kernel_rem_pio2-m198.3-mem))
+(defruled @__kernel_rem_pio2-%198-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%198-rev mem loc pred)
+         (@__kernel_rem_pio2-%198-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%198-expand-rev-as-@__kernel_rem_pio2-succ198-rev @__kernel_rem_pio2-succ198-rev @__kernel_rem_pio2-succ198-lab @__kernel_rem_pio2-%198-fwd))
+
 (defund @__kernel_rem_pio2-%198-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2763,18 +4747,6 @@
     (mem (store-i32 0 (g '%i loc) mem))
     (succ '%201))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%198-expand-bb
-  (equal (@__kernel_rem_pio2-%198-bb mem loc pred)
-         (@__kernel_rem_pio2-%198-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%198-bb @__kernel_rem_pio2-%198-rev
-    @__kernel_rem_pio2-%199-rev
-    @__kernel_rem_pio2-%200-rev
-    @__kernel_rem_pio2-m198.1-rev
-    @__kernel_rem_pio2-m198.2-rev
-    @__kernel_rem_pio2-m198.3-rev
-    @__kernel_rem_pio2-succ198-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%201-mem (s201)
   (car s201))
@@ -2797,6 +4769,10 @@
 (defund @__kernel_rem_pio2-succ201-lab (s201)
   (case (g '%204 (@__kernel_rem_pio2-%204-loc s201)) (-1 '%205) (0 '%232)))
 
+(defund @__kernel_rem_pio2-%201-fwd (mem loc pred)
+  (let ((s201 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ201-lab s201) (@__kernel_rem_pio2-%201-mem s201) (@__kernel_rem_pio2-%204-loc s201))))
+
 (defund @__kernel_rem_pio2-succ201-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%204 loc) (-1 '%205) (0 '%232)) mem loc))
@@ -2810,6 +4786,43 @@
 (defund @__kernel_rem_pio2-%201-rev (mem loc pred)
   (@__kernel_rem_pio2-%202-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-%202-rev
+  (equal (@__kernel_rem_pio2-%201-rev mem loc pred)
+         (let ((s201 (list mem loc pred)))
+           (@__kernel_rem_pio2-%202-rev
+            (@__kernel_rem_pio2-%201-mem s201)
+            (@__kernel_rem_pio2-%201-loc s201)
+            (@__kernel_rem_pio2-%201-pred s201))))
+  :enable (@__kernel_rem_pio2-%201-rev @__kernel_rem_pio2-%201-mem @__kernel_rem_pio2-%201-loc @__kernel_rem_pio2-%201-pred))
+(defruled @__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-%203-rev
+  (equal (@__kernel_rem_pio2-%201-rev mem loc pred)
+         (let ((s201 (list mem loc pred)))
+           (@__kernel_rem_pio2-%203-rev
+            (@__kernel_rem_pio2-%201-mem s201)
+            (@__kernel_rem_pio2-%202-loc s201)
+            (@__kernel_rem_pio2-%201-pred s201))))
+  :enable (@__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-%202-rev @__kernel_rem_pio2-%202-rev @__kernel_rem_pio2-%202-loc @__kernel_rem_pio2-%202-val))
+(defruled @__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-%204-rev
+  (equal (@__kernel_rem_pio2-%201-rev mem loc pred)
+         (let ((s201 (list mem loc pred)))
+           (@__kernel_rem_pio2-%204-rev
+            (@__kernel_rem_pio2-%201-mem s201)
+            (@__kernel_rem_pio2-%203-loc s201)
+            (@__kernel_rem_pio2-%201-pred s201))))
+  :enable (@__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-%203-rev @__kernel_rem_pio2-%203-rev @__kernel_rem_pio2-%203-loc @__kernel_rem_pio2-%203-val))
+(defruled @__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-succ201-rev
+  (equal (@__kernel_rem_pio2-%201-rev mem loc pred)
+         (let ((s201 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ201-rev
+            (@__kernel_rem_pio2-%201-mem s201)
+            (@__kernel_rem_pio2-%204-loc s201)
+            (@__kernel_rem_pio2-%201-pred s201))))
+  :enable (@__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-%204-rev @__kernel_rem_pio2-%204-rev @__kernel_rem_pio2-%204-loc @__kernel_rem_pio2-%204-val))
+(defruled @__kernel_rem_pio2-%201-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%201-rev mem loc pred)
+         (@__kernel_rem_pio2-%201-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%201-expand-rev-as-@__kernel_rem_pio2-succ201-rev @__kernel_rem_pio2-succ201-rev @__kernel_rem_pio2-succ201-lab @__kernel_rem_pio2-%201-fwd))
+
 (defund @__kernel_rem_pio2-%201-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2818,16 +4831,6 @@
     (loc (s '%204 (icmp-slt-i32 (g '%202 loc) (g '%203 loc)) loc))
     (succ (case (g '%204 loc) (-1 '%205) (0 '%232))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%201-expand-bb
-  (equal (@__kernel_rem_pio2-%201-bb mem loc pred)
-         (@__kernel_rem_pio2-%201-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%201-bb @__kernel_rem_pio2-%201-rev
-    @__kernel_rem_pio2-%202-rev
-    @__kernel_rem_pio2-%203-rev
-    @__kernel_rem_pio2-%204-rev
-    @__kernel_rem_pio2-succ201-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%205-mem (s205)
   (car s205))
@@ -2864,6 +4867,10 @@
 (defund @__kernel_rem_pio2-succ205-lab (s205)
   (case (g '%211 (@__kernel_rem_pio2-%211-loc s205)) (-1 '%212) (0 '%222)))
 
+(defund @__kernel_rem_pio2-%205-fwd (mem loc pred)
+  (let ((s205 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ205-lab s205) (@__kernel_rem_pio2-m205.1-mem s205) (@__kernel_rem_pio2-%211-loc s205))))
+
 (defund @__kernel_rem_pio2-succ205-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%211 loc) (-1 '%212) (0 '%222)) mem loc))
@@ -2885,6 +4892,75 @@
 (defund @__kernel_rem_pio2-%205-rev (mem loc pred)
   (@__kernel_rem_pio2-%206-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%206-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-%206-rev
+            (@__kernel_rem_pio2-%205-mem s205)
+            (@__kernel_rem_pio2-%205-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-rev @__kernel_rem_pio2-%205-mem @__kernel_rem_pio2-%205-loc @__kernel_rem_pio2-%205-pred))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%207-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-%207-rev
+            (@__kernel_rem_pio2-%205-mem s205)
+            (@__kernel_rem_pio2-%206-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%206-rev @__kernel_rem_pio2-%206-rev @__kernel_rem_pio2-%206-loc @__kernel_rem_pio2-%206-val))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%208-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-%208-rev
+            (@__kernel_rem_pio2-%205-mem s205)
+            (@__kernel_rem_pio2-%207-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%207-rev @__kernel_rem_pio2-%207-rev @__kernel_rem_pio2-%207-loc @__kernel_rem_pio2-%207-val))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%209-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-%209-rev
+            (@__kernel_rem_pio2-%205-mem s205)
+            (@__kernel_rem_pio2-%208-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%208-rev @__kernel_rem_pio2-%208-rev @__kernel_rem_pio2-%208-loc @__kernel_rem_pio2-%208-val))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-m205.1-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-m205.1-rev
+            (@__kernel_rem_pio2-%205-mem s205)
+            (@__kernel_rem_pio2-%209-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%209-rev @__kernel_rem_pio2-%209-rev @__kernel_rem_pio2-%209-loc @__kernel_rem_pio2-%209-val))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%210-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-%210-rev
+            (@__kernel_rem_pio2-m205.1-mem s205)
+            (@__kernel_rem_pio2-%209-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-m205.1-rev @__kernel_rem_pio2-m205.1-rev @__kernel_rem_pio2-m205.1-mem))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%211-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-%211-rev
+            (@__kernel_rem_pio2-m205.1-mem s205)
+            (@__kernel_rem_pio2-%210-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%210-rev @__kernel_rem_pio2-%210-rev @__kernel_rem_pio2-%210-loc @__kernel_rem_pio2-%210-val))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-succ205-rev
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (let ((s205 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ205-rev
+            (@__kernel_rem_pio2-m205.1-mem s205)
+            (@__kernel_rem_pio2-%211-loc s205)
+            (@__kernel_rem_pio2-%205-pred s205))))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-%211-rev @__kernel_rem_pio2-%211-rev @__kernel_rem_pio2-%211-loc @__kernel_rem_pio2-%211-val))
+(defruled @__kernel_rem_pio2-%205-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%205-rev mem loc pred)
+         (@__kernel_rem_pio2-%205-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%205-expand-rev-as-@__kernel_rem_pio2-succ205-rev @__kernel_rem_pio2-succ205-rev @__kernel_rem_pio2-succ205-lab @__kernel_rem_pio2-%205-fwd))
+
 (defund @__kernel_rem_pio2-%205-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2897,20 +4973,6 @@
     (loc (s '%211 (icmp-eq-i32 (g '%210 loc) 0) loc))
     (succ (case (g '%211 loc) (-1 '%212) (0 '%222))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%205-expand-bb
-  (equal (@__kernel_rem_pio2-%205-bb mem loc pred)
-         (@__kernel_rem_pio2-%205-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%205-bb @__kernel_rem_pio2-%205-rev
-    @__kernel_rem_pio2-%206-rev
-    @__kernel_rem_pio2-%207-rev
-    @__kernel_rem_pio2-%208-rev
-    @__kernel_rem_pio2-%209-rev
-    @__kernel_rem_pio2-m205.1-rev
-    @__kernel_rem_pio2-%210-rev
-    @__kernel_rem_pio2-%211-rev
-    @__kernel_rem_pio2-succ205-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%212-mem (s212)
   (car s212))
@@ -2929,6 +4991,10 @@
 (defund @__kernel_rem_pio2-succ212-lab (s212)
   (case (g '%214 (@__kernel_rem_pio2-%214-loc s212)) (-1 '%215) (0 '%221)))
 
+(defund @__kernel_rem_pio2-%212-fwd (mem loc pred)
+  (let ((s212 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ212-lab s212) (@__kernel_rem_pio2-%212-mem s212) (@__kernel_rem_pio2-%214-loc s212))))
+
 (defund @__kernel_rem_pio2-succ212-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%214 loc) (-1 '%215) (0 '%221)) mem loc))
@@ -2940,6 +5006,35 @@
 (defund @__kernel_rem_pio2-%212-rev (mem loc pred)
   (@__kernel_rem_pio2-%213-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%212-expand-rev-as-@__kernel_rem_pio2-%213-rev
+  (equal (@__kernel_rem_pio2-%212-rev mem loc pred)
+         (let ((s212 (list mem loc pred)))
+           (@__kernel_rem_pio2-%213-rev
+            (@__kernel_rem_pio2-%212-mem s212)
+            (@__kernel_rem_pio2-%212-loc s212)
+            (@__kernel_rem_pio2-%212-pred s212))))
+  :enable (@__kernel_rem_pio2-%212-rev @__kernel_rem_pio2-%212-mem @__kernel_rem_pio2-%212-loc @__kernel_rem_pio2-%212-pred))
+(defruled @__kernel_rem_pio2-%212-expand-rev-as-@__kernel_rem_pio2-%214-rev
+  (equal (@__kernel_rem_pio2-%212-rev mem loc pred)
+         (let ((s212 (list mem loc pred)))
+           (@__kernel_rem_pio2-%214-rev
+            (@__kernel_rem_pio2-%212-mem s212)
+            (@__kernel_rem_pio2-%213-loc s212)
+            (@__kernel_rem_pio2-%212-pred s212))))
+  :enable (@__kernel_rem_pio2-%212-expand-rev-as-@__kernel_rem_pio2-%213-rev @__kernel_rem_pio2-%213-rev @__kernel_rem_pio2-%213-loc @__kernel_rem_pio2-%213-val))
+(defruled @__kernel_rem_pio2-%212-expand-rev-as-@__kernel_rem_pio2-succ212-rev
+  (equal (@__kernel_rem_pio2-%212-rev mem loc pred)
+         (let ((s212 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ212-rev
+            (@__kernel_rem_pio2-%212-mem s212)
+            (@__kernel_rem_pio2-%214-loc s212)
+            (@__kernel_rem_pio2-%212-pred s212))))
+  :enable (@__kernel_rem_pio2-%212-expand-rev-as-@__kernel_rem_pio2-%214-rev @__kernel_rem_pio2-%214-rev @__kernel_rem_pio2-%214-loc @__kernel_rem_pio2-%214-val))
+(defruled @__kernel_rem_pio2-%212-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%212-rev mem loc pred)
+         (@__kernel_rem_pio2-%212-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%212-expand-rev-as-@__kernel_rem_pio2-succ212-rev @__kernel_rem_pio2-succ212-rev @__kernel_rem_pio2-succ212-lab @__kernel_rem_pio2-%212-fwd))
+
 (defund @__kernel_rem_pio2-%212-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2947,15 +5042,6 @@
     (loc (s '%214 (icmp-ne-i32 (g '%213 loc) 0) loc))
     (succ (case (g '%214 loc) (-1 '%215) (0 '%221))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%212-expand-bb
-  (equal (@__kernel_rem_pio2-%212-bb mem loc pred)
-         (@__kernel_rem_pio2-%212-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%212-bb @__kernel_rem_pio2-%212-rev
-    @__kernel_rem_pio2-%213-rev
-    @__kernel_rem_pio2-%214-rev
-    @__kernel_rem_pio2-succ212-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%215-mem (s215)
   (car s215))
@@ -2991,6 +5077,10 @@
   (declare (ignore s215))
   '%221)
 
+(defund @__kernel_rem_pio2-%215-fwd (mem loc pred)
+  (let ((s215 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ215-lab s215) (@__kernel_rem_pio2-m215.2-mem s215) (@__kernel_rem_pio2-%220-loc s215))))
+
 (defund @__kernel_rem_pio2-succ215-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%221 mem loc))
@@ -3012,6 +5102,75 @@
 (defund @__kernel_rem_pio2-%215-rev (mem loc pred)
   (@__kernel_rem_pio2-m215.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-m215.1-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-m215.1-rev
+            (@__kernel_rem_pio2-%215-mem s215)
+            (@__kernel_rem_pio2-%215-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-rev @__kernel_rem_pio2-%215-mem @__kernel_rem_pio2-%215-loc @__kernel_rem_pio2-%215-pred))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%216-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-%216-rev
+            (@__kernel_rem_pio2-m215.1-mem s215)
+            (@__kernel_rem_pio2-%215-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-m215.1-rev @__kernel_rem_pio2-m215.1-rev @__kernel_rem_pio2-m215.1-mem))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%217-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-%217-rev
+            (@__kernel_rem_pio2-m215.1-mem s215)
+            (@__kernel_rem_pio2-%216-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%216-rev @__kernel_rem_pio2-%216-rev @__kernel_rem_pio2-%216-loc @__kernel_rem_pio2-%216-val))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%218-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-%218-rev
+            (@__kernel_rem_pio2-m215.1-mem s215)
+            (@__kernel_rem_pio2-%217-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%217-rev @__kernel_rem_pio2-%217-rev @__kernel_rem_pio2-%217-loc @__kernel_rem_pio2-%217-val))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%219-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-%219-rev
+            (@__kernel_rem_pio2-m215.1-mem s215)
+            (@__kernel_rem_pio2-%218-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%218-rev @__kernel_rem_pio2-%218-rev @__kernel_rem_pio2-%218-loc @__kernel_rem_pio2-%218-val))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%220-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-%220-rev
+            (@__kernel_rem_pio2-m215.1-mem s215)
+            (@__kernel_rem_pio2-%219-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%219-rev @__kernel_rem_pio2-%219-rev @__kernel_rem_pio2-%219-loc @__kernel_rem_pio2-%219-val))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-m215.2-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-m215.2-rev
+            (@__kernel_rem_pio2-m215.1-mem s215)
+            (@__kernel_rem_pio2-%220-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-%220-rev @__kernel_rem_pio2-%220-rev @__kernel_rem_pio2-%220-loc @__kernel_rem_pio2-%220-val))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-succ215-rev
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (let ((s215 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ215-rev
+            (@__kernel_rem_pio2-m215.2-mem s215)
+            (@__kernel_rem_pio2-%220-loc s215)
+            (@__kernel_rem_pio2-%215-pred s215))))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-m215.2-rev @__kernel_rem_pio2-m215.2-rev @__kernel_rem_pio2-m215.2-mem))
+(defruled @__kernel_rem_pio2-%215-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%215-rev mem loc pred)
+         (@__kernel_rem_pio2-%215-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%215-expand-rev-as-@__kernel_rem_pio2-succ215-rev @__kernel_rem_pio2-succ215-rev @__kernel_rem_pio2-succ215-lab @__kernel_rem_pio2-%215-fwd))
+
 (defund @__kernel_rem_pio2-%215-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3025,20 +5184,6 @@
     (succ '%221))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%215-expand-bb
-  (equal (@__kernel_rem_pio2-%215-bb mem loc pred)
-         (@__kernel_rem_pio2-%215-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%215-bb @__kernel_rem_pio2-%215-rev
-    @__kernel_rem_pio2-m215.1-rev
-    @__kernel_rem_pio2-%216-rev
-    @__kernel_rem_pio2-%217-rev
-    @__kernel_rem_pio2-%218-rev
-    @__kernel_rem_pio2-%219-rev
-    @__kernel_rem_pio2-%220-rev
-    @__kernel_rem_pio2-m215.2-rev
-    @__kernel_rem_pio2-succ215-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%221-mem (s221)
   (car s221))
 (defund @__kernel_rem_pio2-%221-loc (s221)
@@ -3049,6 +5194,10 @@
   (declare (ignore s221))
   '%228)
 
+(defund @__kernel_rem_pio2-%221-fwd (mem loc pred)
+  (let ((s221 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ221-lab s221) (@__kernel_rem_pio2-%221-mem s221) (@__kernel_rem_pio2-%221-loc s221))))
+
 (defund @__kernel_rem_pio2-succ221-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%228 mem loc))
@@ -3056,18 +5205,24 @@
 (defund @__kernel_rem_pio2-%221-rev (mem loc pred)
   (@__kernel_rem_pio2-succ221-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%221-expand-rev-as-@__kernel_rem_pio2-succ221-rev
+  (equal (@__kernel_rem_pio2-%221-rev mem loc pred)
+         (let ((s221 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ221-rev
+            (@__kernel_rem_pio2-%221-mem s221)
+            (@__kernel_rem_pio2-%221-loc s221)
+            (@__kernel_rem_pio2-%221-pred s221))))
+  :enable (@__kernel_rem_pio2-%221-rev @__kernel_rem_pio2-%221-mem @__kernel_rem_pio2-%221-loc @__kernel_rem_pio2-%221-pred))
+(defruled @__kernel_rem_pio2-%221-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%221-rev mem loc pred)
+         (@__kernel_rem_pio2-%221-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%221-expand-rev-as-@__kernel_rem_pio2-succ221-rev @__kernel_rem_pio2-succ221-rev @__kernel_rem_pio2-succ221-lab @__kernel_rem_pio2-%221-fwd))
+
 (defund @__kernel_rem_pio2-%221-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%228))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%221-expand-bb
-  (equal (@__kernel_rem_pio2-%221-bb mem loc pred)
-         (@__kernel_rem_pio2-%221-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%221-bb @__kernel_rem_pio2-%221-rev
-    @__kernel_rem_pio2-succ221-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%222-mem (s222)
   (car s222))
@@ -3101,6 +5256,10 @@
   (declare (ignore s222))
   '%228)
 
+(defund @__kernel_rem_pio2-%222-fwd (mem loc pred)
+  (let ((s222 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ222-lab s222) (@__kernel_rem_pio2-m222.1-mem s222) (@__kernel_rem_pio2-%227-loc s222))))
+
 (defund @__kernel_rem_pio2-succ222-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%228 mem loc))
@@ -3120,6 +5279,67 @@
 (defund @__kernel_rem_pio2-%222-rev (mem loc pred)
   (@__kernel_rem_pio2-%223-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%223-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-%223-rev
+            (@__kernel_rem_pio2-%222-mem s222)
+            (@__kernel_rem_pio2-%222-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-rev @__kernel_rem_pio2-%222-mem @__kernel_rem_pio2-%222-loc @__kernel_rem_pio2-%222-pred))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%224-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-%224-rev
+            (@__kernel_rem_pio2-%222-mem s222)
+            (@__kernel_rem_pio2-%223-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%223-rev @__kernel_rem_pio2-%223-rev @__kernel_rem_pio2-%223-loc @__kernel_rem_pio2-%223-val))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%225-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-%225-rev
+            (@__kernel_rem_pio2-%222-mem s222)
+            (@__kernel_rem_pio2-%224-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%224-rev @__kernel_rem_pio2-%224-rev @__kernel_rem_pio2-%224-loc @__kernel_rem_pio2-%224-val))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%226-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-%226-rev
+            (@__kernel_rem_pio2-%222-mem s222)
+            (@__kernel_rem_pio2-%225-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%225-rev @__kernel_rem_pio2-%225-rev @__kernel_rem_pio2-%225-loc @__kernel_rem_pio2-%225-val))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%227-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-%227-rev
+            (@__kernel_rem_pio2-%222-mem s222)
+            (@__kernel_rem_pio2-%226-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%226-rev @__kernel_rem_pio2-%226-rev @__kernel_rem_pio2-%226-loc @__kernel_rem_pio2-%226-val))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-m222.1-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-m222.1-rev
+            (@__kernel_rem_pio2-%222-mem s222)
+            (@__kernel_rem_pio2-%227-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-%227-rev @__kernel_rem_pio2-%227-rev @__kernel_rem_pio2-%227-loc @__kernel_rem_pio2-%227-val))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-succ222-rev
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (let ((s222 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ222-rev
+            (@__kernel_rem_pio2-m222.1-mem s222)
+            (@__kernel_rem_pio2-%227-loc s222)
+            (@__kernel_rem_pio2-%222-pred s222))))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-m222.1-rev @__kernel_rem_pio2-m222.1-rev @__kernel_rem_pio2-m222.1-mem))
+(defruled @__kernel_rem_pio2-%222-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%222-rev mem loc pred)
+         (@__kernel_rem_pio2-%222-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%222-expand-rev-as-@__kernel_rem_pio2-succ222-rev @__kernel_rem_pio2-succ222-rev @__kernel_rem_pio2-succ222-lab @__kernel_rem_pio2-%222-fwd))
+
 (defund @__kernel_rem_pio2-%222-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3132,19 +5352,6 @@
     (succ '%228))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%222-expand-bb
-  (equal (@__kernel_rem_pio2-%222-bb mem loc pred)
-         (@__kernel_rem_pio2-%222-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%222-bb @__kernel_rem_pio2-%222-rev
-    @__kernel_rem_pio2-%223-rev
-    @__kernel_rem_pio2-%224-rev
-    @__kernel_rem_pio2-%225-rev
-    @__kernel_rem_pio2-%226-rev
-    @__kernel_rem_pio2-%227-rev
-    @__kernel_rem_pio2-m222.1-rev
-    @__kernel_rem_pio2-succ222-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%228-mem (s228)
   (car s228))
 (defund @__kernel_rem_pio2-%228-loc (s228)
@@ -3155,6 +5362,10 @@
   (declare (ignore s228))
   '%229)
 
+(defund @__kernel_rem_pio2-%228-fwd (mem loc pred)
+  (let ((s228 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ228-lab s228) (@__kernel_rem_pio2-%228-mem s228) (@__kernel_rem_pio2-%228-loc s228))))
+
 (defund @__kernel_rem_pio2-succ228-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%229 mem loc))
@@ -3162,18 +5373,24 @@
 (defund @__kernel_rem_pio2-%228-rev (mem loc pred)
   (@__kernel_rem_pio2-succ228-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%228-expand-rev-as-@__kernel_rem_pio2-succ228-rev
+  (equal (@__kernel_rem_pio2-%228-rev mem loc pred)
+         (let ((s228 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ228-rev
+            (@__kernel_rem_pio2-%228-mem s228)
+            (@__kernel_rem_pio2-%228-loc s228)
+            (@__kernel_rem_pio2-%228-pred s228))))
+  :enable (@__kernel_rem_pio2-%228-rev @__kernel_rem_pio2-%228-mem @__kernel_rem_pio2-%228-loc @__kernel_rem_pio2-%228-pred))
+(defruled @__kernel_rem_pio2-%228-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%228-rev mem loc pred)
+         (@__kernel_rem_pio2-%228-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%228-expand-rev-as-@__kernel_rem_pio2-succ228-rev @__kernel_rem_pio2-succ228-rev @__kernel_rem_pio2-succ228-lab @__kernel_rem_pio2-%228-fwd))
+
 (defund @__kernel_rem_pio2-%228-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%229))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%228-expand-bb
-  (equal (@__kernel_rem_pio2-%228-bb mem loc pred)
-         (@__kernel_rem_pio2-%228-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%228-bb @__kernel_rem_pio2-%228-rev
-    @__kernel_rem_pio2-succ228-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%229-mem (s229)
   (car s229))
@@ -3195,6 +5412,10 @@
   (declare (ignore s229))
   '%201)
 
+(defund @__kernel_rem_pio2-%229-fwd (mem loc pred)
+  (let ((s229 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ229-lab s229) (@__kernel_rem_pio2-m229.1-mem s229) (@__kernel_rem_pio2-%231-loc s229))))
+
 (defund @__kernel_rem_pio2-succ229-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%201 mem loc))
@@ -3208,6 +5429,43 @@
 (defund @__kernel_rem_pio2-%229-rev (mem loc pred)
   (@__kernel_rem_pio2-%230-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-%230-rev
+  (equal (@__kernel_rem_pio2-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__kernel_rem_pio2-%230-rev
+            (@__kernel_rem_pio2-%229-mem s229)
+            (@__kernel_rem_pio2-%229-loc s229)
+            (@__kernel_rem_pio2-%229-pred s229))))
+  :enable (@__kernel_rem_pio2-%229-rev @__kernel_rem_pio2-%229-mem @__kernel_rem_pio2-%229-loc @__kernel_rem_pio2-%229-pred))
+(defruled @__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-%231-rev
+  (equal (@__kernel_rem_pio2-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__kernel_rem_pio2-%231-rev
+            (@__kernel_rem_pio2-%229-mem s229)
+            (@__kernel_rem_pio2-%230-loc s229)
+            (@__kernel_rem_pio2-%229-pred s229))))
+  :enable (@__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-%230-rev @__kernel_rem_pio2-%230-rev @__kernel_rem_pio2-%230-loc @__kernel_rem_pio2-%230-val))
+(defruled @__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-m229.1-rev
+  (equal (@__kernel_rem_pio2-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__kernel_rem_pio2-m229.1-rev
+            (@__kernel_rem_pio2-%229-mem s229)
+            (@__kernel_rem_pio2-%231-loc s229)
+            (@__kernel_rem_pio2-%229-pred s229))))
+  :enable (@__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-%231-rev @__kernel_rem_pio2-%231-rev @__kernel_rem_pio2-%231-loc @__kernel_rem_pio2-%231-val))
+(defruled @__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-succ229-rev
+  (equal (@__kernel_rem_pio2-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ229-rev
+            (@__kernel_rem_pio2-m229.1-mem s229)
+            (@__kernel_rem_pio2-%231-loc s229)
+            (@__kernel_rem_pio2-%229-pred s229))))
+  :enable (@__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-m229.1-rev @__kernel_rem_pio2-m229.1-rev @__kernel_rem_pio2-m229.1-mem))
+(defruled @__kernel_rem_pio2-%229-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%229-rev mem loc pred)
+         (@__kernel_rem_pio2-%229-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%229-expand-rev-as-@__kernel_rem_pio2-succ229-rev @__kernel_rem_pio2-succ229-rev @__kernel_rem_pio2-succ229-lab @__kernel_rem_pio2-%229-fwd))
+
 (defund @__kernel_rem_pio2-%229-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3216,16 +5474,6 @@
     (mem (store-i32 (g '%231 loc) (g '%i loc) mem))
     (succ '%201))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%229-expand-bb
-  (equal (@__kernel_rem_pio2-%229-bb mem loc pred)
-         (@__kernel_rem_pio2-%229-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%229-bb @__kernel_rem_pio2-%229-rev
-    @__kernel_rem_pio2-%230-rev
-    @__kernel_rem_pio2-%231-rev
-    @__kernel_rem_pio2-m229.1-rev
-    @__kernel_rem_pio2-succ229-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%232-mem (s232)
   (car s232))
@@ -3244,6 +5492,10 @@
 (defund @__kernel_rem_pio2-succ232-lab (s232)
   (case (g '%234 (@__kernel_rem_pio2-%234-loc s232)) (-1 '%235) (0 '%252)))
 
+(defund @__kernel_rem_pio2-%232-fwd (mem loc pred)
+  (let ((s232 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ232-lab s232) (@__kernel_rem_pio2-%232-mem s232) (@__kernel_rem_pio2-%234-loc s232))))
+
 (defund @__kernel_rem_pio2-succ232-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%234 loc) (-1 '%235) (0 '%252)) mem loc))
@@ -3255,6 +5507,35 @@
 (defund @__kernel_rem_pio2-%232-rev (mem loc pred)
   (@__kernel_rem_pio2-%233-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%232-expand-rev-as-@__kernel_rem_pio2-%233-rev
+  (equal (@__kernel_rem_pio2-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__kernel_rem_pio2-%233-rev
+            (@__kernel_rem_pio2-%232-mem s232)
+            (@__kernel_rem_pio2-%232-loc s232)
+            (@__kernel_rem_pio2-%232-pred s232))))
+  :enable (@__kernel_rem_pio2-%232-rev @__kernel_rem_pio2-%232-mem @__kernel_rem_pio2-%232-loc @__kernel_rem_pio2-%232-pred))
+(defruled @__kernel_rem_pio2-%232-expand-rev-as-@__kernel_rem_pio2-%234-rev
+  (equal (@__kernel_rem_pio2-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__kernel_rem_pio2-%234-rev
+            (@__kernel_rem_pio2-%232-mem s232)
+            (@__kernel_rem_pio2-%233-loc s232)
+            (@__kernel_rem_pio2-%232-pred s232))))
+  :enable (@__kernel_rem_pio2-%232-expand-rev-as-@__kernel_rem_pio2-%233-rev @__kernel_rem_pio2-%233-rev @__kernel_rem_pio2-%233-loc @__kernel_rem_pio2-%233-val))
+(defruled @__kernel_rem_pio2-%232-expand-rev-as-@__kernel_rem_pio2-succ232-rev
+  (equal (@__kernel_rem_pio2-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ232-rev
+            (@__kernel_rem_pio2-%232-mem s232)
+            (@__kernel_rem_pio2-%234-loc s232)
+            (@__kernel_rem_pio2-%232-pred s232))))
+  :enable (@__kernel_rem_pio2-%232-expand-rev-as-@__kernel_rem_pio2-%234-rev @__kernel_rem_pio2-%234-rev @__kernel_rem_pio2-%234-loc @__kernel_rem_pio2-%234-val))
+(defruled @__kernel_rem_pio2-%232-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%232-rev mem loc pred)
+         (@__kernel_rem_pio2-%232-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%232-expand-rev-as-@__kernel_rem_pio2-succ232-rev @__kernel_rem_pio2-succ232-rev @__kernel_rem_pio2-succ232-lab @__kernel_rem_pio2-%232-fwd))
+
 (defund @__kernel_rem_pio2-%232-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3262,15 +5543,6 @@
     (loc (s '%234 (icmp-sgt-i32 (g '%233 loc) 0) loc))
     (succ (case (g '%234 loc) (-1 '%235) (0 '%252))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%232-expand-bb
-  (equal (@__kernel_rem_pio2-%232-bb mem loc pred)
-         (@__kernel_rem_pio2-%232-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%232-bb @__kernel_rem_pio2-%232-rev
-    @__kernel_rem_pio2-%233-rev
-    @__kernel_rem_pio2-%234-rev
-    @__kernel_rem_pio2-succ232-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%235-mem (s235)
   (car s235))
@@ -3285,6 +5557,10 @@
 (defund @__kernel_rem_pio2-succ235-lab (s235)
   (case (g '%236 (@__kernel_rem_pio2-%236-loc s235))(1 '%237)(2 '%244) (otherwise '%251)))
 
+(defund @__kernel_rem_pio2-%235-fwd (mem loc pred)
+  (let ((s235 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ235-lab s235) (@__kernel_rem_pio2-%235-mem s235) (@__kernel_rem_pio2-%236-loc s235))))
+
 (defund @__kernel_rem_pio2-succ235-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%236 loc)(1 '%237)(2 '%244) (otherwise '%251)) mem loc))
@@ -3294,20 +5570,33 @@
 (defund @__kernel_rem_pio2-%235-rev (mem loc pred)
   (@__kernel_rem_pio2-%236-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%235-expand-rev-as-@__kernel_rem_pio2-%236-rev
+  (equal (@__kernel_rem_pio2-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__kernel_rem_pio2-%236-rev
+            (@__kernel_rem_pio2-%235-mem s235)
+            (@__kernel_rem_pio2-%235-loc s235)
+            (@__kernel_rem_pio2-%235-pred s235))))
+  :enable (@__kernel_rem_pio2-%235-rev @__kernel_rem_pio2-%235-mem @__kernel_rem_pio2-%235-loc @__kernel_rem_pio2-%235-pred))
+(defruled @__kernel_rem_pio2-%235-expand-rev-as-@__kernel_rem_pio2-succ235-rev
+  (equal (@__kernel_rem_pio2-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ235-rev
+            (@__kernel_rem_pio2-%235-mem s235)
+            (@__kernel_rem_pio2-%236-loc s235)
+            (@__kernel_rem_pio2-%235-pred s235))))
+  :enable (@__kernel_rem_pio2-%235-expand-rev-as-@__kernel_rem_pio2-%236-rev @__kernel_rem_pio2-%236-rev @__kernel_rem_pio2-%236-loc @__kernel_rem_pio2-%236-val))
+(defruled @__kernel_rem_pio2-%235-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%235-rev mem loc pred)
+         (@__kernel_rem_pio2-%235-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%235-expand-rev-as-@__kernel_rem_pio2-succ235-rev @__kernel_rem_pio2-succ235-rev @__kernel_rem_pio2-succ235-lab @__kernel_rem_pio2-%235-fwd))
+
 (defund @__kernel_rem_pio2-%235-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%236 (load-i32 (g '%q0 loc) mem) loc))
     (succ (case (g '%236 loc)(1 '%237)(2 '%244) (otherwise '%251))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%235-expand-bb
-  (equal (@__kernel_rem_pio2-%235-bb mem loc pred)
-         (@__kernel_rem_pio2-%235-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%235-bb @__kernel_rem_pio2-%235-rev
-    @__kernel_rem_pio2-%236-rev
-    @__kernel_rem_pio2-succ235-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%237-mem (s237)
   (car s237))
@@ -3345,6 +5634,10 @@
   (declare (ignore s237))
   '%251)
 
+(defund @__kernel_rem_pio2-%237-fwd (mem loc pred)
+  (let ((s237 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ237-lab s237) (@__kernel_rem_pio2-m237.1-mem s237) (@__kernel_rem_pio2-%243-loc s237))))
+
 (defund @__kernel_rem_pio2-succ237-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%251 mem loc))
@@ -3366,6 +5659,75 @@
 (defund @__kernel_rem_pio2-%237-rev (mem loc pred)
   (@__kernel_rem_pio2-%238-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%238-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-%238-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%237-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-rev @__kernel_rem_pio2-%237-mem @__kernel_rem_pio2-%237-loc @__kernel_rem_pio2-%237-pred))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%239-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-%239-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%238-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%238-rev @__kernel_rem_pio2-%238-rev @__kernel_rem_pio2-%238-loc @__kernel_rem_pio2-%238-val))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%240-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-%240-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%239-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%239-rev @__kernel_rem_pio2-%239-rev @__kernel_rem_pio2-%239-loc @__kernel_rem_pio2-%239-val))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%241-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-%241-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%240-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%240-rev @__kernel_rem_pio2-%240-rev @__kernel_rem_pio2-%240-loc @__kernel_rem_pio2-%240-val))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%242-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-%242-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%241-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%241-rev @__kernel_rem_pio2-%241-rev @__kernel_rem_pio2-%241-loc @__kernel_rem_pio2-%241-val))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%243-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-%243-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%242-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%242-rev @__kernel_rem_pio2-%242-rev @__kernel_rem_pio2-%242-loc @__kernel_rem_pio2-%242-val))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-m237.1-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-m237.1-rev
+            (@__kernel_rem_pio2-%237-mem s237)
+            (@__kernel_rem_pio2-%243-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-%243-rev @__kernel_rem_pio2-%243-rev @__kernel_rem_pio2-%243-loc @__kernel_rem_pio2-%243-val))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-succ237-rev
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (let ((s237 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ237-rev
+            (@__kernel_rem_pio2-m237.1-mem s237)
+            (@__kernel_rem_pio2-%243-loc s237)
+            (@__kernel_rem_pio2-%237-pred s237))))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-m237.1-rev @__kernel_rem_pio2-m237.1-rev @__kernel_rem_pio2-m237.1-mem))
+(defruled @__kernel_rem_pio2-%237-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%237-rev mem loc pred)
+         (@__kernel_rem_pio2-%237-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%237-expand-rev-as-@__kernel_rem_pio2-succ237-rev @__kernel_rem_pio2-succ237-rev @__kernel_rem_pio2-succ237-lab @__kernel_rem_pio2-%237-fwd))
+
 (defund @__kernel_rem_pio2-%237-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3378,20 +5740,6 @@
     (mem (store-i32 (g '%243 loc) (g '%241 loc) mem))
     (succ '%251))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%237-expand-bb
-  (equal (@__kernel_rem_pio2-%237-bb mem loc pred)
-         (@__kernel_rem_pio2-%237-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%237-bb @__kernel_rem_pio2-%237-rev
-    @__kernel_rem_pio2-%238-rev
-    @__kernel_rem_pio2-%239-rev
-    @__kernel_rem_pio2-%240-rev
-    @__kernel_rem_pio2-%241-rev
-    @__kernel_rem_pio2-%242-rev
-    @__kernel_rem_pio2-%243-rev
-    @__kernel_rem_pio2-m237.1-rev
-    @__kernel_rem_pio2-succ237-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%244-mem (s244)
   (car s244))
@@ -3429,6 +5777,10 @@
   (declare (ignore s244))
   '%251)
 
+(defund @__kernel_rem_pio2-%244-fwd (mem loc pred)
+  (let ((s244 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ244-lab s244) (@__kernel_rem_pio2-m244.1-mem s244) (@__kernel_rem_pio2-%250-loc s244))))
+
 (defund @__kernel_rem_pio2-succ244-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%251 mem loc))
@@ -3450,6 +5802,75 @@
 (defund @__kernel_rem_pio2-%244-rev (mem loc pred)
   (@__kernel_rem_pio2-%245-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%245-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-%245-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%244-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-rev @__kernel_rem_pio2-%244-mem @__kernel_rem_pio2-%244-loc @__kernel_rem_pio2-%244-pred))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%246-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-%246-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%245-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%245-rev @__kernel_rem_pio2-%245-rev @__kernel_rem_pio2-%245-loc @__kernel_rem_pio2-%245-val))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%247-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-%247-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%246-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%246-rev @__kernel_rem_pio2-%246-rev @__kernel_rem_pio2-%246-loc @__kernel_rem_pio2-%246-val))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%248-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-%248-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%247-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%247-rev @__kernel_rem_pio2-%247-rev @__kernel_rem_pio2-%247-loc @__kernel_rem_pio2-%247-val))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%249-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-%249-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%248-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%248-rev @__kernel_rem_pio2-%248-rev @__kernel_rem_pio2-%248-loc @__kernel_rem_pio2-%248-val))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%250-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-%250-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%249-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%249-rev @__kernel_rem_pio2-%249-rev @__kernel_rem_pio2-%249-loc @__kernel_rem_pio2-%249-val))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-m244.1-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-m244.1-rev
+            (@__kernel_rem_pio2-%244-mem s244)
+            (@__kernel_rem_pio2-%250-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-%250-rev @__kernel_rem_pio2-%250-rev @__kernel_rem_pio2-%250-loc @__kernel_rem_pio2-%250-val))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-succ244-rev
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ244-rev
+            (@__kernel_rem_pio2-m244.1-mem s244)
+            (@__kernel_rem_pio2-%250-loc s244)
+            (@__kernel_rem_pio2-%244-pred s244))))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-m244.1-rev @__kernel_rem_pio2-m244.1-rev @__kernel_rem_pio2-m244.1-mem))
+(defruled @__kernel_rem_pio2-%244-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%244-rev mem loc pred)
+         (@__kernel_rem_pio2-%244-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%244-expand-rev-as-@__kernel_rem_pio2-succ244-rev @__kernel_rem_pio2-succ244-rev @__kernel_rem_pio2-succ244-lab @__kernel_rem_pio2-%244-fwd))
+
 (defund @__kernel_rem_pio2-%244-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3463,20 +5884,6 @@
     (succ '%251))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%244-expand-bb
-  (equal (@__kernel_rem_pio2-%244-bb mem loc pred)
-         (@__kernel_rem_pio2-%244-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%244-bb @__kernel_rem_pio2-%244-rev
-    @__kernel_rem_pio2-%245-rev
-    @__kernel_rem_pio2-%246-rev
-    @__kernel_rem_pio2-%247-rev
-    @__kernel_rem_pio2-%248-rev
-    @__kernel_rem_pio2-%249-rev
-    @__kernel_rem_pio2-%250-rev
-    @__kernel_rem_pio2-m244.1-rev
-    @__kernel_rem_pio2-succ244-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%251-mem (s251)
   (car s251))
 (defund @__kernel_rem_pio2-%251-loc (s251)
@@ -3487,6 +5894,10 @@
   (declare (ignore s251))
   '%252)
 
+(defund @__kernel_rem_pio2-%251-fwd (mem loc pred)
+  (let ((s251 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ251-lab s251) (@__kernel_rem_pio2-%251-mem s251) (@__kernel_rem_pio2-%251-loc s251))))
+
 (defund @__kernel_rem_pio2-succ251-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%252 mem loc))
@@ -3494,18 +5905,24 @@
 (defund @__kernel_rem_pio2-%251-rev (mem loc pred)
   (@__kernel_rem_pio2-succ251-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%251-expand-rev-as-@__kernel_rem_pio2-succ251-rev
+  (equal (@__kernel_rem_pio2-%251-rev mem loc pred)
+         (let ((s251 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ251-rev
+            (@__kernel_rem_pio2-%251-mem s251)
+            (@__kernel_rem_pio2-%251-loc s251)
+            (@__kernel_rem_pio2-%251-pred s251))))
+  :enable (@__kernel_rem_pio2-%251-rev @__kernel_rem_pio2-%251-mem @__kernel_rem_pio2-%251-loc @__kernel_rem_pio2-%251-pred))
+(defruled @__kernel_rem_pio2-%251-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%251-rev mem loc pred)
+         (@__kernel_rem_pio2-%251-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%251-expand-rev-as-@__kernel_rem_pio2-succ251-rev @__kernel_rem_pio2-succ251-rev @__kernel_rem_pio2-succ251-lab @__kernel_rem_pio2-%251-fwd))
+
 (defund @__kernel_rem_pio2-%251-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%252))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%251-expand-bb
-  (equal (@__kernel_rem_pio2-%251-bb mem loc pred)
-         (@__kernel_rem_pio2-%251-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%251-bb @__kernel_rem_pio2-%251-rev
-    @__kernel_rem_pio2-succ251-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%252-mem (s252)
   (car s252))
@@ -3524,6 +5941,10 @@
 (defund @__kernel_rem_pio2-succ252-lab (s252)
   (case (g '%254 (@__kernel_rem_pio2-%254-loc s252)) (-1 '%255) (0 '%266)))
 
+(defund @__kernel_rem_pio2-%252-fwd (mem loc pred)
+  (let ((s252 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ252-lab s252) (@__kernel_rem_pio2-%252-mem s252) (@__kernel_rem_pio2-%254-loc s252))))
+
 (defund @__kernel_rem_pio2-succ252-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%254 loc) (-1 '%255) (0 '%266)) mem loc))
@@ -3535,6 +5956,35 @@
 (defund @__kernel_rem_pio2-%252-rev (mem loc pred)
   (@__kernel_rem_pio2-%253-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%252-expand-rev-as-@__kernel_rem_pio2-%253-rev
+  (equal (@__kernel_rem_pio2-%252-rev mem loc pred)
+         (let ((s252 (list mem loc pred)))
+           (@__kernel_rem_pio2-%253-rev
+            (@__kernel_rem_pio2-%252-mem s252)
+            (@__kernel_rem_pio2-%252-loc s252)
+            (@__kernel_rem_pio2-%252-pred s252))))
+  :enable (@__kernel_rem_pio2-%252-rev @__kernel_rem_pio2-%252-mem @__kernel_rem_pio2-%252-loc @__kernel_rem_pio2-%252-pred))
+(defruled @__kernel_rem_pio2-%252-expand-rev-as-@__kernel_rem_pio2-%254-rev
+  (equal (@__kernel_rem_pio2-%252-rev mem loc pred)
+         (let ((s252 (list mem loc pred)))
+           (@__kernel_rem_pio2-%254-rev
+            (@__kernel_rem_pio2-%252-mem s252)
+            (@__kernel_rem_pio2-%253-loc s252)
+            (@__kernel_rem_pio2-%252-pred s252))))
+  :enable (@__kernel_rem_pio2-%252-expand-rev-as-@__kernel_rem_pio2-%253-rev @__kernel_rem_pio2-%253-rev @__kernel_rem_pio2-%253-loc @__kernel_rem_pio2-%253-val))
+(defruled @__kernel_rem_pio2-%252-expand-rev-as-@__kernel_rem_pio2-succ252-rev
+  (equal (@__kernel_rem_pio2-%252-rev mem loc pred)
+         (let ((s252 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ252-rev
+            (@__kernel_rem_pio2-%252-mem s252)
+            (@__kernel_rem_pio2-%254-loc s252)
+            (@__kernel_rem_pio2-%252-pred s252))))
+  :enable (@__kernel_rem_pio2-%252-expand-rev-as-@__kernel_rem_pio2-%254-rev @__kernel_rem_pio2-%254-rev @__kernel_rem_pio2-%254-loc @__kernel_rem_pio2-%254-val))
+(defruled @__kernel_rem_pio2-%252-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%252-rev mem loc pred)
+         (@__kernel_rem_pio2-%252-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%252-expand-rev-as-@__kernel_rem_pio2-succ252-rev @__kernel_rem_pio2-succ252-rev @__kernel_rem_pio2-succ252-lab @__kernel_rem_pio2-%252-fwd))
+
 (defund @__kernel_rem_pio2-%252-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3542,15 +5992,6 @@
     (loc (s '%254 (icmp-eq-i32 (g '%253 loc) 2) loc))
     (succ (case (g '%254 loc) (-1 '%255) (0 '%266))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%252-expand-bb
-  (equal (@__kernel_rem_pio2-%252-bb mem loc pred)
-         (@__kernel_rem_pio2-%252-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%252-bb @__kernel_rem_pio2-%252-rev
-    @__kernel_rem_pio2-%253-rev
-    @__kernel_rem_pio2-%254-rev
-    @__kernel_rem_pio2-succ252-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%255-mem (s255)
   (car s255))
@@ -3579,6 +6020,10 @@
 (defund @__kernel_rem_pio2-succ255-lab (s255)
   (case (g '%259 (@__kernel_rem_pio2-%259-loc s255)) (-1 '%260) (0 '%265)))
 
+(defund @__kernel_rem_pio2-%255-fwd (mem loc pred)
+  (let ((s255 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ255-lab s255) (@__kernel_rem_pio2-m255.1-mem s255) (@__kernel_rem_pio2-%259-loc s255))))
+
 (defund @__kernel_rem_pio2-succ255-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%259 loc) (-1 '%260) (0 '%265)) mem loc))
@@ -3596,6 +6041,59 @@
 (defund @__kernel_rem_pio2-%255-rev (mem loc pred)
   (@__kernel_rem_pio2-%256-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%256-rev
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__kernel_rem_pio2-%256-rev
+            (@__kernel_rem_pio2-%255-mem s255)
+            (@__kernel_rem_pio2-%255-loc s255)
+            (@__kernel_rem_pio2-%255-pred s255))))
+  :enable (@__kernel_rem_pio2-%255-rev @__kernel_rem_pio2-%255-mem @__kernel_rem_pio2-%255-loc @__kernel_rem_pio2-%255-pred))
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%257-rev
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__kernel_rem_pio2-%257-rev
+            (@__kernel_rem_pio2-%255-mem s255)
+            (@__kernel_rem_pio2-%256-loc s255)
+            (@__kernel_rem_pio2-%255-pred s255))))
+  :enable (@__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%256-rev @__kernel_rem_pio2-%256-rev @__kernel_rem_pio2-%256-loc @__kernel_rem_pio2-%256-val))
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-m255.1-rev
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__kernel_rem_pio2-m255.1-rev
+            (@__kernel_rem_pio2-%255-mem s255)
+            (@__kernel_rem_pio2-%257-loc s255)
+            (@__kernel_rem_pio2-%255-pred s255))))
+  :enable (@__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%257-rev @__kernel_rem_pio2-%257-rev @__kernel_rem_pio2-%257-loc @__kernel_rem_pio2-%257-val))
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%258-rev
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__kernel_rem_pio2-%258-rev
+            (@__kernel_rem_pio2-m255.1-mem s255)
+            (@__kernel_rem_pio2-%257-loc s255)
+            (@__kernel_rem_pio2-%255-pred s255))))
+  :enable (@__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-m255.1-rev @__kernel_rem_pio2-m255.1-rev @__kernel_rem_pio2-m255.1-mem))
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%259-rev
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__kernel_rem_pio2-%259-rev
+            (@__kernel_rem_pio2-m255.1-mem s255)
+            (@__kernel_rem_pio2-%258-loc s255)
+            (@__kernel_rem_pio2-%255-pred s255))))
+  :enable (@__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%258-rev @__kernel_rem_pio2-%258-rev @__kernel_rem_pio2-%258-loc @__kernel_rem_pio2-%258-val))
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-succ255-rev
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ255-rev
+            (@__kernel_rem_pio2-m255.1-mem s255)
+            (@__kernel_rem_pio2-%259-loc s255)
+            (@__kernel_rem_pio2-%255-pred s255))))
+  :enable (@__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-%259-rev @__kernel_rem_pio2-%259-rev @__kernel_rem_pio2-%259-loc @__kernel_rem_pio2-%259-val))
+(defruled @__kernel_rem_pio2-%255-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%255-rev mem loc pred)
+         (@__kernel_rem_pio2-%255-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%255-expand-rev-as-@__kernel_rem_pio2-succ255-rev @__kernel_rem_pio2-succ255-rev @__kernel_rem_pio2-succ255-lab @__kernel_rem_pio2-%255-fwd))
+
 (defund @__kernel_rem_pio2-%255-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3606,18 +6104,6 @@
     (loc (s '%259 (icmp-ne-i32 (g '%258 loc) 0) loc))
     (succ (case (g '%259 loc) (-1 '%260) (0 '%265))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%255-expand-bb
-  (equal (@__kernel_rem_pio2-%255-bb mem loc pred)
-         (@__kernel_rem_pio2-%255-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%255-bb @__kernel_rem_pio2-%255-rev
-    @__kernel_rem_pio2-%256-rev
-    @__kernel_rem_pio2-%257-rev
-    @__kernel_rem_pio2-m255.1-rev
-    @__kernel_rem_pio2-%258-rev
-    @__kernel_rem_pio2-%259-rev
-    @__kernel_rem_pio2-succ255-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%260-mem (s260)
   (car s260))
@@ -3647,6 +6133,10 @@
   (declare (ignore s260))
   '%265)
 
+(defund @__kernel_rem_pio2-%260-fwd (mem loc pred)
+  (let ((s260 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ260-lab s260) (@__kernel_rem_pio2-m260.1-mem s260) (@__kernel_rem_pio2-%264-loc s260))))
+
 (defund @__kernel_rem_pio2-succ260-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%265 mem loc))
@@ -3664,6 +6154,59 @@
 (defund @__kernel_rem_pio2-%260-rev (mem loc pred)
   (@__kernel_rem_pio2-%261-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%261-rev
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (let ((s260 (list mem loc pred)))
+           (@__kernel_rem_pio2-%261-rev
+            (@__kernel_rem_pio2-%260-mem s260)
+            (@__kernel_rem_pio2-%260-loc s260)
+            (@__kernel_rem_pio2-%260-pred s260))))
+  :enable (@__kernel_rem_pio2-%260-rev @__kernel_rem_pio2-%260-mem @__kernel_rem_pio2-%260-loc @__kernel_rem_pio2-%260-pred))
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%262-rev
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (let ((s260 (list mem loc pred)))
+           (@__kernel_rem_pio2-%262-rev
+            (@__kernel_rem_pio2-%260-mem s260)
+            (@__kernel_rem_pio2-%261-loc s260)
+            (@__kernel_rem_pio2-%260-pred s260))))
+  :enable (@__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%261-rev @__kernel_rem_pio2-%261-rev @__kernel_rem_pio2-%261-loc @__kernel_rem_pio2-%261-val))
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%263-rev
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (let ((s260 (list mem loc pred)))
+           (@__kernel_rem_pio2-%263-rev
+            (@__kernel_rem_pio2-%260-mem s260)
+            (@__kernel_rem_pio2-%262-loc s260)
+            (@__kernel_rem_pio2-%260-pred s260))))
+  :enable (@__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%262-rev @__kernel_rem_pio2-%262-rev @__kernel_rem_pio2-%262-loc @__kernel_rem_pio2-%262-val))
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%264-rev
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (let ((s260 (list mem loc pred)))
+           (@__kernel_rem_pio2-%264-rev
+            (@__kernel_rem_pio2-%260-mem s260)
+            (@__kernel_rem_pio2-%263-loc s260)
+            (@__kernel_rem_pio2-%260-pred s260))))
+  :enable (@__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%263-rev @__kernel_rem_pio2-%263-rev @__kernel_rem_pio2-%263-loc @__kernel_rem_pio2-%263-val))
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-m260.1-rev
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (let ((s260 (list mem loc pred)))
+           (@__kernel_rem_pio2-m260.1-rev
+            (@__kernel_rem_pio2-%260-mem s260)
+            (@__kernel_rem_pio2-%264-loc s260)
+            (@__kernel_rem_pio2-%260-pred s260))))
+  :enable (@__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-%264-rev @__kernel_rem_pio2-%264-rev @__kernel_rem_pio2-%264-loc @__kernel_rem_pio2-%264-val))
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-succ260-rev
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (let ((s260 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ260-rev
+            (@__kernel_rem_pio2-m260.1-mem s260)
+            (@__kernel_rem_pio2-%264-loc s260)
+            (@__kernel_rem_pio2-%260-pred s260))))
+  :enable (@__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-m260.1-rev @__kernel_rem_pio2-m260.1-rev @__kernel_rem_pio2-m260.1-mem))
+(defruled @__kernel_rem_pio2-%260-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%260-rev mem loc pred)
+         (@__kernel_rem_pio2-%260-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%260-expand-rev-as-@__kernel_rem_pio2-succ260-rev @__kernel_rem_pio2-succ260-rev @__kernel_rem_pio2-succ260-lab @__kernel_rem_pio2-%260-fwd))
+
 (defund @__kernel_rem_pio2-%260-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3675,18 +6218,6 @@
     (succ '%265))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%260-expand-bb
-  (equal (@__kernel_rem_pio2-%260-bb mem loc pred)
-         (@__kernel_rem_pio2-%260-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%260-bb @__kernel_rem_pio2-%260-rev
-    @__kernel_rem_pio2-%261-rev
-    @__kernel_rem_pio2-%262-rev
-    @__kernel_rem_pio2-%263-rev
-    @__kernel_rem_pio2-%264-rev
-    @__kernel_rem_pio2-m260.1-rev
-    @__kernel_rem_pio2-succ260-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%265-mem (s265)
   (car s265))
 (defund @__kernel_rem_pio2-%265-loc (s265)
@@ -3697,6 +6228,10 @@
   (declare (ignore s265))
   '%266)
 
+(defund @__kernel_rem_pio2-%265-fwd (mem loc pred)
+  (let ((s265 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ265-lab s265) (@__kernel_rem_pio2-%265-mem s265) (@__kernel_rem_pio2-%265-loc s265))))
+
 (defund @__kernel_rem_pio2-succ265-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%266 mem loc))
@@ -3704,18 +6239,24 @@
 (defund @__kernel_rem_pio2-%265-rev (mem loc pred)
   (@__kernel_rem_pio2-succ265-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%265-expand-rev-as-@__kernel_rem_pio2-succ265-rev
+  (equal (@__kernel_rem_pio2-%265-rev mem loc pred)
+         (let ((s265 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ265-rev
+            (@__kernel_rem_pio2-%265-mem s265)
+            (@__kernel_rem_pio2-%265-loc s265)
+            (@__kernel_rem_pio2-%265-pred s265))))
+  :enable (@__kernel_rem_pio2-%265-rev @__kernel_rem_pio2-%265-mem @__kernel_rem_pio2-%265-loc @__kernel_rem_pio2-%265-pred))
+(defruled @__kernel_rem_pio2-%265-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%265-rev mem loc pred)
+         (@__kernel_rem_pio2-%265-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%265-expand-rev-as-@__kernel_rem_pio2-succ265-rev @__kernel_rem_pio2-succ265-rev @__kernel_rem_pio2-succ265-lab @__kernel_rem_pio2-%265-fwd))
+
 (defund @__kernel_rem_pio2-%265-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%266))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%265-expand-bb
-  (equal (@__kernel_rem_pio2-%265-bb mem loc pred)
-         (@__kernel_rem_pio2-%265-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%265-bb @__kernel_rem_pio2-%265-rev
-    @__kernel_rem_pio2-succ265-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%266-mem (s266)
   (car s266))
@@ -3727,6 +6268,10 @@
   (declare (ignore s266))
   '%267)
 
+(defund @__kernel_rem_pio2-%266-fwd (mem loc pred)
+  (let ((s266 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ266-lab s266) (@__kernel_rem_pio2-%266-mem s266) (@__kernel_rem_pio2-%266-loc s266))))
+
 (defund @__kernel_rem_pio2-succ266-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%267 mem loc))
@@ -3734,18 +6279,24 @@
 (defund @__kernel_rem_pio2-%266-rev (mem loc pred)
   (@__kernel_rem_pio2-succ266-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%266-expand-rev-as-@__kernel_rem_pio2-succ266-rev
+  (equal (@__kernel_rem_pio2-%266-rev mem loc pred)
+         (let ((s266 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ266-rev
+            (@__kernel_rem_pio2-%266-mem s266)
+            (@__kernel_rem_pio2-%266-loc s266)
+            (@__kernel_rem_pio2-%266-pred s266))))
+  :enable (@__kernel_rem_pio2-%266-rev @__kernel_rem_pio2-%266-mem @__kernel_rem_pio2-%266-loc @__kernel_rem_pio2-%266-pred))
+(defruled @__kernel_rem_pio2-%266-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%266-rev mem loc pred)
+         (@__kernel_rem_pio2-%266-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%266-expand-rev-as-@__kernel_rem_pio2-succ266-rev @__kernel_rem_pio2-succ266-rev @__kernel_rem_pio2-succ266-lab @__kernel_rem_pio2-%266-fwd))
+
 (defund @__kernel_rem_pio2-%266-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%267))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%266-expand-bb
-  (equal (@__kernel_rem_pio2-%266-bb mem loc pred)
-         (@__kernel_rem_pio2-%266-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%266-bb @__kernel_rem_pio2-%266-rev
-    @__kernel_rem_pio2-succ266-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%267-mem (s267)
   (car s267))
@@ -3764,6 +6315,10 @@
 (defund @__kernel_rem_pio2-succ267-lab (s267)
   (case (g '%269 (@__kernel_rem_pio2-%269-loc s267)) (-1 '%270) (0 '%363)))
 
+(defund @__kernel_rem_pio2-%267-fwd (mem loc pred)
+  (let ((s267 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ267-lab s267) (@__kernel_rem_pio2-%267-mem s267) (@__kernel_rem_pio2-%269-loc s267))))
+
 (defund @__kernel_rem_pio2-succ267-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%269 loc) (-1 '%270) (0 '%363)) mem loc))
@@ -3775,6 +6330,35 @@
 (defund @__kernel_rem_pio2-%267-rev (mem loc pred)
   (@__kernel_rem_pio2-%268-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%267-expand-rev-as-@__kernel_rem_pio2-%268-rev
+  (equal (@__kernel_rem_pio2-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__kernel_rem_pio2-%268-rev
+            (@__kernel_rem_pio2-%267-mem s267)
+            (@__kernel_rem_pio2-%267-loc s267)
+            (@__kernel_rem_pio2-%267-pred s267))))
+  :enable (@__kernel_rem_pio2-%267-rev @__kernel_rem_pio2-%267-mem @__kernel_rem_pio2-%267-loc @__kernel_rem_pio2-%267-pred))
+(defruled @__kernel_rem_pio2-%267-expand-rev-as-@__kernel_rem_pio2-%269-rev
+  (equal (@__kernel_rem_pio2-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__kernel_rem_pio2-%269-rev
+            (@__kernel_rem_pio2-%267-mem s267)
+            (@__kernel_rem_pio2-%268-loc s267)
+            (@__kernel_rem_pio2-%267-pred s267))))
+  :enable (@__kernel_rem_pio2-%267-expand-rev-as-@__kernel_rem_pio2-%268-rev @__kernel_rem_pio2-%268-rev @__kernel_rem_pio2-%268-loc @__kernel_rem_pio2-%268-val))
+(defruled @__kernel_rem_pio2-%267-expand-rev-as-@__kernel_rem_pio2-succ267-rev
+  (equal (@__kernel_rem_pio2-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ267-rev
+            (@__kernel_rem_pio2-%267-mem s267)
+            (@__kernel_rem_pio2-%269-loc s267)
+            (@__kernel_rem_pio2-%267-pred s267))))
+  :enable (@__kernel_rem_pio2-%267-expand-rev-as-@__kernel_rem_pio2-%269-rev @__kernel_rem_pio2-%269-rev @__kernel_rem_pio2-%269-loc @__kernel_rem_pio2-%269-val))
+(defruled @__kernel_rem_pio2-%267-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%267-rev mem loc pred)
+         (@__kernel_rem_pio2-%267-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%267-expand-rev-as-@__kernel_rem_pio2-succ267-rev @__kernel_rem_pio2-succ267-rev @__kernel_rem_pio2-succ267-lab @__kernel_rem_pio2-%267-fwd))
+
 (defund @__kernel_rem_pio2-%267-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3782,15 +6366,6 @@
     (loc (s '%269 (fcmp-oeq-double (g '%268 loc) #x0000000000000000) loc))
     (succ (case (g '%269 loc) (-1 '%270) (0 '%363))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%267-expand-bb
-  (equal (@__kernel_rem_pio2-%267-bb mem loc pred)
-         (@__kernel_rem_pio2-%267-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%267-bb @__kernel_rem_pio2-%267-rev
-    @__kernel_rem_pio2-%268-rev
-    @__kernel_rem_pio2-%269-rev
-    @__kernel_rem_pio2-succ267-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%270-mem (s270)
   (car s270))
@@ -3814,6 +6389,10 @@
   (declare (ignore s270))
   '%273)
 
+(defund @__kernel_rem_pio2-%270-fwd (mem loc pred)
+  (let ((s270 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ270-lab s270) (@__kernel_rem_pio2-m270.2-mem s270) (@__kernel_rem_pio2-%272-loc s270))))
+
 (defund @__kernel_rem_pio2-succ270-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%273 mem loc))
@@ -3829,6 +6408,51 @@
 (defund @__kernel_rem_pio2-%270-rev (mem loc pred)
   (@__kernel_rem_pio2-m270.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-m270.1-rev
+  (equal (@__kernel_rem_pio2-%270-rev mem loc pred)
+         (let ((s270 (list mem loc pred)))
+           (@__kernel_rem_pio2-m270.1-rev
+            (@__kernel_rem_pio2-%270-mem s270)
+            (@__kernel_rem_pio2-%270-loc s270)
+            (@__kernel_rem_pio2-%270-pred s270))))
+  :enable (@__kernel_rem_pio2-%270-rev @__kernel_rem_pio2-%270-mem @__kernel_rem_pio2-%270-loc @__kernel_rem_pio2-%270-pred))
+(defruled @__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-%271-rev
+  (equal (@__kernel_rem_pio2-%270-rev mem loc pred)
+         (let ((s270 (list mem loc pred)))
+           (@__kernel_rem_pio2-%271-rev
+            (@__kernel_rem_pio2-m270.1-mem s270)
+            (@__kernel_rem_pio2-%270-loc s270)
+            (@__kernel_rem_pio2-%270-pred s270))))
+  :enable (@__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-m270.1-rev @__kernel_rem_pio2-m270.1-rev @__kernel_rem_pio2-m270.1-mem))
+(defruled @__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-%272-rev
+  (equal (@__kernel_rem_pio2-%270-rev mem loc pred)
+         (let ((s270 (list mem loc pred)))
+           (@__kernel_rem_pio2-%272-rev
+            (@__kernel_rem_pio2-m270.1-mem s270)
+            (@__kernel_rem_pio2-%271-loc s270)
+            (@__kernel_rem_pio2-%270-pred s270))))
+  :enable (@__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-%271-rev @__kernel_rem_pio2-%271-rev @__kernel_rem_pio2-%271-loc @__kernel_rem_pio2-%271-val))
+(defruled @__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-m270.2-rev
+  (equal (@__kernel_rem_pio2-%270-rev mem loc pred)
+         (let ((s270 (list mem loc pred)))
+           (@__kernel_rem_pio2-m270.2-rev
+            (@__kernel_rem_pio2-m270.1-mem s270)
+            (@__kernel_rem_pio2-%272-loc s270)
+            (@__kernel_rem_pio2-%270-pred s270))))
+  :enable (@__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-%272-rev @__kernel_rem_pio2-%272-rev @__kernel_rem_pio2-%272-loc @__kernel_rem_pio2-%272-val))
+(defruled @__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-succ270-rev
+  (equal (@__kernel_rem_pio2-%270-rev mem loc pred)
+         (let ((s270 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ270-rev
+            (@__kernel_rem_pio2-m270.2-mem s270)
+            (@__kernel_rem_pio2-%272-loc s270)
+            (@__kernel_rem_pio2-%270-pred s270))))
+  :enable (@__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-m270.2-rev @__kernel_rem_pio2-m270.2-rev @__kernel_rem_pio2-m270.2-mem))
+(defruled @__kernel_rem_pio2-%270-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%270-rev mem loc pred)
+         (@__kernel_rem_pio2-%270-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%270-expand-rev-as-@__kernel_rem_pio2-succ270-rev @__kernel_rem_pio2-succ270-rev @__kernel_rem_pio2-succ270-lab @__kernel_rem_pio2-%270-fwd))
+
 (defund @__kernel_rem_pio2-%270-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3838,17 +6462,6 @@
     (mem (store-i32 (g '%272 loc) (g '%i loc) mem))
     (succ '%273))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%270-expand-bb
-  (equal (@__kernel_rem_pio2-%270-bb mem loc pred)
-         (@__kernel_rem_pio2-%270-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%270-bb @__kernel_rem_pio2-%270-rev
-    @__kernel_rem_pio2-m270.1-rev
-    @__kernel_rem_pio2-%271-rev
-    @__kernel_rem_pio2-%272-rev
-    @__kernel_rem_pio2-m270.2-rev
-    @__kernel_rem_pio2-succ270-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%273-mem (s273)
   (car s273))
@@ -3871,6 +6484,10 @@
 (defund @__kernel_rem_pio2-succ273-lab (s273)
   (case (g '%276 (@__kernel_rem_pio2-%276-loc s273)) (-1 '%277) (0 '%287)))
 
+(defund @__kernel_rem_pio2-%273-fwd (mem loc pred)
+  (let ((s273 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ273-lab s273) (@__kernel_rem_pio2-%273-mem s273) (@__kernel_rem_pio2-%276-loc s273))))
+
 (defund @__kernel_rem_pio2-succ273-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%276 loc) (-1 '%277) (0 '%287)) mem loc))
@@ -3884,6 +6501,43 @@
 (defund @__kernel_rem_pio2-%273-rev (mem loc pred)
   (@__kernel_rem_pio2-%274-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-%274-rev
+  (equal (@__kernel_rem_pio2-%273-rev mem loc pred)
+         (let ((s273 (list mem loc pred)))
+           (@__kernel_rem_pio2-%274-rev
+            (@__kernel_rem_pio2-%273-mem s273)
+            (@__kernel_rem_pio2-%273-loc s273)
+            (@__kernel_rem_pio2-%273-pred s273))))
+  :enable (@__kernel_rem_pio2-%273-rev @__kernel_rem_pio2-%273-mem @__kernel_rem_pio2-%273-loc @__kernel_rem_pio2-%273-pred))
+(defruled @__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-%275-rev
+  (equal (@__kernel_rem_pio2-%273-rev mem loc pred)
+         (let ((s273 (list mem loc pred)))
+           (@__kernel_rem_pio2-%275-rev
+            (@__kernel_rem_pio2-%273-mem s273)
+            (@__kernel_rem_pio2-%274-loc s273)
+            (@__kernel_rem_pio2-%273-pred s273))))
+  :enable (@__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-%274-rev @__kernel_rem_pio2-%274-rev @__kernel_rem_pio2-%274-loc @__kernel_rem_pio2-%274-val))
+(defruled @__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-%276-rev
+  (equal (@__kernel_rem_pio2-%273-rev mem loc pred)
+         (let ((s273 (list mem loc pred)))
+           (@__kernel_rem_pio2-%276-rev
+            (@__kernel_rem_pio2-%273-mem s273)
+            (@__kernel_rem_pio2-%275-loc s273)
+            (@__kernel_rem_pio2-%273-pred s273))))
+  :enable (@__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-%275-rev @__kernel_rem_pio2-%275-rev @__kernel_rem_pio2-%275-loc @__kernel_rem_pio2-%275-val))
+(defruled @__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-succ273-rev
+  (equal (@__kernel_rem_pio2-%273-rev mem loc pred)
+         (let ((s273 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ273-rev
+            (@__kernel_rem_pio2-%273-mem s273)
+            (@__kernel_rem_pio2-%276-loc s273)
+            (@__kernel_rem_pio2-%273-pred s273))))
+  :enable (@__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-%276-rev @__kernel_rem_pio2-%276-rev @__kernel_rem_pio2-%276-loc @__kernel_rem_pio2-%276-val))
+(defruled @__kernel_rem_pio2-%273-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%273-rev mem loc pred)
+         (@__kernel_rem_pio2-%273-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%273-expand-rev-as-@__kernel_rem_pio2-succ273-rev @__kernel_rem_pio2-succ273-rev @__kernel_rem_pio2-succ273-lab @__kernel_rem_pio2-%273-fwd))
+
 (defund @__kernel_rem_pio2-%273-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3892,16 +6546,6 @@
     (loc (s '%276 (icmp-sge-i32 (g '%274 loc) (g '%275 loc)) loc))
     (succ (case (g '%276 loc) (-1 '%277) (0 '%287))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%273-expand-bb
-  (equal (@__kernel_rem_pio2-%273-bb mem loc pred)
-         (@__kernel_rem_pio2-%273-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%273-bb @__kernel_rem_pio2-%273-rev
-    @__kernel_rem_pio2-%274-rev
-    @__kernel_rem_pio2-%275-rev
-    @__kernel_rem_pio2-%276-rev
-    @__kernel_rem_pio2-succ273-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%277-mem (s277)
   (car s277))
@@ -3939,6 +6583,10 @@
   (declare (ignore s277))
   '%284)
 
+(defund @__kernel_rem_pio2-%277-fwd (mem loc pred)
+  (let ((s277 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ277-lab s277) (@__kernel_rem_pio2-m277.1-mem s277) (@__kernel_rem_pio2-%283-loc s277))))
+
 (defund @__kernel_rem_pio2-succ277-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%284 mem loc))
@@ -3960,6 +6608,75 @@
 (defund @__kernel_rem_pio2-%277-rev (mem loc pred)
   (@__kernel_rem_pio2-%278-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%278-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-%278-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%277-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-rev @__kernel_rem_pio2-%277-mem @__kernel_rem_pio2-%277-loc @__kernel_rem_pio2-%277-pred))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%279-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-%279-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%278-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%278-rev @__kernel_rem_pio2-%278-rev @__kernel_rem_pio2-%278-loc @__kernel_rem_pio2-%278-val))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%280-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-%280-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%279-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%279-rev @__kernel_rem_pio2-%279-rev @__kernel_rem_pio2-%279-loc @__kernel_rem_pio2-%279-val))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%281-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-%281-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%280-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%280-rev @__kernel_rem_pio2-%280-rev @__kernel_rem_pio2-%280-loc @__kernel_rem_pio2-%280-val))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%282-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-%282-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%281-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%281-rev @__kernel_rem_pio2-%281-rev @__kernel_rem_pio2-%281-loc @__kernel_rem_pio2-%281-val))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%283-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-%283-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%282-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%282-rev @__kernel_rem_pio2-%282-rev @__kernel_rem_pio2-%282-loc @__kernel_rem_pio2-%282-val))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-m277.1-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-m277.1-rev
+            (@__kernel_rem_pio2-%277-mem s277)
+            (@__kernel_rem_pio2-%283-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-%283-rev @__kernel_rem_pio2-%283-rev @__kernel_rem_pio2-%283-loc @__kernel_rem_pio2-%283-val))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-succ277-rev
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (let ((s277 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ277-rev
+            (@__kernel_rem_pio2-m277.1-mem s277)
+            (@__kernel_rem_pio2-%283-loc s277)
+            (@__kernel_rem_pio2-%277-pred s277))))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-m277.1-rev @__kernel_rem_pio2-m277.1-rev @__kernel_rem_pio2-m277.1-mem))
+(defruled @__kernel_rem_pio2-%277-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%277-rev mem loc pred)
+         (@__kernel_rem_pio2-%277-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%277-expand-rev-as-@__kernel_rem_pio2-succ277-rev @__kernel_rem_pio2-succ277-rev @__kernel_rem_pio2-succ277-lab @__kernel_rem_pio2-%277-fwd))
+
 (defund @__kernel_rem_pio2-%277-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3972,20 +6689,6 @@
     (mem (store-i32 (g '%283 loc) (g '%j loc) mem))
     (succ '%284))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%277-expand-bb
-  (equal (@__kernel_rem_pio2-%277-bb mem loc pred)
-         (@__kernel_rem_pio2-%277-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%277-bb @__kernel_rem_pio2-%277-rev
-    @__kernel_rem_pio2-%278-rev
-    @__kernel_rem_pio2-%279-rev
-    @__kernel_rem_pio2-%280-rev
-    @__kernel_rem_pio2-%281-rev
-    @__kernel_rem_pio2-%282-rev
-    @__kernel_rem_pio2-%283-rev
-    @__kernel_rem_pio2-m277.1-rev
-    @__kernel_rem_pio2-succ277-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%284-mem (s284)
   (car s284))
@@ -4007,6 +6710,10 @@
   (declare (ignore s284))
   '%273)
 
+(defund @__kernel_rem_pio2-%284-fwd (mem loc pred)
+  (let ((s284 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ284-lab s284) (@__kernel_rem_pio2-m284.1-mem s284) (@__kernel_rem_pio2-%286-loc s284))))
+
 (defund @__kernel_rem_pio2-succ284-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%273 mem loc))
@@ -4020,6 +6727,43 @@
 (defund @__kernel_rem_pio2-%284-rev (mem loc pred)
   (@__kernel_rem_pio2-%285-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-%285-rev
+  (equal (@__kernel_rem_pio2-%284-rev mem loc pred)
+         (let ((s284 (list mem loc pred)))
+           (@__kernel_rem_pio2-%285-rev
+            (@__kernel_rem_pio2-%284-mem s284)
+            (@__kernel_rem_pio2-%284-loc s284)
+            (@__kernel_rem_pio2-%284-pred s284))))
+  :enable (@__kernel_rem_pio2-%284-rev @__kernel_rem_pio2-%284-mem @__kernel_rem_pio2-%284-loc @__kernel_rem_pio2-%284-pred))
+(defruled @__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-%286-rev
+  (equal (@__kernel_rem_pio2-%284-rev mem loc pred)
+         (let ((s284 (list mem loc pred)))
+           (@__kernel_rem_pio2-%286-rev
+            (@__kernel_rem_pio2-%284-mem s284)
+            (@__kernel_rem_pio2-%285-loc s284)
+            (@__kernel_rem_pio2-%284-pred s284))))
+  :enable (@__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-%285-rev @__kernel_rem_pio2-%285-rev @__kernel_rem_pio2-%285-loc @__kernel_rem_pio2-%285-val))
+(defruled @__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-m284.1-rev
+  (equal (@__kernel_rem_pio2-%284-rev mem loc pred)
+         (let ((s284 (list mem loc pred)))
+           (@__kernel_rem_pio2-m284.1-rev
+            (@__kernel_rem_pio2-%284-mem s284)
+            (@__kernel_rem_pio2-%286-loc s284)
+            (@__kernel_rem_pio2-%284-pred s284))))
+  :enable (@__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-%286-rev @__kernel_rem_pio2-%286-rev @__kernel_rem_pio2-%286-loc @__kernel_rem_pio2-%286-val))
+(defruled @__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-succ284-rev
+  (equal (@__kernel_rem_pio2-%284-rev mem loc pred)
+         (let ((s284 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ284-rev
+            (@__kernel_rem_pio2-m284.1-mem s284)
+            (@__kernel_rem_pio2-%286-loc s284)
+            (@__kernel_rem_pio2-%284-pred s284))))
+  :enable (@__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-m284.1-rev @__kernel_rem_pio2-m284.1-rev @__kernel_rem_pio2-m284.1-mem))
+(defruled @__kernel_rem_pio2-%284-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%284-rev mem loc pred)
+         (@__kernel_rem_pio2-%284-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%284-expand-rev-as-@__kernel_rem_pio2-succ284-rev @__kernel_rem_pio2-succ284-rev @__kernel_rem_pio2-succ284-lab @__kernel_rem_pio2-%284-fwd))
+
 (defund @__kernel_rem_pio2-%284-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4028,16 +6772,6 @@
     (mem (store-i32 (g '%286 loc) (g '%i loc) mem))
     (succ '%273))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%284-expand-bb
-  (equal (@__kernel_rem_pio2-%284-bb mem loc pred)
-         (@__kernel_rem_pio2-%284-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%284-bb @__kernel_rem_pio2-%284-rev
-    @__kernel_rem_pio2-%285-rev
-    @__kernel_rem_pio2-%286-rev
-    @__kernel_rem_pio2-m284.1-rev
-    @__kernel_rem_pio2-succ284-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%287-mem (s287)
   (car s287))
@@ -4056,6 +6790,10 @@
 (defund @__kernel_rem_pio2-succ287-lab (s287)
   (case (g '%289 (@__kernel_rem_pio2-%289-loc s287)) (-1 '%290) (0 '%362)))
 
+(defund @__kernel_rem_pio2-%287-fwd (mem loc pred)
+  (let ((s287 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ287-lab s287) (@__kernel_rem_pio2-%287-mem s287) (@__kernel_rem_pio2-%289-loc s287))))
+
 (defund @__kernel_rem_pio2-succ287-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%289 loc) (-1 '%290) (0 '%362)) mem loc))
@@ -4067,6 +6805,35 @@
 (defund @__kernel_rem_pio2-%287-rev (mem loc pred)
   (@__kernel_rem_pio2-%288-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%287-expand-rev-as-@__kernel_rem_pio2-%288-rev
+  (equal (@__kernel_rem_pio2-%287-rev mem loc pred)
+         (let ((s287 (list mem loc pred)))
+           (@__kernel_rem_pio2-%288-rev
+            (@__kernel_rem_pio2-%287-mem s287)
+            (@__kernel_rem_pio2-%287-loc s287)
+            (@__kernel_rem_pio2-%287-pred s287))))
+  :enable (@__kernel_rem_pio2-%287-rev @__kernel_rem_pio2-%287-mem @__kernel_rem_pio2-%287-loc @__kernel_rem_pio2-%287-pred))
+(defruled @__kernel_rem_pio2-%287-expand-rev-as-@__kernel_rem_pio2-%289-rev
+  (equal (@__kernel_rem_pio2-%287-rev mem loc pred)
+         (let ((s287 (list mem loc pred)))
+           (@__kernel_rem_pio2-%289-rev
+            (@__kernel_rem_pio2-%287-mem s287)
+            (@__kernel_rem_pio2-%288-loc s287)
+            (@__kernel_rem_pio2-%287-pred s287))))
+  :enable (@__kernel_rem_pio2-%287-expand-rev-as-@__kernel_rem_pio2-%288-rev @__kernel_rem_pio2-%288-rev @__kernel_rem_pio2-%288-loc @__kernel_rem_pio2-%288-val))
+(defruled @__kernel_rem_pio2-%287-expand-rev-as-@__kernel_rem_pio2-succ287-rev
+  (equal (@__kernel_rem_pio2-%287-rev mem loc pred)
+         (let ((s287 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ287-rev
+            (@__kernel_rem_pio2-%287-mem s287)
+            (@__kernel_rem_pio2-%289-loc s287)
+            (@__kernel_rem_pio2-%287-pred s287))))
+  :enable (@__kernel_rem_pio2-%287-expand-rev-as-@__kernel_rem_pio2-%289-rev @__kernel_rem_pio2-%289-rev @__kernel_rem_pio2-%289-loc @__kernel_rem_pio2-%289-val))
+(defruled @__kernel_rem_pio2-%287-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%287-rev mem loc pred)
+         (@__kernel_rem_pio2-%287-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%287-expand-rev-as-@__kernel_rem_pio2-succ287-rev @__kernel_rem_pio2-succ287-rev @__kernel_rem_pio2-succ287-lab @__kernel_rem_pio2-%287-fwd))
+
 (defund @__kernel_rem_pio2-%287-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4074,15 +6841,6 @@
     (loc (s '%289 (icmp-eq-i32 (g '%288 loc) 0) loc))
     (succ (case (g '%289 loc) (-1 '%290) (0 '%362))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%287-expand-bb
-  (equal (@__kernel_rem_pio2-%287-bb mem loc pred)
-         (@__kernel_rem_pio2-%287-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%287-bb @__kernel_rem_pio2-%287-rev
-    @__kernel_rem_pio2-%288-rev
-    @__kernel_rem_pio2-%289-rev
-    @__kernel_rem_pio2-succ287-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%290-mem (s290)
   (car s290))
@@ -4096,6 +6854,10 @@
   (declare (ignore s290))
   '%291)
 
+(defund @__kernel_rem_pio2-%290-fwd (mem loc pred)
+  (let ((s290 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ290-lab s290) (@__kernel_rem_pio2-m290.1-mem s290) (@__kernel_rem_pio2-%290-loc s290))))
+
 (defund @__kernel_rem_pio2-succ290-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%291 mem loc))
@@ -4105,20 +6867,33 @@
 (defund @__kernel_rem_pio2-%290-rev (mem loc pred)
   (@__kernel_rem_pio2-m290.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%290-expand-rev-as-@__kernel_rem_pio2-m290.1-rev
+  (equal (@__kernel_rem_pio2-%290-rev mem loc pred)
+         (let ((s290 (list mem loc pred)))
+           (@__kernel_rem_pio2-m290.1-rev
+            (@__kernel_rem_pio2-%290-mem s290)
+            (@__kernel_rem_pio2-%290-loc s290)
+            (@__kernel_rem_pio2-%290-pred s290))))
+  :enable (@__kernel_rem_pio2-%290-rev @__kernel_rem_pio2-%290-mem @__kernel_rem_pio2-%290-loc @__kernel_rem_pio2-%290-pred))
+(defruled @__kernel_rem_pio2-%290-expand-rev-as-@__kernel_rem_pio2-succ290-rev
+  (equal (@__kernel_rem_pio2-%290-rev mem loc pred)
+         (let ((s290 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ290-rev
+            (@__kernel_rem_pio2-m290.1-mem s290)
+            (@__kernel_rem_pio2-%290-loc s290)
+            (@__kernel_rem_pio2-%290-pred s290))))
+  :enable (@__kernel_rem_pio2-%290-expand-rev-as-@__kernel_rem_pio2-m290.1-rev @__kernel_rem_pio2-m290.1-rev @__kernel_rem_pio2-m290.1-mem))
+(defruled @__kernel_rem_pio2-%290-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%290-rev mem loc pred)
+         (@__kernel_rem_pio2-%290-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%290-expand-rev-as-@__kernel_rem_pio2-succ290-rev @__kernel_rem_pio2-succ290-rev @__kernel_rem_pio2-succ290-lab @__kernel_rem_pio2-%290-fwd))
+
 (defund @__kernel_rem_pio2-%290-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 1 (g '%k loc) mem))
     (succ '%291))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%290-expand-bb
-  (equal (@__kernel_rem_pio2-%290-bb mem loc pred)
-         (@__kernel_rem_pio2-%290-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%290-bb @__kernel_rem_pio2-%290-rev
-    @__kernel_rem_pio2-m290.1-rev
-    @__kernel_rem_pio2-succ290-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%291-mem (s291)
   (car s291))
@@ -4157,6 +6932,10 @@
 (defund @__kernel_rem_pio2-succ291-lab (s291)
   (case (g '%298 (@__kernel_rem_pio2-%298-loc s291)) (-1 '%299) (0 '%303)))
 
+(defund @__kernel_rem_pio2-%291-fwd (mem loc pred)
+  (let ((s291 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ291-lab s291) (@__kernel_rem_pio2-%291-mem s291) (@__kernel_rem_pio2-%298-loc s291))))
+
 (defund @__kernel_rem_pio2-succ291-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%298 loc) (-1 '%299) (0 '%303)) mem loc))
@@ -4178,6 +6957,75 @@
 (defund @__kernel_rem_pio2-%291-rev (mem loc pred)
   (@__kernel_rem_pio2-%292-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%292-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%292-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%291-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-rev @__kernel_rem_pio2-%291-mem @__kernel_rem_pio2-%291-loc @__kernel_rem_pio2-%291-pred))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%293-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%293-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%292-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%292-rev @__kernel_rem_pio2-%292-rev @__kernel_rem_pio2-%292-loc @__kernel_rem_pio2-%292-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%294-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%294-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%293-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%293-rev @__kernel_rem_pio2-%293-rev @__kernel_rem_pio2-%293-loc @__kernel_rem_pio2-%293-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%295-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%295-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%294-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%294-rev @__kernel_rem_pio2-%294-rev @__kernel_rem_pio2-%294-loc @__kernel_rem_pio2-%294-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%296-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%296-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%295-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%295-rev @__kernel_rem_pio2-%295-rev @__kernel_rem_pio2-%295-loc @__kernel_rem_pio2-%295-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%297-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%297-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%296-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%296-rev @__kernel_rem_pio2-%296-rev @__kernel_rem_pio2-%296-loc @__kernel_rem_pio2-%296-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%298-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-%298-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%297-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%297-rev @__kernel_rem_pio2-%297-rev @__kernel_rem_pio2-%297-loc @__kernel_rem_pio2-%297-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-succ291-rev
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (let ((s291 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ291-rev
+            (@__kernel_rem_pio2-%291-mem s291)
+            (@__kernel_rem_pio2-%298-loc s291)
+            (@__kernel_rem_pio2-%291-pred s291))))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-%298-rev @__kernel_rem_pio2-%298-rev @__kernel_rem_pio2-%298-loc @__kernel_rem_pio2-%298-val))
+(defruled @__kernel_rem_pio2-%291-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%291-rev mem loc pred)
+         (@__kernel_rem_pio2-%291-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%291-expand-rev-as-@__kernel_rem_pio2-succ291-rev @__kernel_rem_pio2-succ291-rev @__kernel_rem_pio2-succ291-lab @__kernel_rem_pio2-%291-fwd))
+
 (defund @__kernel_rem_pio2-%291-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4191,20 +7039,6 @@
     (succ (case (g '%298 loc) (-1 '%299) (0 '%303))))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%291-expand-bb
-  (equal (@__kernel_rem_pio2-%291-bb mem loc pred)
-         (@__kernel_rem_pio2-%291-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%291-bb @__kernel_rem_pio2-%291-rev
-    @__kernel_rem_pio2-%292-rev
-    @__kernel_rem_pio2-%293-rev
-    @__kernel_rem_pio2-%294-rev
-    @__kernel_rem_pio2-%295-rev
-    @__kernel_rem_pio2-%296-rev
-    @__kernel_rem_pio2-%297-rev
-    @__kernel_rem_pio2-%298-rev
-    @__kernel_rem_pio2-succ291-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%299-mem (s299)
   (car s299))
 (defund @__kernel_rem_pio2-%299-loc (s299)
@@ -4215,6 +7049,10 @@
   (declare (ignore s299))
   '%300)
 
+(defund @__kernel_rem_pio2-%299-fwd (mem loc pred)
+  (let ((s299 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ299-lab s299) (@__kernel_rem_pio2-%299-mem s299) (@__kernel_rem_pio2-%299-loc s299))))
+
 (defund @__kernel_rem_pio2-succ299-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%300 mem loc))
@@ -4222,18 +7060,24 @@
 (defund @__kernel_rem_pio2-%299-rev (mem loc pred)
   (@__kernel_rem_pio2-succ299-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%299-expand-rev-as-@__kernel_rem_pio2-succ299-rev
+  (equal (@__kernel_rem_pio2-%299-rev mem loc pred)
+         (let ((s299 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ299-rev
+            (@__kernel_rem_pio2-%299-mem s299)
+            (@__kernel_rem_pio2-%299-loc s299)
+            (@__kernel_rem_pio2-%299-pred s299))))
+  :enable (@__kernel_rem_pio2-%299-rev @__kernel_rem_pio2-%299-mem @__kernel_rem_pio2-%299-loc @__kernel_rem_pio2-%299-pred))
+(defruled @__kernel_rem_pio2-%299-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%299-rev mem loc pred)
+         (@__kernel_rem_pio2-%299-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%299-expand-rev-as-@__kernel_rem_pio2-succ299-rev @__kernel_rem_pio2-succ299-rev @__kernel_rem_pio2-succ299-lab @__kernel_rem_pio2-%299-fwd))
+
 (defund @__kernel_rem_pio2-%299-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%300))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%299-expand-bb
-  (equal (@__kernel_rem_pio2-%299-bb mem loc pred)
-         (@__kernel_rem_pio2-%299-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%299-bb @__kernel_rem_pio2-%299-rev
-    @__kernel_rem_pio2-succ299-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%300-mem (s300)
   (car s300))
@@ -4255,6 +7099,10 @@
   (declare (ignore s300))
   '%291)
 
+(defund @__kernel_rem_pio2-%300-fwd (mem loc pred)
+  (let ((s300 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ300-lab s300) (@__kernel_rem_pio2-m300.1-mem s300) (@__kernel_rem_pio2-%302-loc s300))))
+
 (defund @__kernel_rem_pio2-succ300-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%291 mem loc))
@@ -4268,6 +7116,43 @@
 (defund @__kernel_rem_pio2-%300-rev (mem loc pred)
   (@__kernel_rem_pio2-%301-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-%301-rev
+  (equal (@__kernel_rem_pio2-%300-rev mem loc pred)
+         (let ((s300 (list mem loc pred)))
+           (@__kernel_rem_pio2-%301-rev
+            (@__kernel_rem_pio2-%300-mem s300)
+            (@__kernel_rem_pio2-%300-loc s300)
+            (@__kernel_rem_pio2-%300-pred s300))))
+  :enable (@__kernel_rem_pio2-%300-rev @__kernel_rem_pio2-%300-mem @__kernel_rem_pio2-%300-loc @__kernel_rem_pio2-%300-pred))
+(defruled @__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-%302-rev
+  (equal (@__kernel_rem_pio2-%300-rev mem loc pred)
+         (let ((s300 (list mem loc pred)))
+           (@__kernel_rem_pio2-%302-rev
+            (@__kernel_rem_pio2-%300-mem s300)
+            (@__kernel_rem_pio2-%301-loc s300)
+            (@__kernel_rem_pio2-%300-pred s300))))
+  :enable (@__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-%301-rev @__kernel_rem_pio2-%301-rev @__kernel_rem_pio2-%301-loc @__kernel_rem_pio2-%301-val))
+(defruled @__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-m300.1-rev
+  (equal (@__kernel_rem_pio2-%300-rev mem loc pred)
+         (let ((s300 (list mem loc pred)))
+           (@__kernel_rem_pio2-m300.1-rev
+            (@__kernel_rem_pio2-%300-mem s300)
+            (@__kernel_rem_pio2-%302-loc s300)
+            (@__kernel_rem_pio2-%300-pred s300))))
+  :enable (@__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-%302-rev @__kernel_rem_pio2-%302-rev @__kernel_rem_pio2-%302-loc @__kernel_rem_pio2-%302-val))
+(defruled @__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-succ300-rev
+  (equal (@__kernel_rem_pio2-%300-rev mem loc pred)
+         (let ((s300 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ300-rev
+            (@__kernel_rem_pio2-m300.1-mem s300)
+            (@__kernel_rem_pio2-%302-loc s300)
+            (@__kernel_rem_pio2-%300-pred s300))))
+  :enable (@__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-m300.1-rev @__kernel_rem_pio2-m300.1-rev @__kernel_rem_pio2-m300.1-mem))
+(defruled @__kernel_rem_pio2-%300-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%300-rev mem loc pred)
+         (@__kernel_rem_pio2-%300-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%300-expand-rev-as-@__kernel_rem_pio2-succ300-rev @__kernel_rem_pio2-succ300-rev @__kernel_rem_pio2-succ300-lab @__kernel_rem_pio2-%300-fwd))
+
 (defund @__kernel_rem_pio2-%300-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4276,16 +7161,6 @@
     (mem (store-i32 (g '%302 loc) (g '%k loc) mem))
     (succ '%291))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%300-expand-bb
-  (equal (@__kernel_rem_pio2-%300-bb mem loc pred)
-         (@__kernel_rem_pio2-%300-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%300-bb @__kernel_rem_pio2-%300-rev
-    @__kernel_rem_pio2-%301-rev
-    @__kernel_rem_pio2-%302-rev
-    @__kernel_rem_pio2-m300.1-rev
-    @__kernel_rem_pio2-succ300-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%303-mem (s303)
   (car s303))
@@ -4307,6 +7182,10 @@
   (declare (ignore s303))
   '%306)
 
+(defund @__kernel_rem_pio2-%303-fwd (mem loc pred)
+  (let ((s303 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ303-lab s303) (@__kernel_rem_pio2-m303.1-mem s303) (@__kernel_rem_pio2-%305-loc s303))))
+
 (defund @__kernel_rem_pio2-succ303-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%306 mem loc))
@@ -4320,6 +7199,43 @@
 (defund @__kernel_rem_pio2-%303-rev (mem loc pred)
   (@__kernel_rem_pio2-%304-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-%304-rev
+  (equal (@__kernel_rem_pio2-%303-rev mem loc pred)
+         (let ((s303 (list mem loc pred)))
+           (@__kernel_rem_pio2-%304-rev
+            (@__kernel_rem_pio2-%303-mem s303)
+            (@__kernel_rem_pio2-%303-loc s303)
+            (@__kernel_rem_pio2-%303-pred s303))))
+  :enable (@__kernel_rem_pio2-%303-rev @__kernel_rem_pio2-%303-mem @__kernel_rem_pio2-%303-loc @__kernel_rem_pio2-%303-pred))
+(defruled @__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-%305-rev
+  (equal (@__kernel_rem_pio2-%303-rev mem loc pred)
+         (let ((s303 (list mem loc pred)))
+           (@__kernel_rem_pio2-%305-rev
+            (@__kernel_rem_pio2-%303-mem s303)
+            (@__kernel_rem_pio2-%304-loc s303)
+            (@__kernel_rem_pio2-%303-pred s303))))
+  :enable (@__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-%304-rev @__kernel_rem_pio2-%304-rev @__kernel_rem_pio2-%304-loc @__kernel_rem_pio2-%304-val))
+(defruled @__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-m303.1-rev
+  (equal (@__kernel_rem_pio2-%303-rev mem loc pred)
+         (let ((s303 (list mem loc pred)))
+           (@__kernel_rem_pio2-m303.1-rev
+            (@__kernel_rem_pio2-%303-mem s303)
+            (@__kernel_rem_pio2-%305-loc s303)
+            (@__kernel_rem_pio2-%303-pred s303))))
+  :enable (@__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-%305-rev @__kernel_rem_pio2-%305-rev @__kernel_rem_pio2-%305-loc @__kernel_rem_pio2-%305-val))
+(defruled @__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-succ303-rev
+  (equal (@__kernel_rem_pio2-%303-rev mem loc pred)
+         (let ((s303 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ303-rev
+            (@__kernel_rem_pio2-m303.1-mem s303)
+            (@__kernel_rem_pio2-%305-loc s303)
+            (@__kernel_rem_pio2-%303-pred s303))))
+  :enable (@__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-m303.1-rev @__kernel_rem_pio2-m303.1-rev @__kernel_rem_pio2-m303.1-mem))
+(defruled @__kernel_rem_pio2-%303-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%303-rev mem loc pred)
+         (@__kernel_rem_pio2-%303-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%303-expand-rev-as-@__kernel_rem_pio2-succ303-rev @__kernel_rem_pio2-succ303-rev @__kernel_rem_pio2-succ303-lab @__kernel_rem_pio2-%303-fwd))
+
 (defund @__kernel_rem_pio2-%303-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4328,16 +7244,6 @@
     (mem (store-i32 (g '%305 loc) (g '%i loc) mem))
     (succ '%306))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%303-expand-bb
-  (equal (@__kernel_rem_pio2-%303-bb mem loc pred)
-         (@__kernel_rem_pio2-%303-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%303-bb @__kernel_rem_pio2-%303-rev
-    @__kernel_rem_pio2-%304-rev
-    @__kernel_rem_pio2-%305-rev
-    @__kernel_rem_pio2-m303.1-rev
-    @__kernel_rem_pio2-succ303-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%306-mem (s306)
   (car s306))
@@ -4368,6 +7274,10 @@
 (defund @__kernel_rem_pio2-succ306-lab (s306)
   (case (g '%311 (@__kernel_rem_pio2-%311-loc s306)) (-1 '%312) (0 '%358)))
 
+(defund @__kernel_rem_pio2-%306-fwd (mem loc pred)
+  (let ((s306 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ306-lab s306) (@__kernel_rem_pio2-%306-mem s306) (@__kernel_rem_pio2-%311-loc s306))))
+
 (defund @__kernel_rem_pio2-succ306-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%311 loc) (-1 '%312) (0 '%358)) mem loc))
@@ -4385,6 +7295,59 @@
 (defund @__kernel_rem_pio2-%306-rev (mem loc pred)
   (@__kernel_rem_pio2-%307-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%307-rev
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (let ((s306 (list mem loc pred)))
+           (@__kernel_rem_pio2-%307-rev
+            (@__kernel_rem_pio2-%306-mem s306)
+            (@__kernel_rem_pio2-%306-loc s306)
+            (@__kernel_rem_pio2-%306-pred s306))))
+  :enable (@__kernel_rem_pio2-%306-rev @__kernel_rem_pio2-%306-mem @__kernel_rem_pio2-%306-loc @__kernel_rem_pio2-%306-pred))
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%308-rev
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (let ((s306 (list mem loc pred)))
+           (@__kernel_rem_pio2-%308-rev
+            (@__kernel_rem_pio2-%306-mem s306)
+            (@__kernel_rem_pio2-%307-loc s306)
+            (@__kernel_rem_pio2-%306-pred s306))))
+  :enable (@__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%307-rev @__kernel_rem_pio2-%307-rev @__kernel_rem_pio2-%307-loc @__kernel_rem_pio2-%307-val))
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%309-rev
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (let ((s306 (list mem loc pred)))
+           (@__kernel_rem_pio2-%309-rev
+            (@__kernel_rem_pio2-%306-mem s306)
+            (@__kernel_rem_pio2-%308-loc s306)
+            (@__kernel_rem_pio2-%306-pred s306))))
+  :enable (@__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%308-rev @__kernel_rem_pio2-%308-rev @__kernel_rem_pio2-%308-loc @__kernel_rem_pio2-%308-val))
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%310-rev
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (let ((s306 (list mem loc pred)))
+           (@__kernel_rem_pio2-%310-rev
+            (@__kernel_rem_pio2-%306-mem s306)
+            (@__kernel_rem_pio2-%309-loc s306)
+            (@__kernel_rem_pio2-%306-pred s306))))
+  :enable (@__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%309-rev @__kernel_rem_pio2-%309-rev @__kernel_rem_pio2-%309-loc @__kernel_rem_pio2-%309-val))
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%311-rev
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (let ((s306 (list mem loc pred)))
+           (@__kernel_rem_pio2-%311-rev
+            (@__kernel_rem_pio2-%306-mem s306)
+            (@__kernel_rem_pio2-%310-loc s306)
+            (@__kernel_rem_pio2-%306-pred s306))))
+  :enable (@__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%310-rev @__kernel_rem_pio2-%310-rev @__kernel_rem_pio2-%310-loc @__kernel_rem_pio2-%310-val))
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-succ306-rev
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (let ((s306 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ306-rev
+            (@__kernel_rem_pio2-%306-mem s306)
+            (@__kernel_rem_pio2-%311-loc s306)
+            (@__kernel_rem_pio2-%306-pred s306))))
+  :enable (@__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-%311-rev @__kernel_rem_pio2-%311-rev @__kernel_rem_pio2-%311-loc @__kernel_rem_pio2-%311-val))
+(defruled @__kernel_rem_pio2-%306-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%306-rev mem loc pred)
+         (@__kernel_rem_pio2-%306-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%306-expand-rev-as-@__kernel_rem_pio2-succ306-rev @__kernel_rem_pio2-succ306-rev @__kernel_rem_pio2-succ306-lab @__kernel_rem_pio2-%306-fwd))
+
 (defund @__kernel_rem_pio2-%306-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4395,18 +7358,6 @@
     (loc (s '%311 (icmp-sle-i32 (g '%307 loc) (g '%310 loc)) loc))
     (succ (case (g '%311 loc) (-1 '%312) (0 '%358))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%306-expand-bb
-  (equal (@__kernel_rem_pio2-%306-bb mem loc pred)
-         (@__kernel_rem_pio2-%306-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%306-bb @__kernel_rem_pio2-%306-rev
-    @__kernel_rem_pio2-%307-rev
-    @__kernel_rem_pio2-%308-rev
-    @__kernel_rem_pio2-%309-rev
-    @__kernel_rem_pio2-%310-rev
-    @__kernel_rem_pio2-%311-rev
-    @__kernel_rem_pio2-succ306-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%312-mem (s312)
   (car s312))
@@ -4476,6 +7427,10 @@
   (declare (ignore s312))
   '%326)
 
+(defund @__kernel_rem_pio2-%312-fwd (mem loc pred)
+  (let ((s312 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ312-lab s312) (@__kernel_rem_pio2-m312.3-mem s312) (@__kernel_rem_pio2-%325-loc s312))))
+
 (defund @__kernel_rem_pio2-succ312-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%326 mem loc))
@@ -4515,6 +7470,147 @@
 (defund @__kernel_rem_pio2-%312-rev (mem loc pred)
   (@__kernel_rem_pio2-%313-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%313-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%313-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%312-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-rev @__kernel_rem_pio2-%312-mem @__kernel_rem_pio2-%312-loc @__kernel_rem_pio2-%312-pred))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%314-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%314-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%313-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%313-rev @__kernel_rem_pio2-%313-rev @__kernel_rem_pio2-%313-loc @__kernel_rem_pio2-%313-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%315-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%315-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%314-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%314-rev @__kernel_rem_pio2-%314-rev @__kernel_rem_pio2-%314-loc @__kernel_rem_pio2-%314-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%316-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%316-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%315-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%315-rev @__kernel_rem_pio2-%315-rev @__kernel_rem_pio2-%315-loc @__kernel_rem_pio2-%315-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%317-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%317-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%316-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%316-rev @__kernel_rem_pio2-%316-rev @__kernel_rem_pio2-%316-loc @__kernel_rem_pio2-%316-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%318-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%318-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%317-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%317-rev @__kernel_rem_pio2-%317-rev @__kernel_rem_pio2-%317-loc @__kernel_rem_pio2-%317-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%319-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%319-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%318-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%318-rev @__kernel_rem_pio2-%318-rev @__kernel_rem_pio2-%318-loc @__kernel_rem_pio2-%318-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%320-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%320-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%319-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%319-rev @__kernel_rem_pio2-%319-rev @__kernel_rem_pio2-%319-loc @__kernel_rem_pio2-%319-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%321-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%321-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%320-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%320-rev @__kernel_rem_pio2-%320-rev @__kernel_rem_pio2-%320-loc @__kernel_rem_pio2-%320-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%322-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%322-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%321-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%321-rev @__kernel_rem_pio2-%321-rev @__kernel_rem_pio2-%321-loc @__kernel_rem_pio2-%321-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%323-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%323-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%322-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%322-rev @__kernel_rem_pio2-%322-rev @__kernel_rem_pio2-%322-loc @__kernel_rem_pio2-%322-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%324-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%324-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%323-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%323-rev @__kernel_rem_pio2-%323-rev @__kernel_rem_pio2-%323-loc @__kernel_rem_pio2-%323-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%325-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-%325-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%324-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%324-rev @__kernel_rem_pio2-%324-rev @__kernel_rem_pio2-%324-loc @__kernel_rem_pio2-%324-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-m312.1-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-m312.1-rev
+            (@__kernel_rem_pio2-%312-mem s312)
+            (@__kernel_rem_pio2-%325-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-%325-rev @__kernel_rem_pio2-%325-rev @__kernel_rem_pio2-%325-loc @__kernel_rem_pio2-%325-val))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-m312.2-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-m312.2-rev
+            (@__kernel_rem_pio2-m312.1-mem s312)
+            (@__kernel_rem_pio2-%325-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-m312.1-rev @__kernel_rem_pio2-m312.1-rev @__kernel_rem_pio2-m312.1-mem))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-m312.3-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-m312.3-rev
+            (@__kernel_rem_pio2-m312.2-mem s312)
+            (@__kernel_rem_pio2-%325-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-m312.2-rev @__kernel_rem_pio2-m312.2-rev @__kernel_rem_pio2-m312.2-mem))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-succ312-rev
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (let ((s312 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ312-rev
+            (@__kernel_rem_pio2-m312.3-mem s312)
+            (@__kernel_rem_pio2-%325-loc s312)
+            (@__kernel_rem_pio2-%312-pred s312))))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-m312.3-rev @__kernel_rem_pio2-m312.3-rev @__kernel_rem_pio2-m312.3-mem))
+(defruled @__kernel_rem_pio2-%312-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%312-rev mem loc pred)
+         (@__kernel_rem_pio2-%312-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%312-expand-rev-as-@__kernel_rem_pio2-succ312-rev @__kernel_rem_pio2-succ312-rev @__kernel_rem_pio2-succ312-lab @__kernel_rem_pio2-%312-fwd))
+
 (defund @__kernel_rem_pio2-%312-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4537,29 +7633,6 @@
     (succ '%326))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%312-expand-bb
-  (equal (@__kernel_rem_pio2-%312-bb mem loc pred)
-         (@__kernel_rem_pio2-%312-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%312-bb @__kernel_rem_pio2-%312-rev
-    @__kernel_rem_pio2-%313-rev
-    @__kernel_rem_pio2-%314-rev
-    @__kernel_rem_pio2-%315-rev
-    @__kernel_rem_pio2-%316-rev
-    @__kernel_rem_pio2-%317-rev
-    @__kernel_rem_pio2-%318-rev
-    @__kernel_rem_pio2-%319-rev
-    @__kernel_rem_pio2-%320-rev
-    @__kernel_rem_pio2-%321-rev
-    @__kernel_rem_pio2-%322-rev
-    @__kernel_rem_pio2-%323-rev
-    @__kernel_rem_pio2-%324-rev
-    @__kernel_rem_pio2-%325-rev
-    @__kernel_rem_pio2-m312.1-rev
-    @__kernel_rem_pio2-m312.2-rev
-    @__kernel_rem_pio2-m312.3-rev
-    @__kernel_rem_pio2-succ312-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%326-mem (s326)
   (car s326))
 (defund @__kernel_rem_pio2-%326-loc (s326)
@@ -4581,6 +7654,10 @@
 (defund @__kernel_rem_pio2-succ326-lab (s326)
   (case (g '%329 (@__kernel_rem_pio2-%329-loc s326)) (-1 '%330) (0 '%350)))
 
+(defund @__kernel_rem_pio2-%326-fwd (mem loc pred)
+  (let ((s326 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ326-lab s326) (@__kernel_rem_pio2-%326-mem s326) (@__kernel_rem_pio2-%329-loc s326))))
+
 (defund @__kernel_rem_pio2-succ326-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%329 loc) (-1 '%330) (0 '%350)) mem loc))
@@ -4594,6 +7671,43 @@
 (defund @__kernel_rem_pio2-%326-rev (mem loc pred)
   (@__kernel_rem_pio2-%327-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-%327-rev
+  (equal (@__kernel_rem_pio2-%326-rev mem loc pred)
+         (let ((s326 (list mem loc pred)))
+           (@__kernel_rem_pio2-%327-rev
+            (@__kernel_rem_pio2-%326-mem s326)
+            (@__kernel_rem_pio2-%326-loc s326)
+            (@__kernel_rem_pio2-%326-pred s326))))
+  :enable (@__kernel_rem_pio2-%326-rev @__kernel_rem_pio2-%326-mem @__kernel_rem_pio2-%326-loc @__kernel_rem_pio2-%326-pred))
+(defruled @__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-%328-rev
+  (equal (@__kernel_rem_pio2-%326-rev mem loc pred)
+         (let ((s326 (list mem loc pred)))
+           (@__kernel_rem_pio2-%328-rev
+            (@__kernel_rem_pio2-%326-mem s326)
+            (@__kernel_rem_pio2-%327-loc s326)
+            (@__kernel_rem_pio2-%326-pred s326))))
+  :enable (@__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-%327-rev @__kernel_rem_pio2-%327-rev @__kernel_rem_pio2-%327-loc @__kernel_rem_pio2-%327-val))
+(defruled @__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-%329-rev
+  (equal (@__kernel_rem_pio2-%326-rev mem loc pred)
+         (let ((s326 (list mem loc pred)))
+           (@__kernel_rem_pio2-%329-rev
+            (@__kernel_rem_pio2-%326-mem s326)
+            (@__kernel_rem_pio2-%328-loc s326)
+            (@__kernel_rem_pio2-%326-pred s326))))
+  :enable (@__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-%328-rev @__kernel_rem_pio2-%328-rev @__kernel_rem_pio2-%328-loc @__kernel_rem_pio2-%328-val))
+(defruled @__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-succ326-rev
+  (equal (@__kernel_rem_pio2-%326-rev mem loc pred)
+         (let ((s326 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ326-rev
+            (@__kernel_rem_pio2-%326-mem s326)
+            (@__kernel_rem_pio2-%329-loc s326)
+            (@__kernel_rem_pio2-%326-pred s326))))
+  :enable (@__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-%329-rev @__kernel_rem_pio2-%329-rev @__kernel_rem_pio2-%329-loc @__kernel_rem_pio2-%329-val))
+(defruled @__kernel_rem_pio2-%326-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%326-rev mem loc pred)
+         (@__kernel_rem_pio2-%326-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%326-expand-rev-as-@__kernel_rem_pio2-succ326-rev @__kernel_rem_pio2-succ326-rev @__kernel_rem_pio2-succ326-lab @__kernel_rem_pio2-%326-fwd))
+
 (defund @__kernel_rem_pio2-%326-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4602,16 +7716,6 @@
     (loc (s '%329 (icmp-sle-i32 (g '%327 loc) (g '%328 loc)) loc))
     (succ (case (g '%329 loc) (-1 '%330) (0 '%350))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%326-expand-bb
-  (equal (@__kernel_rem_pio2-%326-bb mem loc pred)
-         (@__kernel_rem_pio2-%326-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%326-bb @__kernel_rem_pio2-%326-rev
-    @__kernel_rem_pio2-%327-rev
-    @__kernel_rem_pio2-%328-rev
-    @__kernel_rem_pio2-%329-rev
-    @__kernel_rem_pio2-succ326-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%330-mem (s330)
   (car s330))
@@ -4689,6 +7793,10 @@
   (declare (ignore s330))
   '%347)
 
+(defund @__kernel_rem_pio2-%330-fwd (mem loc pred)
+  (let ((s330 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ330-lab s330) (@__kernel_rem_pio2-m330.1-mem s330) (@__kernel_rem_pio2-%346-loc s330))))
+
 (defund @__kernel_rem_pio2-succ330-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%347 mem loc))
@@ -4730,6 +7838,155 @@
 (defund @__kernel_rem_pio2-%330-rev (mem loc pred)
   (@__kernel_rem_pio2-%331-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%331-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%331-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%330-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-rev @__kernel_rem_pio2-%330-mem @__kernel_rem_pio2-%330-loc @__kernel_rem_pio2-%330-pred))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%332-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%332-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%331-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%331-rev @__kernel_rem_pio2-%331-rev @__kernel_rem_pio2-%331-loc @__kernel_rem_pio2-%331-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%333-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%333-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%332-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%332-rev @__kernel_rem_pio2-%332-rev @__kernel_rem_pio2-%332-loc @__kernel_rem_pio2-%332-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%334-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%334-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%333-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%333-rev @__kernel_rem_pio2-%333-rev @__kernel_rem_pio2-%333-loc @__kernel_rem_pio2-%333-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%335-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%335-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%334-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%334-rev @__kernel_rem_pio2-%334-rev @__kernel_rem_pio2-%334-loc @__kernel_rem_pio2-%334-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%336-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%336-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%335-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%335-rev @__kernel_rem_pio2-%335-rev @__kernel_rem_pio2-%335-loc @__kernel_rem_pio2-%335-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%337-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%337-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%336-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%336-rev @__kernel_rem_pio2-%336-rev @__kernel_rem_pio2-%336-loc @__kernel_rem_pio2-%336-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%338-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%338-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%337-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%337-rev @__kernel_rem_pio2-%337-rev @__kernel_rem_pio2-%337-loc @__kernel_rem_pio2-%337-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%339-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%339-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%338-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%338-rev @__kernel_rem_pio2-%338-rev @__kernel_rem_pio2-%338-loc @__kernel_rem_pio2-%338-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%340-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%340-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%339-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%339-rev @__kernel_rem_pio2-%339-rev @__kernel_rem_pio2-%339-loc @__kernel_rem_pio2-%339-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%341-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%341-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%340-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%340-rev @__kernel_rem_pio2-%340-rev @__kernel_rem_pio2-%340-loc @__kernel_rem_pio2-%340-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%342-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%342-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%341-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%341-rev @__kernel_rem_pio2-%341-rev @__kernel_rem_pio2-%341-loc @__kernel_rem_pio2-%341-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%343-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%343-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%342-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%342-rev @__kernel_rem_pio2-%342-rev @__kernel_rem_pio2-%342-loc @__kernel_rem_pio2-%342-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%344-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%344-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%343-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%343-rev @__kernel_rem_pio2-%343-rev @__kernel_rem_pio2-%343-loc @__kernel_rem_pio2-%343-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%345-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%345-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%344-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%344-rev @__kernel_rem_pio2-%344-rev @__kernel_rem_pio2-%344-loc @__kernel_rem_pio2-%344-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%346-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-%346-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%345-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%345-rev @__kernel_rem_pio2-%345-rev @__kernel_rem_pio2-%345-loc @__kernel_rem_pio2-%345-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-m330.1-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-m330.1-rev
+            (@__kernel_rem_pio2-%330-mem s330)
+            (@__kernel_rem_pio2-%346-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-%346-rev @__kernel_rem_pio2-%346-rev @__kernel_rem_pio2-%346-loc @__kernel_rem_pio2-%346-val))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-succ330-rev
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (let ((s330 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ330-rev
+            (@__kernel_rem_pio2-m330.1-mem s330)
+            (@__kernel_rem_pio2-%346-loc s330)
+            (@__kernel_rem_pio2-%330-pred s330))))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-m330.1-rev @__kernel_rem_pio2-m330.1-rev @__kernel_rem_pio2-m330.1-mem))
+(defruled @__kernel_rem_pio2-%330-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%330-rev mem loc pred)
+         (@__kernel_rem_pio2-%330-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%330-expand-rev-as-@__kernel_rem_pio2-succ330-rev @__kernel_rem_pio2-succ330-rev @__kernel_rem_pio2-succ330-lab @__kernel_rem_pio2-%330-fwd))
+
 (defund @__kernel_rem_pio2-%330-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4753,30 +8010,6 @@
     (succ '%347))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%330-expand-bb
-  (equal (@__kernel_rem_pio2-%330-bb mem loc pred)
-         (@__kernel_rem_pio2-%330-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%330-bb @__kernel_rem_pio2-%330-rev
-    @__kernel_rem_pio2-%331-rev
-    @__kernel_rem_pio2-%332-rev
-    @__kernel_rem_pio2-%333-rev
-    @__kernel_rem_pio2-%334-rev
-    @__kernel_rem_pio2-%335-rev
-    @__kernel_rem_pio2-%336-rev
-    @__kernel_rem_pio2-%337-rev
-    @__kernel_rem_pio2-%338-rev
-    @__kernel_rem_pio2-%339-rev
-    @__kernel_rem_pio2-%340-rev
-    @__kernel_rem_pio2-%341-rev
-    @__kernel_rem_pio2-%342-rev
-    @__kernel_rem_pio2-%343-rev
-    @__kernel_rem_pio2-%344-rev
-    @__kernel_rem_pio2-%345-rev
-    @__kernel_rem_pio2-%346-rev
-    @__kernel_rem_pio2-m330.1-rev
-    @__kernel_rem_pio2-succ330-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%347-mem (s347)
   (car s347))
 (defund @__kernel_rem_pio2-%347-loc (s347)
@@ -4797,6 +8030,10 @@
   (declare (ignore s347))
   '%326)
 
+(defund @__kernel_rem_pio2-%347-fwd (mem loc pred)
+  (let ((s347 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ347-lab s347) (@__kernel_rem_pio2-m347.1-mem s347) (@__kernel_rem_pio2-%349-loc s347))))
+
 (defund @__kernel_rem_pio2-succ347-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%326 mem loc))
@@ -4810,6 +8047,43 @@
 (defund @__kernel_rem_pio2-%347-rev (mem loc pred)
   (@__kernel_rem_pio2-%348-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-%348-rev
+  (equal (@__kernel_rem_pio2-%347-rev mem loc pred)
+         (let ((s347 (list mem loc pred)))
+           (@__kernel_rem_pio2-%348-rev
+            (@__kernel_rem_pio2-%347-mem s347)
+            (@__kernel_rem_pio2-%347-loc s347)
+            (@__kernel_rem_pio2-%347-pred s347))))
+  :enable (@__kernel_rem_pio2-%347-rev @__kernel_rem_pio2-%347-mem @__kernel_rem_pio2-%347-loc @__kernel_rem_pio2-%347-pred))
+(defruled @__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-%349-rev
+  (equal (@__kernel_rem_pio2-%347-rev mem loc pred)
+         (let ((s347 (list mem loc pred)))
+           (@__kernel_rem_pio2-%349-rev
+            (@__kernel_rem_pio2-%347-mem s347)
+            (@__kernel_rem_pio2-%348-loc s347)
+            (@__kernel_rem_pio2-%347-pred s347))))
+  :enable (@__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-%348-rev @__kernel_rem_pio2-%348-rev @__kernel_rem_pio2-%348-loc @__kernel_rem_pio2-%348-val))
+(defruled @__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-m347.1-rev
+  (equal (@__kernel_rem_pio2-%347-rev mem loc pred)
+         (let ((s347 (list mem loc pred)))
+           (@__kernel_rem_pio2-m347.1-rev
+            (@__kernel_rem_pio2-%347-mem s347)
+            (@__kernel_rem_pio2-%349-loc s347)
+            (@__kernel_rem_pio2-%347-pred s347))))
+  :enable (@__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-%349-rev @__kernel_rem_pio2-%349-rev @__kernel_rem_pio2-%349-loc @__kernel_rem_pio2-%349-val))
+(defruled @__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-succ347-rev
+  (equal (@__kernel_rem_pio2-%347-rev mem loc pred)
+         (let ((s347 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ347-rev
+            (@__kernel_rem_pio2-m347.1-mem s347)
+            (@__kernel_rem_pio2-%349-loc s347)
+            (@__kernel_rem_pio2-%347-pred s347))))
+  :enable (@__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-m347.1-rev @__kernel_rem_pio2-m347.1-rev @__kernel_rem_pio2-m347.1-mem))
+(defruled @__kernel_rem_pio2-%347-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%347-rev mem loc pred)
+         (@__kernel_rem_pio2-%347-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%347-expand-rev-as-@__kernel_rem_pio2-succ347-rev @__kernel_rem_pio2-succ347-rev @__kernel_rem_pio2-succ347-lab @__kernel_rem_pio2-%347-fwd))
+
 (defund @__kernel_rem_pio2-%347-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4818,16 +8092,6 @@
     (mem (store-i32 (g '%349 loc) (g '%j loc) mem))
     (succ '%326))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%347-expand-bb
-  (equal (@__kernel_rem_pio2-%347-bb mem loc pred)
-         (@__kernel_rem_pio2-%347-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%347-bb @__kernel_rem_pio2-%347-rev
-    @__kernel_rem_pio2-%348-rev
-    @__kernel_rem_pio2-%349-rev
-    @__kernel_rem_pio2-m347.1-rev
-    @__kernel_rem_pio2-succ347-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%350-mem (s350)
   (car s350))
@@ -4857,6 +8121,10 @@
   (declare (ignore s350))
   '%355)
 
+(defund @__kernel_rem_pio2-%350-fwd (mem loc pred)
+  (let ((s350 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ350-lab s350) (@__kernel_rem_pio2-m350.1-mem s350) (@__kernel_rem_pio2-%354-loc s350))))
+
 (defund @__kernel_rem_pio2-succ350-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%355 mem loc))
@@ -4874,6 +8142,59 @@
 (defund @__kernel_rem_pio2-%350-rev (mem loc pred)
   (@__kernel_rem_pio2-%351-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%351-rev
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (let ((s350 (list mem loc pred)))
+           (@__kernel_rem_pio2-%351-rev
+            (@__kernel_rem_pio2-%350-mem s350)
+            (@__kernel_rem_pio2-%350-loc s350)
+            (@__kernel_rem_pio2-%350-pred s350))))
+  :enable (@__kernel_rem_pio2-%350-rev @__kernel_rem_pio2-%350-mem @__kernel_rem_pio2-%350-loc @__kernel_rem_pio2-%350-pred))
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%352-rev
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (let ((s350 (list mem loc pred)))
+           (@__kernel_rem_pio2-%352-rev
+            (@__kernel_rem_pio2-%350-mem s350)
+            (@__kernel_rem_pio2-%351-loc s350)
+            (@__kernel_rem_pio2-%350-pred s350))))
+  :enable (@__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%351-rev @__kernel_rem_pio2-%351-rev @__kernel_rem_pio2-%351-loc @__kernel_rem_pio2-%351-val))
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%353-rev
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (let ((s350 (list mem loc pred)))
+           (@__kernel_rem_pio2-%353-rev
+            (@__kernel_rem_pio2-%350-mem s350)
+            (@__kernel_rem_pio2-%352-loc s350)
+            (@__kernel_rem_pio2-%350-pred s350))))
+  :enable (@__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%352-rev @__kernel_rem_pio2-%352-rev @__kernel_rem_pio2-%352-loc @__kernel_rem_pio2-%352-val))
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%354-rev
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (let ((s350 (list mem loc pred)))
+           (@__kernel_rem_pio2-%354-rev
+            (@__kernel_rem_pio2-%350-mem s350)
+            (@__kernel_rem_pio2-%353-loc s350)
+            (@__kernel_rem_pio2-%350-pred s350))))
+  :enable (@__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%353-rev @__kernel_rem_pio2-%353-rev @__kernel_rem_pio2-%353-loc @__kernel_rem_pio2-%353-val))
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-m350.1-rev
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (let ((s350 (list mem loc pred)))
+           (@__kernel_rem_pio2-m350.1-rev
+            (@__kernel_rem_pio2-%350-mem s350)
+            (@__kernel_rem_pio2-%354-loc s350)
+            (@__kernel_rem_pio2-%350-pred s350))))
+  :enable (@__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-%354-rev @__kernel_rem_pio2-%354-rev @__kernel_rem_pio2-%354-loc @__kernel_rem_pio2-%354-val))
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-succ350-rev
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (let ((s350 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ350-rev
+            (@__kernel_rem_pio2-m350.1-mem s350)
+            (@__kernel_rem_pio2-%354-loc s350)
+            (@__kernel_rem_pio2-%350-pred s350))))
+  :enable (@__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-m350.1-rev @__kernel_rem_pio2-m350.1-rev @__kernel_rem_pio2-m350.1-mem))
+(defruled @__kernel_rem_pio2-%350-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%350-rev mem loc pred)
+         (@__kernel_rem_pio2-%350-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%350-expand-rev-as-@__kernel_rem_pio2-succ350-rev @__kernel_rem_pio2-succ350-rev @__kernel_rem_pio2-succ350-lab @__kernel_rem_pio2-%350-fwd))
+
 (defund @__kernel_rem_pio2-%350-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4884,18 +8205,6 @@
     (mem (store-double (g '%351 loc) (g '%354 loc) mem))
     (succ '%355))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%350-expand-bb
-  (equal (@__kernel_rem_pio2-%350-bb mem loc pred)
-         (@__kernel_rem_pio2-%350-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%350-bb @__kernel_rem_pio2-%350-rev
-    @__kernel_rem_pio2-%351-rev
-    @__kernel_rem_pio2-%352-rev
-    @__kernel_rem_pio2-%353-rev
-    @__kernel_rem_pio2-%354-rev
-    @__kernel_rem_pio2-m350.1-rev
-    @__kernel_rem_pio2-succ350-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%355-mem (s355)
   (car s355))
@@ -4917,6 +8226,10 @@
   (declare (ignore s355))
   '%306)
 
+(defund @__kernel_rem_pio2-%355-fwd (mem loc pred)
+  (let ((s355 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ355-lab s355) (@__kernel_rem_pio2-m355.1-mem s355) (@__kernel_rem_pio2-%357-loc s355))))
+
 (defund @__kernel_rem_pio2-succ355-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%306 mem loc))
@@ -4930,6 +8243,43 @@
 (defund @__kernel_rem_pio2-%355-rev (mem loc pred)
   (@__kernel_rem_pio2-%356-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-%356-rev
+  (equal (@__kernel_rem_pio2-%355-rev mem loc pred)
+         (let ((s355 (list mem loc pred)))
+           (@__kernel_rem_pio2-%356-rev
+            (@__kernel_rem_pio2-%355-mem s355)
+            (@__kernel_rem_pio2-%355-loc s355)
+            (@__kernel_rem_pio2-%355-pred s355))))
+  :enable (@__kernel_rem_pio2-%355-rev @__kernel_rem_pio2-%355-mem @__kernel_rem_pio2-%355-loc @__kernel_rem_pio2-%355-pred))
+(defruled @__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-%357-rev
+  (equal (@__kernel_rem_pio2-%355-rev mem loc pred)
+         (let ((s355 (list mem loc pred)))
+           (@__kernel_rem_pio2-%357-rev
+            (@__kernel_rem_pio2-%355-mem s355)
+            (@__kernel_rem_pio2-%356-loc s355)
+            (@__kernel_rem_pio2-%355-pred s355))))
+  :enable (@__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-%356-rev @__kernel_rem_pio2-%356-rev @__kernel_rem_pio2-%356-loc @__kernel_rem_pio2-%356-val))
+(defruled @__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-m355.1-rev
+  (equal (@__kernel_rem_pio2-%355-rev mem loc pred)
+         (let ((s355 (list mem loc pred)))
+           (@__kernel_rem_pio2-m355.1-rev
+            (@__kernel_rem_pio2-%355-mem s355)
+            (@__kernel_rem_pio2-%357-loc s355)
+            (@__kernel_rem_pio2-%355-pred s355))))
+  :enable (@__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-%357-rev @__kernel_rem_pio2-%357-rev @__kernel_rem_pio2-%357-loc @__kernel_rem_pio2-%357-val))
+(defruled @__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-succ355-rev
+  (equal (@__kernel_rem_pio2-%355-rev mem loc pred)
+         (let ((s355 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ355-rev
+            (@__kernel_rem_pio2-m355.1-mem s355)
+            (@__kernel_rem_pio2-%357-loc s355)
+            (@__kernel_rem_pio2-%355-pred s355))))
+  :enable (@__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-m355.1-rev @__kernel_rem_pio2-m355.1-rev @__kernel_rem_pio2-m355.1-mem))
+(defruled @__kernel_rem_pio2-%355-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%355-rev mem loc pred)
+         (@__kernel_rem_pio2-%355-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%355-expand-rev-as-@__kernel_rem_pio2-succ355-rev @__kernel_rem_pio2-succ355-rev @__kernel_rem_pio2-succ355-lab @__kernel_rem_pio2-%355-fwd))
+
 (defund @__kernel_rem_pio2-%355-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4938,16 +8288,6 @@
     (mem (store-i32 (g '%357 loc) (g '%i loc) mem))
     (succ '%306))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%355-expand-bb
-  (equal (@__kernel_rem_pio2-%355-bb mem loc pred)
-         (@__kernel_rem_pio2-%355-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%355-bb @__kernel_rem_pio2-%355-rev
-    @__kernel_rem_pio2-%356-rev
-    @__kernel_rem_pio2-%357-rev
-    @__kernel_rem_pio2-m355.1-rev
-    @__kernel_rem_pio2-succ355-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%358-mem (s358)
   (car s358))
@@ -4973,6 +8313,10 @@
   (declare (ignore s358))
   '%97)
 
+(defund @__kernel_rem_pio2-%358-fwd (mem loc pred)
+  (let ((s358 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ358-lab s358) (@__kernel_rem_pio2-m358.1-mem s358) (@__kernel_rem_pio2-%361-loc s358))))
+
 (defund @__kernel_rem_pio2-succ358-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%97 mem loc))
@@ -4988,6 +8332,51 @@
 (defund @__kernel_rem_pio2-%358-rev (mem loc pred)
   (@__kernel_rem_pio2-%359-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-%359-rev
+  (equal (@__kernel_rem_pio2-%358-rev mem loc pred)
+         (let ((s358 (list mem loc pred)))
+           (@__kernel_rem_pio2-%359-rev
+            (@__kernel_rem_pio2-%358-mem s358)
+            (@__kernel_rem_pio2-%358-loc s358)
+            (@__kernel_rem_pio2-%358-pred s358))))
+  :enable (@__kernel_rem_pio2-%358-rev @__kernel_rem_pio2-%358-mem @__kernel_rem_pio2-%358-loc @__kernel_rem_pio2-%358-pred))
+(defruled @__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-%360-rev
+  (equal (@__kernel_rem_pio2-%358-rev mem loc pred)
+         (let ((s358 (list mem loc pred)))
+           (@__kernel_rem_pio2-%360-rev
+            (@__kernel_rem_pio2-%358-mem s358)
+            (@__kernel_rem_pio2-%359-loc s358)
+            (@__kernel_rem_pio2-%358-pred s358))))
+  :enable (@__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-%359-rev @__kernel_rem_pio2-%359-rev @__kernel_rem_pio2-%359-loc @__kernel_rem_pio2-%359-val))
+(defruled @__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-%361-rev
+  (equal (@__kernel_rem_pio2-%358-rev mem loc pred)
+         (let ((s358 (list mem loc pred)))
+           (@__kernel_rem_pio2-%361-rev
+            (@__kernel_rem_pio2-%358-mem s358)
+            (@__kernel_rem_pio2-%360-loc s358)
+            (@__kernel_rem_pio2-%358-pred s358))))
+  :enable (@__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-%360-rev @__kernel_rem_pio2-%360-rev @__kernel_rem_pio2-%360-loc @__kernel_rem_pio2-%360-val))
+(defruled @__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-m358.1-rev
+  (equal (@__kernel_rem_pio2-%358-rev mem loc pred)
+         (let ((s358 (list mem loc pred)))
+           (@__kernel_rem_pio2-m358.1-rev
+            (@__kernel_rem_pio2-%358-mem s358)
+            (@__kernel_rem_pio2-%361-loc s358)
+            (@__kernel_rem_pio2-%358-pred s358))))
+  :enable (@__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-%361-rev @__kernel_rem_pio2-%361-rev @__kernel_rem_pio2-%361-loc @__kernel_rem_pio2-%361-val))
+(defruled @__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-succ358-rev
+  (equal (@__kernel_rem_pio2-%358-rev mem loc pred)
+         (let ((s358 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ358-rev
+            (@__kernel_rem_pio2-m358.1-mem s358)
+            (@__kernel_rem_pio2-%361-loc s358)
+            (@__kernel_rem_pio2-%358-pred s358))))
+  :enable (@__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-m358.1-rev @__kernel_rem_pio2-m358.1-rev @__kernel_rem_pio2-m358.1-mem))
+(defruled @__kernel_rem_pio2-%358-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%358-rev mem loc pred)
+         (@__kernel_rem_pio2-%358-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%358-expand-rev-as-@__kernel_rem_pio2-succ358-rev @__kernel_rem_pio2-succ358-rev @__kernel_rem_pio2-succ358-lab @__kernel_rem_pio2-%358-fwd))
+
 (defund @__kernel_rem_pio2-%358-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -4997,17 +8386,6 @@
     (mem (store-i32 (g '%361 loc) (g '%jz loc) mem))
     (succ '%97))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%358-expand-bb
-  (equal (@__kernel_rem_pio2-%358-bb mem loc pred)
-         (@__kernel_rem_pio2-%358-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%358-bb @__kernel_rem_pio2-%358-rev
-    @__kernel_rem_pio2-%359-rev
-    @__kernel_rem_pio2-%360-rev
-    @__kernel_rem_pio2-%361-rev
-    @__kernel_rem_pio2-m358.1-rev
-    @__kernel_rem_pio2-succ358-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%362-mem (s362)
   (car s362))
@@ -5019,6 +8397,10 @@
   (declare (ignore s362))
   '%363)
 
+(defund @__kernel_rem_pio2-%362-fwd (mem loc pred)
+  (let ((s362 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ362-lab s362) (@__kernel_rem_pio2-%362-mem s362) (@__kernel_rem_pio2-%362-loc s362))))
+
 (defund @__kernel_rem_pio2-succ362-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%363 mem loc))
@@ -5026,18 +8408,24 @@
 (defund @__kernel_rem_pio2-%362-rev (mem loc pred)
   (@__kernel_rem_pio2-succ362-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%362-expand-rev-as-@__kernel_rem_pio2-succ362-rev
+  (equal (@__kernel_rem_pio2-%362-rev mem loc pred)
+         (let ((s362 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ362-rev
+            (@__kernel_rem_pio2-%362-mem s362)
+            (@__kernel_rem_pio2-%362-loc s362)
+            (@__kernel_rem_pio2-%362-pred s362))))
+  :enable (@__kernel_rem_pio2-%362-rev @__kernel_rem_pio2-%362-mem @__kernel_rem_pio2-%362-loc @__kernel_rem_pio2-%362-pred))
+(defruled @__kernel_rem_pio2-%362-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%362-rev mem loc pred)
+         (@__kernel_rem_pio2-%362-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%362-expand-rev-as-@__kernel_rem_pio2-succ362-rev @__kernel_rem_pio2-succ362-rev @__kernel_rem_pio2-succ362-lab @__kernel_rem_pio2-%362-fwd))
+
 (defund @__kernel_rem_pio2-%362-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%363))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%362-expand-bb
-  (equal (@__kernel_rem_pio2-%362-bb mem loc pred)
-         (@__kernel_rem_pio2-%362-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%362-bb @__kernel_rem_pio2-%362-rev
-    @__kernel_rem_pio2-succ362-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%363-mem (s363)
   (car s363))
@@ -5056,6 +8444,10 @@
 (defund @__kernel_rem_pio2-succ363-lab (s363)
   (case (g '%365 (@__kernel_rem_pio2-%365-loc s363)) (-1 '%366) (0 '%383)))
 
+(defund @__kernel_rem_pio2-%363-fwd (mem loc pred)
+  (let ((s363 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ363-lab s363) (@__kernel_rem_pio2-%363-mem s363) (@__kernel_rem_pio2-%365-loc s363))))
+
 (defund @__kernel_rem_pio2-succ363-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%365 loc) (-1 '%366) (0 '%383)) mem loc))
@@ -5067,6 +8459,35 @@
 (defund @__kernel_rem_pio2-%363-rev (mem loc pred)
   (@__kernel_rem_pio2-%364-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%363-expand-rev-as-@__kernel_rem_pio2-%364-rev
+  (equal (@__kernel_rem_pio2-%363-rev mem loc pred)
+         (let ((s363 (list mem loc pred)))
+           (@__kernel_rem_pio2-%364-rev
+            (@__kernel_rem_pio2-%363-mem s363)
+            (@__kernel_rem_pio2-%363-loc s363)
+            (@__kernel_rem_pio2-%363-pred s363))))
+  :enable (@__kernel_rem_pio2-%363-rev @__kernel_rem_pio2-%363-mem @__kernel_rem_pio2-%363-loc @__kernel_rem_pio2-%363-pred))
+(defruled @__kernel_rem_pio2-%363-expand-rev-as-@__kernel_rem_pio2-%365-rev
+  (equal (@__kernel_rem_pio2-%363-rev mem loc pred)
+         (let ((s363 (list mem loc pred)))
+           (@__kernel_rem_pio2-%365-rev
+            (@__kernel_rem_pio2-%363-mem s363)
+            (@__kernel_rem_pio2-%364-loc s363)
+            (@__kernel_rem_pio2-%363-pred s363))))
+  :enable (@__kernel_rem_pio2-%363-expand-rev-as-@__kernel_rem_pio2-%364-rev @__kernel_rem_pio2-%364-rev @__kernel_rem_pio2-%364-loc @__kernel_rem_pio2-%364-val))
+(defruled @__kernel_rem_pio2-%363-expand-rev-as-@__kernel_rem_pio2-succ363-rev
+  (equal (@__kernel_rem_pio2-%363-rev mem loc pred)
+         (let ((s363 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ363-rev
+            (@__kernel_rem_pio2-%363-mem s363)
+            (@__kernel_rem_pio2-%365-loc s363)
+            (@__kernel_rem_pio2-%363-pred s363))))
+  :enable (@__kernel_rem_pio2-%363-expand-rev-as-@__kernel_rem_pio2-%365-rev @__kernel_rem_pio2-%365-rev @__kernel_rem_pio2-%365-loc @__kernel_rem_pio2-%365-val))
+(defruled @__kernel_rem_pio2-%363-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%363-rev mem loc pred)
+         (@__kernel_rem_pio2-%363-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%363-expand-rev-as-@__kernel_rem_pio2-succ363-rev @__kernel_rem_pio2-succ363-rev @__kernel_rem_pio2-succ363-lab @__kernel_rem_pio2-%363-fwd))
+
 (defund @__kernel_rem_pio2-%363-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5074,15 +8495,6 @@
     (loc (s '%365 (fcmp-oeq-double (g '%364 loc) #x0000000000000000) loc))
     (succ (case (g '%365 loc) (-1 '%366) (0 '%383))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%363-expand-bb
-  (equal (@__kernel_rem_pio2-%363-bb mem loc pred)
-         (@__kernel_rem_pio2-%363-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%363-bb @__kernel_rem_pio2-%363-rev
-    @__kernel_rem_pio2-%364-rev
-    @__kernel_rem_pio2-%365-rev
-    @__kernel_rem_pio2-succ363-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%366-mem (s366)
   (car s366))
@@ -5114,6 +8526,10 @@
   (declare (ignore s366))
   '%371)
 
+(defund @__kernel_rem_pio2-%366-fwd (mem loc pred)
+  (let ((s366 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ366-lab s366) (@__kernel_rem_pio2-m366.2-mem s366) (@__kernel_rem_pio2-%370-loc s366))))
+
 (defund @__kernel_rem_pio2-succ366-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%371 mem loc))
@@ -5133,6 +8549,67 @@
 (defund @__kernel_rem_pio2-%366-rev (mem loc pred)
   (@__kernel_rem_pio2-%367-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%367-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-%367-rev
+            (@__kernel_rem_pio2-%366-mem s366)
+            (@__kernel_rem_pio2-%366-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-rev @__kernel_rem_pio2-%366-mem @__kernel_rem_pio2-%366-loc @__kernel_rem_pio2-%366-pred))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%368-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-%368-rev
+            (@__kernel_rem_pio2-%366-mem s366)
+            (@__kernel_rem_pio2-%367-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%367-rev @__kernel_rem_pio2-%367-rev @__kernel_rem_pio2-%367-loc @__kernel_rem_pio2-%367-val))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-m366.1-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-m366.1-rev
+            (@__kernel_rem_pio2-%366-mem s366)
+            (@__kernel_rem_pio2-%368-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%368-rev @__kernel_rem_pio2-%368-rev @__kernel_rem_pio2-%368-loc @__kernel_rem_pio2-%368-val))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%369-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-%369-rev
+            (@__kernel_rem_pio2-m366.1-mem s366)
+            (@__kernel_rem_pio2-%368-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-m366.1-rev @__kernel_rem_pio2-m366.1-rev @__kernel_rem_pio2-m366.1-mem))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%370-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-%370-rev
+            (@__kernel_rem_pio2-m366.1-mem s366)
+            (@__kernel_rem_pio2-%369-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%369-rev @__kernel_rem_pio2-%369-rev @__kernel_rem_pio2-%369-loc @__kernel_rem_pio2-%369-val))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-m366.2-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-m366.2-rev
+            (@__kernel_rem_pio2-m366.1-mem s366)
+            (@__kernel_rem_pio2-%370-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-%370-rev @__kernel_rem_pio2-%370-rev @__kernel_rem_pio2-%370-loc @__kernel_rem_pio2-%370-val))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-succ366-rev
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (let ((s366 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ366-rev
+            (@__kernel_rem_pio2-m366.2-mem s366)
+            (@__kernel_rem_pio2-%370-loc s366)
+            (@__kernel_rem_pio2-%366-pred s366))))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-m366.2-rev @__kernel_rem_pio2-m366.2-rev @__kernel_rem_pio2-m366.2-mem))
+(defruled @__kernel_rem_pio2-%366-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%366-rev mem loc pred)
+         (@__kernel_rem_pio2-%366-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%366-expand-rev-as-@__kernel_rem_pio2-succ366-rev @__kernel_rem_pio2-succ366-rev @__kernel_rem_pio2-succ366-lab @__kernel_rem_pio2-%366-fwd))
+
 (defund @__kernel_rem_pio2-%366-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5144,19 +8621,6 @@
     (mem (store-i32 (g '%370 loc) (g '%q0 loc) mem))
     (succ '%371))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%366-expand-bb
-  (equal (@__kernel_rem_pio2-%366-bb mem loc pred)
-         (@__kernel_rem_pio2-%366-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%366-bb @__kernel_rem_pio2-%366-rev
-    @__kernel_rem_pio2-%367-rev
-    @__kernel_rem_pio2-%368-rev
-    @__kernel_rem_pio2-m366.1-rev
-    @__kernel_rem_pio2-%369-rev
-    @__kernel_rem_pio2-%370-rev
-    @__kernel_rem_pio2-m366.2-rev
-    @__kernel_rem_pio2-succ366-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%371-mem (s371)
   (car s371))
@@ -5187,6 +8651,10 @@
 (defund @__kernel_rem_pio2-succ371-lab (s371)
   (case (g '%376 (@__kernel_rem_pio2-%376-loc s371)) (-1 '%377) (0 '%382)))
 
+(defund @__kernel_rem_pio2-%371-fwd (mem loc pred)
+  (let ((s371 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ371-lab s371) (@__kernel_rem_pio2-%371-mem s371) (@__kernel_rem_pio2-%376-loc s371))))
+
 (defund @__kernel_rem_pio2-succ371-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%376 loc) (-1 '%377) (0 '%382)) mem loc))
@@ -5204,6 +8672,59 @@
 (defund @__kernel_rem_pio2-%371-rev (mem loc pred)
   (@__kernel_rem_pio2-%372-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%372-rev
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (let ((s371 (list mem loc pred)))
+           (@__kernel_rem_pio2-%372-rev
+            (@__kernel_rem_pio2-%371-mem s371)
+            (@__kernel_rem_pio2-%371-loc s371)
+            (@__kernel_rem_pio2-%371-pred s371))))
+  :enable (@__kernel_rem_pio2-%371-rev @__kernel_rem_pio2-%371-mem @__kernel_rem_pio2-%371-loc @__kernel_rem_pio2-%371-pred))
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%373-rev
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (let ((s371 (list mem loc pred)))
+           (@__kernel_rem_pio2-%373-rev
+            (@__kernel_rem_pio2-%371-mem s371)
+            (@__kernel_rem_pio2-%372-loc s371)
+            (@__kernel_rem_pio2-%371-pred s371))))
+  :enable (@__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%372-rev @__kernel_rem_pio2-%372-rev @__kernel_rem_pio2-%372-loc @__kernel_rem_pio2-%372-val))
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%374-rev
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (let ((s371 (list mem loc pred)))
+           (@__kernel_rem_pio2-%374-rev
+            (@__kernel_rem_pio2-%371-mem s371)
+            (@__kernel_rem_pio2-%373-loc s371)
+            (@__kernel_rem_pio2-%371-pred s371))))
+  :enable (@__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%373-rev @__kernel_rem_pio2-%373-rev @__kernel_rem_pio2-%373-loc @__kernel_rem_pio2-%373-val))
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%375-rev
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (let ((s371 (list mem loc pred)))
+           (@__kernel_rem_pio2-%375-rev
+            (@__kernel_rem_pio2-%371-mem s371)
+            (@__kernel_rem_pio2-%374-loc s371)
+            (@__kernel_rem_pio2-%371-pred s371))))
+  :enable (@__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%374-rev @__kernel_rem_pio2-%374-rev @__kernel_rem_pio2-%374-loc @__kernel_rem_pio2-%374-val))
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%376-rev
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (let ((s371 (list mem loc pred)))
+           (@__kernel_rem_pio2-%376-rev
+            (@__kernel_rem_pio2-%371-mem s371)
+            (@__kernel_rem_pio2-%375-loc s371)
+            (@__kernel_rem_pio2-%371-pred s371))))
+  :enable (@__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%375-rev @__kernel_rem_pio2-%375-rev @__kernel_rem_pio2-%375-loc @__kernel_rem_pio2-%375-val))
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-succ371-rev
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (let ((s371 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ371-rev
+            (@__kernel_rem_pio2-%371-mem s371)
+            (@__kernel_rem_pio2-%376-loc s371)
+            (@__kernel_rem_pio2-%371-pred s371))))
+  :enable (@__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-%376-rev @__kernel_rem_pio2-%376-rev @__kernel_rem_pio2-%376-loc @__kernel_rem_pio2-%376-val))
+(defruled @__kernel_rem_pio2-%371-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%371-rev mem loc pred)
+         (@__kernel_rem_pio2-%371-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%371-expand-rev-as-@__kernel_rem_pio2-succ371-rev @__kernel_rem_pio2-succ371-rev @__kernel_rem_pio2-succ371-lab @__kernel_rem_pio2-%371-fwd))
+
 (defund @__kernel_rem_pio2-%371-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5214,18 +8735,6 @@
     (loc (s '%376 (icmp-eq-i32 (g '%375 loc) 0) loc))
     (succ (case (g '%376 loc) (-1 '%377) (0 '%382))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%371-expand-bb
-  (equal (@__kernel_rem_pio2-%371-bb mem loc pred)
-         (@__kernel_rem_pio2-%371-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%371-bb @__kernel_rem_pio2-%371-rev
-    @__kernel_rem_pio2-%372-rev
-    @__kernel_rem_pio2-%373-rev
-    @__kernel_rem_pio2-%374-rev
-    @__kernel_rem_pio2-%375-rev
-    @__kernel_rem_pio2-%376-rev
-    @__kernel_rem_pio2-succ371-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%377-mem (s377)
   (car s377))
@@ -5257,6 +8766,10 @@
   (declare (ignore s377))
   '%371)
 
+(defund @__kernel_rem_pio2-%377-fwd (mem loc pred)
+  (let ((s377 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ377-lab s377) (@__kernel_rem_pio2-m377.2-mem s377) (@__kernel_rem_pio2-%381-loc s377))))
+
 (defund @__kernel_rem_pio2-succ377-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%371 mem loc))
@@ -5276,6 +8789,67 @@
 (defund @__kernel_rem_pio2-%377-rev (mem loc pred)
   (@__kernel_rem_pio2-%378-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%378-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-%378-rev
+            (@__kernel_rem_pio2-%377-mem s377)
+            (@__kernel_rem_pio2-%377-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-rev @__kernel_rem_pio2-%377-mem @__kernel_rem_pio2-%377-loc @__kernel_rem_pio2-%377-pred))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%379-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-%379-rev
+            (@__kernel_rem_pio2-%377-mem s377)
+            (@__kernel_rem_pio2-%378-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%378-rev @__kernel_rem_pio2-%378-rev @__kernel_rem_pio2-%378-loc @__kernel_rem_pio2-%378-val))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-m377.1-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-m377.1-rev
+            (@__kernel_rem_pio2-%377-mem s377)
+            (@__kernel_rem_pio2-%379-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%379-rev @__kernel_rem_pio2-%379-rev @__kernel_rem_pio2-%379-loc @__kernel_rem_pio2-%379-val))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%380-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-%380-rev
+            (@__kernel_rem_pio2-m377.1-mem s377)
+            (@__kernel_rem_pio2-%379-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-m377.1-rev @__kernel_rem_pio2-m377.1-rev @__kernel_rem_pio2-m377.1-mem))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%381-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-%381-rev
+            (@__kernel_rem_pio2-m377.1-mem s377)
+            (@__kernel_rem_pio2-%380-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%380-rev @__kernel_rem_pio2-%380-rev @__kernel_rem_pio2-%380-loc @__kernel_rem_pio2-%380-val))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-m377.2-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-m377.2-rev
+            (@__kernel_rem_pio2-m377.1-mem s377)
+            (@__kernel_rem_pio2-%381-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-%381-rev @__kernel_rem_pio2-%381-rev @__kernel_rem_pio2-%381-loc @__kernel_rem_pio2-%381-val))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-succ377-rev
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (let ((s377 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ377-rev
+            (@__kernel_rem_pio2-m377.2-mem s377)
+            (@__kernel_rem_pio2-%381-loc s377)
+            (@__kernel_rem_pio2-%377-pred s377))))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-m377.2-rev @__kernel_rem_pio2-m377.2-rev @__kernel_rem_pio2-m377.2-mem))
+(defruled @__kernel_rem_pio2-%377-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%377-rev mem loc pred)
+         (@__kernel_rem_pio2-%377-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%377-expand-rev-as-@__kernel_rem_pio2-succ377-rev @__kernel_rem_pio2-succ377-rev @__kernel_rem_pio2-succ377-lab @__kernel_rem_pio2-%377-fwd))
+
 (defund @__kernel_rem_pio2-%377-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5288,19 +8862,6 @@
     (succ '%371))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%377-expand-bb
-  (equal (@__kernel_rem_pio2-%377-bb mem loc pred)
-         (@__kernel_rem_pio2-%377-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%377-bb @__kernel_rem_pio2-%377-rev
-    @__kernel_rem_pio2-%378-rev
-    @__kernel_rem_pio2-%379-rev
-    @__kernel_rem_pio2-m377.1-rev
-    @__kernel_rem_pio2-%380-rev
-    @__kernel_rem_pio2-%381-rev
-    @__kernel_rem_pio2-m377.2-rev
-    @__kernel_rem_pio2-succ377-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%382-mem (s382)
   (car s382))
 (defund @__kernel_rem_pio2-%382-loc (s382)
@@ -5311,6 +8872,10 @@
   (declare (ignore s382))
   '%419)
 
+(defund @__kernel_rem_pio2-%382-fwd (mem loc pred)
+  (let ((s382 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ382-lab s382) (@__kernel_rem_pio2-%382-mem s382) (@__kernel_rem_pio2-%382-loc s382))))
+
 (defund @__kernel_rem_pio2-succ382-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%419 mem loc))
@@ -5318,18 +8883,24 @@
 (defund @__kernel_rem_pio2-%382-rev (mem loc pred)
   (@__kernel_rem_pio2-succ382-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%382-expand-rev-as-@__kernel_rem_pio2-succ382-rev
+  (equal (@__kernel_rem_pio2-%382-rev mem loc pred)
+         (let ((s382 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ382-rev
+            (@__kernel_rem_pio2-%382-mem s382)
+            (@__kernel_rem_pio2-%382-loc s382)
+            (@__kernel_rem_pio2-%382-pred s382))))
+  :enable (@__kernel_rem_pio2-%382-rev @__kernel_rem_pio2-%382-mem @__kernel_rem_pio2-%382-loc @__kernel_rem_pio2-%382-pred))
+(defruled @__kernel_rem_pio2-%382-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%382-rev mem loc pred)
+         (@__kernel_rem_pio2-%382-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%382-expand-rev-as-@__kernel_rem_pio2-succ382-rev @__kernel_rem_pio2-succ382-rev @__kernel_rem_pio2-succ382-lab @__kernel_rem_pio2-%382-fwd))
+
 (defund @__kernel_rem_pio2-%382-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%419))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%382-expand-bb
-  (equal (@__kernel_rem_pio2-%382-bb mem loc pred)
-         (@__kernel_rem_pio2-%382-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%382-bb @__kernel_rem_pio2-%382-rev
-    @__kernel_rem_pio2-succ382-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%383-mem (s383)
   (car s383))
@@ -5366,6 +8937,10 @@
 (defund @__kernel_rem_pio2-succ383-lab (s383)
   (case (g '%389 (@__kernel_rem_pio2-%389-loc s383)) (-1 '%390) (0 '%412)))
 
+(defund @__kernel_rem_pio2-%383-fwd (mem loc pred)
+  (let ((s383 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ383-lab s383) (@__kernel_rem_pio2-m383.1-mem s383) (@__kernel_rem_pio2-%389-loc s383))))
+
 (defund @__kernel_rem_pio2-succ383-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%389 loc) (-1 '%390) (0 '%412)) mem loc))
@@ -5387,6 +8962,75 @@
 (defund @__kernel_rem_pio2-%383-rev (mem loc pred)
   (@__kernel_rem_pio2-%384-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%384-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-%384-rev
+            (@__kernel_rem_pio2-%383-mem s383)
+            (@__kernel_rem_pio2-%383-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-rev @__kernel_rem_pio2-%383-mem @__kernel_rem_pio2-%383-loc @__kernel_rem_pio2-%383-pred))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%385-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-%385-rev
+            (@__kernel_rem_pio2-%383-mem s383)
+            (@__kernel_rem_pio2-%384-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%384-rev @__kernel_rem_pio2-%384-rev @__kernel_rem_pio2-%384-loc @__kernel_rem_pio2-%384-val))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%386-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-%386-rev
+            (@__kernel_rem_pio2-%383-mem s383)
+            (@__kernel_rem_pio2-%385-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%385-rev @__kernel_rem_pio2-%385-rev @__kernel_rem_pio2-%385-loc @__kernel_rem_pio2-%385-val))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%387-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-%387-rev
+            (@__kernel_rem_pio2-%383-mem s383)
+            (@__kernel_rem_pio2-%386-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%386-rev @__kernel_rem_pio2-%386-rev @__kernel_rem_pio2-%386-loc @__kernel_rem_pio2-%386-val))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-m383.1-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-m383.1-rev
+            (@__kernel_rem_pio2-%383-mem s383)
+            (@__kernel_rem_pio2-%387-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%387-rev @__kernel_rem_pio2-%387-rev @__kernel_rem_pio2-%387-loc @__kernel_rem_pio2-%387-val))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%388-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-%388-rev
+            (@__kernel_rem_pio2-m383.1-mem s383)
+            (@__kernel_rem_pio2-%387-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-m383.1-rev @__kernel_rem_pio2-m383.1-rev @__kernel_rem_pio2-m383.1-mem))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%389-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-%389-rev
+            (@__kernel_rem_pio2-m383.1-mem s383)
+            (@__kernel_rem_pio2-%388-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%388-rev @__kernel_rem_pio2-%388-rev @__kernel_rem_pio2-%388-loc @__kernel_rem_pio2-%388-val))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-succ383-rev
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (let ((s383 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ383-rev
+            (@__kernel_rem_pio2-m383.1-mem s383)
+            (@__kernel_rem_pio2-%389-loc s383)
+            (@__kernel_rem_pio2-%383-pred s383))))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-%389-rev @__kernel_rem_pio2-%389-rev @__kernel_rem_pio2-%389-loc @__kernel_rem_pio2-%389-val))
+(defruled @__kernel_rem_pio2-%383-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%383-rev mem loc pred)
+         (@__kernel_rem_pio2-%383-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%383-expand-rev-as-@__kernel_rem_pio2-succ383-rev @__kernel_rem_pio2-succ383-rev @__kernel_rem_pio2-succ383-lab @__kernel_rem_pio2-%383-fwd))
+
 (defund @__kernel_rem_pio2-%383-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5399,20 +9043,6 @@
     (loc (s '%389 (fcmp-oge-double (g '%388 loc) #x4170000000000000) loc))
     (succ (case (g '%389 loc) (-1 '%390) (0 '%412))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%383-expand-bb
-  (equal (@__kernel_rem_pio2-%383-bb mem loc pred)
-         (@__kernel_rem_pio2-%383-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%383-bb @__kernel_rem_pio2-%383-rev
-    @__kernel_rem_pio2-%384-rev
-    @__kernel_rem_pio2-%385-rev
-    @__kernel_rem_pio2-%386-rev
-    @__kernel_rem_pio2-%387-rev
-    @__kernel_rem_pio2-m383.1-rev
-    @__kernel_rem_pio2-%388-rev
-    @__kernel_rem_pio2-%389-rev
-    @__kernel_rem_pio2-succ383-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%390-mem (s390)
   (car s390))
@@ -5518,6 +9148,10 @@
   (declare (ignore s390))
   '%418)
 
+(defund @__kernel_rem_pio2-%390-fwd (mem loc pred)
+  (let ((s390 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ390-lab s390) (@__kernel_rem_pio2-m390.5-mem s390) (@__kernel_rem_pio2-%411-loc s390))))
+
 (defund @__kernel_rem_pio2-succ390-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%418 mem loc))
@@ -5577,6 +9211,227 @@
 (defund @__kernel_rem_pio2-%390-rev (mem loc pred)
   (@__kernel_rem_pio2-%391-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%391-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%391-rev
+            (@__kernel_rem_pio2-%390-mem s390)
+            (@__kernel_rem_pio2-%390-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-rev @__kernel_rem_pio2-%390-mem @__kernel_rem_pio2-%390-loc @__kernel_rem_pio2-%390-pred))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%392-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%392-rev
+            (@__kernel_rem_pio2-%390-mem s390)
+            (@__kernel_rem_pio2-%391-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%391-rev @__kernel_rem_pio2-%391-rev @__kernel_rem_pio2-%391-loc @__kernel_rem_pio2-%391-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%393-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%393-rev
+            (@__kernel_rem_pio2-%390-mem s390)
+            (@__kernel_rem_pio2-%392-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%392-rev @__kernel_rem_pio2-%392-rev @__kernel_rem_pio2-%392-loc @__kernel_rem_pio2-%392-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%394-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%394-rev
+            (@__kernel_rem_pio2-%390-mem s390)
+            (@__kernel_rem_pio2-%393-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%393-rev @__kernel_rem_pio2-%393-rev @__kernel_rem_pio2-%393-loc @__kernel_rem_pio2-%393-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.1-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-m390.1-rev
+            (@__kernel_rem_pio2-%390-mem s390)
+            (@__kernel_rem_pio2-%394-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%394-rev @__kernel_rem_pio2-%394-rev @__kernel_rem_pio2-%394-loc @__kernel_rem_pio2-%394-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%395-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%395-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%394-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.1-rev @__kernel_rem_pio2-m390.1-rev @__kernel_rem_pio2-m390.1-mem))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%396-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%396-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%395-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%395-rev @__kernel_rem_pio2-%395-rev @__kernel_rem_pio2-%395-loc @__kernel_rem_pio2-%395-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%397-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%397-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%396-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%396-rev @__kernel_rem_pio2-%396-rev @__kernel_rem_pio2-%396-loc @__kernel_rem_pio2-%396-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%398-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%398-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%397-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%397-rev @__kernel_rem_pio2-%397-rev @__kernel_rem_pio2-%397-loc @__kernel_rem_pio2-%397-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%399-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%399-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%398-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%398-rev @__kernel_rem_pio2-%398-rev @__kernel_rem_pio2-%398-loc @__kernel_rem_pio2-%398-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%400-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%400-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%399-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%399-rev @__kernel_rem_pio2-%399-rev @__kernel_rem_pio2-%399-loc @__kernel_rem_pio2-%399-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%401-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%401-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%400-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%400-rev @__kernel_rem_pio2-%400-rev @__kernel_rem_pio2-%400-loc @__kernel_rem_pio2-%400-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%402-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%402-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%401-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%401-rev @__kernel_rem_pio2-%401-rev @__kernel_rem_pio2-%401-loc @__kernel_rem_pio2-%401-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.2-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-m390.2-rev
+            (@__kernel_rem_pio2-m390.1-mem s390)
+            (@__kernel_rem_pio2-%402-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%402-rev @__kernel_rem_pio2-%402-rev @__kernel_rem_pio2-%402-loc @__kernel_rem_pio2-%402-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%403-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%403-rev
+            (@__kernel_rem_pio2-m390.2-mem s390)
+            (@__kernel_rem_pio2-%402-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.2-rev @__kernel_rem_pio2-m390.2-rev @__kernel_rem_pio2-m390.2-mem))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%404-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%404-rev
+            (@__kernel_rem_pio2-m390.2-mem s390)
+            (@__kernel_rem_pio2-%403-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%403-rev @__kernel_rem_pio2-%403-rev @__kernel_rem_pio2-%403-loc @__kernel_rem_pio2-%403-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.3-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-m390.3-rev
+            (@__kernel_rem_pio2-m390.2-mem s390)
+            (@__kernel_rem_pio2-%404-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%404-rev @__kernel_rem_pio2-%404-rev @__kernel_rem_pio2-%404-loc @__kernel_rem_pio2-%404-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%405-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%405-rev
+            (@__kernel_rem_pio2-m390.3-mem s390)
+            (@__kernel_rem_pio2-%404-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.3-rev @__kernel_rem_pio2-m390.3-rev @__kernel_rem_pio2-m390.3-mem))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%406-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%406-rev
+            (@__kernel_rem_pio2-m390.3-mem s390)
+            (@__kernel_rem_pio2-%405-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%405-rev @__kernel_rem_pio2-%405-rev @__kernel_rem_pio2-%405-loc @__kernel_rem_pio2-%405-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.4-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-m390.4-rev
+            (@__kernel_rem_pio2-m390.3-mem s390)
+            (@__kernel_rem_pio2-%406-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%406-rev @__kernel_rem_pio2-%406-rev @__kernel_rem_pio2-%406-loc @__kernel_rem_pio2-%406-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%407-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%407-rev
+            (@__kernel_rem_pio2-m390.4-mem s390)
+            (@__kernel_rem_pio2-%406-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.4-rev @__kernel_rem_pio2-m390.4-rev @__kernel_rem_pio2-m390.4-mem))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%408-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%408-rev
+            (@__kernel_rem_pio2-m390.4-mem s390)
+            (@__kernel_rem_pio2-%407-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%407-rev @__kernel_rem_pio2-%407-rev @__kernel_rem_pio2-%407-loc @__kernel_rem_pio2-%407-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%409-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%409-rev
+            (@__kernel_rem_pio2-m390.4-mem s390)
+            (@__kernel_rem_pio2-%408-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%408-rev @__kernel_rem_pio2-%408-rev @__kernel_rem_pio2-%408-loc @__kernel_rem_pio2-%408-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%410-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%410-rev
+            (@__kernel_rem_pio2-m390.4-mem s390)
+            (@__kernel_rem_pio2-%409-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%409-rev @__kernel_rem_pio2-%409-rev @__kernel_rem_pio2-%409-loc @__kernel_rem_pio2-%409-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%411-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-%411-rev
+            (@__kernel_rem_pio2-m390.4-mem s390)
+            (@__kernel_rem_pio2-%410-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%410-rev @__kernel_rem_pio2-%410-rev @__kernel_rem_pio2-%410-loc @__kernel_rem_pio2-%410-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.5-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-m390.5-rev
+            (@__kernel_rem_pio2-m390.4-mem s390)
+            (@__kernel_rem_pio2-%411-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-%411-rev @__kernel_rem_pio2-%411-rev @__kernel_rem_pio2-%411-loc @__kernel_rem_pio2-%411-val))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-succ390-rev
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (let ((s390 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ390-rev
+            (@__kernel_rem_pio2-m390.5-mem s390)
+            (@__kernel_rem_pio2-%411-loc s390)
+            (@__kernel_rem_pio2-%390-pred s390))))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-m390.5-rev @__kernel_rem_pio2-m390.5-rev @__kernel_rem_pio2-m390.5-mem))
+(defruled @__kernel_rem_pio2-%390-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%390-rev mem loc pred)
+         (@__kernel_rem_pio2-%390-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%390-expand-rev-as-@__kernel_rem_pio2-succ390-rev @__kernel_rem_pio2-succ390-rev @__kernel_rem_pio2-succ390-lab @__kernel_rem_pio2-%390-fwd))
+
 (defund @__kernel_rem_pio2-%390-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5608,39 +9463,6 @@
     (mem (store-i32 (g '%408 loc) (g '%411 loc) mem))
     (succ '%418))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%390-expand-bb
-  (equal (@__kernel_rem_pio2-%390-bb mem loc pred)
-         (@__kernel_rem_pio2-%390-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%390-bb @__kernel_rem_pio2-%390-rev
-    @__kernel_rem_pio2-%391-rev
-    @__kernel_rem_pio2-%392-rev
-    @__kernel_rem_pio2-%393-rev
-    @__kernel_rem_pio2-%394-rev
-    @__kernel_rem_pio2-m390.1-rev
-    @__kernel_rem_pio2-%395-rev
-    @__kernel_rem_pio2-%396-rev
-    @__kernel_rem_pio2-%397-rev
-    @__kernel_rem_pio2-%398-rev
-    @__kernel_rem_pio2-%399-rev
-    @__kernel_rem_pio2-%400-rev
-    @__kernel_rem_pio2-%401-rev
-    @__kernel_rem_pio2-%402-rev
-    @__kernel_rem_pio2-m390.2-rev
-    @__kernel_rem_pio2-%403-rev
-    @__kernel_rem_pio2-%404-rev
-    @__kernel_rem_pio2-m390.3-rev
-    @__kernel_rem_pio2-%405-rev
-    @__kernel_rem_pio2-%406-rev
-    @__kernel_rem_pio2-m390.4-rev
-    @__kernel_rem_pio2-%407-rev
-    @__kernel_rem_pio2-%408-rev
-    @__kernel_rem_pio2-%409-rev
-    @__kernel_rem_pio2-%410-rev
-    @__kernel_rem_pio2-%411-rev
-    @__kernel_rem_pio2-m390.5-rev
-    @__kernel_rem_pio2-succ390-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%412-mem (s412)
   (car s412))
@@ -5674,6 +9496,10 @@
   (declare (ignore s412))
   '%418)
 
+(defund @__kernel_rem_pio2-%412-fwd (mem loc pred)
+  (let ((s412 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ412-lab s412) (@__kernel_rem_pio2-m412.1-mem s412) (@__kernel_rem_pio2-%417-loc s412))))
+
 (defund @__kernel_rem_pio2-succ412-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%418 mem loc))
@@ -5693,6 +9519,67 @@
 (defund @__kernel_rem_pio2-%412-rev (mem loc pred)
   (@__kernel_rem_pio2-%413-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%413-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-%413-rev
+            (@__kernel_rem_pio2-%412-mem s412)
+            (@__kernel_rem_pio2-%412-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-rev @__kernel_rem_pio2-%412-mem @__kernel_rem_pio2-%412-loc @__kernel_rem_pio2-%412-pred))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%414-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-%414-rev
+            (@__kernel_rem_pio2-%412-mem s412)
+            (@__kernel_rem_pio2-%413-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%413-rev @__kernel_rem_pio2-%413-rev @__kernel_rem_pio2-%413-loc @__kernel_rem_pio2-%413-val))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%415-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-%415-rev
+            (@__kernel_rem_pio2-%412-mem s412)
+            (@__kernel_rem_pio2-%414-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%414-rev @__kernel_rem_pio2-%414-rev @__kernel_rem_pio2-%414-loc @__kernel_rem_pio2-%414-val))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%416-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-%416-rev
+            (@__kernel_rem_pio2-%412-mem s412)
+            (@__kernel_rem_pio2-%415-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%415-rev @__kernel_rem_pio2-%415-rev @__kernel_rem_pio2-%415-loc @__kernel_rem_pio2-%415-val))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%417-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-%417-rev
+            (@__kernel_rem_pio2-%412-mem s412)
+            (@__kernel_rem_pio2-%416-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%416-rev @__kernel_rem_pio2-%416-rev @__kernel_rem_pio2-%416-loc @__kernel_rem_pio2-%416-val))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-m412.1-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-m412.1-rev
+            (@__kernel_rem_pio2-%412-mem s412)
+            (@__kernel_rem_pio2-%417-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-%417-rev @__kernel_rem_pio2-%417-rev @__kernel_rem_pio2-%417-loc @__kernel_rem_pio2-%417-val))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-succ412-rev
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (let ((s412 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ412-rev
+            (@__kernel_rem_pio2-m412.1-mem s412)
+            (@__kernel_rem_pio2-%417-loc s412)
+            (@__kernel_rem_pio2-%412-pred s412))))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-m412.1-rev @__kernel_rem_pio2-m412.1-rev @__kernel_rem_pio2-m412.1-mem))
+(defruled @__kernel_rem_pio2-%412-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%412-rev mem loc pred)
+         (@__kernel_rem_pio2-%412-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%412-expand-rev-as-@__kernel_rem_pio2-succ412-rev @__kernel_rem_pio2-succ412-rev @__kernel_rem_pio2-succ412-lab @__kernel_rem_pio2-%412-fwd))
+
 (defund @__kernel_rem_pio2-%412-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5705,19 +9592,6 @@
     (succ '%418))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%412-expand-bb
-  (equal (@__kernel_rem_pio2-%412-bb mem loc pred)
-         (@__kernel_rem_pio2-%412-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%412-bb @__kernel_rem_pio2-%412-rev
-    @__kernel_rem_pio2-%413-rev
-    @__kernel_rem_pio2-%414-rev
-    @__kernel_rem_pio2-%415-rev
-    @__kernel_rem_pio2-%416-rev
-    @__kernel_rem_pio2-%417-rev
-    @__kernel_rem_pio2-m412.1-rev
-    @__kernel_rem_pio2-succ412-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%418-mem (s418)
   (car s418))
 (defund @__kernel_rem_pio2-%418-loc (s418)
@@ -5728,6 +9602,10 @@
   (declare (ignore s418))
   '%419)
 
+(defund @__kernel_rem_pio2-%418-fwd (mem loc pred)
+  (let ((s418 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ418-lab s418) (@__kernel_rem_pio2-%418-mem s418) (@__kernel_rem_pio2-%418-loc s418))))
+
 (defund @__kernel_rem_pio2-succ418-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%419 mem loc))
@@ -5735,18 +9613,24 @@
 (defund @__kernel_rem_pio2-%418-rev (mem loc pred)
   (@__kernel_rem_pio2-succ418-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%418-expand-rev-as-@__kernel_rem_pio2-succ418-rev
+  (equal (@__kernel_rem_pio2-%418-rev mem loc pred)
+         (let ((s418 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ418-rev
+            (@__kernel_rem_pio2-%418-mem s418)
+            (@__kernel_rem_pio2-%418-loc s418)
+            (@__kernel_rem_pio2-%418-pred s418))))
+  :enable (@__kernel_rem_pio2-%418-rev @__kernel_rem_pio2-%418-mem @__kernel_rem_pio2-%418-loc @__kernel_rem_pio2-%418-pred))
+(defruled @__kernel_rem_pio2-%418-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%418-rev mem loc pred)
+         (@__kernel_rem_pio2-%418-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%418-expand-rev-as-@__kernel_rem_pio2-succ418-rev @__kernel_rem_pio2-succ418-rev @__kernel_rem_pio2-succ418-lab @__kernel_rem_pio2-%418-fwd))
+
 (defund @__kernel_rem_pio2-%418-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%419))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%418-expand-bb
-  (equal (@__kernel_rem_pio2-%418-bb mem loc pred)
-         (@__kernel_rem_pio2-%418-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%418-bb @__kernel_rem_pio2-%418-rev
-    @__kernel_rem_pio2-succ418-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%419-mem (s419)
   (car s419))
@@ -5774,6 +9658,10 @@
   (declare (ignore s419))
   '%423)
 
+(defund @__kernel_rem_pio2-%419-fwd (mem loc pred)
+  (let ((s419 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ419-lab s419) (@__kernel_rem_pio2-m419.2-mem s419) (@__kernel_rem_pio2-%422-loc s419))))
+
 (defund @__kernel_rem_pio2-succ419-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%423 mem loc))
@@ -5791,6 +9679,59 @@
 (defund @__kernel_rem_pio2-%419-rev (mem loc pred)
   (@__kernel_rem_pio2-%420-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-%420-rev
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (let ((s419 (list mem loc pred)))
+           (@__kernel_rem_pio2-%420-rev
+            (@__kernel_rem_pio2-%419-mem s419)
+            (@__kernel_rem_pio2-%419-loc s419)
+            (@__kernel_rem_pio2-%419-pred s419))))
+  :enable (@__kernel_rem_pio2-%419-rev @__kernel_rem_pio2-%419-mem @__kernel_rem_pio2-%419-loc @__kernel_rem_pio2-%419-pred))
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-%421-rev
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (let ((s419 (list mem loc pred)))
+           (@__kernel_rem_pio2-%421-rev
+            (@__kernel_rem_pio2-%419-mem s419)
+            (@__kernel_rem_pio2-%420-loc s419)
+            (@__kernel_rem_pio2-%419-pred s419))))
+  :enable (@__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-%420-rev @__kernel_rem_pio2-%420-rev @__kernel_rem_pio2-%420-loc @__kernel_rem_pio2-%420-val))
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-m419.1-rev
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (let ((s419 (list mem loc pred)))
+           (@__kernel_rem_pio2-m419.1-rev
+            (@__kernel_rem_pio2-%419-mem s419)
+            (@__kernel_rem_pio2-%421-loc s419)
+            (@__kernel_rem_pio2-%419-pred s419))))
+  :enable (@__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-%421-rev @__kernel_rem_pio2-%421-rev @__kernel_rem_pio2-%421-loc @__kernel_rem_pio2-%421-val))
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-%422-rev
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (let ((s419 (list mem loc pred)))
+           (@__kernel_rem_pio2-%422-rev
+            (@__kernel_rem_pio2-m419.1-mem s419)
+            (@__kernel_rem_pio2-%421-loc s419)
+            (@__kernel_rem_pio2-%419-pred s419))))
+  :enable (@__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-m419.1-rev @__kernel_rem_pio2-m419.1-rev @__kernel_rem_pio2-m419.1-mem))
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-m419.2-rev
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (let ((s419 (list mem loc pred)))
+           (@__kernel_rem_pio2-m419.2-rev
+            (@__kernel_rem_pio2-m419.1-mem s419)
+            (@__kernel_rem_pio2-%422-loc s419)
+            (@__kernel_rem_pio2-%419-pred s419))))
+  :enable (@__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-%422-rev @__kernel_rem_pio2-%422-rev @__kernel_rem_pio2-%422-loc @__kernel_rem_pio2-%422-val))
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-succ419-rev
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (let ((s419 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ419-rev
+            (@__kernel_rem_pio2-m419.2-mem s419)
+            (@__kernel_rem_pio2-%422-loc s419)
+            (@__kernel_rem_pio2-%419-pred s419))))
+  :enable (@__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-m419.2-rev @__kernel_rem_pio2-m419.2-rev @__kernel_rem_pio2-m419.2-mem))
+(defruled @__kernel_rem_pio2-%419-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%419-rev mem loc pred)
+         (@__kernel_rem_pio2-%419-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%419-expand-rev-as-@__kernel_rem_pio2-succ419-rev @__kernel_rem_pio2-succ419-rev @__kernel_rem_pio2-succ419-lab @__kernel_rem_pio2-%419-fwd))
+
 (defund @__kernel_rem_pio2-%419-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5801,18 +9742,6 @@
     (mem (store-i32 (g '%422 loc) (g '%i loc) mem))
     (succ '%423))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%419-expand-bb
-  (equal (@__kernel_rem_pio2-%419-bb mem loc pred)
-         (@__kernel_rem_pio2-%419-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%419-bb @__kernel_rem_pio2-%419-rev
-    @__kernel_rem_pio2-%420-rev
-    @__kernel_rem_pio2-%421-rev
-    @__kernel_rem_pio2-m419.1-rev
-    @__kernel_rem_pio2-%422-rev
-    @__kernel_rem_pio2-m419.2-rev
-    @__kernel_rem_pio2-succ419-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%423-mem (s423)
   (car s423))
@@ -5831,6 +9760,10 @@
 (defund @__kernel_rem_pio2-succ423-lab (s423)
   (case (g '%425 (@__kernel_rem_pio2-%425-loc s423)) (-1 '%426) (0 '%442)))
 
+(defund @__kernel_rem_pio2-%423-fwd (mem loc pred)
+  (let ((s423 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ423-lab s423) (@__kernel_rem_pio2-%423-mem s423) (@__kernel_rem_pio2-%425-loc s423))))
+
 (defund @__kernel_rem_pio2-succ423-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%425 loc) (-1 '%426) (0 '%442)) mem loc))
@@ -5842,6 +9775,35 @@
 (defund @__kernel_rem_pio2-%423-rev (mem loc pred)
   (@__kernel_rem_pio2-%424-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%423-expand-rev-as-@__kernel_rem_pio2-%424-rev
+  (equal (@__kernel_rem_pio2-%423-rev mem loc pred)
+         (let ((s423 (list mem loc pred)))
+           (@__kernel_rem_pio2-%424-rev
+            (@__kernel_rem_pio2-%423-mem s423)
+            (@__kernel_rem_pio2-%423-loc s423)
+            (@__kernel_rem_pio2-%423-pred s423))))
+  :enable (@__kernel_rem_pio2-%423-rev @__kernel_rem_pio2-%423-mem @__kernel_rem_pio2-%423-loc @__kernel_rem_pio2-%423-pred))
+(defruled @__kernel_rem_pio2-%423-expand-rev-as-@__kernel_rem_pio2-%425-rev
+  (equal (@__kernel_rem_pio2-%423-rev mem loc pred)
+         (let ((s423 (list mem loc pred)))
+           (@__kernel_rem_pio2-%425-rev
+            (@__kernel_rem_pio2-%423-mem s423)
+            (@__kernel_rem_pio2-%424-loc s423)
+            (@__kernel_rem_pio2-%423-pred s423))))
+  :enable (@__kernel_rem_pio2-%423-expand-rev-as-@__kernel_rem_pio2-%424-rev @__kernel_rem_pio2-%424-rev @__kernel_rem_pio2-%424-loc @__kernel_rem_pio2-%424-val))
+(defruled @__kernel_rem_pio2-%423-expand-rev-as-@__kernel_rem_pio2-succ423-rev
+  (equal (@__kernel_rem_pio2-%423-rev mem loc pred)
+         (let ((s423 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ423-rev
+            (@__kernel_rem_pio2-%423-mem s423)
+            (@__kernel_rem_pio2-%425-loc s423)
+            (@__kernel_rem_pio2-%423-pred s423))))
+  :enable (@__kernel_rem_pio2-%423-expand-rev-as-@__kernel_rem_pio2-%425-rev @__kernel_rem_pio2-%425-rev @__kernel_rem_pio2-%425-loc @__kernel_rem_pio2-%425-val))
+(defruled @__kernel_rem_pio2-%423-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%423-rev mem loc pred)
+         (@__kernel_rem_pio2-%423-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%423-expand-rev-as-@__kernel_rem_pio2-succ423-rev @__kernel_rem_pio2-succ423-rev @__kernel_rem_pio2-succ423-lab @__kernel_rem_pio2-%423-fwd))
+
 (defund @__kernel_rem_pio2-%423-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5849,15 +9811,6 @@
     (loc (s '%425 (icmp-sge-i32 (g '%424 loc) 0) loc))
     (succ (case (g '%425 loc) (-1 '%426) (0 '%442))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%423-expand-bb
-  (equal (@__kernel_rem_pio2-%423-bb mem loc pred)
-         (@__kernel_rem_pio2-%423-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%423-bb @__kernel_rem_pio2-%423-rev
-    @__kernel_rem_pio2-%424-rev
-    @__kernel_rem_pio2-%425-rev
-    @__kernel_rem_pio2-succ423-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%426-mem (s426)
   (car s426))
@@ -5921,6 +9874,10 @@
   (declare (ignore s426))
   '%439)
 
+(defund @__kernel_rem_pio2-%426-fwd (mem loc pred)
+  (let ((s426 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ426-lab s426) (@__kernel_rem_pio2-m426.2-mem s426) (@__kernel_rem_pio2-%438-loc s426))))
+
 (defund @__kernel_rem_pio2-succ426-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%439 mem loc))
@@ -5956,6 +9913,131 @@
 (defund @__kernel_rem_pio2-%426-rev (mem loc pred)
   (@__kernel_rem_pio2-%427-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%427-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%427-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%426-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-rev @__kernel_rem_pio2-%426-mem @__kernel_rem_pio2-%426-loc @__kernel_rem_pio2-%426-pred))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%428-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%428-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%427-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%427-rev @__kernel_rem_pio2-%427-rev @__kernel_rem_pio2-%427-loc @__kernel_rem_pio2-%427-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%429-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%429-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%428-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%428-rev @__kernel_rem_pio2-%428-rev @__kernel_rem_pio2-%428-loc @__kernel_rem_pio2-%428-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%430-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%430-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%429-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%429-rev @__kernel_rem_pio2-%429-rev @__kernel_rem_pio2-%429-loc @__kernel_rem_pio2-%429-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%431-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%431-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%430-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%430-rev @__kernel_rem_pio2-%430-rev @__kernel_rem_pio2-%430-loc @__kernel_rem_pio2-%430-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%432-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%432-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%431-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%431-rev @__kernel_rem_pio2-%431-rev @__kernel_rem_pio2-%431-loc @__kernel_rem_pio2-%431-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%433-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%433-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%432-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%432-rev @__kernel_rem_pio2-%432-rev @__kernel_rem_pio2-%432-loc @__kernel_rem_pio2-%432-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%434-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%434-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%433-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%433-rev @__kernel_rem_pio2-%433-rev @__kernel_rem_pio2-%433-loc @__kernel_rem_pio2-%433-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%435-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%435-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%434-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%434-rev @__kernel_rem_pio2-%434-rev @__kernel_rem_pio2-%434-loc @__kernel_rem_pio2-%434-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%436-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%436-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%435-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%435-rev @__kernel_rem_pio2-%435-rev @__kernel_rem_pio2-%435-loc @__kernel_rem_pio2-%435-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-m426.1-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-m426.1-rev
+            (@__kernel_rem_pio2-%426-mem s426)
+            (@__kernel_rem_pio2-%436-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%436-rev @__kernel_rem_pio2-%436-rev @__kernel_rem_pio2-%436-loc @__kernel_rem_pio2-%436-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%437-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%437-rev
+            (@__kernel_rem_pio2-m426.1-mem s426)
+            (@__kernel_rem_pio2-%436-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-m426.1-rev @__kernel_rem_pio2-m426.1-rev @__kernel_rem_pio2-m426.1-mem))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%438-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-%438-rev
+            (@__kernel_rem_pio2-m426.1-mem s426)
+            (@__kernel_rem_pio2-%437-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%437-rev @__kernel_rem_pio2-%437-rev @__kernel_rem_pio2-%437-loc @__kernel_rem_pio2-%437-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-m426.2-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-m426.2-rev
+            (@__kernel_rem_pio2-m426.1-mem s426)
+            (@__kernel_rem_pio2-%438-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-%438-rev @__kernel_rem_pio2-%438-rev @__kernel_rem_pio2-%438-loc @__kernel_rem_pio2-%438-val))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-succ426-rev
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (let ((s426 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ426-rev
+            (@__kernel_rem_pio2-m426.2-mem s426)
+            (@__kernel_rem_pio2-%438-loc s426)
+            (@__kernel_rem_pio2-%426-pred s426))))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-m426.2-rev @__kernel_rem_pio2-m426.2-rev @__kernel_rem_pio2-m426.2-mem))
+(defruled @__kernel_rem_pio2-%426-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%426-rev mem loc pred)
+         (@__kernel_rem_pio2-%426-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%426-expand-rev-as-@__kernel_rem_pio2-succ426-rev @__kernel_rem_pio2-succ426-rev @__kernel_rem_pio2-succ426-lab @__kernel_rem_pio2-%426-fwd))
+
 (defund @__kernel_rem_pio2-%426-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -5975,27 +10057,6 @@
     (mem (store-double (g '%438 loc) (g '%fw loc) mem))
     (succ '%439))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%426-expand-bb
-  (equal (@__kernel_rem_pio2-%426-bb mem loc pred)
-         (@__kernel_rem_pio2-%426-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%426-bb @__kernel_rem_pio2-%426-rev
-    @__kernel_rem_pio2-%427-rev
-    @__kernel_rem_pio2-%428-rev
-    @__kernel_rem_pio2-%429-rev
-    @__kernel_rem_pio2-%430-rev
-    @__kernel_rem_pio2-%431-rev
-    @__kernel_rem_pio2-%432-rev
-    @__kernel_rem_pio2-%433-rev
-    @__kernel_rem_pio2-%434-rev
-    @__kernel_rem_pio2-%435-rev
-    @__kernel_rem_pio2-%436-rev
-    @__kernel_rem_pio2-m426.1-rev
-    @__kernel_rem_pio2-%437-rev
-    @__kernel_rem_pio2-%438-rev
-    @__kernel_rem_pio2-m426.2-rev
-    @__kernel_rem_pio2-succ426-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%439-mem (s439)
   (car s439))
@@ -6017,6 +10078,10 @@
   (declare (ignore s439))
   '%423)
 
+(defund @__kernel_rem_pio2-%439-fwd (mem loc pred)
+  (let ((s439 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ439-lab s439) (@__kernel_rem_pio2-m439.1-mem s439) (@__kernel_rem_pio2-%441-loc s439))))
+
 (defund @__kernel_rem_pio2-succ439-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%423 mem loc))
@@ -6030,6 +10095,43 @@
 (defund @__kernel_rem_pio2-%439-rev (mem loc pred)
   (@__kernel_rem_pio2-%440-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-%440-rev
+  (equal (@__kernel_rem_pio2-%439-rev mem loc pred)
+         (let ((s439 (list mem loc pred)))
+           (@__kernel_rem_pio2-%440-rev
+            (@__kernel_rem_pio2-%439-mem s439)
+            (@__kernel_rem_pio2-%439-loc s439)
+            (@__kernel_rem_pio2-%439-pred s439))))
+  :enable (@__kernel_rem_pio2-%439-rev @__kernel_rem_pio2-%439-mem @__kernel_rem_pio2-%439-loc @__kernel_rem_pio2-%439-pred))
+(defruled @__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-%441-rev
+  (equal (@__kernel_rem_pio2-%439-rev mem loc pred)
+         (let ((s439 (list mem loc pred)))
+           (@__kernel_rem_pio2-%441-rev
+            (@__kernel_rem_pio2-%439-mem s439)
+            (@__kernel_rem_pio2-%440-loc s439)
+            (@__kernel_rem_pio2-%439-pred s439))))
+  :enable (@__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-%440-rev @__kernel_rem_pio2-%440-rev @__kernel_rem_pio2-%440-loc @__kernel_rem_pio2-%440-val))
+(defruled @__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-m439.1-rev
+  (equal (@__kernel_rem_pio2-%439-rev mem loc pred)
+         (let ((s439 (list mem loc pred)))
+           (@__kernel_rem_pio2-m439.1-rev
+            (@__kernel_rem_pio2-%439-mem s439)
+            (@__kernel_rem_pio2-%441-loc s439)
+            (@__kernel_rem_pio2-%439-pred s439))))
+  :enable (@__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-%441-rev @__kernel_rem_pio2-%441-rev @__kernel_rem_pio2-%441-loc @__kernel_rem_pio2-%441-val))
+(defruled @__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-succ439-rev
+  (equal (@__kernel_rem_pio2-%439-rev mem loc pred)
+         (let ((s439 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ439-rev
+            (@__kernel_rem_pio2-m439.1-mem s439)
+            (@__kernel_rem_pio2-%441-loc s439)
+            (@__kernel_rem_pio2-%439-pred s439))))
+  :enable (@__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-m439.1-rev @__kernel_rem_pio2-m439.1-rev @__kernel_rem_pio2-m439.1-mem))
+(defruled @__kernel_rem_pio2-%439-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%439-rev mem loc pred)
+         (@__kernel_rem_pio2-%439-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%439-expand-rev-as-@__kernel_rem_pio2-succ439-rev @__kernel_rem_pio2-succ439-rev @__kernel_rem_pio2-succ439-lab @__kernel_rem_pio2-%439-fwd))
+
 (defund @__kernel_rem_pio2-%439-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6038,16 +10140,6 @@
     (mem (store-i32 (g '%441 loc) (g '%i loc) mem))
     (succ '%423))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%439-expand-bb
-  (equal (@__kernel_rem_pio2-%439-bb mem loc pred)
-         (@__kernel_rem_pio2-%439-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%439-bb @__kernel_rem_pio2-%439-rev
-    @__kernel_rem_pio2-%440-rev
-    @__kernel_rem_pio2-%441-rev
-    @__kernel_rem_pio2-m439.1-rev
-    @__kernel_rem_pio2-succ439-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%442-mem (s442)
   (car s442))
@@ -6065,6 +10157,10 @@
   (declare (ignore s442))
   '%444)
 
+(defund @__kernel_rem_pio2-%442-fwd (mem loc pred)
+  (let ((s442 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ442-lab s442) (@__kernel_rem_pio2-m442.1-mem s442) (@__kernel_rem_pio2-%443-loc s442))))
+
 (defund @__kernel_rem_pio2-succ442-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%444 mem loc))
@@ -6076,6 +10172,35 @@
 (defund @__kernel_rem_pio2-%442-rev (mem loc pred)
   (@__kernel_rem_pio2-%443-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%442-expand-rev-as-@__kernel_rem_pio2-%443-rev
+  (equal (@__kernel_rem_pio2-%442-rev mem loc pred)
+         (let ((s442 (list mem loc pred)))
+           (@__kernel_rem_pio2-%443-rev
+            (@__kernel_rem_pio2-%442-mem s442)
+            (@__kernel_rem_pio2-%442-loc s442)
+            (@__kernel_rem_pio2-%442-pred s442))))
+  :enable (@__kernel_rem_pio2-%442-rev @__kernel_rem_pio2-%442-mem @__kernel_rem_pio2-%442-loc @__kernel_rem_pio2-%442-pred))
+(defruled @__kernel_rem_pio2-%442-expand-rev-as-@__kernel_rem_pio2-m442.1-rev
+  (equal (@__kernel_rem_pio2-%442-rev mem loc pred)
+         (let ((s442 (list mem loc pred)))
+           (@__kernel_rem_pio2-m442.1-rev
+            (@__kernel_rem_pio2-%442-mem s442)
+            (@__kernel_rem_pio2-%443-loc s442)
+            (@__kernel_rem_pio2-%442-pred s442))))
+  :enable (@__kernel_rem_pio2-%442-expand-rev-as-@__kernel_rem_pio2-%443-rev @__kernel_rem_pio2-%443-rev @__kernel_rem_pio2-%443-loc @__kernel_rem_pio2-%443-val))
+(defruled @__kernel_rem_pio2-%442-expand-rev-as-@__kernel_rem_pio2-succ442-rev
+  (equal (@__kernel_rem_pio2-%442-rev mem loc pred)
+         (let ((s442 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ442-rev
+            (@__kernel_rem_pio2-m442.1-mem s442)
+            (@__kernel_rem_pio2-%443-loc s442)
+            (@__kernel_rem_pio2-%442-pred s442))))
+  :enable (@__kernel_rem_pio2-%442-expand-rev-as-@__kernel_rem_pio2-m442.1-rev @__kernel_rem_pio2-m442.1-rev @__kernel_rem_pio2-m442.1-mem))
+(defruled @__kernel_rem_pio2-%442-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%442-rev mem loc pred)
+         (@__kernel_rem_pio2-%442-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%442-expand-rev-as-@__kernel_rem_pio2-succ442-rev @__kernel_rem_pio2-succ442-rev @__kernel_rem_pio2-succ442-lab @__kernel_rem_pio2-%442-fwd))
+
 (defund @__kernel_rem_pio2-%442-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6083,15 +10208,6 @@
     (mem (store-i32 (g '%443 loc) (g '%i loc) mem))
     (succ '%444))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%442-expand-bb
-  (equal (@__kernel_rem_pio2-%442-bb mem loc pred)
-         (@__kernel_rem_pio2-%442-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%442-bb @__kernel_rem_pio2-%442-rev
-    @__kernel_rem_pio2-%443-rev
-    @__kernel_rem_pio2-m442.1-rev
-    @__kernel_rem_pio2-succ442-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%444-mem (s444)
   (car s444))
@@ -6110,6 +10226,10 @@
 (defund @__kernel_rem_pio2-succ444-lab (s444)
   (case (g '%446 (@__kernel_rem_pio2-%446-loc s444)) (-1 '%447) (0 '%487)))
 
+(defund @__kernel_rem_pio2-%444-fwd (mem loc pred)
+  (let ((s444 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ444-lab s444) (@__kernel_rem_pio2-%444-mem s444) (@__kernel_rem_pio2-%446-loc s444))))
+
 (defund @__kernel_rem_pio2-succ444-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%446 loc) (-1 '%447) (0 '%487)) mem loc))
@@ -6121,6 +10241,35 @@
 (defund @__kernel_rem_pio2-%444-rev (mem loc pred)
   (@__kernel_rem_pio2-%445-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%444-expand-rev-as-@__kernel_rem_pio2-%445-rev
+  (equal (@__kernel_rem_pio2-%444-rev mem loc pred)
+         (let ((s444 (list mem loc pred)))
+           (@__kernel_rem_pio2-%445-rev
+            (@__kernel_rem_pio2-%444-mem s444)
+            (@__kernel_rem_pio2-%444-loc s444)
+            (@__kernel_rem_pio2-%444-pred s444))))
+  :enable (@__kernel_rem_pio2-%444-rev @__kernel_rem_pio2-%444-mem @__kernel_rem_pio2-%444-loc @__kernel_rem_pio2-%444-pred))
+(defruled @__kernel_rem_pio2-%444-expand-rev-as-@__kernel_rem_pio2-%446-rev
+  (equal (@__kernel_rem_pio2-%444-rev mem loc pred)
+         (let ((s444 (list mem loc pred)))
+           (@__kernel_rem_pio2-%446-rev
+            (@__kernel_rem_pio2-%444-mem s444)
+            (@__kernel_rem_pio2-%445-loc s444)
+            (@__kernel_rem_pio2-%444-pred s444))))
+  :enable (@__kernel_rem_pio2-%444-expand-rev-as-@__kernel_rem_pio2-%445-rev @__kernel_rem_pio2-%445-rev @__kernel_rem_pio2-%445-loc @__kernel_rem_pio2-%445-val))
+(defruled @__kernel_rem_pio2-%444-expand-rev-as-@__kernel_rem_pio2-succ444-rev
+  (equal (@__kernel_rem_pio2-%444-rev mem loc pred)
+         (let ((s444 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ444-rev
+            (@__kernel_rem_pio2-%444-mem s444)
+            (@__kernel_rem_pio2-%446-loc s444)
+            (@__kernel_rem_pio2-%444-pred s444))))
+  :enable (@__kernel_rem_pio2-%444-expand-rev-as-@__kernel_rem_pio2-%446-rev @__kernel_rem_pio2-%446-rev @__kernel_rem_pio2-%446-loc @__kernel_rem_pio2-%446-val))
+(defruled @__kernel_rem_pio2-%444-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%444-rev mem loc pred)
+         (@__kernel_rem_pio2-%444-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%444-expand-rev-as-@__kernel_rem_pio2-succ444-rev @__kernel_rem_pio2-succ444-rev @__kernel_rem_pio2-succ444-lab @__kernel_rem_pio2-%444-fwd))
+
 (defund @__kernel_rem_pio2-%444-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6128,15 +10277,6 @@
     (loc (s '%446 (icmp-sge-i32 (g '%445 loc) 0) loc))
     (succ (case (g '%446 loc) (-1 '%447) (0 '%487))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%444-expand-bb
-  (equal (@__kernel_rem_pio2-%444-bb mem loc pred)
-         (@__kernel_rem_pio2-%444-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%444-bb @__kernel_rem_pio2-%444-rev
-    @__kernel_rem_pio2-%445-rev
-    @__kernel_rem_pio2-%446-rev
-    @__kernel_rem_pio2-succ444-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%447-mem (s447)
   (car s447))
@@ -6152,6 +10292,10 @@
   (declare (ignore s447))
   '%448)
 
+(defund @__kernel_rem_pio2-%447-fwd (mem loc pred)
+  (let ((s447 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ447-lab s447) (@__kernel_rem_pio2-m447.2-mem s447) (@__kernel_rem_pio2-%447-loc s447))))
+
 (defund @__kernel_rem_pio2-succ447-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%448 mem loc))
@@ -6163,6 +10307,35 @@
 (defund @__kernel_rem_pio2-%447-rev (mem loc pred)
   (@__kernel_rem_pio2-m447.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%447-expand-rev-as-@__kernel_rem_pio2-m447.1-rev
+  (equal (@__kernel_rem_pio2-%447-rev mem loc pred)
+         (let ((s447 (list mem loc pred)))
+           (@__kernel_rem_pio2-m447.1-rev
+            (@__kernel_rem_pio2-%447-mem s447)
+            (@__kernel_rem_pio2-%447-loc s447)
+            (@__kernel_rem_pio2-%447-pred s447))))
+  :enable (@__kernel_rem_pio2-%447-rev @__kernel_rem_pio2-%447-mem @__kernel_rem_pio2-%447-loc @__kernel_rem_pio2-%447-pred))
+(defruled @__kernel_rem_pio2-%447-expand-rev-as-@__kernel_rem_pio2-m447.2-rev
+  (equal (@__kernel_rem_pio2-%447-rev mem loc pred)
+         (let ((s447 (list mem loc pred)))
+           (@__kernel_rem_pio2-m447.2-rev
+            (@__kernel_rem_pio2-m447.1-mem s447)
+            (@__kernel_rem_pio2-%447-loc s447)
+            (@__kernel_rem_pio2-%447-pred s447))))
+  :enable (@__kernel_rem_pio2-%447-expand-rev-as-@__kernel_rem_pio2-m447.1-rev @__kernel_rem_pio2-m447.1-rev @__kernel_rem_pio2-m447.1-mem))
+(defruled @__kernel_rem_pio2-%447-expand-rev-as-@__kernel_rem_pio2-succ447-rev
+  (equal (@__kernel_rem_pio2-%447-rev mem loc pred)
+         (let ((s447 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ447-rev
+            (@__kernel_rem_pio2-m447.2-mem s447)
+            (@__kernel_rem_pio2-%447-loc s447)
+            (@__kernel_rem_pio2-%447-pred s447))))
+  :enable (@__kernel_rem_pio2-%447-expand-rev-as-@__kernel_rem_pio2-m447.2-rev @__kernel_rem_pio2-m447.2-rev @__kernel_rem_pio2-m447.2-mem))
+(defruled @__kernel_rem_pio2-%447-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%447-rev mem loc pred)
+         (@__kernel_rem_pio2-%447-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%447-expand-rev-as-@__kernel_rem_pio2-succ447-rev @__kernel_rem_pio2-succ447-rev @__kernel_rem_pio2-succ447-lab @__kernel_rem_pio2-%447-fwd))
+
 (defund @__kernel_rem_pio2-%447-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6170,15 +10343,6 @@
     (mem (store-i32 0 (g '%k loc) mem))
     (succ '%448))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%447-expand-bb
-  (equal (@__kernel_rem_pio2-%447-bb mem loc pred)
-         (@__kernel_rem_pio2-%447-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%447-bb @__kernel_rem_pio2-%447-rev
-    @__kernel_rem_pio2-m447.1-rev
-    @__kernel_rem_pio2-m447.2-rev
-    @__kernel_rem_pio2-succ447-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%448-mem (s448)
   (car s448))
@@ -6201,6 +10365,10 @@
 (defund @__kernel_rem_pio2-succ448-lab (s448)
   (case (g '%451 (@__kernel_rem_pio2-%451-loc s448)) (-1 '%452) (0 '%458)))
 
+(defund @__kernel_rem_pio2-%448-fwd (mem loc pred)
+  (let ((s448 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ448-lab s448) (@__kernel_rem_pio2-%448-mem s448) (@__kernel_rem_pio2-%451-loc s448))))
+
 (defund @__kernel_rem_pio2-succ448-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%451 loc) (-1 '%452) (0 '%458)) mem loc))
@@ -6214,6 +10382,43 @@
 (defund @__kernel_rem_pio2-%448-rev (mem loc pred)
   (@__kernel_rem_pio2-%449-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-%449-rev
+  (equal (@__kernel_rem_pio2-%448-rev mem loc pred)
+         (let ((s448 (list mem loc pred)))
+           (@__kernel_rem_pio2-%449-rev
+            (@__kernel_rem_pio2-%448-mem s448)
+            (@__kernel_rem_pio2-%448-loc s448)
+            (@__kernel_rem_pio2-%448-pred s448))))
+  :enable (@__kernel_rem_pio2-%448-rev @__kernel_rem_pio2-%448-mem @__kernel_rem_pio2-%448-loc @__kernel_rem_pio2-%448-pred))
+(defruled @__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-%450-rev
+  (equal (@__kernel_rem_pio2-%448-rev mem loc pred)
+         (let ((s448 (list mem loc pred)))
+           (@__kernel_rem_pio2-%450-rev
+            (@__kernel_rem_pio2-%448-mem s448)
+            (@__kernel_rem_pio2-%449-loc s448)
+            (@__kernel_rem_pio2-%448-pred s448))))
+  :enable (@__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-%449-rev @__kernel_rem_pio2-%449-rev @__kernel_rem_pio2-%449-loc @__kernel_rem_pio2-%449-val))
+(defruled @__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-%451-rev
+  (equal (@__kernel_rem_pio2-%448-rev mem loc pred)
+         (let ((s448 (list mem loc pred)))
+           (@__kernel_rem_pio2-%451-rev
+            (@__kernel_rem_pio2-%448-mem s448)
+            (@__kernel_rem_pio2-%450-loc s448)
+            (@__kernel_rem_pio2-%448-pred s448))))
+  :enable (@__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-%450-rev @__kernel_rem_pio2-%450-rev @__kernel_rem_pio2-%450-loc @__kernel_rem_pio2-%450-val))
+(defruled @__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-succ448-rev
+  (equal (@__kernel_rem_pio2-%448-rev mem loc pred)
+         (let ((s448 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ448-rev
+            (@__kernel_rem_pio2-%448-mem s448)
+            (@__kernel_rem_pio2-%451-loc s448)
+            (@__kernel_rem_pio2-%448-pred s448))))
+  :enable (@__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-%451-rev @__kernel_rem_pio2-%451-rev @__kernel_rem_pio2-%451-loc @__kernel_rem_pio2-%451-val))
+(defruled @__kernel_rem_pio2-%448-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%448-rev mem loc pred)
+         (@__kernel_rem_pio2-%448-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%448-expand-rev-as-@__kernel_rem_pio2-succ448-rev @__kernel_rem_pio2-succ448-rev @__kernel_rem_pio2-succ448-lab @__kernel_rem_pio2-%448-fwd))
+
 (defund @__kernel_rem_pio2-%448-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6222,16 +10427,6 @@
     (loc (s '%451 (icmp-sle-i32 (g '%449 loc) (g '%450 loc)) loc))
     (succ (case (g '%451 loc) (-1 '%452) (0 '%458))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%448-expand-bb
-  (equal (@__kernel_rem_pio2-%448-bb mem loc pred)
-         (@__kernel_rem_pio2-%448-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%448-bb @__kernel_rem_pio2-%448-rev
-    @__kernel_rem_pio2-%449-rev
-    @__kernel_rem_pio2-%450-rev
-    @__kernel_rem_pio2-%451-rev
-    @__kernel_rem_pio2-succ448-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%452-mem (s452)
   (car s452))
@@ -6263,6 +10458,10 @@
   (declare (ignore s452))
   '%458)
 
+(defund @__kernel_rem_pio2-%452-fwd (mem loc pred)
+  (let ((s452 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ452-lab s452) (@__kernel_rem_pio2-%452-mem s452) (@__kernel_rem_pio2-%457-loc s452))))
+
 (defund @__kernel_rem_pio2-succ452-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%458 mem loc))
@@ -6280,6 +10479,59 @@
 (defund @__kernel_rem_pio2-%452-rev (mem loc pred)
   (@__kernel_rem_pio2-%453-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%453-rev
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (let ((s452 (list mem loc pred)))
+           (@__kernel_rem_pio2-%453-rev
+            (@__kernel_rem_pio2-%452-mem s452)
+            (@__kernel_rem_pio2-%452-loc s452)
+            (@__kernel_rem_pio2-%452-pred s452))))
+  :enable (@__kernel_rem_pio2-%452-rev @__kernel_rem_pio2-%452-mem @__kernel_rem_pio2-%452-loc @__kernel_rem_pio2-%452-pred))
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%454-rev
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (let ((s452 (list mem loc pred)))
+           (@__kernel_rem_pio2-%454-rev
+            (@__kernel_rem_pio2-%452-mem s452)
+            (@__kernel_rem_pio2-%453-loc s452)
+            (@__kernel_rem_pio2-%452-pred s452))))
+  :enable (@__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%453-rev @__kernel_rem_pio2-%453-rev @__kernel_rem_pio2-%453-loc @__kernel_rem_pio2-%453-val))
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%455-rev
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (let ((s452 (list mem loc pred)))
+           (@__kernel_rem_pio2-%455-rev
+            (@__kernel_rem_pio2-%452-mem s452)
+            (@__kernel_rem_pio2-%454-loc s452)
+            (@__kernel_rem_pio2-%452-pred s452))))
+  :enable (@__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%454-rev @__kernel_rem_pio2-%454-rev @__kernel_rem_pio2-%454-loc @__kernel_rem_pio2-%454-val))
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%456-rev
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (let ((s452 (list mem loc pred)))
+           (@__kernel_rem_pio2-%456-rev
+            (@__kernel_rem_pio2-%452-mem s452)
+            (@__kernel_rem_pio2-%455-loc s452)
+            (@__kernel_rem_pio2-%452-pred s452))))
+  :enable (@__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%455-rev @__kernel_rem_pio2-%455-rev @__kernel_rem_pio2-%455-loc @__kernel_rem_pio2-%455-val))
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%457-rev
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (let ((s452 (list mem loc pred)))
+           (@__kernel_rem_pio2-%457-rev
+            (@__kernel_rem_pio2-%452-mem s452)
+            (@__kernel_rem_pio2-%456-loc s452)
+            (@__kernel_rem_pio2-%452-pred s452))))
+  :enable (@__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%456-rev @__kernel_rem_pio2-%456-rev @__kernel_rem_pio2-%456-loc @__kernel_rem_pio2-%456-val))
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-succ452-rev
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (let ((s452 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ452-rev
+            (@__kernel_rem_pio2-%452-mem s452)
+            (@__kernel_rem_pio2-%457-loc s452)
+            (@__kernel_rem_pio2-%452-pred s452))))
+  :enable (@__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-%457-rev @__kernel_rem_pio2-%457-rev @__kernel_rem_pio2-%457-loc @__kernel_rem_pio2-%457-val))
+(defruled @__kernel_rem_pio2-%452-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%452-rev mem loc pred)
+         (@__kernel_rem_pio2-%452-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%452-expand-rev-as-@__kernel_rem_pio2-succ452-rev @__kernel_rem_pio2-succ452-rev @__kernel_rem_pio2-succ452-lab @__kernel_rem_pio2-%452-fwd))
+
 (defund @__kernel_rem_pio2-%452-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6290,18 +10542,6 @@
     (loc (s '%457 (icmp-sle-i32 (g '%453 loc) (g '%456 loc)) loc))
     (succ '%458))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%452-expand-bb
-  (equal (@__kernel_rem_pio2-%452-bb mem loc pred)
-         (@__kernel_rem_pio2-%452-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%452-bb @__kernel_rem_pio2-%452-rev
-    @__kernel_rem_pio2-%453-rev
-    @__kernel_rem_pio2-%454-rev
-    @__kernel_rem_pio2-%455-rev
-    @__kernel_rem_pio2-%456-rev
-    @__kernel_rem_pio2-%457-rev
-    @__kernel_rem_pio2-succ452-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%458-mem (s458)
   (car s458))
@@ -6316,6 +10556,10 @@
 (defund @__kernel_rem_pio2-succ458-lab (s458)
   (case (g '%459 (@__kernel_rem_pio2-%459-loc s458)) (-1 '%460) (0 '%477)))
 
+(defund @__kernel_rem_pio2-%458-fwd (mem loc pred)
+  (let ((s458 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ458-lab s458) (@__kernel_rem_pio2-%458-mem s458) (@__kernel_rem_pio2-%459-loc s458))))
+
 (defund @__kernel_rem_pio2-succ458-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%459 loc) (-1 '%460) (0 '%477)) mem loc))
@@ -6325,19 +10569,32 @@
 (defund @__kernel_rem_pio2-%458-rev (mem loc pred)
   (@__kernel_rem_pio2-%459-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%458-expand-rev-as-@__kernel_rem_pio2-%459-rev
+  (equal (@__kernel_rem_pio2-%458-rev mem loc pred)
+         (let ((s458 (list mem loc pred)))
+           (@__kernel_rem_pio2-%459-rev
+            (@__kernel_rem_pio2-%458-mem s458)
+            (@__kernel_rem_pio2-%458-loc s458)
+            (@__kernel_rem_pio2-%458-pred s458))))
+  :enable (@__kernel_rem_pio2-%458-rev @__kernel_rem_pio2-%458-mem @__kernel_rem_pio2-%458-loc @__kernel_rem_pio2-%458-pred))
+(defruled @__kernel_rem_pio2-%458-expand-rev-as-@__kernel_rem_pio2-succ458-rev
+  (equal (@__kernel_rem_pio2-%458-rev mem loc pred)
+         (let ((s458 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ458-rev
+            (@__kernel_rem_pio2-%458-mem s458)
+            (@__kernel_rem_pio2-%459-loc s458)
+            (@__kernel_rem_pio2-%458-pred s458))))
+  :enable (@__kernel_rem_pio2-%458-expand-rev-as-@__kernel_rem_pio2-%459-rev @__kernel_rem_pio2-%459-rev @__kernel_rem_pio2-%459-loc @__kernel_rem_pio2-%459-val))
+(defruled @__kernel_rem_pio2-%458-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%458-rev mem loc pred)
+         (@__kernel_rem_pio2-%458-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%458-expand-rev-as-@__kernel_rem_pio2-succ458-rev @__kernel_rem_pio2-succ458-rev @__kernel_rem_pio2-succ458-lab @__kernel_rem_pio2-%458-fwd))
+
 (defund @__kernel_rem_pio2-%458-bb (mem loc pred)
   (b* (
     (loc (s '%459 (case pred (%448 0) (%452 (g '%457 loc))) loc))
     (succ (case (g '%459 loc) (-1 '%460) (0 '%477))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%458-expand-bb
-  (equal (@__kernel_rem_pio2-%458-bb mem loc pred)
-         (@__kernel_rem_pio2-%458-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%458-bb @__kernel_rem_pio2-%458-rev
-    @__kernel_rem_pio2-%459-rev
-    @__kernel_rem_pio2-succ458-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%460-mem (s460)
   (car s460))
@@ -6403,6 +10660,10 @@
   (declare (ignore s460))
   '%474)
 
+(defund @__kernel_rem_pio2-%460-fwd (mem loc pred)
+  (let ((s460 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ460-lab s460) (@__kernel_rem_pio2-m460.1-mem s460) (@__kernel_rem_pio2-%473-loc s460))))
+
 (defund @__kernel_rem_pio2-succ460-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%474 mem loc))
@@ -6438,6 +10699,131 @@
 (defund @__kernel_rem_pio2-%460-rev (mem loc pred)
   (@__kernel_rem_pio2-%461-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%461-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%461-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%460-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-rev @__kernel_rem_pio2-%460-mem @__kernel_rem_pio2-%460-loc @__kernel_rem_pio2-%460-pred))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%462-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%462-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%461-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%461-rev @__kernel_rem_pio2-%461-rev @__kernel_rem_pio2-%461-loc @__kernel_rem_pio2-%461-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%463-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%463-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%462-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%462-rev @__kernel_rem_pio2-%462-rev @__kernel_rem_pio2-%462-loc @__kernel_rem_pio2-%462-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%464-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%464-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%463-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%463-rev @__kernel_rem_pio2-%463-rev @__kernel_rem_pio2-%463-loc @__kernel_rem_pio2-%463-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%465-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%465-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%464-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%464-rev @__kernel_rem_pio2-%464-rev @__kernel_rem_pio2-%464-loc @__kernel_rem_pio2-%464-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%466-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%466-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%465-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%465-rev @__kernel_rem_pio2-%465-rev @__kernel_rem_pio2-%465-loc @__kernel_rem_pio2-%465-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%467-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%467-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%466-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%466-rev @__kernel_rem_pio2-%466-rev @__kernel_rem_pio2-%466-loc @__kernel_rem_pio2-%466-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%468-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%468-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%467-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%467-rev @__kernel_rem_pio2-%467-rev @__kernel_rem_pio2-%467-loc @__kernel_rem_pio2-%467-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%469-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%469-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%468-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%468-rev @__kernel_rem_pio2-%468-rev @__kernel_rem_pio2-%468-loc @__kernel_rem_pio2-%468-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%470-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%470-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%469-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%469-rev @__kernel_rem_pio2-%469-rev @__kernel_rem_pio2-%469-loc @__kernel_rem_pio2-%469-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%471-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%471-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%470-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%470-rev @__kernel_rem_pio2-%470-rev @__kernel_rem_pio2-%470-loc @__kernel_rem_pio2-%470-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%472-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%472-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%471-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%471-rev @__kernel_rem_pio2-%471-rev @__kernel_rem_pio2-%471-loc @__kernel_rem_pio2-%471-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%473-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-%473-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%472-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%472-rev @__kernel_rem_pio2-%472-rev @__kernel_rem_pio2-%472-loc @__kernel_rem_pio2-%472-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-m460.1-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-m460.1-rev
+            (@__kernel_rem_pio2-%460-mem s460)
+            (@__kernel_rem_pio2-%473-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-%473-rev @__kernel_rem_pio2-%473-rev @__kernel_rem_pio2-%473-loc @__kernel_rem_pio2-%473-val))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-succ460-rev
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (let ((s460 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ460-rev
+            (@__kernel_rem_pio2-m460.1-mem s460)
+            (@__kernel_rem_pio2-%473-loc s460)
+            (@__kernel_rem_pio2-%460-pred s460))))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-m460.1-rev @__kernel_rem_pio2-m460.1-rev @__kernel_rem_pio2-m460.1-mem))
+(defruled @__kernel_rem_pio2-%460-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%460-rev mem loc pred)
+         (@__kernel_rem_pio2-%460-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%460-expand-rev-as-@__kernel_rem_pio2-succ460-rev @__kernel_rem_pio2-succ460-rev @__kernel_rem_pio2-succ460-lab @__kernel_rem_pio2-%460-fwd))
+
 (defund @__kernel_rem_pio2-%460-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6457,27 +10843,6 @@
     (mem (store-double (g '%473 loc) (g '%fw loc) mem))
     (succ '%474))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%460-expand-bb
-  (equal (@__kernel_rem_pio2-%460-bb mem loc pred)
-         (@__kernel_rem_pio2-%460-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%460-bb @__kernel_rem_pio2-%460-rev
-    @__kernel_rem_pio2-%461-rev
-    @__kernel_rem_pio2-%462-rev
-    @__kernel_rem_pio2-%463-rev
-    @__kernel_rem_pio2-%464-rev
-    @__kernel_rem_pio2-%465-rev
-    @__kernel_rem_pio2-%466-rev
-    @__kernel_rem_pio2-%467-rev
-    @__kernel_rem_pio2-%468-rev
-    @__kernel_rem_pio2-%469-rev
-    @__kernel_rem_pio2-%470-rev
-    @__kernel_rem_pio2-%471-rev
-    @__kernel_rem_pio2-%472-rev
-    @__kernel_rem_pio2-%473-rev
-    @__kernel_rem_pio2-m460.1-rev
-    @__kernel_rem_pio2-succ460-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%474-mem (s474)
   (car s474))
@@ -6499,6 +10864,10 @@
   (declare (ignore s474))
   '%448)
 
+(defund @__kernel_rem_pio2-%474-fwd (mem loc pred)
+  (let ((s474 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ474-lab s474) (@__kernel_rem_pio2-m474.1-mem s474) (@__kernel_rem_pio2-%476-loc s474))))
+
 (defund @__kernel_rem_pio2-succ474-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%448 mem loc))
@@ -6512,6 +10881,43 @@
 (defund @__kernel_rem_pio2-%474-rev (mem loc pred)
   (@__kernel_rem_pio2-%475-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-%475-rev
+  (equal (@__kernel_rem_pio2-%474-rev mem loc pred)
+         (let ((s474 (list mem loc pred)))
+           (@__kernel_rem_pio2-%475-rev
+            (@__kernel_rem_pio2-%474-mem s474)
+            (@__kernel_rem_pio2-%474-loc s474)
+            (@__kernel_rem_pio2-%474-pred s474))))
+  :enable (@__kernel_rem_pio2-%474-rev @__kernel_rem_pio2-%474-mem @__kernel_rem_pio2-%474-loc @__kernel_rem_pio2-%474-pred))
+(defruled @__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-%476-rev
+  (equal (@__kernel_rem_pio2-%474-rev mem loc pred)
+         (let ((s474 (list mem loc pred)))
+           (@__kernel_rem_pio2-%476-rev
+            (@__kernel_rem_pio2-%474-mem s474)
+            (@__kernel_rem_pio2-%475-loc s474)
+            (@__kernel_rem_pio2-%474-pred s474))))
+  :enable (@__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-%475-rev @__kernel_rem_pio2-%475-rev @__kernel_rem_pio2-%475-loc @__kernel_rem_pio2-%475-val))
+(defruled @__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-m474.1-rev
+  (equal (@__kernel_rem_pio2-%474-rev mem loc pred)
+         (let ((s474 (list mem loc pred)))
+           (@__kernel_rem_pio2-m474.1-rev
+            (@__kernel_rem_pio2-%474-mem s474)
+            (@__kernel_rem_pio2-%476-loc s474)
+            (@__kernel_rem_pio2-%474-pred s474))))
+  :enable (@__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-%476-rev @__kernel_rem_pio2-%476-rev @__kernel_rem_pio2-%476-loc @__kernel_rem_pio2-%476-val))
+(defruled @__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-succ474-rev
+  (equal (@__kernel_rem_pio2-%474-rev mem loc pred)
+         (let ((s474 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ474-rev
+            (@__kernel_rem_pio2-m474.1-mem s474)
+            (@__kernel_rem_pio2-%476-loc s474)
+            (@__kernel_rem_pio2-%474-pred s474))))
+  :enable (@__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-m474.1-rev @__kernel_rem_pio2-m474.1-rev @__kernel_rem_pio2-m474.1-mem))
+(defruled @__kernel_rem_pio2-%474-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%474-rev mem loc pred)
+         (@__kernel_rem_pio2-%474-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%474-expand-rev-as-@__kernel_rem_pio2-succ474-rev @__kernel_rem_pio2-succ474-rev @__kernel_rem_pio2-succ474-lab @__kernel_rem_pio2-%474-fwd))
+
 (defund @__kernel_rem_pio2-%474-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6520,16 +10926,6 @@
     (mem (store-i32 (g '%476 loc) (g '%k loc) mem))
     (succ '%448))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%474-expand-bb
-  (equal (@__kernel_rem_pio2-%474-bb mem loc pred)
-         (@__kernel_rem_pio2-%474-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%474-bb @__kernel_rem_pio2-%474-rev
-    @__kernel_rem_pio2-%475-rev
-    @__kernel_rem_pio2-%476-rev
-    @__kernel_rem_pio2-m474.1-rev
-    @__kernel_rem_pio2-succ474-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%477-mem (s477)
   (car s477))
@@ -6567,6 +10963,10 @@
   (declare (ignore s477))
   '%484)
 
+(defund @__kernel_rem_pio2-%477-fwd (mem loc pred)
+  (let ((s477 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ477-lab s477) (@__kernel_rem_pio2-m477.1-mem s477) (@__kernel_rem_pio2-%483-loc s477))))
+
 (defund @__kernel_rem_pio2-succ477-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%484 mem loc))
@@ -6588,6 +10988,75 @@
 (defund @__kernel_rem_pio2-%477-rev (mem loc pred)
   (@__kernel_rem_pio2-%478-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%478-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-%478-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%477-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-rev @__kernel_rem_pio2-%477-mem @__kernel_rem_pio2-%477-loc @__kernel_rem_pio2-%477-pred))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%479-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-%479-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%478-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%478-rev @__kernel_rem_pio2-%478-rev @__kernel_rem_pio2-%478-loc @__kernel_rem_pio2-%478-val))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%480-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-%480-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%479-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%479-rev @__kernel_rem_pio2-%479-rev @__kernel_rem_pio2-%479-loc @__kernel_rem_pio2-%479-val))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%481-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-%481-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%480-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%480-rev @__kernel_rem_pio2-%480-rev @__kernel_rem_pio2-%480-loc @__kernel_rem_pio2-%480-val))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%482-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-%482-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%481-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%481-rev @__kernel_rem_pio2-%481-rev @__kernel_rem_pio2-%481-loc @__kernel_rem_pio2-%481-val))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%483-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-%483-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%482-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%482-rev @__kernel_rem_pio2-%482-rev @__kernel_rem_pio2-%482-loc @__kernel_rem_pio2-%482-val))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-m477.1-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-m477.1-rev
+            (@__kernel_rem_pio2-%477-mem s477)
+            (@__kernel_rem_pio2-%483-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-%483-rev @__kernel_rem_pio2-%483-rev @__kernel_rem_pio2-%483-loc @__kernel_rem_pio2-%483-val))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-succ477-rev
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (let ((s477 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ477-rev
+            (@__kernel_rem_pio2-m477.1-mem s477)
+            (@__kernel_rem_pio2-%483-loc s477)
+            (@__kernel_rem_pio2-%477-pred s477))))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-m477.1-rev @__kernel_rem_pio2-m477.1-rev @__kernel_rem_pio2-m477.1-mem))
+(defruled @__kernel_rem_pio2-%477-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%477-rev mem loc pred)
+         (@__kernel_rem_pio2-%477-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%477-expand-rev-as-@__kernel_rem_pio2-succ477-rev @__kernel_rem_pio2-succ477-rev @__kernel_rem_pio2-succ477-lab @__kernel_rem_pio2-%477-fwd))
+
 (defund @__kernel_rem_pio2-%477-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6600,20 +11069,6 @@
     (mem (store-double (g '%478 loc) (g '%483 loc) mem))
     (succ '%484))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%477-expand-bb
-  (equal (@__kernel_rem_pio2-%477-bb mem loc pred)
-         (@__kernel_rem_pio2-%477-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%477-bb @__kernel_rem_pio2-%477-rev
-    @__kernel_rem_pio2-%478-rev
-    @__kernel_rem_pio2-%479-rev
-    @__kernel_rem_pio2-%480-rev
-    @__kernel_rem_pio2-%481-rev
-    @__kernel_rem_pio2-%482-rev
-    @__kernel_rem_pio2-%483-rev
-    @__kernel_rem_pio2-m477.1-rev
-    @__kernel_rem_pio2-succ477-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%484-mem (s484)
   (car s484))
@@ -6635,6 +11090,10 @@
   (declare (ignore s484))
   '%444)
 
+(defund @__kernel_rem_pio2-%484-fwd (mem loc pred)
+  (let ((s484 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ484-lab s484) (@__kernel_rem_pio2-m484.1-mem s484) (@__kernel_rem_pio2-%486-loc s484))))
+
 (defund @__kernel_rem_pio2-succ484-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%444 mem loc))
@@ -6648,6 +11107,43 @@
 (defund @__kernel_rem_pio2-%484-rev (mem loc pred)
   (@__kernel_rem_pio2-%485-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-%485-rev
+  (equal (@__kernel_rem_pio2-%484-rev mem loc pred)
+         (let ((s484 (list mem loc pred)))
+           (@__kernel_rem_pio2-%485-rev
+            (@__kernel_rem_pio2-%484-mem s484)
+            (@__kernel_rem_pio2-%484-loc s484)
+            (@__kernel_rem_pio2-%484-pred s484))))
+  :enable (@__kernel_rem_pio2-%484-rev @__kernel_rem_pio2-%484-mem @__kernel_rem_pio2-%484-loc @__kernel_rem_pio2-%484-pred))
+(defruled @__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-%486-rev
+  (equal (@__kernel_rem_pio2-%484-rev mem loc pred)
+         (let ((s484 (list mem loc pred)))
+           (@__kernel_rem_pio2-%486-rev
+            (@__kernel_rem_pio2-%484-mem s484)
+            (@__kernel_rem_pio2-%485-loc s484)
+            (@__kernel_rem_pio2-%484-pred s484))))
+  :enable (@__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-%485-rev @__kernel_rem_pio2-%485-rev @__kernel_rem_pio2-%485-loc @__kernel_rem_pio2-%485-val))
+(defruled @__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-m484.1-rev
+  (equal (@__kernel_rem_pio2-%484-rev mem loc pred)
+         (let ((s484 (list mem loc pred)))
+           (@__kernel_rem_pio2-m484.1-rev
+            (@__kernel_rem_pio2-%484-mem s484)
+            (@__kernel_rem_pio2-%486-loc s484)
+            (@__kernel_rem_pio2-%484-pred s484))))
+  :enable (@__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-%486-rev @__kernel_rem_pio2-%486-rev @__kernel_rem_pio2-%486-loc @__kernel_rem_pio2-%486-val))
+(defruled @__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-succ484-rev
+  (equal (@__kernel_rem_pio2-%484-rev mem loc pred)
+         (let ((s484 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ484-rev
+            (@__kernel_rem_pio2-m484.1-mem s484)
+            (@__kernel_rem_pio2-%486-loc s484)
+            (@__kernel_rem_pio2-%484-pred s484))))
+  :enable (@__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-m484.1-rev @__kernel_rem_pio2-m484.1-rev @__kernel_rem_pio2-m484.1-mem))
+(defruled @__kernel_rem_pio2-%484-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%484-rev mem loc pred)
+         (@__kernel_rem_pio2-%484-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%484-expand-rev-as-@__kernel_rem_pio2-succ484-rev @__kernel_rem_pio2-succ484-rev @__kernel_rem_pio2-succ484-lab @__kernel_rem_pio2-%484-fwd))
+
 (defund @__kernel_rem_pio2-%484-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6656,16 +11152,6 @@
     (mem (store-i32 (g '%486 loc) (g '%i loc) mem))
     (succ '%444))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%484-expand-bb
-  (equal (@__kernel_rem_pio2-%484-bb mem loc pred)
-         (@__kernel_rem_pio2-%484-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%484-bb @__kernel_rem_pio2-%484-rev
-    @__kernel_rem_pio2-%485-rev
-    @__kernel_rem_pio2-%486-rev
-    @__kernel_rem_pio2-m484.1-rev
-    @__kernel_rem_pio2-succ484-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%487-mem (s487)
   (car s487))
@@ -6680,6 +11166,10 @@
 (defund @__kernel_rem_pio2-succ487-lab (s487)
   (case (g '%488 (@__kernel_rem_pio2-%488-loc s487))(0 '%489)(1 '%516)(2 '%516)(3 '%573) (otherwise '%691)))
 
+(defund @__kernel_rem_pio2-%487-fwd (mem loc pred)
+  (let ((s487 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ487-lab s487) (@__kernel_rem_pio2-%487-mem s487) (@__kernel_rem_pio2-%488-loc s487))))
+
 (defund @__kernel_rem_pio2-succ487-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%488 loc)(0 '%489)(1 '%516)(2 '%516)(3 '%573) (otherwise '%691)) mem loc))
@@ -6689,20 +11179,33 @@
 (defund @__kernel_rem_pio2-%487-rev (mem loc pred)
   (@__kernel_rem_pio2-%488-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%487-expand-rev-as-@__kernel_rem_pio2-%488-rev
+  (equal (@__kernel_rem_pio2-%487-rev mem loc pred)
+         (let ((s487 (list mem loc pred)))
+           (@__kernel_rem_pio2-%488-rev
+            (@__kernel_rem_pio2-%487-mem s487)
+            (@__kernel_rem_pio2-%487-loc s487)
+            (@__kernel_rem_pio2-%487-pred s487))))
+  :enable (@__kernel_rem_pio2-%487-rev @__kernel_rem_pio2-%487-mem @__kernel_rem_pio2-%487-loc @__kernel_rem_pio2-%487-pred))
+(defruled @__kernel_rem_pio2-%487-expand-rev-as-@__kernel_rem_pio2-succ487-rev
+  (equal (@__kernel_rem_pio2-%487-rev mem loc pred)
+         (let ((s487 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ487-rev
+            (@__kernel_rem_pio2-%487-mem s487)
+            (@__kernel_rem_pio2-%488-loc s487)
+            (@__kernel_rem_pio2-%487-pred s487))))
+  :enable (@__kernel_rem_pio2-%487-expand-rev-as-@__kernel_rem_pio2-%488-rev @__kernel_rem_pio2-%488-rev @__kernel_rem_pio2-%488-loc @__kernel_rem_pio2-%488-val))
+(defruled @__kernel_rem_pio2-%487-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%487-rev mem loc pred)
+         (@__kernel_rem_pio2-%487-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%487-expand-rev-as-@__kernel_rem_pio2-succ487-rev @__kernel_rem_pio2-succ487-rev @__kernel_rem_pio2-succ487-lab @__kernel_rem_pio2-%487-fwd))
+
 (defund @__kernel_rem_pio2-%487-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%488 (load-i32 (g '%5 loc) mem) loc))
     (succ (case (g '%488 loc)(0 '%489)(1 '%516)(2 '%516)(3 '%573) (otherwise '%691))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%487-expand-bb
-  (equal (@__kernel_rem_pio2-%487-bb mem loc pred)
-         (@__kernel_rem_pio2-%487-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%487-bb @__kernel_rem_pio2-%487-rev
-    @__kernel_rem_pio2-%488-rev
-    @__kernel_rem_pio2-succ487-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%489-mem (s489)
   (car s489))
@@ -6722,6 +11225,10 @@
   (declare (ignore s489))
   '%491)
 
+(defund @__kernel_rem_pio2-%489-fwd (mem loc pred)
+  (let ((s489 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ489-lab s489) (@__kernel_rem_pio2-m489.2-mem s489) (@__kernel_rem_pio2-%490-loc s489))))
+
 (defund @__kernel_rem_pio2-succ489-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%491 mem loc))
@@ -6735,6 +11242,43 @@
 (defund @__kernel_rem_pio2-%489-rev (mem loc pred)
   (@__kernel_rem_pio2-m489.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-m489.1-rev
+  (equal (@__kernel_rem_pio2-%489-rev mem loc pred)
+         (let ((s489 (list mem loc pred)))
+           (@__kernel_rem_pio2-m489.1-rev
+            (@__kernel_rem_pio2-%489-mem s489)
+            (@__kernel_rem_pio2-%489-loc s489)
+            (@__kernel_rem_pio2-%489-pred s489))))
+  :enable (@__kernel_rem_pio2-%489-rev @__kernel_rem_pio2-%489-mem @__kernel_rem_pio2-%489-loc @__kernel_rem_pio2-%489-pred))
+(defruled @__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-%490-rev
+  (equal (@__kernel_rem_pio2-%489-rev mem loc pred)
+         (let ((s489 (list mem loc pred)))
+           (@__kernel_rem_pio2-%490-rev
+            (@__kernel_rem_pio2-m489.1-mem s489)
+            (@__kernel_rem_pio2-%489-loc s489)
+            (@__kernel_rem_pio2-%489-pred s489))))
+  :enable (@__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-m489.1-rev @__kernel_rem_pio2-m489.1-rev @__kernel_rem_pio2-m489.1-mem))
+(defruled @__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-m489.2-rev
+  (equal (@__kernel_rem_pio2-%489-rev mem loc pred)
+         (let ((s489 (list mem loc pred)))
+           (@__kernel_rem_pio2-m489.2-rev
+            (@__kernel_rem_pio2-m489.1-mem s489)
+            (@__kernel_rem_pio2-%490-loc s489)
+            (@__kernel_rem_pio2-%489-pred s489))))
+  :enable (@__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-%490-rev @__kernel_rem_pio2-%490-rev @__kernel_rem_pio2-%490-loc @__kernel_rem_pio2-%490-val))
+(defruled @__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-succ489-rev
+  (equal (@__kernel_rem_pio2-%489-rev mem loc pred)
+         (let ((s489 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ489-rev
+            (@__kernel_rem_pio2-m489.2-mem s489)
+            (@__kernel_rem_pio2-%490-loc s489)
+            (@__kernel_rem_pio2-%489-pred s489))))
+  :enable (@__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-m489.2-rev @__kernel_rem_pio2-m489.2-rev @__kernel_rem_pio2-m489.2-mem))
+(defruled @__kernel_rem_pio2-%489-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%489-rev mem loc pred)
+         (@__kernel_rem_pio2-%489-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%489-expand-rev-as-@__kernel_rem_pio2-succ489-rev @__kernel_rem_pio2-succ489-rev @__kernel_rem_pio2-succ489-lab @__kernel_rem_pio2-%489-fwd))
+
 (defund @__kernel_rem_pio2-%489-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6743,16 +11287,6 @@
     (mem (store-i32 (g '%490 loc) (g '%i loc) mem))
     (succ '%491))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%489-expand-bb
-  (equal (@__kernel_rem_pio2-%489-bb mem loc pred)
-         (@__kernel_rem_pio2-%489-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%489-bb @__kernel_rem_pio2-%489-rev
-    @__kernel_rem_pio2-m489.1-rev
-    @__kernel_rem_pio2-%490-rev
-    @__kernel_rem_pio2-m489.2-rev
-    @__kernel_rem_pio2-succ489-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%491-mem (s491)
   (car s491))
@@ -6771,6 +11305,10 @@
 (defund @__kernel_rem_pio2-succ491-lab (s491)
   (case (g '%493 (@__kernel_rem_pio2-%493-loc s491)) (-1 '%494) (0 '%504)))
 
+(defund @__kernel_rem_pio2-%491-fwd (mem loc pred)
+  (let ((s491 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ491-lab s491) (@__kernel_rem_pio2-%491-mem s491) (@__kernel_rem_pio2-%493-loc s491))))
+
 (defund @__kernel_rem_pio2-succ491-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%493 loc) (-1 '%494) (0 '%504)) mem loc))
@@ -6782,6 +11320,35 @@
 (defund @__kernel_rem_pio2-%491-rev (mem loc pred)
   (@__kernel_rem_pio2-%492-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%491-expand-rev-as-@__kernel_rem_pio2-%492-rev
+  (equal (@__kernel_rem_pio2-%491-rev mem loc pred)
+         (let ((s491 (list mem loc pred)))
+           (@__kernel_rem_pio2-%492-rev
+            (@__kernel_rem_pio2-%491-mem s491)
+            (@__kernel_rem_pio2-%491-loc s491)
+            (@__kernel_rem_pio2-%491-pred s491))))
+  :enable (@__kernel_rem_pio2-%491-rev @__kernel_rem_pio2-%491-mem @__kernel_rem_pio2-%491-loc @__kernel_rem_pio2-%491-pred))
+(defruled @__kernel_rem_pio2-%491-expand-rev-as-@__kernel_rem_pio2-%493-rev
+  (equal (@__kernel_rem_pio2-%491-rev mem loc pred)
+         (let ((s491 (list mem loc pred)))
+           (@__kernel_rem_pio2-%493-rev
+            (@__kernel_rem_pio2-%491-mem s491)
+            (@__kernel_rem_pio2-%492-loc s491)
+            (@__kernel_rem_pio2-%491-pred s491))))
+  :enable (@__kernel_rem_pio2-%491-expand-rev-as-@__kernel_rem_pio2-%492-rev @__kernel_rem_pio2-%492-rev @__kernel_rem_pio2-%492-loc @__kernel_rem_pio2-%492-val))
+(defruled @__kernel_rem_pio2-%491-expand-rev-as-@__kernel_rem_pio2-succ491-rev
+  (equal (@__kernel_rem_pio2-%491-rev mem loc pred)
+         (let ((s491 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ491-rev
+            (@__kernel_rem_pio2-%491-mem s491)
+            (@__kernel_rem_pio2-%493-loc s491)
+            (@__kernel_rem_pio2-%491-pred s491))))
+  :enable (@__kernel_rem_pio2-%491-expand-rev-as-@__kernel_rem_pio2-%493-rev @__kernel_rem_pio2-%493-rev @__kernel_rem_pio2-%493-loc @__kernel_rem_pio2-%493-val))
+(defruled @__kernel_rem_pio2-%491-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%491-rev mem loc pred)
+         (@__kernel_rem_pio2-%491-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%491-expand-rev-as-@__kernel_rem_pio2-succ491-rev @__kernel_rem_pio2-succ491-rev @__kernel_rem_pio2-succ491-lab @__kernel_rem_pio2-%491-fwd))
+
 (defund @__kernel_rem_pio2-%491-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6789,15 +11356,6 @@
     (loc (s '%493 (icmp-sge-i32 (g '%492 loc) 0) loc))
     (succ (case (g '%493 loc) (-1 '%494) (0 '%504))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%491-expand-bb
-  (equal (@__kernel_rem_pio2-%491-bb mem loc pred)
-         (@__kernel_rem_pio2-%491-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%491-bb @__kernel_rem_pio2-%491-rev
-    @__kernel_rem_pio2-%492-rev
-    @__kernel_rem_pio2-%493-rev
-    @__kernel_rem_pio2-succ491-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%494-mem (s494)
   (car s494))
@@ -6835,6 +11393,10 @@
   (declare (ignore s494))
   '%501)
 
+(defund @__kernel_rem_pio2-%494-fwd (mem loc pred)
+  (let ((s494 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ494-lab s494) (@__kernel_rem_pio2-m494.1-mem s494) (@__kernel_rem_pio2-%500-loc s494))))
+
 (defund @__kernel_rem_pio2-succ494-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%501 mem loc))
@@ -6856,6 +11418,75 @@
 (defund @__kernel_rem_pio2-%494-rev (mem loc pred)
   (@__kernel_rem_pio2-%495-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%495-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-%495-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%494-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-rev @__kernel_rem_pio2-%494-mem @__kernel_rem_pio2-%494-loc @__kernel_rem_pio2-%494-pred))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%496-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-%496-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%495-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%495-rev @__kernel_rem_pio2-%495-rev @__kernel_rem_pio2-%495-loc @__kernel_rem_pio2-%495-val))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%497-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-%497-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%496-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%496-rev @__kernel_rem_pio2-%496-rev @__kernel_rem_pio2-%496-loc @__kernel_rem_pio2-%496-val))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%498-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-%498-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%497-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%497-rev @__kernel_rem_pio2-%497-rev @__kernel_rem_pio2-%497-loc @__kernel_rem_pio2-%497-val))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%499-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-%499-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%498-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%498-rev @__kernel_rem_pio2-%498-rev @__kernel_rem_pio2-%498-loc @__kernel_rem_pio2-%498-val))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%500-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-%500-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%499-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%499-rev @__kernel_rem_pio2-%499-rev @__kernel_rem_pio2-%499-loc @__kernel_rem_pio2-%499-val))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-m494.1-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-m494.1-rev
+            (@__kernel_rem_pio2-%494-mem s494)
+            (@__kernel_rem_pio2-%500-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-%500-rev @__kernel_rem_pio2-%500-rev @__kernel_rem_pio2-%500-loc @__kernel_rem_pio2-%500-val))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-succ494-rev
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (let ((s494 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ494-rev
+            (@__kernel_rem_pio2-m494.1-mem s494)
+            (@__kernel_rem_pio2-%500-loc s494)
+            (@__kernel_rem_pio2-%494-pred s494))))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-m494.1-rev @__kernel_rem_pio2-m494.1-rev @__kernel_rem_pio2-m494.1-mem))
+(defruled @__kernel_rem_pio2-%494-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%494-rev mem loc pred)
+         (@__kernel_rem_pio2-%494-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%494-expand-rev-as-@__kernel_rem_pio2-succ494-rev @__kernel_rem_pio2-succ494-rev @__kernel_rem_pio2-succ494-lab @__kernel_rem_pio2-%494-fwd))
+
 (defund @__kernel_rem_pio2-%494-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6868,20 +11499,6 @@
     (mem (store-double (g '%500 loc) (g '%fw loc) mem))
     (succ '%501))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%494-expand-bb
-  (equal (@__kernel_rem_pio2-%494-bb mem loc pred)
-         (@__kernel_rem_pio2-%494-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%494-bb @__kernel_rem_pio2-%494-rev
-    @__kernel_rem_pio2-%495-rev
-    @__kernel_rem_pio2-%496-rev
-    @__kernel_rem_pio2-%497-rev
-    @__kernel_rem_pio2-%498-rev
-    @__kernel_rem_pio2-%499-rev
-    @__kernel_rem_pio2-%500-rev
-    @__kernel_rem_pio2-m494.1-rev
-    @__kernel_rem_pio2-succ494-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%501-mem (s501)
   (car s501))
@@ -6903,6 +11520,10 @@
   (declare (ignore s501))
   '%491)
 
+(defund @__kernel_rem_pio2-%501-fwd (mem loc pred)
+  (let ((s501 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ501-lab s501) (@__kernel_rem_pio2-m501.1-mem s501) (@__kernel_rem_pio2-%503-loc s501))))
+
 (defund @__kernel_rem_pio2-succ501-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%491 mem loc))
@@ -6916,6 +11537,43 @@
 (defund @__kernel_rem_pio2-%501-rev (mem loc pred)
   (@__kernel_rem_pio2-%502-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-%502-rev
+  (equal (@__kernel_rem_pio2-%501-rev mem loc pred)
+         (let ((s501 (list mem loc pred)))
+           (@__kernel_rem_pio2-%502-rev
+            (@__kernel_rem_pio2-%501-mem s501)
+            (@__kernel_rem_pio2-%501-loc s501)
+            (@__kernel_rem_pio2-%501-pred s501))))
+  :enable (@__kernel_rem_pio2-%501-rev @__kernel_rem_pio2-%501-mem @__kernel_rem_pio2-%501-loc @__kernel_rem_pio2-%501-pred))
+(defruled @__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-%503-rev
+  (equal (@__kernel_rem_pio2-%501-rev mem loc pred)
+         (let ((s501 (list mem loc pred)))
+           (@__kernel_rem_pio2-%503-rev
+            (@__kernel_rem_pio2-%501-mem s501)
+            (@__kernel_rem_pio2-%502-loc s501)
+            (@__kernel_rem_pio2-%501-pred s501))))
+  :enable (@__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-%502-rev @__kernel_rem_pio2-%502-rev @__kernel_rem_pio2-%502-loc @__kernel_rem_pio2-%502-val))
+(defruled @__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-m501.1-rev
+  (equal (@__kernel_rem_pio2-%501-rev mem loc pred)
+         (let ((s501 (list mem loc pred)))
+           (@__kernel_rem_pio2-m501.1-rev
+            (@__kernel_rem_pio2-%501-mem s501)
+            (@__kernel_rem_pio2-%503-loc s501)
+            (@__kernel_rem_pio2-%501-pred s501))))
+  :enable (@__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-%503-rev @__kernel_rem_pio2-%503-rev @__kernel_rem_pio2-%503-loc @__kernel_rem_pio2-%503-val))
+(defruled @__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-succ501-rev
+  (equal (@__kernel_rem_pio2-%501-rev mem loc pred)
+         (let ((s501 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ501-rev
+            (@__kernel_rem_pio2-m501.1-mem s501)
+            (@__kernel_rem_pio2-%503-loc s501)
+            (@__kernel_rem_pio2-%501-pred s501))))
+  :enable (@__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-m501.1-rev @__kernel_rem_pio2-m501.1-rev @__kernel_rem_pio2-m501.1-mem))
+(defruled @__kernel_rem_pio2-%501-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%501-rev mem loc pred)
+         (@__kernel_rem_pio2-%501-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%501-expand-rev-as-@__kernel_rem_pio2-succ501-rev @__kernel_rem_pio2-succ501-rev @__kernel_rem_pio2-succ501-lab @__kernel_rem_pio2-%501-fwd))
+
 (defund @__kernel_rem_pio2-%501-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6924,16 +11582,6 @@
     (mem (store-i32 (g '%503 loc) (g '%i loc) mem))
     (succ '%491))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%501-expand-bb
-  (equal (@__kernel_rem_pio2-%501-bb mem loc pred)
-         (@__kernel_rem_pio2-%501-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%501-bb @__kernel_rem_pio2-%501-rev
-    @__kernel_rem_pio2-%502-rev
-    @__kernel_rem_pio2-%503-rev
-    @__kernel_rem_pio2-m501.1-rev
-    @__kernel_rem_pio2-succ501-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%504-mem (s504)
   (car s504))
@@ -6952,6 +11600,10 @@
 (defund @__kernel_rem_pio2-succ504-lab (s504)
   (case (g '%506 (@__kernel_rem_pio2-%506-loc s504)) (-1 '%507) (0 '%509)))
 
+(defund @__kernel_rem_pio2-%504-fwd (mem loc pred)
+  (let ((s504 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ504-lab s504) (@__kernel_rem_pio2-%504-mem s504) (@__kernel_rem_pio2-%506-loc s504))))
+
 (defund @__kernel_rem_pio2-succ504-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%506 loc) (-1 '%507) (0 '%509)) mem loc))
@@ -6963,6 +11615,35 @@
 (defund @__kernel_rem_pio2-%504-rev (mem loc pred)
   (@__kernel_rem_pio2-%505-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%504-expand-rev-as-@__kernel_rem_pio2-%505-rev
+  (equal (@__kernel_rem_pio2-%504-rev mem loc pred)
+         (let ((s504 (list mem loc pred)))
+           (@__kernel_rem_pio2-%505-rev
+            (@__kernel_rem_pio2-%504-mem s504)
+            (@__kernel_rem_pio2-%504-loc s504)
+            (@__kernel_rem_pio2-%504-pred s504))))
+  :enable (@__kernel_rem_pio2-%504-rev @__kernel_rem_pio2-%504-mem @__kernel_rem_pio2-%504-loc @__kernel_rem_pio2-%504-pred))
+(defruled @__kernel_rem_pio2-%504-expand-rev-as-@__kernel_rem_pio2-%506-rev
+  (equal (@__kernel_rem_pio2-%504-rev mem loc pred)
+         (let ((s504 (list mem loc pred)))
+           (@__kernel_rem_pio2-%506-rev
+            (@__kernel_rem_pio2-%504-mem s504)
+            (@__kernel_rem_pio2-%505-loc s504)
+            (@__kernel_rem_pio2-%504-pred s504))))
+  :enable (@__kernel_rem_pio2-%504-expand-rev-as-@__kernel_rem_pio2-%505-rev @__kernel_rem_pio2-%505-rev @__kernel_rem_pio2-%505-loc @__kernel_rem_pio2-%505-val))
+(defruled @__kernel_rem_pio2-%504-expand-rev-as-@__kernel_rem_pio2-succ504-rev
+  (equal (@__kernel_rem_pio2-%504-rev mem loc pred)
+         (let ((s504 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ504-rev
+            (@__kernel_rem_pio2-%504-mem s504)
+            (@__kernel_rem_pio2-%506-loc s504)
+            (@__kernel_rem_pio2-%504-pred s504))))
+  :enable (@__kernel_rem_pio2-%504-expand-rev-as-@__kernel_rem_pio2-%506-rev @__kernel_rem_pio2-%506-rev @__kernel_rem_pio2-%506-loc @__kernel_rem_pio2-%506-val))
+(defruled @__kernel_rem_pio2-%504-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%504-rev mem loc pred)
+         (@__kernel_rem_pio2-%504-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%504-expand-rev-as-@__kernel_rem_pio2-succ504-rev @__kernel_rem_pio2-succ504-rev @__kernel_rem_pio2-succ504-lab @__kernel_rem_pio2-%504-fwd))
+
 (defund @__kernel_rem_pio2-%504-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -6970,15 +11651,6 @@
     (loc (s '%506 (icmp-eq-i32 (g '%505 loc) 0) loc))
     (succ (case (g '%506 loc) (-1 '%507) (0 '%509))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%504-expand-bb
-  (equal (@__kernel_rem_pio2-%504-bb mem loc pred)
-         (@__kernel_rem_pio2-%504-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%504-bb @__kernel_rem_pio2-%504-rev
-    @__kernel_rem_pio2-%505-rev
-    @__kernel_rem_pio2-%506-rev
-    @__kernel_rem_pio2-succ504-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%507-mem (s507)
   (car s507))
@@ -6994,6 +11666,10 @@
   (declare (ignore s507))
   '%512)
 
+(defund @__kernel_rem_pio2-%507-fwd (mem loc pred)
+  (let ((s507 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ507-lab s507) (@__kernel_rem_pio2-%507-mem s507) (@__kernel_rem_pio2-%508-loc s507))))
+
 (defund @__kernel_rem_pio2-succ507-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%512 mem loc))
@@ -7003,20 +11679,33 @@
 (defund @__kernel_rem_pio2-%507-rev (mem loc pred)
   (@__kernel_rem_pio2-%508-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%507-expand-rev-as-@__kernel_rem_pio2-%508-rev
+  (equal (@__kernel_rem_pio2-%507-rev mem loc pred)
+         (let ((s507 (list mem loc pred)))
+           (@__kernel_rem_pio2-%508-rev
+            (@__kernel_rem_pio2-%507-mem s507)
+            (@__kernel_rem_pio2-%507-loc s507)
+            (@__kernel_rem_pio2-%507-pred s507))))
+  :enable (@__kernel_rem_pio2-%507-rev @__kernel_rem_pio2-%507-mem @__kernel_rem_pio2-%507-loc @__kernel_rem_pio2-%507-pred))
+(defruled @__kernel_rem_pio2-%507-expand-rev-as-@__kernel_rem_pio2-succ507-rev
+  (equal (@__kernel_rem_pio2-%507-rev mem loc pred)
+         (let ((s507 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ507-rev
+            (@__kernel_rem_pio2-%507-mem s507)
+            (@__kernel_rem_pio2-%508-loc s507)
+            (@__kernel_rem_pio2-%507-pred s507))))
+  :enable (@__kernel_rem_pio2-%507-expand-rev-as-@__kernel_rem_pio2-%508-rev @__kernel_rem_pio2-%508-rev @__kernel_rem_pio2-%508-loc @__kernel_rem_pio2-%508-val))
+(defruled @__kernel_rem_pio2-%507-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%507-rev mem loc pred)
+         (@__kernel_rem_pio2-%507-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%507-expand-rev-as-@__kernel_rem_pio2-succ507-rev @__kernel_rem_pio2-succ507-rev @__kernel_rem_pio2-succ507-lab @__kernel_rem_pio2-%507-fwd))
+
 (defund @__kernel_rem_pio2-%507-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%508 (load-double (g '%fw loc) mem) loc))
     (succ '%512))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%507-expand-bb
-  (equal (@__kernel_rem_pio2-%507-bb mem loc pred)
-         (@__kernel_rem_pio2-%507-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%507-bb @__kernel_rem_pio2-%507-rev
-    @__kernel_rem_pio2-%508-rev
-    @__kernel_rem_pio2-succ507-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%509-mem (s509)
   (car s509))
@@ -7036,6 +11725,10 @@
   (declare (ignore s509))
   '%512)
 
+(defund @__kernel_rem_pio2-%509-fwd (mem loc pred)
+  (let ((s509 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ509-lab s509) (@__kernel_rem_pio2-%509-mem s509) (@__kernel_rem_pio2-%511-loc s509))))
+
 (defund @__kernel_rem_pio2-succ509-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%512 mem loc))
@@ -7047,6 +11740,35 @@
 (defund @__kernel_rem_pio2-%509-rev (mem loc pred)
   (@__kernel_rem_pio2-%510-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%509-expand-rev-as-@__kernel_rem_pio2-%510-rev
+  (equal (@__kernel_rem_pio2-%509-rev mem loc pred)
+         (let ((s509 (list mem loc pred)))
+           (@__kernel_rem_pio2-%510-rev
+            (@__kernel_rem_pio2-%509-mem s509)
+            (@__kernel_rem_pio2-%509-loc s509)
+            (@__kernel_rem_pio2-%509-pred s509))))
+  :enable (@__kernel_rem_pio2-%509-rev @__kernel_rem_pio2-%509-mem @__kernel_rem_pio2-%509-loc @__kernel_rem_pio2-%509-pred))
+(defruled @__kernel_rem_pio2-%509-expand-rev-as-@__kernel_rem_pio2-%511-rev
+  (equal (@__kernel_rem_pio2-%509-rev mem loc pred)
+         (let ((s509 (list mem loc pred)))
+           (@__kernel_rem_pio2-%511-rev
+            (@__kernel_rem_pio2-%509-mem s509)
+            (@__kernel_rem_pio2-%510-loc s509)
+            (@__kernel_rem_pio2-%509-pred s509))))
+  :enable (@__kernel_rem_pio2-%509-expand-rev-as-@__kernel_rem_pio2-%510-rev @__kernel_rem_pio2-%510-rev @__kernel_rem_pio2-%510-loc @__kernel_rem_pio2-%510-val))
+(defruled @__kernel_rem_pio2-%509-expand-rev-as-@__kernel_rem_pio2-succ509-rev
+  (equal (@__kernel_rem_pio2-%509-rev mem loc pred)
+         (let ((s509 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ509-rev
+            (@__kernel_rem_pio2-%509-mem s509)
+            (@__kernel_rem_pio2-%511-loc s509)
+            (@__kernel_rem_pio2-%509-pred s509))))
+  :enable (@__kernel_rem_pio2-%509-expand-rev-as-@__kernel_rem_pio2-%511-rev @__kernel_rem_pio2-%511-rev @__kernel_rem_pio2-%511-loc @__kernel_rem_pio2-%511-val))
+(defruled @__kernel_rem_pio2-%509-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%509-rev mem loc pred)
+         (@__kernel_rem_pio2-%509-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%509-expand-rev-as-@__kernel_rem_pio2-succ509-rev @__kernel_rem_pio2-succ509-rev @__kernel_rem_pio2-succ509-lab @__kernel_rem_pio2-%509-fwd))
+
 (defund @__kernel_rem_pio2-%509-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7054,15 +11776,6 @@
     (loc (s '%511 (fsub-double #x8000000000000000 (g '%510 loc)) loc))
     (succ '%512))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%509-expand-bb
-  (equal (@__kernel_rem_pio2-%509-bb mem loc pred)
-         (@__kernel_rem_pio2-%509-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%509-bb @__kernel_rem_pio2-%509-rev
-    @__kernel_rem_pio2-%510-rev
-    @__kernel_rem_pio2-%511-rev
-    @__kernel_rem_pio2-succ509-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%512-mem (s512)
   (car s512))
@@ -7088,6 +11801,10 @@
   (declare (ignore s512))
   '%691)
 
+(defund @__kernel_rem_pio2-%512-fwd (mem loc pred)
+  (let ((s512 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ512-lab s512) (@__kernel_rem_pio2-m512.1-mem s512) (@__kernel_rem_pio2-%515-loc s512))))
+
 (defund @__kernel_rem_pio2-succ512-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%691 mem loc))
@@ -7103,6 +11820,51 @@
 (defund @__kernel_rem_pio2-%512-rev (mem loc pred)
   (@__kernel_rem_pio2-%513-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-%513-rev
+  (equal (@__kernel_rem_pio2-%512-rev mem loc pred)
+         (let ((s512 (list mem loc pred)))
+           (@__kernel_rem_pio2-%513-rev
+            (@__kernel_rem_pio2-%512-mem s512)
+            (@__kernel_rem_pio2-%512-loc s512)
+            (@__kernel_rem_pio2-%512-pred s512))))
+  :enable (@__kernel_rem_pio2-%512-rev @__kernel_rem_pio2-%512-mem @__kernel_rem_pio2-%512-loc @__kernel_rem_pio2-%512-pred))
+(defruled @__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-%514-rev
+  (equal (@__kernel_rem_pio2-%512-rev mem loc pred)
+         (let ((s512 (list mem loc pred)))
+           (@__kernel_rem_pio2-%514-rev
+            (@__kernel_rem_pio2-%512-mem s512)
+            (@__kernel_rem_pio2-%513-loc s512)
+            (@__kernel_rem_pio2-%512-pred s512))))
+  :enable (@__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-%513-rev @__kernel_rem_pio2-%513-rev @__kernel_rem_pio2-%513-loc @__kernel_rem_pio2-%513-val))
+(defruled @__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-%515-rev
+  (equal (@__kernel_rem_pio2-%512-rev mem loc pred)
+         (let ((s512 (list mem loc pred)))
+           (@__kernel_rem_pio2-%515-rev
+            (@__kernel_rem_pio2-%512-mem s512)
+            (@__kernel_rem_pio2-%514-loc s512)
+            (@__kernel_rem_pio2-%512-pred s512))))
+  :enable (@__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-%514-rev @__kernel_rem_pio2-%514-rev @__kernel_rem_pio2-%514-loc @__kernel_rem_pio2-%514-val))
+(defruled @__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-m512.1-rev
+  (equal (@__kernel_rem_pio2-%512-rev mem loc pred)
+         (let ((s512 (list mem loc pred)))
+           (@__kernel_rem_pio2-m512.1-rev
+            (@__kernel_rem_pio2-%512-mem s512)
+            (@__kernel_rem_pio2-%515-loc s512)
+            (@__kernel_rem_pio2-%512-pred s512))))
+  :enable (@__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-%515-rev @__kernel_rem_pio2-%515-rev @__kernel_rem_pio2-%515-loc @__kernel_rem_pio2-%515-val))
+(defruled @__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-succ512-rev
+  (equal (@__kernel_rem_pio2-%512-rev mem loc pred)
+         (let ((s512 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ512-rev
+            (@__kernel_rem_pio2-m512.1-mem s512)
+            (@__kernel_rem_pio2-%515-loc s512)
+            (@__kernel_rem_pio2-%512-pred s512))))
+  :enable (@__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-m512.1-rev @__kernel_rem_pio2-m512.1-rev @__kernel_rem_pio2-m512.1-mem))
+(defruled @__kernel_rem_pio2-%512-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%512-rev mem loc pred)
+         (@__kernel_rem_pio2-%512-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%512-expand-rev-as-@__kernel_rem_pio2-succ512-rev @__kernel_rem_pio2-succ512-rev @__kernel_rem_pio2-succ512-lab @__kernel_rem_pio2-%512-fwd))
+
 (defund @__kernel_rem_pio2-%512-bb (mem loc pred)
   (b* (
     (loc (s '%513 (case pred (%507 (g '%508 loc)) (%509 (g '%511 loc))) loc))
@@ -7111,17 +11873,6 @@
     (mem (store-double (g '%513 loc) (g '%515 loc) mem))
     (succ '%691))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%512-expand-bb
-  (equal (@__kernel_rem_pio2-%512-bb mem loc pred)
-         (@__kernel_rem_pio2-%512-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%512-bb @__kernel_rem_pio2-%512-rev
-    @__kernel_rem_pio2-%513-rev
-    @__kernel_rem_pio2-%514-rev
-    @__kernel_rem_pio2-%515-rev
-    @__kernel_rem_pio2-m512.1-rev
-    @__kernel_rem_pio2-succ512-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%516-mem (s516)
   (car s516))
@@ -7141,6 +11892,10 @@
   (declare (ignore s516))
   '%518)
 
+(defund @__kernel_rem_pio2-%516-fwd (mem loc pred)
+  (let ((s516 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ516-lab s516) (@__kernel_rem_pio2-m516.2-mem s516) (@__kernel_rem_pio2-%517-loc s516))))
+
 (defund @__kernel_rem_pio2-succ516-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%518 mem loc))
@@ -7154,6 +11909,43 @@
 (defund @__kernel_rem_pio2-%516-rev (mem loc pred)
   (@__kernel_rem_pio2-m516.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-m516.1-rev
+  (equal (@__kernel_rem_pio2-%516-rev mem loc pred)
+         (let ((s516 (list mem loc pred)))
+           (@__kernel_rem_pio2-m516.1-rev
+            (@__kernel_rem_pio2-%516-mem s516)
+            (@__kernel_rem_pio2-%516-loc s516)
+            (@__kernel_rem_pio2-%516-pred s516))))
+  :enable (@__kernel_rem_pio2-%516-rev @__kernel_rem_pio2-%516-mem @__kernel_rem_pio2-%516-loc @__kernel_rem_pio2-%516-pred))
+(defruled @__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-%517-rev
+  (equal (@__kernel_rem_pio2-%516-rev mem loc pred)
+         (let ((s516 (list mem loc pred)))
+           (@__kernel_rem_pio2-%517-rev
+            (@__kernel_rem_pio2-m516.1-mem s516)
+            (@__kernel_rem_pio2-%516-loc s516)
+            (@__kernel_rem_pio2-%516-pred s516))))
+  :enable (@__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-m516.1-rev @__kernel_rem_pio2-m516.1-rev @__kernel_rem_pio2-m516.1-mem))
+(defruled @__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-m516.2-rev
+  (equal (@__kernel_rem_pio2-%516-rev mem loc pred)
+         (let ((s516 (list mem loc pred)))
+           (@__kernel_rem_pio2-m516.2-rev
+            (@__kernel_rem_pio2-m516.1-mem s516)
+            (@__kernel_rem_pio2-%517-loc s516)
+            (@__kernel_rem_pio2-%516-pred s516))))
+  :enable (@__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-%517-rev @__kernel_rem_pio2-%517-rev @__kernel_rem_pio2-%517-loc @__kernel_rem_pio2-%517-val))
+(defruled @__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-succ516-rev
+  (equal (@__kernel_rem_pio2-%516-rev mem loc pred)
+         (let ((s516 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ516-rev
+            (@__kernel_rem_pio2-m516.2-mem s516)
+            (@__kernel_rem_pio2-%517-loc s516)
+            (@__kernel_rem_pio2-%516-pred s516))))
+  :enable (@__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-m516.2-rev @__kernel_rem_pio2-m516.2-rev @__kernel_rem_pio2-m516.2-mem))
+(defruled @__kernel_rem_pio2-%516-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%516-rev mem loc pred)
+         (@__kernel_rem_pio2-%516-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%516-expand-rev-as-@__kernel_rem_pio2-succ516-rev @__kernel_rem_pio2-succ516-rev @__kernel_rem_pio2-succ516-lab @__kernel_rem_pio2-%516-fwd))
+
 (defund @__kernel_rem_pio2-%516-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7162,16 +11954,6 @@
     (mem (store-i32 (g '%517 loc) (g '%i loc) mem))
     (succ '%518))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%516-expand-bb
-  (equal (@__kernel_rem_pio2-%516-bb mem loc pred)
-         (@__kernel_rem_pio2-%516-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%516-bb @__kernel_rem_pio2-%516-rev
-    @__kernel_rem_pio2-m516.1-rev
-    @__kernel_rem_pio2-%517-rev
-    @__kernel_rem_pio2-m516.2-rev
-    @__kernel_rem_pio2-succ516-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%518-mem (s518)
   (car s518))
@@ -7190,6 +11972,10 @@
 (defund @__kernel_rem_pio2-succ518-lab (s518)
   (case (g '%520 (@__kernel_rem_pio2-%520-loc s518)) (-1 '%521) (0 '%531)))
 
+(defund @__kernel_rem_pio2-%518-fwd (mem loc pred)
+  (let ((s518 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ518-lab s518) (@__kernel_rem_pio2-%518-mem s518) (@__kernel_rem_pio2-%520-loc s518))))
+
 (defund @__kernel_rem_pio2-succ518-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%520 loc) (-1 '%521) (0 '%531)) mem loc))
@@ -7201,6 +11987,35 @@
 (defund @__kernel_rem_pio2-%518-rev (mem loc pred)
   (@__kernel_rem_pio2-%519-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%518-expand-rev-as-@__kernel_rem_pio2-%519-rev
+  (equal (@__kernel_rem_pio2-%518-rev mem loc pred)
+         (let ((s518 (list mem loc pred)))
+           (@__kernel_rem_pio2-%519-rev
+            (@__kernel_rem_pio2-%518-mem s518)
+            (@__kernel_rem_pio2-%518-loc s518)
+            (@__kernel_rem_pio2-%518-pred s518))))
+  :enable (@__kernel_rem_pio2-%518-rev @__kernel_rem_pio2-%518-mem @__kernel_rem_pio2-%518-loc @__kernel_rem_pio2-%518-pred))
+(defruled @__kernel_rem_pio2-%518-expand-rev-as-@__kernel_rem_pio2-%520-rev
+  (equal (@__kernel_rem_pio2-%518-rev mem loc pred)
+         (let ((s518 (list mem loc pred)))
+           (@__kernel_rem_pio2-%520-rev
+            (@__kernel_rem_pio2-%518-mem s518)
+            (@__kernel_rem_pio2-%519-loc s518)
+            (@__kernel_rem_pio2-%518-pred s518))))
+  :enable (@__kernel_rem_pio2-%518-expand-rev-as-@__kernel_rem_pio2-%519-rev @__kernel_rem_pio2-%519-rev @__kernel_rem_pio2-%519-loc @__kernel_rem_pio2-%519-val))
+(defruled @__kernel_rem_pio2-%518-expand-rev-as-@__kernel_rem_pio2-succ518-rev
+  (equal (@__kernel_rem_pio2-%518-rev mem loc pred)
+         (let ((s518 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ518-rev
+            (@__kernel_rem_pio2-%518-mem s518)
+            (@__kernel_rem_pio2-%520-loc s518)
+            (@__kernel_rem_pio2-%518-pred s518))))
+  :enable (@__kernel_rem_pio2-%518-expand-rev-as-@__kernel_rem_pio2-%520-rev @__kernel_rem_pio2-%520-rev @__kernel_rem_pio2-%520-loc @__kernel_rem_pio2-%520-val))
+(defruled @__kernel_rem_pio2-%518-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%518-rev mem loc pred)
+         (@__kernel_rem_pio2-%518-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%518-expand-rev-as-@__kernel_rem_pio2-succ518-rev @__kernel_rem_pio2-succ518-rev @__kernel_rem_pio2-succ518-lab @__kernel_rem_pio2-%518-fwd))
+
 (defund @__kernel_rem_pio2-%518-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7208,15 +12023,6 @@
     (loc (s '%520 (icmp-sge-i32 (g '%519 loc) 0) loc))
     (succ (case (g '%520 loc) (-1 '%521) (0 '%531))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%518-expand-bb
-  (equal (@__kernel_rem_pio2-%518-bb mem loc pred)
-         (@__kernel_rem_pio2-%518-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%518-bb @__kernel_rem_pio2-%518-rev
-    @__kernel_rem_pio2-%519-rev
-    @__kernel_rem_pio2-%520-rev
-    @__kernel_rem_pio2-succ518-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%521-mem (s521)
   (car s521))
@@ -7254,6 +12060,10 @@
   (declare (ignore s521))
   '%528)
 
+(defund @__kernel_rem_pio2-%521-fwd (mem loc pred)
+  (let ((s521 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ521-lab s521) (@__kernel_rem_pio2-m521.1-mem s521) (@__kernel_rem_pio2-%527-loc s521))))
+
 (defund @__kernel_rem_pio2-succ521-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%528 mem loc))
@@ -7275,6 +12085,75 @@
 (defund @__kernel_rem_pio2-%521-rev (mem loc pred)
   (@__kernel_rem_pio2-%522-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%522-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-%522-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%521-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-rev @__kernel_rem_pio2-%521-mem @__kernel_rem_pio2-%521-loc @__kernel_rem_pio2-%521-pred))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%523-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-%523-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%522-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%522-rev @__kernel_rem_pio2-%522-rev @__kernel_rem_pio2-%522-loc @__kernel_rem_pio2-%522-val))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%524-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-%524-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%523-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%523-rev @__kernel_rem_pio2-%523-rev @__kernel_rem_pio2-%523-loc @__kernel_rem_pio2-%523-val))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%525-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-%525-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%524-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%524-rev @__kernel_rem_pio2-%524-rev @__kernel_rem_pio2-%524-loc @__kernel_rem_pio2-%524-val))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%526-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-%526-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%525-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%525-rev @__kernel_rem_pio2-%525-rev @__kernel_rem_pio2-%525-loc @__kernel_rem_pio2-%525-val))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%527-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-%527-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%526-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%526-rev @__kernel_rem_pio2-%526-rev @__kernel_rem_pio2-%526-loc @__kernel_rem_pio2-%526-val))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-m521.1-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-m521.1-rev
+            (@__kernel_rem_pio2-%521-mem s521)
+            (@__kernel_rem_pio2-%527-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-%527-rev @__kernel_rem_pio2-%527-rev @__kernel_rem_pio2-%527-loc @__kernel_rem_pio2-%527-val))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-succ521-rev
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (let ((s521 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ521-rev
+            (@__kernel_rem_pio2-m521.1-mem s521)
+            (@__kernel_rem_pio2-%527-loc s521)
+            (@__kernel_rem_pio2-%521-pred s521))))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-m521.1-rev @__kernel_rem_pio2-m521.1-rev @__kernel_rem_pio2-m521.1-mem))
+(defruled @__kernel_rem_pio2-%521-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%521-rev mem loc pred)
+         (@__kernel_rem_pio2-%521-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%521-expand-rev-as-@__kernel_rem_pio2-succ521-rev @__kernel_rem_pio2-succ521-rev @__kernel_rem_pio2-succ521-lab @__kernel_rem_pio2-%521-fwd))
+
 (defund @__kernel_rem_pio2-%521-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7287,20 +12166,6 @@
     (mem (store-double (g '%527 loc) (g '%fw loc) mem))
     (succ '%528))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%521-expand-bb
-  (equal (@__kernel_rem_pio2-%521-bb mem loc pred)
-         (@__kernel_rem_pio2-%521-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%521-bb @__kernel_rem_pio2-%521-rev
-    @__kernel_rem_pio2-%522-rev
-    @__kernel_rem_pio2-%523-rev
-    @__kernel_rem_pio2-%524-rev
-    @__kernel_rem_pio2-%525-rev
-    @__kernel_rem_pio2-%526-rev
-    @__kernel_rem_pio2-%527-rev
-    @__kernel_rem_pio2-m521.1-rev
-    @__kernel_rem_pio2-succ521-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%528-mem (s528)
   (car s528))
@@ -7322,6 +12187,10 @@
   (declare (ignore s528))
   '%518)
 
+(defund @__kernel_rem_pio2-%528-fwd (mem loc pred)
+  (let ((s528 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ528-lab s528) (@__kernel_rem_pio2-m528.1-mem s528) (@__kernel_rem_pio2-%530-loc s528))))
+
 (defund @__kernel_rem_pio2-succ528-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%518 mem loc))
@@ -7335,6 +12204,43 @@
 (defund @__kernel_rem_pio2-%528-rev (mem loc pred)
   (@__kernel_rem_pio2-%529-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-%529-rev
+  (equal (@__kernel_rem_pio2-%528-rev mem loc pred)
+         (let ((s528 (list mem loc pred)))
+           (@__kernel_rem_pio2-%529-rev
+            (@__kernel_rem_pio2-%528-mem s528)
+            (@__kernel_rem_pio2-%528-loc s528)
+            (@__kernel_rem_pio2-%528-pred s528))))
+  :enable (@__kernel_rem_pio2-%528-rev @__kernel_rem_pio2-%528-mem @__kernel_rem_pio2-%528-loc @__kernel_rem_pio2-%528-pred))
+(defruled @__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-%530-rev
+  (equal (@__kernel_rem_pio2-%528-rev mem loc pred)
+         (let ((s528 (list mem loc pred)))
+           (@__kernel_rem_pio2-%530-rev
+            (@__kernel_rem_pio2-%528-mem s528)
+            (@__kernel_rem_pio2-%529-loc s528)
+            (@__kernel_rem_pio2-%528-pred s528))))
+  :enable (@__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-%529-rev @__kernel_rem_pio2-%529-rev @__kernel_rem_pio2-%529-loc @__kernel_rem_pio2-%529-val))
+(defruled @__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-m528.1-rev
+  (equal (@__kernel_rem_pio2-%528-rev mem loc pred)
+         (let ((s528 (list mem loc pred)))
+           (@__kernel_rem_pio2-m528.1-rev
+            (@__kernel_rem_pio2-%528-mem s528)
+            (@__kernel_rem_pio2-%530-loc s528)
+            (@__kernel_rem_pio2-%528-pred s528))))
+  :enable (@__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-%530-rev @__kernel_rem_pio2-%530-rev @__kernel_rem_pio2-%530-loc @__kernel_rem_pio2-%530-val))
+(defruled @__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-succ528-rev
+  (equal (@__kernel_rem_pio2-%528-rev mem loc pred)
+         (let ((s528 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ528-rev
+            (@__kernel_rem_pio2-m528.1-mem s528)
+            (@__kernel_rem_pio2-%530-loc s528)
+            (@__kernel_rem_pio2-%528-pred s528))))
+  :enable (@__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-m528.1-rev @__kernel_rem_pio2-m528.1-rev @__kernel_rem_pio2-m528.1-mem))
+(defruled @__kernel_rem_pio2-%528-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%528-rev mem loc pred)
+         (@__kernel_rem_pio2-%528-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%528-expand-rev-as-@__kernel_rem_pio2-succ528-rev @__kernel_rem_pio2-succ528-rev @__kernel_rem_pio2-succ528-lab @__kernel_rem_pio2-%528-fwd))
+
 (defund @__kernel_rem_pio2-%528-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7343,16 +12249,6 @@
     (mem (store-i32 (g '%530 loc) (g '%i loc) mem))
     (succ '%518))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%528-expand-bb
-  (equal (@__kernel_rem_pio2-%528-bb mem loc pred)
-         (@__kernel_rem_pio2-%528-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%528-bb @__kernel_rem_pio2-%528-rev
-    @__kernel_rem_pio2-%529-rev
-    @__kernel_rem_pio2-%530-rev
-    @__kernel_rem_pio2-m528.1-rev
-    @__kernel_rem_pio2-succ528-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%531-mem (s531)
   (car s531))
@@ -7371,6 +12267,10 @@
 (defund @__kernel_rem_pio2-succ531-lab (s531)
   (case (g '%533 (@__kernel_rem_pio2-%533-loc s531)) (-1 '%534) (0 '%536)))
 
+(defund @__kernel_rem_pio2-%531-fwd (mem loc pred)
+  (let ((s531 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ531-lab s531) (@__kernel_rem_pio2-%531-mem s531) (@__kernel_rem_pio2-%533-loc s531))))
+
 (defund @__kernel_rem_pio2-succ531-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%533 loc) (-1 '%534) (0 '%536)) mem loc))
@@ -7382,6 +12282,35 @@
 (defund @__kernel_rem_pio2-%531-rev (mem loc pred)
   (@__kernel_rem_pio2-%532-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%531-expand-rev-as-@__kernel_rem_pio2-%532-rev
+  (equal (@__kernel_rem_pio2-%531-rev mem loc pred)
+         (let ((s531 (list mem loc pred)))
+           (@__kernel_rem_pio2-%532-rev
+            (@__kernel_rem_pio2-%531-mem s531)
+            (@__kernel_rem_pio2-%531-loc s531)
+            (@__kernel_rem_pio2-%531-pred s531))))
+  :enable (@__kernel_rem_pio2-%531-rev @__kernel_rem_pio2-%531-mem @__kernel_rem_pio2-%531-loc @__kernel_rem_pio2-%531-pred))
+(defruled @__kernel_rem_pio2-%531-expand-rev-as-@__kernel_rem_pio2-%533-rev
+  (equal (@__kernel_rem_pio2-%531-rev mem loc pred)
+         (let ((s531 (list mem loc pred)))
+           (@__kernel_rem_pio2-%533-rev
+            (@__kernel_rem_pio2-%531-mem s531)
+            (@__kernel_rem_pio2-%532-loc s531)
+            (@__kernel_rem_pio2-%531-pred s531))))
+  :enable (@__kernel_rem_pio2-%531-expand-rev-as-@__kernel_rem_pio2-%532-rev @__kernel_rem_pio2-%532-rev @__kernel_rem_pio2-%532-loc @__kernel_rem_pio2-%532-val))
+(defruled @__kernel_rem_pio2-%531-expand-rev-as-@__kernel_rem_pio2-succ531-rev
+  (equal (@__kernel_rem_pio2-%531-rev mem loc pred)
+         (let ((s531 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ531-rev
+            (@__kernel_rem_pio2-%531-mem s531)
+            (@__kernel_rem_pio2-%533-loc s531)
+            (@__kernel_rem_pio2-%531-pred s531))))
+  :enable (@__kernel_rem_pio2-%531-expand-rev-as-@__kernel_rem_pio2-%533-rev @__kernel_rem_pio2-%533-rev @__kernel_rem_pio2-%533-loc @__kernel_rem_pio2-%533-val))
+(defruled @__kernel_rem_pio2-%531-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%531-rev mem loc pred)
+         (@__kernel_rem_pio2-%531-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%531-expand-rev-as-@__kernel_rem_pio2-succ531-rev @__kernel_rem_pio2-succ531-rev @__kernel_rem_pio2-succ531-lab @__kernel_rem_pio2-%531-fwd))
+
 (defund @__kernel_rem_pio2-%531-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7389,15 +12318,6 @@
     (loc (s '%533 (icmp-eq-i32 (g '%532 loc) 0) loc))
     (succ (case (g '%533 loc) (-1 '%534) (0 '%536))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%531-expand-bb
-  (equal (@__kernel_rem_pio2-%531-bb mem loc pred)
-         (@__kernel_rem_pio2-%531-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%531-bb @__kernel_rem_pio2-%531-rev
-    @__kernel_rem_pio2-%532-rev
-    @__kernel_rem_pio2-%533-rev
-    @__kernel_rem_pio2-succ531-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%534-mem (s534)
   (car s534))
@@ -7413,6 +12333,10 @@
   (declare (ignore s534))
   '%539)
 
+(defund @__kernel_rem_pio2-%534-fwd (mem loc pred)
+  (let ((s534 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ534-lab s534) (@__kernel_rem_pio2-%534-mem s534) (@__kernel_rem_pio2-%535-loc s534))))
+
 (defund @__kernel_rem_pio2-succ534-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%539 mem loc))
@@ -7422,20 +12346,33 @@
 (defund @__kernel_rem_pio2-%534-rev (mem loc pred)
   (@__kernel_rem_pio2-%535-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%534-expand-rev-as-@__kernel_rem_pio2-%535-rev
+  (equal (@__kernel_rem_pio2-%534-rev mem loc pred)
+         (let ((s534 (list mem loc pred)))
+           (@__kernel_rem_pio2-%535-rev
+            (@__kernel_rem_pio2-%534-mem s534)
+            (@__kernel_rem_pio2-%534-loc s534)
+            (@__kernel_rem_pio2-%534-pred s534))))
+  :enable (@__kernel_rem_pio2-%534-rev @__kernel_rem_pio2-%534-mem @__kernel_rem_pio2-%534-loc @__kernel_rem_pio2-%534-pred))
+(defruled @__kernel_rem_pio2-%534-expand-rev-as-@__kernel_rem_pio2-succ534-rev
+  (equal (@__kernel_rem_pio2-%534-rev mem loc pred)
+         (let ((s534 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ534-rev
+            (@__kernel_rem_pio2-%534-mem s534)
+            (@__kernel_rem_pio2-%535-loc s534)
+            (@__kernel_rem_pio2-%534-pred s534))))
+  :enable (@__kernel_rem_pio2-%534-expand-rev-as-@__kernel_rem_pio2-%535-rev @__kernel_rem_pio2-%535-rev @__kernel_rem_pio2-%535-loc @__kernel_rem_pio2-%535-val))
+(defruled @__kernel_rem_pio2-%534-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%534-rev mem loc pred)
+         (@__kernel_rem_pio2-%534-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%534-expand-rev-as-@__kernel_rem_pio2-succ534-rev @__kernel_rem_pio2-succ534-rev @__kernel_rem_pio2-succ534-lab @__kernel_rem_pio2-%534-fwd))
+
 (defund @__kernel_rem_pio2-%534-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%535 (load-double (g '%fw loc) mem) loc))
     (succ '%539))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%534-expand-bb
-  (equal (@__kernel_rem_pio2-%534-bb mem loc pred)
-         (@__kernel_rem_pio2-%534-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%534-bb @__kernel_rem_pio2-%534-rev
-    @__kernel_rem_pio2-%535-rev
-    @__kernel_rem_pio2-succ534-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%536-mem (s536)
   (car s536))
@@ -7455,6 +12392,10 @@
   (declare (ignore s536))
   '%539)
 
+(defund @__kernel_rem_pio2-%536-fwd (mem loc pred)
+  (let ((s536 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ536-lab s536) (@__kernel_rem_pio2-%536-mem s536) (@__kernel_rem_pio2-%538-loc s536))))
+
 (defund @__kernel_rem_pio2-succ536-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%539 mem loc))
@@ -7466,6 +12407,35 @@
 (defund @__kernel_rem_pio2-%536-rev (mem loc pred)
   (@__kernel_rem_pio2-%537-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%536-expand-rev-as-@__kernel_rem_pio2-%537-rev
+  (equal (@__kernel_rem_pio2-%536-rev mem loc pred)
+         (let ((s536 (list mem loc pred)))
+           (@__kernel_rem_pio2-%537-rev
+            (@__kernel_rem_pio2-%536-mem s536)
+            (@__kernel_rem_pio2-%536-loc s536)
+            (@__kernel_rem_pio2-%536-pred s536))))
+  :enable (@__kernel_rem_pio2-%536-rev @__kernel_rem_pio2-%536-mem @__kernel_rem_pio2-%536-loc @__kernel_rem_pio2-%536-pred))
+(defruled @__kernel_rem_pio2-%536-expand-rev-as-@__kernel_rem_pio2-%538-rev
+  (equal (@__kernel_rem_pio2-%536-rev mem loc pred)
+         (let ((s536 (list mem loc pred)))
+           (@__kernel_rem_pio2-%538-rev
+            (@__kernel_rem_pio2-%536-mem s536)
+            (@__kernel_rem_pio2-%537-loc s536)
+            (@__kernel_rem_pio2-%536-pred s536))))
+  :enable (@__kernel_rem_pio2-%536-expand-rev-as-@__kernel_rem_pio2-%537-rev @__kernel_rem_pio2-%537-rev @__kernel_rem_pio2-%537-loc @__kernel_rem_pio2-%537-val))
+(defruled @__kernel_rem_pio2-%536-expand-rev-as-@__kernel_rem_pio2-succ536-rev
+  (equal (@__kernel_rem_pio2-%536-rev mem loc pred)
+         (let ((s536 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ536-rev
+            (@__kernel_rem_pio2-%536-mem s536)
+            (@__kernel_rem_pio2-%538-loc s536)
+            (@__kernel_rem_pio2-%536-pred s536))))
+  :enable (@__kernel_rem_pio2-%536-expand-rev-as-@__kernel_rem_pio2-%538-rev @__kernel_rem_pio2-%538-rev @__kernel_rem_pio2-%538-loc @__kernel_rem_pio2-%538-val))
+(defruled @__kernel_rem_pio2-%536-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%536-rev mem loc pred)
+         (@__kernel_rem_pio2-%536-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%536-expand-rev-as-@__kernel_rem_pio2-succ536-rev @__kernel_rem_pio2-succ536-rev @__kernel_rem_pio2-succ536-lab @__kernel_rem_pio2-%536-fwd))
+
 (defund @__kernel_rem_pio2-%536-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7473,15 +12443,6 @@
     (loc (s '%538 (fsub-double #x8000000000000000 (g '%537 loc)) loc))
     (succ '%539))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%536-expand-bb
-  (equal (@__kernel_rem_pio2-%536-bb mem loc pred)
-         (@__kernel_rem_pio2-%536-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%536-bb @__kernel_rem_pio2-%536-rev
-    @__kernel_rem_pio2-%537-rev
-    @__kernel_rem_pio2-%538-rev
-    @__kernel_rem_pio2-succ536-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%539-mem (s539)
   (car s539))
@@ -7527,6 +12488,10 @@
   (declare (ignore s539))
   '%547)
 
+(defund @__kernel_rem_pio2-%539-fwd (mem loc pred)
+  (let ((s539 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ539-lab s539) (@__kernel_rem_pio2-m539.3-mem s539) (@__kernel_rem_pio2-%546-loc s539))))
+
 (defund @__kernel_rem_pio2-succ539-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%547 mem loc))
@@ -7554,6 +12519,99 @@
 (defund @__kernel_rem_pio2-%539-rev (mem loc pred)
   (@__kernel_rem_pio2-%540-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%540-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%540-rev
+            (@__kernel_rem_pio2-%539-mem s539)
+            (@__kernel_rem_pio2-%539-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-rev @__kernel_rem_pio2-%539-mem @__kernel_rem_pio2-%539-loc @__kernel_rem_pio2-%539-pred))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%541-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%541-rev
+            (@__kernel_rem_pio2-%539-mem s539)
+            (@__kernel_rem_pio2-%540-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%540-rev @__kernel_rem_pio2-%540-rev @__kernel_rem_pio2-%540-loc @__kernel_rem_pio2-%540-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%542-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%542-rev
+            (@__kernel_rem_pio2-%539-mem s539)
+            (@__kernel_rem_pio2-%541-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%541-rev @__kernel_rem_pio2-%541-rev @__kernel_rem_pio2-%541-loc @__kernel_rem_pio2-%541-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-m539.1-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-m539.1-rev
+            (@__kernel_rem_pio2-%539-mem s539)
+            (@__kernel_rem_pio2-%542-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%542-rev @__kernel_rem_pio2-%542-rev @__kernel_rem_pio2-%542-loc @__kernel_rem_pio2-%542-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%543-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%543-rev
+            (@__kernel_rem_pio2-m539.1-mem s539)
+            (@__kernel_rem_pio2-%542-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-m539.1-rev @__kernel_rem_pio2-m539.1-rev @__kernel_rem_pio2-m539.1-mem))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%544-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%544-rev
+            (@__kernel_rem_pio2-m539.1-mem s539)
+            (@__kernel_rem_pio2-%543-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%543-rev @__kernel_rem_pio2-%543-rev @__kernel_rem_pio2-%543-loc @__kernel_rem_pio2-%543-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%545-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%545-rev
+            (@__kernel_rem_pio2-m539.1-mem s539)
+            (@__kernel_rem_pio2-%544-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%544-rev @__kernel_rem_pio2-%544-rev @__kernel_rem_pio2-%544-loc @__kernel_rem_pio2-%544-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%546-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-%546-rev
+            (@__kernel_rem_pio2-m539.1-mem s539)
+            (@__kernel_rem_pio2-%545-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%545-rev @__kernel_rem_pio2-%545-rev @__kernel_rem_pio2-%545-loc @__kernel_rem_pio2-%545-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-m539.2-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-m539.2-rev
+            (@__kernel_rem_pio2-m539.1-mem s539)
+            (@__kernel_rem_pio2-%546-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-%546-rev @__kernel_rem_pio2-%546-rev @__kernel_rem_pio2-%546-loc @__kernel_rem_pio2-%546-val))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-m539.3-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-m539.3-rev
+            (@__kernel_rem_pio2-m539.2-mem s539)
+            (@__kernel_rem_pio2-%546-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-m539.2-rev @__kernel_rem_pio2-m539.2-rev @__kernel_rem_pio2-m539.2-mem))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-succ539-rev
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (let ((s539 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ539-rev
+            (@__kernel_rem_pio2-m539.3-mem s539)
+            (@__kernel_rem_pio2-%546-loc s539)
+            (@__kernel_rem_pio2-%539-pred s539))))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-m539.3-rev @__kernel_rem_pio2-m539.3-rev @__kernel_rem_pio2-m539.3-mem))
+(defruled @__kernel_rem_pio2-%539-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%539-rev mem loc pred)
+         (@__kernel_rem_pio2-%539-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%539-expand-rev-as-@__kernel_rem_pio2-succ539-rev @__kernel_rem_pio2-succ539-rev @__kernel_rem_pio2-succ539-lab @__kernel_rem_pio2-%539-fwd))
+
 (defund @__kernel_rem_pio2-%539-bb (mem loc pred)
   (b* (
     (loc (s '%540 (case pred (%534 (g '%535 loc)) (%536 (g '%538 loc))) loc))
@@ -7568,23 +12626,6 @@
     (mem (store-i32 1 (g '%i loc) mem))
     (succ '%547))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%539-expand-bb
-  (equal (@__kernel_rem_pio2-%539-bb mem loc pred)
-         (@__kernel_rem_pio2-%539-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%539-bb @__kernel_rem_pio2-%539-rev
-    @__kernel_rem_pio2-%540-rev
-    @__kernel_rem_pio2-%541-rev
-    @__kernel_rem_pio2-%542-rev
-    @__kernel_rem_pio2-m539.1-rev
-    @__kernel_rem_pio2-%543-rev
-    @__kernel_rem_pio2-%544-rev
-    @__kernel_rem_pio2-%545-rev
-    @__kernel_rem_pio2-%546-rev
-    @__kernel_rem_pio2-m539.2-rev
-    @__kernel_rem_pio2-m539.3-rev
-    @__kernel_rem_pio2-succ539-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%547-mem (s547)
   (car s547))
@@ -7607,6 +12648,10 @@
 (defund @__kernel_rem_pio2-succ547-lab (s547)
   (case (g '%550 (@__kernel_rem_pio2-%550-loc s547)) (-1 '%551) (0 '%561)))
 
+(defund @__kernel_rem_pio2-%547-fwd (mem loc pred)
+  (let ((s547 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ547-lab s547) (@__kernel_rem_pio2-%547-mem s547) (@__kernel_rem_pio2-%550-loc s547))))
+
 (defund @__kernel_rem_pio2-succ547-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%550 loc) (-1 '%551) (0 '%561)) mem loc))
@@ -7620,6 +12665,43 @@
 (defund @__kernel_rem_pio2-%547-rev (mem loc pred)
   (@__kernel_rem_pio2-%548-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-%548-rev
+  (equal (@__kernel_rem_pio2-%547-rev mem loc pred)
+         (let ((s547 (list mem loc pred)))
+           (@__kernel_rem_pio2-%548-rev
+            (@__kernel_rem_pio2-%547-mem s547)
+            (@__kernel_rem_pio2-%547-loc s547)
+            (@__kernel_rem_pio2-%547-pred s547))))
+  :enable (@__kernel_rem_pio2-%547-rev @__kernel_rem_pio2-%547-mem @__kernel_rem_pio2-%547-loc @__kernel_rem_pio2-%547-pred))
+(defruled @__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-%549-rev
+  (equal (@__kernel_rem_pio2-%547-rev mem loc pred)
+         (let ((s547 (list mem loc pred)))
+           (@__kernel_rem_pio2-%549-rev
+            (@__kernel_rem_pio2-%547-mem s547)
+            (@__kernel_rem_pio2-%548-loc s547)
+            (@__kernel_rem_pio2-%547-pred s547))))
+  :enable (@__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-%548-rev @__kernel_rem_pio2-%548-rev @__kernel_rem_pio2-%548-loc @__kernel_rem_pio2-%548-val))
+(defruled @__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-%550-rev
+  (equal (@__kernel_rem_pio2-%547-rev mem loc pred)
+         (let ((s547 (list mem loc pred)))
+           (@__kernel_rem_pio2-%550-rev
+            (@__kernel_rem_pio2-%547-mem s547)
+            (@__kernel_rem_pio2-%549-loc s547)
+            (@__kernel_rem_pio2-%547-pred s547))))
+  :enable (@__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-%549-rev @__kernel_rem_pio2-%549-rev @__kernel_rem_pio2-%549-loc @__kernel_rem_pio2-%549-val))
+(defruled @__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-succ547-rev
+  (equal (@__kernel_rem_pio2-%547-rev mem loc pred)
+         (let ((s547 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ547-rev
+            (@__kernel_rem_pio2-%547-mem s547)
+            (@__kernel_rem_pio2-%550-loc s547)
+            (@__kernel_rem_pio2-%547-pred s547))))
+  :enable (@__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-%550-rev @__kernel_rem_pio2-%550-rev @__kernel_rem_pio2-%550-loc @__kernel_rem_pio2-%550-val))
+(defruled @__kernel_rem_pio2-%547-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%547-rev mem loc pred)
+         (@__kernel_rem_pio2-%547-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%547-expand-rev-as-@__kernel_rem_pio2-succ547-rev @__kernel_rem_pio2-succ547-rev @__kernel_rem_pio2-succ547-lab @__kernel_rem_pio2-%547-fwd))
+
 (defund @__kernel_rem_pio2-%547-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7628,16 +12710,6 @@
     (loc (s '%550 (icmp-sle-i32 (g '%548 loc) (g '%549 loc)) loc))
     (succ (case (g '%550 loc) (-1 '%551) (0 '%561))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%547-expand-bb
-  (equal (@__kernel_rem_pio2-%547-bb mem loc pred)
-         (@__kernel_rem_pio2-%547-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%547-bb @__kernel_rem_pio2-%547-rev
-    @__kernel_rem_pio2-%548-rev
-    @__kernel_rem_pio2-%549-rev
-    @__kernel_rem_pio2-%550-rev
-    @__kernel_rem_pio2-succ547-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%551-mem (s551)
   (car s551))
@@ -7675,6 +12747,10 @@
   (declare (ignore s551))
   '%558)
 
+(defund @__kernel_rem_pio2-%551-fwd (mem loc pred)
+  (let ((s551 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ551-lab s551) (@__kernel_rem_pio2-m551.1-mem s551) (@__kernel_rem_pio2-%557-loc s551))))
+
 (defund @__kernel_rem_pio2-succ551-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%558 mem loc))
@@ -7696,6 +12772,75 @@
 (defund @__kernel_rem_pio2-%551-rev (mem loc pred)
   (@__kernel_rem_pio2-%552-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%552-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-%552-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%551-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-rev @__kernel_rem_pio2-%551-mem @__kernel_rem_pio2-%551-loc @__kernel_rem_pio2-%551-pred))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%553-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-%553-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%552-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%552-rev @__kernel_rem_pio2-%552-rev @__kernel_rem_pio2-%552-loc @__kernel_rem_pio2-%552-val))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%554-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-%554-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%553-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%553-rev @__kernel_rem_pio2-%553-rev @__kernel_rem_pio2-%553-loc @__kernel_rem_pio2-%553-val))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%555-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-%555-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%554-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%554-rev @__kernel_rem_pio2-%554-rev @__kernel_rem_pio2-%554-loc @__kernel_rem_pio2-%554-val))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%556-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-%556-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%555-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%555-rev @__kernel_rem_pio2-%555-rev @__kernel_rem_pio2-%555-loc @__kernel_rem_pio2-%555-val))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%557-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-%557-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%556-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%556-rev @__kernel_rem_pio2-%556-rev @__kernel_rem_pio2-%556-loc @__kernel_rem_pio2-%556-val))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-m551.1-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-m551.1-rev
+            (@__kernel_rem_pio2-%551-mem s551)
+            (@__kernel_rem_pio2-%557-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-%557-rev @__kernel_rem_pio2-%557-rev @__kernel_rem_pio2-%557-loc @__kernel_rem_pio2-%557-val))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-succ551-rev
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (let ((s551 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ551-rev
+            (@__kernel_rem_pio2-m551.1-mem s551)
+            (@__kernel_rem_pio2-%557-loc s551)
+            (@__kernel_rem_pio2-%551-pred s551))))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-m551.1-rev @__kernel_rem_pio2-m551.1-rev @__kernel_rem_pio2-m551.1-mem))
+(defruled @__kernel_rem_pio2-%551-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%551-rev mem loc pred)
+         (@__kernel_rem_pio2-%551-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%551-expand-rev-as-@__kernel_rem_pio2-succ551-rev @__kernel_rem_pio2-succ551-rev @__kernel_rem_pio2-succ551-lab @__kernel_rem_pio2-%551-fwd))
+
 (defund @__kernel_rem_pio2-%551-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7708,20 +12853,6 @@
     (mem (store-double (g '%557 loc) (g '%fw loc) mem))
     (succ '%558))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%551-expand-bb
-  (equal (@__kernel_rem_pio2-%551-bb mem loc pred)
-         (@__kernel_rem_pio2-%551-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%551-bb @__kernel_rem_pio2-%551-rev
-    @__kernel_rem_pio2-%552-rev
-    @__kernel_rem_pio2-%553-rev
-    @__kernel_rem_pio2-%554-rev
-    @__kernel_rem_pio2-%555-rev
-    @__kernel_rem_pio2-%556-rev
-    @__kernel_rem_pio2-%557-rev
-    @__kernel_rem_pio2-m551.1-rev
-    @__kernel_rem_pio2-succ551-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%558-mem (s558)
   (car s558))
@@ -7743,6 +12874,10 @@
   (declare (ignore s558))
   '%547)
 
+(defund @__kernel_rem_pio2-%558-fwd (mem loc pred)
+  (let ((s558 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ558-lab s558) (@__kernel_rem_pio2-m558.1-mem s558) (@__kernel_rem_pio2-%560-loc s558))))
+
 (defund @__kernel_rem_pio2-succ558-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%547 mem loc))
@@ -7756,6 +12891,43 @@
 (defund @__kernel_rem_pio2-%558-rev (mem loc pred)
   (@__kernel_rem_pio2-%559-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-%559-rev
+  (equal (@__kernel_rem_pio2-%558-rev mem loc pred)
+         (let ((s558 (list mem loc pred)))
+           (@__kernel_rem_pio2-%559-rev
+            (@__kernel_rem_pio2-%558-mem s558)
+            (@__kernel_rem_pio2-%558-loc s558)
+            (@__kernel_rem_pio2-%558-pred s558))))
+  :enable (@__kernel_rem_pio2-%558-rev @__kernel_rem_pio2-%558-mem @__kernel_rem_pio2-%558-loc @__kernel_rem_pio2-%558-pred))
+(defruled @__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-%560-rev
+  (equal (@__kernel_rem_pio2-%558-rev mem loc pred)
+         (let ((s558 (list mem loc pred)))
+           (@__kernel_rem_pio2-%560-rev
+            (@__kernel_rem_pio2-%558-mem s558)
+            (@__kernel_rem_pio2-%559-loc s558)
+            (@__kernel_rem_pio2-%558-pred s558))))
+  :enable (@__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-%559-rev @__kernel_rem_pio2-%559-rev @__kernel_rem_pio2-%559-loc @__kernel_rem_pio2-%559-val))
+(defruled @__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-m558.1-rev
+  (equal (@__kernel_rem_pio2-%558-rev mem loc pred)
+         (let ((s558 (list mem loc pred)))
+           (@__kernel_rem_pio2-m558.1-rev
+            (@__kernel_rem_pio2-%558-mem s558)
+            (@__kernel_rem_pio2-%560-loc s558)
+            (@__kernel_rem_pio2-%558-pred s558))))
+  :enable (@__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-%560-rev @__kernel_rem_pio2-%560-rev @__kernel_rem_pio2-%560-loc @__kernel_rem_pio2-%560-val))
+(defruled @__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-succ558-rev
+  (equal (@__kernel_rem_pio2-%558-rev mem loc pred)
+         (let ((s558 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ558-rev
+            (@__kernel_rem_pio2-m558.1-mem s558)
+            (@__kernel_rem_pio2-%560-loc s558)
+            (@__kernel_rem_pio2-%558-pred s558))))
+  :enable (@__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-m558.1-rev @__kernel_rem_pio2-m558.1-rev @__kernel_rem_pio2-m558.1-mem))
+(defruled @__kernel_rem_pio2-%558-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%558-rev mem loc pred)
+         (@__kernel_rem_pio2-%558-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%558-expand-rev-as-@__kernel_rem_pio2-succ558-rev @__kernel_rem_pio2-succ558-rev @__kernel_rem_pio2-succ558-lab @__kernel_rem_pio2-%558-fwd))
+
 (defund @__kernel_rem_pio2-%558-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7764,16 +12936,6 @@
     (mem (store-i32 (g '%560 loc) (g '%i loc) mem))
     (succ '%547))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%558-expand-bb
-  (equal (@__kernel_rem_pio2-%558-bb mem loc pred)
-         (@__kernel_rem_pio2-%558-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%558-bb @__kernel_rem_pio2-%558-rev
-    @__kernel_rem_pio2-%559-rev
-    @__kernel_rem_pio2-%560-rev
-    @__kernel_rem_pio2-m558.1-rev
-    @__kernel_rem_pio2-succ558-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%561-mem (s561)
   (car s561))
@@ -7792,6 +12954,10 @@
 (defund @__kernel_rem_pio2-succ561-lab (s561)
   (case (g '%563 (@__kernel_rem_pio2-%563-loc s561)) (-1 '%564) (0 '%566)))
 
+(defund @__kernel_rem_pio2-%561-fwd (mem loc pred)
+  (let ((s561 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ561-lab s561) (@__kernel_rem_pio2-%561-mem s561) (@__kernel_rem_pio2-%563-loc s561))))
+
 (defund @__kernel_rem_pio2-succ561-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%563 loc) (-1 '%564) (0 '%566)) mem loc))
@@ -7803,6 +12969,35 @@
 (defund @__kernel_rem_pio2-%561-rev (mem loc pred)
   (@__kernel_rem_pio2-%562-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%561-expand-rev-as-@__kernel_rem_pio2-%562-rev
+  (equal (@__kernel_rem_pio2-%561-rev mem loc pred)
+         (let ((s561 (list mem loc pred)))
+           (@__kernel_rem_pio2-%562-rev
+            (@__kernel_rem_pio2-%561-mem s561)
+            (@__kernel_rem_pio2-%561-loc s561)
+            (@__kernel_rem_pio2-%561-pred s561))))
+  :enable (@__kernel_rem_pio2-%561-rev @__kernel_rem_pio2-%561-mem @__kernel_rem_pio2-%561-loc @__kernel_rem_pio2-%561-pred))
+(defruled @__kernel_rem_pio2-%561-expand-rev-as-@__kernel_rem_pio2-%563-rev
+  (equal (@__kernel_rem_pio2-%561-rev mem loc pred)
+         (let ((s561 (list mem loc pred)))
+           (@__kernel_rem_pio2-%563-rev
+            (@__kernel_rem_pio2-%561-mem s561)
+            (@__kernel_rem_pio2-%562-loc s561)
+            (@__kernel_rem_pio2-%561-pred s561))))
+  :enable (@__kernel_rem_pio2-%561-expand-rev-as-@__kernel_rem_pio2-%562-rev @__kernel_rem_pio2-%562-rev @__kernel_rem_pio2-%562-loc @__kernel_rem_pio2-%562-val))
+(defruled @__kernel_rem_pio2-%561-expand-rev-as-@__kernel_rem_pio2-succ561-rev
+  (equal (@__kernel_rem_pio2-%561-rev mem loc pred)
+         (let ((s561 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ561-rev
+            (@__kernel_rem_pio2-%561-mem s561)
+            (@__kernel_rem_pio2-%563-loc s561)
+            (@__kernel_rem_pio2-%561-pred s561))))
+  :enable (@__kernel_rem_pio2-%561-expand-rev-as-@__kernel_rem_pio2-%563-rev @__kernel_rem_pio2-%563-rev @__kernel_rem_pio2-%563-loc @__kernel_rem_pio2-%563-val))
+(defruled @__kernel_rem_pio2-%561-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%561-rev mem loc pred)
+         (@__kernel_rem_pio2-%561-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%561-expand-rev-as-@__kernel_rem_pio2-succ561-rev @__kernel_rem_pio2-succ561-rev @__kernel_rem_pio2-succ561-lab @__kernel_rem_pio2-%561-fwd))
+
 (defund @__kernel_rem_pio2-%561-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7810,15 +13005,6 @@
     (loc (s '%563 (icmp-eq-i32 (g '%562 loc) 0) loc))
     (succ (case (g '%563 loc) (-1 '%564) (0 '%566))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%561-expand-bb
-  (equal (@__kernel_rem_pio2-%561-bb mem loc pred)
-         (@__kernel_rem_pio2-%561-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%561-bb @__kernel_rem_pio2-%561-rev
-    @__kernel_rem_pio2-%562-rev
-    @__kernel_rem_pio2-%563-rev
-    @__kernel_rem_pio2-succ561-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%564-mem (s564)
   (car s564))
@@ -7834,6 +13020,10 @@
   (declare (ignore s564))
   '%569)
 
+(defund @__kernel_rem_pio2-%564-fwd (mem loc pred)
+  (let ((s564 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ564-lab s564) (@__kernel_rem_pio2-%564-mem s564) (@__kernel_rem_pio2-%565-loc s564))))
+
 (defund @__kernel_rem_pio2-succ564-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%569 mem loc))
@@ -7843,20 +13033,33 @@
 (defund @__kernel_rem_pio2-%564-rev (mem loc pred)
   (@__kernel_rem_pio2-%565-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%564-expand-rev-as-@__kernel_rem_pio2-%565-rev
+  (equal (@__kernel_rem_pio2-%564-rev mem loc pred)
+         (let ((s564 (list mem loc pred)))
+           (@__kernel_rem_pio2-%565-rev
+            (@__kernel_rem_pio2-%564-mem s564)
+            (@__kernel_rem_pio2-%564-loc s564)
+            (@__kernel_rem_pio2-%564-pred s564))))
+  :enable (@__kernel_rem_pio2-%564-rev @__kernel_rem_pio2-%564-mem @__kernel_rem_pio2-%564-loc @__kernel_rem_pio2-%564-pred))
+(defruled @__kernel_rem_pio2-%564-expand-rev-as-@__kernel_rem_pio2-succ564-rev
+  (equal (@__kernel_rem_pio2-%564-rev mem loc pred)
+         (let ((s564 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ564-rev
+            (@__kernel_rem_pio2-%564-mem s564)
+            (@__kernel_rem_pio2-%565-loc s564)
+            (@__kernel_rem_pio2-%564-pred s564))))
+  :enable (@__kernel_rem_pio2-%564-expand-rev-as-@__kernel_rem_pio2-%565-rev @__kernel_rem_pio2-%565-rev @__kernel_rem_pio2-%565-loc @__kernel_rem_pio2-%565-val))
+(defruled @__kernel_rem_pio2-%564-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%564-rev mem loc pred)
+         (@__kernel_rem_pio2-%564-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%564-expand-rev-as-@__kernel_rem_pio2-succ564-rev @__kernel_rem_pio2-succ564-rev @__kernel_rem_pio2-succ564-lab @__kernel_rem_pio2-%564-fwd))
+
 (defund @__kernel_rem_pio2-%564-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%565 (load-double (g '%fw loc) mem) loc))
     (succ '%569))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%564-expand-bb
-  (equal (@__kernel_rem_pio2-%564-bb mem loc pred)
-         (@__kernel_rem_pio2-%564-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%564-bb @__kernel_rem_pio2-%564-rev
-    @__kernel_rem_pio2-%565-rev
-    @__kernel_rem_pio2-succ564-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%566-mem (s566)
   (car s566))
@@ -7876,6 +13079,10 @@
   (declare (ignore s566))
   '%569)
 
+(defund @__kernel_rem_pio2-%566-fwd (mem loc pred)
+  (let ((s566 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ566-lab s566) (@__kernel_rem_pio2-%566-mem s566) (@__kernel_rem_pio2-%568-loc s566))))
+
 (defund @__kernel_rem_pio2-succ566-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%569 mem loc))
@@ -7887,6 +13094,35 @@
 (defund @__kernel_rem_pio2-%566-rev (mem loc pred)
   (@__kernel_rem_pio2-%567-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%566-expand-rev-as-@__kernel_rem_pio2-%567-rev
+  (equal (@__kernel_rem_pio2-%566-rev mem loc pred)
+         (let ((s566 (list mem loc pred)))
+           (@__kernel_rem_pio2-%567-rev
+            (@__kernel_rem_pio2-%566-mem s566)
+            (@__kernel_rem_pio2-%566-loc s566)
+            (@__kernel_rem_pio2-%566-pred s566))))
+  :enable (@__kernel_rem_pio2-%566-rev @__kernel_rem_pio2-%566-mem @__kernel_rem_pio2-%566-loc @__kernel_rem_pio2-%566-pred))
+(defruled @__kernel_rem_pio2-%566-expand-rev-as-@__kernel_rem_pio2-%568-rev
+  (equal (@__kernel_rem_pio2-%566-rev mem loc pred)
+         (let ((s566 (list mem loc pred)))
+           (@__kernel_rem_pio2-%568-rev
+            (@__kernel_rem_pio2-%566-mem s566)
+            (@__kernel_rem_pio2-%567-loc s566)
+            (@__kernel_rem_pio2-%566-pred s566))))
+  :enable (@__kernel_rem_pio2-%566-expand-rev-as-@__kernel_rem_pio2-%567-rev @__kernel_rem_pio2-%567-rev @__kernel_rem_pio2-%567-loc @__kernel_rem_pio2-%567-val))
+(defruled @__kernel_rem_pio2-%566-expand-rev-as-@__kernel_rem_pio2-succ566-rev
+  (equal (@__kernel_rem_pio2-%566-rev mem loc pred)
+         (let ((s566 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ566-rev
+            (@__kernel_rem_pio2-%566-mem s566)
+            (@__kernel_rem_pio2-%568-loc s566)
+            (@__kernel_rem_pio2-%566-pred s566))))
+  :enable (@__kernel_rem_pio2-%566-expand-rev-as-@__kernel_rem_pio2-%568-rev @__kernel_rem_pio2-%568-rev @__kernel_rem_pio2-%568-loc @__kernel_rem_pio2-%568-val))
+(defruled @__kernel_rem_pio2-%566-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%566-rev mem loc pred)
+         (@__kernel_rem_pio2-%566-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%566-expand-rev-as-@__kernel_rem_pio2-succ566-rev @__kernel_rem_pio2-succ566-rev @__kernel_rem_pio2-succ566-lab @__kernel_rem_pio2-%566-fwd))
+
 (defund @__kernel_rem_pio2-%566-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7894,15 +13130,6 @@
     (loc (s '%568 (fsub-double #x8000000000000000 (g '%567 loc)) loc))
     (succ '%569))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%566-expand-bb
-  (equal (@__kernel_rem_pio2-%566-bb mem loc pred)
-         (@__kernel_rem_pio2-%566-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%566-bb @__kernel_rem_pio2-%566-rev
-    @__kernel_rem_pio2-%567-rev
-    @__kernel_rem_pio2-%568-rev
-    @__kernel_rem_pio2-succ566-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%569-mem (s569)
   (car s569))
@@ -7928,6 +13155,10 @@
   (declare (ignore s569))
   '%691)
 
+(defund @__kernel_rem_pio2-%569-fwd (mem loc pred)
+  (let ((s569 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ569-lab s569) (@__kernel_rem_pio2-m569.1-mem s569) (@__kernel_rem_pio2-%572-loc s569))))
+
 (defund @__kernel_rem_pio2-succ569-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%691 mem loc))
@@ -7943,6 +13174,51 @@
 (defund @__kernel_rem_pio2-%569-rev (mem loc pred)
   (@__kernel_rem_pio2-%570-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-%570-rev
+  (equal (@__kernel_rem_pio2-%569-rev mem loc pred)
+         (let ((s569 (list mem loc pred)))
+           (@__kernel_rem_pio2-%570-rev
+            (@__kernel_rem_pio2-%569-mem s569)
+            (@__kernel_rem_pio2-%569-loc s569)
+            (@__kernel_rem_pio2-%569-pred s569))))
+  :enable (@__kernel_rem_pio2-%569-rev @__kernel_rem_pio2-%569-mem @__kernel_rem_pio2-%569-loc @__kernel_rem_pio2-%569-pred))
+(defruled @__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-%571-rev
+  (equal (@__kernel_rem_pio2-%569-rev mem loc pred)
+         (let ((s569 (list mem loc pred)))
+           (@__kernel_rem_pio2-%571-rev
+            (@__kernel_rem_pio2-%569-mem s569)
+            (@__kernel_rem_pio2-%570-loc s569)
+            (@__kernel_rem_pio2-%569-pred s569))))
+  :enable (@__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-%570-rev @__kernel_rem_pio2-%570-rev @__kernel_rem_pio2-%570-loc @__kernel_rem_pio2-%570-val))
+(defruled @__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-%572-rev
+  (equal (@__kernel_rem_pio2-%569-rev mem loc pred)
+         (let ((s569 (list mem loc pred)))
+           (@__kernel_rem_pio2-%572-rev
+            (@__kernel_rem_pio2-%569-mem s569)
+            (@__kernel_rem_pio2-%571-loc s569)
+            (@__kernel_rem_pio2-%569-pred s569))))
+  :enable (@__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-%571-rev @__kernel_rem_pio2-%571-rev @__kernel_rem_pio2-%571-loc @__kernel_rem_pio2-%571-val))
+(defruled @__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-m569.1-rev
+  (equal (@__kernel_rem_pio2-%569-rev mem loc pred)
+         (let ((s569 (list mem loc pred)))
+           (@__kernel_rem_pio2-m569.1-rev
+            (@__kernel_rem_pio2-%569-mem s569)
+            (@__kernel_rem_pio2-%572-loc s569)
+            (@__kernel_rem_pio2-%569-pred s569))))
+  :enable (@__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-%572-rev @__kernel_rem_pio2-%572-rev @__kernel_rem_pio2-%572-loc @__kernel_rem_pio2-%572-val))
+(defruled @__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-succ569-rev
+  (equal (@__kernel_rem_pio2-%569-rev mem loc pred)
+         (let ((s569 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ569-rev
+            (@__kernel_rem_pio2-m569.1-mem s569)
+            (@__kernel_rem_pio2-%572-loc s569)
+            (@__kernel_rem_pio2-%569-pred s569))))
+  :enable (@__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-m569.1-rev @__kernel_rem_pio2-m569.1-rev @__kernel_rem_pio2-m569.1-mem))
+(defruled @__kernel_rem_pio2-%569-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%569-rev mem loc pred)
+         (@__kernel_rem_pio2-%569-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%569-expand-rev-as-@__kernel_rem_pio2-succ569-rev @__kernel_rem_pio2-succ569-rev @__kernel_rem_pio2-succ569-lab @__kernel_rem_pio2-%569-fwd))
+
 (defund @__kernel_rem_pio2-%569-bb (mem loc pred)
   (b* (
     (loc (s '%570 (case pred (%564 (g '%565 loc)) (%566 (g '%568 loc))) loc))
@@ -7951,17 +13227,6 @@
     (mem (store-double (g '%570 loc) (g '%572 loc) mem))
     (succ '%691))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%569-expand-bb
-  (equal (@__kernel_rem_pio2-%569-bb mem loc pred)
-         (@__kernel_rem_pio2-%569-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%569-bb @__kernel_rem_pio2-%569-rev
-    @__kernel_rem_pio2-%570-rev
-    @__kernel_rem_pio2-%571-rev
-    @__kernel_rem_pio2-%572-rev
-    @__kernel_rem_pio2-m569.1-rev
-    @__kernel_rem_pio2-succ569-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%573-mem (s573)
   (car s573))
@@ -7979,6 +13244,10 @@
   (declare (ignore s573))
   '%575)
 
+(defund @__kernel_rem_pio2-%573-fwd (mem loc pred)
+  (let ((s573 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ573-lab s573) (@__kernel_rem_pio2-m573.1-mem s573) (@__kernel_rem_pio2-%574-loc s573))))
+
 (defund @__kernel_rem_pio2-succ573-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%575 mem loc))
@@ -7990,6 +13259,35 @@
 (defund @__kernel_rem_pio2-%573-rev (mem loc pred)
   (@__kernel_rem_pio2-%574-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%573-expand-rev-as-@__kernel_rem_pio2-%574-rev
+  (equal (@__kernel_rem_pio2-%573-rev mem loc pred)
+         (let ((s573 (list mem loc pred)))
+           (@__kernel_rem_pio2-%574-rev
+            (@__kernel_rem_pio2-%573-mem s573)
+            (@__kernel_rem_pio2-%573-loc s573)
+            (@__kernel_rem_pio2-%573-pred s573))))
+  :enable (@__kernel_rem_pio2-%573-rev @__kernel_rem_pio2-%573-mem @__kernel_rem_pio2-%573-loc @__kernel_rem_pio2-%573-pred))
+(defruled @__kernel_rem_pio2-%573-expand-rev-as-@__kernel_rem_pio2-m573.1-rev
+  (equal (@__kernel_rem_pio2-%573-rev mem loc pred)
+         (let ((s573 (list mem loc pred)))
+           (@__kernel_rem_pio2-m573.1-rev
+            (@__kernel_rem_pio2-%573-mem s573)
+            (@__kernel_rem_pio2-%574-loc s573)
+            (@__kernel_rem_pio2-%573-pred s573))))
+  :enable (@__kernel_rem_pio2-%573-expand-rev-as-@__kernel_rem_pio2-%574-rev @__kernel_rem_pio2-%574-rev @__kernel_rem_pio2-%574-loc @__kernel_rem_pio2-%574-val))
+(defruled @__kernel_rem_pio2-%573-expand-rev-as-@__kernel_rem_pio2-succ573-rev
+  (equal (@__kernel_rem_pio2-%573-rev mem loc pred)
+         (let ((s573 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ573-rev
+            (@__kernel_rem_pio2-m573.1-mem s573)
+            (@__kernel_rem_pio2-%574-loc s573)
+            (@__kernel_rem_pio2-%573-pred s573))))
+  :enable (@__kernel_rem_pio2-%573-expand-rev-as-@__kernel_rem_pio2-m573.1-rev @__kernel_rem_pio2-m573.1-rev @__kernel_rem_pio2-m573.1-mem))
+(defruled @__kernel_rem_pio2-%573-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%573-rev mem loc pred)
+         (@__kernel_rem_pio2-%573-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%573-expand-rev-as-@__kernel_rem_pio2-succ573-rev @__kernel_rem_pio2-succ573-rev @__kernel_rem_pio2-succ573-lab @__kernel_rem_pio2-%573-fwd))
+
 (defund @__kernel_rem_pio2-%573-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -7997,15 +13295,6 @@
     (mem (store-i32 (g '%574 loc) (g '%i loc) mem))
     (succ '%575))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%573-expand-bb
-  (equal (@__kernel_rem_pio2-%573-bb mem loc pred)
-         (@__kernel_rem_pio2-%573-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%573-bb @__kernel_rem_pio2-%573-rev
-    @__kernel_rem_pio2-%574-rev
-    @__kernel_rem_pio2-m573.1-rev
-    @__kernel_rem_pio2-succ573-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%575-mem (s575)
   (car s575))
@@ -8024,6 +13313,10 @@
 (defund @__kernel_rem_pio2-succ575-lab (s575)
   (case (g '%577 (@__kernel_rem_pio2-%577-loc s575)) (-1 '%578) (0 '%609)))
 
+(defund @__kernel_rem_pio2-%575-fwd (mem loc pred)
+  (let ((s575 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ575-lab s575) (@__kernel_rem_pio2-%575-mem s575) (@__kernel_rem_pio2-%577-loc s575))))
+
 (defund @__kernel_rem_pio2-succ575-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%577 loc) (-1 '%578) (0 '%609)) mem loc))
@@ -8035,6 +13328,35 @@
 (defund @__kernel_rem_pio2-%575-rev (mem loc pred)
   (@__kernel_rem_pio2-%576-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%575-expand-rev-as-@__kernel_rem_pio2-%576-rev
+  (equal (@__kernel_rem_pio2-%575-rev mem loc pred)
+         (let ((s575 (list mem loc pred)))
+           (@__kernel_rem_pio2-%576-rev
+            (@__kernel_rem_pio2-%575-mem s575)
+            (@__kernel_rem_pio2-%575-loc s575)
+            (@__kernel_rem_pio2-%575-pred s575))))
+  :enable (@__kernel_rem_pio2-%575-rev @__kernel_rem_pio2-%575-mem @__kernel_rem_pio2-%575-loc @__kernel_rem_pio2-%575-pred))
+(defruled @__kernel_rem_pio2-%575-expand-rev-as-@__kernel_rem_pio2-%577-rev
+  (equal (@__kernel_rem_pio2-%575-rev mem loc pred)
+         (let ((s575 (list mem loc pred)))
+           (@__kernel_rem_pio2-%577-rev
+            (@__kernel_rem_pio2-%575-mem s575)
+            (@__kernel_rem_pio2-%576-loc s575)
+            (@__kernel_rem_pio2-%575-pred s575))))
+  :enable (@__kernel_rem_pio2-%575-expand-rev-as-@__kernel_rem_pio2-%576-rev @__kernel_rem_pio2-%576-rev @__kernel_rem_pio2-%576-loc @__kernel_rem_pio2-%576-val))
+(defruled @__kernel_rem_pio2-%575-expand-rev-as-@__kernel_rem_pio2-succ575-rev
+  (equal (@__kernel_rem_pio2-%575-rev mem loc pred)
+         (let ((s575 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ575-rev
+            (@__kernel_rem_pio2-%575-mem s575)
+            (@__kernel_rem_pio2-%577-loc s575)
+            (@__kernel_rem_pio2-%575-pred s575))))
+  :enable (@__kernel_rem_pio2-%575-expand-rev-as-@__kernel_rem_pio2-%577-rev @__kernel_rem_pio2-%577-rev @__kernel_rem_pio2-%577-loc @__kernel_rem_pio2-%577-val))
+(defruled @__kernel_rem_pio2-%575-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%575-rev mem loc pred)
+         (@__kernel_rem_pio2-%575-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%575-expand-rev-as-@__kernel_rem_pio2-succ575-rev @__kernel_rem_pio2-succ575-rev @__kernel_rem_pio2-succ575-lab @__kernel_rem_pio2-%575-fwd))
+
 (defund @__kernel_rem_pio2-%575-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8042,15 +13364,6 @@
     (loc (s '%577 (icmp-sgt-i32 (g '%576 loc) 0) loc))
     (succ (case (g '%577 loc) (-1 '%578) (0 '%609))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%575-expand-bb
-  (equal (@__kernel_rem_pio2-%575-bb mem loc pred)
-         (@__kernel_rem_pio2-%575-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%575-bb @__kernel_rem_pio2-%575-rev
-    @__kernel_rem_pio2-%576-rev
-    @__kernel_rem_pio2-%577-rev
-    @__kernel_rem_pio2-succ575-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%578-mem (s578)
   (car s578))
@@ -8176,6 +13489,10 @@
   (declare (ignore s578))
   '%606)
 
+(defund @__kernel_rem_pio2-%578-fwd (mem loc pred)
+  (let ((s578 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ578-lab s578) (@__kernel_rem_pio2-m578.3-mem s578) (@__kernel_rem_pio2-%605-loc s578))))
+
 (defund @__kernel_rem_pio2-succ578-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%606 mem loc))
@@ -8243,6 +13560,259 @@
 (defund @__kernel_rem_pio2-%578-rev (mem loc pred)
   (@__kernel_rem_pio2-%579-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%579-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%579-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%578-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-rev @__kernel_rem_pio2-%578-mem @__kernel_rem_pio2-%578-loc @__kernel_rem_pio2-%578-pred))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%580-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%580-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%579-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%579-rev @__kernel_rem_pio2-%579-rev @__kernel_rem_pio2-%579-loc @__kernel_rem_pio2-%579-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%581-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%581-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%580-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%580-rev @__kernel_rem_pio2-%580-rev @__kernel_rem_pio2-%580-loc @__kernel_rem_pio2-%580-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%582-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%582-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%581-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%581-rev @__kernel_rem_pio2-%581-rev @__kernel_rem_pio2-%581-loc @__kernel_rem_pio2-%581-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%583-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%583-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%582-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%582-rev @__kernel_rem_pio2-%582-rev @__kernel_rem_pio2-%582-loc @__kernel_rem_pio2-%582-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%584-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%584-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%583-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%583-rev @__kernel_rem_pio2-%583-rev @__kernel_rem_pio2-%583-loc @__kernel_rem_pio2-%583-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%585-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%585-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%584-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%584-rev @__kernel_rem_pio2-%584-rev @__kernel_rem_pio2-%584-loc @__kernel_rem_pio2-%584-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%586-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%586-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%585-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%585-rev @__kernel_rem_pio2-%585-rev @__kernel_rem_pio2-%585-loc @__kernel_rem_pio2-%585-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%587-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%587-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%586-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%586-rev @__kernel_rem_pio2-%586-rev @__kernel_rem_pio2-%586-loc @__kernel_rem_pio2-%586-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%588-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%588-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%587-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%587-rev @__kernel_rem_pio2-%587-rev @__kernel_rem_pio2-%587-loc @__kernel_rem_pio2-%587-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-m578.1-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-m578.1-rev
+            (@__kernel_rem_pio2-%578-mem s578)
+            (@__kernel_rem_pio2-%588-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%588-rev @__kernel_rem_pio2-%588-rev @__kernel_rem_pio2-%588-loc @__kernel_rem_pio2-%588-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%589-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%589-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%588-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-m578.1-rev @__kernel_rem_pio2-m578.1-rev @__kernel_rem_pio2-m578.1-mem))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%590-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%590-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%589-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%589-rev @__kernel_rem_pio2-%589-rev @__kernel_rem_pio2-%589-loc @__kernel_rem_pio2-%589-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%591-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%591-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%590-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%590-rev @__kernel_rem_pio2-%590-rev @__kernel_rem_pio2-%590-loc @__kernel_rem_pio2-%590-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%592-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%592-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%591-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%591-rev @__kernel_rem_pio2-%591-rev @__kernel_rem_pio2-%591-loc @__kernel_rem_pio2-%591-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%593-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%593-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%592-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%592-rev @__kernel_rem_pio2-%592-rev @__kernel_rem_pio2-%592-loc @__kernel_rem_pio2-%592-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%594-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%594-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%593-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%593-rev @__kernel_rem_pio2-%593-rev @__kernel_rem_pio2-%593-loc @__kernel_rem_pio2-%593-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%595-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%595-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%594-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%594-rev @__kernel_rem_pio2-%594-rev @__kernel_rem_pio2-%594-loc @__kernel_rem_pio2-%594-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%596-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%596-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%595-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%595-rev @__kernel_rem_pio2-%595-rev @__kernel_rem_pio2-%595-loc @__kernel_rem_pio2-%595-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%597-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%597-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%596-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%596-rev @__kernel_rem_pio2-%596-rev @__kernel_rem_pio2-%596-loc @__kernel_rem_pio2-%596-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%598-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%598-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%597-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%597-rev @__kernel_rem_pio2-%597-rev @__kernel_rem_pio2-%597-loc @__kernel_rem_pio2-%597-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%599-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%599-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%598-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%598-rev @__kernel_rem_pio2-%598-rev @__kernel_rem_pio2-%598-loc @__kernel_rem_pio2-%598-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%600-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%600-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%599-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%599-rev @__kernel_rem_pio2-%599-rev @__kernel_rem_pio2-%599-loc @__kernel_rem_pio2-%599-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-m578.2-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-m578.2-rev
+            (@__kernel_rem_pio2-m578.1-mem s578)
+            (@__kernel_rem_pio2-%600-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%600-rev @__kernel_rem_pio2-%600-rev @__kernel_rem_pio2-%600-loc @__kernel_rem_pio2-%600-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%601-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%601-rev
+            (@__kernel_rem_pio2-m578.2-mem s578)
+            (@__kernel_rem_pio2-%600-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-m578.2-rev @__kernel_rem_pio2-m578.2-rev @__kernel_rem_pio2-m578.2-mem))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%602-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%602-rev
+            (@__kernel_rem_pio2-m578.2-mem s578)
+            (@__kernel_rem_pio2-%601-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%601-rev @__kernel_rem_pio2-%601-rev @__kernel_rem_pio2-%601-loc @__kernel_rem_pio2-%601-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%603-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%603-rev
+            (@__kernel_rem_pio2-m578.2-mem s578)
+            (@__kernel_rem_pio2-%602-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%602-rev @__kernel_rem_pio2-%602-rev @__kernel_rem_pio2-%602-loc @__kernel_rem_pio2-%602-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%604-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%604-rev
+            (@__kernel_rem_pio2-m578.2-mem s578)
+            (@__kernel_rem_pio2-%603-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%603-rev @__kernel_rem_pio2-%603-rev @__kernel_rem_pio2-%603-loc @__kernel_rem_pio2-%603-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%605-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-%605-rev
+            (@__kernel_rem_pio2-m578.2-mem s578)
+            (@__kernel_rem_pio2-%604-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%604-rev @__kernel_rem_pio2-%604-rev @__kernel_rem_pio2-%604-loc @__kernel_rem_pio2-%604-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-m578.3-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-m578.3-rev
+            (@__kernel_rem_pio2-m578.2-mem s578)
+            (@__kernel_rem_pio2-%605-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-%605-rev @__kernel_rem_pio2-%605-rev @__kernel_rem_pio2-%605-loc @__kernel_rem_pio2-%605-val))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-succ578-rev
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (let ((s578 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ578-rev
+            (@__kernel_rem_pio2-m578.3-mem s578)
+            (@__kernel_rem_pio2-%605-loc s578)
+            (@__kernel_rem_pio2-%578-pred s578))))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-m578.3-rev @__kernel_rem_pio2-m578.3-rev @__kernel_rem_pio2-m578.3-mem))
+(defruled @__kernel_rem_pio2-%578-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%578-rev mem loc pred)
+         (@__kernel_rem_pio2-%578-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%578-expand-rev-as-@__kernel_rem_pio2-succ578-rev @__kernel_rem_pio2-succ578-rev @__kernel_rem_pio2-succ578-lab @__kernel_rem_pio2-%578-fwd))
+
 (defund @__kernel_rem_pio2-%578-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8279,43 +13849,6 @@
     (succ '%606))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%578-expand-bb
-  (equal (@__kernel_rem_pio2-%578-bb mem loc pred)
-         (@__kernel_rem_pio2-%578-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%578-bb @__kernel_rem_pio2-%578-rev
-    @__kernel_rem_pio2-%579-rev
-    @__kernel_rem_pio2-%580-rev
-    @__kernel_rem_pio2-%581-rev
-    @__kernel_rem_pio2-%582-rev
-    @__kernel_rem_pio2-%583-rev
-    @__kernel_rem_pio2-%584-rev
-    @__kernel_rem_pio2-%585-rev
-    @__kernel_rem_pio2-%586-rev
-    @__kernel_rem_pio2-%587-rev
-    @__kernel_rem_pio2-%588-rev
-    @__kernel_rem_pio2-m578.1-rev
-    @__kernel_rem_pio2-%589-rev
-    @__kernel_rem_pio2-%590-rev
-    @__kernel_rem_pio2-%591-rev
-    @__kernel_rem_pio2-%592-rev
-    @__kernel_rem_pio2-%593-rev
-    @__kernel_rem_pio2-%594-rev
-    @__kernel_rem_pio2-%595-rev
-    @__kernel_rem_pio2-%596-rev
-    @__kernel_rem_pio2-%597-rev
-    @__kernel_rem_pio2-%598-rev
-    @__kernel_rem_pio2-%599-rev
-    @__kernel_rem_pio2-%600-rev
-    @__kernel_rem_pio2-m578.2-rev
-    @__kernel_rem_pio2-%601-rev
-    @__kernel_rem_pio2-%602-rev
-    @__kernel_rem_pio2-%603-rev
-    @__kernel_rem_pio2-%604-rev
-    @__kernel_rem_pio2-%605-rev
-    @__kernel_rem_pio2-m578.3-rev
-    @__kernel_rem_pio2-succ578-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%606-mem (s606)
   (car s606))
 (defund @__kernel_rem_pio2-%606-loc (s606)
@@ -8336,6 +13869,10 @@
   (declare (ignore s606))
   '%575)
 
+(defund @__kernel_rem_pio2-%606-fwd (mem loc pred)
+  (let ((s606 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ606-lab s606) (@__kernel_rem_pio2-m606.1-mem s606) (@__kernel_rem_pio2-%608-loc s606))))
+
 (defund @__kernel_rem_pio2-succ606-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%575 mem loc))
@@ -8349,6 +13886,43 @@
 (defund @__kernel_rem_pio2-%606-rev (mem loc pred)
   (@__kernel_rem_pio2-%607-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-%607-rev
+  (equal (@__kernel_rem_pio2-%606-rev mem loc pred)
+         (let ((s606 (list mem loc pred)))
+           (@__kernel_rem_pio2-%607-rev
+            (@__kernel_rem_pio2-%606-mem s606)
+            (@__kernel_rem_pio2-%606-loc s606)
+            (@__kernel_rem_pio2-%606-pred s606))))
+  :enable (@__kernel_rem_pio2-%606-rev @__kernel_rem_pio2-%606-mem @__kernel_rem_pio2-%606-loc @__kernel_rem_pio2-%606-pred))
+(defruled @__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-%608-rev
+  (equal (@__kernel_rem_pio2-%606-rev mem loc pred)
+         (let ((s606 (list mem loc pred)))
+           (@__kernel_rem_pio2-%608-rev
+            (@__kernel_rem_pio2-%606-mem s606)
+            (@__kernel_rem_pio2-%607-loc s606)
+            (@__kernel_rem_pio2-%606-pred s606))))
+  :enable (@__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-%607-rev @__kernel_rem_pio2-%607-rev @__kernel_rem_pio2-%607-loc @__kernel_rem_pio2-%607-val))
+(defruled @__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-m606.1-rev
+  (equal (@__kernel_rem_pio2-%606-rev mem loc pred)
+         (let ((s606 (list mem loc pred)))
+           (@__kernel_rem_pio2-m606.1-rev
+            (@__kernel_rem_pio2-%606-mem s606)
+            (@__kernel_rem_pio2-%608-loc s606)
+            (@__kernel_rem_pio2-%606-pred s606))))
+  :enable (@__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-%608-rev @__kernel_rem_pio2-%608-rev @__kernel_rem_pio2-%608-loc @__kernel_rem_pio2-%608-val))
+(defruled @__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-succ606-rev
+  (equal (@__kernel_rem_pio2-%606-rev mem loc pred)
+         (let ((s606 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ606-rev
+            (@__kernel_rem_pio2-m606.1-mem s606)
+            (@__kernel_rem_pio2-%608-loc s606)
+            (@__kernel_rem_pio2-%606-pred s606))))
+  :enable (@__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-m606.1-rev @__kernel_rem_pio2-m606.1-rev @__kernel_rem_pio2-m606.1-mem))
+(defruled @__kernel_rem_pio2-%606-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%606-rev mem loc pred)
+         (@__kernel_rem_pio2-%606-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%606-expand-rev-as-@__kernel_rem_pio2-succ606-rev @__kernel_rem_pio2-succ606-rev @__kernel_rem_pio2-succ606-lab @__kernel_rem_pio2-%606-fwd))
+
 (defund @__kernel_rem_pio2-%606-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8357,16 +13931,6 @@
     (mem (store-i32 (g '%608 loc) (g '%i loc) mem))
     (succ '%575))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%606-expand-bb
-  (equal (@__kernel_rem_pio2-%606-bb mem loc pred)
-         (@__kernel_rem_pio2-%606-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%606-bb @__kernel_rem_pio2-%606-rev
-    @__kernel_rem_pio2-%607-rev
-    @__kernel_rem_pio2-%608-rev
-    @__kernel_rem_pio2-m606.1-rev
-    @__kernel_rem_pio2-succ606-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%609-mem (s609)
   (car s609))
@@ -8384,6 +13948,10 @@
   (declare (ignore s609))
   '%611)
 
+(defund @__kernel_rem_pio2-%609-fwd (mem loc pred)
+  (let ((s609 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ609-lab s609) (@__kernel_rem_pio2-m609.1-mem s609) (@__kernel_rem_pio2-%610-loc s609))))
+
 (defund @__kernel_rem_pio2-succ609-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%611 mem loc))
@@ -8395,6 +13963,35 @@
 (defund @__kernel_rem_pio2-%609-rev (mem loc pred)
   (@__kernel_rem_pio2-%610-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%609-expand-rev-as-@__kernel_rem_pio2-%610-rev
+  (equal (@__kernel_rem_pio2-%609-rev mem loc pred)
+         (let ((s609 (list mem loc pred)))
+           (@__kernel_rem_pio2-%610-rev
+            (@__kernel_rem_pio2-%609-mem s609)
+            (@__kernel_rem_pio2-%609-loc s609)
+            (@__kernel_rem_pio2-%609-pred s609))))
+  :enable (@__kernel_rem_pio2-%609-rev @__kernel_rem_pio2-%609-mem @__kernel_rem_pio2-%609-loc @__kernel_rem_pio2-%609-pred))
+(defruled @__kernel_rem_pio2-%609-expand-rev-as-@__kernel_rem_pio2-m609.1-rev
+  (equal (@__kernel_rem_pio2-%609-rev mem loc pred)
+         (let ((s609 (list mem loc pred)))
+           (@__kernel_rem_pio2-m609.1-rev
+            (@__kernel_rem_pio2-%609-mem s609)
+            (@__kernel_rem_pio2-%610-loc s609)
+            (@__kernel_rem_pio2-%609-pred s609))))
+  :enable (@__kernel_rem_pio2-%609-expand-rev-as-@__kernel_rem_pio2-%610-rev @__kernel_rem_pio2-%610-rev @__kernel_rem_pio2-%610-loc @__kernel_rem_pio2-%610-val))
+(defruled @__kernel_rem_pio2-%609-expand-rev-as-@__kernel_rem_pio2-succ609-rev
+  (equal (@__kernel_rem_pio2-%609-rev mem loc pred)
+         (let ((s609 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ609-rev
+            (@__kernel_rem_pio2-m609.1-mem s609)
+            (@__kernel_rem_pio2-%610-loc s609)
+            (@__kernel_rem_pio2-%609-pred s609))))
+  :enable (@__kernel_rem_pio2-%609-expand-rev-as-@__kernel_rem_pio2-m609.1-rev @__kernel_rem_pio2-m609.1-rev @__kernel_rem_pio2-m609.1-mem))
+(defruled @__kernel_rem_pio2-%609-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%609-rev mem loc pred)
+         (@__kernel_rem_pio2-%609-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%609-expand-rev-as-@__kernel_rem_pio2-succ609-rev @__kernel_rem_pio2-succ609-rev @__kernel_rem_pio2-succ609-lab @__kernel_rem_pio2-%609-fwd))
+
 (defund @__kernel_rem_pio2-%609-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8402,15 +13999,6 @@
     (mem (store-i32 (g '%610 loc) (g '%i loc) mem))
     (succ '%611))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%609-expand-bb
-  (equal (@__kernel_rem_pio2-%609-bb mem loc pred)
-         (@__kernel_rem_pio2-%609-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%609-bb @__kernel_rem_pio2-%609-rev
-    @__kernel_rem_pio2-%610-rev
-    @__kernel_rem_pio2-m609.1-rev
-    @__kernel_rem_pio2-succ609-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%611-mem (s611)
   (car s611))
@@ -8429,6 +14017,10 @@
 (defund @__kernel_rem_pio2-succ611-lab (s611)
   (case (g '%613 (@__kernel_rem_pio2-%613-loc s611)) (-1 '%614) (0 '%645)))
 
+(defund @__kernel_rem_pio2-%611-fwd (mem loc pred)
+  (let ((s611 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ611-lab s611) (@__kernel_rem_pio2-%611-mem s611) (@__kernel_rem_pio2-%613-loc s611))))
+
 (defund @__kernel_rem_pio2-succ611-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%613 loc) (-1 '%614) (0 '%645)) mem loc))
@@ -8440,6 +14032,35 @@
 (defund @__kernel_rem_pio2-%611-rev (mem loc pred)
   (@__kernel_rem_pio2-%612-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%611-expand-rev-as-@__kernel_rem_pio2-%612-rev
+  (equal (@__kernel_rem_pio2-%611-rev mem loc pred)
+         (let ((s611 (list mem loc pred)))
+           (@__kernel_rem_pio2-%612-rev
+            (@__kernel_rem_pio2-%611-mem s611)
+            (@__kernel_rem_pio2-%611-loc s611)
+            (@__kernel_rem_pio2-%611-pred s611))))
+  :enable (@__kernel_rem_pio2-%611-rev @__kernel_rem_pio2-%611-mem @__kernel_rem_pio2-%611-loc @__kernel_rem_pio2-%611-pred))
+(defruled @__kernel_rem_pio2-%611-expand-rev-as-@__kernel_rem_pio2-%613-rev
+  (equal (@__kernel_rem_pio2-%611-rev mem loc pred)
+         (let ((s611 (list mem loc pred)))
+           (@__kernel_rem_pio2-%613-rev
+            (@__kernel_rem_pio2-%611-mem s611)
+            (@__kernel_rem_pio2-%612-loc s611)
+            (@__kernel_rem_pio2-%611-pred s611))))
+  :enable (@__kernel_rem_pio2-%611-expand-rev-as-@__kernel_rem_pio2-%612-rev @__kernel_rem_pio2-%612-rev @__kernel_rem_pio2-%612-loc @__kernel_rem_pio2-%612-val))
+(defruled @__kernel_rem_pio2-%611-expand-rev-as-@__kernel_rem_pio2-succ611-rev
+  (equal (@__kernel_rem_pio2-%611-rev mem loc pred)
+         (let ((s611 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ611-rev
+            (@__kernel_rem_pio2-%611-mem s611)
+            (@__kernel_rem_pio2-%613-loc s611)
+            (@__kernel_rem_pio2-%611-pred s611))))
+  :enable (@__kernel_rem_pio2-%611-expand-rev-as-@__kernel_rem_pio2-%613-rev @__kernel_rem_pio2-%613-rev @__kernel_rem_pio2-%613-loc @__kernel_rem_pio2-%613-val))
+(defruled @__kernel_rem_pio2-%611-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%611-rev mem loc pred)
+         (@__kernel_rem_pio2-%611-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%611-expand-rev-as-@__kernel_rem_pio2-succ611-rev @__kernel_rem_pio2-succ611-rev @__kernel_rem_pio2-succ611-lab @__kernel_rem_pio2-%611-fwd))
+
 (defund @__kernel_rem_pio2-%611-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8447,15 +14068,6 @@
     (loc (s '%613 (icmp-sgt-i32 (g '%612 loc) 1) loc))
     (succ (case (g '%613 loc) (-1 '%614) (0 '%645))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%611-expand-bb
-  (equal (@__kernel_rem_pio2-%611-bb mem loc pred)
-         (@__kernel_rem_pio2-%611-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%611-bb @__kernel_rem_pio2-%611-rev
-    @__kernel_rem_pio2-%612-rev
-    @__kernel_rem_pio2-%613-rev
-    @__kernel_rem_pio2-succ611-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%614-mem (s614)
   (car s614))
@@ -8581,6 +14193,10 @@
   (declare (ignore s614))
   '%642)
 
+(defund @__kernel_rem_pio2-%614-fwd (mem loc pred)
+  (let ((s614 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ614-lab s614) (@__kernel_rem_pio2-m614.3-mem s614) (@__kernel_rem_pio2-%641-loc s614))))
+
 (defund @__kernel_rem_pio2-succ614-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%642 mem loc))
@@ -8648,6 +14264,259 @@
 (defund @__kernel_rem_pio2-%614-rev (mem loc pred)
   (@__kernel_rem_pio2-%615-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%615-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%615-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%614-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-rev @__kernel_rem_pio2-%614-mem @__kernel_rem_pio2-%614-loc @__kernel_rem_pio2-%614-pred))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%616-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%616-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%615-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%615-rev @__kernel_rem_pio2-%615-rev @__kernel_rem_pio2-%615-loc @__kernel_rem_pio2-%615-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%617-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%617-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%616-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%616-rev @__kernel_rem_pio2-%616-rev @__kernel_rem_pio2-%616-loc @__kernel_rem_pio2-%616-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%618-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%618-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%617-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%617-rev @__kernel_rem_pio2-%617-rev @__kernel_rem_pio2-%617-loc @__kernel_rem_pio2-%617-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%619-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%619-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%618-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%618-rev @__kernel_rem_pio2-%618-rev @__kernel_rem_pio2-%618-loc @__kernel_rem_pio2-%618-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%620-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%620-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%619-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%619-rev @__kernel_rem_pio2-%619-rev @__kernel_rem_pio2-%619-loc @__kernel_rem_pio2-%619-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%621-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%621-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%620-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%620-rev @__kernel_rem_pio2-%620-rev @__kernel_rem_pio2-%620-loc @__kernel_rem_pio2-%620-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%622-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%622-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%621-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%621-rev @__kernel_rem_pio2-%621-rev @__kernel_rem_pio2-%621-loc @__kernel_rem_pio2-%621-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%623-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%623-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%622-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%622-rev @__kernel_rem_pio2-%622-rev @__kernel_rem_pio2-%622-loc @__kernel_rem_pio2-%622-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%624-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%624-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%623-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%623-rev @__kernel_rem_pio2-%623-rev @__kernel_rem_pio2-%623-loc @__kernel_rem_pio2-%623-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-m614.1-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-m614.1-rev
+            (@__kernel_rem_pio2-%614-mem s614)
+            (@__kernel_rem_pio2-%624-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%624-rev @__kernel_rem_pio2-%624-rev @__kernel_rem_pio2-%624-loc @__kernel_rem_pio2-%624-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%625-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%625-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%624-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-m614.1-rev @__kernel_rem_pio2-m614.1-rev @__kernel_rem_pio2-m614.1-mem))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%626-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%626-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%625-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%625-rev @__kernel_rem_pio2-%625-rev @__kernel_rem_pio2-%625-loc @__kernel_rem_pio2-%625-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%627-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%627-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%626-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%626-rev @__kernel_rem_pio2-%626-rev @__kernel_rem_pio2-%626-loc @__kernel_rem_pio2-%626-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%628-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%628-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%627-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%627-rev @__kernel_rem_pio2-%627-rev @__kernel_rem_pio2-%627-loc @__kernel_rem_pio2-%627-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%629-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%629-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%628-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%628-rev @__kernel_rem_pio2-%628-rev @__kernel_rem_pio2-%628-loc @__kernel_rem_pio2-%628-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%630-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%630-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%629-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%629-rev @__kernel_rem_pio2-%629-rev @__kernel_rem_pio2-%629-loc @__kernel_rem_pio2-%629-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%631-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%631-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%630-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%630-rev @__kernel_rem_pio2-%630-rev @__kernel_rem_pio2-%630-loc @__kernel_rem_pio2-%630-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%632-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%632-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%631-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%631-rev @__kernel_rem_pio2-%631-rev @__kernel_rem_pio2-%631-loc @__kernel_rem_pio2-%631-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%633-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%633-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%632-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%632-rev @__kernel_rem_pio2-%632-rev @__kernel_rem_pio2-%632-loc @__kernel_rem_pio2-%632-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%634-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%634-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%633-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%633-rev @__kernel_rem_pio2-%633-rev @__kernel_rem_pio2-%633-loc @__kernel_rem_pio2-%633-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%635-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%635-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%634-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%634-rev @__kernel_rem_pio2-%634-rev @__kernel_rem_pio2-%634-loc @__kernel_rem_pio2-%634-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%636-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%636-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%635-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%635-rev @__kernel_rem_pio2-%635-rev @__kernel_rem_pio2-%635-loc @__kernel_rem_pio2-%635-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-m614.2-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-m614.2-rev
+            (@__kernel_rem_pio2-m614.1-mem s614)
+            (@__kernel_rem_pio2-%636-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%636-rev @__kernel_rem_pio2-%636-rev @__kernel_rem_pio2-%636-loc @__kernel_rem_pio2-%636-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%637-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%637-rev
+            (@__kernel_rem_pio2-m614.2-mem s614)
+            (@__kernel_rem_pio2-%636-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-m614.2-rev @__kernel_rem_pio2-m614.2-rev @__kernel_rem_pio2-m614.2-mem))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%638-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%638-rev
+            (@__kernel_rem_pio2-m614.2-mem s614)
+            (@__kernel_rem_pio2-%637-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%637-rev @__kernel_rem_pio2-%637-rev @__kernel_rem_pio2-%637-loc @__kernel_rem_pio2-%637-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%639-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%639-rev
+            (@__kernel_rem_pio2-m614.2-mem s614)
+            (@__kernel_rem_pio2-%638-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%638-rev @__kernel_rem_pio2-%638-rev @__kernel_rem_pio2-%638-loc @__kernel_rem_pio2-%638-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%640-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%640-rev
+            (@__kernel_rem_pio2-m614.2-mem s614)
+            (@__kernel_rem_pio2-%639-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%639-rev @__kernel_rem_pio2-%639-rev @__kernel_rem_pio2-%639-loc @__kernel_rem_pio2-%639-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%641-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-%641-rev
+            (@__kernel_rem_pio2-m614.2-mem s614)
+            (@__kernel_rem_pio2-%640-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%640-rev @__kernel_rem_pio2-%640-rev @__kernel_rem_pio2-%640-loc @__kernel_rem_pio2-%640-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-m614.3-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-m614.3-rev
+            (@__kernel_rem_pio2-m614.2-mem s614)
+            (@__kernel_rem_pio2-%641-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-%641-rev @__kernel_rem_pio2-%641-rev @__kernel_rem_pio2-%641-loc @__kernel_rem_pio2-%641-val))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-succ614-rev
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (let ((s614 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ614-rev
+            (@__kernel_rem_pio2-m614.3-mem s614)
+            (@__kernel_rem_pio2-%641-loc s614)
+            (@__kernel_rem_pio2-%614-pred s614))))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-m614.3-rev @__kernel_rem_pio2-m614.3-rev @__kernel_rem_pio2-m614.3-mem))
+(defruled @__kernel_rem_pio2-%614-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%614-rev mem loc pred)
+         (@__kernel_rem_pio2-%614-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%614-expand-rev-as-@__kernel_rem_pio2-succ614-rev @__kernel_rem_pio2-succ614-rev @__kernel_rem_pio2-succ614-lab @__kernel_rem_pio2-%614-fwd))
+
 (defund @__kernel_rem_pio2-%614-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8684,43 +14553,6 @@
     (succ '%642))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%614-expand-bb
-  (equal (@__kernel_rem_pio2-%614-bb mem loc pred)
-         (@__kernel_rem_pio2-%614-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%614-bb @__kernel_rem_pio2-%614-rev
-    @__kernel_rem_pio2-%615-rev
-    @__kernel_rem_pio2-%616-rev
-    @__kernel_rem_pio2-%617-rev
-    @__kernel_rem_pio2-%618-rev
-    @__kernel_rem_pio2-%619-rev
-    @__kernel_rem_pio2-%620-rev
-    @__kernel_rem_pio2-%621-rev
-    @__kernel_rem_pio2-%622-rev
-    @__kernel_rem_pio2-%623-rev
-    @__kernel_rem_pio2-%624-rev
-    @__kernel_rem_pio2-m614.1-rev
-    @__kernel_rem_pio2-%625-rev
-    @__kernel_rem_pio2-%626-rev
-    @__kernel_rem_pio2-%627-rev
-    @__kernel_rem_pio2-%628-rev
-    @__kernel_rem_pio2-%629-rev
-    @__kernel_rem_pio2-%630-rev
-    @__kernel_rem_pio2-%631-rev
-    @__kernel_rem_pio2-%632-rev
-    @__kernel_rem_pio2-%633-rev
-    @__kernel_rem_pio2-%634-rev
-    @__kernel_rem_pio2-%635-rev
-    @__kernel_rem_pio2-%636-rev
-    @__kernel_rem_pio2-m614.2-rev
-    @__kernel_rem_pio2-%637-rev
-    @__kernel_rem_pio2-%638-rev
-    @__kernel_rem_pio2-%639-rev
-    @__kernel_rem_pio2-%640-rev
-    @__kernel_rem_pio2-%641-rev
-    @__kernel_rem_pio2-m614.3-rev
-    @__kernel_rem_pio2-succ614-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%642-mem (s642)
   (car s642))
 (defund @__kernel_rem_pio2-%642-loc (s642)
@@ -8741,6 +14573,10 @@
   (declare (ignore s642))
   '%611)
 
+(defund @__kernel_rem_pio2-%642-fwd (mem loc pred)
+  (let ((s642 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ642-lab s642) (@__kernel_rem_pio2-m642.1-mem s642) (@__kernel_rem_pio2-%644-loc s642))))
+
 (defund @__kernel_rem_pio2-succ642-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%611 mem loc))
@@ -8754,6 +14590,43 @@
 (defund @__kernel_rem_pio2-%642-rev (mem loc pred)
   (@__kernel_rem_pio2-%643-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-%643-rev
+  (equal (@__kernel_rem_pio2-%642-rev mem loc pred)
+         (let ((s642 (list mem loc pred)))
+           (@__kernel_rem_pio2-%643-rev
+            (@__kernel_rem_pio2-%642-mem s642)
+            (@__kernel_rem_pio2-%642-loc s642)
+            (@__kernel_rem_pio2-%642-pred s642))))
+  :enable (@__kernel_rem_pio2-%642-rev @__kernel_rem_pio2-%642-mem @__kernel_rem_pio2-%642-loc @__kernel_rem_pio2-%642-pred))
+(defruled @__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-%644-rev
+  (equal (@__kernel_rem_pio2-%642-rev mem loc pred)
+         (let ((s642 (list mem loc pred)))
+           (@__kernel_rem_pio2-%644-rev
+            (@__kernel_rem_pio2-%642-mem s642)
+            (@__kernel_rem_pio2-%643-loc s642)
+            (@__kernel_rem_pio2-%642-pred s642))))
+  :enable (@__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-%643-rev @__kernel_rem_pio2-%643-rev @__kernel_rem_pio2-%643-loc @__kernel_rem_pio2-%643-val))
+(defruled @__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-m642.1-rev
+  (equal (@__kernel_rem_pio2-%642-rev mem loc pred)
+         (let ((s642 (list mem loc pred)))
+           (@__kernel_rem_pio2-m642.1-rev
+            (@__kernel_rem_pio2-%642-mem s642)
+            (@__kernel_rem_pio2-%644-loc s642)
+            (@__kernel_rem_pio2-%642-pred s642))))
+  :enable (@__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-%644-rev @__kernel_rem_pio2-%644-rev @__kernel_rem_pio2-%644-loc @__kernel_rem_pio2-%644-val))
+(defruled @__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-succ642-rev
+  (equal (@__kernel_rem_pio2-%642-rev mem loc pred)
+         (let ((s642 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ642-rev
+            (@__kernel_rem_pio2-m642.1-mem s642)
+            (@__kernel_rem_pio2-%644-loc s642)
+            (@__kernel_rem_pio2-%642-pred s642))))
+  :enable (@__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-m642.1-rev @__kernel_rem_pio2-m642.1-rev @__kernel_rem_pio2-m642.1-mem))
+(defruled @__kernel_rem_pio2-%642-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%642-rev mem loc pred)
+         (@__kernel_rem_pio2-%642-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%642-expand-rev-as-@__kernel_rem_pio2-succ642-rev @__kernel_rem_pio2-succ642-rev @__kernel_rem_pio2-succ642-lab @__kernel_rem_pio2-%642-fwd))
+
 (defund @__kernel_rem_pio2-%642-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8762,16 +14635,6 @@
     (mem (store-i32 (g '%644 loc) (g '%i loc) mem))
     (succ '%611))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%642-expand-bb
-  (equal (@__kernel_rem_pio2-%642-bb mem loc pred)
-         (@__kernel_rem_pio2-%642-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%642-bb @__kernel_rem_pio2-%642-rev
-    @__kernel_rem_pio2-%643-rev
-    @__kernel_rem_pio2-%644-rev
-    @__kernel_rem_pio2-m642.1-rev
-    @__kernel_rem_pio2-succ642-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%645-mem (s645)
   (car s645))
@@ -8791,6 +14654,10 @@
   (declare (ignore s645))
   '%647)
 
+(defund @__kernel_rem_pio2-%645-fwd (mem loc pred)
+  (let ((s645 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ645-lab s645) (@__kernel_rem_pio2-m645.2-mem s645) (@__kernel_rem_pio2-%646-loc s645))))
+
 (defund @__kernel_rem_pio2-succ645-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%647 mem loc))
@@ -8804,6 +14671,43 @@
 (defund @__kernel_rem_pio2-%645-rev (mem loc pred)
   (@__kernel_rem_pio2-m645.1-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-m645.1-rev
+  (equal (@__kernel_rem_pio2-%645-rev mem loc pred)
+         (let ((s645 (list mem loc pred)))
+           (@__kernel_rem_pio2-m645.1-rev
+            (@__kernel_rem_pio2-%645-mem s645)
+            (@__kernel_rem_pio2-%645-loc s645)
+            (@__kernel_rem_pio2-%645-pred s645))))
+  :enable (@__kernel_rem_pio2-%645-rev @__kernel_rem_pio2-%645-mem @__kernel_rem_pio2-%645-loc @__kernel_rem_pio2-%645-pred))
+(defruled @__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-%646-rev
+  (equal (@__kernel_rem_pio2-%645-rev mem loc pred)
+         (let ((s645 (list mem loc pred)))
+           (@__kernel_rem_pio2-%646-rev
+            (@__kernel_rem_pio2-m645.1-mem s645)
+            (@__kernel_rem_pio2-%645-loc s645)
+            (@__kernel_rem_pio2-%645-pred s645))))
+  :enable (@__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-m645.1-rev @__kernel_rem_pio2-m645.1-rev @__kernel_rem_pio2-m645.1-mem))
+(defruled @__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-m645.2-rev
+  (equal (@__kernel_rem_pio2-%645-rev mem loc pred)
+         (let ((s645 (list mem loc pred)))
+           (@__kernel_rem_pio2-m645.2-rev
+            (@__kernel_rem_pio2-m645.1-mem s645)
+            (@__kernel_rem_pio2-%646-loc s645)
+            (@__kernel_rem_pio2-%645-pred s645))))
+  :enable (@__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-%646-rev @__kernel_rem_pio2-%646-rev @__kernel_rem_pio2-%646-loc @__kernel_rem_pio2-%646-val))
+(defruled @__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-succ645-rev
+  (equal (@__kernel_rem_pio2-%645-rev mem loc pred)
+         (let ((s645 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ645-rev
+            (@__kernel_rem_pio2-m645.2-mem s645)
+            (@__kernel_rem_pio2-%646-loc s645)
+            (@__kernel_rem_pio2-%645-pred s645))))
+  :enable (@__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-m645.2-rev @__kernel_rem_pio2-m645.2-rev @__kernel_rem_pio2-m645.2-mem))
+(defruled @__kernel_rem_pio2-%645-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%645-rev mem loc pred)
+         (@__kernel_rem_pio2-%645-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%645-expand-rev-as-@__kernel_rem_pio2-succ645-rev @__kernel_rem_pio2-succ645-rev @__kernel_rem_pio2-succ645-lab @__kernel_rem_pio2-%645-fwd))
+
 (defund @__kernel_rem_pio2-%645-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8812,16 +14716,6 @@
     (mem (store-i32 (g '%646 loc) (g '%i loc) mem))
     (succ '%647))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%645-expand-bb
-  (equal (@__kernel_rem_pio2-%645-bb mem loc pred)
-         (@__kernel_rem_pio2-%645-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%645-bb @__kernel_rem_pio2-%645-rev
-    @__kernel_rem_pio2-m645.1-rev
-    @__kernel_rem_pio2-%646-rev
-    @__kernel_rem_pio2-m645.2-rev
-    @__kernel_rem_pio2-succ645-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%647-mem (s647)
   (car s647))
@@ -8840,6 +14734,10 @@
 (defund @__kernel_rem_pio2-succ647-lab (s647)
   (case (g '%649 (@__kernel_rem_pio2-%649-loc s647)) (-1 '%650) (0 '%660)))
 
+(defund @__kernel_rem_pio2-%647-fwd (mem loc pred)
+  (let ((s647 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ647-lab s647) (@__kernel_rem_pio2-%647-mem s647) (@__kernel_rem_pio2-%649-loc s647))))
+
 (defund @__kernel_rem_pio2-succ647-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%649 loc) (-1 '%650) (0 '%660)) mem loc))
@@ -8851,6 +14749,35 @@
 (defund @__kernel_rem_pio2-%647-rev (mem loc pred)
   (@__kernel_rem_pio2-%648-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%647-expand-rev-as-@__kernel_rem_pio2-%648-rev
+  (equal (@__kernel_rem_pio2-%647-rev mem loc pred)
+         (let ((s647 (list mem loc pred)))
+           (@__kernel_rem_pio2-%648-rev
+            (@__kernel_rem_pio2-%647-mem s647)
+            (@__kernel_rem_pio2-%647-loc s647)
+            (@__kernel_rem_pio2-%647-pred s647))))
+  :enable (@__kernel_rem_pio2-%647-rev @__kernel_rem_pio2-%647-mem @__kernel_rem_pio2-%647-loc @__kernel_rem_pio2-%647-pred))
+(defruled @__kernel_rem_pio2-%647-expand-rev-as-@__kernel_rem_pio2-%649-rev
+  (equal (@__kernel_rem_pio2-%647-rev mem loc pred)
+         (let ((s647 (list mem loc pred)))
+           (@__kernel_rem_pio2-%649-rev
+            (@__kernel_rem_pio2-%647-mem s647)
+            (@__kernel_rem_pio2-%648-loc s647)
+            (@__kernel_rem_pio2-%647-pred s647))))
+  :enable (@__kernel_rem_pio2-%647-expand-rev-as-@__kernel_rem_pio2-%648-rev @__kernel_rem_pio2-%648-rev @__kernel_rem_pio2-%648-loc @__kernel_rem_pio2-%648-val))
+(defruled @__kernel_rem_pio2-%647-expand-rev-as-@__kernel_rem_pio2-succ647-rev
+  (equal (@__kernel_rem_pio2-%647-rev mem loc pred)
+         (let ((s647 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ647-rev
+            (@__kernel_rem_pio2-%647-mem s647)
+            (@__kernel_rem_pio2-%649-loc s647)
+            (@__kernel_rem_pio2-%647-pred s647))))
+  :enable (@__kernel_rem_pio2-%647-expand-rev-as-@__kernel_rem_pio2-%649-rev @__kernel_rem_pio2-%649-rev @__kernel_rem_pio2-%649-loc @__kernel_rem_pio2-%649-val))
+(defruled @__kernel_rem_pio2-%647-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%647-rev mem loc pred)
+         (@__kernel_rem_pio2-%647-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%647-expand-rev-as-@__kernel_rem_pio2-succ647-rev @__kernel_rem_pio2-succ647-rev @__kernel_rem_pio2-succ647-lab @__kernel_rem_pio2-%647-fwd))
+
 (defund @__kernel_rem_pio2-%647-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8858,15 +14785,6 @@
     (loc (s '%649 (icmp-sge-i32 (g '%648 loc) 2) loc))
     (succ (case (g '%649 loc) (-1 '%650) (0 '%660))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%647-expand-bb
-  (equal (@__kernel_rem_pio2-%647-bb mem loc pred)
-         (@__kernel_rem_pio2-%647-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%647-bb @__kernel_rem_pio2-%647-rev
-    @__kernel_rem_pio2-%648-rev
-    @__kernel_rem_pio2-%649-rev
-    @__kernel_rem_pio2-succ647-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%650-mem (s650)
   (car s650))
@@ -8904,6 +14822,10 @@
   (declare (ignore s650))
   '%657)
 
+(defund @__kernel_rem_pio2-%650-fwd (mem loc pred)
+  (let ((s650 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ650-lab s650) (@__kernel_rem_pio2-m650.1-mem s650) (@__kernel_rem_pio2-%656-loc s650))))
+
 (defund @__kernel_rem_pio2-succ650-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%657 mem loc))
@@ -8925,6 +14847,75 @@
 (defund @__kernel_rem_pio2-%650-rev (mem loc pred)
   (@__kernel_rem_pio2-%651-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%651-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-%651-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%650-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-rev @__kernel_rem_pio2-%650-mem @__kernel_rem_pio2-%650-loc @__kernel_rem_pio2-%650-pred))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%652-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-%652-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%651-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%651-rev @__kernel_rem_pio2-%651-rev @__kernel_rem_pio2-%651-loc @__kernel_rem_pio2-%651-val))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%653-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-%653-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%652-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%652-rev @__kernel_rem_pio2-%652-rev @__kernel_rem_pio2-%652-loc @__kernel_rem_pio2-%652-val))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%654-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-%654-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%653-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%653-rev @__kernel_rem_pio2-%653-rev @__kernel_rem_pio2-%653-loc @__kernel_rem_pio2-%653-val))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%655-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-%655-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%654-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%654-rev @__kernel_rem_pio2-%654-rev @__kernel_rem_pio2-%654-loc @__kernel_rem_pio2-%654-val))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%656-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-%656-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%655-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%655-rev @__kernel_rem_pio2-%655-rev @__kernel_rem_pio2-%655-loc @__kernel_rem_pio2-%655-val))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-m650.1-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-m650.1-rev
+            (@__kernel_rem_pio2-%650-mem s650)
+            (@__kernel_rem_pio2-%656-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-%656-rev @__kernel_rem_pio2-%656-rev @__kernel_rem_pio2-%656-loc @__kernel_rem_pio2-%656-val))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-succ650-rev
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (let ((s650 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ650-rev
+            (@__kernel_rem_pio2-m650.1-mem s650)
+            (@__kernel_rem_pio2-%656-loc s650)
+            (@__kernel_rem_pio2-%650-pred s650))))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-m650.1-rev @__kernel_rem_pio2-m650.1-rev @__kernel_rem_pio2-m650.1-mem))
+(defruled @__kernel_rem_pio2-%650-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%650-rev mem loc pred)
+         (@__kernel_rem_pio2-%650-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%650-expand-rev-as-@__kernel_rem_pio2-succ650-rev @__kernel_rem_pio2-succ650-rev @__kernel_rem_pio2-succ650-lab @__kernel_rem_pio2-%650-fwd))
+
 (defund @__kernel_rem_pio2-%650-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8937,20 +14928,6 @@
     (mem (store-double (g '%656 loc) (g '%fw loc) mem))
     (succ '%657))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%650-expand-bb
-  (equal (@__kernel_rem_pio2-%650-bb mem loc pred)
-         (@__kernel_rem_pio2-%650-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%650-bb @__kernel_rem_pio2-%650-rev
-    @__kernel_rem_pio2-%651-rev
-    @__kernel_rem_pio2-%652-rev
-    @__kernel_rem_pio2-%653-rev
-    @__kernel_rem_pio2-%654-rev
-    @__kernel_rem_pio2-%655-rev
-    @__kernel_rem_pio2-%656-rev
-    @__kernel_rem_pio2-m650.1-rev
-    @__kernel_rem_pio2-succ650-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%657-mem (s657)
   (car s657))
@@ -8972,6 +14949,10 @@
   (declare (ignore s657))
   '%647)
 
+(defund @__kernel_rem_pio2-%657-fwd (mem loc pred)
+  (let ((s657 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ657-lab s657) (@__kernel_rem_pio2-m657.1-mem s657) (@__kernel_rem_pio2-%659-loc s657))))
+
 (defund @__kernel_rem_pio2-succ657-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%647 mem loc))
@@ -8985,6 +14966,43 @@
 (defund @__kernel_rem_pio2-%657-rev (mem loc pred)
   (@__kernel_rem_pio2-%658-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-%658-rev
+  (equal (@__kernel_rem_pio2-%657-rev mem loc pred)
+         (let ((s657 (list mem loc pred)))
+           (@__kernel_rem_pio2-%658-rev
+            (@__kernel_rem_pio2-%657-mem s657)
+            (@__kernel_rem_pio2-%657-loc s657)
+            (@__kernel_rem_pio2-%657-pred s657))))
+  :enable (@__kernel_rem_pio2-%657-rev @__kernel_rem_pio2-%657-mem @__kernel_rem_pio2-%657-loc @__kernel_rem_pio2-%657-pred))
+(defruled @__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-%659-rev
+  (equal (@__kernel_rem_pio2-%657-rev mem loc pred)
+         (let ((s657 (list mem loc pred)))
+           (@__kernel_rem_pio2-%659-rev
+            (@__kernel_rem_pio2-%657-mem s657)
+            (@__kernel_rem_pio2-%658-loc s657)
+            (@__kernel_rem_pio2-%657-pred s657))))
+  :enable (@__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-%658-rev @__kernel_rem_pio2-%658-rev @__kernel_rem_pio2-%658-loc @__kernel_rem_pio2-%658-val))
+(defruled @__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-m657.1-rev
+  (equal (@__kernel_rem_pio2-%657-rev mem loc pred)
+         (let ((s657 (list mem loc pred)))
+           (@__kernel_rem_pio2-m657.1-rev
+            (@__kernel_rem_pio2-%657-mem s657)
+            (@__kernel_rem_pio2-%659-loc s657)
+            (@__kernel_rem_pio2-%657-pred s657))))
+  :enable (@__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-%659-rev @__kernel_rem_pio2-%659-rev @__kernel_rem_pio2-%659-loc @__kernel_rem_pio2-%659-val))
+(defruled @__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-succ657-rev
+  (equal (@__kernel_rem_pio2-%657-rev mem loc pred)
+         (let ((s657 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ657-rev
+            (@__kernel_rem_pio2-m657.1-mem s657)
+            (@__kernel_rem_pio2-%659-loc s657)
+            (@__kernel_rem_pio2-%657-pred s657))))
+  :enable (@__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-m657.1-rev @__kernel_rem_pio2-m657.1-rev @__kernel_rem_pio2-m657.1-mem))
+(defruled @__kernel_rem_pio2-%657-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%657-rev mem loc pred)
+         (@__kernel_rem_pio2-%657-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%657-expand-rev-as-@__kernel_rem_pio2-succ657-rev @__kernel_rem_pio2-succ657-rev @__kernel_rem_pio2-succ657-lab @__kernel_rem_pio2-%657-fwd))
+
 (defund @__kernel_rem_pio2-%657-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -8993,16 +15011,6 @@
     (mem (store-i32 (g '%659 loc) (g '%i loc) mem))
     (succ '%647))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%657-expand-bb
-  (equal (@__kernel_rem_pio2-%657-bb mem loc pred)
-         (@__kernel_rem_pio2-%657-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%657-bb @__kernel_rem_pio2-%657-rev
-    @__kernel_rem_pio2-%658-rev
-    @__kernel_rem_pio2-%659-rev
-    @__kernel_rem_pio2-m657.1-rev
-    @__kernel_rem_pio2-succ657-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%660-mem (s660)
   (car s660))
@@ -9021,6 +15029,10 @@
 (defund @__kernel_rem_pio2-succ660-lab (s660)
   (case (g '%662 (@__kernel_rem_pio2-%662-loc s660)) (-1 '%663) (0 '%675)))
 
+(defund @__kernel_rem_pio2-%660-fwd (mem loc pred)
+  (let ((s660 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ660-lab s660) (@__kernel_rem_pio2-%660-mem s660) (@__kernel_rem_pio2-%662-loc s660))))
+
 (defund @__kernel_rem_pio2-succ660-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%662 loc) (-1 '%663) (0 '%675)) mem loc))
@@ -9032,6 +15044,35 @@
 (defund @__kernel_rem_pio2-%660-rev (mem loc pred)
   (@__kernel_rem_pio2-%661-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%660-expand-rev-as-@__kernel_rem_pio2-%661-rev
+  (equal (@__kernel_rem_pio2-%660-rev mem loc pred)
+         (let ((s660 (list mem loc pred)))
+           (@__kernel_rem_pio2-%661-rev
+            (@__kernel_rem_pio2-%660-mem s660)
+            (@__kernel_rem_pio2-%660-loc s660)
+            (@__kernel_rem_pio2-%660-pred s660))))
+  :enable (@__kernel_rem_pio2-%660-rev @__kernel_rem_pio2-%660-mem @__kernel_rem_pio2-%660-loc @__kernel_rem_pio2-%660-pred))
+(defruled @__kernel_rem_pio2-%660-expand-rev-as-@__kernel_rem_pio2-%662-rev
+  (equal (@__kernel_rem_pio2-%660-rev mem loc pred)
+         (let ((s660 (list mem loc pred)))
+           (@__kernel_rem_pio2-%662-rev
+            (@__kernel_rem_pio2-%660-mem s660)
+            (@__kernel_rem_pio2-%661-loc s660)
+            (@__kernel_rem_pio2-%660-pred s660))))
+  :enable (@__kernel_rem_pio2-%660-expand-rev-as-@__kernel_rem_pio2-%661-rev @__kernel_rem_pio2-%661-rev @__kernel_rem_pio2-%661-loc @__kernel_rem_pio2-%661-val))
+(defruled @__kernel_rem_pio2-%660-expand-rev-as-@__kernel_rem_pio2-succ660-rev
+  (equal (@__kernel_rem_pio2-%660-rev mem loc pred)
+         (let ((s660 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ660-rev
+            (@__kernel_rem_pio2-%660-mem s660)
+            (@__kernel_rem_pio2-%662-loc s660)
+            (@__kernel_rem_pio2-%660-pred s660))))
+  :enable (@__kernel_rem_pio2-%660-expand-rev-as-@__kernel_rem_pio2-%662-rev @__kernel_rem_pio2-%662-rev @__kernel_rem_pio2-%662-loc @__kernel_rem_pio2-%662-val))
+(defruled @__kernel_rem_pio2-%660-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%660-rev mem loc pred)
+         (@__kernel_rem_pio2-%660-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%660-expand-rev-as-@__kernel_rem_pio2-succ660-rev @__kernel_rem_pio2-succ660-rev @__kernel_rem_pio2-succ660-lab @__kernel_rem_pio2-%660-fwd))
+
 (defund @__kernel_rem_pio2-%660-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -9039,15 +15080,6 @@
     (loc (s '%662 (icmp-eq-i32 (g '%661 loc) 0) loc))
     (succ (case (g '%662 loc) (-1 '%663) (0 '%675))))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%660-expand-bb
-  (equal (@__kernel_rem_pio2-%660-bb mem loc pred)
-         (@__kernel_rem_pio2-%660-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%660-bb @__kernel_rem_pio2-%660-rev
-    @__kernel_rem_pio2-%661-rev
-    @__kernel_rem_pio2-%662-rev
-    @__kernel_rem_pio2-succ660-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%663-mem (s663)
   (car s663))
@@ -9109,6 +15141,10 @@
   (declare (ignore s663))
   '%690)
 
+(defund @__kernel_rem_pio2-%663-fwd (mem loc pred)
+  (let ((s663 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ663-lab s663) (@__kernel_rem_pio2-m663.3-mem s663) (@__kernel_rem_pio2-%674-loc s663))))
+
 (defund @__kernel_rem_pio2-succ663-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%690 mem loc))
@@ -9144,6 +15180,131 @@
 (defund @__kernel_rem_pio2-%663-rev (mem loc pred)
   (@__kernel_rem_pio2-%664-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%664-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%664-rev
+            (@__kernel_rem_pio2-%663-mem s663)
+            (@__kernel_rem_pio2-%663-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-rev @__kernel_rem_pio2-%663-mem @__kernel_rem_pio2-%663-loc @__kernel_rem_pio2-%663-pred))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%665-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%665-rev
+            (@__kernel_rem_pio2-%663-mem s663)
+            (@__kernel_rem_pio2-%664-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%664-rev @__kernel_rem_pio2-%664-rev @__kernel_rem_pio2-%664-loc @__kernel_rem_pio2-%664-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%666-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%666-rev
+            (@__kernel_rem_pio2-%663-mem s663)
+            (@__kernel_rem_pio2-%665-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%665-rev @__kernel_rem_pio2-%665-rev @__kernel_rem_pio2-%665-loc @__kernel_rem_pio2-%665-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%667-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%667-rev
+            (@__kernel_rem_pio2-%663-mem s663)
+            (@__kernel_rem_pio2-%666-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%666-rev @__kernel_rem_pio2-%666-rev @__kernel_rem_pio2-%666-loc @__kernel_rem_pio2-%666-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-m663.1-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-m663.1-rev
+            (@__kernel_rem_pio2-%663-mem s663)
+            (@__kernel_rem_pio2-%667-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%667-rev @__kernel_rem_pio2-%667-rev @__kernel_rem_pio2-%667-loc @__kernel_rem_pio2-%667-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%668-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%668-rev
+            (@__kernel_rem_pio2-m663.1-mem s663)
+            (@__kernel_rem_pio2-%667-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-m663.1-rev @__kernel_rem_pio2-m663.1-rev @__kernel_rem_pio2-m663.1-mem))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%669-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%669-rev
+            (@__kernel_rem_pio2-m663.1-mem s663)
+            (@__kernel_rem_pio2-%668-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%668-rev @__kernel_rem_pio2-%668-rev @__kernel_rem_pio2-%668-loc @__kernel_rem_pio2-%668-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%670-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%670-rev
+            (@__kernel_rem_pio2-m663.1-mem s663)
+            (@__kernel_rem_pio2-%669-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%669-rev @__kernel_rem_pio2-%669-rev @__kernel_rem_pio2-%669-loc @__kernel_rem_pio2-%669-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%671-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%671-rev
+            (@__kernel_rem_pio2-m663.1-mem s663)
+            (@__kernel_rem_pio2-%670-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%670-rev @__kernel_rem_pio2-%670-rev @__kernel_rem_pio2-%670-loc @__kernel_rem_pio2-%670-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-m663.2-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-m663.2-rev
+            (@__kernel_rem_pio2-m663.1-mem s663)
+            (@__kernel_rem_pio2-%671-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%671-rev @__kernel_rem_pio2-%671-rev @__kernel_rem_pio2-%671-loc @__kernel_rem_pio2-%671-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%672-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%672-rev
+            (@__kernel_rem_pio2-m663.2-mem s663)
+            (@__kernel_rem_pio2-%671-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-m663.2-rev @__kernel_rem_pio2-m663.2-rev @__kernel_rem_pio2-m663.2-mem))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%673-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%673-rev
+            (@__kernel_rem_pio2-m663.2-mem s663)
+            (@__kernel_rem_pio2-%672-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%672-rev @__kernel_rem_pio2-%672-rev @__kernel_rem_pio2-%672-loc @__kernel_rem_pio2-%672-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%674-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-%674-rev
+            (@__kernel_rem_pio2-m663.2-mem s663)
+            (@__kernel_rem_pio2-%673-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%673-rev @__kernel_rem_pio2-%673-rev @__kernel_rem_pio2-%673-loc @__kernel_rem_pio2-%673-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-m663.3-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-m663.3-rev
+            (@__kernel_rem_pio2-m663.2-mem s663)
+            (@__kernel_rem_pio2-%674-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-%674-rev @__kernel_rem_pio2-%674-rev @__kernel_rem_pio2-%674-loc @__kernel_rem_pio2-%674-val))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-succ663-rev
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (let ((s663 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ663-rev
+            (@__kernel_rem_pio2-m663.3-mem s663)
+            (@__kernel_rem_pio2-%674-loc s663)
+            (@__kernel_rem_pio2-%663-pred s663))))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-m663.3-rev @__kernel_rem_pio2-m663.3-rev @__kernel_rem_pio2-m663.3-mem))
+(defruled @__kernel_rem_pio2-%663-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%663-rev mem loc pred)
+         (@__kernel_rem_pio2-%663-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%663-expand-rev-as-@__kernel_rem_pio2-succ663-rev @__kernel_rem_pio2-succ663-rev @__kernel_rem_pio2-succ663-lab @__kernel_rem_pio2-%663-fwd))
+
 (defund @__kernel_rem_pio2-%663-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -9163,27 +15324,6 @@
     (mem (store-double (g '%672 loc) (g '%674 loc) mem))
     (succ '%690))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%663-expand-bb
-  (equal (@__kernel_rem_pio2-%663-bb mem loc pred)
-         (@__kernel_rem_pio2-%663-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%663-bb @__kernel_rem_pio2-%663-rev
-    @__kernel_rem_pio2-%664-rev
-    @__kernel_rem_pio2-%665-rev
-    @__kernel_rem_pio2-%666-rev
-    @__kernel_rem_pio2-%667-rev
-    @__kernel_rem_pio2-m663.1-rev
-    @__kernel_rem_pio2-%668-rev
-    @__kernel_rem_pio2-%669-rev
-    @__kernel_rem_pio2-%670-rev
-    @__kernel_rem_pio2-%671-rev
-    @__kernel_rem_pio2-m663.2-rev
-    @__kernel_rem_pio2-%672-rev
-    @__kernel_rem_pio2-%673-rev
-    @__kernel_rem_pio2-%674-rev
-    @__kernel_rem_pio2-m663.3-rev
-    @__kernel_rem_pio2-succ663-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%675-mem (s675)
   (car s675))
@@ -9257,6 +15397,10 @@
   (declare (ignore s675))
   '%690)
 
+(defund @__kernel_rem_pio2-%675-fwd (mem loc pred)
+  (let ((s675 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ675-lab s675) (@__kernel_rem_pio2-m675.3-mem s675) (@__kernel_rem_pio2-%689-loc s675))))
+
 (defund @__kernel_rem_pio2-succ675-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%690 mem loc))
@@ -9298,6 +15442,155 @@
 (defund @__kernel_rem_pio2-%675-rev (mem loc pred)
   (@__kernel_rem_pio2-%676-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%676-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%676-rev
+            (@__kernel_rem_pio2-%675-mem s675)
+            (@__kernel_rem_pio2-%675-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-rev @__kernel_rem_pio2-%675-mem @__kernel_rem_pio2-%675-loc @__kernel_rem_pio2-%675-pred))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%677-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%677-rev
+            (@__kernel_rem_pio2-%675-mem s675)
+            (@__kernel_rem_pio2-%676-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%676-rev @__kernel_rem_pio2-%676-rev @__kernel_rem_pio2-%676-loc @__kernel_rem_pio2-%676-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%678-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%678-rev
+            (@__kernel_rem_pio2-%675-mem s675)
+            (@__kernel_rem_pio2-%677-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%677-rev @__kernel_rem_pio2-%677-rev @__kernel_rem_pio2-%677-loc @__kernel_rem_pio2-%677-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%679-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%679-rev
+            (@__kernel_rem_pio2-%675-mem s675)
+            (@__kernel_rem_pio2-%678-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%678-rev @__kernel_rem_pio2-%678-rev @__kernel_rem_pio2-%678-loc @__kernel_rem_pio2-%678-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%680-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%680-rev
+            (@__kernel_rem_pio2-%675-mem s675)
+            (@__kernel_rem_pio2-%679-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%679-rev @__kernel_rem_pio2-%679-rev @__kernel_rem_pio2-%679-loc @__kernel_rem_pio2-%679-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-m675.1-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-m675.1-rev
+            (@__kernel_rem_pio2-%675-mem s675)
+            (@__kernel_rem_pio2-%680-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%680-rev @__kernel_rem_pio2-%680-rev @__kernel_rem_pio2-%680-loc @__kernel_rem_pio2-%680-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%681-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%681-rev
+            (@__kernel_rem_pio2-m675.1-mem s675)
+            (@__kernel_rem_pio2-%680-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-m675.1-rev @__kernel_rem_pio2-m675.1-rev @__kernel_rem_pio2-m675.1-mem))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%682-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%682-rev
+            (@__kernel_rem_pio2-m675.1-mem s675)
+            (@__kernel_rem_pio2-%681-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%681-rev @__kernel_rem_pio2-%681-rev @__kernel_rem_pio2-%681-loc @__kernel_rem_pio2-%681-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%683-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%683-rev
+            (@__kernel_rem_pio2-m675.1-mem s675)
+            (@__kernel_rem_pio2-%682-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%682-rev @__kernel_rem_pio2-%682-rev @__kernel_rem_pio2-%682-loc @__kernel_rem_pio2-%682-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%684-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%684-rev
+            (@__kernel_rem_pio2-m675.1-mem s675)
+            (@__kernel_rem_pio2-%683-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%683-rev @__kernel_rem_pio2-%683-rev @__kernel_rem_pio2-%683-loc @__kernel_rem_pio2-%683-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%685-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%685-rev
+            (@__kernel_rem_pio2-m675.1-mem s675)
+            (@__kernel_rem_pio2-%684-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%684-rev @__kernel_rem_pio2-%684-rev @__kernel_rem_pio2-%684-loc @__kernel_rem_pio2-%684-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-m675.2-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-m675.2-rev
+            (@__kernel_rem_pio2-m675.1-mem s675)
+            (@__kernel_rem_pio2-%685-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%685-rev @__kernel_rem_pio2-%685-rev @__kernel_rem_pio2-%685-loc @__kernel_rem_pio2-%685-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%686-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%686-rev
+            (@__kernel_rem_pio2-m675.2-mem s675)
+            (@__kernel_rem_pio2-%685-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-m675.2-rev @__kernel_rem_pio2-m675.2-rev @__kernel_rem_pio2-m675.2-mem))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%687-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%687-rev
+            (@__kernel_rem_pio2-m675.2-mem s675)
+            (@__kernel_rem_pio2-%686-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%686-rev @__kernel_rem_pio2-%686-rev @__kernel_rem_pio2-%686-loc @__kernel_rem_pio2-%686-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%688-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%688-rev
+            (@__kernel_rem_pio2-m675.2-mem s675)
+            (@__kernel_rem_pio2-%687-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%687-rev @__kernel_rem_pio2-%687-rev @__kernel_rem_pio2-%687-loc @__kernel_rem_pio2-%687-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%689-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-%689-rev
+            (@__kernel_rem_pio2-m675.2-mem s675)
+            (@__kernel_rem_pio2-%688-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%688-rev @__kernel_rem_pio2-%688-rev @__kernel_rem_pio2-%688-loc @__kernel_rem_pio2-%688-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-m675.3-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-m675.3-rev
+            (@__kernel_rem_pio2-m675.2-mem s675)
+            (@__kernel_rem_pio2-%689-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-%689-rev @__kernel_rem_pio2-%689-rev @__kernel_rem_pio2-%689-loc @__kernel_rem_pio2-%689-val))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-succ675-rev
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (let ((s675 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ675-rev
+            (@__kernel_rem_pio2-m675.3-mem s675)
+            (@__kernel_rem_pio2-%689-loc s675)
+            (@__kernel_rem_pio2-%675-pred s675))))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-m675.3-rev @__kernel_rem_pio2-m675.3-rev @__kernel_rem_pio2-m675.3-mem))
+(defruled @__kernel_rem_pio2-%675-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%675-rev mem loc pred)
+         (@__kernel_rem_pio2-%675-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%675-expand-rev-as-@__kernel_rem_pio2-succ675-rev @__kernel_rem_pio2-succ675-rev @__kernel_rem_pio2-succ675-lab @__kernel_rem_pio2-%675-fwd))
+
 (defund @__kernel_rem_pio2-%675-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -9321,30 +15614,6 @@
     (succ '%690))
   (mv succ mem loc)))
 
-(defruled @__kernel_rem_pio2-%675-expand-bb
-  (equal (@__kernel_rem_pio2-%675-bb mem loc pred)
-         (@__kernel_rem_pio2-%675-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%675-bb @__kernel_rem_pio2-%675-rev
-    @__kernel_rem_pio2-%676-rev
-    @__kernel_rem_pio2-%677-rev
-    @__kernel_rem_pio2-%678-rev
-    @__kernel_rem_pio2-%679-rev
-    @__kernel_rem_pio2-%680-rev
-    @__kernel_rem_pio2-m675.1-rev
-    @__kernel_rem_pio2-%681-rev
-    @__kernel_rem_pio2-%682-rev
-    @__kernel_rem_pio2-%683-rev
-    @__kernel_rem_pio2-%684-rev
-    @__kernel_rem_pio2-%685-rev
-    @__kernel_rem_pio2-m675.2-rev
-    @__kernel_rem_pio2-%686-rev
-    @__kernel_rem_pio2-%687-rev
-    @__kernel_rem_pio2-%688-rev
-    @__kernel_rem_pio2-%689-rev
-    @__kernel_rem_pio2-m675.3-rev
-    @__kernel_rem_pio2-succ675-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_rem_pio2-%690-mem (s690)
   (car s690))
 (defund @__kernel_rem_pio2-%690-loc (s690)
@@ -9355,6 +15624,10 @@
   (declare (ignore s690))
   '%691)
 
+(defund @__kernel_rem_pio2-%690-fwd (mem loc pred)
+  (let ((s690 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ690-lab s690) (@__kernel_rem_pio2-%690-mem s690) (@__kernel_rem_pio2-%690-loc s690))))
+
 (defund @__kernel_rem_pio2-succ690-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%691 mem loc))
@@ -9362,18 +15635,24 @@
 (defund @__kernel_rem_pio2-%690-rev (mem loc pred)
   (@__kernel_rem_pio2-succ690-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%690-expand-rev-as-@__kernel_rem_pio2-succ690-rev
+  (equal (@__kernel_rem_pio2-%690-rev mem loc pred)
+         (let ((s690 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ690-rev
+            (@__kernel_rem_pio2-%690-mem s690)
+            (@__kernel_rem_pio2-%690-loc s690)
+            (@__kernel_rem_pio2-%690-pred s690))))
+  :enable (@__kernel_rem_pio2-%690-rev @__kernel_rem_pio2-%690-mem @__kernel_rem_pio2-%690-loc @__kernel_rem_pio2-%690-pred))
+(defruled @__kernel_rem_pio2-%690-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%690-rev mem loc pred)
+         (@__kernel_rem_pio2-%690-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%690-expand-rev-as-@__kernel_rem_pio2-succ690-rev @__kernel_rem_pio2-succ690-rev @__kernel_rem_pio2-succ690-lab @__kernel_rem_pio2-%690-fwd))
+
 (defund @__kernel_rem_pio2-%690-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%691))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%690-expand-bb
-  (equal (@__kernel_rem_pio2-%690-bb mem loc pred)
-         (@__kernel_rem_pio2-%690-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%690-bb @__kernel_rem_pio2-%690-rev
-    @__kernel_rem_pio2-succ690-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-%691-mem (s691)
   (car s691))
@@ -9393,6 +15672,10 @@
   (declare (ignore s691))
   'ret)
 
+(defund @__kernel_rem_pio2-%691-fwd (mem loc pred)
+  (let ((s691 (list mem loc pred)))
+    (mv (@__kernel_rem_pio2-succ691-lab s691) (@__kernel_rem_pio2-%691-mem s691) (@__kernel_rem_pio2-%693-loc s691))))
+
 (defund @__kernel_rem_pio2-succ691-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -9404,6 +15687,35 @@
 (defund @__kernel_rem_pio2-%691-rev (mem loc pred)
   (@__kernel_rem_pio2-%692-rev mem loc pred))
 
+(defruled @__kernel_rem_pio2-%691-expand-rev-as-@__kernel_rem_pio2-%692-rev
+  (equal (@__kernel_rem_pio2-%691-rev mem loc pred)
+         (let ((s691 (list mem loc pred)))
+           (@__kernel_rem_pio2-%692-rev
+            (@__kernel_rem_pio2-%691-mem s691)
+            (@__kernel_rem_pio2-%691-loc s691)
+            (@__kernel_rem_pio2-%691-pred s691))))
+  :enable (@__kernel_rem_pio2-%691-rev @__kernel_rem_pio2-%691-mem @__kernel_rem_pio2-%691-loc @__kernel_rem_pio2-%691-pred))
+(defruled @__kernel_rem_pio2-%691-expand-rev-as-@__kernel_rem_pio2-%693-rev
+  (equal (@__kernel_rem_pio2-%691-rev mem loc pred)
+         (let ((s691 (list mem loc pred)))
+           (@__kernel_rem_pio2-%693-rev
+            (@__kernel_rem_pio2-%691-mem s691)
+            (@__kernel_rem_pio2-%692-loc s691)
+            (@__kernel_rem_pio2-%691-pred s691))))
+  :enable (@__kernel_rem_pio2-%691-expand-rev-as-@__kernel_rem_pio2-%692-rev @__kernel_rem_pio2-%692-rev @__kernel_rem_pio2-%692-loc @__kernel_rem_pio2-%692-val))
+(defruled @__kernel_rem_pio2-%691-expand-rev-as-@__kernel_rem_pio2-succ691-rev
+  (equal (@__kernel_rem_pio2-%691-rev mem loc pred)
+         (let ((s691 (list mem loc pred)))
+           (@__kernel_rem_pio2-succ691-rev
+            (@__kernel_rem_pio2-%691-mem s691)
+            (@__kernel_rem_pio2-%693-loc s691)
+            (@__kernel_rem_pio2-%691-pred s691))))
+  :enable (@__kernel_rem_pio2-%691-expand-rev-as-@__kernel_rem_pio2-%693-rev @__kernel_rem_pio2-%693-rev @__kernel_rem_pio2-%693-loc @__kernel_rem_pio2-%693-val))
+(defruled @__kernel_rem_pio2-%691-expand-rev-as-fwd
+  (equal (@__kernel_rem_pio2-%691-rev mem loc pred)
+         (@__kernel_rem_pio2-%691-fwd mem loc pred))
+  :enable (@__kernel_rem_pio2-%691-expand-rev-as-@__kernel_rem_pio2-succ691-rev @__kernel_rem_pio2-succ691-rev @__kernel_rem_pio2-succ691-lab @__kernel_rem_pio2-%691-fwd))
+
 (defund @__kernel_rem_pio2-%691-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -9411,15 +15723,6 @@
     (loc (s '%693 (and-i32 (g '%692 loc) 7) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @__kernel_rem_pio2-%691-expand-bb
-  (equal (@__kernel_rem_pio2-%691-bb mem loc pred)
-         (@__kernel_rem_pio2-%691-rev mem loc pred))
-  :enable (@__kernel_rem_pio2-%691-bb @__kernel_rem_pio2-%691-rev
-    @__kernel_rem_pio2-%692-rev
-    @__kernel_rem_pio2-%693-rev
-    @__kernel_rem_pio2-succ691-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_rem_pio2-step (label mem loc pred)
   (case label

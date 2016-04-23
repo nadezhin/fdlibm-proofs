@@ -41,6 +41,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @hypot-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@hypot-succ0-lab s0) (@hypot-m0.2-mem s0) (@hypot-%5-loc s0))))
+
 (defund @hypot-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -62,6 +66,75 @@
 (defund @hypot-%0-rev (mem loc pred)
   (@hypot-%1-rev mem loc pred))
 
+(defruled @hypot-%0-expand-rev-as-@hypot-%1-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-%1-rev
+            (@hypot-%0-mem s0)
+            (@hypot-%0-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-rev @hypot-%0-mem @hypot-%0-loc @hypot-%0-pred))
+(defruled @hypot-%0-expand-rev-as-@hypot-%2-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-%2-rev
+            (@hypot-%1-mem s0)
+            (@hypot-%1-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-%1-rev @hypot-%1-rev @hypot-%1-mem @hypot-%1-loc))
+(defruled @hypot-%0-expand-rev-as-@hypot-m0.1-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-m0.1-rev
+            (@hypot-%2-mem s0)
+            (@hypot-%2-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-%2-rev @hypot-%2-rev @hypot-%2-mem @hypot-%2-loc))
+(defruled @hypot-%0-expand-rev-as-@hypot-m0.2-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-m0.2-rev
+            (@hypot-m0.1-mem s0)
+            (@hypot-%2-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-m0.1-rev @hypot-m0.1-rev @hypot-m0.1-mem))
+(defruled @hypot-%0-expand-rev-as-@hypot-%3-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-%3-rev
+            (@hypot-m0.2-mem s0)
+            (@hypot-%2-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-m0.2-rev @hypot-m0.2-rev @hypot-m0.2-mem))
+(defruled @hypot-%0-expand-rev-as-@hypot-%4-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-%4-rev
+            (@hypot-m0.2-mem s0)
+            (@hypot-%3-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-%3-rev @hypot-%3-rev @hypot-%3-loc @hypot-%3-val))
+(defruled @hypot-%0-expand-rev-as-@hypot-%5-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-%5-rev
+            (@hypot-m0.2-mem s0)
+            (@hypot-%4-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-%4-rev @hypot-%4-rev @hypot-%4-loc @hypot-%4-val))
+(defruled @hypot-%0-expand-rev-as-@hypot-succ0-rev
+  (equal (@hypot-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@hypot-succ0-rev
+            (@hypot-m0.2-mem s0)
+            (@hypot-%5-loc s0)
+            (@hypot-%0-pred s0))))
+  :enable (@hypot-%0-expand-rev-as-@hypot-%5-rev @hypot-%5-rev @hypot-%5-loc @hypot-%5-val))
+(defruled @hypot-%0-expand-rev-as-fwd
+  (equal (@hypot-%0-rev mem loc pred)
+         (@hypot-%0-fwd mem loc pred))
+  :enable (@hypot-%0-expand-rev-as-@hypot-succ0-rev @hypot-succ0-rev @hypot-succ0-lab @hypot-%0-fwd))
+
 (defund @hypot-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -76,20 +149,6 @@
     (loc (s '%5 (@__ieee754_hypot (g '%3 loc) (g '%4 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @hypot-%0-expand-bb
-  (equal (@hypot-%0-bb mem loc pred)
-         (@hypot-%0-rev mem loc pred))
-  :enable (@hypot-%0-bb @hypot-%0-rev
-    @hypot-%1-rev
-    @hypot-%2-rev
-    @hypot-m0.1-rev
-    @hypot-m0.2-rev
-    @hypot-%3-rev
-    @hypot-%4-rev
-    @hypot-%5-rev
-    @hypot-succ0-rev)
-  :disable s-diff-s)
 
 (defund @hypot-step (label mem loc pred)
   (case label

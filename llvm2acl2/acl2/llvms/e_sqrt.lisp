@@ -115,6 +115,10 @@
 (defund @__ieee754_sqrt-succ0-lab (s0)
   (case (g '%10 (@__ieee754_sqrt-%10-loc s0)) (-1 '%11) (0 '%17)))
 
+(defund @__ieee754_sqrt-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ0-lab s0) (@__ieee754_sqrt-m0.4-mem s0) (@__ieee754_sqrt-%10-loc s0))))
+
 (defund @__ieee754_sqrt-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%10 loc) (-1 '%11) (0 '%17)) mem loc))
@@ -176,6 +180,235 @@
 (defund @__ieee754_sqrt-%0-rev (mem loc pred)
   (@__ieee754_sqrt-%1-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%1-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%1-rev
+            (@__ieee754_sqrt-%0-mem s0)
+            (@__ieee754_sqrt-%0-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-rev @__ieee754_sqrt-%0-mem @__ieee754_sqrt-%0-loc @__ieee754_sqrt-%0-pred))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%2-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%2-rev
+            (@__ieee754_sqrt-%1-mem s0)
+            (@__ieee754_sqrt-%1-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%1-rev @__ieee754_sqrt-%1-rev @__ieee754_sqrt-%1-mem @__ieee754_sqrt-%1-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%z-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%z-rev
+            (@__ieee754_sqrt-%2-mem s0)
+            (@__ieee754_sqrt-%2-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%2-rev @__ieee754_sqrt-%2-rev @__ieee754_sqrt-%2-mem @__ieee754_sqrt-%2-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%sign-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%sign-rev
+            (@__ieee754_sqrt-%z-mem s0)
+            (@__ieee754_sqrt-%z-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%z-rev @__ieee754_sqrt-%z-rev @__ieee754_sqrt-%z-mem @__ieee754_sqrt-%z-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%r-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%r-rev
+            (@__ieee754_sqrt-%sign-mem s0)
+            (@__ieee754_sqrt-%sign-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%sign-rev @__ieee754_sqrt-%sign-rev @__ieee754_sqrt-%sign-mem @__ieee754_sqrt-%sign-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%t1-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%t1-rev
+            (@__ieee754_sqrt-%r-mem s0)
+            (@__ieee754_sqrt-%r-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%r-rev @__ieee754_sqrt-%r-rev @__ieee754_sqrt-%r-mem @__ieee754_sqrt-%r-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%s1-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%s1-rev
+            (@__ieee754_sqrt-%t1-mem s0)
+            (@__ieee754_sqrt-%t1-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%t1-rev @__ieee754_sqrt-%t1-rev @__ieee754_sqrt-%t1-mem @__ieee754_sqrt-%t1-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%ix1-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%ix1-rev
+            (@__ieee754_sqrt-%s1-mem s0)
+            (@__ieee754_sqrt-%s1-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%s1-rev @__ieee754_sqrt-%s1-rev @__ieee754_sqrt-%s1-mem @__ieee754_sqrt-%s1-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%q1-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%q1-rev
+            (@__ieee754_sqrt-%ix1-mem s0)
+            (@__ieee754_sqrt-%ix1-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%ix1-rev @__ieee754_sqrt-%ix1-rev @__ieee754_sqrt-%ix1-mem @__ieee754_sqrt-%ix1-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%ix0-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%ix0-rev
+            (@__ieee754_sqrt-%q1-mem s0)
+            (@__ieee754_sqrt-%q1-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%q1-rev @__ieee754_sqrt-%q1-rev @__ieee754_sqrt-%q1-mem @__ieee754_sqrt-%q1-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%s0-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%s0-rev
+            (@__ieee754_sqrt-%ix0-mem s0)
+            (@__ieee754_sqrt-%ix0-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%ix0-rev @__ieee754_sqrt-%ix0-rev @__ieee754_sqrt-%ix0-mem @__ieee754_sqrt-%ix0-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%q-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%q-rev
+            (@__ieee754_sqrt-%s0-mem s0)
+            (@__ieee754_sqrt-%s0-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%s0-rev @__ieee754_sqrt-%s0-rev @__ieee754_sqrt-%s0-mem @__ieee754_sqrt-%s0-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%m-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%m-rev
+            (@__ieee754_sqrt-%q-mem s0)
+            (@__ieee754_sqrt-%q-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%q-rev @__ieee754_sqrt-%q-rev @__ieee754_sqrt-%q-mem @__ieee754_sqrt-%q-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%t-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%t-rev
+            (@__ieee754_sqrt-%m-mem s0)
+            (@__ieee754_sqrt-%m-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%m-rev @__ieee754_sqrt-%m-rev @__ieee754_sqrt-%m-mem @__ieee754_sqrt-%m-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%i-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%i-rev
+            (@__ieee754_sqrt-%t-mem s0)
+            (@__ieee754_sqrt-%t-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%t-rev @__ieee754_sqrt-%t-rev @__ieee754_sqrt-%t-mem @__ieee754_sqrt-%t-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.1-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-m0.1-rev
+            (@__ieee754_sqrt-%i-mem s0)
+            (@__ieee754_sqrt-%i-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%i-rev @__ieee754_sqrt-%i-rev @__ieee754_sqrt-%i-mem @__ieee754_sqrt-%i-loc))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.2-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-m0.2-rev
+            (@__ieee754_sqrt-m0.1-mem s0)
+            (@__ieee754_sqrt-%i-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.1-rev @__ieee754_sqrt-m0.1-rev @__ieee754_sqrt-m0.1-mem))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%3-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%3-rev
+            (@__ieee754_sqrt-m0.2-mem s0)
+            (@__ieee754_sqrt-%i-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.2-rev @__ieee754_sqrt-m0.2-rev @__ieee754_sqrt-m0.2-mem))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%4-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%4-rev
+            (@__ieee754_sqrt-m0.2-mem s0)
+            (@__ieee754_sqrt-%3-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%3-rev @__ieee754_sqrt-%3-rev @__ieee754_sqrt-%3-loc @__ieee754_sqrt-%3-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%5-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%5-rev
+            (@__ieee754_sqrt-m0.2-mem s0)
+            (@__ieee754_sqrt-%4-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%4-rev @__ieee754_sqrt-%4-rev @__ieee754_sqrt-%4-loc @__ieee754_sqrt-%4-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.3-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-m0.3-rev
+            (@__ieee754_sqrt-m0.2-mem s0)
+            (@__ieee754_sqrt-%5-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%5-rev @__ieee754_sqrt-%5-rev @__ieee754_sqrt-%5-loc @__ieee754_sqrt-%5-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%6-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%6-rev
+            (@__ieee754_sqrt-m0.3-mem s0)
+            (@__ieee754_sqrt-%5-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.3-rev @__ieee754_sqrt-m0.3-rev @__ieee754_sqrt-m0.3-mem))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%7-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%7-rev
+            (@__ieee754_sqrt-m0.3-mem s0)
+            (@__ieee754_sqrt-%6-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%6-rev @__ieee754_sqrt-%6-rev @__ieee754_sqrt-%6-loc @__ieee754_sqrt-%6-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.4-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-m0.4-rev
+            (@__ieee754_sqrt-m0.3-mem s0)
+            (@__ieee754_sqrt-%7-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%7-rev @__ieee754_sqrt-%7-rev @__ieee754_sqrt-%7-loc @__ieee754_sqrt-%7-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%8-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%8-rev
+            (@__ieee754_sqrt-m0.4-mem s0)
+            (@__ieee754_sqrt-%7-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-m0.4-rev @__ieee754_sqrt-m0.4-rev @__ieee754_sqrt-m0.4-mem))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%9-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%9-rev
+            (@__ieee754_sqrt-m0.4-mem s0)
+            (@__ieee754_sqrt-%8-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%8-rev @__ieee754_sqrt-%8-rev @__ieee754_sqrt-%8-loc @__ieee754_sqrt-%8-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%10-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-%10-rev
+            (@__ieee754_sqrt-m0.4-mem s0)
+            (@__ieee754_sqrt-%9-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%9-rev @__ieee754_sqrt-%9-rev @__ieee754_sqrt-%9-loc @__ieee754_sqrt-%9-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-succ0-rev
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__ieee754_sqrt-succ0-rev
+            (@__ieee754_sqrt-m0.4-mem s0)
+            (@__ieee754_sqrt-%10-loc s0)
+            (@__ieee754_sqrt-%0-pred s0))))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-%10-rev @__ieee754_sqrt-%10-rev @__ieee754_sqrt-%10-loc @__ieee754_sqrt-%10-val))
+(defruled @__ieee754_sqrt-%0-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%0-rev mem loc pred)
+         (@__ieee754_sqrt-%0-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%0-expand-rev-as-@__ieee754_sqrt-succ0-rev @__ieee754_sqrt-succ0-rev @__ieee754_sqrt-succ0-lab @__ieee754_sqrt-%0-fwd))
+
 (defund @__ieee754_sqrt-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -224,40 +457,6 @@
     (succ (case (g '%10 loc) (-1 '%11) (0 '%17))))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%0-expand-bb
-  (equal (@__ieee754_sqrt-%0-bb mem loc pred)
-         (@__ieee754_sqrt-%0-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%0-bb @__ieee754_sqrt-%0-rev
-    @__ieee754_sqrt-%1-rev
-    @__ieee754_sqrt-%2-rev
-    @__ieee754_sqrt-%z-rev
-    @__ieee754_sqrt-%sign-rev
-    @__ieee754_sqrt-%r-rev
-    @__ieee754_sqrt-%t1-rev
-    @__ieee754_sqrt-%s1-rev
-    @__ieee754_sqrt-%ix1-rev
-    @__ieee754_sqrt-%q1-rev
-    @__ieee754_sqrt-%ix0-rev
-    @__ieee754_sqrt-%s0-rev
-    @__ieee754_sqrt-%q-rev
-    @__ieee754_sqrt-%m-rev
-    @__ieee754_sqrt-%t-rev
-    @__ieee754_sqrt-%i-rev
-    @__ieee754_sqrt-m0.1-rev
-    @__ieee754_sqrt-m0.2-rev
-    @__ieee754_sqrt-%3-rev
-    @__ieee754_sqrt-%4-rev
-    @__ieee754_sqrt-%5-rev
-    @__ieee754_sqrt-m0.3-rev
-    @__ieee754_sqrt-%6-rev
-    @__ieee754_sqrt-%7-rev
-    @__ieee754_sqrt-m0.4-rev
-    @__ieee754_sqrt-%8-rev
-    @__ieee754_sqrt-%9-rev
-    @__ieee754_sqrt-%10-rev
-    @__ieee754_sqrt-succ0-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%11-mem (s11)
   (car s11))
 (defund @__ieee754_sqrt-%11-loc (s11)
@@ -290,6 +489,10 @@
   (declare (ignore s11))
   '%282)
 
+(defund @__ieee754_sqrt-%11-fwd (mem loc pred)
+  (let ((s11 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ11-lab s11) (@__ieee754_sqrt-m11.1-mem s11) (@__ieee754_sqrt-%16-loc s11))))
+
 (defund @__ieee754_sqrt-succ11-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%282 mem loc))
@@ -309,6 +512,67 @@
 (defund @__ieee754_sqrt-%11-rev (mem loc pred)
   (@__ieee754_sqrt-%12-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%12-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-%12-rev
+            (@__ieee754_sqrt-%11-mem s11)
+            (@__ieee754_sqrt-%11-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-rev @__ieee754_sqrt-%11-mem @__ieee754_sqrt-%11-loc @__ieee754_sqrt-%11-pred))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%13-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-%13-rev
+            (@__ieee754_sqrt-%11-mem s11)
+            (@__ieee754_sqrt-%12-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%12-rev @__ieee754_sqrt-%12-rev @__ieee754_sqrt-%12-loc @__ieee754_sqrt-%12-val))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%14-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-%14-rev
+            (@__ieee754_sqrt-%11-mem s11)
+            (@__ieee754_sqrt-%13-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%13-rev @__ieee754_sqrt-%13-rev @__ieee754_sqrt-%13-loc @__ieee754_sqrt-%13-val))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%15-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-%15-rev
+            (@__ieee754_sqrt-%11-mem s11)
+            (@__ieee754_sqrt-%14-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%14-rev @__ieee754_sqrt-%14-rev @__ieee754_sqrt-%14-loc @__ieee754_sqrt-%14-val))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%16-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-%16-rev
+            (@__ieee754_sqrt-%11-mem s11)
+            (@__ieee754_sqrt-%15-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%15-rev @__ieee754_sqrt-%15-rev @__ieee754_sqrt-%15-loc @__ieee754_sqrt-%15-val))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-m11.1-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-m11.1-rev
+            (@__ieee754_sqrt-%11-mem s11)
+            (@__ieee754_sqrt-%16-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-%16-rev @__ieee754_sqrt-%16-rev @__ieee754_sqrt-%16-loc @__ieee754_sqrt-%16-val))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-succ11-rev
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (let ((s11 (list mem loc pred)))
+           (@__ieee754_sqrt-succ11-rev
+            (@__ieee754_sqrt-m11.1-mem s11)
+            (@__ieee754_sqrt-%16-loc s11)
+            (@__ieee754_sqrt-%11-pred s11))))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-m11.1-rev @__ieee754_sqrt-m11.1-rev @__ieee754_sqrt-m11.1-mem))
+(defruled @__ieee754_sqrt-%11-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%11-rev mem loc pred)
+         (@__ieee754_sqrt-%11-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%11-expand-rev-as-@__ieee754_sqrt-succ11-rev @__ieee754_sqrt-succ11-rev @__ieee754_sqrt-succ11-lab @__ieee754_sqrt-%11-fwd))
+
 (defund @__ieee754_sqrt-%11-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -320,19 +584,6 @@
     (mem (store-double (g '%16 loc) (g '%1 loc) mem))
     (succ '%282))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%11-expand-bb
-  (equal (@__ieee754_sqrt-%11-bb mem loc pred)
-         (@__ieee754_sqrt-%11-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%11-bb @__ieee754_sqrt-%11-rev
-    @__ieee754_sqrt-%12-rev
-    @__ieee754_sqrt-%13-rev
-    @__ieee754_sqrt-%14-rev
-    @__ieee754_sqrt-%15-rev
-    @__ieee754_sqrt-%16-rev
-    @__ieee754_sqrt-m11.1-rev
-    @__ieee754_sqrt-succ11-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%17-mem (s17)
   (car s17))
@@ -351,6 +602,10 @@
 (defund @__ieee754_sqrt-succ17-lab (s17)
   (case (g '%19 (@__ieee754_sqrt-%19-loc s17)) (-1 '%20) (0 '%43)))
 
+(defund @__ieee754_sqrt-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ17-lab s17) (@__ieee754_sqrt-%17-mem s17) (@__ieee754_sqrt-%19-loc s17))))
+
 (defund @__ieee754_sqrt-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%19 loc) (-1 '%20) (0 '%43)) mem loc))
@@ -362,6 +617,35 @@
 (defund @__ieee754_sqrt-%17-rev (mem loc pred)
   (@__ieee754_sqrt-%18-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%17-expand-rev-as-@__ieee754_sqrt-%18-rev
+  (equal (@__ieee754_sqrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@__ieee754_sqrt-%18-rev
+            (@__ieee754_sqrt-%17-mem s17)
+            (@__ieee754_sqrt-%17-loc s17)
+            (@__ieee754_sqrt-%17-pred s17))))
+  :enable (@__ieee754_sqrt-%17-rev @__ieee754_sqrt-%17-mem @__ieee754_sqrt-%17-loc @__ieee754_sqrt-%17-pred))
+(defruled @__ieee754_sqrt-%17-expand-rev-as-@__ieee754_sqrt-%19-rev
+  (equal (@__ieee754_sqrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@__ieee754_sqrt-%19-rev
+            (@__ieee754_sqrt-%17-mem s17)
+            (@__ieee754_sqrt-%18-loc s17)
+            (@__ieee754_sqrt-%17-pred s17))))
+  :enable (@__ieee754_sqrt-%17-expand-rev-as-@__ieee754_sqrt-%18-rev @__ieee754_sqrt-%18-rev @__ieee754_sqrt-%18-loc @__ieee754_sqrt-%18-val))
+(defruled @__ieee754_sqrt-%17-expand-rev-as-@__ieee754_sqrt-succ17-rev
+  (equal (@__ieee754_sqrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@__ieee754_sqrt-succ17-rev
+            (@__ieee754_sqrt-%17-mem s17)
+            (@__ieee754_sqrt-%19-loc s17)
+            (@__ieee754_sqrt-%17-pred s17))))
+  :enable (@__ieee754_sqrt-%17-expand-rev-as-@__ieee754_sqrt-%19-rev @__ieee754_sqrt-%19-rev @__ieee754_sqrt-%19-loc @__ieee754_sqrt-%19-val))
+(defruled @__ieee754_sqrt-%17-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%17-rev mem loc pred)
+         (@__ieee754_sqrt-%17-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%17-expand-rev-as-@__ieee754_sqrt-succ17-rev @__ieee754_sqrt-succ17-rev @__ieee754_sqrt-succ17-lab @__ieee754_sqrt-%17-fwd))
+
 (defund @__ieee754_sqrt-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -369,15 +653,6 @@
     (loc (s '%19 (icmp-sle-i32 (g '%18 loc) 0) loc))
     (succ (case (g '%19 loc) (-1 '%20) (0 '%43))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%17-expand-bb
-  (equal (@__ieee754_sqrt-%17-bb mem loc pred)
-         (@__ieee754_sqrt-%17-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%17-bb @__ieee754_sqrt-%17-rev
-    @__ieee754_sqrt-%18-rev
-    @__ieee754_sqrt-%19-rev
-    @__ieee754_sqrt-succ17-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%20-mem (s20)
   (car s20))
@@ -416,6 +691,10 @@
 (defund @__ieee754_sqrt-succ20-lab (s20)
   (case (g '%27 (@__ieee754_sqrt-%27-loc s20)) (-1 '%28) (0 '%30)))
 
+(defund @__ieee754_sqrt-%20-fwd (mem loc pred)
+  (let ((s20 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ20-lab s20) (@__ieee754_sqrt-%20-mem s20) (@__ieee754_sqrt-%27-loc s20))))
+
 (defund @__ieee754_sqrt-succ20-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%27 loc) (-1 '%28) (0 '%30)) mem loc))
@@ -437,6 +716,75 @@
 (defund @__ieee754_sqrt-%20-rev (mem loc pred)
   (@__ieee754_sqrt-%21-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%21-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%21-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%20-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-rev @__ieee754_sqrt-%20-mem @__ieee754_sqrt-%20-loc @__ieee754_sqrt-%20-pred))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%22-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%22-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%21-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%21-rev @__ieee754_sqrt-%21-rev @__ieee754_sqrt-%21-loc @__ieee754_sqrt-%21-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%23-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%23-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%22-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%22-rev @__ieee754_sqrt-%22-rev @__ieee754_sqrt-%22-loc @__ieee754_sqrt-%22-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%24-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%24-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%23-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%23-rev @__ieee754_sqrt-%23-rev @__ieee754_sqrt-%23-loc @__ieee754_sqrt-%23-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%25-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%25-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%24-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%24-rev @__ieee754_sqrt-%24-rev @__ieee754_sqrt-%24-loc @__ieee754_sqrt-%24-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%26-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%26-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%25-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%25-rev @__ieee754_sqrt-%25-rev @__ieee754_sqrt-%25-loc @__ieee754_sqrt-%25-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%27-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-%27-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%26-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%26-rev @__ieee754_sqrt-%26-rev @__ieee754_sqrt-%26-loc @__ieee754_sqrt-%26-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-succ20-rev
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@__ieee754_sqrt-succ20-rev
+            (@__ieee754_sqrt-%20-mem s20)
+            (@__ieee754_sqrt-%27-loc s20)
+            (@__ieee754_sqrt-%20-pred s20))))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-%27-rev @__ieee754_sqrt-%27-rev @__ieee754_sqrt-%27-loc @__ieee754_sqrt-%27-val))
+(defruled @__ieee754_sqrt-%20-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%20-rev mem loc pred)
+         (@__ieee754_sqrt-%20-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%20-expand-rev-as-@__ieee754_sqrt-succ20-rev @__ieee754_sqrt-succ20-rev @__ieee754_sqrt-succ20-lab @__ieee754_sqrt-%20-fwd))
+
 (defund @__ieee754_sqrt-%20-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -449,20 +797,6 @@
     (loc (s '%27 (icmp-eq-i32 (g '%26 loc) 0) loc))
     (succ (case (g '%27 loc) (-1 '%28) (0 '%30))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%20-expand-bb
-  (equal (@__ieee754_sqrt-%20-bb mem loc pred)
-         (@__ieee754_sqrt-%20-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%20-bb @__ieee754_sqrt-%20-rev
-    @__ieee754_sqrt-%21-rev
-    @__ieee754_sqrt-%22-rev
-    @__ieee754_sqrt-%23-rev
-    @__ieee754_sqrt-%24-rev
-    @__ieee754_sqrt-%25-rev
-    @__ieee754_sqrt-%26-rev
-    @__ieee754_sqrt-%27-rev
-    @__ieee754_sqrt-succ20-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%28-mem (s28)
   (car s28))
@@ -480,6 +814,10 @@
   (declare (ignore s28))
   '%282)
 
+(defund @__ieee754_sqrt-%28-fwd (mem loc pred)
+  (let ((s28 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ28-lab s28) (@__ieee754_sqrt-m28.1-mem s28) (@__ieee754_sqrt-%29-loc s28))))
+
 (defund @__ieee754_sqrt-succ28-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%282 mem loc))
@@ -491,6 +829,35 @@
 (defund @__ieee754_sqrt-%28-rev (mem loc pred)
   (@__ieee754_sqrt-%29-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%28-expand-rev-as-@__ieee754_sqrt-%29-rev
+  (equal (@__ieee754_sqrt-%28-rev mem loc pred)
+         (let ((s28 (list mem loc pred)))
+           (@__ieee754_sqrt-%29-rev
+            (@__ieee754_sqrt-%28-mem s28)
+            (@__ieee754_sqrt-%28-loc s28)
+            (@__ieee754_sqrt-%28-pred s28))))
+  :enable (@__ieee754_sqrt-%28-rev @__ieee754_sqrt-%28-mem @__ieee754_sqrt-%28-loc @__ieee754_sqrt-%28-pred))
+(defruled @__ieee754_sqrt-%28-expand-rev-as-@__ieee754_sqrt-m28.1-rev
+  (equal (@__ieee754_sqrt-%28-rev mem loc pred)
+         (let ((s28 (list mem loc pred)))
+           (@__ieee754_sqrt-m28.1-rev
+            (@__ieee754_sqrt-%28-mem s28)
+            (@__ieee754_sqrt-%29-loc s28)
+            (@__ieee754_sqrt-%28-pred s28))))
+  :enable (@__ieee754_sqrt-%28-expand-rev-as-@__ieee754_sqrt-%29-rev @__ieee754_sqrt-%29-rev @__ieee754_sqrt-%29-loc @__ieee754_sqrt-%29-val))
+(defruled @__ieee754_sqrt-%28-expand-rev-as-@__ieee754_sqrt-succ28-rev
+  (equal (@__ieee754_sqrt-%28-rev mem loc pred)
+         (let ((s28 (list mem loc pred)))
+           (@__ieee754_sqrt-succ28-rev
+            (@__ieee754_sqrt-m28.1-mem s28)
+            (@__ieee754_sqrt-%29-loc s28)
+            (@__ieee754_sqrt-%28-pred s28))))
+  :enable (@__ieee754_sqrt-%28-expand-rev-as-@__ieee754_sqrt-m28.1-rev @__ieee754_sqrt-m28.1-rev @__ieee754_sqrt-m28.1-mem))
+(defruled @__ieee754_sqrt-%28-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%28-rev mem loc pred)
+         (@__ieee754_sqrt-%28-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%28-expand-rev-as-@__ieee754_sqrt-succ28-rev @__ieee754_sqrt-succ28-rev @__ieee754_sqrt-succ28-lab @__ieee754_sqrt-%28-fwd))
+
 (defund @__ieee754_sqrt-%28-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -498,15 +865,6 @@
     (mem (store-double (g '%29 loc) (g '%1 loc) mem))
     (succ '%282))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%28-expand-bb
-  (equal (@__ieee754_sqrt-%28-bb mem loc pred)
-         (@__ieee754_sqrt-%28-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%28-bb @__ieee754_sqrt-%28-rev
-    @__ieee754_sqrt-%29-rev
-    @__ieee754_sqrt-m28.1-rev
-    @__ieee754_sqrt-succ28-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%30-mem (s30)
   (car s30))
@@ -525,6 +883,10 @@
 (defund @__ieee754_sqrt-succ30-lab (s30)
   (case (g '%32 (@__ieee754_sqrt-%32-loc s30)) (-1 '%33) (0 '%41)))
 
+(defund @__ieee754_sqrt-%30-fwd (mem loc pred)
+  (let ((s30 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ30-lab s30) (@__ieee754_sqrt-%30-mem s30) (@__ieee754_sqrt-%32-loc s30))))
+
 (defund @__ieee754_sqrt-succ30-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%32 loc) (-1 '%33) (0 '%41)) mem loc))
@@ -536,6 +898,35 @@
 (defund @__ieee754_sqrt-%30-rev (mem loc pred)
   (@__ieee754_sqrt-%31-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%30-expand-rev-as-@__ieee754_sqrt-%31-rev
+  (equal (@__ieee754_sqrt-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_sqrt-%31-rev
+            (@__ieee754_sqrt-%30-mem s30)
+            (@__ieee754_sqrt-%30-loc s30)
+            (@__ieee754_sqrt-%30-pred s30))))
+  :enable (@__ieee754_sqrt-%30-rev @__ieee754_sqrt-%30-mem @__ieee754_sqrt-%30-loc @__ieee754_sqrt-%30-pred))
+(defruled @__ieee754_sqrt-%30-expand-rev-as-@__ieee754_sqrt-%32-rev
+  (equal (@__ieee754_sqrt-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_sqrt-%32-rev
+            (@__ieee754_sqrt-%30-mem s30)
+            (@__ieee754_sqrt-%31-loc s30)
+            (@__ieee754_sqrt-%30-pred s30))))
+  :enable (@__ieee754_sqrt-%30-expand-rev-as-@__ieee754_sqrt-%31-rev @__ieee754_sqrt-%31-rev @__ieee754_sqrt-%31-loc @__ieee754_sqrt-%31-val))
+(defruled @__ieee754_sqrt-%30-expand-rev-as-@__ieee754_sqrt-succ30-rev
+  (equal (@__ieee754_sqrt-%30-rev mem loc pred)
+         (let ((s30 (list mem loc pred)))
+           (@__ieee754_sqrt-succ30-rev
+            (@__ieee754_sqrt-%30-mem s30)
+            (@__ieee754_sqrt-%32-loc s30)
+            (@__ieee754_sqrt-%30-pred s30))))
+  :enable (@__ieee754_sqrt-%30-expand-rev-as-@__ieee754_sqrt-%32-rev @__ieee754_sqrt-%32-rev @__ieee754_sqrt-%32-loc @__ieee754_sqrt-%32-val))
+(defruled @__ieee754_sqrt-%30-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%30-rev mem loc pred)
+         (@__ieee754_sqrt-%30-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%30-expand-rev-as-@__ieee754_sqrt-succ30-rev @__ieee754_sqrt-succ30-rev @__ieee754_sqrt-succ30-lab @__ieee754_sqrt-%30-fwd))
+
 (defund @__ieee754_sqrt-%30-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -543,15 +934,6 @@
     (loc (s '%32 (icmp-slt-i32 (g '%31 loc) 0) loc))
     (succ (case (g '%32 loc) (-1 '%33) (0 '%41))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%30-expand-bb
-  (equal (@__ieee754_sqrt-%30-bb mem loc pred)
-         (@__ieee754_sqrt-%30-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%30-bb @__ieee754_sqrt-%30-rev
-    @__ieee754_sqrt-%31-rev
-    @__ieee754_sqrt-%32-rev
-    @__ieee754_sqrt-succ30-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%33-mem (s33)
   (car s33))
@@ -593,6 +975,10 @@
   (declare (ignore s33))
   '%282)
 
+(defund @__ieee754_sqrt-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ33-lab s33) (@__ieee754_sqrt-m33.1-mem s33) (@__ieee754_sqrt-%40-loc s33))))
+
 (defund @__ieee754_sqrt-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%282 mem loc))
@@ -616,6 +1002,83 @@
 (defund @__ieee754_sqrt-%33-rev (mem loc pred)
   (@__ieee754_sqrt-%34-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%34-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%34-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%33-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-rev @__ieee754_sqrt-%33-mem @__ieee754_sqrt-%33-loc @__ieee754_sqrt-%33-pred))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%35-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%35-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%34-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%34-rev @__ieee754_sqrt-%34-rev @__ieee754_sqrt-%34-loc @__ieee754_sqrt-%34-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%36-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%36-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%35-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%35-rev @__ieee754_sqrt-%35-rev @__ieee754_sqrt-%35-loc @__ieee754_sqrt-%35-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%37-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%37-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%36-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%36-rev @__ieee754_sqrt-%36-rev @__ieee754_sqrt-%36-loc @__ieee754_sqrt-%36-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%38-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%38-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%37-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%37-rev @__ieee754_sqrt-%37-rev @__ieee754_sqrt-%37-loc @__ieee754_sqrt-%37-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%39-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%39-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%38-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%38-rev @__ieee754_sqrt-%38-rev @__ieee754_sqrt-%38-loc @__ieee754_sqrt-%38-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%40-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-%40-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%39-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%39-rev @__ieee754_sqrt-%39-rev @__ieee754_sqrt-%39-loc @__ieee754_sqrt-%39-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-m33.1-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-m33.1-rev
+            (@__ieee754_sqrt-%33-mem s33)
+            (@__ieee754_sqrt-%40-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-%40-rev @__ieee754_sqrt-%40-rev @__ieee754_sqrt-%40-loc @__ieee754_sqrt-%40-val))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-succ33-rev
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@__ieee754_sqrt-succ33-rev
+            (@__ieee754_sqrt-m33.1-mem s33)
+            (@__ieee754_sqrt-%40-loc s33)
+            (@__ieee754_sqrt-%33-pred s33))))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-m33.1-rev @__ieee754_sqrt-m33.1-rev @__ieee754_sqrt-m33.1-mem))
+(defruled @__ieee754_sqrt-%33-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%33-rev mem loc pred)
+         (@__ieee754_sqrt-%33-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%33-expand-rev-as-@__ieee754_sqrt-succ33-rev @__ieee754_sqrt-succ33-rev @__ieee754_sqrt-succ33-lab @__ieee754_sqrt-%33-fwd))
+
 (defund @__ieee754_sqrt-%33-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -630,21 +1093,6 @@
     (succ '%282))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%33-expand-bb
-  (equal (@__ieee754_sqrt-%33-bb mem loc pred)
-         (@__ieee754_sqrt-%33-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%33-bb @__ieee754_sqrt-%33-rev
-    @__ieee754_sqrt-%34-rev
-    @__ieee754_sqrt-%35-rev
-    @__ieee754_sqrt-%36-rev
-    @__ieee754_sqrt-%37-rev
-    @__ieee754_sqrt-%38-rev
-    @__ieee754_sqrt-%39-rev
-    @__ieee754_sqrt-%40-rev
-    @__ieee754_sqrt-m33.1-rev
-    @__ieee754_sqrt-succ33-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%41-mem (s41)
   (car s41))
 (defund @__ieee754_sqrt-%41-loc (s41)
@@ -655,6 +1103,10 @@
   (declare (ignore s41))
   '%42)
 
+(defund @__ieee754_sqrt-%41-fwd (mem loc pred)
+  (let ((s41 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ41-lab s41) (@__ieee754_sqrt-%41-mem s41) (@__ieee754_sqrt-%41-loc s41))))
+
 (defund @__ieee754_sqrt-succ41-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%42 mem loc))
@@ -662,18 +1114,24 @@
 (defund @__ieee754_sqrt-%41-rev (mem loc pred)
   (@__ieee754_sqrt-succ41-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%41-expand-rev-as-@__ieee754_sqrt-succ41-rev
+  (equal (@__ieee754_sqrt-%41-rev mem loc pred)
+         (let ((s41 (list mem loc pred)))
+           (@__ieee754_sqrt-succ41-rev
+            (@__ieee754_sqrt-%41-mem s41)
+            (@__ieee754_sqrt-%41-loc s41)
+            (@__ieee754_sqrt-%41-pred s41))))
+  :enable (@__ieee754_sqrt-%41-rev @__ieee754_sqrt-%41-mem @__ieee754_sqrt-%41-loc @__ieee754_sqrt-%41-pred))
+(defruled @__ieee754_sqrt-%41-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%41-rev mem loc pred)
+         (@__ieee754_sqrt-%41-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%41-expand-rev-as-@__ieee754_sqrt-succ41-rev @__ieee754_sqrt-succ41-rev @__ieee754_sqrt-succ41-lab @__ieee754_sqrt-%41-fwd))
+
 (defund @__ieee754_sqrt-%41-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%42))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%41-expand-bb
-  (equal (@__ieee754_sqrt-%41-bb mem loc pred)
-         (@__ieee754_sqrt-%41-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%41-bb @__ieee754_sqrt-%41-rev
-    @__ieee754_sqrt-succ41-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%42-mem (s42)
   (car s42))
@@ -685,6 +1143,10 @@
   (declare (ignore s42))
   '%43)
 
+(defund @__ieee754_sqrt-%42-fwd (mem loc pred)
+  (let ((s42 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ42-lab s42) (@__ieee754_sqrt-%42-mem s42) (@__ieee754_sqrt-%42-loc s42))))
+
 (defund @__ieee754_sqrt-succ42-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%43 mem loc))
@@ -692,18 +1154,24 @@
 (defund @__ieee754_sqrt-%42-rev (mem loc pred)
   (@__ieee754_sqrt-succ42-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%42-expand-rev-as-@__ieee754_sqrt-succ42-rev
+  (equal (@__ieee754_sqrt-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@__ieee754_sqrt-succ42-rev
+            (@__ieee754_sqrt-%42-mem s42)
+            (@__ieee754_sqrt-%42-loc s42)
+            (@__ieee754_sqrt-%42-pred s42))))
+  :enable (@__ieee754_sqrt-%42-rev @__ieee754_sqrt-%42-mem @__ieee754_sqrt-%42-loc @__ieee754_sqrt-%42-pred))
+(defruled @__ieee754_sqrt-%42-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%42-rev mem loc pred)
+         (@__ieee754_sqrt-%42-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%42-expand-rev-as-@__ieee754_sqrt-succ42-rev @__ieee754_sqrt-succ42-rev @__ieee754_sqrt-succ42-lab @__ieee754_sqrt-%42-fwd))
+
 (defund @__ieee754_sqrt-%42-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%43))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%42-expand-bb
-  (equal (@__ieee754_sqrt-%42-bb mem loc pred)
-         (@__ieee754_sqrt-%42-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%42-bb @__ieee754_sqrt-%42-rev
-    @__ieee754_sqrt-succ42-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%43-mem (s43)
   (car s43))
@@ -732,6 +1200,10 @@
 (defund @__ieee754_sqrt-succ43-lab (s43)
   (case (g '%47 (@__ieee754_sqrt-%47-loc s43)) (-1 '%48) (0 '%86)))
 
+(defund @__ieee754_sqrt-%43-fwd (mem loc pred)
+  (let ((s43 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ43-lab s43) (@__ieee754_sqrt-m43.1-mem s43) (@__ieee754_sqrt-%47-loc s43))))
+
 (defund @__ieee754_sqrt-succ43-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%47 loc) (-1 '%48) (0 '%86)) mem loc))
@@ -749,6 +1221,59 @@
 (defund @__ieee754_sqrt-%43-rev (mem loc pred)
   (@__ieee754_sqrt-%44-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%44-rev
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_sqrt-%44-rev
+            (@__ieee754_sqrt-%43-mem s43)
+            (@__ieee754_sqrt-%43-loc s43)
+            (@__ieee754_sqrt-%43-pred s43))))
+  :enable (@__ieee754_sqrt-%43-rev @__ieee754_sqrt-%43-mem @__ieee754_sqrt-%43-loc @__ieee754_sqrt-%43-pred))
+(defruled @__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%45-rev
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_sqrt-%45-rev
+            (@__ieee754_sqrt-%43-mem s43)
+            (@__ieee754_sqrt-%44-loc s43)
+            (@__ieee754_sqrt-%43-pred s43))))
+  :enable (@__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%44-rev @__ieee754_sqrt-%44-rev @__ieee754_sqrt-%44-loc @__ieee754_sqrt-%44-val))
+(defruled @__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-m43.1-rev
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_sqrt-m43.1-rev
+            (@__ieee754_sqrt-%43-mem s43)
+            (@__ieee754_sqrt-%45-loc s43)
+            (@__ieee754_sqrt-%43-pred s43))))
+  :enable (@__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%45-rev @__ieee754_sqrt-%45-rev @__ieee754_sqrt-%45-loc @__ieee754_sqrt-%45-val))
+(defruled @__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%46-rev
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_sqrt-%46-rev
+            (@__ieee754_sqrt-m43.1-mem s43)
+            (@__ieee754_sqrt-%45-loc s43)
+            (@__ieee754_sqrt-%43-pred s43))))
+  :enable (@__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-m43.1-rev @__ieee754_sqrt-m43.1-rev @__ieee754_sqrt-m43.1-mem))
+(defruled @__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%47-rev
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_sqrt-%47-rev
+            (@__ieee754_sqrt-m43.1-mem s43)
+            (@__ieee754_sqrt-%46-loc s43)
+            (@__ieee754_sqrt-%43-pred s43))))
+  :enable (@__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%46-rev @__ieee754_sqrt-%46-rev @__ieee754_sqrt-%46-loc @__ieee754_sqrt-%46-val))
+(defruled @__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-succ43-rev
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (let ((s43 (list mem loc pred)))
+           (@__ieee754_sqrt-succ43-rev
+            (@__ieee754_sqrt-m43.1-mem s43)
+            (@__ieee754_sqrt-%47-loc s43)
+            (@__ieee754_sqrt-%43-pred s43))))
+  :enable (@__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-%47-rev @__ieee754_sqrt-%47-rev @__ieee754_sqrt-%47-loc @__ieee754_sqrt-%47-val))
+(defruled @__ieee754_sqrt-%43-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%43-rev mem loc pred)
+         (@__ieee754_sqrt-%43-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%43-expand-rev-as-@__ieee754_sqrt-succ43-rev @__ieee754_sqrt-succ43-rev @__ieee754_sqrt-succ43-lab @__ieee754_sqrt-%43-fwd))
+
 (defund @__ieee754_sqrt-%43-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -760,18 +1285,6 @@
     (succ (case (g '%47 loc) (-1 '%48) (0 '%86))))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%43-expand-bb
-  (equal (@__ieee754_sqrt-%43-bb mem loc pred)
-         (@__ieee754_sqrt-%43-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%43-bb @__ieee754_sqrt-%43-rev
-    @__ieee754_sqrt-%44-rev
-    @__ieee754_sqrt-%45-rev
-    @__ieee754_sqrt-m43.1-rev
-    @__ieee754_sqrt-%46-rev
-    @__ieee754_sqrt-%47-rev
-    @__ieee754_sqrt-succ43-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%48-mem (s48)
   (car s48))
 (defund @__ieee754_sqrt-%48-loc (s48)
@@ -782,6 +1295,10 @@
   (declare (ignore s48))
   '%49)
 
+(defund @__ieee754_sqrt-%48-fwd (mem loc pred)
+  (let ((s48 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ48-lab s48) (@__ieee754_sqrt-%48-mem s48) (@__ieee754_sqrt-%48-loc s48))))
+
 (defund @__ieee754_sqrt-succ48-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%49 mem loc))
@@ -789,18 +1306,24 @@
 (defund @__ieee754_sqrt-%48-rev (mem loc pred)
   (@__ieee754_sqrt-succ48-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%48-expand-rev-as-@__ieee754_sqrt-succ48-rev
+  (equal (@__ieee754_sqrt-%48-rev mem loc pred)
+         (let ((s48 (list mem loc pred)))
+           (@__ieee754_sqrt-succ48-rev
+            (@__ieee754_sqrt-%48-mem s48)
+            (@__ieee754_sqrt-%48-loc s48)
+            (@__ieee754_sqrt-%48-pred s48))))
+  :enable (@__ieee754_sqrt-%48-rev @__ieee754_sqrt-%48-mem @__ieee754_sqrt-%48-loc @__ieee754_sqrt-%48-pred))
+(defruled @__ieee754_sqrt-%48-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%48-rev mem loc pred)
+         (@__ieee754_sqrt-%48-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%48-expand-rev-as-@__ieee754_sqrt-succ48-rev @__ieee754_sqrt-succ48-rev @__ieee754_sqrt-succ48-lab @__ieee754_sqrt-%48-fwd))
+
 (defund @__ieee754_sqrt-%48-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%49))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%48-expand-bb
-  (equal (@__ieee754_sqrt-%48-bb mem loc pred)
-         (@__ieee754_sqrt-%48-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%48-bb @__ieee754_sqrt-%48-rev
-    @__ieee754_sqrt-succ48-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%49-mem (s49)
   (car s49))
@@ -819,6 +1342,10 @@
 (defund @__ieee754_sqrt-succ49-lab (s49)
   (case (g '%51 (@__ieee754_sqrt-%51-loc s49)) (-1 '%52) (0 '%61)))
 
+(defund @__ieee754_sqrt-%49-fwd (mem loc pred)
+  (let ((s49 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ49-lab s49) (@__ieee754_sqrt-%49-mem s49) (@__ieee754_sqrt-%51-loc s49))))
+
 (defund @__ieee754_sqrt-succ49-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%51 loc) (-1 '%52) (0 '%61)) mem loc))
@@ -830,6 +1357,35 @@
 (defund @__ieee754_sqrt-%49-rev (mem loc pred)
   (@__ieee754_sqrt-%50-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%49-expand-rev-as-@__ieee754_sqrt-%50-rev
+  (equal (@__ieee754_sqrt-%49-rev mem loc pred)
+         (let ((s49 (list mem loc pred)))
+           (@__ieee754_sqrt-%50-rev
+            (@__ieee754_sqrt-%49-mem s49)
+            (@__ieee754_sqrt-%49-loc s49)
+            (@__ieee754_sqrt-%49-pred s49))))
+  :enable (@__ieee754_sqrt-%49-rev @__ieee754_sqrt-%49-mem @__ieee754_sqrt-%49-loc @__ieee754_sqrt-%49-pred))
+(defruled @__ieee754_sqrt-%49-expand-rev-as-@__ieee754_sqrt-%51-rev
+  (equal (@__ieee754_sqrt-%49-rev mem loc pred)
+         (let ((s49 (list mem loc pred)))
+           (@__ieee754_sqrt-%51-rev
+            (@__ieee754_sqrt-%49-mem s49)
+            (@__ieee754_sqrt-%50-loc s49)
+            (@__ieee754_sqrt-%49-pred s49))))
+  :enable (@__ieee754_sqrt-%49-expand-rev-as-@__ieee754_sqrt-%50-rev @__ieee754_sqrt-%50-rev @__ieee754_sqrt-%50-loc @__ieee754_sqrt-%50-val))
+(defruled @__ieee754_sqrt-%49-expand-rev-as-@__ieee754_sqrt-succ49-rev
+  (equal (@__ieee754_sqrt-%49-rev mem loc pred)
+         (let ((s49 (list mem loc pred)))
+           (@__ieee754_sqrt-succ49-rev
+            (@__ieee754_sqrt-%49-mem s49)
+            (@__ieee754_sqrt-%51-loc s49)
+            (@__ieee754_sqrt-%49-pred s49))))
+  :enable (@__ieee754_sqrt-%49-expand-rev-as-@__ieee754_sqrt-%51-rev @__ieee754_sqrt-%51-rev @__ieee754_sqrt-%51-loc @__ieee754_sqrt-%51-val))
+(defruled @__ieee754_sqrt-%49-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%49-rev mem loc pred)
+         (@__ieee754_sqrt-%49-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%49-expand-rev-as-@__ieee754_sqrt-succ49-rev @__ieee754_sqrt-succ49-rev @__ieee754_sqrt-succ49-lab @__ieee754_sqrt-%49-fwd))
+
 (defund @__ieee754_sqrt-%49-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -837,15 +1393,6 @@
     (loc (s '%51 (icmp-eq-i32 (g '%50 loc) 0) loc))
     (succ (case (g '%51 loc) (-1 '%52) (0 '%61))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%49-expand-bb
-  (equal (@__ieee754_sqrt-%49-bb mem loc pred)
-         (@__ieee754_sqrt-%49-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%49-bb @__ieee754_sqrt-%49-rev
-    @__ieee754_sqrt-%50-rev
-    @__ieee754_sqrt-%51-rev
-    @__ieee754_sqrt-succ49-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%52-mem (s52)
   (car s52))
@@ -895,6 +1442,10 @@
   (declare (ignore s52))
   '%49)
 
+(defund @__ieee754_sqrt-%52-fwd (mem loc pred)
+  (let ((s52 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ52-lab s52) (@__ieee754_sqrt-m52.3-mem s52) (@__ieee754_sqrt-%60-loc s52))))
+
 (defund @__ieee754_sqrt-succ52-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%49 mem loc))
@@ -924,6 +1475,107 @@
 (defund @__ieee754_sqrt-%52-rev (mem loc pred)
   (@__ieee754_sqrt-%53-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%53-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%53-rev
+            (@__ieee754_sqrt-%52-mem s52)
+            (@__ieee754_sqrt-%52-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-rev @__ieee754_sqrt-%52-mem @__ieee754_sqrt-%52-loc @__ieee754_sqrt-%52-pred))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%54-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%54-rev
+            (@__ieee754_sqrt-%52-mem s52)
+            (@__ieee754_sqrt-%53-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%53-rev @__ieee754_sqrt-%53-rev @__ieee754_sqrt-%53-loc @__ieee754_sqrt-%53-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-m52.1-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-m52.1-rev
+            (@__ieee754_sqrt-%52-mem s52)
+            (@__ieee754_sqrt-%54-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%54-rev @__ieee754_sqrt-%54-rev @__ieee754_sqrt-%54-loc @__ieee754_sqrt-%54-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%55-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%55-rev
+            (@__ieee754_sqrt-m52.1-mem s52)
+            (@__ieee754_sqrt-%54-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-m52.1-rev @__ieee754_sqrt-m52.1-rev @__ieee754_sqrt-m52.1-mem))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%56-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%56-rev
+            (@__ieee754_sqrt-m52.1-mem s52)
+            (@__ieee754_sqrt-%55-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%55-rev @__ieee754_sqrt-%55-rev @__ieee754_sqrt-%55-loc @__ieee754_sqrt-%55-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%57-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%57-rev
+            (@__ieee754_sqrt-m52.1-mem s52)
+            (@__ieee754_sqrt-%56-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%56-rev @__ieee754_sqrt-%56-rev @__ieee754_sqrt-%56-loc @__ieee754_sqrt-%56-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%58-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%58-rev
+            (@__ieee754_sqrt-m52.1-mem s52)
+            (@__ieee754_sqrt-%57-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%57-rev @__ieee754_sqrt-%57-rev @__ieee754_sqrt-%57-loc @__ieee754_sqrt-%57-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-m52.2-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-m52.2-rev
+            (@__ieee754_sqrt-m52.1-mem s52)
+            (@__ieee754_sqrt-%58-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%58-rev @__ieee754_sqrt-%58-rev @__ieee754_sqrt-%58-loc @__ieee754_sqrt-%58-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%59-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%59-rev
+            (@__ieee754_sqrt-m52.2-mem s52)
+            (@__ieee754_sqrt-%58-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-m52.2-rev @__ieee754_sqrt-m52.2-rev @__ieee754_sqrt-m52.2-mem))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%60-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-%60-rev
+            (@__ieee754_sqrt-m52.2-mem s52)
+            (@__ieee754_sqrt-%59-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%59-rev @__ieee754_sqrt-%59-rev @__ieee754_sqrt-%59-loc @__ieee754_sqrt-%59-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-m52.3-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-m52.3-rev
+            (@__ieee754_sqrt-m52.2-mem s52)
+            (@__ieee754_sqrt-%60-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-%60-rev @__ieee754_sqrt-%60-rev @__ieee754_sqrt-%60-loc @__ieee754_sqrt-%60-val))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-succ52-rev
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (let ((s52 (list mem loc pred)))
+           (@__ieee754_sqrt-succ52-rev
+            (@__ieee754_sqrt-m52.3-mem s52)
+            (@__ieee754_sqrt-%60-loc s52)
+            (@__ieee754_sqrt-%52-pred s52))))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-m52.3-rev @__ieee754_sqrt-m52.3-rev @__ieee754_sqrt-m52.3-mem))
+(defruled @__ieee754_sqrt-%52-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%52-rev mem loc pred)
+         (@__ieee754_sqrt-%52-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%52-expand-rev-as-@__ieee754_sqrt-succ52-rev @__ieee754_sqrt-succ52-rev @__ieee754_sqrt-succ52-lab @__ieee754_sqrt-%52-fwd))
+
 (defund @__ieee754_sqrt-%52-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -941,24 +1593,6 @@
     (succ '%49))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%52-expand-bb
-  (equal (@__ieee754_sqrt-%52-bb mem loc pred)
-         (@__ieee754_sqrt-%52-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%52-bb @__ieee754_sqrt-%52-rev
-    @__ieee754_sqrt-%53-rev
-    @__ieee754_sqrt-%54-rev
-    @__ieee754_sqrt-m52.1-rev
-    @__ieee754_sqrt-%55-rev
-    @__ieee754_sqrt-%56-rev
-    @__ieee754_sqrt-%57-rev
-    @__ieee754_sqrt-%58-rev
-    @__ieee754_sqrt-m52.2-rev
-    @__ieee754_sqrt-%59-rev
-    @__ieee754_sqrt-%60-rev
-    @__ieee754_sqrt-m52.3-rev
-    @__ieee754_sqrt-succ52-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%61-mem (s61)
   (car s61))
 (defund @__ieee754_sqrt-%61-loc (s61)
@@ -971,6 +1605,10 @@
   (declare (ignore s61))
   '%62)
 
+(defund @__ieee754_sqrt-%61-fwd (mem loc pred)
+  (let ((s61 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ61-lab s61) (@__ieee754_sqrt-m61.1-mem s61) (@__ieee754_sqrt-%61-loc s61))))
+
 (defund @__ieee754_sqrt-succ61-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%62 mem loc))
@@ -980,20 +1618,33 @@
 (defund @__ieee754_sqrt-%61-rev (mem loc pred)
   (@__ieee754_sqrt-m61.1-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%61-expand-rev-as-@__ieee754_sqrt-m61.1-rev
+  (equal (@__ieee754_sqrt-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__ieee754_sqrt-m61.1-rev
+            (@__ieee754_sqrt-%61-mem s61)
+            (@__ieee754_sqrt-%61-loc s61)
+            (@__ieee754_sqrt-%61-pred s61))))
+  :enable (@__ieee754_sqrt-%61-rev @__ieee754_sqrt-%61-mem @__ieee754_sqrt-%61-loc @__ieee754_sqrt-%61-pred))
+(defruled @__ieee754_sqrt-%61-expand-rev-as-@__ieee754_sqrt-succ61-rev
+  (equal (@__ieee754_sqrt-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__ieee754_sqrt-succ61-rev
+            (@__ieee754_sqrt-m61.1-mem s61)
+            (@__ieee754_sqrt-%61-loc s61)
+            (@__ieee754_sqrt-%61-pred s61))))
+  :enable (@__ieee754_sqrt-%61-expand-rev-as-@__ieee754_sqrt-m61.1-rev @__ieee754_sqrt-m61.1-rev @__ieee754_sqrt-m61.1-mem))
+(defruled @__ieee754_sqrt-%61-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%61-rev mem loc pred)
+         (@__ieee754_sqrt-%61-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%61-expand-rev-as-@__ieee754_sqrt-succ61-rev @__ieee754_sqrt-succ61-rev @__ieee754_sqrt-succ61-lab @__ieee754_sqrt-%61-fwd))
+
 (defund @__ieee754_sqrt-%61-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 0 (g '%i loc) mem))
     (succ '%62))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%61-expand-bb
-  (equal (@__ieee754_sqrt-%61-bb mem loc pred)
-         (@__ieee754_sqrt-%61-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%61-bb @__ieee754_sqrt-%61-rev
-    @__ieee754_sqrt-m61.1-rev
-    @__ieee754_sqrt-succ61-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%62-mem (s62)
   (car s62))
@@ -1016,6 +1667,10 @@
 (defund @__ieee754_sqrt-succ62-lab (s62)
   (case (g '%65 (@__ieee754_sqrt-%65-loc s62)) (-1 '%66) (0 '%72)))
 
+(defund @__ieee754_sqrt-%62-fwd (mem loc pred)
+  (let ((s62 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ62-lab s62) (@__ieee754_sqrt-%62-mem s62) (@__ieee754_sqrt-%65-loc s62))))
+
 (defund @__ieee754_sqrt-succ62-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%65 loc) (-1 '%66) (0 '%72)) mem loc))
@@ -1029,6 +1684,43 @@
 (defund @__ieee754_sqrt-%62-rev (mem loc pred)
   (@__ieee754_sqrt-%63-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-%63-rev
+  (equal (@__ieee754_sqrt-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__ieee754_sqrt-%63-rev
+            (@__ieee754_sqrt-%62-mem s62)
+            (@__ieee754_sqrt-%62-loc s62)
+            (@__ieee754_sqrt-%62-pred s62))))
+  :enable (@__ieee754_sqrt-%62-rev @__ieee754_sqrt-%62-mem @__ieee754_sqrt-%62-loc @__ieee754_sqrt-%62-pred))
+(defruled @__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-%64-rev
+  (equal (@__ieee754_sqrt-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__ieee754_sqrt-%64-rev
+            (@__ieee754_sqrt-%62-mem s62)
+            (@__ieee754_sqrt-%63-loc s62)
+            (@__ieee754_sqrt-%62-pred s62))))
+  :enable (@__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-%63-rev @__ieee754_sqrt-%63-rev @__ieee754_sqrt-%63-loc @__ieee754_sqrt-%63-val))
+(defruled @__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-%65-rev
+  (equal (@__ieee754_sqrt-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__ieee754_sqrt-%65-rev
+            (@__ieee754_sqrt-%62-mem s62)
+            (@__ieee754_sqrt-%64-loc s62)
+            (@__ieee754_sqrt-%62-pred s62))))
+  :enable (@__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-%64-rev @__ieee754_sqrt-%64-rev @__ieee754_sqrt-%64-loc @__ieee754_sqrt-%64-val))
+(defruled @__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-succ62-rev
+  (equal (@__ieee754_sqrt-%62-rev mem loc pred)
+         (let ((s62 (list mem loc pred)))
+           (@__ieee754_sqrt-succ62-rev
+            (@__ieee754_sqrt-%62-mem s62)
+            (@__ieee754_sqrt-%65-loc s62)
+            (@__ieee754_sqrt-%62-pred s62))))
+  :enable (@__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-%65-rev @__ieee754_sqrt-%65-rev @__ieee754_sqrt-%65-loc @__ieee754_sqrt-%65-val))
+(defruled @__ieee754_sqrt-%62-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%62-rev mem loc pred)
+         (@__ieee754_sqrt-%62-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%62-expand-rev-as-@__ieee754_sqrt-succ62-rev @__ieee754_sqrt-succ62-rev @__ieee754_sqrt-succ62-lab @__ieee754_sqrt-%62-fwd))
+
 (defund @__ieee754_sqrt-%62-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1037,16 +1729,6 @@
     (loc (s '%65 (icmp-eq-i32 (g '%64 loc) 0) loc))
     (succ (case (g '%65 loc) (-1 '%66) (0 '%72))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%62-expand-bb
-  (equal (@__ieee754_sqrt-%62-bb mem loc pred)
-         (@__ieee754_sqrt-%62-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%62-bb @__ieee754_sqrt-%62-rev
-    @__ieee754_sqrt-%63-rev
-    @__ieee754_sqrt-%64-rev
-    @__ieee754_sqrt-%65-rev
-    @__ieee754_sqrt-succ62-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%66-mem (s66)
   (car s66))
@@ -1068,6 +1750,10 @@
   (declare (ignore s66))
   '%69)
 
+(defund @__ieee754_sqrt-%66-fwd (mem loc pred)
+  (let ((s66 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ66-lab s66) (@__ieee754_sqrt-m66.1-mem s66) (@__ieee754_sqrt-%68-loc s66))))
+
 (defund @__ieee754_sqrt-succ66-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%69 mem loc))
@@ -1081,6 +1767,43 @@
 (defund @__ieee754_sqrt-%66-rev (mem loc pred)
   (@__ieee754_sqrt-%67-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-%67-rev
+  (equal (@__ieee754_sqrt-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@__ieee754_sqrt-%67-rev
+            (@__ieee754_sqrt-%66-mem s66)
+            (@__ieee754_sqrt-%66-loc s66)
+            (@__ieee754_sqrt-%66-pred s66))))
+  :enable (@__ieee754_sqrt-%66-rev @__ieee754_sqrt-%66-mem @__ieee754_sqrt-%66-loc @__ieee754_sqrt-%66-pred))
+(defruled @__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-%68-rev
+  (equal (@__ieee754_sqrt-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@__ieee754_sqrt-%68-rev
+            (@__ieee754_sqrt-%66-mem s66)
+            (@__ieee754_sqrt-%67-loc s66)
+            (@__ieee754_sqrt-%66-pred s66))))
+  :enable (@__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-%67-rev @__ieee754_sqrt-%67-rev @__ieee754_sqrt-%67-loc @__ieee754_sqrt-%67-val))
+(defruled @__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-m66.1-rev
+  (equal (@__ieee754_sqrt-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@__ieee754_sqrt-m66.1-rev
+            (@__ieee754_sqrt-%66-mem s66)
+            (@__ieee754_sqrt-%68-loc s66)
+            (@__ieee754_sqrt-%66-pred s66))))
+  :enable (@__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-%68-rev @__ieee754_sqrt-%68-rev @__ieee754_sqrt-%68-loc @__ieee754_sqrt-%68-val))
+(defruled @__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-succ66-rev
+  (equal (@__ieee754_sqrt-%66-rev mem loc pred)
+         (let ((s66 (list mem loc pred)))
+           (@__ieee754_sqrt-succ66-rev
+            (@__ieee754_sqrt-m66.1-mem s66)
+            (@__ieee754_sqrt-%68-loc s66)
+            (@__ieee754_sqrt-%66-pred s66))))
+  :enable (@__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-m66.1-rev @__ieee754_sqrt-m66.1-rev @__ieee754_sqrt-m66.1-mem))
+(defruled @__ieee754_sqrt-%66-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%66-rev mem loc pred)
+         (@__ieee754_sqrt-%66-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%66-expand-rev-as-@__ieee754_sqrt-succ66-rev @__ieee754_sqrt-succ66-rev @__ieee754_sqrt-succ66-lab @__ieee754_sqrt-%66-fwd))
+
 (defund @__ieee754_sqrt-%66-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1089,16 +1812,6 @@
     (mem (store-i32 (g '%68 loc) (g '%ix0 loc) mem))
     (succ '%69))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%66-expand-bb
-  (equal (@__ieee754_sqrt-%66-bb mem loc pred)
-         (@__ieee754_sqrt-%66-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%66-bb @__ieee754_sqrt-%66-rev
-    @__ieee754_sqrt-%67-rev
-    @__ieee754_sqrt-%68-rev
-    @__ieee754_sqrt-m66.1-rev
-    @__ieee754_sqrt-succ66-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%69-mem (s69)
   (car s69))
@@ -1120,6 +1833,10 @@
   (declare (ignore s69))
   '%62)
 
+(defund @__ieee754_sqrt-%69-fwd (mem loc pred)
+  (let ((s69 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ69-lab s69) (@__ieee754_sqrt-m69.1-mem s69) (@__ieee754_sqrt-%71-loc s69))))
+
 (defund @__ieee754_sqrt-succ69-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%62 mem loc))
@@ -1133,6 +1850,43 @@
 (defund @__ieee754_sqrt-%69-rev (mem loc pred)
   (@__ieee754_sqrt-%70-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-%70-rev
+  (equal (@__ieee754_sqrt-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@__ieee754_sqrt-%70-rev
+            (@__ieee754_sqrt-%69-mem s69)
+            (@__ieee754_sqrt-%69-loc s69)
+            (@__ieee754_sqrt-%69-pred s69))))
+  :enable (@__ieee754_sqrt-%69-rev @__ieee754_sqrt-%69-mem @__ieee754_sqrt-%69-loc @__ieee754_sqrt-%69-pred))
+(defruled @__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-%71-rev
+  (equal (@__ieee754_sqrt-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@__ieee754_sqrt-%71-rev
+            (@__ieee754_sqrt-%69-mem s69)
+            (@__ieee754_sqrt-%70-loc s69)
+            (@__ieee754_sqrt-%69-pred s69))))
+  :enable (@__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-%70-rev @__ieee754_sqrt-%70-rev @__ieee754_sqrt-%70-loc @__ieee754_sqrt-%70-val))
+(defruled @__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-m69.1-rev
+  (equal (@__ieee754_sqrt-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@__ieee754_sqrt-m69.1-rev
+            (@__ieee754_sqrt-%69-mem s69)
+            (@__ieee754_sqrt-%71-loc s69)
+            (@__ieee754_sqrt-%69-pred s69))))
+  :enable (@__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-%71-rev @__ieee754_sqrt-%71-rev @__ieee754_sqrt-%71-loc @__ieee754_sqrt-%71-val))
+(defruled @__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-succ69-rev
+  (equal (@__ieee754_sqrt-%69-rev mem loc pred)
+         (let ((s69 (list mem loc pred)))
+           (@__ieee754_sqrt-succ69-rev
+            (@__ieee754_sqrt-m69.1-mem s69)
+            (@__ieee754_sqrt-%71-loc s69)
+            (@__ieee754_sqrt-%69-pred s69))))
+  :enable (@__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-m69.1-rev @__ieee754_sqrt-m69.1-rev @__ieee754_sqrt-m69.1-mem))
+(defruled @__ieee754_sqrt-%69-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%69-rev mem loc pred)
+         (@__ieee754_sqrt-%69-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%69-expand-rev-as-@__ieee754_sqrt-succ69-rev @__ieee754_sqrt-succ69-rev @__ieee754_sqrt-succ69-lab @__ieee754_sqrt-%69-fwd))
+
 (defund @__ieee754_sqrt-%69-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1141,16 +1895,6 @@
     (mem (store-i32 (g '%71 loc) (g '%i loc) mem))
     (succ '%62))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%69-expand-bb
-  (equal (@__ieee754_sqrt-%69-bb mem loc pred)
-         (@__ieee754_sqrt-%69-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%69-bb @__ieee754_sqrt-%69-rev
-    @__ieee754_sqrt-%70-rev
-    @__ieee754_sqrt-%71-rev
-    @__ieee754_sqrt-m69.1-rev
-    @__ieee754_sqrt-succ69-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%72-mem (s72)
   (car s72))
@@ -1220,6 +1964,10 @@
   (declare (ignore s72))
   '%86)
 
+(defund @__ieee754_sqrt-%72-fwd (mem loc pred)
+  (let ((s72 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ72-lab s72) (@__ieee754_sqrt-m72.3-mem s72) (@__ieee754_sqrt-%85-loc s72))))
+
 (defund @__ieee754_sqrt-succ72-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%86 mem loc))
@@ -1259,6 +2007,147 @@
 (defund @__ieee754_sqrt-%72-rev (mem loc pred)
   (@__ieee754_sqrt-%73-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%73-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%73-rev
+            (@__ieee754_sqrt-%72-mem s72)
+            (@__ieee754_sqrt-%72-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-rev @__ieee754_sqrt-%72-mem @__ieee754_sqrt-%72-loc @__ieee754_sqrt-%72-pred))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%74-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%74-rev
+            (@__ieee754_sqrt-%72-mem s72)
+            (@__ieee754_sqrt-%73-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%73-rev @__ieee754_sqrt-%73-rev @__ieee754_sqrt-%73-loc @__ieee754_sqrt-%73-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%75-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%75-rev
+            (@__ieee754_sqrt-%72-mem s72)
+            (@__ieee754_sqrt-%74-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%74-rev @__ieee754_sqrt-%74-rev @__ieee754_sqrt-%74-loc @__ieee754_sqrt-%74-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%76-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%76-rev
+            (@__ieee754_sqrt-%72-mem s72)
+            (@__ieee754_sqrt-%75-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%75-rev @__ieee754_sqrt-%75-rev @__ieee754_sqrt-%75-loc @__ieee754_sqrt-%75-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-m72.1-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-m72.1-rev
+            (@__ieee754_sqrt-%72-mem s72)
+            (@__ieee754_sqrt-%76-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%76-rev @__ieee754_sqrt-%76-rev @__ieee754_sqrt-%76-loc @__ieee754_sqrt-%76-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%77-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%77-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%76-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-m72.1-rev @__ieee754_sqrt-m72.1-rev @__ieee754_sqrt-m72.1-mem))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%78-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%78-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%77-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%77-rev @__ieee754_sqrt-%77-rev @__ieee754_sqrt-%77-loc @__ieee754_sqrt-%77-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%79-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%79-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%78-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%78-rev @__ieee754_sqrt-%78-rev @__ieee754_sqrt-%78-loc @__ieee754_sqrt-%78-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%80-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%80-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%79-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%79-rev @__ieee754_sqrt-%79-rev @__ieee754_sqrt-%79-loc @__ieee754_sqrt-%79-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%81-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%81-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%80-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%80-rev @__ieee754_sqrt-%80-rev @__ieee754_sqrt-%80-loc @__ieee754_sqrt-%80-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%82-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%82-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%81-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%81-rev @__ieee754_sqrt-%81-rev @__ieee754_sqrt-%81-loc @__ieee754_sqrt-%81-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-m72.2-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-m72.2-rev
+            (@__ieee754_sqrt-m72.1-mem s72)
+            (@__ieee754_sqrt-%82-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%82-rev @__ieee754_sqrt-%82-rev @__ieee754_sqrt-%82-loc @__ieee754_sqrt-%82-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%83-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%83-rev
+            (@__ieee754_sqrt-m72.2-mem s72)
+            (@__ieee754_sqrt-%82-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-m72.2-rev @__ieee754_sqrt-m72.2-rev @__ieee754_sqrt-m72.2-mem))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%84-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%84-rev
+            (@__ieee754_sqrt-m72.2-mem s72)
+            (@__ieee754_sqrt-%83-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%83-rev @__ieee754_sqrt-%83-rev @__ieee754_sqrt-%83-loc @__ieee754_sqrt-%83-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%85-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-%85-rev
+            (@__ieee754_sqrt-m72.2-mem s72)
+            (@__ieee754_sqrt-%84-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%84-rev @__ieee754_sqrt-%84-rev @__ieee754_sqrt-%84-loc @__ieee754_sqrt-%84-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-m72.3-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-m72.3-rev
+            (@__ieee754_sqrt-m72.2-mem s72)
+            (@__ieee754_sqrt-%85-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-%85-rev @__ieee754_sqrt-%85-rev @__ieee754_sqrt-%85-loc @__ieee754_sqrt-%85-val))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-succ72-rev
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@__ieee754_sqrt-succ72-rev
+            (@__ieee754_sqrt-m72.3-mem s72)
+            (@__ieee754_sqrt-%85-loc s72)
+            (@__ieee754_sqrt-%72-pred s72))))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-m72.3-rev @__ieee754_sqrt-m72.3-rev @__ieee754_sqrt-m72.3-mem))
+(defruled @__ieee754_sqrt-%72-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%72-rev mem loc pred)
+         (@__ieee754_sqrt-%72-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%72-expand-rev-as-@__ieee754_sqrt-succ72-rev @__ieee754_sqrt-succ72-rev @__ieee754_sqrt-succ72-lab @__ieee754_sqrt-%72-fwd))
+
 (defund @__ieee754_sqrt-%72-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1280,29 +2169,6 @@
     (mem (store-i32 (g '%85 loc) (g '%ix1 loc) mem))
     (succ '%86))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%72-expand-bb
-  (equal (@__ieee754_sqrt-%72-bb mem loc pred)
-         (@__ieee754_sqrt-%72-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%72-bb @__ieee754_sqrt-%72-rev
-    @__ieee754_sqrt-%73-rev
-    @__ieee754_sqrt-%74-rev
-    @__ieee754_sqrt-%75-rev
-    @__ieee754_sqrt-%76-rev
-    @__ieee754_sqrt-m72.1-rev
-    @__ieee754_sqrt-%77-rev
-    @__ieee754_sqrt-%78-rev
-    @__ieee754_sqrt-%79-rev
-    @__ieee754_sqrt-%80-rev
-    @__ieee754_sqrt-%81-rev
-    @__ieee754_sqrt-%82-rev
-    @__ieee754_sqrt-m72.2-rev
-    @__ieee754_sqrt-%83-rev
-    @__ieee754_sqrt-%84-rev
-    @__ieee754_sqrt-%85-rev
-    @__ieee754_sqrt-m72.3-rev
-    @__ieee754_sqrt-succ72-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%86-mem (s86)
   (car s86))
@@ -1349,6 +2215,10 @@
 (defund @__ieee754_sqrt-succ86-lab (s86)
   (case (g '%94 (@__ieee754_sqrt-%94-loc s86)) (-1 '%95) (0 '%107)))
 
+(defund @__ieee754_sqrt-%86-fwd (mem loc pred)
+  (let ((s86 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ86-lab s86) (@__ieee754_sqrt-m86.2-mem s86) (@__ieee754_sqrt-%94-loc s86))))
+
 (defund @__ieee754_sqrt-succ86-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%94 loc) (-1 '%95) (0 '%107)) mem loc))
@@ -1376,6 +2246,99 @@
 (defund @__ieee754_sqrt-%86-rev (mem loc pred)
   (@__ieee754_sqrt-%87-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%87-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%87-rev
+            (@__ieee754_sqrt-%86-mem s86)
+            (@__ieee754_sqrt-%86-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-rev @__ieee754_sqrt-%86-mem @__ieee754_sqrt-%86-loc @__ieee754_sqrt-%86-pred))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%88-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%88-rev
+            (@__ieee754_sqrt-%86-mem s86)
+            (@__ieee754_sqrt-%87-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%87-rev @__ieee754_sqrt-%87-rev @__ieee754_sqrt-%87-loc @__ieee754_sqrt-%87-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-m86.1-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-m86.1-rev
+            (@__ieee754_sqrt-%86-mem s86)
+            (@__ieee754_sqrt-%88-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%88-rev @__ieee754_sqrt-%88-rev @__ieee754_sqrt-%88-loc @__ieee754_sqrt-%88-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%89-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%89-rev
+            (@__ieee754_sqrt-m86.1-mem s86)
+            (@__ieee754_sqrt-%88-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-m86.1-rev @__ieee754_sqrt-m86.1-rev @__ieee754_sqrt-m86.1-mem))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%90-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%90-rev
+            (@__ieee754_sqrt-m86.1-mem s86)
+            (@__ieee754_sqrt-%89-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%89-rev @__ieee754_sqrt-%89-rev @__ieee754_sqrt-%89-loc @__ieee754_sqrt-%89-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%91-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%91-rev
+            (@__ieee754_sqrt-m86.1-mem s86)
+            (@__ieee754_sqrt-%90-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%90-rev @__ieee754_sqrt-%90-rev @__ieee754_sqrt-%90-loc @__ieee754_sqrt-%90-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-m86.2-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-m86.2-rev
+            (@__ieee754_sqrt-m86.1-mem s86)
+            (@__ieee754_sqrt-%91-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%91-rev @__ieee754_sqrt-%91-rev @__ieee754_sqrt-%91-loc @__ieee754_sqrt-%91-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%92-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%92-rev
+            (@__ieee754_sqrt-m86.2-mem s86)
+            (@__ieee754_sqrt-%91-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-m86.2-rev @__ieee754_sqrt-m86.2-rev @__ieee754_sqrt-m86.2-mem))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%93-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%93-rev
+            (@__ieee754_sqrt-m86.2-mem s86)
+            (@__ieee754_sqrt-%92-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%92-rev @__ieee754_sqrt-%92-rev @__ieee754_sqrt-%92-loc @__ieee754_sqrt-%92-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%94-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-%94-rev
+            (@__ieee754_sqrt-m86.2-mem s86)
+            (@__ieee754_sqrt-%93-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%93-rev @__ieee754_sqrt-%93-rev @__ieee754_sqrt-%93-loc @__ieee754_sqrt-%93-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-succ86-rev
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@__ieee754_sqrt-succ86-rev
+            (@__ieee754_sqrt-m86.2-mem s86)
+            (@__ieee754_sqrt-%94-loc s86)
+            (@__ieee754_sqrt-%86-pred s86))))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-%94-rev @__ieee754_sqrt-%94-rev @__ieee754_sqrt-%94-loc @__ieee754_sqrt-%94-val))
+(defruled @__ieee754_sqrt-%86-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%86-rev mem loc pred)
+         (@__ieee754_sqrt-%86-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%86-expand-rev-as-@__ieee754_sqrt-succ86-rev @__ieee754_sqrt-succ86-rev @__ieee754_sqrt-succ86-lab @__ieee754_sqrt-%86-fwd))
+
 (defund @__ieee754_sqrt-%86-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1391,23 +2354,6 @@
     (loc (s '%94 (icmp-ne-i32 (g '%93 loc) 0) loc))
     (succ (case (g '%94 loc) (-1 '%95) (0 '%107))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%86-expand-bb
-  (equal (@__ieee754_sqrt-%86-bb mem loc pred)
-         (@__ieee754_sqrt-%86-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%86-bb @__ieee754_sqrt-%86-rev
-    @__ieee754_sqrt-%87-rev
-    @__ieee754_sqrt-%88-rev
-    @__ieee754_sqrt-m86.1-rev
-    @__ieee754_sqrt-%89-rev
-    @__ieee754_sqrt-%90-rev
-    @__ieee754_sqrt-%91-rev
-    @__ieee754_sqrt-m86.2-rev
-    @__ieee754_sqrt-%92-rev
-    @__ieee754_sqrt-%93-rev
-    @__ieee754_sqrt-%94-rev
-    @__ieee754_sqrt-succ86-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%95-mem (s95)
   (car s95))
@@ -1467,6 +2413,10 @@
   (declare (ignore s95))
   '%107)
 
+(defund @__ieee754_sqrt-%95-fwd (mem loc pred)
+  (let ((s95 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ95-lab s95) (@__ieee754_sqrt-m95.2-mem s95) (@__ieee754_sqrt-%106-loc s95))))
+
 (defund @__ieee754_sqrt-succ95-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%107 mem loc))
@@ -1500,6 +2450,123 @@
 (defund @__ieee754_sqrt-%95-rev (mem loc pred)
   (@__ieee754_sqrt-%96-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%96-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%96-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%95-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-rev @__ieee754_sqrt-%95-mem @__ieee754_sqrt-%95-loc @__ieee754_sqrt-%95-pred))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%97-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%97-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%96-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%96-rev @__ieee754_sqrt-%96-rev @__ieee754_sqrt-%96-loc @__ieee754_sqrt-%96-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%98-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%98-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%97-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%97-rev @__ieee754_sqrt-%97-rev @__ieee754_sqrt-%97-loc @__ieee754_sqrt-%97-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%99-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%99-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%98-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%98-rev @__ieee754_sqrt-%98-rev @__ieee754_sqrt-%98-loc @__ieee754_sqrt-%98-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%100-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%100-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%99-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%99-rev @__ieee754_sqrt-%99-rev @__ieee754_sqrt-%99-loc @__ieee754_sqrt-%99-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%101-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%101-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%100-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%100-rev @__ieee754_sqrt-%100-rev @__ieee754_sqrt-%100-loc @__ieee754_sqrt-%100-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%102-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%102-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%101-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%101-rev @__ieee754_sqrt-%101-rev @__ieee754_sqrt-%101-loc @__ieee754_sqrt-%101-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%103-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%103-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%102-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%102-rev @__ieee754_sqrt-%102-rev @__ieee754_sqrt-%102-loc @__ieee754_sqrt-%102-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-m95.1-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-m95.1-rev
+            (@__ieee754_sqrt-%95-mem s95)
+            (@__ieee754_sqrt-%103-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%103-rev @__ieee754_sqrt-%103-rev @__ieee754_sqrt-%103-loc @__ieee754_sqrt-%103-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%104-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%104-rev
+            (@__ieee754_sqrt-m95.1-mem s95)
+            (@__ieee754_sqrt-%103-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-m95.1-rev @__ieee754_sqrt-m95.1-rev @__ieee754_sqrt-m95.1-mem))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%105-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%105-rev
+            (@__ieee754_sqrt-m95.1-mem s95)
+            (@__ieee754_sqrt-%104-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%104-rev @__ieee754_sqrt-%104-rev @__ieee754_sqrt-%104-loc @__ieee754_sqrt-%104-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%106-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-%106-rev
+            (@__ieee754_sqrt-m95.1-mem s95)
+            (@__ieee754_sqrt-%105-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%105-rev @__ieee754_sqrt-%105-rev @__ieee754_sqrt-%105-loc @__ieee754_sqrt-%105-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-m95.2-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-m95.2-rev
+            (@__ieee754_sqrt-m95.1-mem s95)
+            (@__ieee754_sqrt-%106-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-%106-rev @__ieee754_sqrt-%106-rev @__ieee754_sqrt-%106-loc @__ieee754_sqrt-%106-val))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-succ95-rev
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (let ((s95 (list mem loc pred)))
+           (@__ieee754_sqrt-succ95-rev
+            (@__ieee754_sqrt-m95.2-mem s95)
+            (@__ieee754_sqrt-%106-loc s95)
+            (@__ieee754_sqrt-%95-pred s95))))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-m95.2-rev @__ieee754_sqrt-m95.2-rev @__ieee754_sqrt-m95.2-mem))
+(defruled @__ieee754_sqrt-%95-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%95-rev mem loc pred)
+         (@__ieee754_sqrt-%95-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%95-expand-rev-as-@__ieee754_sqrt-succ95-rev @__ieee754_sqrt-succ95-rev @__ieee754_sqrt-succ95-lab @__ieee754_sqrt-%95-fwd))
+
 (defund @__ieee754_sqrt-%95-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1518,26 +2585,6 @@
     (mem (store-i32 (g '%106 loc) (g '%ix1 loc) mem))
     (succ '%107))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%95-expand-bb
-  (equal (@__ieee754_sqrt-%95-bb mem loc pred)
-         (@__ieee754_sqrt-%95-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%95-bb @__ieee754_sqrt-%95-rev
-    @__ieee754_sqrt-%96-rev
-    @__ieee754_sqrt-%97-rev
-    @__ieee754_sqrt-%98-rev
-    @__ieee754_sqrt-%99-rev
-    @__ieee754_sqrt-%100-rev
-    @__ieee754_sqrt-%101-rev
-    @__ieee754_sqrt-%102-rev
-    @__ieee754_sqrt-%103-rev
-    @__ieee754_sqrt-m95.1-rev
-    @__ieee754_sqrt-%104-rev
-    @__ieee754_sqrt-%105-rev
-    @__ieee754_sqrt-%106-rev
-    @__ieee754_sqrt-m95.2-rev
-    @__ieee754_sqrt-succ95-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%107-mem (s107)
   (car s107))
@@ -1617,6 +2664,10 @@
   (declare (ignore s107))
   '%121)
 
+(defund @__ieee754_sqrt-%107-fwd (mem loc pred)
+  (let ((s107 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ107-lab s107) (@__ieee754_sqrt-m107.8-mem s107) (@__ieee754_sqrt-%120-loc s107))))
+
 (defund @__ieee754_sqrt-succ107-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%121 mem loc))
@@ -1666,6 +2717,187 @@
 (defund @__ieee754_sqrt-%107-rev (mem loc pred)
   (@__ieee754_sqrt-%108-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%108-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%108-rev
+            (@__ieee754_sqrt-%107-mem s107)
+            (@__ieee754_sqrt-%107-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-rev @__ieee754_sqrt-%107-mem @__ieee754_sqrt-%107-loc @__ieee754_sqrt-%107-pred))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%109-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%109-rev
+            (@__ieee754_sqrt-%107-mem s107)
+            (@__ieee754_sqrt-%108-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%108-rev @__ieee754_sqrt-%108-rev @__ieee754_sqrt-%108-loc @__ieee754_sqrt-%108-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.1-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.1-rev
+            (@__ieee754_sqrt-%107-mem s107)
+            (@__ieee754_sqrt-%109-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%109-rev @__ieee754_sqrt-%109-rev @__ieee754_sqrt-%109-loc @__ieee754_sqrt-%109-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%110-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%110-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%109-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.1-rev @__ieee754_sqrt-m107.1-rev @__ieee754_sqrt-m107.1-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%111-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%111-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%110-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%110-rev @__ieee754_sqrt-%110-rev @__ieee754_sqrt-%110-loc @__ieee754_sqrt-%110-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%112-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%112-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%111-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%111-rev @__ieee754_sqrt-%111-rev @__ieee754_sqrt-%111-loc @__ieee754_sqrt-%111-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%113-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%113-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%112-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%112-rev @__ieee754_sqrt-%112-rev @__ieee754_sqrt-%112-loc @__ieee754_sqrt-%112-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%114-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%114-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%113-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%113-rev @__ieee754_sqrt-%113-rev @__ieee754_sqrt-%113-loc @__ieee754_sqrt-%113-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%115-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%115-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%114-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%114-rev @__ieee754_sqrt-%114-rev @__ieee754_sqrt-%114-loc @__ieee754_sqrt-%114-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%116-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%116-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%115-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%115-rev @__ieee754_sqrt-%115-rev @__ieee754_sqrt-%115-loc @__ieee754_sqrt-%115-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%117-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%117-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%116-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%116-rev @__ieee754_sqrt-%116-rev @__ieee754_sqrt-%116-loc @__ieee754_sqrt-%116-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.2-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.2-rev
+            (@__ieee754_sqrt-m107.1-mem s107)
+            (@__ieee754_sqrt-%117-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%117-rev @__ieee754_sqrt-%117-rev @__ieee754_sqrt-%117-loc @__ieee754_sqrt-%117-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%118-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%118-rev
+            (@__ieee754_sqrt-m107.2-mem s107)
+            (@__ieee754_sqrt-%117-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.2-rev @__ieee754_sqrt-m107.2-rev @__ieee754_sqrt-m107.2-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%119-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%119-rev
+            (@__ieee754_sqrt-m107.2-mem s107)
+            (@__ieee754_sqrt-%118-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%118-rev @__ieee754_sqrt-%118-rev @__ieee754_sqrt-%118-loc @__ieee754_sqrt-%118-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%120-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-%120-rev
+            (@__ieee754_sqrt-m107.2-mem s107)
+            (@__ieee754_sqrt-%119-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%119-rev @__ieee754_sqrt-%119-rev @__ieee754_sqrt-%119-loc @__ieee754_sqrt-%119-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.3-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.3-rev
+            (@__ieee754_sqrt-m107.2-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-%120-rev @__ieee754_sqrt-%120-rev @__ieee754_sqrt-%120-loc @__ieee754_sqrt-%120-val))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.4-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.4-rev
+            (@__ieee754_sqrt-m107.3-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.3-rev @__ieee754_sqrt-m107.3-rev @__ieee754_sqrt-m107.3-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.5-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.5-rev
+            (@__ieee754_sqrt-m107.4-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.4-rev @__ieee754_sqrt-m107.4-rev @__ieee754_sqrt-m107.4-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.6-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.6-rev
+            (@__ieee754_sqrt-m107.5-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.5-rev @__ieee754_sqrt-m107.5-rev @__ieee754_sqrt-m107.5-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.7-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.7-rev
+            (@__ieee754_sqrt-m107.6-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.6-rev @__ieee754_sqrt-m107.6-rev @__ieee754_sqrt-m107.6-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.8-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-m107.8-rev
+            (@__ieee754_sqrt-m107.7-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.7-rev @__ieee754_sqrt-m107.7-rev @__ieee754_sqrt-m107.7-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-succ107-rev
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (let ((s107 (list mem loc pred)))
+           (@__ieee754_sqrt-succ107-rev
+            (@__ieee754_sqrt-m107.8-mem s107)
+            (@__ieee754_sqrt-%120-loc s107)
+            (@__ieee754_sqrt-%107-pred s107))))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-m107.8-rev @__ieee754_sqrt-m107.8-rev @__ieee754_sqrt-m107.8-mem))
+(defruled @__ieee754_sqrt-%107-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%107-rev mem loc pred)
+         (@__ieee754_sqrt-%107-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%107-expand-rev-as-@__ieee754_sqrt-succ107-rev @__ieee754_sqrt-succ107-rev @__ieee754_sqrt-succ107-lab @__ieee754_sqrt-%107-fwd))
+
 (defund @__ieee754_sqrt-%107-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1693,34 +2925,6 @@
     (succ '%121))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%107-expand-bb
-  (equal (@__ieee754_sqrt-%107-bb mem loc pred)
-         (@__ieee754_sqrt-%107-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%107-bb @__ieee754_sqrt-%107-rev
-    @__ieee754_sqrt-%108-rev
-    @__ieee754_sqrt-%109-rev
-    @__ieee754_sqrt-m107.1-rev
-    @__ieee754_sqrt-%110-rev
-    @__ieee754_sqrt-%111-rev
-    @__ieee754_sqrt-%112-rev
-    @__ieee754_sqrt-%113-rev
-    @__ieee754_sqrt-%114-rev
-    @__ieee754_sqrt-%115-rev
-    @__ieee754_sqrt-%116-rev
-    @__ieee754_sqrt-%117-rev
-    @__ieee754_sqrt-m107.2-rev
-    @__ieee754_sqrt-%118-rev
-    @__ieee754_sqrt-%119-rev
-    @__ieee754_sqrt-%120-rev
-    @__ieee754_sqrt-m107.3-rev
-    @__ieee754_sqrt-m107.4-rev
-    @__ieee754_sqrt-m107.5-rev
-    @__ieee754_sqrt-m107.6-rev
-    @__ieee754_sqrt-m107.7-rev
-    @__ieee754_sqrt-m107.8-rev
-    @__ieee754_sqrt-succ107-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%121-mem (s121)
   (car s121))
 (defund @__ieee754_sqrt-%121-loc (s121)
@@ -1738,6 +2942,10 @@
 (defund @__ieee754_sqrt-succ121-lab (s121)
   (case (g '%123 (@__ieee754_sqrt-%123-loc s121)) (-1 '%124) (0 '%155)))
 
+(defund @__ieee754_sqrt-%121-fwd (mem loc pred)
+  (let ((s121 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ121-lab s121) (@__ieee754_sqrt-%121-mem s121) (@__ieee754_sqrt-%123-loc s121))))
+
 (defund @__ieee754_sqrt-succ121-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%123 loc) (-1 '%124) (0 '%155)) mem loc))
@@ -1749,6 +2957,35 @@
 (defund @__ieee754_sqrt-%121-rev (mem loc pred)
   (@__ieee754_sqrt-%122-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%121-expand-rev-as-@__ieee754_sqrt-%122-rev
+  (equal (@__ieee754_sqrt-%121-rev mem loc pred)
+         (let ((s121 (list mem loc pred)))
+           (@__ieee754_sqrt-%122-rev
+            (@__ieee754_sqrt-%121-mem s121)
+            (@__ieee754_sqrt-%121-loc s121)
+            (@__ieee754_sqrt-%121-pred s121))))
+  :enable (@__ieee754_sqrt-%121-rev @__ieee754_sqrt-%121-mem @__ieee754_sqrt-%121-loc @__ieee754_sqrt-%121-pred))
+(defruled @__ieee754_sqrt-%121-expand-rev-as-@__ieee754_sqrt-%123-rev
+  (equal (@__ieee754_sqrt-%121-rev mem loc pred)
+         (let ((s121 (list mem loc pred)))
+           (@__ieee754_sqrt-%123-rev
+            (@__ieee754_sqrt-%121-mem s121)
+            (@__ieee754_sqrt-%122-loc s121)
+            (@__ieee754_sqrt-%121-pred s121))))
+  :enable (@__ieee754_sqrt-%121-expand-rev-as-@__ieee754_sqrt-%122-rev @__ieee754_sqrt-%122-rev @__ieee754_sqrt-%122-loc @__ieee754_sqrt-%122-val))
+(defruled @__ieee754_sqrt-%121-expand-rev-as-@__ieee754_sqrt-succ121-rev
+  (equal (@__ieee754_sqrt-%121-rev mem loc pred)
+         (let ((s121 (list mem loc pred)))
+           (@__ieee754_sqrt-succ121-rev
+            (@__ieee754_sqrt-%121-mem s121)
+            (@__ieee754_sqrt-%123-loc s121)
+            (@__ieee754_sqrt-%121-pred s121))))
+  :enable (@__ieee754_sqrt-%121-expand-rev-as-@__ieee754_sqrt-%123-rev @__ieee754_sqrt-%123-rev @__ieee754_sqrt-%123-loc @__ieee754_sqrt-%123-val))
+(defruled @__ieee754_sqrt-%121-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%121-rev mem loc pred)
+         (@__ieee754_sqrt-%121-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%121-expand-rev-as-@__ieee754_sqrt-succ121-rev @__ieee754_sqrt-succ121-rev @__ieee754_sqrt-succ121-lab @__ieee754_sqrt-%121-fwd))
+
 (defund @__ieee754_sqrt-%121-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1756,15 +2993,6 @@
     (loc (s '%123 (icmp-ne-i32 (g '%122 loc) 0) loc))
     (succ (case (g '%123 loc) (-1 '%124) (0 '%155))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%121-expand-bb
-  (equal (@__ieee754_sqrt-%121-bb mem loc pred)
-         (@__ieee754_sqrt-%121-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%121-bb @__ieee754_sqrt-%121-rev
-    @__ieee754_sqrt-%122-rev
-    @__ieee754_sqrt-%123-rev
-    @__ieee754_sqrt-succ121-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%124-mem (s124)
   (car s124))
@@ -1801,6 +3029,10 @@
 (defund @__ieee754_sqrt-succ124-lab (s124)
   (case (g '%130 (@__ieee754_sqrt-%130-loc s124)) (-1 '%131) (0 '%141)))
 
+(defund @__ieee754_sqrt-%124-fwd (mem loc pred)
+  (let ((s124 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ124-lab s124) (@__ieee754_sqrt-m124.1-mem s124) (@__ieee754_sqrt-%130-loc s124))))
+
 (defund @__ieee754_sqrt-succ124-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%130 loc) (-1 '%131) (0 '%141)) mem loc))
@@ -1822,6 +3054,75 @@
 (defund @__ieee754_sqrt-%124-rev (mem loc pred)
   (@__ieee754_sqrt-%125-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%125-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-%125-rev
+            (@__ieee754_sqrt-%124-mem s124)
+            (@__ieee754_sqrt-%124-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-rev @__ieee754_sqrt-%124-mem @__ieee754_sqrt-%124-loc @__ieee754_sqrt-%124-pred))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%126-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-%126-rev
+            (@__ieee754_sqrt-%124-mem s124)
+            (@__ieee754_sqrt-%125-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%125-rev @__ieee754_sqrt-%125-rev @__ieee754_sqrt-%125-loc @__ieee754_sqrt-%125-val))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%127-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-%127-rev
+            (@__ieee754_sqrt-%124-mem s124)
+            (@__ieee754_sqrt-%126-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%126-rev @__ieee754_sqrt-%126-rev @__ieee754_sqrt-%126-loc @__ieee754_sqrt-%126-val))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-m124.1-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-m124.1-rev
+            (@__ieee754_sqrt-%124-mem s124)
+            (@__ieee754_sqrt-%127-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%127-rev @__ieee754_sqrt-%127-rev @__ieee754_sqrt-%127-loc @__ieee754_sqrt-%127-val))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%128-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-%128-rev
+            (@__ieee754_sqrt-m124.1-mem s124)
+            (@__ieee754_sqrt-%127-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-m124.1-rev @__ieee754_sqrt-m124.1-rev @__ieee754_sqrt-m124.1-mem))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%129-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-%129-rev
+            (@__ieee754_sqrt-m124.1-mem s124)
+            (@__ieee754_sqrt-%128-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%128-rev @__ieee754_sqrt-%128-rev @__ieee754_sqrt-%128-loc @__ieee754_sqrt-%128-val))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%130-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-%130-rev
+            (@__ieee754_sqrt-m124.1-mem s124)
+            (@__ieee754_sqrt-%129-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%129-rev @__ieee754_sqrt-%129-rev @__ieee754_sqrt-%129-loc @__ieee754_sqrt-%129-val))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-succ124-rev
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (let ((s124 (list mem loc pred)))
+           (@__ieee754_sqrt-succ124-rev
+            (@__ieee754_sqrt-m124.1-mem s124)
+            (@__ieee754_sqrt-%130-loc s124)
+            (@__ieee754_sqrt-%124-pred s124))))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-%130-rev @__ieee754_sqrt-%130-rev @__ieee754_sqrt-%130-loc @__ieee754_sqrt-%130-val))
+(defruled @__ieee754_sqrt-%124-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%124-rev mem loc pred)
+         (@__ieee754_sqrt-%124-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%124-expand-rev-as-@__ieee754_sqrt-succ124-rev @__ieee754_sqrt-succ124-rev @__ieee754_sqrt-succ124-lab @__ieee754_sqrt-%124-fwd))
+
 (defund @__ieee754_sqrt-%124-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1834,20 +3135,6 @@
     (loc (s '%130 (icmp-sle-i32 (g '%128 loc) (g '%129 loc)) loc))
     (succ (case (g '%130 loc) (-1 '%131) (0 '%141))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%124-expand-bb
-  (equal (@__ieee754_sqrt-%124-bb mem loc pred)
-         (@__ieee754_sqrt-%124-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%124-bb @__ieee754_sqrt-%124-rev
-    @__ieee754_sqrt-%125-rev
-    @__ieee754_sqrt-%126-rev
-    @__ieee754_sqrt-%127-rev
-    @__ieee754_sqrt-m124.1-rev
-    @__ieee754_sqrt-%128-rev
-    @__ieee754_sqrt-%129-rev
-    @__ieee754_sqrt-%130-rev
-    @__ieee754_sqrt-succ124-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%131-mem (s131)
   (car s131))
@@ -1901,6 +3188,10 @@
   (declare (ignore s131))
   '%141)
 
+(defund @__ieee754_sqrt-%131-fwd (mem loc pred)
+  (let ((s131 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ131-lab s131) (@__ieee754_sqrt-m131.3-mem s131) (@__ieee754_sqrt-%140-loc s131))))
+
 (defund @__ieee754_sqrt-succ131-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%141 mem loc))
@@ -1932,6 +3223,115 @@
 (defund @__ieee754_sqrt-%131-rev (mem loc pred)
   (@__ieee754_sqrt-%132-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%132-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%132-rev
+            (@__ieee754_sqrt-%131-mem s131)
+            (@__ieee754_sqrt-%131-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-rev @__ieee754_sqrt-%131-mem @__ieee754_sqrt-%131-loc @__ieee754_sqrt-%131-pred))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%133-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%133-rev
+            (@__ieee754_sqrt-%131-mem s131)
+            (@__ieee754_sqrt-%132-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%132-rev @__ieee754_sqrt-%132-rev @__ieee754_sqrt-%132-loc @__ieee754_sqrt-%132-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%134-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%134-rev
+            (@__ieee754_sqrt-%131-mem s131)
+            (@__ieee754_sqrt-%133-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%133-rev @__ieee754_sqrt-%133-rev @__ieee754_sqrt-%133-loc @__ieee754_sqrt-%133-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-m131.1-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-m131.1-rev
+            (@__ieee754_sqrt-%131-mem s131)
+            (@__ieee754_sqrt-%134-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%134-rev @__ieee754_sqrt-%134-rev @__ieee754_sqrt-%134-loc @__ieee754_sqrt-%134-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%135-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%135-rev
+            (@__ieee754_sqrt-m131.1-mem s131)
+            (@__ieee754_sqrt-%134-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-m131.1-rev @__ieee754_sqrt-m131.1-rev @__ieee754_sqrt-m131.1-mem))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%136-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%136-rev
+            (@__ieee754_sqrt-m131.1-mem s131)
+            (@__ieee754_sqrt-%135-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%135-rev @__ieee754_sqrt-%135-rev @__ieee754_sqrt-%135-loc @__ieee754_sqrt-%135-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%137-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%137-rev
+            (@__ieee754_sqrt-m131.1-mem s131)
+            (@__ieee754_sqrt-%136-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%136-rev @__ieee754_sqrt-%136-rev @__ieee754_sqrt-%136-loc @__ieee754_sqrt-%136-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-m131.2-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-m131.2-rev
+            (@__ieee754_sqrt-m131.1-mem s131)
+            (@__ieee754_sqrt-%137-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%137-rev @__ieee754_sqrt-%137-rev @__ieee754_sqrt-%137-loc @__ieee754_sqrt-%137-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%138-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%138-rev
+            (@__ieee754_sqrt-m131.2-mem s131)
+            (@__ieee754_sqrt-%137-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-m131.2-rev @__ieee754_sqrt-m131.2-rev @__ieee754_sqrt-m131.2-mem))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%139-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%139-rev
+            (@__ieee754_sqrt-m131.2-mem s131)
+            (@__ieee754_sqrt-%138-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%138-rev @__ieee754_sqrt-%138-rev @__ieee754_sqrt-%138-loc @__ieee754_sqrt-%138-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%140-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-%140-rev
+            (@__ieee754_sqrt-m131.2-mem s131)
+            (@__ieee754_sqrt-%139-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%139-rev @__ieee754_sqrt-%139-rev @__ieee754_sqrt-%139-loc @__ieee754_sqrt-%139-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-m131.3-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-m131.3-rev
+            (@__ieee754_sqrt-m131.2-mem s131)
+            (@__ieee754_sqrt-%140-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-%140-rev @__ieee754_sqrt-%140-rev @__ieee754_sqrt-%140-loc @__ieee754_sqrt-%140-val))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-succ131-rev
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (let ((s131 (list mem loc pred)))
+           (@__ieee754_sqrt-succ131-rev
+            (@__ieee754_sqrt-m131.3-mem s131)
+            (@__ieee754_sqrt-%140-loc s131)
+            (@__ieee754_sqrt-%131-pred s131))))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-m131.3-rev @__ieee754_sqrt-m131.3-rev @__ieee754_sqrt-m131.3-mem))
+(defruled @__ieee754_sqrt-%131-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%131-rev mem loc pred)
+         (@__ieee754_sqrt-%131-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%131-expand-rev-as-@__ieee754_sqrt-succ131-rev @__ieee754_sqrt-succ131-rev @__ieee754_sqrt-succ131-lab @__ieee754_sqrt-%131-fwd))
+
 (defund @__ieee754_sqrt-%131-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1949,25 +3349,6 @@
     (mem (store-i32 (g '%140 loc) (g '%q loc) mem))
     (succ '%141))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%131-expand-bb
-  (equal (@__ieee754_sqrt-%131-bb mem loc pred)
-         (@__ieee754_sqrt-%131-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%131-bb @__ieee754_sqrt-%131-rev
-    @__ieee754_sqrt-%132-rev
-    @__ieee754_sqrt-%133-rev
-    @__ieee754_sqrt-%134-rev
-    @__ieee754_sqrt-m131.1-rev
-    @__ieee754_sqrt-%135-rev
-    @__ieee754_sqrt-%136-rev
-    @__ieee754_sqrt-%137-rev
-    @__ieee754_sqrt-m131.2-rev
-    @__ieee754_sqrt-%138-rev
-    @__ieee754_sqrt-%139-rev
-    @__ieee754_sqrt-%140-rev
-    @__ieee754_sqrt-m131.3-rev
-    @__ieee754_sqrt-succ131-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%141-mem (s141)
   (car s141))
@@ -2037,6 +3418,10 @@
   (declare (ignore s141))
   '%121)
 
+(defund @__ieee754_sqrt-%141-fwd (mem loc pred)
+  (let ((s141 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ141-lab s141) (@__ieee754_sqrt-m141.3-mem s141) (@__ieee754_sqrt-%154-loc s141))))
+
 (defund @__ieee754_sqrt-succ141-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%121 mem loc))
@@ -2076,6 +3461,147 @@
 (defund @__ieee754_sqrt-%141-rev (mem loc pred)
   (@__ieee754_sqrt-%142-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%142-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%142-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%141-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-rev @__ieee754_sqrt-%141-mem @__ieee754_sqrt-%141-loc @__ieee754_sqrt-%141-pred))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%143-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%143-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%142-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%142-rev @__ieee754_sqrt-%142-rev @__ieee754_sqrt-%142-loc @__ieee754_sqrt-%142-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%144-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%144-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%143-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%143-rev @__ieee754_sqrt-%143-rev @__ieee754_sqrt-%143-loc @__ieee754_sqrt-%143-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%145-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%145-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%144-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%144-rev @__ieee754_sqrt-%144-rev @__ieee754_sqrt-%144-loc @__ieee754_sqrt-%144-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%146-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%146-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%145-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%145-rev @__ieee754_sqrt-%145-rev @__ieee754_sqrt-%145-loc @__ieee754_sqrt-%145-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%147-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%147-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%146-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%146-rev @__ieee754_sqrt-%146-rev @__ieee754_sqrt-%146-loc @__ieee754_sqrt-%146-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%148-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%148-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%147-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%147-rev @__ieee754_sqrt-%147-rev @__ieee754_sqrt-%147-loc @__ieee754_sqrt-%147-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%149-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%149-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%148-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%148-rev @__ieee754_sqrt-%148-rev @__ieee754_sqrt-%148-loc @__ieee754_sqrt-%148-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-m141.1-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-m141.1-rev
+            (@__ieee754_sqrt-%141-mem s141)
+            (@__ieee754_sqrt-%149-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%149-rev @__ieee754_sqrt-%149-rev @__ieee754_sqrt-%149-loc @__ieee754_sqrt-%149-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%150-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%150-rev
+            (@__ieee754_sqrt-m141.1-mem s141)
+            (@__ieee754_sqrt-%149-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-m141.1-rev @__ieee754_sqrt-m141.1-rev @__ieee754_sqrt-m141.1-mem))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%151-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%151-rev
+            (@__ieee754_sqrt-m141.1-mem s141)
+            (@__ieee754_sqrt-%150-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%150-rev @__ieee754_sqrt-%150-rev @__ieee754_sqrt-%150-loc @__ieee754_sqrt-%150-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%152-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%152-rev
+            (@__ieee754_sqrt-m141.1-mem s141)
+            (@__ieee754_sqrt-%151-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%151-rev @__ieee754_sqrt-%151-rev @__ieee754_sqrt-%151-loc @__ieee754_sqrt-%151-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-m141.2-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-m141.2-rev
+            (@__ieee754_sqrt-m141.1-mem s141)
+            (@__ieee754_sqrt-%152-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%152-rev @__ieee754_sqrt-%152-rev @__ieee754_sqrt-%152-loc @__ieee754_sqrt-%152-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%153-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%153-rev
+            (@__ieee754_sqrt-m141.2-mem s141)
+            (@__ieee754_sqrt-%152-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-m141.2-rev @__ieee754_sqrt-m141.2-rev @__ieee754_sqrt-m141.2-mem))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%154-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-%154-rev
+            (@__ieee754_sqrt-m141.2-mem s141)
+            (@__ieee754_sqrt-%153-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%153-rev @__ieee754_sqrt-%153-rev @__ieee754_sqrt-%153-loc @__ieee754_sqrt-%153-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-m141.3-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-m141.3-rev
+            (@__ieee754_sqrt-m141.2-mem s141)
+            (@__ieee754_sqrt-%154-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-%154-rev @__ieee754_sqrt-%154-rev @__ieee754_sqrt-%154-loc @__ieee754_sqrt-%154-val))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-succ141-rev
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (let ((s141 (list mem loc pred)))
+           (@__ieee754_sqrt-succ141-rev
+            (@__ieee754_sqrt-m141.3-mem s141)
+            (@__ieee754_sqrt-%154-loc s141)
+            (@__ieee754_sqrt-%141-pred s141))))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-m141.3-rev @__ieee754_sqrt-m141.3-rev @__ieee754_sqrt-m141.3-mem))
+(defruled @__ieee754_sqrt-%141-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%141-rev mem loc pred)
+         (@__ieee754_sqrt-%141-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%141-expand-rev-as-@__ieee754_sqrt-succ141-rev @__ieee754_sqrt-succ141-rev @__ieee754_sqrt-succ141-lab @__ieee754_sqrt-%141-fwd))
+
 (defund @__ieee754_sqrt-%141-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2098,29 +3624,6 @@
     (succ '%121))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%141-expand-bb
-  (equal (@__ieee754_sqrt-%141-bb mem loc pred)
-         (@__ieee754_sqrt-%141-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%141-bb @__ieee754_sqrt-%141-rev
-    @__ieee754_sqrt-%142-rev
-    @__ieee754_sqrt-%143-rev
-    @__ieee754_sqrt-%144-rev
-    @__ieee754_sqrt-%145-rev
-    @__ieee754_sqrt-%146-rev
-    @__ieee754_sqrt-%147-rev
-    @__ieee754_sqrt-%148-rev
-    @__ieee754_sqrt-%149-rev
-    @__ieee754_sqrt-m141.1-rev
-    @__ieee754_sqrt-%150-rev
-    @__ieee754_sqrt-%151-rev
-    @__ieee754_sqrt-%152-rev
-    @__ieee754_sqrt-m141.2-rev
-    @__ieee754_sqrt-%153-rev
-    @__ieee754_sqrt-%154-rev
-    @__ieee754_sqrt-m141.3-rev
-    @__ieee754_sqrt-succ141-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%155-mem (s155)
   (car s155))
 (defund @__ieee754_sqrt-%155-loc (s155)
@@ -2137,6 +3640,10 @@
   (declare (ignore s155))
   '%157)
 
+(defund @__ieee754_sqrt-%155-fwd (mem loc pred)
+  (let ((s155 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ155-lab s155) (@__ieee754_sqrt-m155.1-mem s155) (@__ieee754_sqrt-%156-loc s155))))
+
 (defund @__ieee754_sqrt-succ155-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%157 mem loc))
@@ -2148,6 +3655,35 @@
 (defund @__ieee754_sqrt-%155-rev (mem loc pred)
   (@__ieee754_sqrt-%156-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%155-expand-rev-as-@__ieee754_sqrt-%156-rev
+  (equal (@__ieee754_sqrt-%155-rev mem loc pred)
+         (let ((s155 (list mem loc pred)))
+           (@__ieee754_sqrt-%156-rev
+            (@__ieee754_sqrt-%155-mem s155)
+            (@__ieee754_sqrt-%155-loc s155)
+            (@__ieee754_sqrt-%155-pred s155))))
+  :enable (@__ieee754_sqrt-%155-rev @__ieee754_sqrt-%155-mem @__ieee754_sqrt-%155-loc @__ieee754_sqrt-%155-pred))
+(defruled @__ieee754_sqrt-%155-expand-rev-as-@__ieee754_sqrt-m155.1-rev
+  (equal (@__ieee754_sqrt-%155-rev mem loc pred)
+         (let ((s155 (list mem loc pred)))
+           (@__ieee754_sqrt-m155.1-rev
+            (@__ieee754_sqrt-%155-mem s155)
+            (@__ieee754_sqrt-%156-loc s155)
+            (@__ieee754_sqrt-%155-pred s155))))
+  :enable (@__ieee754_sqrt-%155-expand-rev-as-@__ieee754_sqrt-%156-rev @__ieee754_sqrt-%156-rev @__ieee754_sqrt-%156-loc @__ieee754_sqrt-%156-val))
+(defruled @__ieee754_sqrt-%155-expand-rev-as-@__ieee754_sqrt-succ155-rev
+  (equal (@__ieee754_sqrt-%155-rev mem loc pred)
+         (let ((s155 (list mem loc pred)))
+           (@__ieee754_sqrt-succ155-rev
+            (@__ieee754_sqrt-m155.1-mem s155)
+            (@__ieee754_sqrt-%156-loc s155)
+            (@__ieee754_sqrt-%155-pred s155))))
+  :enable (@__ieee754_sqrt-%155-expand-rev-as-@__ieee754_sqrt-m155.1-rev @__ieee754_sqrt-m155.1-rev @__ieee754_sqrt-m155.1-mem))
+(defruled @__ieee754_sqrt-%155-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%155-rev mem loc pred)
+         (@__ieee754_sqrt-%155-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%155-expand-rev-as-@__ieee754_sqrt-succ155-rev @__ieee754_sqrt-succ155-rev @__ieee754_sqrt-succ155-lab @__ieee754_sqrt-%155-fwd))
+
 (defund @__ieee754_sqrt-%155-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2155,15 +3691,6 @@
     (mem (store-i32 (g '%156 loc) (g '%r loc) mem))
     (succ '%157))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%155-expand-bb
-  (equal (@__ieee754_sqrt-%155-bb mem loc pred)
-         (@__ieee754_sqrt-%155-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%155-bb @__ieee754_sqrt-%155-rev
-    @__ieee754_sqrt-%156-rev
-    @__ieee754_sqrt-m155.1-rev
-    @__ieee754_sqrt-succ155-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%157-mem (s157)
   (car s157))
@@ -2182,6 +3709,10 @@
 (defund @__ieee754_sqrt-succ157-lab (s157)
   (case (g '%159 (@__ieee754_sqrt-%159-loc s157)) (-1 '%160) (0 '%224)))
 
+(defund @__ieee754_sqrt-%157-fwd (mem loc pred)
+  (let ((s157 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ157-lab s157) (@__ieee754_sqrt-%157-mem s157) (@__ieee754_sqrt-%159-loc s157))))
+
 (defund @__ieee754_sqrt-succ157-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%159 loc) (-1 '%160) (0 '%224)) mem loc))
@@ -2193,6 +3724,35 @@
 (defund @__ieee754_sqrt-%157-rev (mem loc pred)
   (@__ieee754_sqrt-%158-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%157-expand-rev-as-@__ieee754_sqrt-%158-rev
+  (equal (@__ieee754_sqrt-%157-rev mem loc pred)
+         (let ((s157 (list mem loc pred)))
+           (@__ieee754_sqrt-%158-rev
+            (@__ieee754_sqrt-%157-mem s157)
+            (@__ieee754_sqrt-%157-loc s157)
+            (@__ieee754_sqrt-%157-pred s157))))
+  :enable (@__ieee754_sqrt-%157-rev @__ieee754_sqrt-%157-mem @__ieee754_sqrt-%157-loc @__ieee754_sqrt-%157-pred))
+(defruled @__ieee754_sqrt-%157-expand-rev-as-@__ieee754_sqrt-%159-rev
+  (equal (@__ieee754_sqrt-%157-rev mem loc pred)
+         (let ((s157 (list mem loc pred)))
+           (@__ieee754_sqrt-%159-rev
+            (@__ieee754_sqrt-%157-mem s157)
+            (@__ieee754_sqrt-%158-loc s157)
+            (@__ieee754_sqrt-%157-pred s157))))
+  :enable (@__ieee754_sqrt-%157-expand-rev-as-@__ieee754_sqrt-%158-rev @__ieee754_sqrt-%158-rev @__ieee754_sqrt-%158-loc @__ieee754_sqrt-%158-val))
+(defruled @__ieee754_sqrt-%157-expand-rev-as-@__ieee754_sqrt-succ157-rev
+  (equal (@__ieee754_sqrt-%157-rev mem loc pred)
+         (let ((s157 (list mem loc pred)))
+           (@__ieee754_sqrt-succ157-rev
+            (@__ieee754_sqrt-%157-mem s157)
+            (@__ieee754_sqrt-%159-loc s157)
+            (@__ieee754_sqrt-%157-pred s157))))
+  :enable (@__ieee754_sqrt-%157-expand-rev-as-@__ieee754_sqrt-%159-rev @__ieee754_sqrt-%159-rev @__ieee754_sqrt-%159-loc @__ieee754_sqrt-%159-val))
+(defruled @__ieee754_sqrt-%157-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%157-rev mem loc pred)
+         (@__ieee754_sqrt-%157-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%157-expand-rev-as-@__ieee754_sqrt-succ157-rev @__ieee754_sqrt-succ157-rev @__ieee754_sqrt-succ157-lab @__ieee754_sqrt-%157-fwd))
+
 (defund @__ieee754_sqrt-%157-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2200,15 +3760,6 @@
     (loc (s '%159 (icmp-ne-i32 (g '%158 loc) 0) loc))
     (succ (case (g '%159 loc) (-1 '%160) (0 '%224))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%157-expand-bb
-  (equal (@__ieee754_sqrt-%157-bb mem loc pred)
-         (@__ieee754_sqrt-%157-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%157-bb @__ieee754_sqrt-%157-rev
-    @__ieee754_sqrt-%158-rev
-    @__ieee754_sqrt-%159-rev
-    @__ieee754_sqrt-succ157-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%160-mem (s160)
   (car s160))
@@ -2251,6 +3802,10 @@
 (defund @__ieee754_sqrt-succ160-lab (s160)
   (case (g '%167 (@__ieee754_sqrt-%167-loc s160)) (-1 '%176) (0 '%168)))
 
+(defund @__ieee754_sqrt-%160-fwd (mem loc pred)
+  (let ((s160 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ160-lab s160) (@__ieee754_sqrt-m160.2-mem s160) (@__ieee754_sqrt-%167-loc s160))))
+
 (defund @__ieee754_sqrt-succ160-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%167 loc) (-1 '%176) (0 '%168)) mem loc))
@@ -2276,6 +3831,91 @@
 (defund @__ieee754_sqrt-%160-rev (mem loc pred)
   (@__ieee754_sqrt-%161-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%161-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%161-rev
+            (@__ieee754_sqrt-%160-mem s160)
+            (@__ieee754_sqrt-%160-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-rev @__ieee754_sqrt-%160-mem @__ieee754_sqrt-%160-loc @__ieee754_sqrt-%160-pred))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%162-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%162-rev
+            (@__ieee754_sqrt-%160-mem s160)
+            (@__ieee754_sqrt-%161-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%161-rev @__ieee754_sqrt-%161-rev @__ieee754_sqrt-%161-loc @__ieee754_sqrt-%161-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%163-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%163-rev
+            (@__ieee754_sqrt-%160-mem s160)
+            (@__ieee754_sqrt-%162-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%162-rev @__ieee754_sqrt-%162-rev @__ieee754_sqrt-%162-loc @__ieee754_sqrt-%162-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-m160.1-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-m160.1-rev
+            (@__ieee754_sqrt-%160-mem s160)
+            (@__ieee754_sqrt-%163-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%163-rev @__ieee754_sqrt-%163-rev @__ieee754_sqrt-%163-loc @__ieee754_sqrt-%163-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%164-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%164-rev
+            (@__ieee754_sqrt-m160.1-mem s160)
+            (@__ieee754_sqrt-%163-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-m160.1-rev @__ieee754_sqrt-m160.1-rev @__ieee754_sqrt-m160.1-mem))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-m160.2-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-m160.2-rev
+            (@__ieee754_sqrt-m160.1-mem s160)
+            (@__ieee754_sqrt-%164-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%164-rev @__ieee754_sqrt-%164-rev @__ieee754_sqrt-%164-loc @__ieee754_sqrt-%164-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%165-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%165-rev
+            (@__ieee754_sqrt-m160.2-mem s160)
+            (@__ieee754_sqrt-%164-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-m160.2-rev @__ieee754_sqrt-m160.2-rev @__ieee754_sqrt-m160.2-mem))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%166-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%166-rev
+            (@__ieee754_sqrt-m160.2-mem s160)
+            (@__ieee754_sqrt-%165-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%165-rev @__ieee754_sqrt-%165-rev @__ieee754_sqrt-%165-loc @__ieee754_sqrt-%165-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%167-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-%167-rev
+            (@__ieee754_sqrt-m160.2-mem s160)
+            (@__ieee754_sqrt-%166-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%166-rev @__ieee754_sqrt-%166-rev @__ieee754_sqrt-%166-loc @__ieee754_sqrt-%166-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-succ160-rev
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (let ((s160 (list mem loc pred)))
+           (@__ieee754_sqrt-succ160-rev
+            (@__ieee754_sqrt-m160.2-mem s160)
+            (@__ieee754_sqrt-%167-loc s160)
+            (@__ieee754_sqrt-%160-pred s160))))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-%167-rev @__ieee754_sqrt-%167-rev @__ieee754_sqrt-%167-loc @__ieee754_sqrt-%167-val))
+(defruled @__ieee754_sqrt-%160-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%160-rev mem loc pred)
+         (@__ieee754_sqrt-%160-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%160-expand-rev-as-@__ieee754_sqrt-succ160-rev @__ieee754_sqrt-succ160-rev @__ieee754_sqrt-succ160-lab @__ieee754_sqrt-%160-fwd))
+
 (defund @__ieee754_sqrt-%160-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2290,22 +3930,6 @@
     (loc (s '%167 (icmp-slt-i32 (g '%165 loc) (g '%166 loc)) loc))
     (succ (case (g '%167 loc) (-1 '%176) (0 '%168))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%160-expand-bb
-  (equal (@__ieee754_sqrt-%160-bb mem loc pred)
-         (@__ieee754_sqrt-%160-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%160-bb @__ieee754_sqrt-%160-rev
-    @__ieee754_sqrt-%161-rev
-    @__ieee754_sqrt-%162-rev
-    @__ieee754_sqrt-%163-rev
-    @__ieee754_sqrt-m160.1-rev
-    @__ieee754_sqrt-%164-rev
-    @__ieee754_sqrt-m160.2-rev
-    @__ieee754_sqrt-%165-rev
-    @__ieee754_sqrt-%166-rev
-    @__ieee754_sqrt-%167-rev
-    @__ieee754_sqrt-succ160-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%168-mem (s168)
   (car s168))
@@ -2328,6 +3952,10 @@
 (defund @__ieee754_sqrt-succ168-lab (s168)
   (case (g '%171 (@__ieee754_sqrt-%171-loc s168)) (-1 '%172) (0 '%210)))
 
+(defund @__ieee754_sqrt-%168-fwd (mem loc pred)
+  (let ((s168 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ168-lab s168) (@__ieee754_sqrt-%168-mem s168) (@__ieee754_sqrt-%171-loc s168))))
+
 (defund @__ieee754_sqrt-succ168-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%171 loc) (-1 '%172) (0 '%210)) mem loc))
@@ -2341,6 +3969,43 @@
 (defund @__ieee754_sqrt-%168-rev (mem loc pred)
   (@__ieee754_sqrt-%169-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-%169-rev
+  (equal (@__ieee754_sqrt-%168-rev mem loc pred)
+         (let ((s168 (list mem loc pred)))
+           (@__ieee754_sqrt-%169-rev
+            (@__ieee754_sqrt-%168-mem s168)
+            (@__ieee754_sqrt-%168-loc s168)
+            (@__ieee754_sqrt-%168-pred s168))))
+  :enable (@__ieee754_sqrt-%168-rev @__ieee754_sqrt-%168-mem @__ieee754_sqrt-%168-loc @__ieee754_sqrt-%168-pred))
+(defruled @__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-%170-rev
+  (equal (@__ieee754_sqrt-%168-rev mem loc pred)
+         (let ((s168 (list mem loc pred)))
+           (@__ieee754_sqrt-%170-rev
+            (@__ieee754_sqrt-%168-mem s168)
+            (@__ieee754_sqrt-%169-loc s168)
+            (@__ieee754_sqrt-%168-pred s168))))
+  :enable (@__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-%169-rev @__ieee754_sqrt-%169-rev @__ieee754_sqrt-%169-loc @__ieee754_sqrt-%169-val))
+(defruled @__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-%171-rev
+  (equal (@__ieee754_sqrt-%168-rev mem loc pred)
+         (let ((s168 (list mem loc pred)))
+           (@__ieee754_sqrt-%171-rev
+            (@__ieee754_sqrt-%168-mem s168)
+            (@__ieee754_sqrt-%170-loc s168)
+            (@__ieee754_sqrt-%168-pred s168))))
+  :enable (@__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-%170-rev @__ieee754_sqrt-%170-rev @__ieee754_sqrt-%170-loc @__ieee754_sqrt-%170-val))
+(defruled @__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-succ168-rev
+  (equal (@__ieee754_sqrt-%168-rev mem loc pred)
+         (let ((s168 (list mem loc pred)))
+           (@__ieee754_sqrt-succ168-rev
+            (@__ieee754_sqrt-%168-mem s168)
+            (@__ieee754_sqrt-%171-loc s168)
+            (@__ieee754_sqrt-%168-pred s168))))
+  :enable (@__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-%171-rev @__ieee754_sqrt-%171-rev @__ieee754_sqrt-%171-loc @__ieee754_sqrt-%171-val))
+(defruled @__ieee754_sqrt-%168-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%168-rev mem loc pred)
+         (@__ieee754_sqrt-%168-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%168-expand-rev-as-@__ieee754_sqrt-succ168-rev @__ieee754_sqrt-succ168-rev @__ieee754_sqrt-succ168-lab @__ieee754_sqrt-%168-fwd))
+
 (defund @__ieee754_sqrt-%168-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2349,16 +4014,6 @@
     (loc (s '%171 (icmp-eq-i32 (g '%169 loc) (g '%170 loc)) loc))
     (succ (case (g '%171 loc) (-1 '%172) (0 '%210))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%168-expand-bb
-  (equal (@__ieee754_sqrt-%168-bb mem loc pred)
-         (@__ieee754_sqrt-%168-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%168-bb @__ieee754_sqrt-%168-rev
-    @__ieee754_sqrt-%169-rev
-    @__ieee754_sqrt-%170-rev
-    @__ieee754_sqrt-%171-rev
-    @__ieee754_sqrt-succ168-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%172-mem (s172)
   (car s172))
@@ -2381,6 +4036,10 @@
 (defund @__ieee754_sqrt-succ172-lab (s172)
   (case (g '%175 (@__ieee754_sqrt-%175-loc s172)) (-1 '%176) (0 '%210)))
 
+(defund @__ieee754_sqrt-%172-fwd (mem loc pred)
+  (let ((s172 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ172-lab s172) (@__ieee754_sqrt-%172-mem s172) (@__ieee754_sqrt-%175-loc s172))))
+
 (defund @__ieee754_sqrt-succ172-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%175 loc) (-1 '%176) (0 '%210)) mem loc))
@@ -2394,6 +4053,43 @@
 (defund @__ieee754_sqrt-%172-rev (mem loc pred)
   (@__ieee754_sqrt-%173-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-%173-rev
+  (equal (@__ieee754_sqrt-%172-rev mem loc pred)
+         (let ((s172 (list mem loc pred)))
+           (@__ieee754_sqrt-%173-rev
+            (@__ieee754_sqrt-%172-mem s172)
+            (@__ieee754_sqrt-%172-loc s172)
+            (@__ieee754_sqrt-%172-pred s172))))
+  :enable (@__ieee754_sqrt-%172-rev @__ieee754_sqrt-%172-mem @__ieee754_sqrt-%172-loc @__ieee754_sqrt-%172-pred))
+(defruled @__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-%174-rev
+  (equal (@__ieee754_sqrt-%172-rev mem loc pred)
+         (let ((s172 (list mem loc pred)))
+           (@__ieee754_sqrt-%174-rev
+            (@__ieee754_sqrt-%172-mem s172)
+            (@__ieee754_sqrt-%173-loc s172)
+            (@__ieee754_sqrt-%172-pred s172))))
+  :enable (@__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-%173-rev @__ieee754_sqrt-%173-rev @__ieee754_sqrt-%173-loc @__ieee754_sqrt-%173-val))
+(defruled @__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-%175-rev
+  (equal (@__ieee754_sqrt-%172-rev mem loc pred)
+         (let ((s172 (list mem loc pred)))
+           (@__ieee754_sqrt-%175-rev
+            (@__ieee754_sqrt-%172-mem s172)
+            (@__ieee754_sqrt-%174-loc s172)
+            (@__ieee754_sqrt-%172-pred s172))))
+  :enable (@__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-%174-rev @__ieee754_sqrt-%174-rev @__ieee754_sqrt-%174-loc @__ieee754_sqrt-%174-val))
+(defruled @__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-succ172-rev
+  (equal (@__ieee754_sqrt-%172-rev mem loc pred)
+         (let ((s172 (list mem loc pred)))
+           (@__ieee754_sqrt-succ172-rev
+            (@__ieee754_sqrt-%172-mem s172)
+            (@__ieee754_sqrt-%175-loc s172)
+            (@__ieee754_sqrt-%172-pred s172))))
+  :enable (@__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-%175-rev @__ieee754_sqrt-%175-rev @__ieee754_sqrt-%175-loc @__ieee754_sqrt-%175-val))
+(defruled @__ieee754_sqrt-%172-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%172-rev mem loc pred)
+         (@__ieee754_sqrt-%172-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%172-expand-rev-as-@__ieee754_sqrt-succ172-rev @__ieee754_sqrt-succ172-rev @__ieee754_sqrt-succ172-lab @__ieee754_sqrt-%172-fwd))
+
 (defund @__ieee754_sqrt-%172-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2402,16 +4098,6 @@
     (loc (s '%175 (icmp-ule-i32 (g '%173 loc) (g '%174 loc)) loc))
     (succ (case (g '%175 loc) (-1 '%176) (0 '%210))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%172-expand-bb
-  (equal (@__ieee754_sqrt-%172-bb mem loc pred)
-         (@__ieee754_sqrt-%172-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%172-bb @__ieee754_sqrt-%172-rev
-    @__ieee754_sqrt-%173-rev
-    @__ieee754_sqrt-%174-rev
-    @__ieee754_sqrt-%175-rev
-    @__ieee754_sqrt-succ172-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%176-mem (s176)
   (car s176))
@@ -2456,6 +4142,10 @@
 (defund @__ieee754_sqrt-succ176-lab (s176)
   (case (g '%184 (@__ieee754_sqrt-%184-loc s176)) (-1 '%185) (0 '%193)))
 
+(defund @__ieee754_sqrt-%176-fwd (mem loc pred)
+  (let ((s176 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ176-lab s176) (@__ieee754_sqrt-m176.1-mem s176) (@__ieee754_sqrt-%184-loc s176))))
+
 (defund @__ieee754_sqrt-succ176-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%184 loc) (-1 '%185) (0 '%193)) mem loc))
@@ -2481,6 +4171,91 @@
 (defund @__ieee754_sqrt-%176-rev (mem loc pred)
   (@__ieee754_sqrt-%177-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%177-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%177-rev
+            (@__ieee754_sqrt-%176-mem s176)
+            (@__ieee754_sqrt-%176-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-rev @__ieee754_sqrt-%176-mem @__ieee754_sqrt-%176-loc @__ieee754_sqrt-%176-pred))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%178-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%178-rev
+            (@__ieee754_sqrt-%176-mem s176)
+            (@__ieee754_sqrt-%177-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%177-rev @__ieee754_sqrt-%177-rev @__ieee754_sqrt-%177-loc @__ieee754_sqrt-%177-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%179-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%179-rev
+            (@__ieee754_sqrt-%176-mem s176)
+            (@__ieee754_sqrt-%178-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%178-rev @__ieee754_sqrt-%178-rev @__ieee754_sqrt-%178-loc @__ieee754_sqrt-%178-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-m176.1-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-m176.1-rev
+            (@__ieee754_sqrt-%176-mem s176)
+            (@__ieee754_sqrt-%179-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%179-rev @__ieee754_sqrt-%179-rev @__ieee754_sqrt-%179-loc @__ieee754_sqrt-%179-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%180-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%180-rev
+            (@__ieee754_sqrt-m176.1-mem s176)
+            (@__ieee754_sqrt-%179-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-m176.1-rev @__ieee754_sqrt-m176.1-rev @__ieee754_sqrt-m176.1-mem))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%181-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%181-rev
+            (@__ieee754_sqrt-m176.1-mem s176)
+            (@__ieee754_sqrt-%180-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%180-rev @__ieee754_sqrt-%180-rev @__ieee754_sqrt-%180-loc @__ieee754_sqrt-%180-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%182-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%182-rev
+            (@__ieee754_sqrt-m176.1-mem s176)
+            (@__ieee754_sqrt-%181-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%181-rev @__ieee754_sqrt-%181-rev @__ieee754_sqrt-%181-loc @__ieee754_sqrt-%181-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%183-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%183-rev
+            (@__ieee754_sqrt-m176.1-mem s176)
+            (@__ieee754_sqrt-%182-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%182-rev @__ieee754_sqrt-%182-rev @__ieee754_sqrt-%182-loc @__ieee754_sqrt-%182-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%184-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-%184-rev
+            (@__ieee754_sqrt-m176.1-mem s176)
+            (@__ieee754_sqrt-%183-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%183-rev @__ieee754_sqrt-%183-rev @__ieee754_sqrt-%183-loc @__ieee754_sqrt-%183-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-succ176-rev
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (let ((s176 (list mem loc pred)))
+           (@__ieee754_sqrt-succ176-rev
+            (@__ieee754_sqrt-m176.1-mem s176)
+            (@__ieee754_sqrt-%184-loc s176)
+            (@__ieee754_sqrt-%176-pred s176))))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-%184-rev @__ieee754_sqrt-%184-rev @__ieee754_sqrt-%184-loc @__ieee754_sqrt-%184-val))
+(defruled @__ieee754_sqrt-%176-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%176-rev mem loc pred)
+         (@__ieee754_sqrt-%176-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%176-expand-rev-as-@__ieee754_sqrt-succ176-rev @__ieee754_sqrt-succ176-rev @__ieee754_sqrt-succ176-lab @__ieee754_sqrt-%176-fwd))
+
 (defund @__ieee754_sqrt-%176-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2495,22 +4270,6 @@
     (loc (s '%184 (icmp-eq-i32 (g '%182 loc) (g '%183 loc)) loc))
     (succ (case (g '%184 loc) (-1 '%185) (0 '%193))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%176-expand-bb
-  (equal (@__ieee754_sqrt-%176-bb mem loc pred)
-         (@__ieee754_sqrt-%176-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%176-bb @__ieee754_sqrt-%176-rev
-    @__ieee754_sqrt-%177-rev
-    @__ieee754_sqrt-%178-rev
-    @__ieee754_sqrt-%179-rev
-    @__ieee754_sqrt-m176.1-rev
-    @__ieee754_sqrt-%180-rev
-    @__ieee754_sqrt-%181-rev
-    @__ieee754_sqrt-%182-rev
-    @__ieee754_sqrt-%183-rev
-    @__ieee754_sqrt-%184-rev
-    @__ieee754_sqrt-succ176-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%185-mem (s185)
   (car s185))
@@ -2537,6 +4296,10 @@
 (defund @__ieee754_sqrt-succ185-lab (s185)
   (case (g '%189 (@__ieee754_sqrt-%189-loc s185)) (-1 '%190) (0 '%193)))
 
+(defund @__ieee754_sqrt-%185-fwd (mem loc pred)
+  (let ((s185 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ185-lab s185) (@__ieee754_sqrt-%185-mem s185) (@__ieee754_sqrt-%189-loc s185))))
+
 (defund @__ieee754_sqrt-succ185-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%189 loc) (-1 '%190) (0 '%193)) mem loc))
@@ -2552,6 +4315,51 @@
 (defund @__ieee754_sqrt-%185-rev (mem loc pred)
   (@__ieee754_sqrt-%186-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%186-rev
+  (equal (@__ieee754_sqrt-%185-rev mem loc pred)
+         (let ((s185 (list mem loc pred)))
+           (@__ieee754_sqrt-%186-rev
+            (@__ieee754_sqrt-%185-mem s185)
+            (@__ieee754_sqrt-%185-loc s185)
+            (@__ieee754_sqrt-%185-pred s185))))
+  :enable (@__ieee754_sqrt-%185-rev @__ieee754_sqrt-%185-mem @__ieee754_sqrt-%185-loc @__ieee754_sqrt-%185-pred))
+(defruled @__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%187-rev
+  (equal (@__ieee754_sqrt-%185-rev mem loc pred)
+         (let ((s185 (list mem loc pred)))
+           (@__ieee754_sqrt-%187-rev
+            (@__ieee754_sqrt-%185-mem s185)
+            (@__ieee754_sqrt-%186-loc s185)
+            (@__ieee754_sqrt-%185-pred s185))))
+  :enable (@__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%186-rev @__ieee754_sqrt-%186-rev @__ieee754_sqrt-%186-loc @__ieee754_sqrt-%186-val))
+(defruled @__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%188-rev
+  (equal (@__ieee754_sqrt-%185-rev mem loc pred)
+         (let ((s185 (list mem loc pred)))
+           (@__ieee754_sqrt-%188-rev
+            (@__ieee754_sqrt-%185-mem s185)
+            (@__ieee754_sqrt-%187-loc s185)
+            (@__ieee754_sqrt-%185-pred s185))))
+  :enable (@__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%187-rev @__ieee754_sqrt-%187-rev @__ieee754_sqrt-%187-loc @__ieee754_sqrt-%187-val))
+(defruled @__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%189-rev
+  (equal (@__ieee754_sqrt-%185-rev mem loc pred)
+         (let ((s185 (list mem loc pred)))
+           (@__ieee754_sqrt-%189-rev
+            (@__ieee754_sqrt-%185-mem s185)
+            (@__ieee754_sqrt-%188-loc s185)
+            (@__ieee754_sqrt-%185-pred s185))))
+  :enable (@__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%188-rev @__ieee754_sqrt-%188-rev @__ieee754_sqrt-%188-loc @__ieee754_sqrt-%188-val))
+(defruled @__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-succ185-rev
+  (equal (@__ieee754_sqrt-%185-rev mem loc pred)
+         (let ((s185 (list mem loc pred)))
+           (@__ieee754_sqrt-succ185-rev
+            (@__ieee754_sqrt-%185-mem s185)
+            (@__ieee754_sqrt-%189-loc s185)
+            (@__ieee754_sqrt-%185-pred s185))))
+  :enable (@__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-%189-rev @__ieee754_sqrt-%189-rev @__ieee754_sqrt-%189-loc @__ieee754_sqrt-%189-val))
+(defruled @__ieee754_sqrt-%185-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%185-rev mem loc pred)
+         (@__ieee754_sqrt-%185-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%185-expand-rev-as-@__ieee754_sqrt-succ185-rev @__ieee754_sqrt-succ185-rev @__ieee754_sqrt-succ185-lab @__ieee754_sqrt-%185-fwd))
+
 (defund @__ieee754_sqrt-%185-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2561,17 +4369,6 @@
     (loc (s '%189 (icmp-eq-i32 (g '%188 loc) 0) loc))
     (succ (case (g '%189 loc) (-1 '%190) (0 '%193))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%185-expand-bb
-  (equal (@__ieee754_sqrt-%185-bb mem loc pred)
-         (@__ieee754_sqrt-%185-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%185-bb @__ieee754_sqrt-%185-rev
-    @__ieee754_sqrt-%186-rev
-    @__ieee754_sqrt-%187-rev
-    @__ieee754_sqrt-%188-rev
-    @__ieee754_sqrt-%189-rev
-    @__ieee754_sqrt-succ185-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%190-mem (s190)
   (car s190))
@@ -2593,6 +4390,10 @@
   (declare (ignore s190))
   '%193)
 
+(defund @__ieee754_sqrt-%190-fwd (mem loc pred)
+  (let ((s190 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ190-lab s190) (@__ieee754_sqrt-m190.1-mem s190) (@__ieee754_sqrt-%192-loc s190))))
+
 (defund @__ieee754_sqrt-succ190-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%193 mem loc))
@@ -2606,6 +4407,43 @@
 (defund @__ieee754_sqrt-%190-rev (mem loc pred)
   (@__ieee754_sqrt-%191-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-%191-rev
+  (equal (@__ieee754_sqrt-%190-rev mem loc pred)
+         (let ((s190 (list mem loc pred)))
+           (@__ieee754_sqrt-%191-rev
+            (@__ieee754_sqrt-%190-mem s190)
+            (@__ieee754_sqrt-%190-loc s190)
+            (@__ieee754_sqrt-%190-pred s190))))
+  :enable (@__ieee754_sqrt-%190-rev @__ieee754_sqrt-%190-mem @__ieee754_sqrt-%190-loc @__ieee754_sqrt-%190-pred))
+(defruled @__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-%192-rev
+  (equal (@__ieee754_sqrt-%190-rev mem loc pred)
+         (let ((s190 (list mem loc pred)))
+           (@__ieee754_sqrt-%192-rev
+            (@__ieee754_sqrt-%190-mem s190)
+            (@__ieee754_sqrt-%191-loc s190)
+            (@__ieee754_sqrt-%190-pred s190))))
+  :enable (@__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-%191-rev @__ieee754_sqrt-%191-rev @__ieee754_sqrt-%191-loc @__ieee754_sqrt-%191-val))
+(defruled @__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-m190.1-rev
+  (equal (@__ieee754_sqrt-%190-rev mem loc pred)
+         (let ((s190 (list mem loc pred)))
+           (@__ieee754_sqrt-m190.1-rev
+            (@__ieee754_sqrt-%190-mem s190)
+            (@__ieee754_sqrt-%192-loc s190)
+            (@__ieee754_sqrt-%190-pred s190))))
+  :enable (@__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-%192-rev @__ieee754_sqrt-%192-rev @__ieee754_sqrt-%192-loc @__ieee754_sqrt-%192-val))
+(defruled @__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-succ190-rev
+  (equal (@__ieee754_sqrt-%190-rev mem loc pred)
+         (let ((s190 (list mem loc pred)))
+           (@__ieee754_sqrt-succ190-rev
+            (@__ieee754_sqrt-m190.1-mem s190)
+            (@__ieee754_sqrt-%192-loc s190)
+            (@__ieee754_sqrt-%190-pred s190))))
+  :enable (@__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-m190.1-rev @__ieee754_sqrt-m190.1-rev @__ieee754_sqrt-m190.1-mem))
+(defruled @__ieee754_sqrt-%190-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%190-rev mem loc pred)
+         (@__ieee754_sqrt-%190-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%190-expand-rev-as-@__ieee754_sqrt-succ190-rev @__ieee754_sqrt-succ190-rev @__ieee754_sqrt-succ190-lab @__ieee754_sqrt-%190-fwd))
+
 (defund @__ieee754_sqrt-%190-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2614,16 +4452,6 @@
     (mem (store-i32 (g '%192 loc) (g '%s0 loc) mem))
     (succ '%193))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%190-expand-bb
-  (equal (@__ieee754_sqrt-%190-bb mem loc pred)
-         (@__ieee754_sqrt-%190-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%190-bb @__ieee754_sqrt-%190-rev
-    @__ieee754_sqrt-%191-rev
-    @__ieee754_sqrt-%192-rev
-    @__ieee754_sqrt-m190.1-rev
-    @__ieee754_sqrt-succ190-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%193-mem (s193)
   (car s193))
@@ -2660,6 +4488,10 @@
 (defund @__ieee754_sqrt-succ193-lab (s193)
   (case (g '%199 (@__ieee754_sqrt-%199-loc s193)) (-1 '%200) (0 '%203)))
 
+(defund @__ieee754_sqrt-%193-fwd (mem loc pred)
+  (let ((s193 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ193-lab s193) (@__ieee754_sqrt-m193.1-mem s193) (@__ieee754_sqrt-%199-loc s193))))
+
 (defund @__ieee754_sqrt-succ193-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%199 loc) (-1 '%200) (0 '%203)) mem loc))
@@ -2681,6 +4513,75 @@
 (defund @__ieee754_sqrt-%193-rev (mem loc pred)
   (@__ieee754_sqrt-%194-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%194-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-%194-rev
+            (@__ieee754_sqrt-%193-mem s193)
+            (@__ieee754_sqrt-%193-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-rev @__ieee754_sqrt-%193-mem @__ieee754_sqrt-%193-loc @__ieee754_sqrt-%193-pred))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%195-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-%195-rev
+            (@__ieee754_sqrt-%193-mem s193)
+            (@__ieee754_sqrt-%194-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%194-rev @__ieee754_sqrt-%194-rev @__ieee754_sqrt-%194-loc @__ieee754_sqrt-%194-val))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%196-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-%196-rev
+            (@__ieee754_sqrt-%193-mem s193)
+            (@__ieee754_sqrt-%195-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%195-rev @__ieee754_sqrt-%195-rev @__ieee754_sqrt-%195-loc @__ieee754_sqrt-%195-val))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-m193.1-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-m193.1-rev
+            (@__ieee754_sqrt-%193-mem s193)
+            (@__ieee754_sqrt-%196-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%196-rev @__ieee754_sqrt-%196-rev @__ieee754_sqrt-%196-loc @__ieee754_sqrt-%196-val))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%197-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-%197-rev
+            (@__ieee754_sqrt-m193.1-mem s193)
+            (@__ieee754_sqrt-%196-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-m193.1-rev @__ieee754_sqrt-m193.1-rev @__ieee754_sqrt-m193.1-mem))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%198-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-%198-rev
+            (@__ieee754_sqrt-m193.1-mem s193)
+            (@__ieee754_sqrt-%197-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%197-rev @__ieee754_sqrt-%197-rev @__ieee754_sqrt-%197-loc @__ieee754_sqrt-%197-val))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%199-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-%199-rev
+            (@__ieee754_sqrt-m193.1-mem s193)
+            (@__ieee754_sqrt-%198-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%198-rev @__ieee754_sqrt-%198-rev @__ieee754_sqrt-%198-loc @__ieee754_sqrt-%198-val))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-succ193-rev
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (let ((s193 (list mem loc pred)))
+           (@__ieee754_sqrt-succ193-rev
+            (@__ieee754_sqrt-m193.1-mem s193)
+            (@__ieee754_sqrt-%199-loc s193)
+            (@__ieee754_sqrt-%193-pred s193))))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-%199-rev @__ieee754_sqrt-%199-rev @__ieee754_sqrt-%199-loc @__ieee754_sqrt-%199-val))
+(defruled @__ieee754_sqrt-%193-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%193-rev mem loc pred)
+         (@__ieee754_sqrt-%193-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%193-expand-rev-as-@__ieee754_sqrt-succ193-rev @__ieee754_sqrt-succ193-rev @__ieee754_sqrt-succ193-lab @__ieee754_sqrt-%193-fwd))
+
 (defund @__ieee754_sqrt-%193-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2693,20 +4594,6 @@
     (loc (s '%199 (icmp-ult-i32 (g '%197 loc) (g '%198 loc)) loc))
     (succ (case (g '%199 loc) (-1 '%200) (0 '%203))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%193-expand-bb
-  (equal (@__ieee754_sqrt-%193-bb mem loc pred)
-         (@__ieee754_sqrt-%193-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%193-bb @__ieee754_sqrt-%193-rev
-    @__ieee754_sqrt-%194-rev
-    @__ieee754_sqrt-%195-rev
-    @__ieee754_sqrt-%196-rev
-    @__ieee754_sqrt-m193.1-rev
-    @__ieee754_sqrt-%197-rev
-    @__ieee754_sqrt-%198-rev
-    @__ieee754_sqrt-%199-rev
-    @__ieee754_sqrt-succ193-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%200-mem (s200)
   (car s200))
@@ -2728,6 +4615,10 @@
   (declare (ignore s200))
   '%203)
 
+(defund @__ieee754_sqrt-%200-fwd (mem loc pred)
+  (let ((s200 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ200-lab s200) (@__ieee754_sqrt-m200.1-mem s200) (@__ieee754_sqrt-%202-loc s200))))
+
 (defund @__ieee754_sqrt-succ200-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%203 mem loc))
@@ -2741,6 +4632,43 @@
 (defund @__ieee754_sqrt-%200-rev (mem loc pred)
   (@__ieee754_sqrt-%201-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-%201-rev
+  (equal (@__ieee754_sqrt-%200-rev mem loc pred)
+         (let ((s200 (list mem loc pred)))
+           (@__ieee754_sqrt-%201-rev
+            (@__ieee754_sqrt-%200-mem s200)
+            (@__ieee754_sqrt-%200-loc s200)
+            (@__ieee754_sqrt-%200-pred s200))))
+  :enable (@__ieee754_sqrt-%200-rev @__ieee754_sqrt-%200-mem @__ieee754_sqrt-%200-loc @__ieee754_sqrt-%200-pred))
+(defruled @__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-%202-rev
+  (equal (@__ieee754_sqrt-%200-rev mem loc pred)
+         (let ((s200 (list mem loc pred)))
+           (@__ieee754_sqrt-%202-rev
+            (@__ieee754_sqrt-%200-mem s200)
+            (@__ieee754_sqrt-%201-loc s200)
+            (@__ieee754_sqrt-%200-pred s200))))
+  :enable (@__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-%201-rev @__ieee754_sqrt-%201-rev @__ieee754_sqrt-%201-loc @__ieee754_sqrt-%201-val))
+(defruled @__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-m200.1-rev
+  (equal (@__ieee754_sqrt-%200-rev mem loc pred)
+         (let ((s200 (list mem loc pred)))
+           (@__ieee754_sqrt-m200.1-rev
+            (@__ieee754_sqrt-%200-mem s200)
+            (@__ieee754_sqrt-%202-loc s200)
+            (@__ieee754_sqrt-%200-pred s200))))
+  :enable (@__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-%202-rev @__ieee754_sqrt-%202-rev @__ieee754_sqrt-%202-loc @__ieee754_sqrt-%202-val))
+(defruled @__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-succ200-rev
+  (equal (@__ieee754_sqrt-%200-rev mem loc pred)
+         (let ((s200 (list mem loc pred)))
+           (@__ieee754_sqrt-succ200-rev
+            (@__ieee754_sqrt-m200.1-mem s200)
+            (@__ieee754_sqrt-%202-loc s200)
+            (@__ieee754_sqrt-%200-pred s200))))
+  :enable (@__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-m200.1-rev @__ieee754_sqrt-m200.1-rev @__ieee754_sqrt-m200.1-mem))
+(defruled @__ieee754_sqrt-%200-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%200-rev mem loc pred)
+         (@__ieee754_sqrt-%200-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%200-expand-rev-as-@__ieee754_sqrt-succ200-rev @__ieee754_sqrt-succ200-rev @__ieee754_sqrt-succ200-lab @__ieee754_sqrt-%200-fwd))
+
 (defund @__ieee754_sqrt-%200-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2749,16 +4677,6 @@
     (mem (store-i32 (g '%202 loc) (g '%ix0 loc) mem))
     (succ '%203))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%200-expand-bb
-  (equal (@__ieee754_sqrt-%200-bb mem loc pred)
-         (@__ieee754_sqrt-%200-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%200-bb @__ieee754_sqrt-%200-rev
-    @__ieee754_sqrt-%201-rev
-    @__ieee754_sqrt-%202-rev
-    @__ieee754_sqrt-m200.1-rev
-    @__ieee754_sqrt-succ200-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%203-mem (s203)
   (car s203))
@@ -2798,6 +4716,10 @@
   (declare (ignore s203))
   '%210)
 
+(defund @__ieee754_sqrt-%203-fwd (mem loc pred)
+  (let ((s203 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ203-lab s203) (@__ieee754_sqrt-m203.2-mem s203) (@__ieee754_sqrt-%209-loc s203))))
+
 (defund @__ieee754_sqrt-succ203-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%210 mem loc))
@@ -2821,6 +4743,83 @@
 (defund @__ieee754_sqrt-%203-rev (mem loc pred)
   (@__ieee754_sqrt-%204-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%204-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-%204-rev
+            (@__ieee754_sqrt-%203-mem s203)
+            (@__ieee754_sqrt-%203-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-rev @__ieee754_sqrt-%203-mem @__ieee754_sqrt-%203-loc @__ieee754_sqrt-%203-pred))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%205-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-%205-rev
+            (@__ieee754_sqrt-%203-mem s203)
+            (@__ieee754_sqrt-%204-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%204-rev @__ieee754_sqrt-%204-rev @__ieee754_sqrt-%204-loc @__ieee754_sqrt-%204-val))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%206-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-%206-rev
+            (@__ieee754_sqrt-%203-mem s203)
+            (@__ieee754_sqrt-%205-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%205-rev @__ieee754_sqrt-%205-rev @__ieee754_sqrt-%205-loc @__ieee754_sqrt-%205-val))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-m203.1-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-m203.1-rev
+            (@__ieee754_sqrt-%203-mem s203)
+            (@__ieee754_sqrt-%206-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%206-rev @__ieee754_sqrt-%206-rev @__ieee754_sqrt-%206-loc @__ieee754_sqrt-%206-val))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%207-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-%207-rev
+            (@__ieee754_sqrt-m203.1-mem s203)
+            (@__ieee754_sqrt-%206-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-m203.1-rev @__ieee754_sqrt-m203.1-rev @__ieee754_sqrt-m203.1-mem))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%208-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-%208-rev
+            (@__ieee754_sqrt-m203.1-mem s203)
+            (@__ieee754_sqrt-%207-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%207-rev @__ieee754_sqrt-%207-rev @__ieee754_sqrt-%207-loc @__ieee754_sqrt-%207-val))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%209-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-%209-rev
+            (@__ieee754_sqrt-m203.1-mem s203)
+            (@__ieee754_sqrt-%208-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%208-rev @__ieee754_sqrt-%208-rev @__ieee754_sqrt-%208-loc @__ieee754_sqrt-%208-val))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-m203.2-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-m203.2-rev
+            (@__ieee754_sqrt-m203.1-mem s203)
+            (@__ieee754_sqrt-%209-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-%209-rev @__ieee754_sqrt-%209-rev @__ieee754_sqrt-%209-loc @__ieee754_sqrt-%209-val))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-succ203-rev
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (let ((s203 (list mem loc pred)))
+           (@__ieee754_sqrt-succ203-rev
+            (@__ieee754_sqrt-m203.2-mem s203)
+            (@__ieee754_sqrt-%209-loc s203)
+            (@__ieee754_sqrt-%203-pred s203))))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-m203.2-rev @__ieee754_sqrt-m203.2-rev @__ieee754_sqrt-m203.2-mem))
+(defruled @__ieee754_sqrt-%203-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%203-rev mem loc pred)
+         (@__ieee754_sqrt-%203-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%203-expand-rev-as-@__ieee754_sqrt-succ203-rev @__ieee754_sqrt-succ203-rev @__ieee754_sqrt-succ203-lab @__ieee754_sqrt-%203-fwd))
+
 (defund @__ieee754_sqrt-%203-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2834,21 +4833,6 @@
     (mem (store-i32 (g '%209 loc) (g '%q1 loc) mem))
     (succ '%210))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%203-expand-bb
-  (equal (@__ieee754_sqrt-%203-bb mem loc pred)
-         (@__ieee754_sqrt-%203-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%203-bb @__ieee754_sqrt-%203-rev
-    @__ieee754_sqrt-%204-rev
-    @__ieee754_sqrt-%205-rev
-    @__ieee754_sqrt-%206-rev
-    @__ieee754_sqrt-m203.1-rev
-    @__ieee754_sqrt-%207-rev
-    @__ieee754_sqrt-%208-rev
-    @__ieee754_sqrt-%209-rev
-    @__ieee754_sqrt-m203.2-rev
-    @__ieee754_sqrt-succ203-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%210-mem (s210)
   (car s210))
@@ -2918,6 +4902,10 @@
   (declare (ignore s210))
   '%157)
 
+(defund @__ieee754_sqrt-%210-fwd (mem loc pred)
+  (let ((s210 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ210-lab s210) (@__ieee754_sqrt-m210.3-mem s210) (@__ieee754_sqrt-%223-loc s210))))
+
 (defund @__ieee754_sqrt-succ210-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%157 mem loc))
@@ -2957,6 +4945,147 @@
 (defund @__ieee754_sqrt-%210-rev (mem loc pred)
   (@__ieee754_sqrt-%211-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%211-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%211-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%210-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-rev @__ieee754_sqrt-%210-mem @__ieee754_sqrt-%210-loc @__ieee754_sqrt-%210-pred))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%212-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%212-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%211-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%211-rev @__ieee754_sqrt-%211-rev @__ieee754_sqrt-%211-loc @__ieee754_sqrt-%211-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%213-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%213-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%212-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%212-rev @__ieee754_sqrt-%212-rev @__ieee754_sqrt-%212-loc @__ieee754_sqrt-%212-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%214-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%214-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%213-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%213-rev @__ieee754_sqrt-%213-rev @__ieee754_sqrt-%213-loc @__ieee754_sqrt-%213-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%215-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%215-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%214-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%214-rev @__ieee754_sqrt-%214-rev @__ieee754_sqrt-%214-loc @__ieee754_sqrt-%214-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%216-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%216-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%215-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%215-rev @__ieee754_sqrt-%215-rev @__ieee754_sqrt-%215-loc @__ieee754_sqrt-%215-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%217-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%217-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%216-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%216-rev @__ieee754_sqrt-%216-rev @__ieee754_sqrt-%216-loc @__ieee754_sqrt-%216-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%218-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%218-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%217-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%217-rev @__ieee754_sqrt-%217-rev @__ieee754_sqrt-%217-loc @__ieee754_sqrt-%217-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-m210.1-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-m210.1-rev
+            (@__ieee754_sqrt-%210-mem s210)
+            (@__ieee754_sqrt-%218-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%218-rev @__ieee754_sqrt-%218-rev @__ieee754_sqrt-%218-loc @__ieee754_sqrt-%218-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%219-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%219-rev
+            (@__ieee754_sqrt-m210.1-mem s210)
+            (@__ieee754_sqrt-%218-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-m210.1-rev @__ieee754_sqrt-m210.1-rev @__ieee754_sqrt-m210.1-mem))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%220-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%220-rev
+            (@__ieee754_sqrt-m210.1-mem s210)
+            (@__ieee754_sqrt-%219-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%219-rev @__ieee754_sqrt-%219-rev @__ieee754_sqrt-%219-loc @__ieee754_sqrt-%219-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%221-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%221-rev
+            (@__ieee754_sqrt-m210.1-mem s210)
+            (@__ieee754_sqrt-%220-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%220-rev @__ieee754_sqrt-%220-rev @__ieee754_sqrt-%220-loc @__ieee754_sqrt-%220-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-m210.2-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-m210.2-rev
+            (@__ieee754_sqrt-m210.1-mem s210)
+            (@__ieee754_sqrt-%221-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%221-rev @__ieee754_sqrt-%221-rev @__ieee754_sqrt-%221-loc @__ieee754_sqrt-%221-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%222-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%222-rev
+            (@__ieee754_sqrt-m210.2-mem s210)
+            (@__ieee754_sqrt-%221-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-m210.2-rev @__ieee754_sqrt-m210.2-rev @__ieee754_sqrt-m210.2-mem))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%223-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-%223-rev
+            (@__ieee754_sqrt-m210.2-mem s210)
+            (@__ieee754_sqrt-%222-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%222-rev @__ieee754_sqrt-%222-rev @__ieee754_sqrt-%222-loc @__ieee754_sqrt-%222-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-m210.3-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-m210.3-rev
+            (@__ieee754_sqrt-m210.2-mem s210)
+            (@__ieee754_sqrt-%223-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-%223-rev @__ieee754_sqrt-%223-rev @__ieee754_sqrt-%223-loc @__ieee754_sqrt-%223-val))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-succ210-rev
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (let ((s210 (list mem loc pred)))
+           (@__ieee754_sqrt-succ210-rev
+            (@__ieee754_sqrt-m210.3-mem s210)
+            (@__ieee754_sqrt-%223-loc s210)
+            (@__ieee754_sqrt-%210-pred s210))))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-m210.3-rev @__ieee754_sqrt-m210.3-rev @__ieee754_sqrt-m210.3-mem))
+(defruled @__ieee754_sqrt-%210-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%210-rev mem loc pred)
+         (@__ieee754_sqrt-%210-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%210-expand-rev-as-@__ieee754_sqrt-succ210-rev @__ieee754_sqrt-succ210-rev @__ieee754_sqrt-succ210-lab @__ieee754_sqrt-%210-fwd))
+
 (defund @__ieee754_sqrt-%210-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2978,29 +5107,6 @@
     (mem (store-i32 (g '%223 loc) (g '%r loc) mem))
     (succ '%157))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%210-expand-bb
-  (equal (@__ieee754_sqrt-%210-bb mem loc pred)
-         (@__ieee754_sqrt-%210-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%210-bb @__ieee754_sqrt-%210-rev
-    @__ieee754_sqrt-%211-rev
-    @__ieee754_sqrt-%212-rev
-    @__ieee754_sqrt-%213-rev
-    @__ieee754_sqrt-%214-rev
-    @__ieee754_sqrt-%215-rev
-    @__ieee754_sqrt-%216-rev
-    @__ieee754_sqrt-%217-rev
-    @__ieee754_sqrt-%218-rev
-    @__ieee754_sqrt-m210.1-rev
-    @__ieee754_sqrt-%219-rev
-    @__ieee754_sqrt-%220-rev
-    @__ieee754_sqrt-%221-rev
-    @__ieee754_sqrt-m210.2-rev
-    @__ieee754_sqrt-%222-rev
-    @__ieee754_sqrt-%223-rev
-    @__ieee754_sqrt-m210.3-rev
-    @__ieee754_sqrt-succ210-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%224-mem (s224)
   (car s224))
@@ -3027,6 +5133,10 @@
 (defund @__ieee754_sqrt-succ224-lab (s224)
   (case (g '%228 (@__ieee754_sqrt-%228-loc s224)) (-1 '%229) (0 '%258)))
 
+(defund @__ieee754_sqrt-%224-fwd (mem loc pred)
+  (let ((s224 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ224-lab s224) (@__ieee754_sqrt-%224-mem s224) (@__ieee754_sqrt-%228-loc s224))))
+
 (defund @__ieee754_sqrt-succ224-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%228 loc) (-1 '%229) (0 '%258)) mem loc))
@@ -3042,6 +5152,51 @@
 (defund @__ieee754_sqrt-%224-rev (mem loc pred)
   (@__ieee754_sqrt-%225-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%225-rev
+  (equal (@__ieee754_sqrt-%224-rev mem loc pred)
+         (let ((s224 (list mem loc pred)))
+           (@__ieee754_sqrt-%225-rev
+            (@__ieee754_sqrt-%224-mem s224)
+            (@__ieee754_sqrt-%224-loc s224)
+            (@__ieee754_sqrt-%224-pred s224))))
+  :enable (@__ieee754_sqrt-%224-rev @__ieee754_sqrt-%224-mem @__ieee754_sqrt-%224-loc @__ieee754_sqrt-%224-pred))
+(defruled @__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%226-rev
+  (equal (@__ieee754_sqrt-%224-rev mem loc pred)
+         (let ((s224 (list mem loc pred)))
+           (@__ieee754_sqrt-%226-rev
+            (@__ieee754_sqrt-%224-mem s224)
+            (@__ieee754_sqrt-%225-loc s224)
+            (@__ieee754_sqrt-%224-pred s224))))
+  :enable (@__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%225-rev @__ieee754_sqrt-%225-rev @__ieee754_sqrt-%225-loc @__ieee754_sqrt-%225-val))
+(defruled @__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%227-rev
+  (equal (@__ieee754_sqrt-%224-rev mem loc pred)
+         (let ((s224 (list mem loc pred)))
+           (@__ieee754_sqrt-%227-rev
+            (@__ieee754_sqrt-%224-mem s224)
+            (@__ieee754_sqrt-%226-loc s224)
+            (@__ieee754_sqrt-%224-pred s224))))
+  :enable (@__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%226-rev @__ieee754_sqrt-%226-rev @__ieee754_sqrt-%226-loc @__ieee754_sqrt-%226-val))
+(defruled @__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%228-rev
+  (equal (@__ieee754_sqrt-%224-rev mem loc pred)
+         (let ((s224 (list mem loc pred)))
+           (@__ieee754_sqrt-%228-rev
+            (@__ieee754_sqrt-%224-mem s224)
+            (@__ieee754_sqrt-%227-loc s224)
+            (@__ieee754_sqrt-%224-pred s224))))
+  :enable (@__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%227-rev @__ieee754_sqrt-%227-rev @__ieee754_sqrt-%227-loc @__ieee754_sqrt-%227-val))
+(defruled @__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-succ224-rev
+  (equal (@__ieee754_sqrt-%224-rev mem loc pred)
+         (let ((s224 (list mem loc pred)))
+           (@__ieee754_sqrt-succ224-rev
+            (@__ieee754_sqrt-%224-mem s224)
+            (@__ieee754_sqrt-%228-loc s224)
+            (@__ieee754_sqrt-%224-pred s224))))
+  :enable (@__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-%228-rev @__ieee754_sqrt-%228-rev @__ieee754_sqrt-%228-loc @__ieee754_sqrt-%228-val))
+(defruled @__ieee754_sqrt-%224-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%224-rev mem loc pred)
+         (@__ieee754_sqrt-%224-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%224-expand-rev-as-@__ieee754_sqrt-succ224-rev @__ieee754_sqrt-succ224-rev @__ieee754_sqrt-succ224-lab @__ieee754_sqrt-%224-fwd))
+
 (defund @__ieee754_sqrt-%224-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3051,17 +5206,6 @@
     (loc (s '%228 (icmp-ne-i32 (g '%227 loc) 0) loc))
     (succ (case (g '%228 loc) (-1 '%229) (0 '%258))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%224-expand-bb
-  (equal (@__ieee754_sqrt-%224-bb mem loc pred)
-         (@__ieee754_sqrt-%224-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%224-bb @__ieee754_sqrt-%224-rev
-    @__ieee754_sqrt-%225-rev
-    @__ieee754_sqrt-%226-rev
-    @__ieee754_sqrt-%227-rev
-    @__ieee754_sqrt-%228-rev
-    @__ieee754_sqrt-succ224-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%229-mem (s229)
   (car s229))
@@ -3082,6 +5226,10 @@
 (defund @__ieee754_sqrt-succ229-lab (s229)
   (case (g '%231 (@__ieee754_sqrt-%231-loc s229)) (-1 '%232) (0 '%257)))
 
+(defund @__ieee754_sqrt-%229-fwd (mem loc pred)
+  (let ((s229 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ229-lab s229) (@__ieee754_sqrt-m229.1-mem s229) (@__ieee754_sqrt-%231-loc s229))))
+
 (defund @__ieee754_sqrt-succ229-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%231 loc) (-1 '%232) (0 '%257)) mem loc))
@@ -3095,6 +5243,43 @@
 (defund @__ieee754_sqrt-%229-rev (mem loc pred)
   (@__ieee754_sqrt-m229.1-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-m229.1-rev
+  (equal (@__ieee754_sqrt-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__ieee754_sqrt-m229.1-rev
+            (@__ieee754_sqrt-%229-mem s229)
+            (@__ieee754_sqrt-%229-loc s229)
+            (@__ieee754_sqrt-%229-pred s229))))
+  :enable (@__ieee754_sqrt-%229-rev @__ieee754_sqrt-%229-mem @__ieee754_sqrt-%229-loc @__ieee754_sqrt-%229-pred))
+(defruled @__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-%230-rev
+  (equal (@__ieee754_sqrt-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__ieee754_sqrt-%230-rev
+            (@__ieee754_sqrt-m229.1-mem s229)
+            (@__ieee754_sqrt-%229-loc s229)
+            (@__ieee754_sqrt-%229-pred s229))))
+  :enable (@__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-m229.1-rev @__ieee754_sqrt-m229.1-rev @__ieee754_sqrt-m229.1-mem))
+(defruled @__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-%231-rev
+  (equal (@__ieee754_sqrt-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__ieee754_sqrt-%231-rev
+            (@__ieee754_sqrt-m229.1-mem s229)
+            (@__ieee754_sqrt-%230-loc s229)
+            (@__ieee754_sqrt-%229-pred s229))))
+  :enable (@__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-%230-rev @__ieee754_sqrt-%230-rev @__ieee754_sqrt-%230-loc @__ieee754_sqrt-%230-val))
+(defruled @__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-succ229-rev
+  (equal (@__ieee754_sqrt-%229-rev mem loc pred)
+         (let ((s229 (list mem loc pred)))
+           (@__ieee754_sqrt-succ229-rev
+            (@__ieee754_sqrt-m229.1-mem s229)
+            (@__ieee754_sqrt-%231-loc s229)
+            (@__ieee754_sqrt-%229-pred s229))))
+  :enable (@__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-%231-rev @__ieee754_sqrt-%231-rev @__ieee754_sqrt-%231-loc @__ieee754_sqrt-%231-val))
+(defruled @__ieee754_sqrt-%229-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%229-rev mem loc pred)
+         (@__ieee754_sqrt-%229-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%229-expand-rev-as-@__ieee754_sqrt-succ229-rev @__ieee754_sqrt-succ229-rev @__ieee754_sqrt-succ229-lab @__ieee754_sqrt-%229-fwd))
+
 (defund @__ieee754_sqrt-%229-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3103,16 +5288,6 @@
     (loc (s '%231 (fcmp-oge-double (g '%230 loc) #x3ff0000000000000) loc))
     (succ (case (g '%231 loc) (-1 '%232) (0 '%257))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%229-expand-bb
-  (equal (@__ieee754_sqrt-%229-bb mem loc pred)
-         (@__ieee754_sqrt-%229-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%229-bb @__ieee754_sqrt-%229-rev
-    @__ieee754_sqrt-m229.1-rev
-    @__ieee754_sqrt-%230-rev
-    @__ieee754_sqrt-%231-rev
-    @__ieee754_sqrt-succ229-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%232-mem (s232)
   (car s232))
@@ -3133,6 +5308,10 @@
 (defund @__ieee754_sqrt-succ232-lab (s232)
   (case (g '%234 (@__ieee754_sqrt-%234-loc s232)) (-1 '%235) (0 '%238)))
 
+(defund @__ieee754_sqrt-%232-fwd (mem loc pred)
+  (let ((s232 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ232-lab s232) (@__ieee754_sqrt-m232.1-mem s232) (@__ieee754_sqrt-%234-loc s232))))
+
 (defund @__ieee754_sqrt-succ232-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%234 loc) (-1 '%235) (0 '%238)) mem loc))
@@ -3146,6 +5325,43 @@
 (defund @__ieee754_sqrt-%232-rev (mem loc pred)
   (@__ieee754_sqrt-m232.1-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-m232.1-rev
+  (equal (@__ieee754_sqrt-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__ieee754_sqrt-m232.1-rev
+            (@__ieee754_sqrt-%232-mem s232)
+            (@__ieee754_sqrt-%232-loc s232)
+            (@__ieee754_sqrt-%232-pred s232))))
+  :enable (@__ieee754_sqrt-%232-rev @__ieee754_sqrt-%232-mem @__ieee754_sqrt-%232-loc @__ieee754_sqrt-%232-pred))
+(defruled @__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-%233-rev
+  (equal (@__ieee754_sqrt-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__ieee754_sqrt-%233-rev
+            (@__ieee754_sqrt-m232.1-mem s232)
+            (@__ieee754_sqrt-%232-loc s232)
+            (@__ieee754_sqrt-%232-pred s232))))
+  :enable (@__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-m232.1-rev @__ieee754_sqrt-m232.1-rev @__ieee754_sqrt-m232.1-mem))
+(defruled @__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-%234-rev
+  (equal (@__ieee754_sqrt-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__ieee754_sqrt-%234-rev
+            (@__ieee754_sqrt-m232.1-mem s232)
+            (@__ieee754_sqrt-%233-loc s232)
+            (@__ieee754_sqrt-%232-pred s232))))
+  :enable (@__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-%233-rev @__ieee754_sqrt-%233-rev @__ieee754_sqrt-%233-loc @__ieee754_sqrt-%233-val))
+(defruled @__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-succ232-rev
+  (equal (@__ieee754_sqrt-%232-rev mem loc pred)
+         (let ((s232 (list mem loc pred)))
+           (@__ieee754_sqrt-succ232-rev
+            (@__ieee754_sqrt-m232.1-mem s232)
+            (@__ieee754_sqrt-%234-loc s232)
+            (@__ieee754_sqrt-%232-pred s232))))
+  :enable (@__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-%234-rev @__ieee754_sqrt-%234-rev @__ieee754_sqrt-%234-loc @__ieee754_sqrt-%234-val))
+(defruled @__ieee754_sqrt-%232-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%232-rev mem loc pred)
+         (@__ieee754_sqrt-%232-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%232-expand-rev-as-@__ieee754_sqrt-succ232-rev @__ieee754_sqrt-succ232-rev @__ieee754_sqrt-succ232-lab @__ieee754_sqrt-%232-fwd))
+
 (defund @__ieee754_sqrt-%232-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3154,16 +5370,6 @@
     (loc (s '%234 (icmp-eq-i32 (g '%233 loc) -1) loc))
     (succ (case (g '%234 loc) (-1 '%235) (0 '%238))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%232-expand-bb
-  (equal (@__ieee754_sqrt-%232-bb mem loc pred)
-         (@__ieee754_sqrt-%232-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%232-bb @__ieee754_sqrt-%232-rev
-    @__ieee754_sqrt-m232.1-rev
-    @__ieee754_sqrt-%233-rev
-    @__ieee754_sqrt-%234-rev
-    @__ieee754_sqrt-succ232-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%235-mem (s235)
   (car s235))
@@ -3187,6 +5393,10 @@
   (declare (ignore s235))
   '%256)
 
+(defund @__ieee754_sqrt-%235-fwd (mem loc pred)
+  (let ((s235 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ235-lab s235) (@__ieee754_sqrt-m235.2-mem s235) (@__ieee754_sqrt-%237-loc s235))))
+
 (defund @__ieee754_sqrt-succ235-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%256 mem loc))
@@ -3202,6 +5412,51 @@
 (defund @__ieee754_sqrt-%235-rev (mem loc pred)
   (@__ieee754_sqrt-m235.1-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-m235.1-rev
+  (equal (@__ieee754_sqrt-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__ieee754_sqrt-m235.1-rev
+            (@__ieee754_sqrt-%235-mem s235)
+            (@__ieee754_sqrt-%235-loc s235)
+            (@__ieee754_sqrt-%235-pred s235))))
+  :enable (@__ieee754_sqrt-%235-rev @__ieee754_sqrt-%235-mem @__ieee754_sqrt-%235-loc @__ieee754_sqrt-%235-pred))
+(defruled @__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-%236-rev
+  (equal (@__ieee754_sqrt-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__ieee754_sqrt-%236-rev
+            (@__ieee754_sqrt-m235.1-mem s235)
+            (@__ieee754_sqrt-%235-loc s235)
+            (@__ieee754_sqrt-%235-pred s235))))
+  :enable (@__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-m235.1-rev @__ieee754_sqrt-m235.1-rev @__ieee754_sqrt-m235.1-mem))
+(defruled @__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-%237-rev
+  (equal (@__ieee754_sqrt-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__ieee754_sqrt-%237-rev
+            (@__ieee754_sqrt-m235.1-mem s235)
+            (@__ieee754_sqrt-%236-loc s235)
+            (@__ieee754_sqrt-%235-pred s235))))
+  :enable (@__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-%236-rev @__ieee754_sqrt-%236-rev @__ieee754_sqrt-%236-loc @__ieee754_sqrt-%236-val))
+(defruled @__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-m235.2-rev
+  (equal (@__ieee754_sqrt-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__ieee754_sqrt-m235.2-rev
+            (@__ieee754_sqrt-m235.1-mem s235)
+            (@__ieee754_sqrt-%237-loc s235)
+            (@__ieee754_sqrt-%235-pred s235))))
+  :enable (@__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-%237-rev @__ieee754_sqrt-%237-rev @__ieee754_sqrt-%237-loc @__ieee754_sqrt-%237-val))
+(defruled @__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-succ235-rev
+  (equal (@__ieee754_sqrt-%235-rev mem loc pred)
+         (let ((s235 (list mem loc pred)))
+           (@__ieee754_sqrt-succ235-rev
+            (@__ieee754_sqrt-m235.2-mem s235)
+            (@__ieee754_sqrt-%237-loc s235)
+            (@__ieee754_sqrt-%235-pred s235))))
+  :enable (@__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-m235.2-rev @__ieee754_sqrt-m235.2-rev @__ieee754_sqrt-m235.2-mem))
+(defruled @__ieee754_sqrt-%235-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%235-rev mem loc pred)
+         (@__ieee754_sqrt-%235-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%235-expand-rev-as-@__ieee754_sqrt-succ235-rev @__ieee754_sqrt-succ235-rev @__ieee754_sqrt-succ235-lab @__ieee754_sqrt-%235-fwd))
+
 (defund @__ieee754_sqrt-%235-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3211,17 +5466,6 @@
     (mem (store-i32 (g '%237 loc) (g '%q loc) mem))
     (succ '%256))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%235-expand-bb
-  (equal (@__ieee754_sqrt-%235-bb mem loc pred)
-         (@__ieee754_sqrt-%235-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%235-bb @__ieee754_sqrt-%235-rev
-    @__ieee754_sqrt-m235.1-rev
-    @__ieee754_sqrt-%236-rev
-    @__ieee754_sqrt-%237-rev
-    @__ieee754_sqrt-m235.2-rev
-    @__ieee754_sqrt-succ235-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%238-mem (s238)
   (car s238))
@@ -3240,6 +5484,10 @@
 (defund @__ieee754_sqrt-succ238-lab (s238)
   (case (g '%240 (@__ieee754_sqrt-%240-loc s238)) (-1 '%241) (0 '%250)))
 
+(defund @__ieee754_sqrt-%238-fwd (mem loc pred)
+  (let ((s238 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ238-lab s238) (@__ieee754_sqrt-%238-mem s238) (@__ieee754_sqrt-%240-loc s238))))
+
 (defund @__ieee754_sqrt-succ238-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%240 loc) (-1 '%241) (0 '%250)) mem loc))
@@ -3251,6 +5499,35 @@
 (defund @__ieee754_sqrt-%238-rev (mem loc pred)
   (@__ieee754_sqrt-%239-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%238-expand-rev-as-@__ieee754_sqrt-%239-rev
+  (equal (@__ieee754_sqrt-%238-rev mem loc pred)
+         (let ((s238 (list mem loc pred)))
+           (@__ieee754_sqrt-%239-rev
+            (@__ieee754_sqrt-%238-mem s238)
+            (@__ieee754_sqrt-%238-loc s238)
+            (@__ieee754_sqrt-%238-pred s238))))
+  :enable (@__ieee754_sqrt-%238-rev @__ieee754_sqrt-%238-mem @__ieee754_sqrt-%238-loc @__ieee754_sqrt-%238-pred))
+(defruled @__ieee754_sqrt-%238-expand-rev-as-@__ieee754_sqrt-%240-rev
+  (equal (@__ieee754_sqrt-%238-rev mem loc pred)
+         (let ((s238 (list mem loc pred)))
+           (@__ieee754_sqrt-%240-rev
+            (@__ieee754_sqrt-%238-mem s238)
+            (@__ieee754_sqrt-%239-loc s238)
+            (@__ieee754_sqrt-%238-pred s238))))
+  :enable (@__ieee754_sqrt-%238-expand-rev-as-@__ieee754_sqrt-%239-rev @__ieee754_sqrt-%239-rev @__ieee754_sqrt-%239-loc @__ieee754_sqrt-%239-val))
+(defruled @__ieee754_sqrt-%238-expand-rev-as-@__ieee754_sqrt-succ238-rev
+  (equal (@__ieee754_sqrt-%238-rev mem loc pred)
+         (let ((s238 (list mem loc pred)))
+           (@__ieee754_sqrt-succ238-rev
+            (@__ieee754_sqrt-%238-mem s238)
+            (@__ieee754_sqrt-%240-loc s238)
+            (@__ieee754_sqrt-%238-pred s238))))
+  :enable (@__ieee754_sqrt-%238-expand-rev-as-@__ieee754_sqrt-%240-rev @__ieee754_sqrt-%240-rev @__ieee754_sqrt-%240-loc @__ieee754_sqrt-%240-val))
+(defruled @__ieee754_sqrt-%238-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%238-rev mem loc pred)
+         (@__ieee754_sqrt-%238-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%238-expand-rev-as-@__ieee754_sqrt-succ238-rev @__ieee754_sqrt-succ238-rev @__ieee754_sqrt-succ238-lab @__ieee754_sqrt-%238-fwd))
+
 (defund @__ieee754_sqrt-%238-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3258,15 +5535,6 @@
     (loc (s '%240 (fcmp-ogt-double (g '%239 loc) #x3ff0000000000000) loc))
     (succ (case (g '%240 loc) (-1 '%241) (0 '%250))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%238-expand-bb
-  (equal (@__ieee754_sqrt-%238-bb mem loc pred)
-         (@__ieee754_sqrt-%238-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%238-bb @__ieee754_sqrt-%238-rev
-    @__ieee754_sqrt-%239-rev
-    @__ieee754_sqrt-%240-rev
-    @__ieee754_sqrt-succ238-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%241-mem (s241)
   (car s241))
@@ -3285,6 +5553,10 @@
 (defund @__ieee754_sqrt-succ241-lab (s241)
   (case (g '%243 (@__ieee754_sqrt-%243-loc s241)) (-1 '%244) (0 '%247)))
 
+(defund @__ieee754_sqrt-%241-fwd (mem loc pred)
+  (let ((s241 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ241-lab s241) (@__ieee754_sqrt-%241-mem s241) (@__ieee754_sqrt-%243-loc s241))))
+
 (defund @__ieee754_sqrt-succ241-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%243 loc) (-1 '%244) (0 '%247)) mem loc))
@@ -3296,6 +5568,35 @@
 (defund @__ieee754_sqrt-%241-rev (mem loc pred)
   (@__ieee754_sqrt-%242-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%241-expand-rev-as-@__ieee754_sqrt-%242-rev
+  (equal (@__ieee754_sqrt-%241-rev mem loc pred)
+         (let ((s241 (list mem loc pred)))
+           (@__ieee754_sqrt-%242-rev
+            (@__ieee754_sqrt-%241-mem s241)
+            (@__ieee754_sqrt-%241-loc s241)
+            (@__ieee754_sqrt-%241-pred s241))))
+  :enable (@__ieee754_sqrt-%241-rev @__ieee754_sqrt-%241-mem @__ieee754_sqrt-%241-loc @__ieee754_sqrt-%241-pred))
+(defruled @__ieee754_sqrt-%241-expand-rev-as-@__ieee754_sqrt-%243-rev
+  (equal (@__ieee754_sqrt-%241-rev mem loc pred)
+         (let ((s241 (list mem loc pred)))
+           (@__ieee754_sqrt-%243-rev
+            (@__ieee754_sqrt-%241-mem s241)
+            (@__ieee754_sqrt-%242-loc s241)
+            (@__ieee754_sqrt-%241-pred s241))))
+  :enable (@__ieee754_sqrt-%241-expand-rev-as-@__ieee754_sqrt-%242-rev @__ieee754_sqrt-%242-rev @__ieee754_sqrt-%242-loc @__ieee754_sqrt-%242-val))
+(defruled @__ieee754_sqrt-%241-expand-rev-as-@__ieee754_sqrt-succ241-rev
+  (equal (@__ieee754_sqrt-%241-rev mem loc pred)
+         (let ((s241 (list mem loc pred)))
+           (@__ieee754_sqrt-succ241-rev
+            (@__ieee754_sqrt-%241-mem s241)
+            (@__ieee754_sqrt-%243-loc s241)
+            (@__ieee754_sqrt-%241-pred s241))))
+  :enable (@__ieee754_sqrt-%241-expand-rev-as-@__ieee754_sqrt-%243-rev @__ieee754_sqrt-%243-rev @__ieee754_sqrt-%243-loc @__ieee754_sqrt-%243-val))
+(defruled @__ieee754_sqrt-%241-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%241-rev mem loc pred)
+         (@__ieee754_sqrt-%241-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%241-expand-rev-as-@__ieee754_sqrt-succ241-rev @__ieee754_sqrt-succ241-rev @__ieee754_sqrt-succ241-lab @__ieee754_sqrt-%241-fwd))
+
 (defund @__ieee754_sqrt-%241-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3303,15 +5604,6 @@
     (loc (s '%243 (icmp-eq-i32 (g '%242 loc) -2) loc))
     (succ (case (g '%243 loc) (-1 '%244) (0 '%247))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%241-expand-bb
-  (equal (@__ieee754_sqrt-%241-bb mem loc pred)
-         (@__ieee754_sqrt-%241-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%241-bb @__ieee754_sqrt-%241-rev
-    @__ieee754_sqrt-%242-rev
-    @__ieee754_sqrt-%243-rev
-    @__ieee754_sqrt-succ241-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%244-mem (s244)
   (car s244))
@@ -3333,6 +5625,10 @@
   (declare (ignore s244))
   '%247)
 
+(defund @__ieee754_sqrt-%244-fwd (mem loc pred)
+  (let ((s244 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ244-lab s244) (@__ieee754_sqrt-m244.1-mem s244) (@__ieee754_sqrt-%246-loc s244))))
+
 (defund @__ieee754_sqrt-succ244-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%247 mem loc))
@@ -3346,6 +5642,43 @@
 (defund @__ieee754_sqrt-%244-rev (mem loc pred)
   (@__ieee754_sqrt-%245-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-%245-rev
+  (equal (@__ieee754_sqrt-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__ieee754_sqrt-%245-rev
+            (@__ieee754_sqrt-%244-mem s244)
+            (@__ieee754_sqrt-%244-loc s244)
+            (@__ieee754_sqrt-%244-pred s244))))
+  :enable (@__ieee754_sqrt-%244-rev @__ieee754_sqrt-%244-mem @__ieee754_sqrt-%244-loc @__ieee754_sqrt-%244-pred))
+(defruled @__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-%246-rev
+  (equal (@__ieee754_sqrt-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__ieee754_sqrt-%246-rev
+            (@__ieee754_sqrt-%244-mem s244)
+            (@__ieee754_sqrt-%245-loc s244)
+            (@__ieee754_sqrt-%244-pred s244))))
+  :enable (@__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-%245-rev @__ieee754_sqrt-%245-rev @__ieee754_sqrt-%245-loc @__ieee754_sqrt-%245-val))
+(defruled @__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-m244.1-rev
+  (equal (@__ieee754_sqrt-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__ieee754_sqrt-m244.1-rev
+            (@__ieee754_sqrt-%244-mem s244)
+            (@__ieee754_sqrt-%246-loc s244)
+            (@__ieee754_sqrt-%244-pred s244))))
+  :enable (@__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-%246-rev @__ieee754_sqrt-%246-rev @__ieee754_sqrt-%246-loc @__ieee754_sqrt-%246-val))
+(defruled @__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-succ244-rev
+  (equal (@__ieee754_sqrt-%244-rev mem loc pred)
+         (let ((s244 (list mem loc pred)))
+           (@__ieee754_sqrt-succ244-rev
+            (@__ieee754_sqrt-m244.1-mem s244)
+            (@__ieee754_sqrt-%246-loc s244)
+            (@__ieee754_sqrt-%244-pred s244))))
+  :enable (@__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-m244.1-rev @__ieee754_sqrt-m244.1-rev @__ieee754_sqrt-m244.1-mem))
+(defruled @__ieee754_sqrt-%244-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%244-rev mem loc pred)
+         (@__ieee754_sqrt-%244-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%244-expand-rev-as-@__ieee754_sqrt-succ244-rev @__ieee754_sqrt-succ244-rev @__ieee754_sqrt-succ244-lab @__ieee754_sqrt-%244-fwd))
+
 (defund @__ieee754_sqrt-%244-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3354,16 +5687,6 @@
     (mem (store-i32 (g '%246 loc) (g '%q loc) mem))
     (succ '%247))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%244-expand-bb
-  (equal (@__ieee754_sqrt-%244-bb mem loc pred)
-         (@__ieee754_sqrt-%244-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%244-bb @__ieee754_sqrt-%244-rev
-    @__ieee754_sqrt-%245-rev
-    @__ieee754_sqrt-%246-rev
-    @__ieee754_sqrt-m244.1-rev
-    @__ieee754_sqrt-succ244-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%247-mem (s247)
   (car s247))
@@ -3385,6 +5708,10 @@
   (declare (ignore s247))
   '%255)
 
+(defund @__ieee754_sqrt-%247-fwd (mem loc pred)
+  (let ((s247 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ247-lab s247) (@__ieee754_sqrt-m247.1-mem s247) (@__ieee754_sqrt-%249-loc s247))))
+
 (defund @__ieee754_sqrt-succ247-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%255 mem loc))
@@ -3398,6 +5725,43 @@
 (defund @__ieee754_sqrt-%247-rev (mem loc pred)
   (@__ieee754_sqrt-%248-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-%248-rev
+  (equal (@__ieee754_sqrt-%247-rev mem loc pred)
+         (let ((s247 (list mem loc pred)))
+           (@__ieee754_sqrt-%248-rev
+            (@__ieee754_sqrt-%247-mem s247)
+            (@__ieee754_sqrt-%247-loc s247)
+            (@__ieee754_sqrt-%247-pred s247))))
+  :enable (@__ieee754_sqrt-%247-rev @__ieee754_sqrt-%247-mem @__ieee754_sqrt-%247-loc @__ieee754_sqrt-%247-pred))
+(defruled @__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-%249-rev
+  (equal (@__ieee754_sqrt-%247-rev mem loc pred)
+         (let ((s247 (list mem loc pred)))
+           (@__ieee754_sqrt-%249-rev
+            (@__ieee754_sqrt-%247-mem s247)
+            (@__ieee754_sqrt-%248-loc s247)
+            (@__ieee754_sqrt-%247-pred s247))))
+  :enable (@__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-%248-rev @__ieee754_sqrt-%248-rev @__ieee754_sqrt-%248-loc @__ieee754_sqrt-%248-val))
+(defruled @__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-m247.1-rev
+  (equal (@__ieee754_sqrt-%247-rev mem loc pred)
+         (let ((s247 (list mem loc pred)))
+           (@__ieee754_sqrt-m247.1-rev
+            (@__ieee754_sqrt-%247-mem s247)
+            (@__ieee754_sqrt-%249-loc s247)
+            (@__ieee754_sqrt-%247-pred s247))))
+  :enable (@__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-%249-rev @__ieee754_sqrt-%249-rev @__ieee754_sqrt-%249-loc @__ieee754_sqrt-%249-val))
+(defruled @__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-succ247-rev
+  (equal (@__ieee754_sqrt-%247-rev mem loc pred)
+         (let ((s247 (list mem loc pred)))
+           (@__ieee754_sqrt-succ247-rev
+            (@__ieee754_sqrt-m247.1-mem s247)
+            (@__ieee754_sqrt-%249-loc s247)
+            (@__ieee754_sqrt-%247-pred s247))))
+  :enable (@__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-m247.1-rev @__ieee754_sqrt-m247.1-rev @__ieee754_sqrt-m247.1-mem))
+(defruled @__ieee754_sqrt-%247-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%247-rev mem loc pred)
+         (@__ieee754_sqrt-%247-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%247-expand-rev-as-@__ieee754_sqrt-succ247-rev @__ieee754_sqrt-succ247-rev @__ieee754_sqrt-succ247-lab @__ieee754_sqrt-%247-fwd))
+
 (defund @__ieee754_sqrt-%247-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3406,16 +5770,6 @@
     (mem (store-i32 (g '%249 loc) (g '%q1 loc) mem))
     (succ '%255))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%247-expand-bb
-  (equal (@__ieee754_sqrt-%247-bb mem loc pred)
-         (@__ieee754_sqrt-%247-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%247-bb @__ieee754_sqrt-%247-rev
-    @__ieee754_sqrt-%248-rev
-    @__ieee754_sqrt-%249-rev
-    @__ieee754_sqrt-m247.1-rev
-    @__ieee754_sqrt-succ247-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%250-mem (s250)
   (car s250))
@@ -3445,6 +5799,10 @@
   (declare (ignore s250))
   '%255)
 
+(defund @__ieee754_sqrt-%250-fwd (mem loc pred)
+  (let ((s250 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ250-lab s250) (@__ieee754_sqrt-m250.1-mem s250) (@__ieee754_sqrt-%254-loc s250))))
+
 (defund @__ieee754_sqrt-succ250-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%255 mem loc))
@@ -3462,6 +5820,59 @@
 (defund @__ieee754_sqrt-%250-rev (mem loc pred)
   (@__ieee754_sqrt-%251-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%251-rev
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (let ((s250 (list mem loc pred)))
+           (@__ieee754_sqrt-%251-rev
+            (@__ieee754_sqrt-%250-mem s250)
+            (@__ieee754_sqrt-%250-loc s250)
+            (@__ieee754_sqrt-%250-pred s250))))
+  :enable (@__ieee754_sqrt-%250-rev @__ieee754_sqrt-%250-mem @__ieee754_sqrt-%250-loc @__ieee754_sqrt-%250-pred))
+(defruled @__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%252-rev
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (let ((s250 (list mem loc pred)))
+           (@__ieee754_sqrt-%252-rev
+            (@__ieee754_sqrt-%250-mem s250)
+            (@__ieee754_sqrt-%251-loc s250)
+            (@__ieee754_sqrt-%250-pred s250))))
+  :enable (@__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%251-rev @__ieee754_sqrt-%251-rev @__ieee754_sqrt-%251-loc @__ieee754_sqrt-%251-val))
+(defruled @__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%253-rev
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (let ((s250 (list mem loc pred)))
+           (@__ieee754_sqrt-%253-rev
+            (@__ieee754_sqrt-%250-mem s250)
+            (@__ieee754_sqrt-%252-loc s250)
+            (@__ieee754_sqrt-%250-pred s250))))
+  :enable (@__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%252-rev @__ieee754_sqrt-%252-rev @__ieee754_sqrt-%252-loc @__ieee754_sqrt-%252-val))
+(defruled @__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%254-rev
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (let ((s250 (list mem loc pred)))
+           (@__ieee754_sqrt-%254-rev
+            (@__ieee754_sqrt-%250-mem s250)
+            (@__ieee754_sqrt-%253-loc s250)
+            (@__ieee754_sqrt-%250-pred s250))))
+  :enable (@__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%253-rev @__ieee754_sqrt-%253-rev @__ieee754_sqrt-%253-loc @__ieee754_sqrt-%253-val))
+(defruled @__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-m250.1-rev
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (let ((s250 (list mem loc pred)))
+           (@__ieee754_sqrt-m250.1-rev
+            (@__ieee754_sqrt-%250-mem s250)
+            (@__ieee754_sqrt-%254-loc s250)
+            (@__ieee754_sqrt-%250-pred s250))))
+  :enable (@__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-%254-rev @__ieee754_sqrt-%254-rev @__ieee754_sqrt-%254-loc @__ieee754_sqrt-%254-val))
+(defruled @__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-succ250-rev
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (let ((s250 (list mem loc pred)))
+           (@__ieee754_sqrt-succ250-rev
+            (@__ieee754_sqrt-m250.1-mem s250)
+            (@__ieee754_sqrt-%254-loc s250)
+            (@__ieee754_sqrt-%250-pred s250))))
+  :enable (@__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-m250.1-rev @__ieee754_sqrt-m250.1-rev @__ieee754_sqrt-m250.1-mem))
+(defruled @__ieee754_sqrt-%250-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%250-rev mem loc pred)
+         (@__ieee754_sqrt-%250-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%250-expand-rev-as-@__ieee754_sqrt-succ250-rev @__ieee754_sqrt-succ250-rev @__ieee754_sqrt-succ250-lab @__ieee754_sqrt-%250-fwd))
+
 (defund @__ieee754_sqrt-%250-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3473,18 +5884,6 @@
     (succ '%255))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%250-expand-bb
-  (equal (@__ieee754_sqrt-%250-bb mem loc pred)
-         (@__ieee754_sqrt-%250-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%250-bb @__ieee754_sqrt-%250-rev
-    @__ieee754_sqrt-%251-rev
-    @__ieee754_sqrt-%252-rev
-    @__ieee754_sqrt-%253-rev
-    @__ieee754_sqrt-%254-rev
-    @__ieee754_sqrt-m250.1-rev
-    @__ieee754_sqrt-succ250-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%255-mem (s255)
   (car s255))
 (defund @__ieee754_sqrt-%255-loc (s255)
@@ -3495,6 +5894,10 @@
   (declare (ignore s255))
   '%256)
 
+(defund @__ieee754_sqrt-%255-fwd (mem loc pred)
+  (let ((s255 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ255-lab s255) (@__ieee754_sqrt-%255-mem s255) (@__ieee754_sqrt-%255-loc s255))))
+
 (defund @__ieee754_sqrt-succ255-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%256 mem loc))
@@ -3502,18 +5905,24 @@
 (defund @__ieee754_sqrt-%255-rev (mem loc pred)
   (@__ieee754_sqrt-succ255-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%255-expand-rev-as-@__ieee754_sqrt-succ255-rev
+  (equal (@__ieee754_sqrt-%255-rev mem loc pred)
+         (let ((s255 (list mem loc pred)))
+           (@__ieee754_sqrt-succ255-rev
+            (@__ieee754_sqrt-%255-mem s255)
+            (@__ieee754_sqrt-%255-loc s255)
+            (@__ieee754_sqrt-%255-pred s255))))
+  :enable (@__ieee754_sqrt-%255-rev @__ieee754_sqrt-%255-mem @__ieee754_sqrt-%255-loc @__ieee754_sqrt-%255-pred))
+(defruled @__ieee754_sqrt-%255-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%255-rev mem loc pred)
+         (@__ieee754_sqrt-%255-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%255-expand-rev-as-@__ieee754_sqrt-succ255-rev @__ieee754_sqrt-succ255-rev @__ieee754_sqrt-succ255-lab @__ieee754_sqrt-%255-fwd))
+
 (defund @__ieee754_sqrt-%255-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%256))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%255-expand-bb
-  (equal (@__ieee754_sqrt-%255-bb mem loc pred)
-         (@__ieee754_sqrt-%255-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%255-bb @__ieee754_sqrt-%255-rev
-    @__ieee754_sqrt-succ255-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%256-mem (s256)
   (car s256))
@@ -3525,6 +5934,10 @@
   (declare (ignore s256))
   '%257)
 
+(defund @__ieee754_sqrt-%256-fwd (mem loc pred)
+  (let ((s256 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ256-lab s256) (@__ieee754_sqrt-%256-mem s256) (@__ieee754_sqrt-%256-loc s256))))
+
 (defund @__ieee754_sqrt-succ256-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%257 mem loc))
@@ -3532,18 +5945,24 @@
 (defund @__ieee754_sqrt-%256-rev (mem loc pred)
   (@__ieee754_sqrt-succ256-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%256-expand-rev-as-@__ieee754_sqrt-succ256-rev
+  (equal (@__ieee754_sqrt-%256-rev mem loc pred)
+         (let ((s256 (list mem loc pred)))
+           (@__ieee754_sqrt-succ256-rev
+            (@__ieee754_sqrt-%256-mem s256)
+            (@__ieee754_sqrt-%256-loc s256)
+            (@__ieee754_sqrt-%256-pred s256))))
+  :enable (@__ieee754_sqrt-%256-rev @__ieee754_sqrt-%256-mem @__ieee754_sqrt-%256-loc @__ieee754_sqrt-%256-pred))
+(defruled @__ieee754_sqrt-%256-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%256-rev mem loc pred)
+         (@__ieee754_sqrt-%256-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%256-expand-rev-as-@__ieee754_sqrt-succ256-rev @__ieee754_sqrt-succ256-rev @__ieee754_sqrt-succ256-lab @__ieee754_sqrt-%256-fwd))
+
 (defund @__ieee754_sqrt-%256-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%257))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%256-expand-bb
-  (equal (@__ieee754_sqrt-%256-bb mem loc pred)
-         (@__ieee754_sqrt-%256-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%256-bb @__ieee754_sqrt-%256-rev
-    @__ieee754_sqrt-succ256-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%257-mem (s257)
   (car s257))
@@ -3555,6 +5974,10 @@
   (declare (ignore s257))
   '%258)
 
+(defund @__ieee754_sqrt-%257-fwd (mem loc pred)
+  (let ((s257 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ257-lab s257) (@__ieee754_sqrt-%257-mem s257) (@__ieee754_sqrt-%257-loc s257))))
+
 (defund @__ieee754_sqrt-succ257-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%258 mem loc))
@@ -3562,18 +5985,24 @@
 (defund @__ieee754_sqrt-%257-rev (mem loc pred)
   (@__ieee754_sqrt-succ257-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%257-expand-rev-as-@__ieee754_sqrt-succ257-rev
+  (equal (@__ieee754_sqrt-%257-rev mem loc pred)
+         (let ((s257 (list mem loc pred)))
+           (@__ieee754_sqrt-succ257-rev
+            (@__ieee754_sqrt-%257-mem s257)
+            (@__ieee754_sqrt-%257-loc s257)
+            (@__ieee754_sqrt-%257-pred s257))))
+  :enable (@__ieee754_sqrt-%257-rev @__ieee754_sqrt-%257-mem @__ieee754_sqrt-%257-loc @__ieee754_sqrt-%257-pred))
+(defruled @__ieee754_sqrt-%257-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%257-rev mem loc pred)
+         (@__ieee754_sqrt-%257-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%257-expand-rev-as-@__ieee754_sqrt-succ257-rev @__ieee754_sqrt-succ257-rev @__ieee754_sqrt-succ257-lab @__ieee754_sqrt-%257-fwd))
+
 (defund @__ieee754_sqrt-%257-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%258))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%257-expand-bb
-  (equal (@__ieee754_sqrt-%257-bb mem loc pred)
-         (@__ieee754_sqrt-%257-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%257-bb @__ieee754_sqrt-%257-rev
-    @__ieee754_sqrt-succ257-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%258-mem (s258)
   (car s258))
@@ -3620,6 +6049,10 @@
 (defund @__ieee754_sqrt-succ258-lab (s258)
   (case (g '%266 (@__ieee754_sqrt-%266-loc s258)) (-1 '%267) (0 '%271)))
 
+(defund @__ieee754_sqrt-%258-fwd (mem loc pred)
+  (let ((s258 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ258-lab s258) (@__ieee754_sqrt-m258.2-mem s258) (@__ieee754_sqrt-%266-loc s258))))
+
 (defund @__ieee754_sqrt-succ258-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%266 loc) (-1 '%267) (0 '%271)) mem loc))
@@ -3647,6 +6080,99 @@
 (defund @__ieee754_sqrt-%258-rev (mem loc pred)
   (@__ieee754_sqrt-%259-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%259-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%259-rev
+            (@__ieee754_sqrt-%258-mem s258)
+            (@__ieee754_sqrt-%258-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-rev @__ieee754_sqrt-%258-mem @__ieee754_sqrt-%258-loc @__ieee754_sqrt-%258-pred))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%260-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%260-rev
+            (@__ieee754_sqrt-%258-mem s258)
+            (@__ieee754_sqrt-%259-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%259-rev @__ieee754_sqrt-%259-rev @__ieee754_sqrt-%259-loc @__ieee754_sqrt-%259-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%261-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%261-rev
+            (@__ieee754_sqrt-%258-mem s258)
+            (@__ieee754_sqrt-%260-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%260-rev @__ieee754_sqrt-%260-rev @__ieee754_sqrt-%260-loc @__ieee754_sqrt-%260-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-m258.1-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-m258.1-rev
+            (@__ieee754_sqrt-%258-mem s258)
+            (@__ieee754_sqrt-%261-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%261-rev @__ieee754_sqrt-%261-rev @__ieee754_sqrt-%261-loc @__ieee754_sqrt-%261-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%262-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%262-rev
+            (@__ieee754_sqrt-m258.1-mem s258)
+            (@__ieee754_sqrt-%261-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-m258.1-rev @__ieee754_sqrt-m258.1-rev @__ieee754_sqrt-m258.1-mem))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%263-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%263-rev
+            (@__ieee754_sqrt-m258.1-mem s258)
+            (@__ieee754_sqrt-%262-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%262-rev @__ieee754_sqrt-%262-rev @__ieee754_sqrt-%262-loc @__ieee754_sqrt-%262-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-m258.2-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-m258.2-rev
+            (@__ieee754_sqrt-m258.1-mem s258)
+            (@__ieee754_sqrt-%263-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%263-rev @__ieee754_sqrt-%263-rev @__ieee754_sqrt-%263-loc @__ieee754_sqrt-%263-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%264-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%264-rev
+            (@__ieee754_sqrt-m258.2-mem s258)
+            (@__ieee754_sqrt-%263-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-m258.2-rev @__ieee754_sqrt-m258.2-rev @__ieee754_sqrt-m258.2-mem))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%265-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%265-rev
+            (@__ieee754_sqrt-m258.2-mem s258)
+            (@__ieee754_sqrt-%264-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%264-rev @__ieee754_sqrt-%264-rev @__ieee754_sqrt-%264-loc @__ieee754_sqrt-%264-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%266-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-%266-rev
+            (@__ieee754_sqrt-m258.2-mem s258)
+            (@__ieee754_sqrt-%265-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%265-rev @__ieee754_sqrt-%265-rev @__ieee754_sqrt-%265-loc @__ieee754_sqrt-%265-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-succ258-rev
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (let ((s258 (list mem loc pred)))
+           (@__ieee754_sqrt-succ258-rev
+            (@__ieee754_sqrt-m258.2-mem s258)
+            (@__ieee754_sqrt-%266-loc s258)
+            (@__ieee754_sqrt-%258-pred s258))))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-%266-rev @__ieee754_sqrt-%266-rev @__ieee754_sqrt-%266-loc @__ieee754_sqrt-%266-val))
+(defruled @__ieee754_sqrt-%258-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%258-rev mem loc pred)
+         (@__ieee754_sqrt-%258-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%258-expand-rev-as-@__ieee754_sqrt-succ258-rev @__ieee754_sqrt-succ258-rev @__ieee754_sqrt-succ258-lab @__ieee754_sqrt-%258-fwd))
+
 (defund @__ieee754_sqrt-%258-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3662,23 +6188,6 @@
     (loc (s '%266 (icmp-eq-i32 (g '%265 loc) 1) loc))
     (succ (case (g '%266 loc) (-1 '%267) (0 '%271))))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%258-expand-bb
-  (equal (@__ieee754_sqrt-%258-bb mem loc pred)
-         (@__ieee754_sqrt-%258-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%258-bb @__ieee754_sqrt-%258-rev
-    @__ieee754_sqrt-%259-rev
-    @__ieee754_sqrt-%260-rev
-    @__ieee754_sqrt-%261-rev
-    @__ieee754_sqrt-m258.1-rev
-    @__ieee754_sqrt-%262-rev
-    @__ieee754_sqrt-%263-rev
-    @__ieee754_sqrt-m258.2-rev
-    @__ieee754_sqrt-%264-rev
-    @__ieee754_sqrt-%265-rev
-    @__ieee754_sqrt-%266-rev
-    @__ieee754_sqrt-succ258-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%267-mem (s267)
   (car s267))
@@ -3704,6 +6213,10 @@
   (declare (ignore s267))
   '%271)
 
+(defund @__ieee754_sqrt-%267-fwd (mem loc pred)
+  (let ((s267 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ267-lab s267) (@__ieee754_sqrt-m267.1-mem s267) (@__ieee754_sqrt-%270-loc s267))))
+
 (defund @__ieee754_sqrt-succ267-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%271 mem loc))
@@ -3719,6 +6232,51 @@
 (defund @__ieee754_sqrt-%267-rev (mem loc pred)
   (@__ieee754_sqrt-%268-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-%268-rev
+  (equal (@__ieee754_sqrt-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__ieee754_sqrt-%268-rev
+            (@__ieee754_sqrt-%267-mem s267)
+            (@__ieee754_sqrt-%267-loc s267)
+            (@__ieee754_sqrt-%267-pred s267))))
+  :enable (@__ieee754_sqrt-%267-rev @__ieee754_sqrt-%267-mem @__ieee754_sqrt-%267-loc @__ieee754_sqrt-%267-pred))
+(defruled @__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-%269-rev
+  (equal (@__ieee754_sqrt-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__ieee754_sqrt-%269-rev
+            (@__ieee754_sqrt-%267-mem s267)
+            (@__ieee754_sqrt-%268-loc s267)
+            (@__ieee754_sqrt-%267-pred s267))))
+  :enable (@__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-%268-rev @__ieee754_sqrt-%268-rev @__ieee754_sqrt-%268-loc @__ieee754_sqrt-%268-val))
+(defruled @__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-%270-rev
+  (equal (@__ieee754_sqrt-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__ieee754_sqrt-%270-rev
+            (@__ieee754_sqrt-%267-mem s267)
+            (@__ieee754_sqrt-%269-loc s267)
+            (@__ieee754_sqrt-%267-pred s267))))
+  :enable (@__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-%269-rev @__ieee754_sqrt-%269-rev @__ieee754_sqrt-%269-loc @__ieee754_sqrt-%269-val))
+(defruled @__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-m267.1-rev
+  (equal (@__ieee754_sqrt-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__ieee754_sqrt-m267.1-rev
+            (@__ieee754_sqrt-%267-mem s267)
+            (@__ieee754_sqrt-%270-loc s267)
+            (@__ieee754_sqrt-%267-pred s267))))
+  :enable (@__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-%270-rev @__ieee754_sqrt-%270-rev @__ieee754_sqrt-%270-loc @__ieee754_sqrt-%270-val))
+(defruled @__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-succ267-rev
+  (equal (@__ieee754_sqrt-%267-rev mem loc pred)
+         (let ((s267 (list mem loc pred)))
+           (@__ieee754_sqrt-succ267-rev
+            (@__ieee754_sqrt-m267.1-mem s267)
+            (@__ieee754_sqrt-%270-loc s267)
+            (@__ieee754_sqrt-%267-pred s267))))
+  :enable (@__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-m267.1-rev @__ieee754_sqrt-m267.1-rev @__ieee754_sqrt-m267.1-mem))
+(defruled @__ieee754_sqrt-%267-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%267-rev mem loc pred)
+         (@__ieee754_sqrt-%267-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%267-expand-rev-as-@__ieee754_sqrt-succ267-rev @__ieee754_sqrt-succ267-rev @__ieee754_sqrt-succ267-lab @__ieee754_sqrt-%267-fwd))
+
 (defund @__ieee754_sqrt-%267-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3728,17 +6286,6 @@
     (mem (store-i32 (g '%270 loc) (g '%ix1 loc) mem))
     (succ '%271))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%267-expand-bb
-  (equal (@__ieee754_sqrt-%267-bb mem loc pred)
-         (@__ieee754_sqrt-%267-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%267-bb @__ieee754_sqrt-%267-rev
-    @__ieee754_sqrt-%268-rev
-    @__ieee754_sqrt-%269-rev
-    @__ieee754_sqrt-%270-rev
-    @__ieee754_sqrt-m267.1-rev
-    @__ieee754_sqrt-succ267-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-%271-mem (s271)
   (car s271))
@@ -3798,6 +6345,10 @@
   (declare (ignore s271))
   '%282)
 
+(defund @__ieee754_sqrt-%271-fwd (mem loc pred)
+  (let ((s271 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ271-lab s271) (@__ieee754_sqrt-m271.4-mem s271) (@__ieee754_sqrt-%281-loc s271))))
+
 (defund @__ieee754_sqrt-succ271-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%282 mem loc))
@@ -3833,6 +6384,131 @@
 (defund @__ieee754_sqrt-%271-rev (mem loc pred)
   (@__ieee754_sqrt-%272-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%272-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%272-rev
+            (@__ieee754_sqrt-%271-mem s271)
+            (@__ieee754_sqrt-%271-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-rev @__ieee754_sqrt-%271-mem @__ieee754_sqrt-%271-loc @__ieee754_sqrt-%271-pred))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%273-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%273-rev
+            (@__ieee754_sqrt-%271-mem s271)
+            (@__ieee754_sqrt-%272-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%272-rev @__ieee754_sqrt-%272-rev @__ieee754_sqrt-%272-loc @__ieee754_sqrt-%272-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%274-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%274-rev
+            (@__ieee754_sqrt-%271-mem s271)
+            (@__ieee754_sqrt-%273-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%273-rev @__ieee754_sqrt-%273-rev @__ieee754_sqrt-%273-loc @__ieee754_sqrt-%273-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%275-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%275-rev
+            (@__ieee754_sqrt-%271-mem s271)
+            (@__ieee754_sqrt-%274-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%274-rev @__ieee754_sqrt-%274-rev @__ieee754_sqrt-%274-loc @__ieee754_sqrt-%274-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.1-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-m271.1-rev
+            (@__ieee754_sqrt-%271-mem s271)
+            (@__ieee754_sqrt-%275-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%275-rev @__ieee754_sqrt-%275-rev @__ieee754_sqrt-%275-loc @__ieee754_sqrt-%275-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%276-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%276-rev
+            (@__ieee754_sqrt-m271.1-mem s271)
+            (@__ieee754_sqrt-%275-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.1-rev @__ieee754_sqrt-m271.1-rev @__ieee754_sqrt-m271.1-mem))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%277-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%277-rev
+            (@__ieee754_sqrt-m271.1-mem s271)
+            (@__ieee754_sqrt-%276-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%276-rev @__ieee754_sqrt-%276-rev @__ieee754_sqrt-%276-loc @__ieee754_sqrt-%276-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%278-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%278-rev
+            (@__ieee754_sqrt-m271.1-mem s271)
+            (@__ieee754_sqrt-%277-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%277-rev @__ieee754_sqrt-%277-rev @__ieee754_sqrt-%277-loc @__ieee754_sqrt-%277-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.2-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-m271.2-rev
+            (@__ieee754_sqrt-m271.1-mem s271)
+            (@__ieee754_sqrt-%278-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%278-rev @__ieee754_sqrt-%278-rev @__ieee754_sqrt-%278-loc @__ieee754_sqrt-%278-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%279-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%279-rev
+            (@__ieee754_sqrt-m271.2-mem s271)
+            (@__ieee754_sqrt-%278-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.2-rev @__ieee754_sqrt-m271.2-rev @__ieee754_sqrt-m271.2-mem))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%280-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%280-rev
+            (@__ieee754_sqrt-m271.2-mem s271)
+            (@__ieee754_sqrt-%279-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%279-rev @__ieee754_sqrt-%279-rev @__ieee754_sqrt-%279-loc @__ieee754_sqrt-%279-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.3-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-m271.3-rev
+            (@__ieee754_sqrt-m271.2-mem s271)
+            (@__ieee754_sqrt-%280-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%280-rev @__ieee754_sqrt-%280-rev @__ieee754_sqrt-%280-loc @__ieee754_sqrt-%280-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%281-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-%281-rev
+            (@__ieee754_sqrt-m271.3-mem s271)
+            (@__ieee754_sqrt-%280-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.3-rev @__ieee754_sqrt-m271.3-rev @__ieee754_sqrt-m271.3-mem))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.4-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-m271.4-rev
+            (@__ieee754_sqrt-m271.3-mem s271)
+            (@__ieee754_sqrt-%281-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-%281-rev @__ieee754_sqrt-%281-rev @__ieee754_sqrt-%281-loc @__ieee754_sqrt-%281-val))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-succ271-rev
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (let ((s271 (list mem loc pred)))
+           (@__ieee754_sqrt-succ271-rev
+            (@__ieee754_sqrt-m271.4-mem s271)
+            (@__ieee754_sqrt-%281-loc s271)
+            (@__ieee754_sqrt-%271-pred s271))))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-m271.4-rev @__ieee754_sqrt-m271.4-rev @__ieee754_sqrt-m271.4-mem))
+(defruled @__ieee754_sqrt-%271-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%271-rev mem loc pred)
+         (@__ieee754_sqrt-%271-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%271-expand-rev-as-@__ieee754_sqrt-succ271-rev @__ieee754_sqrt-succ271-rev @__ieee754_sqrt-succ271-lab @__ieee754_sqrt-%271-fwd))
+
 (defund @__ieee754_sqrt-%271-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -3853,27 +6529,6 @@
     (succ '%282))
   (mv succ mem loc)))
 
-(defruled @__ieee754_sqrt-%271-expand-bb
-  (equal (@__ieee754_sqrt-%271-bb mem loc pred)
-         (@__ieee754_sqrt-%271-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%271-bb @__ieee754_sqrt-%271-rev
-    @__ieee754_sqrt-%272-rev
-    @__ieee754_sqrt-%273-rev
-    @__ieee754_sqrt-%274-rev
-    @__ieee754_sqrt-%275-rev
-    @__ieee754_sqrt-m271.1-rev
-    @__ieee754_sqrt-%276-rev
-    @__ieee754_sqrt-%277-rev
-    @__ieee754_sqrt-%278-rev
-    @__ieee754_sqrt-m271.2-rev
-    @__ieee754_sqrt-%279-rev
-    @__ieee754_sqrt-%280-rev
-    @__ieee754_sqrt-m271.3-rev
-    @__ieee754_sqrt-%281-rev
-    @__ieee754_sqrt-m271.4-rev
-    @__ieee754_sqrt-succ271-rev)
-  :disable s-diff-s)
-
 (defund @__ieee754_sqrt-%282-mem (s282)
   (car s282))
 (defund @__ieee754_sqrt-%282-loc (s282)
@@ -3888,6 +6543,10 @@
   (declare (ignore s282))
   'ret)
 
+(defund @__ieee754_sqrt-%282-fwd (mem loc pred)
+  (let ((s282 (list mem loc pred)))
+    (mv (@__ieee754_sqrt-succ282-lab s282) (@__ieee754_sqrt-%282-mem s282) (@__ieee754_sqrt-%283-loc s282))))
+
 (defund @__ieee754_sqrt-succ282-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -3897,20 +6556,33 @@
 (defund @__ieee754_sqrt-%282-rev (mem loc pred)
   (@__ieee754_sqrt-%283-rev mem loc pred))
 
+(defruled @__ieee754_sqrt-%282-expand-rev-as-@__ieee754_sqrt-%283-rev
+  (equal (@__ieee754_sqrt-%282-rev mem loc pred)
+         (let ((s282 (list mem loc pred)))
+           (@__ieee754_sqrt-%283-rev
+            (@__ieee754_sqrt-%282-mem s282)
+            (@__ieee754_sqrt-%282-loc s282)
+            (@__ieee754_sqrt-%282-pred s282))))
+  :enable (@__ieee754_sqrt-%282-rev @__ieee754_sqrt-%282-mem @__ieee754_sqrt-%282-loc @__ieee754_sqrt-%282-pred))
+(defruled @__ieee754_sqrt-%282-expand-rev-as-@__ieee754_sqrt-succ282-rev
+  (equal (@__ieee754_sqrt-%282-rev mem loc pred)
+         (let ((s282 (list mem loc pred)))
+           (@__ieee754_sqrt-succ282-rev
+            (@__ieee754_sqrt-%282-mem s282)
+            (@__ieee754_sqrt-%283-loc s282)
+            (@__ieee754_sqrt-%282-pred s282))))
+  :enable (@__ieee754_sqrt-%282-expand-rev-as-@__ieee754_sqrt-%283-rev @__ieee754_sqrt-%283-rev @__ieee754_sqrt-%283-loc @__ieee754_sqrt-%283-val))
+(defruled @__ieee754_sqrt-%282-expand-rev-as-fwd
+  (equal (@__ieee754_sqrt-%282-rev mem loc pred)
+         (@__ieee754_sqrt-%282-fwd mem loc pred))
+  :enable (@__ieee754_sqrt-%282-expand-rev-as-@__ieee754_sqrt-succ282-rev @__ieee754_sqrt-succ282-rev @__ieee754_sqrt-succ282-lab @__ieee754_sqrt-%282-fwd))
+
 (defund @__ieee754_sqrt-%282-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%283 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @__ieee754_sqrt-%282-expand-bb
-  (equal (@__ieee754_sqrt-%282-bb mem loc pred)
-         (@__ieee754_sqrt-%282-rev mem loc pred))
-  :enable (@__ieee754_sqrt-%282-bb @__ieee754_sqrt-%282-rev
-    @__ieee754_sqrt-%283-rev
-    @__ieee754_sqrt-succ282-rev)
-  :disable s-diff-s)
 
 (defund @__ieee754_sqrt-step (label mem loc pred)
   (case label

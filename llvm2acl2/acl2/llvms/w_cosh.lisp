@@ -31,6 +31,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @cosh-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@cosh-succ0-lab s0) (@cosh-m0.1-mem s0) (@cosh-%3-loc s0))))
+
 (defund @cosh-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -46,6 +50,51 @@
 (defund @cosh-%0-rev (mem loc pred)
   (@cosh-%1-rev mem loc pred))
 
+(defruled @cosh-%0-expand-rev-as-@cosh-%1-rev
+  (equal (@cosh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cosh-%1-rev
+            (@cosh-%0-mem s0)
+            (@cosh-%0-loc s0)
+            (@cosh-%0-pred s0))))
+  :enable (@cosh-%0-rev @cosh-%0-mem @cosh-%0-loc @cosh-%0-pred))
+(defruled @cosh-%0-expand-rev-as-@cosh-m0.1-rev
+  (equal (@cosh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cosh-m0.1-rev
+            (@cosh-%1-mem s0)
+            (@cosh-%1-loc s0)
+            (@cosh-%0-pred s0))))
+  :enable (@cosh-%0-expand-rev-as-@cosh-%1-rev @cosh-%1-rev @cosh-%1-mem @cosh-%1-loc))
+(defruled @cosh-%0-expand-rev-as-@cosh-%2-rev
+  (equal (@cosh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cosh-%2-rev
+            (@cosh-m0.1-mem s0)
+            (@cosh-%1-loc s0)
+            (@cosh-%0-pred s0))))
+  :enable (@cosh-%0-expand-rev-as-@cosh-m0.1-rev @cosh-m0.1-rev @cosh-m0.1-mem))
+(defruled @cosh-%0-expand-rev-as-@cosh-%3-rev
+  (equal (@cosh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cosh-%3-rev
+            (@cosh-m0.1-mem s0)
+            (@cosh-%2-loc s0)
+            (@cosh-%0-pred s0))))
+  :enable (@cosh-%0-expand-rev-as-@cosh-%2-rev @cosh-%2-rev @cosh-%2-loc @cosh-%2-val))
+(defruled @cosh-%0-expand-rev-as-@cosh-succ0-rev
+  (equal (@cosh-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cosh-succ0-rev
+            (@cosh-m0.1-mem s0)
+            (@cosh-%3-loc s0)
+            (@cosh-%0-pred s0))))
+  :enable (@cosh-%0-expand-rev-as-@cosh-%3-rev @cosh-%3-rev @cosh-%3-loc @cosh-%3-val))
+(defruled @cosh-%0-expand-rev-as-fwd
+  (equal (@cosh-%0-rev mem loc pred)
+         (@cosh-%0-fwd mem loc pred))
+  :enable (@cosh-%0-expand-rev-as-@cosh-succ0-rev @cosh-succ0-rev @cosh-succ0-lab @cosh-%0-fwd))
+
 (defund @cosh-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -56,17 +105,6 @@
     (loc (s '%3 (@__ieee754_cosh (g '%2 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @cosh-%0-expand-bb
-  (equal (@cosh-%0-bb mem loc pred)
-         (@cosh-%0-rev mem loc pred))
-  :enable (@cosh-%0-bb @cosh-%0-rev
-    @cosh-%1-rev
-    @cosh-m0.1-rev
-    @cosh-%2-rev
-    @cosh-%3-rev
-    @cosh-succ0-rev)
-  :disable s-diff-s)
 
 (defund @cosh-step (label mem loc pred)
   (case label

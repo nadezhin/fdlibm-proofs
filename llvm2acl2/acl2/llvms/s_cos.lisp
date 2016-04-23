@@ -78,6 +78,10 @@
 (defund @cos-succ0-lab (s0)
   (case (g '%9 (@cos-%9-loc s0)) (-1 '%10) (0 '%14)))
 
+(defund @cos-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@cos-succ0-lab s0) (@cos-m0.4-mem s0) (@cos-%9-loc s0))))
+
 (defund @cos-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%14)) mem loc))
@@ -119,6 +123,155 @@
 (defund @cos-%0-rev (mem loc pred)
   (@cos-%1-rev mem loc pred))
 
+(defruled @cos-%0-expand-rev-as-@cos-%1-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%1-rev
+            (@cos-%0-mem s0)
+            (@cos-%0-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-rev @cos-%0-mem @cos-%0-loc @cos-%0-pred))
+(defruled @cos-%0-expand-rev-as-@cos-%2-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%2-rev
+            (@cos-%1-mem s0)
+            (@cos-%1-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%1-rev @cos-%1-rev @cos-%1-mem @cos-%1-loc))
+(defruled @cos-%0-expand-rev-as-@cos-%y-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%y-rev
+            (@cos-%2-mem s0)
+            (@cos-%2-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%2-rev @cos-%2-rev @cos-%2-mem @cos-%2-loc))
+(defruled @cos-%0-expand-rev-as-@cos-%z-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%z-rev
+            (@cos-%y-mem s0)
+            (@cos-%y-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%y-rev @cos-%y-rev @cos-%y-mem @cos-%y-loc))
+(defruled @cos-%0-expand-rev-as-@cos-%n-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%n-rev
+            (@cos-%z-mem s0)
+            (@cos-%z-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%z-rev @cos-%z-rev @cos-%z-mem @cos-%z-loc))
+(defruled @cos-%0-expand-rev-as-@cos-%ix-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%ix-rev
+            (@cos-%n-mem s0)
+            (@cos-%n-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%n-rev @cos-%n-rev @cos-%n-mem @cos-%n-loc))
+(defruled @cos-%0-expand-rev-as-@cos-m0.1-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-m0.1-rev
+            (@cos-%ix-mem s0)
+            (@cos-%ix-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%ix-rev @cos-%ix-rev @cos-%ix-mem @cos-%ix-loc))
+(defruled @cos-%0-expand-rev-as-@cos-m0.2-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-m0.2-rev
+            (@cos-m0.1-mem s0)
+            (@cos-%ix-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-m0.1-rev @cos-m0.1-rev @cos-m0.1-mem))
+(defruled @cos-%0-expand-rev-as-@cos-%3-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%3-rev
+            (@cos-m0.2-mem s0)
+            (@cos-%ix-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-m0.2-rev @cos-m0.2-rev @cos-m0.2-mem))
+(defruled @cos-%0-expand-rev-as-@cos-%4-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%4-rev
+            (@cos-m0.2-mem s0)
+            (@cos-%3-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%3-rev @cos-%3-rev @cos-%3-loc @cos-%3-val))
+(defruled @cos-%0-expand-rev-as-@cos-%5-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%5-rev
+            (@cos-m0.2-mem s0)
+            (@cos-%4-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%4-rev @cos-%4-rev @cos-%4-loc @cos-%4-val))
+(defruled @cos-%0-expand-rev-as-@cos-m0.3-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-m0.3-rev
+            (@cos-m0.2-mem s0)
+            (@cos-%5-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%5-rev @cos-%5-rev @cos-%5-loc @cos-%5-val))
+(defruled @cos-%0-expand-rev-as-@cos-%6-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%6-rev
+            (@cos-m0.3-mem s0)
+            (@cos-%5-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-m0.3-rev @cos-m0.3-rev @cos-m0.3-mem))
+(defruled @cos-%0-expand-rev-as-@cos-%7-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%7-rev
+            (@cos-m0.3-mem s0)
+            (@cos-%6-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%6-rev @cos-%6-rev @cos-%6-loc @cos-%6-val))
+(defruled @cos-%0-expand-rev-as-@cos-m0.4-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-m0.4-rev
+            (@cos-m0.3-mem s0)
+            (@cos-%7-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%7-rev @cos-%7-rev @cos-%7-loc @cos-%7-val))
+(defruled @cos-%0-expand-rev-as-@cos-%8-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%8-rev
+            (@cos-m0.4-mem s0)
+            (@cos-%7-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-m0.4-rev @cos-m0.4-rev @cos-m0.4-mem))
+(defruled @cos-%0-expand-rev-as-@cos-%9-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-%9-rev
+            (@cos-m0.4-mem s0)
+            (@cos-%8-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%8-rev @cos-%8-rev @cos-%8-loc @cos-%8-val))
+(defruled @cos-%0-expand-rev-as-@cos-succ0-rev
+  (equal (@cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cos-succ0-rev
+            (@cos-m0.4-mem s0)
+            (@cos-%9-loc s0)
+            (@cos-%0-pred s0))))
+  :enable (@cos-%0-expand-rev-as-@cos-%9-rev @cos-%9-rev @cos-%9-loc @cos-%9-val))
+(defruled @cos-%0-expand-rev-as-fwd
+  (equal (@cos-%0-rev mem loc pred)
+         (@cos-%0-fwd mem loc pred))
+  :enable (@cos-%0-expand-rev-as-@cos-succ0-rev @cos-succ0-rev @cos-succ0-lab @cos-%0-fwd))
+
 (defund @cos-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -148,30 +301,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%14))))
   (mv succ mem loc)))
 
-(defruled @cos-%0-expand-bb
-  (equal (@cos-%0-bb mem loc pred)
-         (@cos-%0-rev mem loc pred))
-  :enable (@cos-%0-bb @cos-%0-rev
-    @cos-%1-rev
-    @cos-%2-rev
-    @cos-%y-rev
-    @cos-%z-rev
-    @cos-%n-rev
-    @cos-%ix-rev
-    @cos-m0.1-rev
-    @cos-m0.2-rev
-    @cos-%3-rev
-    @cos-%4-rev
-    @cos-%5-rev
-    @cos-m0.3-rev
-    @cos-%6-rev
-    @cos-%7-rev
-    @cos-m0.4-rev
-    @cos-%8-rev
-    @cos-%9-rev
-    @cos-succ0-rev)
-  :disable s-diff-s)
-
 (defund @cos-%10-mem (s10)
   (car s10))
 (defund @cos-%10-loc (s10)
@@ -196,6 +325,10 @@
   (declare (ignore s10))
   '%53)
 
+(defund @cos-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@cos-succ10-lab s10) (@cos-m10.1-mem s10) (@cos-%13-loc s10))))
+
 (defund @cos-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -211,6 +344,51 @@
 (defund @cos-%10-rev (mem loc pred)
   (@cos-%11-rev mem loc pred))
 
+(defruled @cos-%10-expand-rev-as-@cos-%11-rev
+  (equal (@cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@cos-%11-rev
+            (@cos-%10-mem s10)
+            (@cos-%10-loc s10)
+            (@cos-%10-pred s10))))
+  :enable (@cos-%10-rev @cos-%10-mem @cos-%10-loc @cos-%10-pred))
+(defruled @cos-%10-expand-rev-as-@cos-%12-rev
+  (equal (@cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@cos-%12-rev
+            (@cos-%10-mem s10)
+            (@cos-%11-loc s10)
+            (@cos-%10-pred s10))))
+  :enable (@cos-%10-expand-rev-as-@cos-%11-rev @cos-%11-rev @cos-%11-loc @cos-%11-val))
+(defruled @cos-%10-expand-rev-as-@cos-%13-rev
+  (equal (@cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@cos-%13-rev
+            (@cos-%10-mem s10)
+            (@cos-%12-loc s10)
+            (@cos-%10-pred s10))))
+  :enable (@cos-%10-expand-rev-as-@cos-%12-rev @cos-%12-rev @cos-%12-loc @cos-%12-val))
+(defruled @cos-%10-expand-rev-as-@cos-m10.1-rev
+  (equal (@cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@cos-m10.1-rev
+            (@cos-%10-mem s10)
+            (@cos-%13-loc s10)
+            (@cos-%10-pred s10))))
+  :enable (@cos-%10-expand-rev-as-@cos-%13-rev @cos-%13-rev @cos-%13-loc @cos-%13-val))
+(defruled @cos-%10-expand-rev-as-@cos-succ10-rev
+  (equal (@cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@cos-succ10-rev
+            (@cos-m10.1-mem s10)
+            (@cos-%13-loc s10)
+            (@cos-%10-pred s10))))
+  :enable (@cos-%10-expand-rev-as-@cos-m10.1-rev @cos-m10.1-rev @cos-m10.1-mem))
+(defruled @cos-%10-expand-rev-as-fwd
+  (equal (@cos-%10-rev mem loc pred)
+         (@cos-%10-fwd mem loc pred))
+  :enable (@cos-%10-expand-rev-as-@cos-succ10-rev @cos-succ10-rev @cos-succ10-lab @cos-%10-fwd))
+
 (defund @cos-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -220,17 +398,6 @@
     (mem (store-double (g '%13 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @cos-%10-expand-bb
-  (equal (@cos-%10-bb mem loc pred)
-         (@cos-%10-rev mem loc pred))
-  :enable (@cos-%10-bb @cos-%10-rev
-    @cos-%11-rev
-    @cos-%12-rev
-    @cos-%13-rev
-    @cos-m10.1-rev
-    @cos-succ10-rev)
-  :disable s-diff-s)
 
 (defund @cos-%14-mem (s14)
   (car s14))
@@ -249,6 +416,10 @@
 (defund @cos-succ14-lab (s14)
   (case (g '%16 (@cos-%16-loc s14)) (-1 '%17) (0 '%21)))
 
+(defund @cos-%14-fwd (mem loc pred)
+  (let ((s14 (list mem loc pred)))
+    (mv (@cos-succ14-lab s14) (@cos-%14-mem s14) (@cos-%16-loc s14))))
+
 (defund @cos-succ14-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%16 loc) (-1 '%17) (0 '%21)) mem loc))
@@ -260,6 +431,35 @@
 (defund @cos-%14-rev (mem loc pred)
   (@cos-%15-rev mem loc pred))
 
+(defruled @cos-%14-expand-rev-as-@cos-%15-rev
+  (equal (@cos-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@cos-%15-rev
+            (@cos-%14-mem s14)
+            (@cos-%14-loc s14)
+            (@cos-%14-pred s14))))
+  :enable (@cos-%14-rev @cos-%14-mem @cos-%14-loc @cos-%14-pred))
+(defruled @cos-%14-expand-rev-as-@cos-%16-rev
+  (equal (@cos-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@cos-%16-rev
+            (@cos-%14-mem s14)
+            (@cos-%15-loc s14)
+            (@cos-%14-pred s14))))
+  :enable (@cos-%14-expand-rev-as-@cos-%15-rev @cos-%15-rev @cos-%15-loc @cos-%15-val))
+(defruled @cos-%14-expand-rev-as-@cos-succ14-rev
+  (equal (@cos-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@cos-succ14-rev
+            (@cos-%14-mem s14)
+            (@cos-%16-loc s14)
+            (@cos-%14-pred s14))))
+  :enable (@cos-%14-expand-rev-as-@cos-%16-rev @cos-%16-rev @cos-%16-loc @cos-%16-val))
+(defruled @cos-%14-expand-rev-as-fwd
+  (equal (@cos-%14-rev mem loc pred)
+         (@cos-%14-fwd mem loc pred))
+  :enable (@cos-%14-expand-rev-as-@cos-succ14-rev @cos-succ14-rev @cos-succ14-lab @cos-%14-fwd))
+
 (defund @cos-%14-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -267,15 +467,6 @@
     (loc (s '%16 (icmp-sge-i32 (g '%15 loc) 2146435072) loc))
     (succ (case (g '%16 loc) (-1 '%17) (0 '%21))))
   (mv succ mem loc)))
-
-(defruled @cos-%14-expand-bb
-  (equal (@cos-%14-bb mem loc pred)
-         (@cos-%14-rev mem loc pred))
-  :enable (@cos-%14-bb @cos-%14-rev
-    @cos-%15-rev
-    @cos-%16-rev
-    @cos-succ14-rev)
-  :disable s-diff-s)
 
 (defund @cos-%17-mem (s17)
   (car s17))
@@ -301,6 +492,10 @@
   (declare (ignore s17))
   '%53)
 
+(defund @cos-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@cos-succ17-lab s17) (@cos-m17.1-mem s17) (@cos-%20-loc s17))))
+
 (defund @cos-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -316,6 +511,51 @@
 (defund @cos-%17-rev (mem loc pred)
   (@cos-%18-rev mem loc pred))
 
+(defruled @cos-%17-expand-rev-as-@cos-%18-rev
+  (equal (@cos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cos-%18-rev
+            (@cos-%17-mem s17)
+            (@cos-%17-loc s17)
+            (@cos-%17-pred s17))))
+  :enable (@cos-%17-rev @cos-%17-mem @cos-%17-loc @cos-%17-pred))
+(defruled @cos-%17-expand-rev-as-@cos-%19-rev
+  (equal (@cos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cos-%19-rev
+            (@cos-%17-mem s17)
+            (@cos-%18-loc s17)
+            (@cos-%17-pred s17))))
+  :enable (@cos-%17-expand-rev-as-@cos-%18-rev @cos-%18-rev @cos-%18-loc @cos-%18-val))
+(defruled @cos-%17-expand-rev-as-@cos-%20-rev
+  (equal (@cos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cos-%20-rev
+            (@cos-%17-mem s17)
+            (@cos-%19-loc s17)
+            (@cos-%17-pred s17))))
+  :enable (@cos-%17-expand-rev-as-@cos-%19-rev @cos-%19-rev @cos-%19-loc @cos-%19-val))
+(defruled @cos-%17-expand-rev-as-@cos-m17.1-rev
+  (equal (@cos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cos-m17.1-rev
+            (@cos-%17-mem s17)
+            (@cos-%20-loc s17)
+            (@cos-%17-pred s17))))
+  :enable (@cos-%17-expand-rev-as-@cos-%20-rev @cos-%20-rev @cos-%20-loc @cos-%20-val))
+(defruled @cos-%17-expand-rev-as-@cos-succ17-rev
+  (equal (@cos-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cos-succ17-rev
+            (@cos-m17.1-mem s17)
+            (@cos-%20-loc s17)
+            (@cos-%17-pred s17))))
+  :enable (@cos-%17-expand-rev-as-@cos-m17.1-rev @cos-m17.1-rev @cos-m17.1-mem))
+(defruled @cos-%17-expand-rev-as-fwd
+  (equal (@cos-%17-rev mem loc pred)
+         (@cos-%17-fwd mem loc pred))
+  :enable (@cos-%17-expand-rev-as-@cos-succ17-rev @cos-succ17-rev @cos-succ17-lab @cos-%17-fwd))
+
 (defund @cos-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -325,17 +565,6 @@
     (mem (store-double (g '%20 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @cos-%17-expand-bb
-  (equal (@cos-%17-bb mem loc pred)
-         (@cos-%17-rev mem loc pred))
-  :enable (@cos-%17-bb @cos-%17-rev
-    @cos-%18-rev
-    @cos-%19-rev
-    @cos-%20-rev
-    @cos-m17.1-rev
-    @cos-succ17-rev)
-  :disable s-diff-s)
 
 (defund @cos-%21-mem (s21)
   (car s21))
@@ -368,6 +597,10 @@
 (defund @cos-succ21-lab (s21)
   (case (g '%26 (@cos-%26-loc s21))(0 '%27)(1 '%33)(2 '%40) (otherwise '%47)))
 
+(defund @cos-%21-fwd (mem loc pred)
+  (let ((s21 (list mem loc pred)))
+    (mv (@cos-succ21-lab s21) (@cos-m21.1-mem s21) (@cos-%26-loc s21))))
+
 (defund @cos-succ21-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%26 loc)(0 '%27)(1 '%33)(2 '%40) (otherwise '%47)) mem loc))
@@ -387,6 +620,67 @@
 (defund @cos-%21-rev (mem loc pred)
   (@cos-%22-rev mem loc pred))
 
+(defruled @cos-%21-expand-rev-as-@cos-%22-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-%22-rev
+            (@cos-%21-mem s21)
+            (@cos-%21-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-rev @cos-%21-mem @cos-%21-loc @cos-%21-pred))
+(defruled @cos-%21-expand-rev-as-@cos-%23-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-%23-rev
+            (@cos-%21-mem s21)
+            (@cos-%22-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-expand-rev-as-@cos-%22-rev @cos-%22-rev @cos-%22-loc @cos-%22-val))
+(defruled @cos-%21-expand-rev-as-@cos-%24-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-%24-rev
+            (@cos-%21-mem s21)
+            (@cos-%23-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-expand-rev-as-@cos-%23-rev @cos-%23-rev @cos-%23-loc @cos-%23-val))
+(defruled @cos-%21-expand-rev-as-@cos-m21.1-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-m21.1-rev
+            (@cos-%21-mem s21)
+            (@cos-%24-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-expand-rev-as-@cos-%24-rev @cos-%24-rev @cos-%24-loc @cos-%24-val))
+(defruled @cos-%21-expand-rev-as-@cos-%25-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-%25-rev
+            (@cos-m21.1-mem s21)
+            (@cos-%24-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-expand-rev-as-@cos-m21.1-rev @cos-m21.1-rev @cos-m21.1-mem))
+(defruled @cos-%21-expand-rev-as-@cos-%26-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-%26-rev
+            (@cos-m21.1-mem s21)
+            (@cos-%25-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-expand-rev-as-@cos-%25-rev @cos-%25-rev @cos-%25-loc @cos-%25-val))
+(defruled @cos-%21-expand-rev-as-@cos-succ21-rev
+  (equal (@cos-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@cos-succ21-rev
+            (@cos-m21.1-mem s21)
+            (@cos-%26-loc s21)
+            (@cos-%21-pred s21))))
+  :enable (@cos-%21-expand-rev-as-@cos-%26-rev @cos-%26-rev @cos-%26-loc @cos-%26-val))
+(defruled @cos-%21-expand-rev-as-fwd
+  (equal (@cos-%21-rev mem loc pred)
+         (@cos-%21-fwd mem loc pred))
+  :enable (@cos-%21-expand-rev-as-@cos-succ21-rev @cos-succ21-rev @cos-succ21-lab @cos-%21-fwd))
+
 (defund @cos-%21-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -398,19 +692,6 @@
     (loc (s '%26 (and-i32 (g '%25 loc) 3) loc))
     (succ (case (g '%26 loc)(0 '%27)(1 '%33)(2 '%40) (otherwise '%47))))
   (mv succ mem loc)))
-
-(defruled @cos-%21-expand-bb
-  (equal (@cos-%21-bb mem loc pred)
-         (@cos-%21-rev mem loc pred))
-  :enable (@cos-%21-bb @cos-%21-rev
-    @cos-%22-rev
-    @cos-%23-rev
-    @cos-%24-rev
-    @cos-m21.1-rev
-    @cos-%25-rev
-    @cos-%26-rev
-    @cos-succ21-rev)
-  :disable s-diff-s)
 
 (defund @cos-%27-mem (s27)
   (car s27))
@@ -444,6 +725,10 @@
   (declare (ignore s27))
   '%53)
 
+(defund @cos-%27-fwd (mem loc pred)
+  (let ((s27 (list mem loc pred)))
+    (mv (@cos-succ27-lab s27) (@cos-m27.1-mem s27) (@cos-%32-loc s27))))
+
 (defund @cos-succ27-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -463,6 +748,67 @@
 (defund @cos-%27-rev (mem loc pred)
   (@cos-%28-rev mem loc pred))
 
+(defruled @cos-%27-expand-rev-as-@cos-%28-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-%28-rev
+            (@cos-%27-mem s27)
+            (@cos-%27-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-rev @cos-%27-mem @cos-%27-loc @cos-%27-pred))
+(defruled @cos-%27-expand-rev-as-@cos-%29-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-%29-rev
+            (@cos-%27-mem s27)
+            (@cos-%28-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-expand-rev-as-@cos-%28-rev @cos-%28-rev @cos-%28-loc @cos-%28-val))
+(defruled @cos-%27-expand-rev-as-@cos-%30-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-%30-rev
+            (@cos-%27-mem s27)
+            (@cos-%29-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-expand-rev-as-@cos-%29-rev @cos-%29-rev @cos-%29-loc @cos-%29-val))
+(defruled @cos-%27-expand-rev-as-@cos-%31-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-%31-rev
+            (@cos-%27-mem s27)
+            (@cos-%30-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-expand-rev-as-@cos-%30-rev @cos-%30-rev @cos-%30-loc @cos-%30-val))
+(defruled @cos-%27-expand-rev-as-@cos-%32-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-%32-rev
+            (@cos-%27-mem s27)
+            (@cos-%31-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-expand-rev-as-@cos-%31-rev @cos-%31-rev @cos-%31-loc @cos-%31-val))
+(defruled @cos-%27-expand-rev-as-@cos-m27.1-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-m27.1-rev
+            (@cos-%27-mem s27)
+            (@cos-%32-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-expand-rev-as-@cos-%32-rev @cos-%32-rev @cos-%32-loc @cos-%32-val))
+(defruled @cos-%27-expand-rev-as-@cos-succ27-rev
+  (equal (@cos-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@cos-succ27-rev
+            (@cos-m27.1-mem s27)
+            (@cos-%32-loc s27)
+            (@cos-%27-pred s27))))
+  :enable (@cos-%27-expand-rev-as-@cos-m27.1-rev @cos-m27.1-rev @cos-m27.1-mem))
+(defruled @cos-%27-expand-rev-as-fwd
+  (equal (@cos-%27-rev mem loc pred)
+         (@cos-%27-fwd mem loc pred))
+  :enable (@cos-%27-expand-rev-as-@cos-succ27-rev @cos-succ27-rev @cos-succ27-lab @cos-%27-fwd))
+
 (defund @cos-%27-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -474,19 +820,6 @@
     (mem (store-double (g '%32 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @cos-%27-expand-bb
-  (equal (@cos-%27-bb mem loc pred)
-         (@cos-%27-rev mem loc pred))
-  :enable (@cos-%27-bb @cos-%27-rev
-    @cos-%28-rev
-    @cos-%29-rev
-    @cos-%30-rev
-    @cos-%31-rev
-    @cos-%32-rev
-    @cos-m27.1-rev
-    @cos-succ27-rev)
-  :disable s-diff-s)
 
 (defund @cos-%33-mem (s33)
   (car s33))
@@ -524,6 +857,10 @@
   (declare (ignore s33))
   '%53)
 
+(defund @cos-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@cos-succ33-lab s33) (@cos-m33.1-mem s33) (@cos-%39-loc s33))))
+
 (defund @cos-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -545,6 +882,75 @@
 (defund @cos-%33-rev (mem loc pred)
   (@cos-%34-rev mem loc pred))
 
+(defruled @cos-%33-expand-rev-as-@cos-%34-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-%34-rev
+            (@cos-%33-mem s33)
+            (@cos-%33-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-rev @cos-%33-mem @cos-%33-loc @cos-%33-pred))
+(defruled @cos-%33-expand-rev-as-@cos-%35-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-%35-rev
+            (@cos-%33-mem s33)
+            (@cos-%34-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-%34-rev @cos-%34-rev @cos-%34-loc @cos-%34-val))
+(defruled @cos-%33-expand-rev-as-@cos-%36-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-%36-rev
+            (@cos-%33-mem s33)
+            (@cos-%35-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-%35-rev @cos-%35-rev @cos-%35-loc @cos-%35-val))
+(defruled @cos-%33-expand-rev-as-@cos-%37-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-%37-rev
+            (@cos-%33-mem s33)
+            (@cos-%36-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-%36-rev @cos-%36-rev @cos-%36-loc @cos-%36-val))
+(defruled @cos-%33-expand-rev-as-@cos-%38-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-%38-rev
+            (@cos-%33-mem s33)
+            (@cos-%37-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-%37-rev @cos-%37-rev @cos-%37-loc @cos-%37-val))
+(defruled @cos-%33-expand-rev-as-@cos-%39-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-%39-rev
+            (@cos-%33-mem s33)
+            (@cos-%38-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-%38-rev @cos-%38-rev @cos-%38-loc @cos-%38-val))
+(defruled @cos-%33-expand-rev-as-@cos-m33.1-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-m33.1-rev
+            (@cos-%33-mem s33)
+            (@cos-%39-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-%39-rev @cos-%39-rev @cos-%39-loc @cos-%39-val))
+(defruled @cos-%33-expand-rev-as-@cos-succ33-rev
+  (equal (@cos-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@cos-succ33-rev
+            (@cos-m33.1-mem s33)
+            (@cos-%39-loc s33)
+            (@cos-%33-pred s33))))
+  :enable (@cos-%33-expand-rev-as-@cos-m33.1-rev @cos-m33.1-rev @cos-m33.1-mem))
+(defruled @cos-%33-expand-rev-as-fwd
+  (equal (@cos-%33-rev mem loc pred)
+         (@cos-%33-fwd mem loc pred))
+  :enable (@cos-%33-expand-rev-as-@cos-succ33-rev @cos-succ33-rev @cos-succ33-lab @cos-%33-fwd))
+
 (defund @cos-%33-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -557,20 +963,6 @@
     (mem (store-double (g '%39 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @cos-%33-expand-bb
-  (equal (@cos-%33-bb mem loc pred)
-         (@cos-%33-rev mem loc pred))
-  :enable (@cos-%33-bb @cos-%33-rev
-    @cos-%34-rev
-    @cos-%35-rev
-    @cos-%36-rev
-    @cos-%37-rev
-    @cos-%38-rev
-    @cos-%39-rev
-    @cos-m33.1-rev
-    @cos-succ33-rev)
-  :disable s-diff-s)
 
 (defund @cos-%40-mem (s40)
   (car s40))
@@ -608,6 +1000,10 @@
   (declare (ignore s40))
   '%53)
 
+(defund @cos-%40-fwd (mem loc pred)
+  (let ((s40 (list mem loc pred)))
+    (mv (@cos-succ40-lab s40) (@cos-m40.1-mem s40) (@cos-%46-loc s40))))
+
 (defund @cos-succ40-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -629,6 +1025,75 @@
 (defund @cos-%40-rev (mem loc pred)
   (@cos-%41-rev mem loc pred))
 
+(defruled @cos-%40-expand-rev-as-@cos-%41-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-%41-rev
+            (@cos-%40-mem s40)
+            (@cos-%40-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-rev @cos-%40-mem @cos-%40-loc @cos-%40-pred))
+(defruled @cos-%40-expand-rev-as-@cos-%42-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-%42-rev
+            (@cos-%40-mem s40)
+            (@cos-%41-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-%41-rev @cos-%41-rev @cos-%41-loc @cos-%41-val))
+(defruled @cos-%40-expand-rev-as-@cos-%43-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-%43-rev
+            (@cos-%40-mem s40)
+            (@cos-%42-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-%42-rev @cos-%42-rev @cos-%42-loc @cos-%42-val))
+(defruled @cos-%40-expand-rev-as-@cos-%44-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-%44-rev
+            (@cos-%40-mem s40)
+            (@cos-%43-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-%43-rev @cos-%43-rev @cos-%43-loc @cos-%43-val))
+(defruled @cos-%40-expand-rev-as-@cos-%45-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-%45-rev
+            (@cos-%40-mem s40)
+            (@cos-%44-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-%44-rev @cos-%44-rev @cos-%44-loc @cos-%44-val))
+(defruled @cos-%40-expand-rev-as-@cos-%46-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-%46-rev
+            (@cos-%40-mem s40)
+            (@cos-%45-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-%45-rev @cos-%45-rev @cos-%45-loc @cos-%45-val))
+(defruled @cos-%40-expand-rev-as-@cos-m40.1-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-m40.1-rev
+            (@cos-%40-mem s40)
+            (@cos-%46-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-%46-rev @cos-%46-rev @cos-%46-loc @cos-%46-val))
+(defruled @cos-%40-expand-rev-as-@cos-succ40-rev
+  (equal (@cos-%40-rev mem loc pred)
+         (let ((s40 (list mem loc pred)))
+           (@cos-succ40-rev
+            (@cos-m40.1-mem s40)
+            (@cos-%46-loc s40)
+            (@cos-%40-pred s40))))
+  :enable (@cos-%40-expand-rev-as-@cos-m40.1-rev @cos-m40.1-rev @cos-m40.1-mem))
+(defruled @cos-%40-expand-rev-as-fwd
+  (equal (@cos-%40-rev mem loc pred)
+         (@cos-%40-fwd mem loc pred))
+  :enable (@cos-%40-expand-rev-as-@cos-succ40-rev @cos-succ40-rev @cos-succ40-lab @cos-%40-fwd))
+
 (defund @cos-%40-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -641,20 +1106,6 @@
     (mem (store-double (g '%46 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @cos-%40-expand-bb
-  (equal (@cos-%40-bb mem loc pred)
-         (@cos-%40-rev mem loc pred))
-  :enable (@cos-%40-bb @cos-%40-rev
-    @cos-%41-rev
-    @cos-%42-rev
-    @cos-%43-rev
-    @cos-%44-rev
-    @cos-%45-rev
-    @cos-%46-rev
-    @cos-m40.1-rev
-    @cos-succ40-rev)
-  :disable s-diff-s)
 
 (defund @cos-%47-mem (s47)
   (car s47))
@@ -688,6 +1139,10 @@
   (declare (ignore s47))
   '%53)
 
+(defund @cos-%47-fwd (mem loc pred)
+  (let ((s47 (list mem loc pred)))
+    (mv (@cos-succ47-lab s47) (@cos-m47.1-mem s47) (@cos-%52-loc s47))))
+
 (defund @cos-succ47-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -707,6 +1162,67 @@
 (defund @cos-%47-rev (mem loc pred)
   (@cos-%48-rev mem loc pred))
 
+(defruled @cos-%47-expand-rev-as-@cos-%48-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-%48-rev
+            (@cos-%47-mem s47)
+            (@cos-%47-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-rev @cos-%47-mem @cos-%47-loc @cos-%47-pred))
+(defruled @cos-%47-expand-rev-as-@cos-%49-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-%49-rev
+            (@cos-%47-mem s47)
+            (@cos-%48-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-expand-rev-as-@cos-%48-rev @cos-%48-rev @cos-%48-loc @cos-%48-val))
+(defruled @cos-%47-expand-rev-as-@cos-%50-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-%50-rev
+            (@cos-%47-mem s47)
+            (@cos-%49-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-expand-rev-as-@cos-%49-rev @cos-%49-rev @cos-%49-loc @cos-%49-val))
+(defruled @cos-%47-expand-rev-as-@cos-%51-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-%51-rev
+            (@cos-%47-mem s47)
+            (@cos-%50-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-expand-rev-as-@cos-%50-rev @cos-%50-rev @cos-%50-loc @cos-%50-val))
+(defruled @cos-%47-expand-rev-as-@cos-%52-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-%52-rev
+            (@cos-%47-mem s47)
+            (@cos-%51-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-expand-rev-as-@cos-%51-rev @cos-%51-rev @cos-%51-loc @cos-%51-val))
+(defruled @cos-%47-expand-rev-as-@cos-m47.1-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-m47.1-rev
+            (@cos-%47-mem s47)
+            (@cos-%52-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-expand-rev-as-@cos-%52-rev @cos-%52-rev @cos-%52-loc @cos-%52-val))
+(defruled @cos-%47-expand-rev-as-@cos-succ47-rev
+  (equal (@cos-%47-rev mem loc pred)
+         (let ((s47 (list mem loc pred)))
+           (@cos-succ47-rev
+            (@cos-m47.1-mem s47)
+            (@cos-%52-loc s47)
+            (@cos-%47-pred s47))))
+  :enable (@cos-%47-expand-rev-as-@cos-m47.1-rev @cos-m47.1-rev @cos-m47.1-mem))
+(defruled @cos-%47-expand-rev-as-fwd
+  (equal (@cos-%47-rev mem loc pred)
+         (@cos-%47-fwd mem loc pred))
+  :enable (@cos-%47-expand-rev-as-@cos-succ47-rev @cos-succ47-rev @cos-succ47-lab @cos-%47-fwd))
+
 (defund @cos-%47-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -718,19 +1234,6 @@
     (mem (store-double (g '%52 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @cos-%47-expand-bb
-  (equal (@cos-%47-bb mem loc pred)
-         (@cos-%47-rev mem loc pred))
-  :enable (@cos-%47-bb @cos-%47-rev
-    @cos-%48-rev
-    @cos-%49-rev
-    @cos-%50-rev
-    @cos-%51-rev
-    @cos-%52-rev
-    @cos-m47.1-rev
-    @cos-succ47-rev)
-  :disable s-diff-s)
 
 (defund @cos-%53-mem (s53)
   (car s53))
@@ -746,6 +1249,10 @@
   (declare (ignore s53))
   'ret)
 
+(defund @cos-%53-fwd (mem loc pred)
+  (let ((s53 (list mem loc pred)))
+    (mv (@cos-succ53-lab s53) (@cos-%53-mem s53) (@cos-%54-loc s53))))
+
 (defund @cos-succ53-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -755,20 +1262,33 @@
 (defund @cos-%53-rev (mem loc pred)
   (@cos-%54-rev mem loc pred))
 
+(defruled @cos-%53-expand-rev-as-@cos-%54-rev
+  (equal (@cos-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@cos-%54-rev
+            (@cos-%53-mem s53)
+            (@cos-%53-loc s53)
+            (@cos-%53-pred s53))))
+  :enable (@cos-%53-rev @cos-%53-mem @cos-%53-loc @cos-%53-pred))
+(defruled @cos-%53-expand-rev-as-@cos-succ53-rev
+  (equal (@cos-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@cos-succ53-rev
+            (@cos-%53-mem s53)
+            (@cos-%54-loc s53)
+            (@cos-%53-pred s53))))
+  :enable (@cos-%53-expand-rev-as-@cos-%54-rev @cos-%54-rev @cos-%54-loc @cos-%54-val))
+(defruled @cos-%53-expand-rev-as-fwd
+  (equal (@cos-%53-rev mem loc pred)
+         (@cos-%53-fwd mem loc pred))
+  :enable (@cos-%53-expand-rev-as-@cos-succ53-rev @cos-succ53-rev @cos-succ53-lab @cos-%53-fwd))
+
 (defund @cos-%53-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%54 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @cos-%53-expand-bb
-  (equal (@cos-%53-bb mem loc pred)
-         (@cos-%53-rev mem loc pred))
-  :enable (@cos-%53-bb @cos-%53-rev
-    @cos-%54-rev
-    @cos-succ53-rev)
-  :disable s-diff-s)
 
 (defund @cos-step (label mem loc pred)
   (case label

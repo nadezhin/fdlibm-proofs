@@ -31,6 +31,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @asin-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@asin-succ0-lab s0) (@asin-m0.1-mem s0) (@asin-%3-loc s0))))
+
 (defund @asin-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -46,6 +50,51 @@
 (defund @asin-%0-rev (mem loc pred)
   (@asin-%1-rev mem loc pred))
 
+(defruled @asin-%0-expand-rev-as-@asin-%1-rev
+  (equal (@asin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@asin-%1-rev
+            (@asin-%0-mem s0)
+            (@asin-%0-loc s0)
+            (@asin-%0-pred s0))))
+  :enable (@asin-%0-rev @asin-%0-mem @asin-%0-loc @asin-%0-pred))
+(defruled @asin-%0-expand-rev-as-@asin-m0.1-rev
+  (equal (@asin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@asin-m0.1-rev
+            (@asin-%1-mem s0)
+            (@asin-%1-loc s0)
+            (@asin-%0-pred s0))))
+  :enable (@asin-%0-expand-rev-as-@asin-%1-rev @asin-%1-rev @asin-%1-mem @asin-%1-loc))
+(defruled @asin-%0-expand-rev-as-@asin-%2-rev
+  (equal (@asin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@asin-%2-rev
+            (@asin-m0.1-mem s0)
+            (@asin-%1-loc s0)
+            (@asin-%0-pred s0))))
+  :enable (@asin-%0-expand-rev-as-@asin-m0.1-rev @asin-m0.1-rev @asin-m0.1-mem))
+(defruled @asin-%0-expand-rev-as-@asin-%3-rev
+  (equal (@asin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@asin-%3-rev
+            (@asin-m0.1-mem s0)
+            (@asin-%2-loc s0)
+            (@asin-%0-pred s0))))
+  :enable (@asin-%0-expand-rev-as-@asin-%2-rev @asin-%2-rev @asin-%2-loc @asin-%2-val))
+(defruled @asin-%0-expand-rev-as-@asin-succ0-rev
+  (equal (@asin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@asin-succ0-rev
+            (@asin-m0.1-mem s0)
+            (@asin-%3-loc s0)
+            (@asin-%0-pred s0))))
+  :enable (@asin-%0-expand-rev-as-@asin-%3-rev @asin-%3-rev @asin-%3-loc @asin-%3-val))
+(defruled @asin-%0-expand-rev-as-fwd
+  (equal (@asin-%0-rev mem loc pred)
+         (@asin-%0-fwd mem loc pred))
+  :enable (@asin-%0-expand-rev-as-@asin-succ0-rev @asin-succ0-rev @asin-succ0-lab @asin-%0-fwd))
+
 (defund @asin-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -56,17 +105,6 @@
     (loc (s '%3 (@__ieee754_asin (g '%2 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @asin-%0-expand-bb
-  (equal (@asin-%0-bb mem loc pred)
-         (@asin-%0-rev mem loc pred))
-  :enable (@asin-%0-bb @asin-%0-rev
-    @asin-%1-rev
-    @asin-m0.1-rev
-    @asin-%2-rev
-    @asin-%3-rev
-    @asin-succ0-rev)
-  :disable s-diff-s)
 
 (defund @asin-step (label mem loc pred)
   (case label

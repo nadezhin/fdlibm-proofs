@@ -81,6 +81,10 @@
 (defund @__kernel_cos-succ0-lab (s0)
   (case (g '%9 (@__kernel_cos-%9-loc s0)) (-1 '%10) (0 '%16)))
 
+(defund @__kernel_cos-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@__kernel_cos-succ0-lab s0) (@__kernel_cos-m0.3-mem s0) (@__kernel_cos-%9-loc s0))))
+
 (defund @__kernel_cos-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%16)) mem loc))
@@ -124,6 +128,163 @@
 (defund @__kernel_cos-%0-rev (mem loc pred)
   (@__kernel_cos-%1-rev mem loc pred))
 
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%1-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%1-rev
+            (@__kernel_cos-%0-mem s0)
+            (@__kernel_cos-%0-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-rev @__kernel_cos-%0-mem @__kernel_cos-%0-loc @__kernel_cos-%0-pred))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%2-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%2-rev
+            (@__kernel_cos-%1-mem s0)
+            (@__kernel_cos-%1-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%1-rev @__kernel_cos-%1-rev @__kernel_cos-%1-mem @__kernel_cos-%1-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%3-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%3-rev
+            (@__kernel_cos-%2-mem s0)
+            (@__kernel_cos-%2-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%2-rev @__kernel_cos-%2-rev @__kernel_cos-%2-mem @__kernel_cos-%2-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%a-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%a-rev
+            (@__kernel_cos-%3-mem s0)
+            (@__kernel_cos-%3-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%3-rev @__kernel_cos-%3-rev @__kernel_cos-%3-mem @__kernel_cos-%3-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%hz-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%hz-rev
+            (@__kernel_cos-%a-mem s0)
+            (@__kernel_cos-%a-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%a-rev @__kernel_cos-%a-rev @__kernel_cos-%a-mem @__kernel_cos-%a-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%z-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%z-rev
+            (@__kernel_cos-%hz-mem s0)
+            (@__kernel_cos-%hz-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%hz-rev @__kernel_cos-%hz-rev @__kernel_cos-%hz-mem @__kernel_cos-%hz-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%r-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%r-rev
+            (@__kernel_cos-%z-mem s0)
+            (@__kernel_cos-%z-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%z-rev @__kernel_cos-%z-rev @__kernel_cos-%z-mem @__kernel_cos-%z-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%qx-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%qx-rev
+            (@__kernel_cos-%r-mem s0)
+            (@__kernel_cos-%r-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%r-rev @__kernel_cos-%r-rev @__kernel_cos-%r-mem @__kernel_cos-%r-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%ix-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%ix-rev
+            (@__kernel_cos-%qx-mem s0)
+            (@__kernel_cos-%qx-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%qx-rev @__kernel_cos-%qx-rev @__kernel_cos-%qx-mem @__kernel_cos-%qx-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-m0.1-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-m0.1-rev
+            (@__kernel_cos-%ix-mem s0)
+            (@__kernel_cos-%ix-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%ix-rev @__kernel_cos-%ix-rev @__kernel_cos-%ix-mem @__kernel_cos-%ix-loc))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-m0.2-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-m0.2-rev
+            (@__kernel_cos-m0.1-mem s0)
+            (@__kernel_cos-%ix-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-m0.1-rev @__kernel_cos-m0.1-rev @__kernel_cos-m0.1-mem))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%4-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%4-rev
+            (@__kernel_cos-m0.2-mem s0)
+            (@__kernel_cos-%ix-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-m0.2-rev @__kernel_cos-m0.2-rev @__kernel_cos-m0.2-mem))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%5-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%5-rev
+            (@__kernel_cos-m0.2-mem s0)
+            (@__kernel_cos-%4-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%4-rev @__kernel_cos-%4-rev @__kernel_cos-%4-loc @__kernel_cos-%4-val))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%6-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%6-rev
+            (@__kernel_cos-m0.2-mem s0)
+            (@__kernel_cos-%5-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%5-rev @__kernel_cos-%5-rev @__kernel_cos-%5-loc @__kernel_cos-%5-val))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%7-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%7-rev
+            (@__kernel_cos-m0.2-mem s0)
+            (@__kernel_cos-%6-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%6-rev @__kernel_cos-%6-rev @__kernel_cos-%6-loc @__kernel_cos-%6-val))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-m0.3-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-m0.3-rev
+            (@__kernel_cos-m0.2-mem s0)
+            (@__kernel_cos-%7-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%7-rev @__kernel_cos-%7-rev @__kernel_cos-%7-loc @__kernel_cos-%7-val))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%8-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%8-rev
+            (@__kernel_cos-m0.3-mem s0)
+            (@__kernel_cos-%7-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-m0.3-rev @__kernel_cos-m0.3-rev @__kernel_cos-m0.3-mem))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-%9-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-%9-rev
+            (@__kernel_cos-m0.3-mem s0)
+            (@__kernel_cos-%8-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%8-rev @__kernel_cos-%8-rev @__kernel_cos-%8-loc @__kernel_cos-%8-val))
+(defruled @__kernel_cos-%0-expand-rev-as-@__kernel_cos-succ0-rev
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@__kernel_cos-succ0-rev
+            (@__kernel_cos-m0.3-mem s0)
+            (@__kernel_cos-%9-loc s0)
+            (@__kernel_cos-%0-pred s0))))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-%9-rev @__kernel_cos-%9-rev @__kernel_cos-%9-loc @__kernel_cos-%9-val))
+(defruled @__kernel_cos-%0-expand-rev-as-fwd
+  (equal (@__kernel_cos-%0-rev mem loc pred)
+         (@__kernel_cos-%0-fwd mem loc pred))
+  :enable (@__kernel_cos-%0-expand-rev-as-@__kernel_cos-succ0-rev @__kernel_cos-succ0-rev @__kernel_cos-succ0-lab @__kernel_cos-%0-fwd))
+
 (defund @__kernel_cos-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -157,31 +318,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%16))))
   (mv succ mem loc)))
 
-(defruled @__kernel_cos-%0-expand-bb
-  (equal (@__kernel_cos-%0-bb mem loc pred)
-         (@__kernel_cos-%0-rev mem loc pred))
-  :enable (@__kernel_cos-%0-bb @__kernel_cos-%0-rev
-    @__kernel_cos-%1-rev
-    @__kernel_cos-%2-rev
-    @__kernel_cos-%3-rev
-    @__kernel_cos-%a-rev
-    @__kernel_cos-%hz-rev
-    @__kernel_cos-%z-rev
-    @__kernel_cos-%r-rev
-    @__kernel_cos-%qx-rev
-    @__kernel_cos-%ix-rev
-    @__kernel_cos-m0.1-rev
-    @__kernel_cos-m0.2-rev
-    @__kernel_cos-%4-rev
-    @__kernel_cos-%5-rev
-    @__kernel_cos-%6-rev
-    @__kernel_cos-%7-rev
-    @__kernel_cos-m0.3-rev
-    @__kernel_cos-%8-rev
-    @__kernel_cos-%9-rev
-    @__kernel_cos-succ0-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_cos-%10-mem (s10)
   (car s10))
 (defund @__kernel_cos-%10-loc (s10)
@@ -203,6 +339,10 @@
 (defund @__kernel_cos-succ10-lab (s10)
   (case (g '%13 (@__kernel_cos-%13-loc s10)) (-1 '%14) (0 '%15)))
 
+(defund @__kernel_cos-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@__kernel_cos-succ10-lab s10) (@__kernel_cos-%10-mem s10) (@__kernel_cos-%13-loc s10))))
+
 (defund @__kernel_cos-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%13 loc) (-1 '%14) (0 '%15)) mem loc))
@@ -216,6 +356,43 @@
 (defund @__kernel_cos-%10-rev (mem loc pred)
   (@__kernel_cos-%11-rev mem loc pred))
 
+(defruled @__kernel_cos-%10-expand-rev-as-@__kernel_cos-%11-rev
+  (equal (@__kernel_cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__kernel_cos-%11-rev
+            (@__kernel_cos-%10-mem s10)
+            (@__kernel_cos-%10-loc s10)
+            (@__kernel_cos-%10-pred s10))))
+  :enable (@__kernel_cos-%10-rev @__kernel_cos-%10-mem @__kernel_cos-%10-loc @__kernel_cos-%10-pred))
+(defruled @__kernel_cos-%10-expand-rev-as-@__kernel_cos-%12-rev
+  (equal (@__kernel_cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__kernel_cos-%12-rev
+            (@__kernel_cos-%10-mem s10)
+            (@__kernel_cos-%11-loc s10)
+            (@__kernel_cos-%10-pred s10))))
+  :enable (@__kernel_cos-%10-expand-rev-as-@__kernel_cos-%11-rev @__kernel_cos-%11-rev @__kernel_cos-%11-loc @__kernel_cos-%11-val))
+(defruled @__kernel_cos-%10-expand-rev-as-@__kernel_cos-%13-rev
+  (equal (@__kernel_cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__kernel_cos-%13-rev
+            (@__kernel_cos-%10-mem s10)
+            (@__kernel_cos-%12-loc s10)
+            (@__kernel_cos-%10-pred s10))))
+  :enable (@__kernel_cos-%10-expand-rev-as-@__kernel_cos-%12-rev @__kernel_cos-%12-rev @__kernel_cos-%12-loc @__kernel_cos-%12-val))
+(defruled @__kernel_cos-%10-expand-rev-as-@__kernel_cos-succ10-rev
+  (equal (@__kernel_cos-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@__kernel_cos-succ10-rev
+            (@__kernel_cos-%10-mem s10)
+            (@__kernel_cos-%13-loc s10)
+            (@__kernel_cos-%10-pred s10))))
+  :enable (@__kernel_cos-%10-expand-rev-as-@__kernel_cos-%13-rev @__kernel_cos-%13-rev @__kernel_cos-%13-loc @__kernel_cos-%13-val))
+(defruled @__kernel_cos-%10-expand-rev-as-fwd
+  (equal (@__kernel_cos-%10-rev mem loc pred)
+         (@__kernel_cos-%10-fwd mem loc pred))
+  :enable (@__kernel_cos-%10-expand-rev-as-@__kernel_cos-succ10-rev @__kernel_cos-succ10-rev @__kernel_cos-succ10-lab @__kernel_cos-%10-fwd))
+
 (defund @__kernel_cos-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -224,16 +401,6 @@
     (loc (s '%13 (icmp-eq-i32 (g '%12 loc) 0) loc))
     (succ (case (g '%13 loc) (-1 '%14) (0 '%15))))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%10-expand-bb
-  (equal (@__kernel_cos-%10-bb mem loc pred)
-         (@__kernel_cos-%10-rev mem loc pred))
-  :enable (@__kernel_cos-%10-bb @__kernel_cos-%10-rev
-    @__kernel_cos-%11-rev
-    @__kernel_cos-%12-rev
-    @__kernel_cos-%13-rev
-    @__kernel_cos-succ10-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%14-mem (s14)
   (car s14))
@@ -247,6 +414,10 @@
   (declare (ignore s14))
   '%79)
 
+(defund @__kernel_cos-%14-fwd (mem loc pred)
+  (let ((s14 (list mem loc pred)))
+    (mv (@__kernel_cos-succ14-lab s14) (@__kernel_cos-m14.1-mem s14) (@__kernel_cos-%14-loc s14))))
+
 (defund @__kernel_cos-succ14-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%79 mem loc))
@@ -256,20 +427,33 @@
 (defund @__kernel_cos-%14-rev (mem loc pred)
   (@__kernel_cos-m14.1-rev mem loc pred))
 
+(defruled @__kernel_cos-%14-expand-rev-as-@__kernel_cos-m14.1-rev
+  (equal (@__kernel_cos-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@__kernel_cos-m14.1-rev
+            (@__kernel_cos-%14-mem s14)
+            (@__kernel_cos-%14-loc s14)
+            (@__kernel_cos-%14-pred s14))))
+  :enable (@__kernel_cos-%14-rev @__kernel_cos-%14-mem @__kernel_cos-%14-loc @__kernel_cos-%14-pred))
+(defruled @__kernel_cos-%14-expand-rev-as-@__kernel_cos-succ14-rev
+  (equal (@__kernel_cos-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@__kernel_cos-succ14-rev
+            (@__kernel_cos-m14.1-mem s14)
+            (@__kernel_cos-%14-loc s14)
+            (@__kernel_cos-%14-pred s14))))
+  :enable (@__kernel_cos-%14-expand-rev-as-@__kernel_cos-m14.1-rev @__kernel_cos-m14.1-rev @__kernel_cos-m14.1-mem))
+(defruled @__kernel_cos-%14-expand-rev-as-fwd
+  (equal (@__kernel_cos-%14-rev mem loc pred)
+         (@__kernel_cos-%14-fwd mem loc pred))
+  :enable (@__kernel_cos-%14-expand-rev-as-@__kernel_cos-succ14-rev @__kernel_cos-succ14-rev @__kernel_cos-succ14-lab @__kernel_cos-%14-fwd))
+
 (defund @__kernel_cos-%14-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x3ff0000000000000 (g '%1 loc) mem))
     (succ '%79))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%14-expand-bb
-  (equal (@__kernel_cos-%14-bb mem loc pred)
-         (@__kernel_cos-%14-rev mem loc pred))
-  :enable (@__kernel_cos-%14-bb @__kernel_cos-%14-rev
-    @__kernel_cos-m14.1-rev
-    @__kernel_cos-succ14-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%15-mem (s15)
   (car s15))
@@ -281,6 +465,10 @@
   (declare (ignore s15))
   '%16)
 
+(defund @__kernel_cos-%15-fwd (mem loc pred)
+  (let ((s15 (list mem loc pred)))
+    (mv (@__kernel_cos-succ15-lab s15) (@__kernel_cos-%15-mem s15) (@__kernel_cos-%15-loc s15))))
+
 (defund @__kernel_cos-succ15-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%16 mem loc))
@@ -288,18 +476,24 @@
 (defund @__kernel_cos-%15-rev (mem loc pred)
   (@__kernel_cos-succ15-rev mem loc pred))
 
+(defruled @__kernel_cos-%15-expand-rev-as-@__kernel_cos-succ15-rev
+  (equal (@__kernel_cos-%15-rev mem loc pred)
+         (let ((s15 (list mem loc pred)))
+           (@__kernel_cos-succ15-rev
+            (@__kernel_cos-%15-mem s15)
+            (@__kernel_cos-%15-loc s15)
+            (@__kernel_cos-%15-pred s15))))
+  :enable (@__kernel_cos-%15-rev @__kernel_cos-%15-mem @__kernel_cos-%15-loc @__kernel_cos-%15-pred))
+(defruled @__kernel_cos-%15-expand-rev-as-fwd
+  (equal (@__kernel_cos-%15-rev mem loc pred)
+         (@__kernel_cos-%15-fwd mem loc pred))
+  :enable (@__kernel_cos-%15-expand-rev-as-@__kernel_cos-succ15-rev @__kernel_cos-succ15-rev @__kernel_cos-succ15-lab @__kernel_cos-%15-fwd))
+
 (defund @__kernel_cos-%15-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%16))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%15-expand-bb
-  (equal (@__kernel_cos-%15-bb mem loc pred)
-         (@__kernel_cos-%15-rev mem loc pred))
-  :enable (@__kernel_cos-%15-bb @__kernel_cos-%15-rev
-    @__kernel_cos-succ15-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%16-mem (s16)
   (car s16))
@@ -402,6 +596,10 @@
 (defund @__kernel_cos-succ16-lab (s16)
   (case (g '%38 (@__kernel_cos-%38-loc s16)) (-1 '%39) (0 '%51)))
 
+(defund @__kernel_cos-%16-fwd (mem loc pred)
+  (let ((s16 (list mem loc pred)))
+    (mv (@__kernel_cos-succ16-lab s16) (@__kernel_cos-m16.2-mem s16) (@__kernel_cos-%38-loc s16))))
+
 (defund @__kernel_cos-succ16-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%38 loc) (-1 '%39) (0 '%51)) mem loc))
@@ -457,6 +655,211 @@
 (defund @__kernel_cos-%16-rev (mem loc pred)
   (@__kernel_cos-%17-rev mem loc pred))
 
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%17-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%17-rev
+            (@__kernel_cos-%16-mem s16)
+            (@__kernel_cos-%16-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-rev @__kernel_cos-%16-mem @__kernel_cos-%16-loc @__kernel_cos-%16-pred))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%18-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%18-rev
+            (@__kernel_cos-%16-mem s16)
+            (@__kernel_cos-%17-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%17-rev @__kernel_cos-%17-rev @__kernel_cos-%17-loc @__kernel_cos-%17-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%19-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%19-rev
+            (@__kernel_cos-%16-mem s16)
+            (@__kernel_cos-%18-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%18-rev @__kernel_cos-%18-rev @__kernel_cos-%18-loc @__kernel_cos-%18-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-m16.1-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-m16.1-rev
+            (@__kernel_cos-%16-mem s16)
+            (@__kernel_cos-%19-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%19-rev @__kernel_cos-%19-rev @__kernel_cos-%19-loc @__kernel_cos-%19-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%20-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%20-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%19-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-m16.1-rev @__kernel_cos-m16.1-rev @__kernel_cos-m16.1-mem))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%21-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%21-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%20-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%20-rev @__kernel_cos-%20-rev @__kernel_cos-%20-loc @__kernel_cos-%20-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%22-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%22-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%21-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%21-rev @__kernel_cos-%21-rev @__kernel_cos-%21-loc @__kernel_cos-%21-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%23-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%23-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%22-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%22-rev @__kernel_cos-%22-rev @__kernel_cos-%22-loc @__kernel_cos-%22-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%24-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%24-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%23-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%23-rev @__kernel_cos-%23-rev @__kernel_cos-%23-loc @__kernel_cos-%23-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%25-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%25-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%24-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%24-rev @__kernel_cos-%24-rev @__kernel_cos-%24-loc @__kernel_cos-%24-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%26-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%26-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%25-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%25-rev @__kernel_cos-%25-rev @__kernel_cos-%25-loc @__kernel_cos-%25-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%27-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%27-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%26-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%26-rev @__kernel_cos-%26-rev @__kernel_cos-%26-loc @__kernel_cos-%26-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%28-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%28-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%27-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%27-rev @__kernel_cos-%27-rev @__kernel_cos-%27-loc @__kernel_cos-%27-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%29-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%29-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%28-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%28-rev @__kernel_cos-%28-rev @__kernel_cos-%28-loc @__kernel_cos-%28-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%30-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%30-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%29-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%29-rev @__kernel_cos-%29-rev @__kernel_cos-%29-loc @__kernel_cos-%29-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%31-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%31-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%30-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%30-rev @__kernel_cos-%30-rev @__kernel_cos-%30-loc @__kernel_cos-%30-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%32-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%32-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%31-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%31-rev @__kernel_cos-%31-rev @__kernel_cos-%31-loc @__kernel_cos-%31-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%33-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%33-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%32-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%32-rev @__kernel_cos-%32-rev @__kernel_cos-%32-loc @__kernel_cos-%32-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%34-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%34-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%33-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%33-rev @__kernel_cos-%33-rev @__kernel_cos-%33-loc @__kernel_cos-%33-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%35-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%35-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%34-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%34-rev @__kernel_cos-%34-rev @__kernel_cos-%34-loc @__kernel_cos-%34-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%36-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%36-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%35-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%35-rev @__kernel_cos-%35-rev @__kernel_cos-%35-loc @__kernel_cos-%35-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-m16.2-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-m16.2-rev
+            (@__kernel_cos-m16.1-mem s16)
+            (@__kernel_cos-%36-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%36-rev @__kernel_cos-%36-rev @__kernel_cos-%36-loc @__kernel_cos-%36-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%37-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%37-rev
+            (@__kernel_cos-m16.2-mem s16)
+            (@__kernel_cos-%36-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-m16.2-rev @__kernel_cos-m16.2-rev @__kernel_cos-m16.2-mem))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-%38-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-%38-rev
+            (@__kernel_cos-m16.2-mem s16)
+            (@__kernel_cos-%37-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%37-rev @__kernel_cos-%37-rev @__kernel_cos-%37-loc @__kernel_cos-%37-val))
+(defruled @__kernel_cos-%16-expand-rev-as-@__kernel_cos-succ16-rev
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@__kernel_cos-succ16-rev
+            (@__kernel_cos-m16.2-mem s16)
+            (@__kernel_cos-%38-loc s16)
+            (@__kernel_cos-%16-pred s16))))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-%38-rev @__kernel_cos-%38-rev @__kernel_cos-%38-loc @__kernel_cos-%38-val))
+(defruled @__kernel_cos-%16-expand-rev-as-fwd
+  (equal (@__kernel_cos-%16-rev mem loc pred)
+         (@__kernel_cos-%16-fwd mem loc pred))
+  :enable (@__kernel_cos-%16-expand-rev-as-@__kernel_cos-succ16-rev @__kernel_cos-succ16-rev @__kernel_cos-succ16-lab @__kernel_cos-%16-fwd))
+
 (defund @__kernel_cos-%16-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -486,37 +889,6 @@
     (loc (s '%38 (icmp-slt-i32 (g '%37 loc) 1070805811) loc))
     (succ (case (g '%38 loc) (-1 '%39) (0 '%51))))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%16-expand-bb
-  (equal (@__kernel_cos-%16-bb mem loc pred)
-         (@__kernel_cos-%16-rev mem loc pred))
-  :enable (@__kernel_cos-%16-bb @__kernel_cos-%16-rev
-    @__kernel_cos-%17-rev
-    @__kernel_cos-%18-rev
-    @__kernel_cos-%19-rev
-    @__kernel_cos-m16.1-rev
-    @__kernel_cos-%20-rev
-    @__kernel_cos-%21-rev
-    @__kernel_cos-%22-rev
-    @__kernel_cos-%23-rev
-    @__kernel_cos-%24-rev
-    @__kernel_cos-%25-rev
-    @__kernel_cos-%26-rev
-    @__kernel_cos-%27-rev
-    @__kernel_cos-%28-rev
-    @__kernel_cos-%29-rev
-    @__kernel_cos-%30-rev
-    @__kernel_cos-%31-rev
-    @__kernel_cos-%32-rev
-    @__kernel_cos-%33-rev
-    @__kernel_cos-%34-rev
-    @__kernel_cos-%35-rev
-    @__kernel_cos-%36-rev
-    @__kernel_cos-m16.2-rev
-    @__kernel_cos-%37-rev
-    @__kernel_cos-%38-rev
-    @__kernel_cos-succ16-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%39-mem (s39)
   (car s39))
@@ -574,6 +946,10 @@
   (declare (ignore s39))
   '%79)
 
+(defund @__kernel_cos-%39-fwd (mem loc pred)
+  (let ((s39 (list mem loc pred)))
+    (mv (@__kernel_cos-succ39-lab s39) (@__kernel_cos-m39.1-mem s39) (@__kernel_cos-%50-loc s39))))
+
 (defund @__kernel_cos-succ39-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%79 mem loc))
@@ -605,6 +981,115 @@
 (defund @__kernel_cos-%39-rev (mem loc pred)
   (@__kernel_cos-%40-rev mem loc pred))
 
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%40-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%40-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%39-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-rev @__kernel_cos-%39-mem @__kernel_cos-%39-loc @__kernel_cos-%39-pred))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%41-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%41-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%40-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%40-rev @__kernel_cos-%40-rev @__kernel_cos-%40-loc @__kernel_cos-%40-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%42-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%42-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%41-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%41-rev @__kernel_cos-%41-rev @__kernel_cos-%41-loc @__kernel_cos-%41-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%43-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%43-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%42-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%42-rev @__kernel_cos-%42-rev @__kernel_cos-%42-loc @__kernel_cos-%42-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%44-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%44-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%43-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%43-rev @__kernel_cos-%43-rev @__kernel_cos-%43-loc @__kernel_cos-%43-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%45-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%45-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%44-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%44-rev @__kernel_cos-%44-rev @__kernel_cos-%44-loc @__kernel_cos-%44-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%46-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%46-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%45-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%45-rev @__kernel_cos-%45-rev @__kernel_cos-%45-loc @__kernel_cos-%45-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%47-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%47-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%46-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%46-rev @__kernel_cos-%46-rev @__kernel_cos-%46-loc @__kernel_cos-%46-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%48-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%48-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%47-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%47-rev @__kernel_cos-%47-rev @__kernel_cos-%47-loc @__kernel_cos-%47-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%49-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%49-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%48-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%48-rev @__kernel_cos-%48-rev @__kernel_cos-%48-loc @__kernel_cos-%48-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-%50-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-%50-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%49-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%49-rev @__kernel_cos-%49-rev @__kernel_cos-%49-loc @__kernel_cos-%49-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-m39.1-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-m39.1-rev
+            (@__kernel_cos-%39-mem s39)
+            (@__kernel_cos-%50-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-%50-rev @__kernel_cos-%50-rev @__kernel_cos-%50-loc @__kernel_cos-%50-val))
+(defruled @__kernel_cos-%39-expand-rev-as-@__kernel_cos-succ39-rev
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@__kernel_cos-succ39-rev
+            (@__kernel_cos-m39.1-mem s39)
+            (@__kernel_cos-%50-loc s39)
+            (@__kernel_cos-%39-pred s39))))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-m39.1-rev @__kernel_cos-m39.1-rev @__kernel_cos-m39.1-mem))
+(defruled @__kernel_cos-%39-expand-rev-as-fwd
+  (equal (@__kernel_cos-%39-rev mem loc pred)
+         (@__kernel_cos-%39-fwd mem loc pred))
+  :enable (@__kernel_cos-%39-expand-rev-as-@__kernel_cos-succ39-rev @__kernel_cos-succ39-rev @__kernel_cos-succ39-lab @__kernel_cos-%39-fwd))
+
 (defund @__kernel_cos-%39-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -623,25 +1108,6 @@
     (succ '%79))
   (mv succ mem loc)))
 
-(defruled @__kernel_cos-%39-expand-bb
-  (equal (@__kernel_cos-%39-bb mem loc pred)
-         (@__kernel_cos-%39-rev mem loc pred))
-  :enable (@__kernel_cos-%39-bb @__kernel_cos-%39-rev
-    @__kernel_cos-%40-rev
-    @__kernel_cos-%41-rev
-    @__kernel_cos-%42-rev
-    @__kernel_cos-%43-rev
-    @__kernel_cos-%44-rev
-    @__kernel_cos-%45-rev
-    @__kernel_cos-%46-rev
-    @__kernel_cos-%47-rev
-    @__kernel_cos-%48-rev
-    @__kernel_cos-%49-rev
-    @__kernel_cos-%50-rev
-    @__kernel_cos-m39.1-rev
-    @__kernel_cos-succ39-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_cos-%51-mem (s51)
   (car s51))
 (defund @__kernel_cos-%51-loc (s51)
@@ -659,6 +1125,10 @@
 (defund @__kernel_cos-succ51-lab (s51)
   (case (g '%53 (@__kernel_cos-%53-loc s51)) (-1 '%54) (0 '%55)))
 
+(defund @__kernel_cos-%51-fwd (mem loc pred)
+  (let ((s51 (list mem loc pred)))
+    (mv (@__kernel_cos-succ51-lab s51) (@__kernel_cos-%51-mem s51) (@__kernel_cos-%53-loc s51))))
+
 (defund @__kernel_cos-succ51-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%53 loc) (-1 '%54) (0 '%55)) mem loc))
@@ -670,6 +1140,35 @@
 (defund @__kernel_cos-%51-rev (mem loc pred)
   (@__kernel_cos-%52-rev mem loc pred))
 
+(defruled @__kernel_cos-%51-expand-rev-as-@__kernel_cos-%52-rev
+  (equal (@__kernel_cos-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@__kernel_cos-%52-rev
+            (@__kernel_cos-%51-mem s51)
+            (@__kernel_cos-%51-loc s51)
+            (@__kernel_cos-%51-pred s51))))
+  :enable (@__kernel_cos-%51-rev @__kernel_cos-%51-mem @__kernel_cos-%51-loc @__kernel_cos-%51-pred))
+(defruled @__kernel_cos-%51-expand-rev-as-@__kernel_cos-%53-rev
+  (equal (@__kernel_cos-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@__kernel_cos-%53-rev
+            (@__kernel_cos-%51-mem s51)
+            (@__kernel_cos-%52-loc s51)
+            (@__kernel_cos-%51-pred s51))))
+  :enable (@__kernel_cos-%51-expand-rev-as-@__kernel_cos-%52-rev @__kernel_cos-%52-rev @__kernel_cos-%52-loc @__kernel_cos-%52-val))
+(defruled @__kernel_cos-%51-expand-rev-as-@__kernel_cos-succ51-rev
+  (equal (@__kernel_cos-%51-rev mem loc pred)
+         (let ((s51 (list mem loc pred)))
+           (@__kernel_cos-succ51-rev
+            (@__kernel_cos-%51-mem s51)
+            (@__kernel_cos-%53-loc s51)
+            (@__kernel_cos-%51-pred s51))))
+  :enable (@__kernel_cos-%51-expand-rev-as-@__kernel_cos-%53-rev @__kernel_cos-%53-rev @__kernel_cos-%53-loc @__kernel_cos-%53-val))
+(defruled @__kernel_cos-%51-expand-rev-as-fwd
+  (equal (@__kernel_cos-%51-rev mem loc pred)
+         (@__kernel_cos-%51-fwd mem loc pred))
+  :enable (@__kernel_cos-%51-expand-rev-as-@__kernel_cos-succ51-rev @__kernel_cos-succ51-rev @__kernel_cos-succ51-lab @__kernel_cos-%51-fwd))
+
 (defund @__kernel_cos-%51-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -677,15 +1176,6 @@
     (loc (s '%53 (icmp-sgt-i32 (g '%52 loc) 1072234496) loc))
     (succ (case (g '%53 loc) (-1 '%54) (0 '%55))))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%51-expand-bb
-  (equal (@__kernel_cos-%51-bb mem loc pred)
-         (@__kernel_cos-%51-rev mem loc pred))
-  :enable (@__kernel_cos-%51-bb @__kernel_cos-%51-rev
-    @__kernel_cos-%52-rev
-    @__kernel_cos-%53-rev
-    @__kernel_cos-succ51-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%54-mem (s54)
   (car s54))
@@ -699,6 +1189,10 @@
   (declare (ignore s54))
   '%61)
 
+(defund @__kernel_cos-%54-fwd (mem loc pred)
+  (let ((s54 (list mem loc pred)))
+    (mv (@__kernel_cos-succ54-lab s54) (@__kernel_cos-m54.1-mem s54) (@__kernel_cos-%54-loc s54))))
+
 (defund @__kernel_cos-succ54-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%61 mem loc))
@@ -708,20 +1202,33 @@
 (defund @__kernel_cos-%54-rev (mem loc pred)
   (@__kernel_cos-m54.1-rev mem loc pred))
 
+(defruled @__kernel_cos-%54-expand-rev-as-@__kernel_cos-m54.1-rev
+  (equal (@__kernel_cos-%54-rev mem loc pred)
+         (let ((s54 (list mem loc pred)))
+           (@__kernel_cos-m54.1-rev
+            (@__kernel_cos-%54-mem s54)
+            (@__kernel_cos-%54-loc s54)
+            (@__kernel_cos-%54-pred s54))))
+  :enable (@__kernel_cos-%54-rev @__kernel_cos-%54-mem @__kernel_cos-%54-loc @__kernel_cos-%54-pred))
+(defruled @__kernel_cos-%54-expand-rev-as-@__kernel_cos-succ54-rev
+  (equal (@__kernel_cos-%54-rev mem loc pred)
+         (let ((s54 (list mem loc pred)))
+           (@__kernel_cos-succ54-rev
+            (@__kernel_cos-m54.1-mem s54)
+            (@__kernel_cos-%54-loc s54)
+            (@__kernel_cos-%54-pred s54))))
+  :enable (@__kernel_cos-%54-expand-rev-as-@__kernel_cos-m54.1-rev @__kernel_cos-m54.1-rev @__kernel_cos-m54.1-mem))
+(defruled @__kernel_cos-%54-expand-rev-as-fwd
+  (equal (@__kernel_cos-%54-rev mem loc pred)
+         (@__kernel_cos-%54-fwd mem loc pred))
+  :enable (@__kernel_cos-%54-expand-rev-as-@__kernel_cos-succ54-rev @__kernel_cos-succ54-rev @__kernel_cos-succ54-lab @__kernel_cos-%54-fwd))
+
 (defund @__kernel_cos-%54-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-double #x3fd2000000000000 (g '%qx loc) mem))
     (succ '%61))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%54-expand-bb
-  (equal (@__kernel_cos-%54-bb mem loc pred)
-         (@__kernel_cos-%54-rev mem loc pred))
-  :enable (@__kernel_cos-%54-bb @__kernel_cos-%54-rev
-    @__kernel_cos-m54.1-rev
-    @__kernel_cos-succ54-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%55-mem (s55)
   (car s55))
@@ -757,6 +1264,10 @@
   (declare (ignore s55))
   '%61)
 
+(defund @__kernel_cos-%55-fwd (mem loc pred)
+  (let ((s55 (list mem loc pred)))
+    (mv (@__kernel_cos-succ55-lab s55) (@__kernel_cos-m55.2-mem s55) (@__kernel_cos-%60-loc s55))))
+
 (defund @__kernel_cos-succ55-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%61 mem loc))
@@ -778,6 +1289,75 @@
 (defund @__kernel_cos-%55-rev (mem loc pred)
   (@__kernel_cos-%56-rev mem loc pred))
 
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-%56-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-%56-rev
+            (@__kernel_cos-%55-mem s55)
+            (@__kernel_cos-%55-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-rev @__kernel_cos-%55-mem @__kernel_cos-%55-loc @__kernel_cos-%55-pred))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-%57-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-%57-rev
+            (@__kernel_cos-%55-mem s55)
+            (@__kernel_cos-%56-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-%56-rev @__kernel_cos-%56-rev @__kernel_cos-%56-loc @__kernel_cos-%56-val))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-%58-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-%58-rev
+            (@__kernel_cos-%55-mem s55)
+            (@__kernel_cos-%57-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-%57-rev @__kernel_cos-%57-rev @__kernel_cos-%57-loc @__kernel_cos-%57-val))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-%59-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-%59-rev
+            (@__kernel_cos-%55-mem s55)
+            (@__kernel_cos-%58-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-%58-rev @__kernel_cos-%58-rev @__kernel_cos-%58-loc @__kernel_cos-%58-val))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-m55.1-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-m55.1-rev
+            (@__kernel_cos-%55-mem s55)
+            (@__kernel_cos-%59-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-%59-rev @__kernel_cos-%59-rev @__kernel_cos-%59-loc @__kernel_cos-%59-val))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-%60-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-%60-rev
+            (@__kernel_cos-m55.1-mem s55)
+            (@__kernel_cos-%59-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-m55.1-rev @__kernel_cos-m55.1-rev @__kernel_cos-m55.1-mem))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-m55.2-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-m55.2-rev
+            (@__kernel_cos-m55.1-mem s55)
+            (@__kernel_cos-%60-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-%60-rev @__kernel_cos-%60-rev @__kernel_cos-%60-loc @__kernel_cos-%60-val))
+(defruled @__kernel_cos-%55-expand-rev-as-@__kernel_cos-succ55-rev
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@__kernel_cos-succ55-rev
+            (@__kernel_cos-m55.2-mem s55)
+            (@__kernel_cos-%60-loc s55)
+            (@__kernel_cos-%55-pred s55))))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-m55.2-rev @__kernel_cos-m55.2-rev @__kernel_cos-m55.2-mem))
+(defruled @__kernel_cos-%55-expand-rev-as-fwd
+  (equal (@__kernel_cos-%55-rev mem loc pred)
+         (@__kernel_cos-%55-fwd mem loc pred))
+  :enable (@__kernel_cos-%55-expand-rev-as-@__kernel_cos-succ55-rev @__kernel_cos-succ55-rev @__kernel_cos-succ55-lab @__kernel_cos-%55-fwd))
+
 (defund @__kernel_cos-%55-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -790,20 +1370,6 @@
     (mem (store-i32 0 (g '%60 loc) mem))
     (succ '%61))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%55-expand-bb
-  (equal (@__kernel_cos-%55-bb mem loc pred)
-         (@__kernel_cos-%55-rev mem loc pred))
-  :enable (@__kernel_cos-%55-bb @__kernel_cos-%55-rev
-    @__kernel_cos-%56-rev
-    @__kernel_cos-%57-rev
-    @__kernel_cos-%58-rev
-    @__kernel_cos-%59-rev
-    @__kernel_cos-m55.1-rev
-    @__kernel_cos-%60-rev
-    @__kernel_cos-m55.2-rev
-    @__kernel_cos-succ55-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-%61-mem (s61)
   (car s61))
@@ -889,6 +1455,10 @@
   (declare (ignore s61))
   '%79)
 
+(defund @__kernel_cos-%61-fwd (mem loc pred)
+  (let ((s61 (list mem loc pred)))
+    (mv (@__kernel_cos-succ61-lab s61) (@__kernel_cos-m61.3-mem s61) (@__kernel_cos-%78-loc s61))))
+
 (defund @__kernel_cos-succ61-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%79 mem loc))
@@ -936,6 +1506,179 @@
 (defund @__kernel_cos-%61-rev (mem loc pred)
   (@__kernel_cos-%62-rev mem loc pred))
 
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%62-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%62-rev
+            (@__kernel_cos-%61-mem s61)
+            (@__kernel_cos-%61-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-rev @__kernel_cos-%61-mem @__kernel_cos-%61-loc @__kernel_cos-%61-pred))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%63-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%63-rev
+            (@__kernel_cos-%61-mem s61)
+            (@__kernel_cos-%62-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%62-rev @__kernel_cos-%62-rev @__kernel_cos-%62-loc @__kernel_cos-%62-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%64-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%64-rev
+            (@__kernel_cos-%61-mem s61)
+            (@__kernel_cos-%63-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%63-rev @__kernel_cos-%63-rev @__kernel_cos-%63-loc @__kernel_cos-%63-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%65-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%65-rev
+            (@__kernel_cos-%61-mem s61)
+            (@__kernel_cos-%64-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%64-rev @__kernel_cos-%64-rev @__kernel_cos-%64-loc @__kernel_cos-%64-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-m61.1-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-m61.1-rev
+            (@__kernel_cos-%61-mem s61)
+            (@__kernel_cos-%65-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%65-rev @__kernel_cos-%65-rev @__kernel_cos-%65-loc @__kernel_cos-%65-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%66-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%66-rev
+            (@__kernel_cos-m61.1-mem s61)
+            (@__kernel_cos-%65-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-m61.1-rev @__kernel_cos-m61.1-rev @__kernel_cos-m61.1-mem))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%67-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%67-rev
+            (@__kernel_cos-m61.1-mem s61)
+            (@__kernel_cos-%66-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%66-rev @__kernel_cos-%66-rev @__kernel_cos-%66-loc @__kernel_cos-%66-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-m61.2-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-m61.2-rev
+            (@__kernel_cos-m61.1-mem s61)
+            (@__kernel_cos-%67-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%67-rev @__kernel_cos-%67-rev @__kernel_cos-%67-loc @__kernel_cos-%67-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%68-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%68-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%67-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-m61.2-rev @__kernel_cos-m61.2-rev @__kernel_cos-m61.2-mem))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%69-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%69-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%68-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%68-rev @__kernel_cos-%68-rev @__kernel_cos-%68-loc @__kernel_cos-%68-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%70-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%70-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%69-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%69-rev @__kernel_cos-%69-rev @__kernel_cos-%69-loc @__kernel_cos-%69-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%71-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%71-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%70-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%70-rev @__kernel_cos-%70-rev @__kernel_cos-%70-loc @__kernel_cos-%70-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%72-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%72-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%71-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%71-rev @__kernel_cos-%71-rev @__kernel_cos-%71-loc @__kernel_cos-%71-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%73-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%73-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%72-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%72-rev @__kernel_cos-%72-rev @__kernel_cos-%72-loc @__kernel_cos-%72-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%74-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%74-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%73-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%73-rev @__kernel_cos-%73-rev @__kernel_cos-%73-loc @__kernel_cos-%73-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%75-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%75-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%74-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%74-rev @__kernel_cos-%74-rev @__kernel_cos-%74-loc @__kernel_cos-%74-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%76-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%76-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%75-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%75-rev @__kernel_cos-%75-rev @__kernel_cos-%75-loc @__kernel_cos-%75-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%77-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%77-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%76-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%76-rev @__kernel_cos-%76-rev @__kernel_cos-%76-loc @__kernel_cos-%76-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-%78-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-%78-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%77-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%77-rev @__kernel_cos-%77-rev @__kernel_cos-%77-loc @__kernel_cos-%77-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-m61.3-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-m61.3-rev
+            (@__kernel_cos-m61.2-mem s61)
+            (@__kernel_cos-%78-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-%78-rev @__kernel_cos-%78-rev @__kernel_cos-%78-loc @__kernel_cos-%78-val))
+(defruled @__kernel_cos-%61-expand-rev-as-@__kernel_cos-succ61-rev
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (let ((s61 (list mem loc pred)))
+           (@__kernel_cos-succ61-rev
+            (@__kernel_cos-m61.3-mem s61)
+            (@__kernel_cos-%78-loc s61)
+            (@__kernel_cos-%61-pred s61))))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-m61.3-rev @__kernel_cos-m61.3-rev @__kernel_cos-m61.3-mem))
+(defruled @__kernel_cos-%61-expand-rev-as-fwd
+  (equal (@__kernel_cos-%61-rev mem loc pred)
+         (@__kernel_cos-%61-fwd mem loc pred))
+  :enable (@__kernel_cos-%61-expand-rev-as-@__kernel_cos-succ61-rev @__kernel_cos-succ61-rev @__kernel_cos-succ61-lab @__kernel_cos-%61-fwd))
+
 (defund @__kernel_cos-%61-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -962,33 +1705,6 @@
     (succ '%79))
   (mv succ mem loc)))
 
-(defruled @__kernel_cos-%61-expand-bb
-  (equal (@__kernel_cos-%61-bb mem loc pred)
-         (@__kernel_cos-%61-rev mem loc pred))
-  :enable (@__kernel_cos-%61-bb @__kernel_cos-%61-rev
-    @__kernel_cos-%62-rev
-    @__kernel_cos-%63-rev
-    @__kernel_cos-%64-rev
-    @__kernel_cos-%65-rev
-    @__kernel_cos-m61.1-rev
-    @__kernel_cos-%66-rev
-    @__kernel_cos-%67-rev
-    @__kernel_cos-m61.2-rev
-    @__kernel_cos-%68-rev
-    @__kernel_cos-%69-rev
-    @__kernel_cos-%70-rev
-    @__kernel_cos-%71-rev
-    @__kernel_cos-%72-rev
-    @__kernel_cos-%73-rev
-    @__kernel_cos-%74-rev
-    @__kernel_cos-%75-rev
-    @__kernel_cos-%76-rev
-    @__kernel_cos-%77-rev
-    @__kernel_cos-%78-rev
-    @__kernel_cos-m61.3-rev
-    @__kernel_cos-succ61-rev)
-  :disable s-diff-s)
-
 (defund @__kernel_cos-%79-mem (s79)
   (car s79))
 (defund @__kernel_cos-%79-loc (s79)
@@ -1003,6 +1719,10 @@
   (declare (ignore s79))
   'ret)
 
+(defund @__kernel_cos-%79-fwd (mem loc pred)
+  (let ((s79 (list mem loc pred)))
+    (mv (@__kernel_cos-succ79-lab s79) (@__kernel_cos-%79-mem s79) (@__kernel_cos-%80-loc s79))))
+
 (defund @__kernel_cos-succ79-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -1012,20 +1732,33 @@
 (defund @__kernel_cos-%79-rev (mem loc pred)
   (@__kernel_cos-%80-rev mem loc pred))
 
+(defruled @__kernel_cos-%79-expand-rev-as-@__kernel_cos-%80-rev
+  (equal (@__kernel_cos-%79-rev mem loc pred)
+         (let ((s79 (list mem loc pred)))
+           (@__kernel_cos-%80-rev
+            (@__kernel_cos-%79-mem s79)
+            (@__kernel_cos-%79-loc s79)
+            (@__kernel_cos-%79-pred s79))))
+  :enable (@__kernel_cos-%79-rev @__kernel_cos-%79-mem @__kernel_cos-%79-loc @__kernel_cos-%79-pred))
+(defruled @__kernel_cos-%79-expand-rev-as-@__kernel_cos-succ79-rev
+  (equal (@__kernel_cos-%79-rev mem loc pred)
+         (let ((s79 (list mem loc pred)))
+           (@__kernel_cos-succ79-rev
+            (@__kernel_cos-%79-mem s79)
+            (@__kernel_cos-%80-loc s79)
+            (@__kernel_cos-%79-pred s79))))
+  :enable (@__kernel_cos-%79-expand-rev-as-@__kernel_cos-%80-rev @__kernel_cos-%80-rev @__kernel_cos-%80-loc @__kernel_cos-%80-val))
+(defruled @__kernel_cos-%79-expand-rev-as-fwd
+  (equal (@__kernel_cos-%79-rev mem loc pred)
+         (@__kernel_cos-%79-fwd mem loc pred))
+  :enable (@__kernel_cos-%79-expand-rev-as-@__kernel_cos-succ79-rev @__kernel_cos-succ79-rev @__kernel_cos-succ79-lab @__kernel_cos-%79-fwd))
+
 (defund @__kernel_cos-%79-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%80 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @__kernel_cos-%79-expand-bb
-  (equal (@__kernel_cos-%79-bb mem loc pred)
-         (@__kernel_cos-%79-rev mem loc pred))
-  :enable (@__kernel_cos-%79-bb @__kernel_cos-%79-rev
-    @__kernel_cos-%80-rev
-    @__kernel_cos-succ79-rev)
-  :disable s-diff-s)
 
 (defund @__kernel_cos-step (label mem loc pred)
   (case label

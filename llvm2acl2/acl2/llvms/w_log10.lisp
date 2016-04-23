@@ -31,6 +31,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @log10-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@log10-succ0-lab s0) (@log10-m0.1-mem s0) (@log10-%3-loc s0))))
+
 (defund @log10-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -46,6 +50,51 @@
 (defund @log10-%0-rev (mem loc pred)
   (@log10-%1-rev mem loc pred))
 
+(defruled @log10-%0-expand-rev-as-@log10-%1-rev
+  (equal (@log10-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log10-%1-rev
+            (@log10-%0-mem s0)
+            (@log10-%0-loc s0)
+            (@log10-%0-pred s0))))
+  :enable (@log10-%0-rev @log10-%0-mem @log10-%0-loc @log10-%0-pred))
+(defruled @log10-%0-expand-rev-as-@log10-m0.1-rev
+  (equal (@log10-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log10-m0.1-rev
+            (@log10-%1-mem s0)
+            (@log10-%1-loc s0)
+            (@log10-%0-pred s0))))
+  :enable (@log10-%0-expand-rev-as-@log10-%1-rev @log10-%1-rev @log10-%1-mem @log10-%1-loc))
+(defruled @log10-%0-expand-rev-as-@log10-%2-rev
+  (equal (@log10-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log10-%2-rev
+            (@log10-m0.1-mem s0)
+            (@log10-%1-loc s0)
+            (@log10-%0-pred s0))))
+  :enable (@log10-%0-expand-rev-as-@log10-m0.1-rev @log10-m0.1-rev @log10-m0.1-mem))
+(defruled @log10-%0-expand-rev-as-@log10-%3-rev
+  (equal (@log10-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log10-%3-rev
+            (@log10-m0.1-mem s0)
+            (@log10-%2-loc s0)
+            (@log10-%0-pred s0))))
+  :enable (@log10-%0-expand-rev-as-@log10-%2-rev @log10-%2-rev @log10-%2-loc @log10-%2-val))
+(defruled @log10-%0-expand-rev-as-@log10-succ0-rev
+  (equal (@log10-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@log10-succ0-rev
+            (@log10-m0.1-mem s0)
+            (@log10-%3-loc s0)
+            (@log10-%0-pred s0))))
+  :enable (@log10-%0-expand-rev-as-@log10-%3-rev @log10-%3-rev @log10-%3-loc @log10-%3-val))
+(defruled @log10-%0-expand-rev-as-fwd
+  (equal (@log10-%0-rev mem loc pred)
+         (@log10-%0-fwd mem loc pred))
+  :enable (@log10-%0-expand-rev-as-@log10-succ0-rev @log10-succ0-rev @log10-succ0-lab @log10-%0-fwd))
+
 (defund @log10-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -56,17 +105,6 @@
     (loc (s '%3 (@__ieee754_log10 (g '%2 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @log10-%0-expand-bb
-  (equal (@log10-%0-bb mem loc pred)
-         (@log10-%0-rev mem loc pred))
-  :enable (@log10-%0-bb @log10-%0-rev
-    @log10-%1-rev
-    @log10-m0.1-rev
-    @log10-%2-rev
-    @log10-%3-rev
-    @log10-succ0-rev)
-  :disable s-diff-s)
 
 (defund @log10-step (label mem loc pred)
   (case label

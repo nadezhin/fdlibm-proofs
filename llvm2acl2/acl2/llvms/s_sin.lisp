@@ -78,6 +78,10 @@
 (defund @sin-succ0-lab (s0)
   (case (g '%9 (@sin-%9-loc s0)) (-1 '%10) (0 '%14)))
 
+(defund @sin-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@sin-succ0-lab s0) (@sin-m0.4-mem s0) (@sin-%9-loc s0))))
+
 (defund @sin-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%14)) mem loc))
@@ -119,6 +123,155 @@
 (defund @sin-%0-rev (mem loc pred)
   (@sin-%1-rev mem loc pred))
 
+(defruled @sin-%0-expand-rev-as-@sin-%1-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%1-rev
+            (@sin-%0-mem s0)
+            (@sin-%0-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-rev @sin-%0-mem @sin-%0-loc @sin-%0-pred))
+(defruled @sin-%0-expand-rev-as-@sin-%2-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%2-rev
+            (@sin-%1-mem s0)
+            (@sin-%1-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%1-rev @sin-%1-rev @sin-%1-mem @sin-%1-loc))
+(defruled @sin-%0-expand-rev-as-@sin-%y-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%y-rev
+            (@sin-%2-mem s0)
+            (@sin-%2-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%2-rev @sin-%2-rev @sin-%2-mem @sin-%2-loc))
+(defruled @sin-%0-expand-rev-as-@sin-%z-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%z-rev
+            (@sin-%y-mem s0)
+            (@sin-%y-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%y-rev @sin-%y-rev @sin-%y-mem @sin-%y-loc))
+(defruled @sin-%0-expand-rev-as-@sin-%n-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%n-rev
+            (@sin-%z-mem s0)
+            (@sin-%z-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%z-rev @sin-%z-rev @sin-%z-mem @sin-%z-loc))
+(defruled @sin-%0-expand-rev-as-@sin-%ix-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%ix-rev
+            (@sin-%n-mem s0)
+            (@sin-%n-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%n-rev @sin-%n-rev @sin-%n-mem @sin-%n-loc))
+(defruled @sin-%0-expand-rev-as-@sin-m0.1-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-m0.1-rev
+            (@sin-%ix-mem s0)
+            (@sin-%ix-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%ix-rev @sin-%ix-rev @sin-%ix-mem @sin-%ix-loc))
+(defruled @sin-%0-expand-rev-as-@sin-m0.2-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-m0.2-rev
+            (@sin-m0.1-mem s0)
+            (@sin-%ix-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-m0.1-rev @sin-m0.1-rev @sin-m0.1-mem))
+(defruled @sin-%0-expand-rev-as-@sin-%3-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%3-rev
+            (@sin-m0.2-mem s0)
+            (@sin-%ix-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-m0.2-rev @sin-m0.2-rev @sin-m0.2-mem))
+(defruled @sin-%0-expand-rev-as-@sin-%4-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%4-rev
+            (@sin-m0.2-mem s0)
+            (@sin-%3-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%3-rev @sin-%3-rev @sin-%3-loc @sin-%3-val))
+(defruled @sin-%0-expand-rev-as-@sin-%5-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%5-rev
+            (@sin-m0.2-mem s0)
+            (@sin-%4-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%4-rev @sin-%4-rev @sin-%4-loc @sin-%4-val))
+(defruled @sin-%0-expand-rev-as-@sin-m0.3-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-m0.3-rev
+            (@sin-m0.2-mem s0)
+            (@sin-%5-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%5-rev @sin-%5-rev @sin-%5-loc @sin-%5-val))
+(defruled @sin-%0-expand-rev-as-@sin-%6-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%6-rev
+            (@sin-m0.3-mem s0)
+            (@sin-%5-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-m0.3-rev @sin-m0.3-rev @sin-m0.3-mem))
+(defruled @sin-%0-expand-rev-as-@sin-%7-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%7-rev
+            (@sin-m0.3-mem s0)
+            (@sin-%6-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%6-rev @sin-%6-rev @sin-%6-loc @sin-%6-val))
+(defruled @sin-%0-expand-rev-as-@sin-m0.4-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-m0.4-rev
+            (@sin-m0.3-mem s0)
+            (@sin-%7-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%7-rev @sin-%7-rev @sin-%7-loc @sin-%7-val))
+(defruled @sin-%0-expand-rev-as-@sin-%8-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%8-rev
+            (@sin-m0.4-mem s0)
+            (@sin-%7-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-m0.4-rev @sin-m0.4-rev @sin-m0.4-mem))
+(defruled @sin-%0-expand-rev-as-@sin-%9-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-%9-rev
+            (@sin-m0.4-mem s0)
+            (@sin-%8-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%8-rev @sin-%8-rev @sin-%8-loc @sin-%8-val))
+(defruled @sin-%0-expand-rev-as-@sin-succ0-rev
+  (equal (@sin-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sin-succ0-rev
+            (@sin-m0.4-mem s0)
+            (@sin-%9-loc s0)
+            (@sin-%0-pred s0))))
+  :enable (@sin-%0-expand-rev-as-@sin-%9-rev @sin-%9-rev @sin-%9-loc @sin-%9-val))
+(defruled @sin-%0-expand-rev-as-fwd
+  (equal (@sin-%0-rev mem loc pred)
+         (@sin-%0-fwd mem loc pred))
+  :enable (@sin-%0-expand-rev-as-@sin-succ0-rev @sin-succ0-rev @sin-succ0-lab @sin-%0-fwd))
+
 (defund @sin-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -148,30 +301,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%14))))
   (mv succ mem loc)))
 
-(defruled @sin-%0-expand-bb
-  (equal (@sin-%0-bb mem loc pred)
-         (@sin-%0-rev mem loc pred))
-  :enable (@sin-%0-bb @sin-%0-rev
-    @sin-%1-rev
-    @sin-%2-rev
-    @sin-%y-rev
-    @sin-%z-rev
-    @sin-%n-rev
-    @sin-%ix-rev
-    @sin-m0.1-rev
-    @sin-m0.2-rev
-    @sin-%3-rev
-    @sin-%4-rev
-    @sin-%5-rev
-    @sin-m0.3-rev
-    @sin-%6-rev
-    @sin-%7-rev
-    @sin-m0.4-rev
-    @sin-%8-rev
-    @sin-%9-rev
-    @sin-succ0-rev)
-  :disable s-diff-s)
-
 (defund @sin-%10-mem (s10)
   (car s10))
 (defund @sin-%10-loc (s10)
@@ -196,6 +325,10 @@
   (declare (ignore s10))
   '%53)
 
+(defund @sin-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@sin-succ10-lab s10) (@sin-m10.1-mem s10) (@sin-%13-loc s10))))
+
 (defund @sin-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -211,6 +344,51 @@
 (defund @sin-%10-rev (mem loc pred)
   (@sin-%11-rev mem loc pred))
 
+(defruled @sin-%10-expand-rev-as-@sin-%11-rev
+  (equal (@sin-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@sin-%11-rev
+            (@sin-%10-mem s10)
+            (@sin-%10-loc s10)
+            (@sin-%10-pred s10))))
+  :enable (@sin-%10-rev @sin-%10-mem @sin-%10-loc @sin-%10-pred))
+(defruled @sin-%10-expand-rev-as-@sin-%12-rev
+  (equal (@sin-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@sin-%12-rev
+            (@sin-%10-mem s10)
+            (@sin-%11-loc s10)
+            (@sin-%10-pred s10))))
+  :enable (@sin-%10-expand-rev-as-@sin-%11-rev @sin-%11-rev @sin-%11-loc @sin-%11-val))
+(defruled @sin-%10-expand-rev-as-@sin-%13-rev
+  (equal (@sin-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@sin-%13-rev
+            (@sin-%10-mem s10)
+            (@sin-%12-loc s10)
+            (@sin-%10-pred s10))))
+  :enable (@sin-%10-expand-rev-as-@sin-%12-rev @sin-%12-rev @sin-%12-loc @sin-%12-val))
+(defruled @sin-%10-expand-rev-as-@sin-m10.1-rev
+  (equal (@sin-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@sin-m10.1-rev
+            (@sin-%10-mem s10)
+            (@sin-%13-loc s10)
+            (@sin-%10-pred s10))))
+  :enable (@sin-%10-expand-rev-as-@sin-%13-rev @sin-%13-rev @sin-%13-loc @sin-%13-val))
+(defruled @sin-%10-expand-rev-as-@sin-succ10-rev
+  (equal (@sin-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@sin-succ10-rev
+            (@sin-m10.1-mem s10)
+            (@sin-%13-loc s10)
+            (@sin-%10-pred s10))))
+  :enable (@sin-%10-expand-rev-as-@sin-m10.1-rev @sin-m10.1-rev @sin-m10.1-mem))
+(defruled @sin-%10-expand-rev-as-fwd
+  (equal (@sin-%10-rev mem loc pred)
+         (@sin-%10-fwd mem loc pred))
+  :enable (@sin-%10-expand-rev-as-@sin-succ10-rev @sin-succ10-rev @sin-succ10-lab @sin-%10-fwd))
+
 (defund @sin-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -220,17 +398,6 @@
     (mem (store-double (g '%13 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @sin-%10-expand-bb
-  (equal (@sin-%10-bb mem loc pred)
-         (@sin-%10-rev mem loc pred))
-  :enable (@sin-%10-bb @sin-%10-rev
-    @sin-%11-rev
-    @sin-%12-rev
-    @sin-%13-rev
-    @sin-m10.1-rev
-    @sin-succ10-rev)
-  :disable s-diff-s)
 
 (defund @sin-%14-mem (s14)
   (car s14))
@@ -249,6 +416,10 @@
 (defund @sin-succ14-lab (s14)
   (case (g '%16 (@sin-%16-loc s14)) (-1 '%17) (0 '%21)))
 
+(defund @sin-%14-fwd (mem loc pred)
+  (let ((s14 (list mem loc pred)))
+    (mv (@sin-succ14-lab s14) (@sin-%14-mem s14) (@sin-%16-loc s14))))
+
 (defund @sin-succ14-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%16 loc) (-1 '%17) (0 '%21)) mem loc))
@@ -260,6 +431,35 @@
 (defund @sin-%14-rev (mem loc pred)
   (@sin-%15-rev mem loc pred))
 
+(defruled @sin-%14-expand-rev-as-@sin-%15-rev
+  (equal (@sin-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@sin-%15-rev
+            (@sin-%14-mem s14)
+            (@sin-%14-loc s14)
+            (@sin-%14-pred s14))))
+  :enable (@sin-%14-rev @sin-%14-mem @sin-%14-loc @sin-%14-pred))
+(defruled @sin-%14-expand-rev-as-@sin-%16-rev
+  (equal (@sin-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@sin-%16-rev
+            (@sin-%14-mem s14)
+            (@sin-%15-loc s14)
+            (@sin-%14-pred s14))))
+  :enable (@sin-%14-expand-rev-as-@sin-%15-rev @sin-%15-rev @sin-%15-loc @sin-%15-val))
+(defruled @sin-%14-expand-rev-as-@sin-succ14-rev
+  (equal (@sin-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@sin-succ14-rev
+            (@sin-%14-mem s14)
+            (@sin-%16-loc s14)
+            (@sin-%14-pred s14))))
+  :enable (@sin-%14-expand-rev-as-@sin-%16-rev @sin-%16-rev @sin-%16-loc @sin-%16-val))
+(defruled @sin-%14-expand-rev-as-fwd
+  (equal (@sin-%14-rev mem loc pred)
+         (@sin-%14-fwd mem loc pred))
+  :enable (@sin-%14-expand-rev-as-@sin-succ14-rev @sin-succ14-rev @sin-succ14-lab @sin-%14-fwd))
+
 (defund @sin-%14-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -267,15 +467,6 @@
     (loc (s '%16 (icmp-sge-i32 (g '%15 loc) 2146435072) loc))
     (succ (case (g '%16 loc) (-1 '%17) (0 '%21))))
   (mv succ mem loc)))
-
-(defruled @sin-%14-expand-bb
-  (equal (@sin-%14-bb mem loc pred)
-         (@sin-%14-rev mem loc pred))
-  :enable (@sin-%14-bb @sin-%14-rev
-    @sin-%15-rev
-    @sin-%16-rev
-    @sin-succ14-rev)
-  :disable s-diff-s)
 
 (defund @sin-%17-mem (s17)
   (car s17))
@@ -301,6 +492,10 @@
   (declare (ignore s17))
   '%53)
 
+(defund @sin-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@sin-succ17-lab s17) (@sin-m17.1-mem s17) (@sin-%20-loc s17))))
+
 (defund @sin-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -316,6 +511,51 @@
 (defund @sin-%17-rev (mem loc pred)
   (@sin-%18-rev mem loc pred))
 
+(defruled @sin-%17-expand-rev-as-@sin-%18-rev
+  (equal (@sin-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@sin-%18-rev
+            (@sin-%17-mem s17)
+            (@sin-%17-loc s17)
+            (@sin-%17-pred s17))))
+  :enable (@sin-%17-rev @sin-%17-mem @sin-%17-loc @sin-%17-pred))
+(defruled @sin-%17-expand-rev-as-@sin-%19-rev
+  (equal (@sin-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@sin-%19-rev
+            (@sin-%17-mem s17)
+            (@sin-%18-loc s17)
+            (@sin-%17-pred s17))))
+  :enable (@sin-%17-expand-rev-as-@sin-%18-rev @sin-%18-rev @sin-%18-loc @sin-%18-val))
+(defruled @sin-%17-expand-rev-as-@sin-%20-rev
+  (equal (@sin-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@sin-%20-rev
+            (@sin-%17-mem s17)
+            (@sin-%19-loc s17)
+            (@sin-%17-pred s17))))
+  :enable (@sin-%17-expand-rev-as-@sin-%19-rev @sin-%19-rev @sin-%19-loc @sin-%19-val))
+(defruled @sin-%17-expand-rev-as-@sin-m17.1-rev
+  (equal (@sin-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@sin-m17.1-rev
+            (@sin-%17-mem s17)
+            (@sin-%20-loc s17)
+            (@sin-%17-pred s17))))
+  :enable (@sin-%17-expand-rev-as-@sin-%20-rev @sin-%20-rev @sin-%20-loc @sin-%20-val))
+(defruled @sin-%17-expand-rev-as-@sin-succ17-rev
+  (equal (@sin-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@sin-succ17-rev
+            (@sin-m17.1-mem s17)
+            (@sin-%20-loc s17)
+            (@sin-%17-pred s17))))
+  :enable (@sin-%17-expand-rev-as-@sin-m17.1-rev @sin-m17.1-rev @sin-m17.1-mem))
+(defruled @sin-%17-expand-rev-as-fwd
+  (equal (@sin-%17-rev mem loc pred)
+         (@sin-%17-fwd mem loc pred))
+  :enable (@sin-%17-expand-rev-as-@sin-succ17-rev @sin-succ17-rev @sin-succ17-lab @sin-%17-fwd))
+
 (defund @sin-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -325,17 +565,6 @@
     (mem (store-double (g '%20 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @sin-%17-expand-bb
-  (equal (@sin-%17-bb mem loc pred)
-         (@sin-%17-rev mem loc pred))
-  :enable (@sin-%17-bb @sin-%17-rev
-    @sin-%18-rev
-    @sin-%19-rev
-    @sin-%20-rev
-    @sin-m17.1-rev
-    @sin-succ17-rev)
-  :disable s-diff-s)
 
 (defund @sin-%21-mem (s21)
   (car s21))
@@ -368,6 +597,10 @@
 (defund @sin-succ21-lab (s21)
   (case (g '%26 (@sin-%26-loc s21))(0 '%27)(1 '%33)(2 '%39) (otherwise '%46)))
 
+(defund @sin-%21-fwd (mem loc pred)
+  (let ((s21 (list mem loc pred)))
+    (mv (@sin-succ21-lab s21) (@sin-m21.1-mem s21) (@sin-%26-loc s21))))
+
 (defund @sin-succ21-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%26 loc)(0 '%27)(1 '%33)(2 '%39) (otherwise '%46)) mem loc))
@@ -387,6 +620,67 @@
 (defund @sin-%21-rev (mem loc pred)
   (@sin-%22-rev mem loc pred))
 
+(defruled @sin-%21-expand-rev-as-@sin-%22-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-%22-rev
+            (@sin-%21-mem s21)
+            (@sin-%21-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-rev @sin-%21-mem @sin-%21-loc @sin-%21-pred))
+(defruled @sin-%21-expand-rev-as-@sin-%23-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-%23-rev
+            (@sin-%21-mem s21)
+            (@sin-%22-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-expand-rev-as-@sin-%22-rev @sin-%22-rev @sin-%22-loc @sin-%22-val))
+(defruled @sin-%21-expand-rev-as-@sin-%24-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-%24-rev
+            (@sin-%21-mem s21)
+            (@sin-%23-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-expand-rev-as-@sin-%23-rev @sin-%23-rev @sin-%23-loc @sin-%23-val))
+(defruled @sin-%21-expand-rev-as-@sin-m21.1-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-m21.1-rev
+            (@sin-%21-mem s21)
+            (@sin-%24-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-expand-rev-as-@sin-%24-rev @sin-%24-rev @sin-%24-loc @sin-%24-val))
+(defruled @sin-%21-expand-rev-as-@sin-%25-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-%25-rev
+            (@sin-m21.1-mem s21)
+            (@sin-%24-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-expand-rev-as-@sin-m21.1-rev @sin-m21.1-rev @sin-m21.1-mem))
+(defruled @sin-%21-expand-rev-as-@sin-%26-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-%26-rev
+            (@sin-m21.1-mem s21)
+            (@sin-%25-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-expand-rev-as-@sin-%25-rev @sin-%25-rev @sin-%25-loc @sin-%25-val))
+(defruled @sin-%21-expand-rev-as-@sin-succ21-rev
+  (equal (@sin-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@sin-succ21-rev
+            (@sin-m21.1-mem s21)
+            (@sin-%26-loc s21)
+            (@sin-%21-pred s21))))
+  :enable (@sin-%21-expand-rev-as-@sin-%26-rev @sin-%26-rev @sin-%26-loc @sin-%26-val))
+(defruled @sin-%21-expand-rev-as-fwd
+  (equal (@sin-%21-rev mem loc pred)
+         (@sin-%21-fwd mem loc pred))
+  :enable (@sin-%21-expand-rev-as-@sin-succ21-rev @sin-succ21-rev @sin-succ21-lab @sin-%21-fwd))
+
 (defund @sin-%21-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -398,19 +692,6 @@
     (loc (s '%26 (and-i32 (g '%25 loc) 3) loc))
     (succ (case (g '%26 loc)(0 '%27)(1 '%33)(2 '%39) (otherwise '%46))))
   (mv succ mem loc)))
-
-(defruled @sin-%21-expand-bb
-  (equal (@sin-%21-bb mem loc pred)
-         (@sin-%21-rev mem loc pred))
-  :enable (@sin-%21-bb @sin-%21-rev
-    @sin-%22-rev
-    @sin-%23-rev
-    @sin-%24-rev
-    @sin-m21.1-rev
-    @sin-%25-rev
-    @sin-%26-rev
-    @sin-succ21-rev)
-  :disable s-diff-s)
 
 (defund @sin-%27-mem (s27)
   (car s27))
@@ -444,6 +725,10 @@
   (declare (ignore s27))
   '%53)
 
+(defund @sin-%27-fwd (mem loc pred)
+  (let ((s27 (list mem loc pred)))
+    (mv (@sin-succ27-lab s27) (@sin-m27.1-mem s27) (@sin-%32-loc s27))))
+
 (defund @sin-succ27-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -463,6 +748,67 @@
 (defund @sin-%27-rev (mem loc pred)
   (@sin-%28-rev mem loc pred))
 
+(defruled @sin-%27-expand-rev-as-@sin-%28-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-%28-rev
+            (@sin-%27-mem s27)
+            (@sin-%27-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-rev @sin-%27-mem @sin-%27-loc @sin-%27-pred))
+(defruled @sin-%27-expand-rev-as-@sin-%29-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-%29-rev
+            (@sin-%27-mem s27)
+            (@sin-%28-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-expand-rev-as-@sin-%28-rev @sin-%28-rev @sin-%28-loc @sin-%28-val))
+(defruled @sin-%27-expand-rev-as-@sin-%30-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-%30-rev
+            (@sin-%27-mem s27)
+            (@sin-%29-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-expand-rev-as-@sin-%29-rev @sin-%29-rev @sin-%29-loc @sin-%29-val))
+(defruled @sin-%27-expand-rev-as-@sin-%31-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-%31-rev
+            (@sin-%27-mem s27)
+            (@sin-%30-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-expand-rev-as-@sin-%30-rev @sin-%30-rev @sin-%30-loc @sin-%30-val))
+(defruled @sin-%27-expand-rev-as-@sin-%32-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-%32-rev
+            (@sin-%27-mem s27)
+            (@sin-%31-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-expand-rev-as-@sin-%31-rev @sin-%31-rev @sin-%31-loc @sin-%31-val))
+(defruled @sin-%27-expand-rev-as-@sin-m27.1-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-m27.1-rev
+            (@sin-%27-mem s27)
+            (@sin-%32-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-expand-rev-as-@sin-%32-rev @sin-%32-rev @sin-%32-loc @sin-%32-val))
+(defruled @sin-%27-expand-rev-as-@sin-succ27-rev
+  (equal (@sin-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@sin-succ27-rev
+            (@sin-m27.1-mem s27)
+            (@sin-%32-loc s27)
+            (@sin-%27-pred s27))))
+  :enable (@sin-%27-expand-rev-as-@sin-m27.1-rev @sin-m27.1-rev @sin-m27.1-mem))
+(defruled @sin-%27-expand-rev-as-fwd
+  (equal (@sin-%27-rev mem loc pred)
+         (@sin-%27-fwd mem loc pred))
+  :enable (@sin-%27-expand-rev-as-@sin-succ27-rev @sin-succ27-rev @sin-succ27-lab @sin-%27-fwd))
+
 (defund @sin-%27-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -474,19 +820,6 @@
     (mem (store-double (g '%32 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @sin-%27-expand-bb
-  (equal (@sin-%27-bb mem loc pred)
-         (@sin-%27-rev mem loc pred))
-  :enable (@sin-%27-bb @sin-%27-rev
-    @sin-%28-rev
-    @sin-%29-rev
-    @sin-%30-rev
-    @sin-%31-rev
-    @sin-%32-rev
-    @sin-m27.1-rev
-    @sin-succ27-rev)
-  :disable s-diff-s)
 
 (defund @sin-%33-mem (s33)
   (car s33))
@@ -520,6 +853,10 @@
   (declare (ignore s33))
   '%53)
 
+(defund @sin-%33-fwd (mem loc pred)
+  (let ((s33 (list mem loc pred)))
+    (mv (@sin-succ33-lab s33) (@sin-m33.1-mem s33) (@sin-%38-loc s33))))
+
 (defund @sin-succ33-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -539,6 +876,67 @@
 (defund @sin-%33-rev (mem loc pred)
   (@sin-%34-rev mem loc pred))
 
+(defruled @sin-%33-expand-rev-as-@sin-%34-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-%34-rev
+            (@sin-%33-mem s33)
+            (@sin-%33-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-rev @sin-%33-mem @sin-%33-loc @sin-%33-pred))
+(defruled @sin-%33-expand-rev-as-@sin-%35-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-%35-rev
+            (@sin-%33-mem s33)
+            (@sin-%34-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-expand-rev-as-@sin-%34-rev @sin-%34-rev @sin-%34-loc @sin-%34-val))
+(defruled @sin-%33-expand-rev-as-@sin-%36-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-%36-rev
+            (@sin-%33-mem s33)
+            (@sin-%35-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-expand-rev-as-@sin-%35-rev @sin-%35-rev @sin-%35-loc @sin-%35-val))
+(defruled @sin-%33-expand-rev-as-@sin-%37-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-%37-rev
+            (@sin-%33-mem s33)
+            (@sin-%36-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-expand-rev-as-@sin-%36-rev @sin-%36-rev @sin-%36-loc @sin-%36-val))
+(defruled @sin-%33-expand-rev-as-@sin-%38-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-%38-rev
+            (@sin-%33-mem s33)
+            (@sin-%37-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-expand-rev-as-@sin-%37-rev @sin-%37-rev @sin-%37-loc @sin-%37-val))
+(defruled @sin-%33-expand-rev-as-@sin-m33.1-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-m33.1-rev
+            (@sin-%33-mem s33)
+            (@sin-%38-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-expand-rev-as-@sin-%38-rev @sin-%38-rev @sin-%38-loc @sin-%38-val))
+(defruled @sin-%33-expand-rev-as-@sin-succ33-rev
+  (equal (@sin-%33-rev mem loc pred)
+         (let ((s33 (list mem loc pred)))
+           (@sin-succ33-rev
+            (@sin-m33.1-mem s33)
+            (@sin-%38-loc s33)
+            (@sin-%33-pred s33))))
+  :enable (@sin-%33-expand-rev-as-@sin-m33.1-rev @sin-m33.1-rev @sin-m33.1-mem))
+(defruled @sin-%33-expand-rev-as-fwd
+  (equal (@sin-%33-rev mem loc pred)
+         (@sin-%33-fwd mem loc pred))
+  :enable (@sin-%33-expand-rev-as-@sin-succ33-rev @sin-succ33-rev @sin-succ33-lab @sin-%33-fwd))
+
 (defund @sin-%33-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -550,19 +948,6 @@
     (mem (store-double (g '%38 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @sin-%33-expand-bb
-  (equal (@sin-%33-bb mem loc pred)
-         (@sin-%33-rev mem loc pred))
-  :enable (@sin-%33-bb @sin-%33-rev
-    @sin-%34-rev
-    @sin-%35-rev
-    @sin-%36-rev
-    @sin-%37-rev
-    @sin-%38-rev
-    @sin-m33.1-rev
-    @sin-succ33-rev)
-  :disable s-diff-s)
 
 (defund @sin-%39-mem (s39)
   (car s39))
@@ -600,6 +985,10 @@
   (declare (ignore s39))
   '%53)
 
+(defund @sin-%39-fwd (mem loc pred)
+  (let ((s39 (list mem loc pred)))
+    (mv (@sin-succ39-lab s39) (@sin-m39.1-mem s39) (@sin-%45-loc s39))))
+
 (defund @sin-succ39-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -621,6 +1010,75 @@
 (defund @sin-%39-rev (mem loc pred)
   (@sin-%40-rev mem loc pred))
 
+(defruled @sin-%39-expand-rev-as-@sin-%40-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-%40-rev
+            (@sin-%39-mem s39)
+            (@sin-%39-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-rev @sin-%39-mem @sin-%39-loc @sin-%39-pred))
+(defruled @sin-%39-expand-rev-as-@sin-%41-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-%41-rev
+            (@sin-%39-mem s39)
+            (@sin-%40-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-%40-rev @sin-%40-rev @sin-%40-loc @sin-%40-val))
+(defruled @sin-%39-expand-rev-as-@sin-%42-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-%42-rev
+            (@sin-%39-mem s39)
+            (@sin-%41-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-%41-rev @sin-%41-rev @sin-%41-loc @sin-%41-val))
+(defruled @sin-%39-expand-rev-as-@sin-%43-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-%43-rev
+            (@sin-%39-mem s39)
+            (@sin-%42-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-%42-rev @sin-%42-rev @sin-%42-loc @sin-%42-val))
+(defruled @sin-%39-expand-rev-as-@sin-%44-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-%44-rev
+            (@sin-%39-mem s39)
+            (@sin-%43-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-%43-rev @sin-%43-rev @sin-%43-loc @sin-%43-val))
+(defruled @sin-%39-expand-rev-as-@sin-%45-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-%45-rev
+            (@sin-%39-mem s39)
+            (@sin-%44-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-%44-rev @sin-%44-rev @sin-%44-loc @sin-%44-val))
+(defruled @sin-%39-expand-rev-as-@sin-m39.1-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-m39.1-rev
+            (@sin-%39-mem s39)
+            (@sin-%45-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-%45-rev @sin-%45-rev @sin-%45-loc @sin-%45-val))
+(defruled @sin-%39-expand-rev-as-@sin-succ39-rev
+  (equal (@sin-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@sin-succ39-rev
+            (@sin-m39.1-mem s39)
+            (@sin-%45-loc s39)
+            (@sin-%39-pred s39))))
+  :enable (@sin-%39-expand-rev-as-@sin-m39.1-rev @sin-m39.1-rev @sin-m39.1-mem))
+(defruled @sin-%39-expand-rev-as-fwd
+  (equal (@sin-%39-rev mem loc pred)
+         (@sin-%39-fwd mem loc pred))
+  :enable (@sin-%39-expand-rev-as-@sin-succ39-rev @sin-succ39-rev @sin-succ39-lab @sin-%39-fwd))
+
 (defund @sin-%39-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -633,20 +1091,6 @@
     (mem (store-double (g '%45 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @sin-%39-expand-bb
-  (equal (@sin-%39-bb mem loc pred)
-         (@sin-%39-rev mem loc pred))
-  :enable (@sin-%39-bb @sin-%39-rev
-    @sin-%40-rev
-    @sin-%41-rev
-    @sin-%42-rev
-    @sin-%43-rev
-    @sin-%44-rev
-    @sin-%45-rev
-    @sin-m39.1-rev
-    @sin-succ39-rev)
-  :disable s-diff-s)
 
 (defund @sin-%46-mem (s46)
   (car s46))
@@ -684,6 +1128,10 @@
   (declare (ignore s46))
   '%53)
 
+(defund @sin-%46-fwd (mem loc pred)
+  (let ((s46 (list mem loc pred)))
+    (mv (@sin-succ46-lab s46) (@sin-m46.1-mem s46) (@sin-%52-loc s46))))
+
 (defund @sin-succ46-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%53 mem loc))
@@ -705,6 +1153,75 @@
 (defund @sin-%46-rev (mem loc pred)
   (@sin-%47-rev mem loc pred))
 
+(defruled @sin-%46-expand-rev-as-@sin-%47-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-%47-rev
+            (@sin-%46-mem s46)
+            (@sin-%46-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-rev @sin-%46-mem @sin-%46-loc @sin-%46-pred))
+(defruled @sin-%46-expand-rev-as-@sin-%48-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-%48-rev
+            (@sin-%46-mem s46)
+            (@sin-%47-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-%47-rev @sin-%47-rev @sin-%47-loc @sin-%47-val))
+(defruled @sin-%46-expand-rev-as-@sin-%49-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-%49-rev
+            (@sin-%46-mem s46)
+            (@sin-%48-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-%48-rev @sin-%48-rev @sin-%48-loc @sin-%48-val))
+(defruled @sin-%46-expand-rev-as-@sin-%50-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-%50-rev
+            (@sin-%46-mem s46)
+            (@sin-%49-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-%49-rev @sin-%49-rev @sin-%49-loc @sin-%49-val))
+(defruled @sin-%46-expand-rev-as-@sin-%51-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-%51-rev
+            (@sin-%46-mem s46)
+            (@sin-%50-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-%50-rev @sin-%50-rev @sin-%50-loc @sin-%50-val))
+(defruled @sin-%46-expand-rev-as-@sin-%52-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-%52-rev
+            (@sin-%46-mem s46)
+            (@sin-%51-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-%51-rev @sin-%51-rev @sin-%51-loc @sin-%51-val))
+(defruled @sin-%46-expand-rev-as-@sin-m46.1-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-m46.1-rev
+            (@sin-%46-mem s46)
+            (@sin-%52-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-%52-rev @sin-%52-rev @sin-%52-loc @sin-%52-val))
+(defruled @sin-%46-expand-rev-as-@sin-succ46-rev
+  (equal (@sin-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@sin-succ46-rev
+            (@sin-m46.1-mem s46)
+            (@sin-%52-loc s46)
+            (@sin-%46-pred s46))))
+  :enable (@sin-%46-expand-rev-as-@sin-m46.1-rev @sin-m46.1-rev @sin-m46.1-mem))
+(defruled @sin-%46-expand-rev-as-fwd
+  (equal (@sin-%46-rev mem loc pred)
+         (@sin-%46-fwd mem loc pred))
+  :enable (@sin-%46-expand-rev-as-@sin-succ46-rev @sin-succ46-rev @sin-succ46-lab @sin-%46-fwd))
+
 (defund @sin-%46-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -717,20 +1234,6 @@
     (mem (store-double (g '%52 loc) (g '%1 loc) mem))
     (succ '%53))
   (mv succ mem loc)))
-
-(defruled @sin-%46-expand-bb
-  (equal (@sin-%46-bb mem loc pred)
-         (@sin-%46-rev mem loc pred))
-  :enable (@sin-%46-bb @sin-%46-rev
-    @sin-%47-rev
-    @sin-%48-rev
-    @sin-%49-rev
-    @sin-%50-rev
-    @sin-%51-rev
-    @sin-%52-rev
-    @sin-m46.1-rev
-    @sin-succ46-rev)
-  :disable s-diff-s)
 
 (defund @sin-%53-mem (s53)
   (car s53))
@@ -746,6 +1249,10 @@
   (declare (ignore s53))
   'ret)
 
+(defund @sin-%53-fwd (mem loc pred)
+  (let ((s53 (list mem loc pred)))
+    (mv (@sin-succ53-lab s53) (@sin-%53-mem s53) (@sin-%54-loc s53))))
+
 (defund @sin-succ53-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -755,20 +1262,33 @@
 (defund @sin-%53-rev (mem loc pred)
   (@sin-%54-rev mem loc pred))
 
+(defruled @sin-%53-expand-rev-as-@sin-%54-rev
+  (equal (@sin-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@sin-%54-rev
+            (@sin-%53-mem s53)
+            (@sin-%53-loc s53)
+            (@sin-%53-pred s53))))
+  :enable (@sin-%53-rev @sin-%53-mem @sin-%53-loc @sin-%53-pred))
+(defruled @sin-%53-expand-rev-as-@sin-succ53-rev
+  (equal (@sin-%53-rev mem loc pred)
+         (let ((s53 (list mem loc pred)))
+           (@sin-succ53-rev
+            (@sin-%53-mem s53)
+            (@sin-%54-loc s53)
+            (@sin-%53-pred s53))))
+  :enable (@sin-%53-expand-rev-as-@sin-%54-rev @sin-%54-rev @sin-%54-loc @sin-%54-val))
+(defruled @sin-%53-expand-rev-as-fwd
+  (equal (@sin-%53-rev mem loc pred)
+         (@sin-%53-fwd mem loc pred))
+  :enable (@sin-%53-expand-rev-as-@sin-succ53-rev @sin-succ53-rev @sin-succ53-lab @sin-%53-fwd))
+
 (defund @sin-%53-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%54 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @sin-%53-expand-bb
-  (equal (@sin-%53-bb mem loc pred)
-         (@sin-%53-rev mem loc pred))
-  :enable (@sin-%53-bb @sin-%53-rev
-    @sin-%54-rev
-    @sin-succ53-rev)
-  :disable s-diff-s)
 
 (defund @sin-step (label mem loc pred)
   (case label

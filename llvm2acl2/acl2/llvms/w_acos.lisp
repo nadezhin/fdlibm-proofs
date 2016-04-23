@@ -31,6 +31,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @acos-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@acos-succ0-lab s0) (@acos-m0.1-mem s0) (@acos-%3-loc s0))))
+
 (defund @acos-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -46,6 +50,51 @@
 (defund @acos-%0-rev (mem loc pred)
   (@acos-%1-rev mem loc pred))
 
+(defruled @acos-%0-expand-rev-as-@acos-%1-rev
+  (equal (@acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@acos-%1-rev
+            (@acos-%0-mem s0)
+            (@acos-%0-loc s0)
+            (@acos-%0-pred s0))))
+  :enable (@acos-%0-rev @acos-%0-mem @acos-%0-loc @acos-%0-pred))
+(defruled @acos-%0-expand-rev-as-@acos-m0.1-rev
+  (equal (@acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@acos-m0.1-rev
+            (@acos-%1-mem s0)
+            (@acos-%1-loc s0)
+            (@acos-%0-pred s0))))
+  :enable (@acos-%0-expand-rev-as-@acos-%1-rev @acos-%1-rev @acos-%1-mem @acos-%1-loc))
+(defruled @acos-%0-expand-rev-as-@acos-%2-rev
+  (equal (@acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@acos-%2-rev
+            (@acos-m0.1-mem s0)
+            (@acos-%1-loc s0)
+            (@acos-%0-pred s0))))
+  :enable (@acos-%0-expand-rev-as-@acos-m0.1-rev @acos-m0.1-rev @acos-m0.1-mem))
+(defruled @acos-%0-expand-rev-as-@acos-%3-rev
+  (equal (@acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@acos-%3-rev
+            (@acos-m0.1-mem s0)
+            (@acos-%2-loc s0)
+            (@acos-%0-pred s0))))
+  :enable (@acos-%0-expand-rev-as-@acos-%2-rev @acos-%2-rev @acos-%2-loc @acos-%2-val))
+(defruled @acos-%0-expand-rev-as-@acos-succ0-rev
+  (equal (@acos-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@acos-succ0-rev
+            (@acos-m0.1-mem s0)
+            (@acos-%3-loc s0)
+            (@acos-%0-pred s0))))
+  :enable (@acos-%0-expand-rev-as-@acos-%3-rev @acos-%3-rev @acos-%3-loc @acos-%3-val))
+(defruled @acos-%0-expand-rev-as-fwd
+  (equal (@acos-%0-rev mem loc pred)
+         (@acos-%0-fwd mem loc pred))
+  :enable (@acos-%0-expand-rev-as-@acos-succ0-rev @acos-succ0-rev @acos-succ0-lab @acos-%0-fwd))
+
 (defund @acos-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -56,17 +105,6 @@
     (loc (s '%3 (@__ieee754_acos (g '%2 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @acos-%0-expand-bb
-  (equal (@acos-%0-bb mem loc pred)
-         (@acos-%0-rev mem loc pred))
-  :enable (@acos-%0-bb @acos-%0-rev
-    @acos-%1-rev
-    @acos-m0.1-rev
-    @acos-%2-rev
-    @acos-%3-rev
-    @acos-succ0-rev)
-  :disable s-diff-s)
 
 (defund @acos-step (label mem loc pred)
   (case label

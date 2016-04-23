@@ -89,6 +89,10 @@
 (defund @atan-succ0-lab (s0)
   (case (g '%9 (@atan-%9-loc s0)) (-1 '%10) (0 '%36)))
 
+(defund @atan-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@atan-succ0-lab s0) (@atan-m0.3-mem s0) (@atan-%9-loc s0))))
+
 (defund @atan-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%36)) mem loc))
@@ -134,6 +138,171 @@
 (defund @atan-%0-rev (mem loc pred)
   (@atan-%1-rev mem loc pred))
 
+(defruled @atan-%0-expand-rev-as-@atan-%1-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%1-rev
+            (@atan-%0-mem s0)
+            (@atan-%0-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-rev @atan-%0-mem @atan-%0-loc @atan-%0-pred))
+(defruled @atan-%0-expand-rev-as-@atan-%2-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%2-rev
+            (@atan-%1-mem s0)
+            (@atan-%1-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%1-rev @atan-%1-rev @atan-%1-mem @atan-%1-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%w-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%w-rev
+            (@atan-%2-mem s0)
+            (@atan-%2-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%2-rev @atan-%2-rev @atan-%2-mem @atan-%2-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%s1-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%s1-rev
+            (@atan-%w-mem s0)
+            (@atan-%w-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%w-rev @atan-%w-rev @atan-%w-mem @atan-%w-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%s2-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%s2-rev
+            (@atan-%s1-mem s0)
+            (@atan-%s1-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%s1-rev @atan-%s1-rev @atan-%s1-mem @atan-%s1-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%z-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%z-rev
+            (@atan-%s2-mem s0)
+            (@atan-%s2-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%s2-rev @atan-%s2-rev @atan-%s2-mem @atan-%s2-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%ix-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%ix-rev
+            (@atan-%z-mem s0)
+            (@atan-%z-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%z-rev @atan-%z-rev @atan-%z-mem @atan-%z-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%hx-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%hx-rev
+            (@atan-%ix-mem s0)
+            (@atan-%ix-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%ix-rev @atan-%ix-rev @atan-%ix-mem @atan-%ix-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%id-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%id-rev
+            (@atan-%hx-mem s0)
+            (@atan-%hx-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%hx-rev @atan-%hx-rev @atan-%hx-mem @atan-%hx-loc))
+(defruled @atan-%0-expand-rev-as-@atan-m0.1-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-m0.1-rev
+            (@atan-%id-mem s0)
+            (@atan-%id-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%id-rev @atan-%id-rev @atan-%id-mem @atan-%id-loc))
+(defruled @atan-%0-expand-rev-as-@atan-%3-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%3-rev
+            (@atan-m0.1-mem s0)
+            (@atan-%id-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-m0.1-rev @atan-m0.1-rev @atan-m0.1-mem))
+(defruled @atan-%0-expand-rev-as-@atan-%4-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%4-rev
+            (@atan-m0.1-mem s0)
+            (@atan-%3-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%3-rev @atan-%3-rev @atan-%3-loc @atan-%3-val))
+(defruled @atan-%0-expand-rev-as-@atan-%5-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%5-rev
+            (@atan-m0.1-mem s0)
+            (@atan-%4-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%4-rev @atan-%4-rev @atan-%4-loc @atan-%4-val))
+(defruled @atan-%0-expand-rev-as-@atan-m0.2-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-m0.2-rev
+            (@atan-m0.1-mem s0)
+            (@atan-%5-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%5-rev @atan-%5-rev @atan-%5-loc @atan-%5-val))
+(defruled @atan-%0-expand-rev-as-@atan-%6-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%6-rev
+            (@atan-m0.2-mem s0)
+            (@atan-%5-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-m0.2-rev @atan-m0.2-rev @atan-m0.2-mem))
+(defruled @atan-%0-expand-rev-as-@atan-%7-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%7-rev
+            (@atan-m0.2-mem s0)
+            (@atan-%6-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%6-rev @atan-%6-rev @atan-%6-loc @atan-%6-val))
+(defruled @atan-%0-expand-rev-as-@atan-m0.3-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-m0.3-rev
+            (@atan-m0.2-mem s0)
+            (@atan-%7-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%7-rev @atan-%7-rev @atan-%7-loc @atan-%7-val))
+(defruled @atan-%0-expand-rev-as-@atan-%8-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%8-rev
+            (@atan-m0.3-mem s0)
+            (@atan-%7-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-m0.3-rev @atan-m0.3-rev @atan-m0.3-mem))
+(defruled @atan-%0-expand-rev-as-@atan-%9-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-%9-rev
+            (@atan-m0.3-mem s0)
+            (@atan-%8-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%8-rev @atan-%8-rev @atan-%8-loc @atan-%8-val))
+(defruled @atan-%0-expand-rev-as-@atan-succ0-rev
+  (equal (@atan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@atan-succ0-rev
+            (@atan-m0.3-mem s0)
+            (@atan-%9-loc s0)
+            (@atan-%0-pred s0))))
+  :enable (@atan-%0-expand-rev-as-@atan-%9-rev @atan-%9-rev @atan-%9-loc @atan-%9-val))
+(defruled @atan-%0-expand-rev-as-fwd
+  (equal (@atan-%0-rev mem loc pred)
+         (@atan-%0-fwd mem loc pred))
+  :enable (@atan-%0-expand-rev-as-@atan-succ0-rev @atan-succ0-rev @atan-succ0-lab @atan-%0-fwd))
+
 (defund @atan-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -168,32 +337,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%36))))
   (mv succ mem loc)))
 
-(defruled @atan-%0-expand-bb
-  (equal (@atan-%0-bb mem loc pred)
-         (@atan-%0-rev mem loc pred))
-  :enable (@atan-%0-bb @atan-%0-rev
-    @atan-%1-rev
-    @atan-%2-rev
-    @atan-%w-rev
-    @atan-%s1-rev
-    @atan-%s2-rev
-    @atan-%z-rev
-    @atan-%ix-rev
-    @atan-%hx-rev
-    @atan-%id-rev
-    @atan-m0.1-rev
-    @atan-%3-rev
-    @atan-%4-rev
-    @atan-%5-rev
-    @atan-m0.2-rev
-    @atan-%6-rev
-    @atan-%7-rev
-    @atan-m0.3-rev
-    @atan-%8-rev
-    @atan-%9-rev
-    @atan-succ0-rev)
-  :disable s-diff-s)
-
 (defund @atan-%10-mem (s10)
   (car s10))
 (defund @atan-%10-loc (s10)
@@ -211,6 +354,10 @@
 (defund @atan-succ10-lab (s10)
   (case (g '%12 (@atan-%12-loc s10)) (-1 '%20) (0 '%13)))
 
+(defund @atan-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@atan-succ10-lab s10) (@atan-%10-mem s10) (@atan-%12-loc s10))))
+
 (defund @atan-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%12 loc) (-1 '%20) (0 '%13)) mem loc))
@@ -222,6 +369,35 @@
 (defund @atan-%10-rev (mem loc pred)
   (@atan-%11-rev mem loc pred))
 
+(defruled @atan-%10-expand-rev-as-@atan-%11-rev
+  (equal (@atan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@atan-%11-rev
+            (@atan-%10-mem s10)
+            (@atan-%10-loc s10)
+            (@atan-%10-pred s10))))
+  :enable (@atan-%10-rev @atan-%10-mem @atan-%10-loc @atan-%10-pred))
+(defruled @atan-%10-expand-rev-as-@atan-%12-rev
+  (equal (@atan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@atan-%12-rev
+            (@atan-%10-mem s10)
+            (@atan-%11-loc s10)
+            (@atan-%10-pred s10))))
+  :enable (@atan-%10-expand-rev-as-@atan-%11-rev @atan-%11-rev @atan-%11-loc @atan-%11-val))
+(defruled @atan-%10-expand-rev-as-@atan-succ10-rev
+  (equal (@atan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@atan-succ10-rev
+            (@atan-%10-mem s10)
+            (@atan-%12-loc s10)
+            (@atan-%10-pred s10))))
+  :enable (@atan-%10-expand-rev-as-@atan-%12-rev @atan-%12-rev @atan-%12-loc @atan-%12-val))
+(defruled @atan-%10-expand-rev-as-fwd
+  (equal (@atan-%10-rev mem loc pred)
+         (@atan-%10-fwd mem loc pred))
+  :enable (@atan-%10-expand-rev-as-@atan-succ10-rev @atan-succ10-rev @atan-succ10-lab @atan-%10-fwd))
+
 (defund @atan-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -229,15 +405,6 @@
     (loc (s '%12 (icmp-sgt-i32 (g '%11 loc) 2146435072) loc))
     (succ (case (g '%12 loc) (-1 '%20) (0 '%13))))
   (mv succ mem loc)))
-
-(defruled @atan-%10-expand-bb
-  (equal (@atan-%10-bb mem loc pred)
-         (@atan-%10-rev mem loc pred))
-  :enable (@atan-%10-bb @atan-%10-rev
-    @atan-%11-rev
-    @atan-%12-rev
-    @atan-succ10-rev)
-  :disable s-diff-s)
 
 (defund @atan-%13-mem (s13)
   (car s13))
@@ -256,6 +423,10 @@
 (defund @atan-succ13-lab (s13)
   (case (g '%15 (@atan-%15-loc s13)) (-1 '%16) (0 '%24)))
 
+(defund @atan-%13-fwd (mem loc pred)
+  (let ((s13 (list mem loc pred)))
+    (mv (@atan-succ13-lab s13) (@atan-%13-mem s13) (@atan-%15-loc s13))))
+
 (defund @atan-succ13-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%15 loc) (-1 '%16) (0 '%24)) mem loc))
@@ -267,6 +438,35 @@
 (defund @atan-%13-rev (mem loc pred)
   (@atan-%14-rev mem loc pred))
 
+(defruled @atan-%13-expand-rev-as-@atan-%14-rev
+  (equal (@atan-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@atan-%14-rev
+            (@atan-%13-mem s13)
+            (@atan-%13-loc s13)
+            (@atan-%13-pred s13))))
+  :enable (@atan-%13-rev @atan-%13-mem @atan-%13-loc @atan-%13-pred))
+(defruled @atan-%13-expand-rev-as-@atan-%15-rev
+  (equal (@atan-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@atan-%15-rev
+            (@atan-%13-mem s13)
+            (@atan-%14-loc s13)
+            (@atan-%13-pred s13))))
+  :enable (@atan-%13-expand-rev-as-@atan-%14-rev @atan-%14-rev @atan-%14-loc @atan-%14-val))
+(defruled @atan-%13-expand-rev-as-@atan-succ13-rev
+  (equal (@atan-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@atan-succ13-rev
+            (@atan-%13-mem s13)
+            (@atan-%15-loc s13)
+            (@atan-%13-pred s13))))
+  :enable (@atan-%13-expand-rev-as-@atan-%15-rev @atan-%15-rev @atan-%15-loc @atan-%15-val))
+(defruled @atan-%13-expand-rev-as-fwd
+  (equal (@atan-%13-rev mem loc pred)
+         (@atan-%13-fwd mem loc pred))
+  :enable (@atan-%13-expand-rev-as-@atan-succ13-rev @atan-succ13-rev @atan-succ13-lab @atan-%13-fwd))
+
 (defund @atan-%13-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -274,15 +474,6 @@
     (loc (s '%15 (icmp-eq-i32 (g '%14 loc) 2146435072) loc))
     (succ (case (g '%15 loc) (-1 '%16) (0 '%24))))
   (mv succ mem loc)))
-
-(defruled @atan-%13-expand-bb
-  (equal (@atan-%13-bb mem loc pred)
-         (@atan-%13-rev mem loc pred))
-  :enable (@atan-%13-bb @atan-%13-rev
-    @atan-%14-rev
-    @atan-%15-rev
-    @atan-succ13-rev)
-  :disable s-diff-s)
 
 (defund @atan-%16-mem (s16)
   (car s16))
@@ -305,6 +496,10 @@
 (defund @atan-succ16-lab (s16)
   (case (g '%19 (@atan-%19-loc s16)) (-1 '%20) (0 '%24)))
 
+(defund @atan-%16-fwd (mem loc pred)
+  (let ((s16 (list mem loc pred)))
+    (mv (@atan-succ16-lab s16) (@atan-%16-mem s16) (@atan-%19-loc s16))))
+
 (defund @atan-succ16-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%19 loc) (-1 '%20) (0 '%24)) mem loc))
@@ -318,6 +513,43 @@
 (defund @atan-%16-rev (mem loc pred)
   (@atan-%17-rev mem loc pred))
 
+(defruled @atan-%16-expand-rev-as-@atan-%17-rev
+  (equal (@atan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@atan-%17-rev
+            (@atan-%16-mem s16)
+            (@atan-%16-loc s16)
+            (@atan-%16-pred s16))))
+  :enable (@atan-%16-rev @atan-%16-mem @atan-%16-loc @atan-%16-pred))
+(defruled @atan-%16-expand-rev-as-@atan-%18-rev
+  (equal (@atan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@atan-%18-rev
+            (@atan-%16-mem s16)
+            (@atan-%17-loc s16)
+            (@atan-%16-pred s16))))
+  :enable (@atan-%16-expand-rev-as-@atan-%17-rev @atan-%17-rev @atan-%17-loc @atan-%17-val))
+(defruled @atan-%16-expand-rev-as-@atan-%19-rev
+  (equal (@atan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@atan-%19-rev
+            (@atan-%16-mem s16)
+            (@atan-%18-loc s16)
+            (@atan-%16-pred s16))))
+  :enable (@atan-%16-expand-rev-as-@atan-%18-rev @atan-%18-rev @atan-%18-loc @atan-%18-val))
+(defruled @atan-%16-expand-rev-as-@atan-succ16-rev
+  (equal (@atan-%16-rev mem loc pred)
+         (let ((s16 (list mem loc pred)))
+           (@atan-succ16-rev
+            (@atan-%16-mem s16)
+            (@atan-%19-loc s16)
+            (@atan-%16-pred s16))))
+  :enable (@atan-%16-expand-rev-as-@atan-%19-rev @atan-%19-rev @atan-%19-loc @atan-%19-val))
+(defruled @atan-%16-expand-rev-as-fwd
+  (equal (@atan-%16-rev mem loc pred)
+         (@atan-%16-fwd mem loc pred))
+  :enable (@atan-%16-expand-rev-as-@atan-succ16-rev @atan-succ16-rev @atan-succ16-lab @atan-%16-fwd))
+
 (defund @atan-%16-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -326,16 +558,6 @@
     (loc (s '%19 (icmp-ne-i32 (g '%18 loc) 0) loc))
     (succ (case (g '%19 loc) (-1 '%20) (0 '%24))))
   (mv succ mem loc)))
-
-(defruled @atan-%16-expand-bb
-  (equal (@atan-%16-bb mem loc pred)
-         (@atan-%16-rev mem loc pred))
-  :enable (@atan-%16-bb @atan-%16-rev
-    @atan-%17-rev
-    @atan-%18-rev
-    @atan-%19-rev
-    @atan-succ16-rev)
-  :disable s-diff-s)
 
 (defund @atan-%20-mem (s20)
   (car s20))
@@ -361,6 +583,10 @@
   (declare (ignore s20))
   '%173)
 
+(defund @atan-%20-fwd (mem loc pred)
+  (let ((s20 (list mem loc pred)))
+    (mv (@atan-succ20-lab s20) (@atan-m20.1-mem s20) (@atan-%23-loc s20))))
+
 (defund @atan-succ20-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%173 mem loc))
@@ -376,6 +602,51 @@
 (defund @atan-%20-rev (mem loc pred)
   (@atan-%21-rev mem loc pred))
 
+(defruled @atan-%20-expand-rev-as-@atan-%21-rev
+  (equal (@atan-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@atan-%21-rev
+            (@atan-%20-mem s20)
+            (@atan-%20-loc s20)
+            (@atan-%20-pred s20))))
+  :enable (@atan-%20-rev @atan-%20-mem @atan-%20-loc @atan-%20-pred))
+(defruled @atan-%20-expand-rev-as-@atan-%22-rev
+  (equal (@atan-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@atan-%22-rev
+            (@atan-%20-mem s20)
+            (@atan-%21-loc s20)
+            (@atan-%20-pred s20))))
+  :enable (@atan-%20-expand-rev-as-@atan-%21-rev @atan-%21-rev @atan-%21-loc @atan-%21-val))
+(defruled @atan-%20-expand-rev-as-@atan-%23-rev
+  (equal (@atan-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@atan-%23-rev
+            (@atan-%20-mem s20)
+            (@atan-%22-loc s20)
+            (@atan-%20-pred s20))))
+  :enable (@atan-%20-expand-rev-as-@atan-%22-rev @atan-%22-rev @atan-%22-loc @atan-%22-val))
+(defruled @atan-%20-expand-rev-as-@atan-m20.1-rev
+  (equal (@atan-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@atan-m20.1-rev
+            (@atan-%20-mem s20)
+            (@atan-%23-loc s20)
+            (@atan-%20-pred s20))))
+  :enable (@atan-%20-expand-rev-as-@atan-%23-rev @atan-%23-rev @atan-%23-loc @atan-%23-val))
+(defruled @atan-%20-expand-rev-as-@atan-succ20-rev
+  (equal (@atan-%20-rev mem loc pred)
+         (let ((s20 (list mem loc pred)))
+           (@atan-succ20-rev
+            (@atan-m20.1-mem s20)
+            (@atan-%23-loc s20)
+            (@atan-%20-pred s20))))
+  :enable (@atan-%20-expand-rev-as-@atan-m20.1-rev @atan-m20.1-rev @atan-m20.1-mem))
+(defruled @atan-%20-expand-rev-as-fwd
+  (equal (@atan-%20-rev mem loc pred)
+         (@atan-%20-fwd mem loc pred))
+  :enable (@atan-%20-expand-rev-as-@atan-succ20-rev @atan-succ20-rev @atan-succ20-lab @atan-%20-fwd))
+
 (defund @atan-%20-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -385,17 +656,6 @@
     (mem (store-double (g '%23 loc) (g '%1 loc) mem))
     (succ '%173))
   (mv succ mem loc)))
-
-(defruled @atan-%20-expand-bb
-  (equal (@atan-%20-bb mem loc pred)
-         (@atan-%20-rev mem loc pred))
-  :enable (@atan-%20-bb @atan-%20-rev
-    @atan-%21-rev
-    @atan-%22-rev
-    @atan-%23-rev
-    @atan-m20.1-rev
-    @atan-succ20-rev)
-  :disable s-diff-s)
 
 (defund @atan-%24-mem (s24)
   (car s24))
@@ -414,6 +674,10 @@
 (defund @atan-succ24-lab (s24)
   (case (g '%26 (@atan-%26-loc s24)) (-1 '%27) (0 '%31)))
 
+(defund @atan-%24-fwd (mem loc pred)
+  (let ((s24 (list mem loc pred)))
+    (mv (@atan-succ24-lab s24) (@atan-%24-mem s24) (@atan-%26-loc s24))))
+
 (defund @atan-succ24-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%26 loc) (-1 '%27) (0 '%31)) mem loc))
@@ -425,6 +689,35 @@
 (defund @atan-%24-rev (mem loc pred)
   (@atan-%25-rev mem loc pred))
 
+(defruled @atan-%24-expand-rev-as-@atan-%25-rev
+  (equal (@atan-%24-rev mem loc pred)
+         (let ((s24 (list mem loc pred)))
+           (@atan-%25-rev
+            (@atan-%24-mem s24)
+            (@atan-%24-loc s24)
+            (@atan-%24-pred s24))))
+  :enable (@atan-%24-rev @atan-%24-mem @atan-%24-loc @atan-%24-pred))
+(defruled @atan-%24-expand-rev-as-@atan-%26-rev
+  (equal (@atan-%24-rev mem loc pred)
+         (let ((s24 (list mem loc pred)))
+           (@atan-%26-rev
+            (@atan-%24-mem s24)
+            (@atan-%25-loc s24)
+            (@atan-%24-pred s24))))
+  :enable (@atan-%24-expand-rev-as-@atan-%25-rev @atan-%25-rev @atan-%25-loc @atan-%25-val))
+(defruled @atan-%24-expand-rev-as-@atan-succ24-rev
+  (equal (@atan-%24-rev mem loc pred)
+         (let ((s24 (list mem loc pred)))
+           (@atan-succ24-rev
+            (@atan-%24-mem s24)
+            (@atan-%26-loc s24)
+            (@atan-%24-pred s24))))
+  :enable (@atan-%24-expand-rev-as-@atan-%26-rev @atan-%26-rev @atan-%26-loc @atan-%26-val))
+(defruled @atan-%24-expand-rev-as-fwd
+  (equal (@atan-%24-rev mem loc pred)
+         (@atan-%24-fwd mem loc pred))
+  :enable (@atan-%24-expand-rev-as-@atan-succ24-rev @atan-succ24-rev @atan-succ24-lab @atan-%24-fwd))
+
 (defund @atan-%24-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -432,15 +725,6 @@
     (loc (s '%26 (icmp-sgt-i32 (g '%25 loc) 0) loc))
     (succ (case (g '%26 loc) (-1 '%27) (0 '%31))))
   (mv succ mem loc)))
-
-(defruled @atan-%24-expand-bb
-  (equal (@atan-%24-bb mem loc pred)
-         (@atan-%24-rev mem loc pred))
-  :enable (@atan-%24-bb @atan-%24-rev
-    @atan-%25-rev
-    @atan-%26-rev
-    @atan-succ24-rev)
-  :disable s-diff-s)
 
 (defund @atan-%27-mem (s27)
   (car s27))
@@ -466,6 +750,10 @@
   (declare (ignore s27))
   '%173)
 
+(defund @atan-%27-fwd (mem loc pred)
+  (let ((s27 (list mem loc pred)))
+    (mv (@atan-succ27-lab s27) (@atan-m27.1-mem s27) (@atan-%30-loc s27))))
+
 (defund @atan-succ27-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%173 mem loc))
@@ -481,6 +769,51 @@
 (defund @atan-%27-rev (mem loc pred)
   (@atan-%28-rev mem loc pred))
 
+(defruled @atan-%27-expand-rev-as-@atan-%28-rev
+  (equal (@atan-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@atan-%28-rev
+            (@atan-%27-mem s27)
+            (@atan-%27-loc s27)
+            (@atan-%27-pred s27))))
+  :enable (@atan-%27-rev @atan-%27-mem @atan-%27-loc @atan-%27-pred))
+(defruled @atan-%27-expand-rev-as-@atan-%29-rev
+  (equal (@atan-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@atan-%29-rev
+            (@atan-%27-mem s27)
+            (@atan-%28-loc s27)
+            (@atan-%27-pred s27))))
+  :enable (@atan-%27-expand-rev-as-@atan-%28-rev @atan-%28-rev @atan-%28-loc @atan-%28-val))
+(defruled @atan-%27-expand-rev-as-@atan-%30-rev
+  (equal (@atan-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@atan-%30-rev
+            (@atan-%27-mem s27)
+            (@atan-%29-loc s27)
+            (@atan-%27-pred s27))))
+  :enable (@atan-%27-expand-rev-as-@atan-%29-rev @atan-%29-rev @atan-%29-loc @atan-%29-val))
+(defruled @atan-%27-expand-rev-as-@atan-m27.1-rev
+  (equal (@atan-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@atan-m27.1-rev
+            (@atan-%27-mem s27)
+            (@atan-%30-loc s27)
+            (@atan-%27-pred s27))))
+  :enable (@atan-%27-expand-rev-as-@atan-%30-rev @atan-%30-rev @atan-%30-loc @atan-%30-val))
+(defruled @atan-%27-expand-rev-as-@atan-succ27-rev
+  (equal (@atan-%27-rev mem loc pred)
+         (let ((s27 (list mem loc pred)))
+           (@atan-succ27-rev
+            (@atan-m27.1-mem s27)
+            (@atan-%30-loc s27)
+            (@atan-%27-pred s27))))
+  :enable (@atan-%27-expand-rev-as-@atan-m27.1-rev @atan-m27.1-rev @atan-m27.1-mem))
+(defruled @atan-%27-expand-rev-as-fwd
+  (equal (@atan-%27-rev mem loc pred)
+         (@atan-%27-fwd mem loc pred))
+  :enable (@atan-%27-expand-rev-as-@atan-succ27-rev @atan-succ27-rev @atan-succ27-lab @atan-%27-fwd))
+
 (defund @atan-%27-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -490,17 +823,6 @@
     (mem (store-double (g '%30 loc) (g '%1 loc) mem))
     (succ '%173))
   (mv succ mem loc)))
-
-(defruled @atan-%27-expand-bb
-  (equal (@atan-%27-bb mem loc pred)
-         (@atan-%27-rev mem loc pred))
-  :enable (@atan-%27-bb @atan-%27-rev
-    @atan-%28-rev
-    @atan-%29-rev
-    @atan-%30-rev
-    @atan-m27.1-rev
-    @atan-succ27-rev)
-  :disable s-diff-s)
 
 (defund @atan-%31-mem (s31)
   (car s31))
@@ -530,6 +852,10 @@
   (declare (ignore s31))
   '%173)
 
+(defund @atan-%31-fwd (mem loc pred)
+  (let ((s31 (list mem loc pred)))
+    (mv (@atan-succ31-lab s31) (@atan-m31.1-mem s31) (@atan-%35-loc s31))))
+
 (defund @atan-succ31-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%173 mem loc))
@@ -547,6 +873,59 @@
 (defund @atan-%31-rev (mem loc pred)
   (@atan-%32-rev mem loc pred))
 
+(defruled @atan-%31-expand-rev-as-@atan-%32-rev
+  (equal (@atan-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@atan-%32-rev
+            (@atan-%31-mem s31)
+            (@atan-%31-loc s31)
+            (@atan-%31-pred s31))))
+  :enable (@atan-%31-rev @atan-%31-mem @atan-%31-loc @atan-%31-pred))
+(defruled @atan-%31-expand-rev-as-@atan-%33-rev
+  (equal (@atan-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@atan-%33-rev
+            (@atan-%31-mem s31)
+            (@atan-%32-loc s31)
+            (@atan-%31-pred s31))))
+  :enable (@atan-%31-expand-rev-as-@atan-%32-rev @atan-%32-rev @atan-%32-loc @atan-%32-val))
+(defruled @atan-%31-expand-rev-as-@atan-%34-rev
+  (equal (@atan-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@atan-%34-rev
+            (@atan-%31-mem s31)
+            (@atan-%33-loc s31)
+            (@atan-%31-pred s31))))
+  :enable (@atan-%31-expand-rev-as-@atan-%33-rev @atan-%33-rev @atan-%33-loc @atan-%33-val))
+(defruled @atan-%31-expand-rev-as-@atan-%35-rev
+  (equal (@atan-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@atan-%35-rev
+            (@atan-%31-mem s31)
+            (@atan-%34-loc s31)
+            (@atan-%31-pred s31))))
+  :enable (@atan-%31-expand-rev-as-@atan-%34-rev @atan-%34-rev @atan-%34-loc @atan-%34-val))
+(defruled @atan-%31-expand-rev-as-@atan-m31.1-rev
+  (equal (@atan-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@atan-m31.1-rev
+            (@atan-%31-mem s31)
+            (@atan-%35-loc s31)
+            (@atan-%31-pred s31))))
+  :enable (@atan-%31-expand-rev-as-@atan-%35-rev @atan-%35-rev @atan-%35-loc @atan-%35-val))
+(defruled @atan-%31-expand-rev-as-@atan-succ31-rev
+  (equal (@atan-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@atan-succ31-rev
+            (@atan-m31.1-mem s31)
+            (@atan-%35-loc s31)
+            (@atan-%31-pred s31))))
+  :enable (@atan-%31-expand-rev-as-@atan-m31.1-rev @atan-m31.1-rev @atan-m31.1-mem))
+(defruled @atan-%31-expand-rev-as-fwd
+  (equal (@atan-%31-rev mem loc pred)
+         (@atan-%31-fwd mem loc pred))
+  :enable (@atan-%31-expand-rev-as-@atan-succ31-rev @atan-succ31-rev @atan-succ31-lab @atan-%31-fwd))
+
 (defund @atan-%31-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -557,18 +936,6 @@
     (mem (store-double (g '%35 loc) (g '%1 loc) mem))
     (succ '%173))
   (mv succ mem loc)))
-
-(defruled @atan-%31-expand-bb
-  (equal (@atan-%31-bb mem loc pred)
-         (@atan-%31-rev mem loc pred))
-  :enable (@atan-%31-bb @atan-%31-rev
-    @atan-%32-rev
-    @atan-%33-rev
-    @atan-%34-rev
-    @atan-%35-rev
-    @atan-m31.1-rev
-    @atan-succ31-rev)
-  :disable s-diff-s)
 
 (defund @atan-%36-mem (s36)
   (car s36))
@@ -587,6 +954,10 @@
 (defund @atan-succ36-lab (s36)
   (case (g '%38 (@atan-%38-loc s36)) (-1 '%39) (0 '%50)))
 
+(defund @atan-%36-fwd (mem loc pred)
+  (let ((s36 (list mem loc pred)))
+    (mv (@atan-succ36-lab s36) (@atan-%36-mem s36) (@atan-%38-loc s36))))
+
 (defund @atan-succ36-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%38 loc) (-1 '%39) (0 '%50)) mem loc))
@@ -598,6 +969,35 @@
 (defund @atan-%36-rev (mem loc pred)
   (@atan-%37-rev mem loc pred))
 
+(defruled @atan-%36-expand-rev-as-@atan-%37-rev
+  (equal (@atan-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@atan-%37-rev
+            (@atan-%36-mem s36)
+            (@atan-%36-loc s36)
+            (@atan-%36-pred s36))))
+  :enable (@atan-%36-rev @atan-%36-mem @atan-%36-loc @atan-%36-pred))
+(defruled @atan-%36-expand-rev-as-@atan-%38-rev
+  (equal (@atan-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@atan-%38-rev
+            (@atan-%36-mem s36)
+            (@atan-%37-loc s36)
+            (@atan-%36-pred s36))))
+  :enable (@atan-%36-expand-rev-as-@atan-%37-rev @atan-%37-rev @atan-%37-loc @atan-%37-val))
+(defruled @atan-%36-expand-rev-as-@atan-succ36-rev
+  (equal (@atan-%36-rev mem loc pred)
+         (let ((s36 (list mem loc pred)))
+           (@atan-succ36-rev
+            (@atan-%36-mem s36)
+            (@atan-%38-loc s36)
+            (@atan-%36-pred s36))))
+  :enable (@atan-%36-expand-rev-as-@atan-%38-rev @atan-%38-rev @atan-%38-loc @atan-%38-val))
+(defruled @atan-%36-expand-rev-as-fwd
+  (equal (@atan-%36-rev mem loc pred)
+         (@atan-%36-fwd mem loc pred))
+  :enable (@atan-%36-expand-rev-as-@atan-succ36-rev @atan-succ36-rev @atan-succ36-lab @atan-%36-fwd))
+
 (defund @atan-%36-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -605,15 +1005,6 @@
     (loc (s '%38 (icmp-slt-i32 (g '%37 loc) 1071382528) loc))
     (succ (case (g '%38 loc) (-1 '%39) (0 '%50))))
   (mv succ mem loc)))
-
-(defruled @atan-%36-expand-bb
-  (equal (@atan-%36-bb mem loc pred)
-         (@atan-%36-rev mem loc pred))
-  :enable (@atan-%36-bb @atan-%36-rev
-    @atan-%37-rev
-    @atan-%38-rev
-    @atan-succ36-rev)
-  :disable s-diff-s)
 
 (defund @atan-%39-mem (s39)
   (car s39))
@@ -632,6 +1023,10 @@
 (defund @atan-succ39-lab (s39)
   (case (g '%41 (@atan-%41-loc s39)) (-1 '%42) (0 '%49)))
 
+(defund @atan-%39-fwd (mem loc pred)
+  (let ((s39 (list mem loc pred)))
+    (mv (@atan-succ39-lab s39) (@atan-%39-mem s39) (@atan-%41-loc s39))))
+
 (defund @atan-succ39-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%41 loc) (-1 '%42) (0 '%49)) mem loc))
@@ -643,6 +1038,35 @@
 (defund @atan-%39-rev (mem loc pred)
   (@atan-%40-rev mem loc pred))
 
+(defruled @atan-%39-expand-rev-as-@atan-%40-rev
+  (equal (@atan-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@atan-%40-rev
+            (@atan-%39-mem s39)
+            (@atan-%39-loc s39)
+            (@atan-%39-pred s39))))
+  :enable (@atan-%39-rev @atan-%39-mem @atan-%39-loc @atan-%39-pred))
+(defruled @atan-%39-expand-rev-as-@atan-%41-rev
+  (equal (@atan-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@atan-%41-rev
+            (@atan-%39-mem s39)
+            (@atan-%40-loc s39)
+            (@atan-%39-pred s39))))
+  :enable (@atan-%39-expand-rev-as-@atan-%40-rev @atan-%40-rev @atan-%40-loc @atan-%40-val))
+(defruled @atan-%39-expand-rev-as-@atan-succ39-rev
+  (equal (@atan-%39-rev mem loc pred)
+         (let ((s39 (list mem loc pred)))
+           (@atan-succ39-rev
+            (@atan-%39-mem s39)
+            (@atan-%41-loc s39)
+            (@atan-%39-pred s39))))
+  :enable (@atan-%39-expand-rev-as-@atan-%41-rev @atan-%41-rev @atan-%41-loc @atan-%41-val))
+(defruled @atan-%39-expand-rev-as-fwd
+  (equal (@atan-%39-rev mem loc pred)
+         (@atan-%39-fwd mem loc pred))
+  :enable (@atan-%39-expand-rev-as-@atan-succ39-rev @atan-succ39-rev @atan-succ39-lab @atan-%39-fwd))
+
 (defund @atan-%39-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -650,15 +1074,6 @@
     (loc (s '%41 (icmp-slt-i32 (g '%40 loc) 1042284544) loc))
     (succ (case (g '%41 loc) (-1 '%42) (0 '%49))))
   (mv succ mem loc)))
-
-(defruled @atan-%39-expand-bb
-  (equal (@atan-%39-bb mem loc pred)
-         (@atan-%39-rev mem loc pred))
-  :enable (@atan-%39-bb @atan-%39-rev
-    @atan-%40-rev
-    @atan-%41-rev
-    @atan-succ39-rev)
-  :disable s-diff-s)
 
 (defund @atan-%42-mem (s42)
   (car s42))
@@ -681,6 +1096,10 @@
 (defund @atan-succ42-lab (s42)
   (case (g '%45 (@atan-%45-loc s42)) (-1 '%46) (0 '%48)))
 
+(defund @atan-%42-fwd (mem loc pred)
+  (let ((s42 (list mem loc pred)))
+    (mv (@atan-succ42-lab s42) (@atan-%42-mem s42) (@atan-%45-loc s42))))
+
 (defund @atan-succ42-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%45 loc) (-1 '%46) (0 '%48)) mem loc))
@@ -694,6 +1113,43 @@
 (defund @atan-%42-rev (mem loc pred)
   (@atan-%43-rev mem loc pred))
 
+(defruled @atan-%42-expand-rev-as-@atan-%43-rev
+  (equal (@atan-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@atan-%43-rev
+            (@atan-%42-mem s42)
+            (@atan-%42-loc s42)
+            (@atan-%42-pred s42))))
+  :enable (@atan-%42-rev @atan-%42-mem @atan-%42-loc @atan-%42-pred))
+(defruled @atan-%42-expand-rev-as-@atan-%44-rev
+  (equal (@atan-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@atan-%44-rev
+            (@atan-%42-mem s42)
+            (@atan-%43-loc s42)
+            (@atan-%42-pred s42))))
+  :enable (@atan-%42-expand-rev-as-@atan-%43-rev @atan-%43-rev @atan-%43-loc @atan-%43-val))
+(defruled @atan-%42-expand-rev-as-@atan-%45-rev
+  (equal (@atan-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@atan-%45-rev
+            (@atan-%42-mem s42)
+            (@atan-%44-loc s42)
+            (@atan-%42-pred s42))))
+  :enable (@atan-%42-expand-rev-as-@atan-%44-rev @atan-%44-rev @atan-%44-loc @atan-%44-val))
+(defruled @atan-%42-expand-rev-as-@atan-succ42-rev
+  (equal (@atan-%42-rev mem loc pred)
+         (let ((s42 (list mem loc pred)))
+           (@atan-succ42-rev
+            (@atan-%42-mem s42)
+            (@atan-%45-loc s42)
+            (@atan-%42-pred s42))))
+  :enable (@atan-%42-expand-rev-as-@atan-%45-rev @atan-%45-rev @atan-%45-loc @atan-%45-val))
+(defruled @atan-%42-expand-rev-as-fwd
+  (equal (@atan-%42-rev mem loc pred)
+         (@atan-%42-fwd mem loc pred))
+  :enable (@atan-%42-expand-rev-as-@atan-succ42-rev @atan-succ42-rev @atan-succ42-lab @atan-%42-fwd))
+
 (defund @atan-%42-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -702,16 +1158,6 @@
     (loc (s '%45 (fcmp-ogt-double (g '%44 loc) #x3ff0000000000000) loc))
     (succ (case (g '%45 loc) (-1 '%46) (0 '%48))))
   (mv succ mem loc)))
-
-(defruled @atan-%42-expand-bb
-  (equal (@atan-%42-bb mem loc pred)
-         (@atan-%42-rev mem loc pred))
-  :enable (@atan-%42-bb @atan-%42-rev
-    @atan-%43-rev
-    @atan-%44-rev
-    @atan-%45-rev
-    @atan-succ42-rev)
-  :disable s-diff-s)
 
 (defund @atan-%46-mem (s46)
   (car s46))
@@ -729,6 +1175,10 @@
   (declare (ignore s46))
   '%173)
 
+(defund @atan-%46-fwd (mem loc pred)
+  (let ((s46 (list mem loc pred)))
+    (mv (@atan-succ46-lab s46) (@atan-m46.1-mem s46) (@atan-%47-loc s46))))
+
 (defund @atan-succ46-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%173 mem loc))
@@ -740,6 +1190,35 @@
 (defund @atan-%46-rev (mem loc pred)
   (@atan-%47-rev mem loc pred))
 
+(defruled @atan-%46-expand-rev-as-@atan-%47-rev
+  (equal (@atan-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@atan-%47-rev
+            (@atan-%46-mem s46)
+            (@atan-%46-loc s46)
+            (@atan-%46-pred s46))))
+  :enable (@atan-%46-rev @atan-%46-mem @atan-%46-loc @atan-%46-pred))
+(defruled @atan-%46-expand-rev-as-@atan-m46.1-rev
+  (equal (@atan-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@atan-m46.1-rev
+            (@atan-%46-mem s46)
+            (@atan-%47-loc s46)
+            (@atan-%46-pred s46))))
+  :enable (@atan-%46-expand-rev-as-@atan-%47-rev @atan-%47-rev @atan-%47-loc @atan-%47-val))
+(defruled @atan-%46-expand-rev-as-@atan-succ46-rev
+  (equal (@atan-%46-rev mem loc pred)
+         (let ((s46 (list mem loc pred)))
+           (@atan-succ46-rev
+            (@atan-m46.1-mem s46)
+            (@atan-%47-loc s46)
+            (@atan-%46-pred s46))))
+  :enable (@atan-%46-expand-rev-as-@atan-m46.1-rev @atan-m46.1-rev @atan-m46.1-mem))
+(defruled @atan-%46-expand-rev-as-fwd
+  (equal (@atan-%46-rev mem loc pred)
+         (@atan-%46-fwd mem loc pred))
+  :enable (@atan-%46-expand-rev-as-@atan-succ46-rev @atan-succ46-rev @atan-succ46-lab @atan-%46-fwd))
+
 (defund @atan-%46-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -747,15 +1226,6 @@
     (mem (store-double (g '%47 loc) (g '%1 loc) mem))
     (succ '%173))
   (mv succ mem loc)))
-
-(defruled @atan-%46-expand-bb
-  (equal (@atan-%46-bb mem loc pred)
-         (@atan-%46-rev mem loc pred))
-  :enable (@atan-%46-bb @atan-%46-rev
-    @atan-%47-rev
-    @atan-m46.1-rev
-    @atan-succ46-rev)
-  :disable s-diff-s)
 
 (defund @atan-%48-mem (s48)
   (car s48))
@@ -767,6 +1237,10 @@
   (declare (ignore s48))
   '%49)
 
+(defund @atan-%48-fwd (mem loc pred)
+  (let ((s48 (list mem loc pred)))
+    (mv (@atan-succ48-lab s48) (@atan-%48-mem s48) (@atan-%48-loc s48))))
+
 (defund @atan-succ48-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%49 mem loc))
@@ -774,18 +1248,24 @@
 (defund @atan-%48-rev (mem loc pred)
   (@atan-succ48-rev mem loc pred))
 
+(defruled @atan-%48-expand-rev-as-@atan-succ48-rev
+  (equal (@atan-%48-rev mem loc pred)
+         (let ((s48 (list mem loc pred)))
+           (@atan-succ48-rev
+            (@atan-%48-mem s48)
+            (@atan-%48-loc s48)
+            (@atan-%48-pred s48))))
+  :enable (@atan-%48-rev @atan-%48-mem @atan-%48-loc @atan-%48-pred))
+(defruled @atan-%48-expand-rev-as-fwd
+  (equal (@atan-%48-rev mem loc pred)
+         (@atan-%48-fwd mem loc pred))
+  :enable (@atan-%48-expand-rev-as-@atan-succ48-rev @atan-succ48-rev @atan-succ48-lab @atan-%48-fwd))
+
 (defund @atan-%48-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%49))
   (mv succ mem loc)))
-
-(defruled @atan-%48-expand-bb
-  (equal (@atan-%48-bb mem loc pred)
-         (@atan-%48-rev mem loc pred))
-  :enable (@atan-%48-bb @atan-%48-rev
-    @atan-succ48-rev)
-  :disable s-diff-s)
 
 (defund @atan-%49-mem (s49)
   (car s49))
@@ -799,6 +1279,10 @@
   (declare (ignore s49))
   '%87)
 
+(defund @atan-%49-fwd (mem loc pred)
+  (let ((s49 (list mem loc pred)))
+    (mv (@atan-succ49-lab s49) (@atan-m49.1-mem s49) (@atan-%49-loc s49))))
+
 (defund @atan-succ49-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%87 mem loc))
@@ -808,20 +1292,33 @@
 (defund @atan-%49-rev (mem loc pred)
   (@atan-m49.1-rev mem loc pred))
 
+(defruled @atan-%49-expand-rev-as-@atan-m49.1-rev
+  (equal (@atan-%49-rev mem loc pred)
+         (let ((s49 (list mem loc pred)))
+           (@atan-m49.1-rev
+            (@atan-%49-mem s49)
+            (@atan-%49-loc s49)
+            (@atan-%49-pred s49))))
+  :enable (@atan-%49-rev @atan-%49-mem @atan-%49-loc @atan-%49-pred))
+(defruled @atan-%49-expand-rev-as-@atan-succ49-rev
+  (equal (@atan-%49-rev mem loc pred)
+         (let ((s49 (list mem loc pred)))
+           (@atan-succ49-rev
+            (@atan-m49.1-mem s49)
+            (@atan-%49-loc s49)
+            (@atan-%49-pred s49))))
+  :enable (@atan-%49-expand-rev-as-@atan-m49.1-rev @atan-m49.1-rev @atan-m49.1-mem))
+(defruled @atan-%49-expand-rev-as-fwd
+  (equal (@atan-%49-rev mem loc pred)
+         (@atan-%49-fwd mem loc pred))
+  :enable (@atan-%49-expand-rev-as-@atan-succ49-rev @atan-succ49-rev @atan-succ49-lab @atan-%49-fwd))
+
 (defund @atan-%49-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (mem (store-i32 -1 (g '%id loc) mem))
     (succ '%87))
   (mv succ mem loc)))
-
-(defruled @atan-%49-expand-bb
-  (equal (@atan-%49-bb mem loc pred)
-         (@atan-%49-rev mem loc pred))
-  :enable (@atan-%49-bb @atan-%49-rev
-    @atan-m49.1-rev
-    @atan-succ49-rev)
-  :disable s-diff-s)
 
 (defund @atan-%50-mem (s50)
   (car s50))
@@ -850,6 +1347,10 @@
 (defund @atan-succ50-lab (s50)
   (case (g '%54 (@atan-%54-loc s50)) (-1 '%55) (0 '%72)))
 
+(defund @atan-%50-fwd (mem loc pred)
+  (let ((s50 (list mem loc pred)))
+    (mv (@atan-succ50-lab s50) (@atan-m50.1-mem s50) (@atan-%54-loc s50))))
+
 (defund @atan-succ50-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%54 loc) (-1 '%55) (0 '%72)) mem loc))
@@ -867,6 +1368,59 @@
 (defund @atan-%50-rev (mem loc pred)
   (@atan-%51-rev mem loc pred))
 
+(defruled @atan-%50-expand-rev-as-@atan-%51-rev
+  (equal (@atan-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@atan-%51-rev
+            (@atan-%50-mem s50)
+            (@atan-%50-loc s50)
+            (@atan-%50-pred s50))))
+  :enable (@atan-%50-rev @atan-%50-mem @atan-%50-loc @atan-%50-pred))
+(defruled @atan-%50-expand-rev-as-@atan-%52-rev
+  (equal (@atan-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@atan-%52-rev
+            (@atan-%50-mem s50)
+            (@atan-%51-loc s50)
+            (@atan-%50-pred s50))))
+  :enable (@atan-%50-expand-rev-as-@atan-%51-rev @atan-%51-rev @atan-%51-loc @atan-%51-val))
+(defruled @atan-%50-expand-rev-as-@atan-m50.1-rev
+  (equal (@atan-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@atan-m50.1-rev
+            (@atan-%50-mem s50)
+            (@atan-%52-loc s50)
+            (@atan-%50-pred s50))))
+  :enable (@atan-%50-expand-rev-as-@atan-%52-rev @atan-%52-rev @atan-%52-loc @atan-%52-val))
+(defruled @atan-%50-expand-rev-as-@atan-%53-rev
+  (equal (@atan-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@atan-%53-rev
+            (@atan-m50.1-mem s50)
+            (@atan-%52-loc s50)
+            (@atan-%50-pred s50))))
+  :enable (@atan-%50-expand-rev-as-@atan-m50.1-rev @atan-m50.1-rev @atan-m50.1-mem))
+(defruled @atan-%50-expand-rev-as-@atan-%54-rev
+  (equal (@atan-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@atan-%54-rev
+            (@atan-m50.1-mem s50)
+            (@atan-%53-loc s50)
+            (@atan-%50-pred s50))))
+  :enable (@atan-%50-expand-rev-as-@atan-%53-rev @atan-%53-rev @atan-%53-loc @atan-%53-val))
+(defruled @atan-%50-expand-rev-as-@atan-succ50-rev
+  (equal (@atan-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@atan-succ50-rev
+            (@atan-m50.1-mem s50)
+            (@atan-%54-loc s50)
+            (@atan-%50-pred s50))))
+  :enable (@atan-%50-expand-rev-as-@atan-%54-rev @atan-%54-rev @atan-%54-loc @atan-%54-val))
+(defruled @atan-%50-expand-rev-as-fwd
+  (equal (@atan-%50-rev mem loc pred)
+         (@atan-%50-fwd mem loc pred))
+  :enable (@atan-%50-expand-rev-as-@atan-succ50-rev @atan-succ50-rev @atan-succ50-lab @atan-%50-fwd))
+
 (defund @atan-%50-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -877,18 +1431,6 @@
     (loc (s '%54 (icmp-slt-i32 (g '%53 loc) 1072889856) loc))
     (succ (case (g '%54 loc) (-1 '%55) (0 '%72))))
   (mv succ mem loc)))
-
-(defruled @atan-%50-expand-bb
-  (equal (@atan-%50-bb mem loc pred)
-         (@atan-%50-rev mem loc pred))
-  :enable (@atan-%50-bb @atan-%50-rev
-    @atan-%51-rev
-    @atan-%52-rev
-    @atan-m50.1-rev
-    @atan-%53-rev
-    @atan-%54-rev
-    @atan-succ50-rev)
-  :disable s-diff-s)
 
 (defund @atan-%55-mem (s55)
   (car s55))
@@ -907,6 +1449,10 @@
 (defund @atan-succ55-lab (s55)
   (case (g '%57 (@atan-%57-loc s55)) (-1 '%58) (0 '%65)))
 
+(defund @atan-%55-fwd (mem loc pred)
+  (let ((s55 (list mem loc pred)))
+    (mv (@atan-succ55-lab s55) (@atan-%55-mem s55) (@atan-%57-loc s55))))
+
 (defund @atan-succ55-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%57 loc) (-1 '%58) (0 '%65)) mem loc))
@@ -918,6 +1464,35 @@
 (defund @atan-%55-rev (mem loc pred)
   (@atan-%56-rev mem loc pred))
 
+(defruled @atan-%55-expand-rev-as-@atan-%56-rev
+  (equal (@atan-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@atan-%56-rev
+            (@atan-%55-mem s55)
+            (@atan-%55-loc s55)
+            (@atan-%55-pred s55))))
+  :enable (@atan-%55-rev @atan-%55-mem @atan-%55-loc @atan-%55-pred))
+(defruled @atan-%55-expand-rev-as-@atan-%57-rev
+  (equal (@atan-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@atan-%57-rev
+            (@atan-%55-mem s55)
+            (@atan-%56-loc s55)
+            (@atan-%55-pred s55))))
+  :enable (@atan-%55-expand-rev-as-@atan-%56-rev @atan-%56-rev @atan-%56-loc @atan-%56-val))
+(defruled @atan-%55-expand-rev-as-@atan-succ55-rev
+  (equal (@atan-%55-rev mem loc pred)
+         (let ((s55 (list mem loc pred)))
+           (@atan-succ55-rev
+            (@atan-%55-mem s55)
+            (@atan-%57-loc s55)
+            (@atan-%55-pred s55))))
+  :enable (@atan-%55-expand-rev-as-@atan-%57-rev @atan-%57-rev @atan-%57-loc @atan-%57-val))
+(defruled @atan-%55-expand-rev-as-fwd
+  (equal (@atan-%55-rev mem loc pred)
+         (@atan-%55-fwd mem loc pred))
+  :enable (@atan-%55-expand-rev-as-@atan-succ55-rev @atan-succ55-rev @atan-succ55-lab @atan-%55-fwd))
+
 (defund @atan-%55-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -925,15 +1500,6 @@
     (loc (s '%57 (icmp-slt-i32 (g '%56 loc) 1072037888) loc))
     (succ (case (g '%57 loc) (-1 '%58) (0 '%65))))
   (mv succ mem loc)))
-
-(defruled @atan-%55-expand-bb
-  (equal (@atan-%55-bb mem loc pred)
-         (@atan-%55-rev mem loc pred))
-  :enable (@atan-%55-bb @atan-%55-rev
-    @atan-%56-rev
-    @atan-%57-rev
-    @atan-succ55-rev)
-  :disable s-diff-s)
 
 (defund @atan-%58-mem (s58)
   (car s58))
@@ -973,6 +1539,10 @@
   (declare (ignore s58))
   '%71)
 
+(defund @atan-%58-fwd (mem loc pred)
+  (let ((s58 (list mem loc pred)))
+    (mv (@atan-succ58-lab s58) (@atan-m58.2-mem s58) (@atan-%64-loc s58))))
+
 (defund @atan-succ58-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%71 mem loc))
@@ -996,6 +1566,83 @@
 (defund @atan-%58-rev (mem loc pred)
   (@atan-m58.1-rev mem loc pred))
 
+(defruled @atan-%58-expand-rev-as-@atan-m58.1-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-m58.1-rev
+            (@atan-%58-mem s58)
+            (@atan-%58-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-rev @atan-%58-mem @atan-%58-loc @atan-%58-pred))
+(defruled @atan-%58-expand-rev-as-@atan-%59-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-%59-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%58-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-m58.1-rev @atan-m58.1-rev @atan-m58.1-mem))
+(defruled @atan-%58-expand-rev-as-@atan-%60-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-%60-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%59-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-%59-rev @atan-%59-rev @atan-%59-loc @atan-%59-val))
+(defruled @atan-%58-expand-rev-as-@atan-%61-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-%61-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%60-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-%60-rev @atan-%60-rev @atan-%60-loc @atan-%60-val))
+(defruled @atan-%58-expand-rev-as-@atan-%62-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-%62-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%61-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-%61-rev @atan-%61-rev @atan-%61-loc @atan-%61-val))
+(defruled @atan-%58-expand-rev-as-@atan-%63-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-%63-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%62-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-%62-rev @atan-%62-rev @atan-%62-loc @atan-%62-val))
+(defruled @atan-%58-expand-rev-as-@atan-%64-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-%64-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%63-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-%63-rev @atan-%63-rev @atan-%63-loc @atan-%63-val))
+(defruled @atan-%58-expand-rev-as-@atan-m58.2-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-m58.2-rev
+            (@atan-m58.1-mem s58)
+            (@atan-%64-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-%64-rev @atan-%64-rev @atan-%64-loc @atan-%64-val))
+(defruled @atan-%58-expand-rev-as-@atan-succ58-rev
+  (equal (@atan-%58-rev mem loc pred)
+         (let ((s58 (list mem loc pred)))
+           (@atan-succ58-rev
+            (@atan-m58.2-mem s58)
+            (@atan-%64-loc s58)
+            (@atan-%58-pred s58))))
+  :enable (@atan-%58-expand-rev-as-@atan-m58.2-rev @atan-m58.2-rev @atan-m58.2-mem))
+(defruled @atan-%58-expand-rev-as-fwd
+  (equal (@atan-%58-rev mem loc pred)
+         (@atan-%58-fwd mem loc pred))
+  :enable (@atan-%58-expand-rev-as-@atan-succ58-rev @atan-succ58-rev @atan-succ58-lab @atan-%58-fwd))
+
 (defund @atan-%58-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1009,21 +1656,6 @@
     (mem (store-double (g '%64 loc) (g '%2 loc) mem))
     (succ '%71))
   (mv succ mem loc)))
-
-(defruled @atan-%58-expand-bb
-  (equal (@atan-%58-bb mem loc pred)
-         (@atan-%58-rev mem loc pred))
-  :enable (@atan-%58-bb @atan-%58-rev
-    @atan-m58.1-rev
-    @atan-%59-rev
-    @atan-%60-rev
-    @atan-%61-rev
-    @atan-%62-rev
-    @atan-%63-rev
-    @atan-%64-rev
-    @atan-m58.2-rev
-    @atan-succ58-rev)
-  :disable s-diff-s)
 
 (defund @atan-%65-mem (s65)
   (car s65))
@@ -1059,6 +1691,10 @@
   (declare (ignore s65))
   '%71)
 
+(defund @atan-%65-fwd (mem loc pred)
+  (let ((s65 (list mem loc pred)))
+    (mv (@atan-succ65-lab s65) (@atan-m65.2-mem s65) (@atan-%70-loc s65))))
+
 (defund @atan-succ65-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%71 mem loc))
@@ -1080,6 +1716,75 @@
 (defund @atan-%65-rev (mem loc pred)
   (@atan-m65.1-rev mem loc pred))
 
+(defruled @atan-%65-expand-rev-as-@atan-m65.1-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-m65.1-rev
+            (@atan-%65-mem s65)
+            (@atan-%65-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-rev @atan-%65-mem @atan-%65-loc @atan-%65-pred))
+(defruled @atan-%65-expand-rev-as-@atan-%66-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-%66-rev
+            (@atan-m65.1-mem s65)
+            (@atan-%65-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-m65.1-rev @atan-m65.1-rev @atan-m65.1-mem))
+(defruled @atan-%65-expand-rev-as-@atan-%67-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-%67-rev
+            (@atan-m65.1-mem s65)
+            (@atan-%66-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-%66-rev @atan-%66-rev @atan-%66-loc @atan-%66-val))
+(defruled @atan-%65-expand-rev-as-@atan-%68-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-%68-rev
+            (@atan-m65.1-mem s65)
+            (@atan-%67-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-%67-rev @atan-%67-rev @atan-%67-loc @atan-%67-val))
+(defruled @atan-%65-expand-rev-as-@atan-%69-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-%69-rev
+            (@atan-m65.1-mem s65)
+            (@atan-%68-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-%68-rev @atan-%68-rev @atan-%68-loc @atan-%68-val))
+(defruled @atan-%65-expand-rev-as-@atan-%70-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-%70-rev
+            (@atan-m65.1-mem s65)
+            (@atan-%69-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-%69-rev @atan-%69-rev @atan-%69-loc @atan-%69-val))
+(defruled @atan-%65-expand-rev-as-@atan-m65.2-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-m65.2-rev
+            (@atan-m65.1-mem s65)
+            (@atan-%70-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-%70-rev @atan-%70-rev @atan-%70-loc @atan-%70-val))
+(defruled @atan-%65-expand-rev-as-@atan-succ65-rev
+  (equal (@atan-%65-rev mem loc pred)
+         (let ((s65 (list mem loc pred)))
+           (@atan-succ65-rev
+            (@atan-m65.2-mem s65)
+            (@atan-%70-loc s65)
+            (@atan-%65-pred s65))))
+  :enable (@atan-%65-expand-rev-as-@atan-m65.2-rev @atan-m65.2-rev @atan-m65.2-mem))
+(defruled @atan-%65-expand-rev-as-fwd
+  (equal (@atan-%65-rev mem loc pred)
+         (@atan-%65-fwd mem loc pred))
+  :enable (@atan-%65-expand-rev-as-@atan-succ65-rev @atan-succ65-rev @atan-succ65-lab @atan-%65-fwd))
+
 (defund @atan-%65-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1093,20 +1798,6 @@
     (succ '%71))
   (mv succ mem loc)))
 
-(defruled @atan-%65-expand-bb
-  (equal (@atan-%65-bb mem loc pred)
-         (@atan-%65-rev mem loc pred))
-  :enable (@atan-%65-bb @atan-%65-rev
-    @atan-m65.1-rev
-    @atan-%66-rev
-    @atan-%67-rev
-    @atan-%68-rev
-    @atan-%69-rev
-    @atan-%70-rev
-    @atan-m65.2-rev
-    @atan-succ65-rev)
-  :disable s-diff-s)
-
 (defund @atan-%71-mem (s71)
   (car s71))
 (defund @atan-%71-loc (s71)
@@ -1117,6 +1808,10 @@
   (declare (ignore s71))
   '%86)
 
+(defund @atan-%71-fwd (mem loc pred)
+  (let ((s71 (list mem loc pred)))
+    (mv (@atan-succ71-lab s71) (@atan-%71-mem s71) (@atan-%71-loc s71))))
+
 (defund @atan-succ71-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%86 mem loc))
@@ -1124,18 +1819,24 @@
 (defund @atan-%71-rev (mem loc pred)
   (@atan-succ71-rev mem loc pred))
 
+(defruled @atan-%71-expand-rev-as-@atan-succ71-rev
+  (equal (@atan-%71-rev mem loc pred)
+         (let ((s71 (list mem loc pred)))
+           (@atan-succ71-rev
+            (@atan-%71-mem s71)
+            (@atan-%71-loc s71)
+            (@atan-%71-pred s71))))
+  :enable (@atan-%71-rev @atan-%71-mem @atan-%71-loc @atan-%71-pred))
+(defruled @atan-%71-expand-rev-as-fwd
+  (equal (@atan-%71-rev mem loc pred)
+         (@atan-%71-fwd mem loc pred))
+  :enable (@atan-%71-expand-rev-as-@atan-succ71-rev @atan-succ71-rev @atan-succ71-lab @atan-%71-fwd))
+
 (defund @atan-%71-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%86))
   (mv succ mem loc)))
-
-(defruled @atan-%71-expand-bb
-  (equal (@atan-%71-bb mem loc pred)
-         (@atan-%71-rev mem loc pred))
-  :enable (@atan-%71-bb @atan-%71-rev
-    @atan-succ71-rev)
-  :disable s-diff-s)
 
 (defund @atan-%72-mem (s72)
   (car s72))
@@ -1154,6 +1855,10 @@
 (defund @atan-succ72-lab (s72)
   (case (g '%74 (@atan-%74-loc s72)) (-1 '%75) (0 '%82)))
 
+(defund @atan-%72-fwd (mem loc pred)
+  (let ((s72 (list mem loc pred)))
+    (mv (@atan-succ72-lab s72) (@atan-%72-mem s72) (@atan-%74-loc s72))))
+
 (defund @atan-succ72-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%74 loc) (-1 '%75) (0 '%82)) mem loc))
@@ -1165,6 +1870,35 @@
 (defund @atan-%72-rev (mem loc pred)
   (@atan-%73-rev mem loc pred))
 
+(defruled @atan-%72-expand-rev-as-@atan-%73-rev
+  (equal (@atan-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@atan-%73-rev
+            (@atan-%72-mem s72)
+            (@atan-%72-loc s72)
+            (@atan-%72-pred s72))))
+  :enable (@atan-%72-rev @atan-%72-mem @atan-%72-loc @atan-%72-pred))
+(defruled @atan-%72-expand-rev-as-@atan-%74-rev
+  (equal (@atan-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@atan-%74-rev
+            (@atan-%72-mem s72)
+            (@atan-%73-loc s72)
+            (@atan-%72-pred s72))))
+  :enable (@atan-%72-expand-rev-as-@atan-%73-rev @atan-%73-rev @atan-%73-loc @atan-%73-val))
+(defruled @atan-%72-expand-rev-as-@atan-succ72-rev
+  (equal (@atan-%72-rev mem loc pred)
+         (let ((s72 (list mem loc pred)))
+           (@atan-succ72-rev
+            (@atan-%72-mem s72)
+            (@atan-%74-loc s72)
+            (@atan-%72-pred s72))))
+  :enable (@atan-%72-expand-rev-as-@atan-%74-rev @atan-%74-rev @atan-%74-loc @atan-%74-val))
+(defruled @atan-%72-expand-rev-as-fwd
+  (equal (@atan-%72-rev mem loc pred)
+         (@atan-%72-fwd mem loc pred))
+  :enable (@atan-%72-expand-rev-as-@atan-succ72-rev @atan-succ72-rev @atan-succ72-lab @atan-%72-fwd))
+
 (defund @atan-%72-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1172,15 +1906,6 @@
     (loc (s '%74 (icmp-slt-i32 (g '%73 loc) 1073971200) loc))
     (succ (case (g '%74 loc) (-1 '%75) (0 '%82))))
   (mv succ mem loc)))
-
-(defruled @atan-%72-expand-bb
-  (equal (@atan-%72-bb mem loc pred)
-         (@atan-%72-rev mem loc pred))
-  :enable (@atan-%72-bb @atan-%72-rev
-    @atan-%73-rev
-    @atan-%74-rev
-    @atan-succ72-rev)
-  :disable s-diff-s)
 
 (defund @atan-%75-mem (s75)
   (car s75))
@@ -1220,6 +1945,10 @@
   (declare (ignore s75))
   '%85)
 
+(defund @atan-%75-fwd (mem loc pred)
+  (let ((s75 (list mem loc pred)))
+    (mv (@atan-succ75-lab s75) (@atan-m75.2-mem s75) (@atan-%81-loc s75))))
+
 (defund @atan-succ75-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%85 mem loc))
@@ -1243,6 +1972,83 @@
 (defund @atan-%75-rev (mem loc pred)
   (@atan-m75.1-rev mem loc pred))
 
+(defruled @atan-%75-expand-rev-as-@atan-m75.1-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-m75.1-rev
+            (@atan-%75-mem s75)
+            (@atan-%75-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-rev @atan-%75-mem @atan-%75-loc @atan-%75-pred))
+(defruled @atan-%75-expand-rev-as-@atan-%76-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-%76-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%75-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-m75.1-rev @atan-m75.1-rev @atan-m75.1-mem))
+(defruled @atan-%75-expand-rev-as-@atan-%77-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-%77-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%76-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-%76-rev @atan-%76-rev @atan-%76-loc @atan-%76-val))
+(defruled @atan-%75-expand-rev-as-@atan-%78-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-%78-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%77-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-%77-rev @atan-%77-rev @atan-%77-loc @atan-%77-val))
+(defruled @atan-%75-expand-rev-as-@atan-%79-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-%79-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%78-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-%78-rev @atan-%78-rev @atan-%78-loc @atan-%78-val))
+(defruled @atan-%75-expand-rev-as-@atan-%80-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-%80-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%79-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-%79-rev @atan-%79-rev @atan-%79-loc @atan-%79-val))
+(defruled @atan-%75-expand-rev-as-@atan-%81-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-%81-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%80-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-%80-rev @atan-%80-rev @atan-%80-loc @atan-%80-val))
+(defruled @atan-%75-expand-rev-as-@atan-m75.2-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-m75.2-rev
+            (@atan-m75.1-mem s75)
+            (@atan-%81-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-%81-rev @atan-%81-rev @atan-%81-loc @atan-%81-val))
+(defruled @atan-%75-expand-rev-as-@atan-succ75-rev
+  (equal (@atan-%75-rev mem loc pred)
+         (let ((s75 (list mem loc pred)))
+           (@atan-succ75-rev
+            (@atan-m75.2-mem s75)
+            (@atan-%81-loc s75)
+            (@atan-%75-pred s75))))
+  :enable (@atan-%75-expand-rev-as-@atan-m75.2-rev @atan-m75.2-rev @atan-m75.2-mem))
+(defruled @atan-%75-expand-rev-as-fwd
+  (equal (@atan-%75-rev mem loc pred)
+         (@atan-%75-fwd mem loc pred))
+  :enable (@atan-%75-expand-rev-as-@atan-succ75-rev @atan-succ75-rev @atan-succ75-lab @atan-%75-fwd))
+
 (defund @atan-%75-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1256,21 +2062,6 @@
     (mem (store-double (g '%81 loc) (g '%2 loc) mem))
     (succ '%85))
   (mv succ mem loc)))
-
-(defruled @atan-%75-expand-bb
-  (equal (@atan-%75-bb mem loc pred)
-         (@atan-%75-rev mem loc pred))
-  :enable (@atan-%75-bb @atan-%75-rev
-    @atan-m75.1-rev
-    @atan-%76-rev
-    @atan-%77-rev
-    @atan-%78-rev
-    @atan-%79-rev
-    @atan-%80-rev
-    @atan-%81-rev
-    @atan-m75.2-rev
-    @atan-succ75-rev)
-  :disable s-diff-s)
 
 (defund @atan-%82-mem (s82)
   (car s82))
@@ -1294,6 +2085,10 @@
   (declare (ignore s82))
   '%85)
 
+(defund @atan-%82-fwd (mem loc pred)
+  (let ((s82 (list mem loc pred)))
+    (mv (@atan-succ82-lab s82) (@atan-m82.2-mem s82) (@atan-%84-loc s82))))
+
 (defund @atan-succ82-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%85 mem loc))
@@ -1309,6 +2104,51 @@
 (defund @atan-%82-rev (mem loc pred)
   (@atan-m82.1-rev mem loc pred))
 
+(defruled @atan-%82-expand-rev-as-@atan-m82.1-rev
+  (equal (@atan-%82-rev mem loc pred)
+         (let ((s82 (list mem loc pred)))
+           (@atan-m82.1-rev
+            (@atan-%82-mem s82)
+            (@atan-%82-loc s82)
+            (@atan-%82-pred s82))))
+  :enable (@atan-%82-rev @atan-%82-mem @atan-%82-loc @atan-%82-pred))
+(defruled @atan-%82-expand-rev-as-@atan-%83-rev
+  (equal (@atan-%82-rev mem loc pred)
+         (let ((s82 (list mem loc pred)))
+           (@atan-%83-rev
+            (@atan-m82.1-mem s82)
+            (@atan-%82-loc s82)
+            (@atan-%82-pred s82))))
+  :enable (@atan-%82-expand-rev-as-@atan-m82.1-rev @atan-m82.1-rev @atan-m82.1-mem))
+(defruled @atan-%82-expand-rev-as-@atan-%84-rev
+  (equal (@atan-%82-rev mem loc pred)
+         (let ((s82 (list mem loc pred)))
+           (@atan-%84-rev
+            (@atan-m82.1-mem s82)
+            (@atan-%83-loc s82)
+            (@atan-%82-pred s82))))
+  :enable (@atan-%82-expand-rev-as-@atan-%83-rev @atan-%83-rev @atan-%83-loc @atan-%83-val))
+(defruled @atan-%82-expand-rev-as-@atan-m82.2-rev
+  (equal (@atan-%82-rev mem loc pred)
+         (let ((s82 (list mem loc pred)))
+           (@atan-m82.2-rev
+            (@atan-m82.1-mem s82)
+            (@atan-%84-loc s82)
+            (@atan-%82-pred s82))))
+  :enable (@atan-%82-expand-rev-as-@atan-%84-rev @atan-%84-rev @atan-%84-loc @atan-%84-val))
+(defruled @atan-%82-expand-rev-as-@atan-succ82-rev
+  (equal (@atan-%82-rev mem loc pred)
+         (let ((s82 (list mem loc pred)))
+           (@atan-succ82-rev
+            (@atan-m82.2-mem s82)
+            (@atan-%84-loc s82)
+            (@atan-%82-pred s82))))
+  :enable (@atan-%82-expand-rev-as-@atan-m82.2-rev @atan-m82.2-rev @atan-m82.2-mem))
+(defruled @atan-%82-expand-rev-as-fwd
+  (equal (@atan-%82-rev mem loc pred)
+         (@atan-%82-fwd mem loc pred))
+  :enable (@atan-%82-expand-rev-as-@atan-succ82-rev @atan-succ82-rev @atan-succ82-lab @atan-%82-fwd))
+
 (defund @atan-%82-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1318,17 +2158,6 @@
     (mem (store-double (g '%84 loc) (g '%2 loc) mem))
     (succ '%85))
   (mv succ mem loc)))
-
-(defruled @atan-%82-expand-bb
-  (equal (@atan-%82-bb mem loc pred)
-         (@atan-%82-rev mem loc pred))
-  :enable (@atan-%82-bb @atan-%82-rev
-    @atan-m82.1-rev
-    @atan-%83-rev
-    @atan-%84-rev
-    @atan-m82.2-rev
-    @atan-succ82-rev)
-  :disable s-diff-s)
 
 (defund @atan-%85-mem (s85)
   (car s85))
@@ -1340,6 +2169,10 @@
   (declare (ignore s85))
   '%86)
 
+(defund @atan-%85-fwd (mem loc pred)
+  (let ((s85 (list mem loc pred)))
+    (mv (@atan-succ85-lab s85) (@atan-%85-mem s85) (@atan-%85-loc s85))))
+
 (defund @atan-succ85-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%86 mem loc))
@@ -1347,18 +2180,24 @@
 (defund @atan-%85-rev (mem loc pred)
   (@atan-succ85-rev mem loc pred))
 
+(defruled @atan-%85-expand-rev-as-@atan-succ85-rev
+  (equal (@atan-%85-rev mem loc pred)
+         (let ((s85 (list mem loc pred)))
+           (@atan-succ85-rev
+            (@atan-%85-mem s85)
+            (@atan-%85-loc s85)
+            (@atan-%85-pred s85))))
+  :enable (@atan-%85-rev @atan-%85-mem @atan-%85-loc @atan-%85-pred))
+(defruled @atan-%85-expand-rev-as-fwd
+  (equal (@atan-%85-rev mem loc pred)
+         (@atan-%85-fwd mem loc pred))
+  :enable (@atan-%85-expand-rev-as-@atan-succ85-rev @atan-succ85-rev @atan-succ85-lab @atan-%85-fwd))
+
 (defund @atan-%85-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%86))
   (mv succ mem loc)))
-
-(defruled @atan-%85-expand-bb
-  (equal (@atan-%85-bb mem loc pred)
-         (@atan-%85-rev mem loc pred))
-  :enable (@atan-%85-bb @atan-%85-rev
-    @atan-succ85-rev)
-  :disable s-diff-s)
 
 (defund @atan-%86-mem (s86)
   (car s86))
@@ -1370,6 +2209,10 @@
   (declare (ignore s86))
   '%87)
 
+(defund @atan-%86-fwd (mem loc pred)
+  (let ((s86 (list mem loc pred)))
+    (mv (@atan-succ86-lab s86) (@atan-%86-mem s86) (@atan-%86-loc s86))))
+
 (defund @atan-succ86-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%87 mem loc))
@@ -1377,18 +2220,24 @@
 (defund @atan-%86-rev (mem loc pred)
   (@atan-succ86-rev mem loc pred))
 
+(defruled @atan-%86-expand-rev-as-@atan-succ86-rev
+  (equal (@atan-%86-rev mem loc pred)
+         (let ((s86 (list mem loc pred)))
+           (@atan-succ86-rev
+            (@atan-%86-mem s86)
+            (@atan-%86-loc s86)
+            (@atan-%86-pred s86))))
+  :enable (@atan-%86-rev @atan-%86-mem @atan-%86-loc @atan-%86-pred))
+(defruled @atan-%86-expand-rev-as-fwd
+  (equal (@atan-%86-rev mem loc pred)
+         (@atan-%86-fwd mem loc pred))
+  :enable (@atan-%86-expand-rev-as-@atan-succ86-rev @atan-succ86-rev @atan-succ86-lab @atan-%86-fwd))
+
 (defund @atan-%86-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (succ '%87))
   (mv succ mem loc)))
-
-(defruled @atan-%86-expand-bb
-  (equal (@atan-%86-bb mem loc pred)
-         (@atan-%86-rev mem loc pred))
-  :enable (@atan-%86-bb @atan-%86-rev
-    @atan-succ86-rev)
-  :disable s-diff-s)
 
 (defund @atan-%87-mem (s87)
   (car s87))
@@ -1607,6 +2456,10 @@
 (defund @atan-succ87-lab (s87)
   (case (g '%137 (@atan-%137-loc s87)) (-1 '%138) (0 '%146)))
 
+(defund @atan-%87-fwd (mem loc pred)
+  (let ((s87 (list mem loc pred)))
+    (mv (@atan-succ87-lab s87) (@atan-m87.4-mem s87) (@atan-%137-loc s87))))
+
 (defund @atan-succ87-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%137 loc) (-1 '%138) (0 '%146)) mem loc))
@@ -1722,6 +2575,451 @@
 (defund @atan-%87-rev (mem loc pred)
   (@atan-%88-rev mem loc pred))
 
+(defruled @atan-%87-expand-rev-as-@atan-%88-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%88-rev
+            (@atan-%87-mem s87)
+            (@atan-%87-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-rev @atan-%87-mem @atan-%87-loc @atan-%87-pred))
+(defruled @atan-%87-expand-rev-as-@atan-%89-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%89-rev
+            (@atan-%87-mem s87)
+            (@atan-%88-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%88-rev @atan-%88-rev @atan-%88-loc @atan-%88-val))
+(defruled @atan-%87-expand-rev-as-@atan-%90-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%90-rev
+            (@atan-%87-mem s87)
+            (@atan-%89-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%89-rev @atan-%89-rev @atan-%89-loc @atan-%89-val))
+(defruled @atan-%87-expand-rev-as-@atan-m87.1-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-m87.1-rev
+            (@atan-%87-mem s87)
+            (@atan-%90-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%90-rev @atan-%90-rev @atan-%90-loc @atan-%90-val))
+(defruled @atan-%87-expand-rev-as-@atan-%91-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%91-rev
+            (@atan-m87.1-mem s87)
+            (@atan-%90-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-m87.1-rev @atan-m87.1-rev @atan-m87.1-mem))
+(defruled @atan-%87-expand-rev-as-@atan-%92-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%92-rev
+            (@atan-m87.1-mem s87)
+            (@atan-%91-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%91-rev @atan-%91-rev @atan-%91-loc @atan-%91-val))
+(defruled @atan-%87-expand-rev-as-@atan-%93-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%93-rev
+            (@atan-m87.1-mem s87)
+            (@atan-%92-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%92-rev @atan-%92-rev @atan-%92-loc @atan-%92-val))
+(defruled @atan-%87-expand-rev-as-@atan-m87.2-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-m87.2-rev
+            (@atan-m87.1-mem s87)
+            (@atan-%93-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%93-rev @atan-%93-rev @atan-%93-loc @atan-%93-val))
+(defruled @atan-%87-expand-rev-as-@atan-%94-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%94-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%93-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-m87.2-rev @atan-m87.2-rev @atan-m87.2-mem))
+(defruled @atan-%87-expand-rev-as-@atan-%95-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%95-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%94-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%94-rev @atan-%94-rev @atan-%94-loc @atan-%94-val))
+(defruled @atan-%87-expand-rev-as-@atan-%96-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%96-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%95-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%95-rev @atan-%95-rev @atan-%95-loc @atan-%95-val))
+(defruled @atan-%87-expand-rev-as-@atan-%97-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%97-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%96-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%96-rev @atan-%96-rev @atan-%96-loc @atan-%96-val))
+(defruled @atan-%87-expand-rev-as-@atan-%98-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%98-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%97-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%97-rev @atan-%97-rev @atan-%97-loc @atan-%97-val))
+(defruled @atan-%87-expand-rev-as-@atan-%99-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%99-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%98-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%98-rev @atan-%98-rev @atan-%98-loc @atan-%98-val))
+(defruled @atan-%87-expand-rev-as-@atan-%100-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%100-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%99-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%99-rev @atan-%99-rev @atan-%99-loc @atan-%99-val))
+(defruled @atan-%87-expand-rev-as-@atan-%101-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%101-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%100-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%100-rev @atan-%100-rev @atan-%100-loc @atan-%100-val))
+(defruled @atan-%87-expand-rev-as-@atan-%102-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%102-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%101-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%101-rev @atan-%101-rev @atan-%101-loc @atan-%101-val))
+(defruled @atan-%87-expand-rev-as-@atan-%103-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%103-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%102-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%102-rev @atan-%102-rev @atan-%102-loc @atan-%102-val))
+(defruled @atan-%87-expand-rev-as-@atan-%104-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%104-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%103-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%103-rev @atan-%103-rev @atan-%103-loc @atan-%103-val))
+(defruled @atan-%87-expand-rev-as-@atan-%105-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%105-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%104-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%104-rev @atan-%104-rev @atan-%104-loc @atan-%104-val))
+(defruled @atan-%87-expand-rev-as-@atan-%106-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%106-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%105-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%105-rev @atan-%105-rev @atan-%105-loc @atan-%105-val))
+(defruled @atan-%87-expand-rev-as-@atan-%107-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%107-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%106-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%106-rev @atan-%106-rev @atan-%106-loc @atan-%106-val))
+(defruled @atan-%87-expand-rev-as-@atan-%108-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%108-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%107-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%107-rev @atan-%107-rev @atan-%107-loc @atan-%107-val))
+(defruled @atan-%87-expand-rev-as-@atan-%109-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%109-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%108-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%108-rev @atan-%108-rev @atan-%108-loc @atan-%108-val))
+(defruled @atan-%87-expand-rev-as-@atan-%110-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%110-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%109-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%109-rev @atan-%109-rev @atan-%109-loc @atan-%109-val))
+(defruled @atan-%87-expand-rev-as-@atan-%111-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%111-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%110-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%110-rev @atan-%110-rev @atan-%110-loc @atan-%110-val))
+(defruled @atan-%87-expand-rev-as-@atan-%112-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%112-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%111-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%111-rev @atan-%111-rev @atan-%111-loc @atan-%111-val))
+(defruled @atan-%87-expand-rev-as-@atan-%113-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%113-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%112-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%112-rev @atan-%112-rev @atan-%112-loc @atan-%112-val))
+(defruled @atan-%87-expand-rev-as-@atan-%114-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%114-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%113-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%113-rev @atan-%113-rev @atan-%113-loc @atan-%113-val))
+(defruled @atan-%87-expand-rev-as-@atan-%115-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%115-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%114-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%114-rev @atan-%114-rev @atan-%114-loc @atan-%114-val))
+(defruled @atan-%87-expand-rev-as-@atan-%116-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%116-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%115-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%115-rev @atan-%115-rev @atan-%115-loc @atan-%115-val))
+(defruled @atan-%87-expand-rev-as-@atan-m87.3-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-m87.3-rev
+            (@atan-m87.2-mem s87)
+            (@atan-%116-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%116-rev @atan-%116-rev @atan-%116-loc @atan-%116-val))
+(defruled @atan-%87-expand-rev-as-@atan-%117-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%117-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%116-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-m87.3-rev @atan-m87.3-rev @atan-m87.3-mem))
+(defruled @atan-%87-expand-rev-as-@atan-%118-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%118-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%117-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%117-rev @atan-%117-rev @atan-%117-loc @atan-%117-val))
+(defruled @atan-%87-expand-rev-as-@atan-%119-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%119-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%118-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%118-rev @atan-%118-rev @atan-%118-loc @atan-%118-val))
+(defruled @atan-%87-expand-rev-as-@atan-%120-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%120-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%119-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%119-rev @atan-%119-rev @atan-%119-loc @atan-%119-val))
+(defruled @atan-%87-expand-rev-as-@atan-%121-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%121-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%120-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%120-rev @atan-%120-rev @atan-%120-loc @atan-%120-val))
+(defruled @atan-%87-expand-rev-as-@atan-%122-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%122-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%121-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%121-rev @atan-%121-rev @atan-%121-loc @atan-%121-val))
+(defruled @atan-%87-expand-rev-as-@atan-%123-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%123-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%122-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%122-rev @atan-%122-rev @atan-%122-loc @atan-%122-val))
+(defruled @atan-%87-expand-rev-as-@atan-%124-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%124-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%123-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%123-rev @atan-%123-rev @atan-%123-loc @atan-%123-val))
+(defruled @atan-%87-expand-rev-as-@atan-%125-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%125-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%124-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%124-rev @atan-%124-rev @atan-%124-loc @atan-%124-val))
+(defruled @atan-%87-expand-rev-as-@atan-%126-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%126-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%125-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%125-rev @atan-%125-rev @atan-%125-loc @atan-%125-val))
+(defruled @atan-%87-expand-rev-as-@atan-%127-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%127-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%126-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%126-rev @atan-%126-rev @atan-%126-loc @atan-%126-val))
+(defruled @atan-%87-expand-rev-as-@atan-%128-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%128-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%127-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%127-rev @atan-%127-rev @atan-%127-loc @atan-%127-val))
+(defruled @atan-%87-expand-rev-as-@atan-%129-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%129-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%128-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%128-rev @atan-%128-rev @atan-%128-loc @atan-%128-val))
+(defruled @atan-%87-expand-rev-as-@atan-%130-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%130-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%129-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%129-rev @atan-%129-rev @atan-%129-loc @atan-%129-val))
+(defruled @atan-%87-expand-rev-as-@atan-%131-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%131-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%130-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%130-rev @atan-%130-rev @atan-%130-loc @atan-%130-val))
+(defruled @atan-%87-expand-rev-as-@atan-%132-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%132-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%131-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%131-rev @atan-%131-rev @atan-%131-loc @atan-%131-val))
+(defruled @atan-%87-expand-rev-as-@atan-%133-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%133-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%132-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%132-rev @atan-%132-rev @atan-%132-loc @atan-%132-val))
+(defruled @atan-%87-expand-rev-as-@atan-%134-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%134-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%133-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%133-rev @atan-%133-rev @atan-%133-loc @atan-%133-val))
+(defruled @atan-%87-expand-rev-as-@atan-%135-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%135-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%134-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%134-rev @atan-%134-rev @atan-%134-loc @atan-%134-val))
+(defruled @atan-%87-expand-rev-as-@atan-m87.4-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-m87.4-rev
+            (@atan-m87.3-mem s87)
+            (@atan-%135-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%135-rev @atan-%135-rev @atan-%135-loc @atan-%135-val))
+(defruled @atan-%87-expand-rev-as-@atan-%136-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%136-rev
+            (@atan-m87.4-mem s87)
+            (@atan-%135-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-m87.4-rev @atan-m87.4-rev @atan-m87.4-mem))
+(defruled @atan-%87-expand-rev-as-@atan-%137-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-%137-rev
+            (@atan-m87.4-mem s87)
+            (@atan-%136-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%136-rev @atan-%136-rev @atan-%136-loc @atan-%136-val))
+(defruled @atan-%87-expand-rev-as-@atan-succ87-rev
+  (equal (@atan-%87-rev mem loc pred)
+         (let ((s87 (list mem loc pred)))
+           (@atan-succ87-rev
+            (@atan-m87.4-mem s87)
+            (@atan-%137-loc s87)
+            (@atan-%87-pred s87))))
+  :enable (@atan-%87-expand-rev-as-@atan-%137-rev @atan-%137-rev @atan-%137-loc @atan-%137-val))
+(defruled @atan-%87-expand-rev-as-fwd
+  (equal (@atan-%87-rev mem loc pred)
+         (@atan-%87-fwd mem loc pred))
+  :enable (@atan-%87-expand-rev-as-@atan-succ87-rev @atan-succ87-rev @atan-succ87-lab @atan-%87-fwd))
+
 (defund @atan-%87-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1782,67 +3080,6 @@
     (succ (case (g '%137 loc) (-1 '%138) (0 '%146))))
   (mv succ mem loc)))
 
-(defruled @atan-%87-expand-bb
-  (equal (@atan-%87-bb mem loc pred)
-         (@atan-%87-rev mem loc pred))
-  :enable (@atan-%87-bb @atan-%87-rev
-    @atan-%88-rev
-    @atan-%89-rev
-    @atan-%90-rev
-    @atan-m87.1-rev
-    @atan-%91-rev
-    @atan-%92-rev
-    @atan-%93-rev
-    @atan-m87.2-rev
-    @atan-%94-rev
-    @atan-%95-rev
-    @atan-%96-rev
-    @atan-%97-rev
-    @atan-%98-rev
-    @atan-%99-rev
-    @atan-%100-rev
-    @atan-%101-rev
-    @atan-%102-rev
-    @atan-%103-rev
-    @atan-%104-rev
-    @atan-%105-rev
-    @atan-%106-rev
-    @atan-%107-rev
-    @atan-%108-rev
-    @atan-%109-rev
-    @atan-%110-rev
-    @atan-%111-rev
-    @atan-%112-rev
-    @atan-%113-rev
-    @atan-%114-rev
-    @atan-%115-rev
-    @atan-%116-rev
-    @atan-m87.3-rev
-    @atan-%117-rev
-    @atan-%118-rev
-    @atan-%119-rev
-    @atan-%120-rev
-    @atan-%121-rev
-    @atan-%122-rev
-    @atan-%123-rev
-    @atan-%124-rev
-    @atan-%125-rev
-    @atan-%126-rev
-    @atan-%127-rev
-    @atan-%128-rev
-    @atan-%129-rev
-    @atan-%130-rev
-    @atan-%131-rev
-    @atan-%132-rev
-    @atan-%133-rev
-    @atan-%134-rev
-    @atan-%135-rev
-    @atan-m87.4-rev
-    @atan-%136-rev
-    @atan-%137-rev
-    @atan-succ87-rev)
-  :disable s-diff-s)
-
 (defund @atan-%138-mem (s138)
   (car s138))
 (defund @atan-%138-loc (s138)
@@ -1883,6 +3120,10 @@
   (declare (ignore s138))
   '%173)
 
+(defund @atan-%138-fwd (mem loc pred)
+  (let ((s138 (list mem loc pred)))
+    (mv (@atan-succ138-lab s138) (@atan-m138.1-mem s138) (@atan-%145-loc s138))))
+
 (defund @atan-succ138-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%173 mem loc))
@@ -1906,6 +3147,83 @@
 (defund @atan-%138-rev (mem loc pred)
   (@atan-%139-rev mem loc pred))
 
+(defruled @atan-%138-expand-rev-as-@atan-%139-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%139-rev
+            (@atan-%138-mem s138)
+            (@atan-%138-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-rev @atan-%138-mem @atan-%138-loc @atan-%138-pred))
+(defruled @atan-%138-expand-rev-as-@atan-%140-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%140-rev
+            (@atan-%138-mem s138)
+            (@atan-%139-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%139-rev @atan-%139-rev @atan-%139-loc @atan-%139-val))
+(defruled @atan-%138-expand-rev-as-@atan-%141-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%141-rev
+            (@atan-%138-mem s138)
+            (@atan-%140-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%140-rev @atan-%140-rev @atan-%140-loc @atan-%140-val))
+(defruled @atan-%138-expand-rev-as-@atan-%142-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%142-rev
+            (@atan-%138-mem s138)
+            (@atan-%141-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%141-rev @atan-%141-rev @atan-%141-loc @atan-%141-val))
+(defruled @atan-%138-expand-rev-as-@atan-%143-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%143-rev
+            (@atan-%138-mem s138)
+            (@atan-%142-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%142-rev @atan-%142-rev @atan-%142-loc @atan-%142-val))
+(defruled @atan-%138-expand-rev-as-@atan-%144-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%144-rev
+            (@atan-%138-mem s138)
+            (@atan-%143-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%143-rev @atan-%143-rev @atan-%143-loc @atan-%143-val))
+(defruled @atan-%138-expand-rev-as-@atan-%145-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-%145-rev
+            (@atan-%138-mem s138)
+            (@atan-%144-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%144-rev @atan-%144-rev @atan-%144-loc @atan-%144-val))
+(defruled @atan-%138-expand-rev-as-@atan-m138.1-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-m138.1-rev
+            (@atan-%138-mem s138)
+            (@atan-%145-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-%145-rev @atan-%145-rev @atan-%145-loc @atan-%145-val))
+(defruled @atan-%138-expand-rev-as-@atan-succ138-rev
+  (equal (@atan-%138-rev mem loc pred)
+         (let ((s138 (list mem loc pred)))
+           (@atan-succ138-rev
+            (@atan-m138.1-mem s138)
+            (@atan-%145-loc s138)
+            (@atan-%138-pred s138))))
+  :enable (@atan-%138-expand-rev-as-@atan-m138.1-rev @atan-m138.1-rev @atan-m138.1-mem))
+(defruled @atan-%138-expand-rev-as-fwd
+  (equal (@atan-%138-rev mem loc pred)
+         (@atan-%138-fwd mem loc pred))
+  :enable (@atan-%138-expand-rev-as-@atan-succ138-rev @atan-succ138-rev @atan-succ138-lab @atan-%138-fwd))
+
 (defund @atan-%138-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1919,21 +3237,6 @@
     (mem (store-double (g '%145 loc) (g '%1 loc) mem))
     (succ '%173))
   (mv succ mem loc)))
-
-(defruled @atan-%138-expand-bb
-  (equal (@atan-%138-bb mem loc pred)
-         (@atan-%138-rev mem loc pred))
-  :enable (@atan-%138-bb @atan-%138-rev
-    @atan-%139-rev
-    @atan-%140-rev
-    @atan-%141-rev
-    @atan-%142-rev
-    @atan-%143-rev
-    @atan-%144-rev
-    @atan-%145-rev
-    @atan-m138.1-rev
-    @atan-succ138-rev)
-  :disable s-diff-s)
 
 (defund @atan-%146-mem (s146)
   (car s146))
@@ -2022,6 +3325,10 @@
 (defund @atan-succ146-lab (s146)
   (case (g '%165 (@atan-%165-loc s146)) (-1 '%166) (0 '%169)))
 
+(defund @atan-%146-fwd (mem loc pred)
+  (let ((s146 (list mem loc pred)))
+    (mv (@atan-succ146-lab s146) (@atan-m146.1-mem s146) (@atan-%165-loc s146))))
+
 (defund @atan-succ146-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%165 loc) (-1 '%166) (0 '%169)) mem loc))
@@ -2069,6 +3376,179 @@
 (defund @atan-%146-rev (mem loc pred)
   (@atan-%147-rev mem loc pred))
 
+(defruled @atan-%146-expand-rev-as-@atan-%147-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%147-rev
+            (@atan-%146-mem s146)
+            (@atan-%146-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-rev @atan-%146-mem @atan-%146-loc @atan-%146-pred))
+(defruled @atan-%146-expand-rev-as-@atan-%148-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%148-rev
+            (@atan-%146-mem s146)
+            (@atan-%147-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%147-rev @atan-%147-rev @atan-%147-loc @atan-%147-val))
+(defruled @atan-%146-expand-rev-as-@atan-%149-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%149-rev
+            (@atan-%146-mem s146)
+            (@atan-%148-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%148-rev @atan-%148-rev @atan-%148-loc @atan-%148-val))
+(defruled @atan-%146-expand-rev-as-@atan-%150-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%150-rev
+            (@atan-%146-mem s146)
+            (@atan-%149-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%149-rev @atan-%149-rev @atan-%149-loc @atan-%149-val))
+(defruled @atan-%146-expand-rev-as-@atan-%151-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%151-rev
+            (@atan-%146-mem s146)
+            (@atan-%150-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%150-rev @atan-%150-rev @atan-%150-loc @atan-%150-val))
+(defruled @atan-%146-expand-rev-as-@atan-%152-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%152-rev
+            (@atan-%146-mem s146)
+            (@atan-%151-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%151-rev @atan-%151-rev @atan-%151-loc @atan-%151-val))
+(defruled @atan-%146-expand-rev-as-@atan-%153-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%153-rev
+            (@atan-%146-mem s146)
+            (@atan-%152-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%152-rev @atan-%152-rev @atan-%152-loc @atan-%152-val))
+(defruled @atan-%146-expand-rev-as-@atan-%154-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%154-rev
+            (@atan-%146-mem s146)
+            (@atan-%153-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%153-rev @atan-%153-rev @atan-%153-loc @atan-%153-val))
+(defruled @atan-%146-expand-rev-as-@atan-%155-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%155-rev
+            (@atan-%146-mem s146)
+            (@atan-%154-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%154-rev @atan-%154-rev @atan-%154-loc @atan-%154-val))
+(defruled @atan-%146-expand-rev-as-@atan-%156-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%156-rev
+            (@atan-%146-mem s146)
+            (@atan-%155-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%155-rev @atan-%155-rev @atan-%155-loc @atan-%155-val))
+(defruled @atan-%146-expand-rev-as-@atan-%157-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%157-rev
+            (@atan-%146-mem s146)
+            (@atan-%156-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%156-rev @atan-%156-rev @atan-%156-loc @atan-%156-val))
+(defruled @atan-%146-expand-rev-as-@atan-%158-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%158-rev
+            (@atan-%146-mem s146)
+            (@atan-%157-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%157-rev @atan-%157-rev @atan-%157-loc @atan-%157-val))
+(defruled @atan-%146-expand-rev-as-@atan-%159-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%159-rev
+            (@atan-%146-mem s146)
+            (@atan-%158-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%158-rev @atan-%158-rev @atan-%158-loc @atan-%158-val))
+(defruled @atan-%146-expand-rev-as-@atan-%160-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%160-rev
+            (@atan-%146-mem s146)
+            (@atan-%159-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%159-rev @atan-%159-rev @atan-%159-loc @atan-%159-val))
+(defruled @atan-%146-expand-rev-as-@atan-%161-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%161-rev
+            (@atan-%146-mem s146)
+            (@atan-%160-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%160-rev @atan-%160-rev @atan-%160-loc @atan-%160-val))
+(defruled @atan-%146-expand-rev-as-@atan-%162-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%162-rev
+            (@atan-%146-mem s146)
+            (@atan-%161-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%161-rev @atan-%161-rev @atan-%161-loc @atan-%161-val))
+(defruled @atan-%146-expand-rev-as-@atan-%163-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%163-rev
+            (@atan-%146-mem s146)
+            (@atan-%162-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%162-rev @atan-%162-rev @atan-%162-loc @atan-%162-val))
+(defruled @atan-%146-expand-rev-as-@atan-m146.1-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-m146.1-rev
+            (@atan-%146-mem s146)
+            (@atan-%163-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%163-rev @atan-%163-rev @atan-%163-loc @atan-%163-val))
+(defruled @atan-%146-expand-rev-as-@atan-%164-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%164-rev
+            (@atan-m146.1-mem s146)
+            (@atan-%163-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-m146.1-rev @atan-m146.1-rev @atan-m146.1-mem))
+(defruled @atan-%146-expand-rev-as-@atan-%165-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-%165-rev
+            (@atan-m146.1-mem s146)
+            (@atan-%164-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%164-rev @atan-%164-rev @atan-%164-loc @atan-%164-val))
+(defruled @atan-%146-expand-rev-as-@atan-succ146-rev
+  (equal (@atan-%146-rev mem loc pred)
+         (let ((s146 (list mem loc pred)))
+           (@atan-succ146-rev
+            (@atan-m146.1-mem s146)
+            (@atan-%165-loc s146)
+            (@atan-%146-pred s146))))
+  :enable (@atan-%146-expand-rev-as-@atan-%165-rev @atan-%165-rev @atan-%165-loc @atan-%165-val))
+(defruled @atan-%146-expand-rev-as-fwd
+  (equal (@atan-%146-rev mem loc pred)
+         (@atan-%146-fwd mem loc pred))
+  :enable (@atan-%146-expand-rev-as-@atan-succ146-rev @atan-succ146-rev @atan-succ146-lab @atan-%146-fwd))
+
 (defund @atan-%146-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2095,33 +3575,6 @@
     (succ (case (g '%165 loc) (-1 '%166) (0 '%169))))
   (mv succ mem loc)))
 
-(defruled @atan-%146-expand-bb
-  (equal (@atan-%146-bb mem loc pred)
-         (@atan-%146-rev mem loc pred))
-  :enable (@atan-%146-bb @atan-%146-rev
-    @atan-%147-rev
-    @atan-%148-rev
-    @atan-%149-rev
-    @atan-%150-rev
-    @atan-%151-rev
-    @atan-%152-rev
-    @atan-%153-rev
-    @atan-%154-rev
-    @atan-%155-rev
-    @atan-%156-rev
-    @atan-%157-rev
-    @atan-%158-rev
-    @atan-%159-rev
-    @atan-%160-rev
-    @atan-%161-rev
-    @atan-%162-rev
-    @atan-%163-rev
-    @atan-m146.1-rev
-    @atan-%164-rev
-    @atan-%165-rev
-    @atan-succ146-rev)
-  :disable s-diff-s)
-
 (defund @atan-%166-mem (s166)
   (car s166))
 (defund @atan-%166-loc (s166)
@@ -2140,6 +3593,10 @@
   (declare (ignore s166))
   '%171)
 
+(defund @atan-%166-fwd (mem loc pred)
+  (let ((s166 (list mem loc pred)))
+    (mv (@atan-succ166-lab s166) (@atan-%166-mem s166) (@atan-%168-loc s166))))
+
 (defund @atan-succ166-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%171 mem loc))
@@ -2151,6 +3608,35 @@
 (defund @atan-%166-rev (mem loc pred)
   (@atan-%167-rev mem loc pred))
 
+(defruled @atan-%166-expand-rev-as-@atan-%167-rev
+  (equal (@atan-%166-rev mem loc pred)
+         (let ((s166 (list mem loc pred)))
+           (@atan-%167-rev
+            (@atan-%166-mem s166)
+            (@atan-%166-loc s166)
+            (@atan-%166-pred s166))))
+  :enable (@atan-%166-rev @atan-%166-mem @atan-%166-loc @atan-%166-pred))
+(defruled @atan-%166-expand-rev-as-@atan-%168-rev
+  (equal (@atan-%166-rev mem loc pred)
+         (let ((s166 (list mem loc pred)))
+           (@atan-%168-rev
+            (@atan-%166-mem s166)
+            (@atan-%167-loc s166)
+            (@atan-%166-pred s166))))
+  :enable (@atan-%166-expand-rev-as-@atan-%167-rev @atan-%167-rev @atan-%167-loc @atan-%167-val))
+(defruled @atan-%166-expand-rev-as-@atan-succ166-rev
+  (equal (@atan-%166-rev mem loc pred)
+         (let ((s166 (list mem loc pred)))
+           (@atan-succ166-rev
+            (@atan-%166-mem s166)
+            (@atan-%168-loc s166)
+            (@atan-%166-pred s166))))
+  :enable (@atan-%166-expand-rev-as-@atan-%168-rev @atan-%168-rev @atan-%168-loc @atan-%168-val))
+(defruled @atan-%166-expand-rev-as-fwd
+  (equal (@atan-%166-rev mem loc pred)
+         (@atan-%166-fwd mem loc pred))
+  :enable (@atan-%166-expand-rev-as-@atan-succ166-rev @atan-succ166-rev @atan-succ166-lab @atan-%166-fwd))
+
 (defund @atan-%166-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -2158,15 +3644,6 @@
     (loc (s '%168 (fsub-double #x8000000000000000 (g '%167 loc)) loc))
     (succ '%171))
   (mv succ mem loc)))
-
-(defruled @atan-%166-expand-bb
-  (equal (@atan-%166-bb mem loc pred)
-         (@atan-%166-rev mem loc pred))
-  :enable (@atan-%166-bb @atan-%166-rev
-    @atan-%167-rev
-    @atan-%168-rev
-    @atan-succ166-rev)
-  :disable s-diff-s)
 
 (defund @atan-%169-mem (s169)
   (car s169))
@@ -2182,6 +3659,10 @@
   (declare (ignore s169))
   '%171)
 
+(defund @atan-%169-fwd (mem loc pred)
+  (let ((s169 (list mem loc pred)))
+    (mv (@atan-succ169-lab s169) (@atan-%169-mem s169) (@atan-%170-loc s169))))
+
 (defund @atan-succ169-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%171 mem loc))
@@ -2191,20 +3672,33 @@
 (defund @atan-%169-rev (mem loc pred)
   (@atan-%170-rev mem loc pred))
 
+(defruled @atan-%169-expand-rev-as-@atan-%170-rev
+  (equal (@atan-%169-rev mem loc pred)
+         (let ((s169 (list mem loc pred)))
+           (@atan-%170-rev
+            (@atan-%169-mem s169)
+            (@atan-%169-loc s169)
+            (@atan-%169-pred s169))))
+  :enable (@atan-%169-rev @atan-%169-mem @atan-%169-loc @atan-%169-pred))
+(defruled @atan-%169-expand-rev-as-@atan-succ169-rev
+  (equal (@atan-%169-rev mem loc pred)
+         (let ((s169 (list mem loc pred)))
+           (@atan-succ169-rev
+            (@atan-%169-mem s169)
+            (@atan-%170-loc s169)
+            (@atan-%169-pred s169))))
+  :enable (@atan-%169-expand-rev-as-@atan-%170-rev @atan-%170-rev @atan-%170-loc @atan-%170-val))
+(defruled @atan-%169-expand-rev-as-fwd
+  (equal (@atan-%169-rev mem loc pred)
+         (@atan-%169-fwd mem loc pred))
+  :enable (@atan-%169-expand-rev-as-@atan-succ169-rev @atan-succ169-rev @atan-succ169-lab @atan-%169-fwd))
+
 (defund @atan-%169-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%170 (load-double (g '%z loc) mem) loc))
     (succ '%171))
   (mv succ mem loc)))
-
-(defruled @atan-%169-expand-bb
-  (equal (@atan-%169-bb mem loc pred)
-         (@atan-%169-rev mem loc pred))
-  :enable (@atan-%169-bb @atan-%169-rev
-    @atan-%170-rev
-    @atan-succ169-rev)
-  :disable s-diff-s)
 
 (defund @atan-%171-mem (s171)
   (car s171))
@@ -2222,6 +3716,10 @@
   (declare (ignore s171))
   '%173)
 
+(defund @atan-%171-fwd (mem loc pred)
+  (let ((s171 (list mem loc pred)))
+    (mv (@atan-succ171-lab s171) (@atan-m171.1-mem s171) (@atan-%172-loc s171))))
+
 (defund @atan-succ171-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%173 mem loc))
@@ -2233,21 +3731,41 @@
 (defund @atan-%171-rev (mem loc pred)
   (@atan-%172-rev mem loc pred))
 
+(defruled @atan-%171-expand-rev-as-@atan-%172-rev
+  (equal (@atan-%171-rev mem loc pred)
+         (let ((s171 (list mem loc pred)))
+           (@atan-%172-rev
+            (@atan-%171-mem s171)
+            (@atan-%171-loc s171)
+            (@atan-%171-pred s171))))
+  :enable (@atan-%171-rev @atan-%171-mem @atan-%171-loc @atan-%171-pred))
+(defruled @atan-%171-expand-rev-as-@atan-m171.1-rev
+  (equal (@atan-%171-rev mem loc pred)
+         (let ((s171 (list mem loc pred)))
+           (@atan-m171.1-rev
+            (@atan-%171-mem s171)
+            (@atan-%172-loc s171)
+            (@atan-%171-pred s171))))
+  :enable (@atan-%171-expand-rev-as-@atan-%172-rev @atan-%172-rev @atan-%172-loc @atan-%172-val))
+(defruled @atan-%171-expand-rev-as-@atan-succ171-rev
+  (equal (@atan-%171-rev mem loc pred)
+         (let ((s171 (list mem loc pred)))
+           (@atan-succ171-rev
+            (@atan-m171.1-mem s171)
+            (@atan-%172-loc s171)
+            (@atan-%171-pred s171))))
+  :enable (@atan-%171-expand-rev-as-@atan-m171.1-rev @atan-m171.1-rev @atan-m171.1-mem))
+(defruled @atan-%171-expand-rev-as-fwd
+  (equal (@atan-%171-rev mem loc pred)
+         (@atan-%171-fwd mem loc pred))
+  :enable (@atan-%171-expand-rev-as-@atan-succ171-rev @atan-succ171-rev @atan-succ171-lab @atan-%171-fwd))
+
 (defund @atan-%171-bb (mem loc pred)
   (b* (
     (loc (s '%172 (case pred (%166 (g '%168 loc)) (%169 (g '%170 loc))) loc))
     (mem (store-double (g '%172 loc) (g '%1 loc) mem))
     (succ '%173))
   (mv succ mem loc)))
-
-(defruled @atan-%171-expand-bb
-  (equal (@atan-%171-bb mem loc pred)
-         (@atan-%171-rev mem loc pred))
-  :enable (@atan-%171-bb @atan-%171-rev
-    @atan-%172-rev
-    @atan-m171.1-rev
-    @atan-succ171-rev)
-  :disable s-diff-s)
 
 (defund @atan-%173-mem (s173)
   (car s173))
@@ -2263,6 +3781,10 @@
   (declare (ignore s173))
   'ret)
 
+(defund @atan-%173-fwd (mem loc pred)
+  (let ((s173 (list mem loc pred)))
+    (mv (@atan-succ173-lab s173) (@atan-%173-mem s173) (@atan-%174-loc s173))))
+
 (defund @atan-succ173-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -2272,20 +3794,33 @@
 (defund @atan-%173-rev (mem loc pred)
   (@atan-%174-rev mem loc pred))
 
+(defruled @atan-%173-expand-rev-as-@atan-%174-rev
+  (equal (@atan-%173-rev mem loc pred)
+         (let ((s173 (list mem loc pred)))
+           (@atan-%174-rev
+            (@atan-%173-mem s173)
+            (@atan-%173-loc s173)
+            (@atan-%173-pred s173))))
+  :enable (@atan-%173-rev @atan-%173-mem @atan-%173-loc @atan-%173-pred))
+(defruled @atan-%173-expand-rev-as-@atan-succ173-rev
+  (equal (@atan-%173-rev mem loc pred)
+         (let ((s173 (list mem loc pred)))
+           (@atan-succ173-rev
+            (@atan-%173-mem s173)
+            (@atan-%174-loc s173)
+            (@atan-%173-pred s173))))
+  :enable (@atan-%173-expand-rev-as-@atan-%174-rev @atan-%174-rev @atan-%174-loc @atan-%174-val))
+(defruled @atan-%173-expand-rev-as-fwd
+  (equal (@atan-%173-rev mem loc pred)
+         (@atan-%173-fwd mem loc pred))
+  :enable (@atan-%173-expand-rev-as-@atan-succ173-rev @atan-succ173-rev @atan-succ173-lab @atan-%173-fwd))
+
 (defund @atan-%173-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%174 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @atan-%173-expand-bb
-  (equal (@atan-%173-bb mem loc pred)
-         (@atan-%173-rev mem loc pred))
-  :enable (@atan-%173-bb @atan-%173-rev
-    @atan-%174-rev
-    @atan-succ173-rev)
-  :disable s-diff-s)
 
 (defund @atan-step (label mem loc pred)
   (case label

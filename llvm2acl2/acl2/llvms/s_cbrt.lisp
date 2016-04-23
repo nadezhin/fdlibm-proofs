@@ -97,6 +97,10 @@
 (defund @cbrt-succ0-lab (s0)
   (case (g '%12 (@cbrt-%12-loc s0)) (-1 '%13) (0 '%17)))
 
+(defund @cbrt-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@cbrt-succ0-lab s0) (@cbrt-m0.5-mem s0) (@cbrt-%12-loc s0))))
+
 (defund @cbrt-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%12 loc) (-1 '%13) (0 '%17)) mem loc))
@@ -150,6 +154,203 @@
 (defund @cbrt-%0-rev (mem loc pred)
   (@cbrt-%1-rev mem loc pred))
 
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%1-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%1-rev
+            (@cbrt-%0-mem s0)
+            (@cbrt-%0-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-rev @cbrt-%0-mem @cbrt-%0-loc @cbrt-%0-pred))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%2-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%2-rev
+            (@cbrt-%1-mem s0)
+            (@cbrt-%1-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%1-rev @cbrt-%1-rev @cbrt-%1-mem @cbrt-%1-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%hx-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%hx-rev
+            (@cbrt-%2-mem s0)
+            (@cbrt-%2-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%2-rev @cbrt-%2-rev @cbrt-%2-mem @cbrt-%2-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%r-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%r-rev
+            (@cbrt-%hx-mem s0)
+            (@cbrt-%hx-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%hx-rev @cbrt-%hx-rev @cbrt-%hx-mem @cbrt-%hx-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%s-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%s-rev
+            (@cbrt-%r-mem s0)
+            (@cbrt-%r-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%r-rev @cbrt-%r-rev @cbrt-%r-mem @cbrt-%r-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%t-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%t-rev
+            (@cbrt-%s-mem s0)
+            (@cbrt-%s-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%s-rev @cbrt-%s-rev @cbrt-%s-mem @cbrt-%s-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%w-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%w-rev
+            (@cbrt-%t-mem s0)
+            (@cbrt-%t-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%t-rev @cbrt-%t-rev @cbrt-%t-mem @cbrt-%t-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%sign-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%sign-rev
+            (@cbrt-%w-mem s0)
+            (@cbrt-%w-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%w-rev @cbrt-%w-rev @cbrt-%w-mem @cbrt-%w-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-m0.1-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-m0.1-rev
+            (@cbrt-%sign-mem s0)
+            (@cbrt-%sign-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%sign-rev @cbrt-%sign-rev @cbrt-%sign-mem @cbrt-%sign-loc))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-m0.2-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-m0.2-rev
+            (@cbrt-m0.1-mem s0)
+            (@cbrt-%sign-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-m0.1-rev @cbrt-m0.1-rev @cbrt-m0.1-mem))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%3-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%3-rev
+            (@cbrt-m0.2-mem s0)
+            (@cbrt-%sign-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-m0.2-rev @cbrt-m0.2-rev @cbrt-m0.2-mem))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%4-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%4-rev
+            (@cbrt-m0.2-mem s0)
+            (@cbrt-%3-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%3-rev @cbrt-%3-rev @cbrt-%3-loc @cbrt-%3-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%5-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%5-rev
+            (@cbrt-m0.2-mem s0)
+            (@cbrt-%4-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%4-rev @cbrt-%4-rev @cbrt-%4-loc @cbrt-%4-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-m0.3-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-m0.3-rev
+            (@cbrt-m0.2-mem s0)
+            (@cbrt-%5-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%5-rev @cbrt-%5-rev @cbrt-%5-loc @cbrt-%5-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%6-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%6-rev
+            (@cbrt-m0.3-mem s0)
+            (@cbrt-%5-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-m0.3-rev @cbrt-m0.3-rev @cbrt-m0.3-mem))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%7-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%7-rev
+            (@cbrt-m0.3-mem s0)
+            (@cbrt-%6-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%6-rev @cbrt-%6-rev @cbrt-%6-loc @cbrt-%6-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-m0.4-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-m0.4-rev
+            (@cbrt-m0.3-mem s0)
+            (@cbrt-%7-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%7-rev @cbrt-%7-rev @cbrt-%7-loc @cbrt-%7-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%8-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%8-rev
+            (@cbrt-m0.4-mem s0)
+            (@cbrt-%7-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-m0.4-rev @cbrt-m0.4-rev @cbrt-m0.4-mem))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%9-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%9-rev
+            (@cbrt-m0.4-mem s0)
+            (@cbrt-%8-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%8-rev @cbrt-%8-rev @cbrt-%8-loc @cbrt-%8-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%10-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%10-rev
+            (@cbrt-m0.4-mem s0)
+            (@cbrt-%9-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%9-rev @cbrt-%9-rev @cbrt-%9-loc @cbrt-%9-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-m0.5-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-m0.5-rev
+            (@cbrt-m0.4-mem s0)
+            (@cbrt-%10-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%10-rev @cbrt-%10-rev @cbrt-%10-loc @cbrt-%10-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%11-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%11-rev
+            (@cbrt-m0.5-mem s0)
+            (@cbrt-%10-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-m0.5-rev @cbrt-m0.5-rev @cbrt-m0.5-mem))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-%12-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-%12-rev
+            (@cbrt-m0.5-mem s0)
+            (@cbrt-%11-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%11-rev @cbrt-%11-rev @cbrt-%11-loc @cbrt-%11-val))
+(defruled @cbrt-%0-expand-rev-as-@cbrt-succ0-rev
+  (equal (@cbrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@cbrt-succ0-rev
+            (@cbrt-m0.5-mem s0)
+            (@cbrt-%12-loc s0)
+            (@cbrt-%0-pred s0))))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-%12-rev @cbrt-%12-rev @cbrt-%12-loc @cbrt-%12-val))
+(defruled @cbrt-%0-expand-rev-as-fwd
+  (equal (@cbrt-%0-rev mem loc pred)
+         (@cbrt-%0-fwd mem loc pred))
+  :enable (@cbrt-%0-expand-rev-as-@cbrt-succ0-rev @cbrt-succ0-rev @cbrt-succ0-lab @cbrt-%0-fwd))
+
 (defund @cbrt-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -187,36 +388,6 @@
     (succ (case (g '%12 loc) (-1 '%13) (0 '%17))))
   (mv succ mem loc)))
 
-(defruled @cbrt-%0-expand-bb
-  (equal (@cbrt-%0-bb mem loc pred)
-         (@cbrt-%0-rev mem loc pred))
-  :enable (@cbrt-%0-bb @cbrt-%0-rev
-    @cbrt-%1-rev
-    @cbrt-%2-rev
-    @cbrt-%hx-rev
-    @cbrt-%r-rev
-    @cbrt-%s-rev
-    @cbrt-%t-rev
-    @cbrt-%w-rev
-    @cbrt-%sign-rev
-    @cbrt-m0.1-rev
-    @cbrt-m0.2-rev
-    @cbrt-%3-rev
-    @cbrt-%4-rev
-    @cbrt-%5-rev
-    @cbrt-m0.3-rev
-    @cbrt-%6-rev
-    @cbrt-%7-rev
-    @cbrt-m0.4-rev
-    @cbrt-%8-rev
-    @cbrt-%9-rev
-    @cbrt-%10-rev
-    @cbrt-m0.5-rev
-    @cbrt-%11-rev
-    @cbrt-%12-rev
-    @cbrt-succ0-rev)
-  :disable s-diff-s)
-
 (defund @cbrt-%13-mem (s13)
   (car s13))
 (defund @cbrt-%13-loc (s13)
@@ -241,6 +412,10 @@
   (declare (ignore s13))
   '%101)
 
+(defund @cbrt-%13-fwd (mem loc pred)
+  (let ((s13 (list mem loc pred)))
+    (mv (@cbrt-succ13-lab s13) (@cbrt-m13.1-mem s13) (@cbrt-%16-loc s13))))
+
 (defund @cbrt-succ13-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%101 mem loc))
@@ -256,6 +431,51 @@
 (defund @cbrt-%13-rev (mem loc pred)
   (@cbrt-%14-rev mem loc pred))
 
+(defruled @cbrt-%13-expand-rev-as-@cbrt-%14-rev
+  (equal (@cbrt-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@cbrt-%14-rev
+            (@cbrt-%13-mem s13)
+            (@cbrt-%13-loc s13)
+            (@cbrt-%13-pred s13))))
+  :enable (@cbrt-%13-rev @cbrt-%13-mem @cbrt-%13-loc @cbrt-%13-pred))
+(defruled @cbrt-%13-expand-rev-as-@cbrt-%15-rev
+  (equal (@cbrt-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@cbrt-%15-rev
+            (@cbrt-%13-mem s13)
+            (@cbrt-%14-loc s13)
+            (@cbrt-%13-pred s13))))
+  :enable (@cbrt-%13-expand-rev-as-@cbrt-%14-rev @cbrt-%14-rev @cbrt-%14-loc @cbrt-%14-val))
+(defruled @cbrt-%13-expand-rev-as-@cbrt-%16-rev
+  (equal (@cbrt-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@cbrt-%16-rev
+            (@cbrt-%13-mem s13)
+            (@cbrt-%15-loc s13)
+            (@cbrt-%13-pred s13))))
+  :enable (@cbrt-%13-expand-rev-as-@cbrt-%15-rev @cbrt-%15-rev @cbrt-%15-loc @cbrt-%15-val))
+(defruled @cbrt-%13-expand-rev-as-@cbrt-m13.1-rev
+  (equal (@cbrt-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@cbrt-m13.1-rev
+            (@cbrt-%13-mem s13)
+            (@cbrt-%16-loc s13)
+            (@cbrt-%13-pred s13))))
+  :enable (@cbrt-%13-expand-rev-as-@cbrt-%16-rev @cbrt-%16-rev @cbrt-%16-loc @cbrt-%16-val))
+(defruled @cbrt-%13-expand-rev-as-@cbrt-succ13-rev
+  (equal (@cbrt-%13-rev mem loc pred)
+         (let ((s13 (list mem loc pred)))
+           (@cbrt-succ13-rev
+            (@cbrt-m13.1-mem s13)
+            (@cbrt-%16-loc s13)
+            (@cbrt-%13-pred s13))))
+  :enable (@cbrt-%13-expand-rev-as-@cbrt-m13.1-rev @cbrt-m13.1-rev @cbrt-m13.1-mem))
+(defruled @cbrt-%13-expand-rev-as-fwd
+  (equal (@cbrt-%13-rev mem loc pred)
+         (@cbrt-%13-fwd mem loc pred))
+  :enable (@cbrt-%13-expand-rev-as-@cbrt-succ13-rev @cbrt-succ13-rev @cbrt-succ13-lab @cbrt-%13-fwd))
+
 (defund @cbrt-%13-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -265,17 +485,6 @@
     (mem (store-double (g '%16 loc) (g '%1 loc) mem))
     (succ '%101))
   (mv succ mem loc)))
-
-(defruled @cbrt-%13-expand-bb
-  (equal (@cbrt-%13-bb mem loc pred)
-         (@cbrt-%13-rev mem loc pred))
-  :enable (@cbrt-%13-bb @cbrt-%13-rev
-    @cbrt-%14-rev
-    @cbrt-%15-rev
-    @cbrt-%16-rev
-    @cbrt-m13.1-rev
-    @cbrt-succ13-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-%17-mem (s17)
   (car s17))
@@ -306,6 +515,10 @@
 (defund @cbrt-succ17-lab (s17)
   (case (g '%22 (@cbrt-%22-loc s17)) (-1 '%23) (0 '%25)))
 
+(defund @cbrt-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@cbrt-succ17-lab s17) (@cbrt-%17-mem s17) (@cbrt-%22-loc s17))))
+
 (defund @cbrt-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%22 loc) (-1 '%23) (0 '%25)) mem loc))
@@ -323,6 +536,59 @@
 (defund @cbrt-%17-rev (mem loc pred)
   (@cbrt-%18-rev mem loc pred))
 
+(defruled @cbrt-%17-expand-rev-as-@cbrt-%18-rev
+  (equal (@cbrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cbrt-%18-rev
+            (@cbrt-%17-mem s17)
+            (@cbrt-%17-loc s17)
+            (@cbrt-%17-pred s17))))
+  :enable (@cbrt-%17-rev @cbrt-%17-mem @cbrt-%17-loc @cbrt-%17-pred))
+(defruled @cbrt-%17-expand-rev-as-@cbrt-%19-rev
+  (equal (@cbrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cbrt-%19-rev
+            (@cbrt-%17-mem s17)
+            (@cbrt-%18-loc s17)
+            (@cbrt-%17-pred s17))))
+  :enable (@cbrt-%17-expand-rev-as-@cbrt-%18-rev @cbrt-%18-rev @cbrt-%18-loc @cbrt-%18-val))
+(defruled @cbrt-%17-expand-rev-as-@cbrt-%20-rev
+  (equal (@cbrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cbrt-%20-rev
+            (@cbrt-%17-mem s17)
+            (@cbrt-%19-loc s17)
+            (@cbrt-%17-pred s17))))
+  :enable (@cbrt-%17-expand-rev-as-@cbrt-%19-rev @cbrt-%19-rev @cbrt-%19-loc @cbrt-%19-val))
+(defruled @cbrt-%17-expand-rev-as-@cbrt-%21-rev
+  (equal (@cbrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cbrt-%21-rev
+            (@cbrt-%17-mem s17)
+            (@cbrt-%20-loc s17)
+            (@cbrt-%17-pred s17))))
+  :enable (@cbrt-%17-expand-rev-as-@cbrt-%20-rev @cbrt-%20-rev @cbrt-%20-loc @cbrt-%20-val))
+(defruled @cbrt-%17-expand-rev-as-@cbrt-%22-rev
+  (equal (@cbrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cbrt-%22-rev
+            (@cbrt-%17-mem s17)
+            (@cbrt-%21-loc s17)
+            (@cbrt-%17-pred s17))))
+  :enable (@cbrt-%17-expand-rev-as-@cbrt-%21-rev @cbrt-%21-rev @cbrt-%21-loc @cbrt-%21-val))
+(defruled @cbrt-%17-expand-rev-as-@cbrt-succ17-rev
+  (equal (@cbrt-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@cbrt-succ17-rev
+            (@cbrt-%17-mem s17)
+            (@cbrt-%22-loc s17)
+            (@cbrt-%17-pred s17))))
+  :enable (@cbrt-%17-expand-rev-as-@cbrt-%22-rev @cbrt-%22-rev @cbrt-%22-loc @cbrt-%22-val))
+(defruled @cbrt-%17-expand-rev-as-fwd
+  (equal (@cbrt-%17-rev mem loc pred)
+         (@cbrt-%17-fwd mem loc pred))
+  :enable (@cbrt-%17-expand-rev-as-@cbrt-succ17-rev @cbrt-succ17-rev @cbrt-succ17-lab @cbrt-%17-fwd))
+
 (defund @cbrt-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -333,18 +599,6 @@
     (loc (s '%22 (icmp-eq-i32 (g '%21 loc) 0) loc))
     (succ (case (g '%22 loc) (-1 '%23) (0 '%25))))
   (mv succ mem loc)))
-
-(defruled @cbrt-%17-expand-bb
-  (equal (@cbrt-%17-bb mem loc pred)
-         (@cbrt-%17-rev mem loc pred))
-  :enable (@cbrt-%17-bb @cbrt-%17-rev
-    @cbrt-%18-rev
-    @cbrt-%19-rev
-    @cbrt-%20-rev
-    @cbrt-%21-rev
-    @cbrt-%22-rev
-    @cbrt-succ17-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-%23-mem (s23)
   (car s23))
@@ -362,6 +616,10 @@
   (declare (ignore s23))
   '%101)
 
+(defund @cbrt-%23-fwd (mem loc pred)
+  (let ((s23 (list mem loc pred)))
+    (mv (@cbrt-succ23-lab s23) (@cbrt-m23.1-mem s23) (@cbrt-%24-loc s23))))
+
 (defund @cbrt-succ23-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%101 mem loc))
@@ -373,6 +631,35 @@
 (defund @cbrt-%23-rev (mem loc pred)
   (@cbrt-%24-rev mem loc pred))
 
+(defruled @cbrt-%23-expand-rev-as-@cbrt-%24-rev
+  (equal (@cbrt-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@cbrt-%24-rev
+            (@cbrt-%23-mem s23)
+            (@cbrt-%23-loc s23)
+            (@cbrt-%23-pred s23))))
+  :enable (@cbrt-%23-rev @cbrt-%23-mem @cbrt-%23-loc @cbrt-%23-pred))
+(defruled @cbrt-%23-expand-rev-as-@cbrt-m23.1-rev
+  (equal (@cbrt-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@cbrt-m23.1-rev
+            (@cbrt-%23-mem s23)
+            (@cbrt-%24-loc s23)
+            (@cbrt-%23-pred s23))))
+  :enable (@cbrt-%23-expand-rev-as-@cbrt-%24-rev @cbrt-%24-rev @cbrt-%24-loc @cbrt-%24-val))
+(defruled @cbrt-%23-expand-rev-as-@cbrt-succ23-rev
+  (equal (@cbrt-%23-rev mem loc pred)
+         (let ((s23 (list mem loc pred)))
+           (@cbrt-succ23-rev
+            (@cbrt-m23.1-mem s23)
+            (@cbrt-%24-loc s23)
+            (@cbrt-%23-pred s23))))
+  :enable (@cbrt-%23-expand-rev-as-@cbrt-m23.1-rev @cbrt-m23.1-rev @cbrt-m23.1-mem))
+(defruled @cbrt-%23-expand-rev-as-fwd
+  (equal (@cbrt-%23-rev mem loc pred)
+         (@cbrt-%23-fwd mem loc pred))
+  :enable (@cbrt-%23-expand-rev-as-@cbrt-succ23-rev @cbrt-succ23-rev @cbrt-succ23-lab @cbrt-%23-fwd))
+
 (defund @cbrt-%23-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -380,15 +667,6 @@
     (mem (store-double (g '%24 loc) (g '%1 loc) mem))
     (succ '%101))
   (mv succ mem loc)))
-
-(defruled @cbrt-%23-expand-bb
-  (equal (@cbrt-%23-bb mem loc pred)
-         (@cbrt-%23-rev mem loc pred))
-  :enable (@cbrt-%23-bb @cbrt-%23-rev
-    @cbrt-%24-rev
-    @cbrt-m23.1-rev
-    @cbrt-succ23-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-%25-mem (s25)
   (car s25))
@@ -421,6 +699,10 @@
 (defund @cbrt-succ25-lab (s25)
   (case (g '%30 (@cbrt-%30-loc s25)) (-1 '%31) (0 '%44)))
 
+(defund @cbrt-%25-fwd (mem loc pred)
+  (let ((s25 (list mem loc pred)))
+    (mv (@cbrt-succ25-lab s25) (@cbrt-m25.1-mem s25) (@cbrt-%30-loc s25))))
+
 (defund @cbrt-succ25-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%30 loc) (-1 '%31) (0 '%44)) mem loc))
@@ -440,6 +722,67 @@
 (defund @cbrt-%25-rev (mem loc pred)
   (@cbrt-%26-rev mem loc pred))
 
+(defruled @cbrt-%25-expand-rev-as-@cbrt-%26-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-%26-rev
+            (@cbrt-%25-mem s25)
+            (@cbrt-%25-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-rev @cbrt-%25-mem @cbrt-%25-loc @cbrt-%25-pred))
+(defruled @cbrt-%25-expand-rev-as-@cbrt-%27-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-%27-rev
+            (@cbrt-%25-mem s25)
+            (@cbrt-%26-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-%26-rev @cbrt-%26-rev @cbrt-%26-loc @cbrt-%26-val))
+(defruled @cbrt-%25-expand-rev-as-@cbrt-%28-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-%28-rev
+            (@cbrt-%25-mem s25)
+            (@cbrt-%27-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-%27-rev @cbrt-%27-rev @cbrt-%27-loc @cbrt-%27-val))
+(defruled @cbrt-%25-expand-rev-as-@cbrt-m25.1-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-m25.1-rev
+            (@cbrt-%25-mem s25)
+            (@cbrt-%28-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-%28-rev @cbrt-%28-rev @cbrt-%28-loc @cbrt-%28-val))
+(defruled @cbrt-%25-expand-rev-as-@cbrt-%29-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-%29-rev
+            (@cbrt-m25.1-mem s25)
+            (@cbrt-%28-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-m25.1-rev @cbrt-m25.1-rev @cbrt-m25.1-mem))
+(defruled @cbrt-%25-expand-rev-as-@cbrt-%30-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-%30-rev
+            (@cbrt-m25.1-mem s25)
+            (@cbrt-%29-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-%29-rev @cbrt-%29-rev @cbrt-%29-loc @cbrt-%29-val))
+(defruled @cbrt-%25-expand-rev-as-@cbrt-succ25-rev
+  (equal (@cbrt-%25-rev mem loc pred)
+         (let ((s25 (list mem loc pred)))
+           (@cbrt-succ25-rev
+            (@cbrt-m25.1-mem s25)
+            (@cbrt-%30-loc s25)
+            (@cbrt-%25-pred s25))))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-%30-rev @cbrt-%30-rev @cbrt-%30-loc @cbrt-%30-val))
+(defruled @cbrt-%25-expand-rev-as-fwd
+  (equal (@cbrt-%25-rev mem loc pred)
+         (@cbrt-%25-fwd mem loc pred))
+  :enable (@cbrt-%25-expand-rev-as-@cbrt-succ25-rev @cbrt-succ25-rev @cbrt-succ25-lab @cbrt-%25-fwd))
+
 (defund @cbrt-%25-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -451,19 +794,6 @@
     (loc (s '%30 (icmp-slt-i32 (g '%29 loc) 1048576) loc))
     (succ (case (g '%30 loc) (-1 '%31) (0 '%44))))
   (mv succ mem loc)))
-
-(defruled @cbrt-%25-expand-bb
-  (equal (@cbrt-%25-bb mem loc pred)
-         (@cbrt-%25-rev mem loc pred))
-  :enable (@cbrt-%25-bb @cbrt-%25-rev
-    @cbrt-%26-rev
-    @cbrt-%27-rev
-    @cbrt-%28-rev
-    @cbrt-m25.1-rev
-    @cbrt-%29-rev
-    @cbrt-%30-rev
-    @cbrt-succ25-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-%31-mem (s31)
   (car s31))
@@ -529,6 +859,10 @@
   (declare (ignore s31))
   '%50)
 
+(defund @cbrt-%31-fwd (mem loc pred)
+  (let ((s31 (list mem loc pred)))
+    (mv (@cbrt-succ31-lab s31) (@cbrt-m31.3-mem s31) (@cbrt-%43-loc s31))))
+
 (defund @cbrt-succ31-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%50 mem loc))
@@ -566,6 +900,139 @@
 (defund @cbrt-%31-rev (mem loc pred)
   (@cbrt-%32-rev mem loc pred))
 
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%32-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%32-rev
+            (@cbrt-%31-mem s31)
+            (@cbrt-%31-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-rev @cbrt-%31-mem @cbrt-%31-loc @cbrt-%31-pred))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%33-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%33-rev
+            (@cbrt-%31-mem s31)
+            (@cbrt-%32-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%32-rev @cbrt-%32-rev @cbrt-%32-loc @cbrt-%32-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-m31.1-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-m31.1-rev
+            (@cbrt-%31-mem s31)
+            (@cbrt-%33-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%33-rev @cbrt-%33-rev @cbrt-%33-loc @cbrt-%33-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%34-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%34-rev
+            (@cbrt-m31.1-mem s31)
+            (@cbrt-%33-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-m31.1-rev @cbrt-m31.1-rev @cbrt-m31.1-mem))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%35-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%35-rev
+            (@cbrt-m31.1-mem s31)
+            (@cbrt-%34-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%34-rev @cbrt-%34-rev @cbrt-%34-loc @cbrt-%34-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%36-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%36-rev
+            (@cbrt-m31.1-mem s31)
+            (@cbrt-%35-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%35-rev @cbrt-%35-rev @cbrt-%35-loc @cbrt-%35-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-m31.2-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-m31.2-rev
+            (@cbrt-m31.1-mem s31)
+            (@cbrt-%36-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%36-rev @cbrt-%36-rev @cbrt-%36-loc @cbrt-%36-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%37-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%37-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%36-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-m31.2-rev @cbrt-m31.2-rev @cbrt-m31.2-mem))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%38-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%38-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%37-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%37-rev @cbrt-%37-rev @cbrt-%37-loc @cbrt-%37-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%39-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%39-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%38-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%38-rev @cbrt-%38-rev @cbrt-%38-loc @cbrt-%38-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%40-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%40-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%39-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%39-rev @cbrt-%39-rev @cbrt-%39-loc @cbrt-%39-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%41-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%41-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%40-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%40-rev @cbrt-%40-rev @cbrt-%40-loc @cbrt-%40-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%42-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%42-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%41-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%41-rev @cbrt-%41-rev @cbrt-%41-loc @cbrt-%41-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-%43-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-%43-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%42-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%42-rev @cbrt-%42-rev @cbrt-%42-loc @cbrt-%42-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-m31.3-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-m31.3-rev
+            (@cbrt-m31.2-mem s31)
+            (@cbrt-%43-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-%43-rev @cbrt-%43-rev @cbrt-%43-loc @cbrt-%43-val))
+(defruled @cbrt-%31-expand-rev-as-@cbrt-succ31-rev
+  (equal (@cbrt-%31-rev mem loc pred)
+         (let ((s31 (list mem loc pred)))
+           (@cbrt-succ31-rev
+            (@cbrt-m31.3-mem s31)
+            (@cbrt-%43-loc s31)
+            (@cbrt-%31-pred s31))))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-m31.3-rev @cbrt-m31.3-rev @cbrt-m31.3-mem))
+(defruled @cbrt-%31-expand-rev-as-fwd
+  (equal (@cbrt-%31-rev mem loc pred)
+         (@cbrt-%31-fwd mem loc pred))
+  :enable (@cbrt-%31-expand-rev-as-@cbrt-succ31-rev @cbrt-succ31-rev @cbrt-succ31-lab @cbrt-%31-fwd))
+
 (defund @cbrt-%31-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -586,28 +1053,6 @@
     (mem (store-i32 (g '%41 loc) (g '%43 loc) mem))
     (succ '%50))
   (mv succ mem loc)))
-
-(defruled @cbrt-%31-expand-bb
-  (equal (@cbrt-%31-bb mem loc pred)
-         (@cbrt-%31-rev mem loc pred))
-  :enable (@cbrt-%31-bb @cbrt-%31-rev
-    @cbrt-%32-rev
-    @cbrt-%33-rev
-    @cbrt-m31.1-rev
-    @cbrt-%34-rev
-    @cbrt-%35-rev
-    @cbrt-%36-rev
-    @cbrt-m31.2-rev
-    @cbrt-%37-rev
-    @cbrt-%38-rev
-    @cbrt-%39-rev
-    @cbrt-%40-rev
-    @cbrt-%41-rev
-    @cbrt-%42-rev
-    @cbrt-%43-rev
-    @cbrt-m31.3-rev
-    @cbrt-succ31-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-%44-mem (s44)
   (car s44))
@@ -641,6 +1086,10 @@
   (declare (ignore s44))
   '%50)
 
+(defund @cbrt-%44-fwd (mem loc pred)
+  (let ((s44 (list mem loc pred)))
+    (mv (@cbrt-succ44-lab s44) (@cbrt-m44.1-mem s44) (@cbrt-%49-loc s44))))
+
 (defund @cbrt-succ44-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%50 mem loc))
@@ -660,6 +1109,67 @@
 (defund @cbrt-%44-rev (mem loc pred)
   (@cbrt-%45-rev mem loc pred))
 
+(defruled @cbrt-%44-expand-rev-as-@cbrt-%45-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-%45-rev
+            (@cbrt-%44-mem s44)
+            (@cbrt-%44-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-rev @cbrt-%44-mem @cbrt-%44-loc @cbrt-%44-pred))
+(defruled @cbrt-%44-expand-rev-as-@cbrt-%46-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-%46-rev
+            (@cbrt-%44-mem s44)
+            (@cbrt-%45-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-%45-rev @cbrt-%45-rev @cbrt-%45-loc @cbrt-%45-val))
+(defruled @cbrt-%44-expand-rev-as-@cbrt-%47-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-%47-rev
+            (@cbrt-%44-mem s44)
+            (@cbrt-%46-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-%46-rev @cbrt-%46-rev @cbrt-%46-loc @cbrt-%46-val))
+(defruled @cbrt-%44-expand-rev-as-@cbrt-%48-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-%48-rev
+            (@cbrt-%44-mem s44)
+            (@cbrt-%47-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-%47-rev @cbrt-%47-rev @cbrt-%47-loc @cbrt-%47-val))
+(defruled @cbrt-%44-expand-rev-as-@cbrt-%49-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-%49-rev
+            (@cbrt-%44-mem s44)
+            (@cbrt-%48-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-%48-rev @cbrt-%48-rev @cbrt-%48-loc @cbrt-%48-val))
+(defruled @cbrt-%44-expand-rev-as-@cbrt-m44.1-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-m44.1-rev
+            (@cbrt-%44-mem s44)
+            (@cbrt-%49-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-%49-rev @cbrt-%49-rev @cbrt-%49-loc @cbrt-%49-val))
+(defruled @cbrt-%44-expand-rev-as-@cbrt-succ44-rev
+  (equal (@cbrt-%44-rev mem loc pred)
+         (let ((s44 (list mem loc pred)))
+           (@cbrt-succ44-rev
+            (@cbrt-m44.1-mem s44)
+            (@cbrt-%49-loc s44)
+            (@cbrt-%44-pred s44))))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-m44.1-rev @cbrt-m44.1-rev @cbrt-m44.1-mem))
+(defruled @cbrt-%44-expand-rev-as-fwd
+  (equal (@cbrt-%44-rev mem loc pred)
+         (@cbrt-%44-fwd mem loc pred))
+  :enable (@cbrt-%44-expand-rev-as-@cbrt-succ44-rev @cbrt-succ44-rev @cbrt-succ44-lab @cbrt-%44-fwd))
+
 (defund @cbrt-%44-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -671,19 +1181,6 @@
     (mem (store-i32 (g '%47 loc) (g '%49 loc) mem))
     (succ '%50))
   (mv succ mem loc)))
-
-(defruled @cbrt-%44-expand-bb
-  (equal (@cbrt-%44-bb mem loc pred)
-         (@cbrt-%44-rev mem loc pred))
-  :enable (@cbrt-%44-bb @cbrt-%44-rev
-    @cbrt-%45-rev
-    @cbrt-%46-rev
-    @cbrt-%47-rev
-    @cbrt-%48-rev
-    @cbrt-%49-rev
-    @cbrt-m44.1-rev
-    @cbrt-succ44-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-%50-mem (s50)
   (car s50))
@@ -919,6 +1416,10 @@
   (declare (ignore s50))
   '%101)
 
+(defund @cbrt-%50-fwd (mem loc pred)
+  (let ((s50 (list mem loc pred)))
+    (mv (@cbrt-succ50-lab s50) (@cbrt-m50.12-mem s50) (@cbrt-%100-loc s50))))
+
 (defund @cbrt-succ50-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%101 mem loc))
@@ -1050,6 +1551,515 @@
 (defund @cbrt-%50-rev (mem loc pred)
   (@cbrt-%51-rev mem loc pred))
 
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%51-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%51-rev
+            (@cbrt-%50-mem s50)
+            (@cbrt-%50-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-rev @cbrt-%50-mem @cbrt-%50-loc @cbrt-%50-pred))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%52-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%52-rev
+            (@cbrt-%50-mem s50)
+            (@cbrt-%51-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%51-rev @cbrt-%51-rev @cbrt-%51-loc @cbrt-%51-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%53-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%53-rev
+            (@cbrt-%50-mem s50)
+            (@cbrt-%52-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%52-rev @cbrt-%52-rev @cbrt-%52-loc @cbrt-%52-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%54-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%54-rev
+            (@cbrt-%50-mem s50)
+            (@cbrt-%53-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%53-rev @cbrt-%53-rev @cbrt-%53-loc @cbrt-%53-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%55-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%55-rev
+            (@cbrt-%50-mem s50)
+            (@cbrt-%54-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%54-rev @cbrt-%54-rev @cbrt-%54-loc @cbrt-%54-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.1-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.1-rev
+            (@cbrt-%50-mem s50)
+            (@cbrt-%55-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%55-rev @cbrt-%55-rev @cbrt-%55-loc @cbrt-%55-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%56-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%56-rev
+            (@cbrt-m50.1-mem s50)
+            (@cbrt-%55-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.1-rev @cbrt-m50.1-rev @cbrt-m50.1-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%57-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%57-rev
+            (@cbrt-m50.1-mem s50)
+            (@cbrt-%56-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%56-rev @cbrt-%56-rev @cbrt-%56-loc @cbrt-%56-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%58-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%58-rev
+            (@cbrt-m50.1-mem s50)
+            (@cbrt-%57-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%57-rev @cbrt-%57-rev @cbrt-%57-loc @cbrt-%57-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%59-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%59-rev
+            (@cbrt-m50.1-mem s50)
+            (@cbrt-%58-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%58-rev @cbrt-%58-rev @cbrt-%58-loc @cbrt-%58-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.2-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.2-rev
+            (@cbrt-m50.1-mem s50)
+            (@cbrt-%59-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%59-rev @cbrt-%59-rev @cbrt-%59-loc @cbrt-%59-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%60-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%60-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%59-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.2-rev @cbrt-m50.2-rev @cbrt-m50.2-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%61-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%61-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%60-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%60-rev @cbrt-%60-rev @cbrt-%60-loc @cbrt-%60-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%62-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%62-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%61-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%61-rev @cbrt-%61-rev @cbrt-%61-loc @cbrt-%61-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%63-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%63-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%62-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%62-rev @cbrt-%62-rev @cbrt-%62-loc @cbrt-%62-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%64-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%64-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%63-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%63-rev @cbrt-%63-rev @cbrt-%63-loc @cbrt-%63-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%65-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%65-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%64-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%64-rev @cbrt-%64-rev @cbrt-%64-loc @cbrt-%64-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%66-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%66-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%65-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%65-rev @cbrt-%65-rev @cbrt-%65-loc @cbrt-%65-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%67-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%67-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%66-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%66-rev @cbrt-%66-rev @cbrt-%66-loc @cbrt-%66-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%68-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%68-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%67-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%67-rev @cbrt-%67-rev @cbrt-%67-loc @cbrt-%67-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.3-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.3-rev
+            (@cbrt-m50.2-mem s50)
+            (@cbrt-%68-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%68-rev @cbrt-%68-rev @cbrt-%68-loc @cbrt-%68-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%69-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%69-rev
+            (@cbrt-m50.3-mem s50)
+            (@cbrt-%68-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.3-rev @cbrt-m50.3-rev @cbrt-m50.3-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.4-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.4-rev
+            (@cbrt-m50.3-mem s50)
+            (@cbrt-%69-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%69-rev @cbrt-%69-rev @cbrt-%69-loc @cbrt-%69-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%70-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%70-rev
+            (@cbrt-m50.4-mem s50)
+            (@cbrt-%69-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.4-rev @cbrt-m50.4-rev @cbrt-m50.4-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%71-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%71-rev
+            (@cbrt-m50.4-mem s50)
+            (@cbrt-%70-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%70-rev @cbrt-%70-rev @cbrt-%70-loc @cbrt-%70-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%72-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%72-rev
+            (@cbrt-m50.4-mem s50)
+            (@cbrt-%71-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%71-rev @cbrt-%71-rev @cbrt-%71-loc @cbrt-%71-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%73-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%73-rev
+            (@cbrt-m50.4-mem s50)
+            (@cbrt-%72-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%72-rev @cbrt-%72-rev @cbrt-%72-loc @cbrt-%72-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.5-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.5-rev
+            (@cbrt-m50.4-mem s50)
+            (@cbrt-%73-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%73-rev @cbrt-%73-rev @cbrt-%73-loc @cbrt-%73-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%74-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%74-rev
+            (@cbrt-m50.5-mem s50)
+            (@cbrt-%73-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.5-rev @cbrt-m50.5-rev @cbrt-m50.5-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%75-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%75-rev
+            (@cbrt-m50.5-mem s50)
+            (@cbrt-%74-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%74-rev @cbrt-%74-rev @cbrt-%74-loc @cbrt-%74-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%76-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%76-rev
+            (@cbrt-m50.5-mem s50)
+            (@cbrt-%75-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%75-rev @cbrt-%75-rev @cbrt-%75-loc @cbrt-%75-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.6-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.6-rev
+            (@cbrt-m50.5-mem s50)
+            (@cbrt-%76-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%76-rev @cbrt-%76-rev @cbrt-%76-loc @cbrt-%76-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%77-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%77-rev
+            (@cbrt-m50.6-mem s50)
+            (@cbrt-%76-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.6-rev @cbrt-m50.6-rev @cbrt-m50.6-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%78-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%78-rev
+            (@cbrt-m50.6-mem s50)
+            (@cbrt-%77-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%77-rev @cbrt-%77-rev @cbrt-%77-loc @cbrt-%77-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%79-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%79-rev
+            (@cbrt-m50.6-mem s50)
+            (@cbrt-%78-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%78-rev @cbrt-%78-rev @cbrt-%78-loc @cbrt-%78-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.7-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.7-rev
+            (@cbrt-m50.6-mem s50)
+            (@cbrt-%79-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%79-rev @cbrt-%79-rev @cbrt-%79-loc @cbrt-%79-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%80-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%80-rev
+            (@cbrt-m50.7-mem s50)
+            (@cbrt-%79-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.7-rev @cbrt-m50.7-rev @cbrt-m50.7-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%81-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%81-rev
+            (@cbrt-m50.7-mem s50)
+            (@cbrt-%80-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%80-rev @cbrt-%80-rev @cbrt-%80-loc @cbrt-%80-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%82-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%82-rev
+            (@cbrt-m50.7-mem s50)
+            (@cbrt-%81-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%81-rev @cbrt-%81-rev @cbrt-%81-loc @cbrt-%81-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.8-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.8-rev
+            (@cbrt-m50.7-mem s50)
+            (@cbrt-%82-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%82-rev @cbrt-%82-rev @cbrt-%82-loc @cbrt-%82-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%83-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%83-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%82-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.8-rev @cbrt-m50.8-rev @cbrt-m50.8-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%84-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%84-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%83-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%83-rev @cbrt-%83-rev @cbrt-%83-loc @cbrt-%83-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%85-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%85-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%84-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%84-rev @cbrt-%84-rev @cbrt-%84-loc @cbrt-%84-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%86-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%86-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%85-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%85-rev @cbrt-%85-rev @cbrt-%85-loc @cbrt-%85-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%87-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%87-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%86-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%86-rev @cbrt-%86-rev @cbrt-%86-loc @cbrt-%86-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%88-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%88-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%87-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%87-rev @cbrt-%87-rev @cbrt-%87-loc @cbrt-%87-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%89-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%89-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%88-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%88-rev @cbrt-%88-rev @cbrt-%88-loc @cbrt-%88-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.9-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.9-rev
+            (@cbrt-m50.8-mem s50)
+            (@cbrt-%89-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%89-rev @cbrt-%89-rev @cbrt-%89-loc @cbrt-%89-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%90-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%90-rev
+            (@cbrt-m50.9-mem s50)
+            (@cbrt-%89-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.9-rev @cbrt-m50.9-rev @cbrt-m50.9-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%91-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%91-rev
+            (@cbrt-m50.9-mem s50)
+            (@cbrt-%90-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%90-rev @cbrt-%90-rev @cbrt-%90-loc @cbrt-%90-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%92-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%92-rev
+            (@cbrt-m50.9-mem s50)
+            (@cbrt-%91-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%91-rev @cbrt-%91-rev @cbrt-%91-loc @cbrt-%91-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%93-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%93-rev
+            (@cbrt-m50.9-mem s50)
+            (@cbrt-%92-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%92-rev @cbrt-%92-rev @cbrt-%92-loc @cbrt-%92-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%94-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%94-rev
+            (@cbrt-m50.9-mem s50)
+            (@cbrt-%93-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%93-rev @cbrt-%93-rev @cbrt-%93-loc @cbrt-%93-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.10-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.10-rev
+            (@cbrt-m50.9-mem s50)
+            (@cbrt-%94-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%94-rev @cbrt-%94-rev @cbrt-%94-loc @cbrt-%94-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%95-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%95-rev
+            (@cbrt-m50.10-mem s50)
+            (@cbrt-%94-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.10-rev @cbrt-m50.10-rev @cbrt-m50.10-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%96-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%96-rev
+            (@cbrt-m50.10-mem s50)
+            (@cbrt-%95-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%95-rev @cbrt-%95-rev @cbrt-%95-loc @cbrt-%95-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%97-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%97-rev
+            (@cbrt-m50.10-mem s50)
+            (@cbrt-%96-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%96-rev @cbrt-%96-rev @cbrt-%96-loc @cbrt-%96-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%98-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%98-rev
+            (@cbrt-m50.10-mem s50)
+            (@cbrt-%97-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%97-rev @cbrt-%97-rev @cbrt-%97-loc @cbrt-%97-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%99-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%99-rev
+            (@cbrt-m50.10-mem s50)
+            (@cbrt-%98-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%98-rev @cbrt-%98-rev @cbrt-%98-loc @cbrt-%98-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.11-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.11-rev
+            (@cbrt-m50.10-mem s50)
+            (@cbrt-%99-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%99-rev @cbrt-%99-rev @cbrt-%99-loc @cbrt-%99-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-%100-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-%100-rev
+            (@cbrt-m50.11-mem s50)
+            (@cbrt-%99-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.11-rev @cbrt-m50.11-rev @cbrt-m50.11-mem))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-m50.12-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-m50.12-rev
+            (@cbrt-m50.11-mem s50)
+            (@cbrt-%100-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-%100-rev @cbrt-%100-rev @cbrt-%100-loc @cbrt-%100-val))
+(defruled @cbrt-%50-expand-rev-as-@cbrt-succ50-rev
+  (equal (@cbrt-%50-rev mem loc pred)
+         (let ((s50 (list mem loc pred)))
+           (@cbrt-succ50-rev
+            (@cbrt-m50.12-mem s50)
+            (@cbrt-%100-loc s50)
+            (@cbrt-%50-pred s50))))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-m50.12-rev @cbrt-m50.12-rev @cbrt-m50.12-mem))
+(defruled @cbrt-%50-expand-rev-as-fwd
+  (equal (@cbrt-%50-rev mem loc pred)
+         (@cbrt-%50-fwd mem loc pred))
+  :enable (@cbrt-%50-expand-rev-as-@cbrt-succ50-rev @cbrt-succ50-rev @cbrt-succ50-lab @cbrt-%50-fwd))
+
 (defund @cbrt-%50-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -1118,75 +2128,6 @@
     (succ '%101))
   (mv succ mem loc)))
 
-(defruled @cbrt-%50-expand-bb
-  (equal (@cbrt-%50-bb mem loc pred)
-         (@cbrt-%50-rev mem loc pred))
-  :enable (@cbrt-%50-bb @cbrt-%50-rev
-    @cbrt-%51-rev
-    @cbrt-%52-rev
-    @cbrt-%53-rev
-    @cbrt-%54-rev
-    @cbrt-%55-rev
-    @cbrt-m50.1-rev
-    @cbrt-%56-rev
-    @cbrt-%57-rev
-    @cbrt-%58-rev
-    @cbrt-%59-rev
-    @cbrt-m50.2-rev
-    @cbrt-%60-rev
-    @cbrt-%61-rev
-    @cbrt-%62-rev
-    @cbrt-%63-rev
-    @cbrt-%64-rev
-    @cbrt-%65-rev
-    @cbrt-%66-rev
-    @cbrt-%67-rev
-    @cbrt-%68-rev
-    @cbrt-m50.3-rev
-    @cbrt-%69-rev
-    @cbrt-m50.4-rev
-    @cbrt-%70-rev
-    @cbrt-%71-rev
-    @cbrt-%72-rev
-    @cbrt-%73-rev
-    @cbrt-m50.5-rev
-    @cbrt-%74-rev
-    @cbrt-%75-rev
-    @cbrt-%76-rev
-    @cbrt-m50.6-rev
-    @cbrt-%77-rev
-    @cbrt-%78-rev
-    @cbrt-%79-rev
-    @cbrt-m50.7-rev
-    @cbrt-%80-rev
-    @cbrt-%81-rev
-    @cbrt-%82-rev
-    @cbrt-m50.8-rev
-    @cbrt-%83-rev
-    @cbrt-%84-rev
-    @cbrt-%85-rev
-    @cbrt-%86-rev
-    @cbrt-%87-rev
-    @cbrt-%88-rev
-    @cbrt-%89-rev
-    @cbrt-m50.9-rev
-    @cbrt-%90-rev
-    @cbrt-%91-rev
-    @cbrt-%92-rev
-    @cbrt-%93-rev
-    @cbrt-%94-rev
-    @cbrt-m50.10-rev
-    @cbrt-%95-rev
-    @cbrt-%96-rev
-    @cbrt-%97-rev
-    @cbrt-%98-rev
-    @cbrt-%99-rev
-    @cbrt-m50.11-rev
-    @cbrt-%100-rev
-    @cbrt-m50.12-rev
-    @cbrt-succ50-rev)
-  :disable s-diff-s)
-
 (defund @cbrt-%101-mem (s101)
   (car s101))
 (defund @cbrt-%101-loc (s101)
@@ -1201,6 +2142,10 @@
   (declare (ignore s101))
   'ret)
 
+(defund @cbrt-%101-fwd (mem loc pred)
+  (let ((s101 (list mem loc pred)))
+    (mv (@cbrt-succ101-lab s101) (@cbrt-%101-mem s101) (@cbrt-%102-loc s101))))
+
 (defund @cbrt-succ101-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -1210,20 +2155,33 @@
 (defund @cbrt-%101-rev (mem loc pred)
   (@cbrt-%102-rev mem loc pred))
 
+(defruled @cbrt-%101-expand-rev-as-@cbrt-%102-rev
+  (equal (@cbrt-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@cbrt-%102-rev
+            (@cbrt-%101-mem s101)
+            (@cbrt-%101-loc s101)
+            (@cbrt-%101-pred s101))))
+  :enable (@cbrt-%101-rev @cbrt-%101-mem @cbrt-%101-loc @cbrt-%101-pred))
+(defruled @cbrt-%101-expand-rev-as-@cbrt-succ101-rev
+  (equal (@cbrt-%101-rev mem loc pred)
+         (let ((s101 (list mem loc pred)))
+           (@cbrt-succ101-rev
+            (@cbrt-%101-mem s101)
+            (@cbrt-%102-loc s101)
+            (@cbrt-%101-pred s101))))
+  :enable (@cbrt-%101-expand-rev-as-@cbrt-%102-rev @cbrt-%102-rev @cbrt-%102-loc @cbrt-%102-val))
+(defruled @cbrt-%101-expand-rev-as-fwd
+  (equal (@cbrt-%101-rev mem loc pred)
+         (@cbrt-%101-fwd mem loc pred))
+  :enable (@cbrt-%101-expand-rev-as-@cbrt-succ101-rev @cbrt-succ101-rev @cbrt-succ101-lab @cbrt-%101-fwd))
+
 (defund @cbrt-%101-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%102 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @cbrt-%101-expand-bb
-  (equal (@cbrt-%101-bb mem loc pred)
-         (@cbrt-%101-rev mem loc pred))
-  :enable (@cbrt-%101-bb @cbrt-%101-rev
-    @cbrt-%102-rev
-    @cbrt-succ101-rev)
-  :disable s-diff-s)
 
 (defund @cbrt-step (label mem loc pred)
   (case label

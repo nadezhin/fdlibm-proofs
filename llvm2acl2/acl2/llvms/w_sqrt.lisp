@@ -31,6 +31,10 @@
   (declare (ignore s0))
   'ret)
 
+(defund @sqrt-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@sqrt-succ0-lab s0) (@sqrt-m0.1-mem s0) (@sqrt-%3-loc s0))))
+
 (defund @sqrt-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -46,6 +50,51 @@
 (defund @sqrt-%0-rev (mem loc pred)
   (@sqrt-%1-rev mem loc pred))
 
+(defruled @sqrt-%0-expand-rev-as-@sqrt-%1-rev
+  (equal (@sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sqrt-%1-rev
+            (@sqrt-%0-mem s0)
+            (@sqrt-%0-loc s0)
+            (@sqrt-%0-pred s0))))
+  :enable (@sqrt-%0-rev @sqrt-%0-mem @sqrt-%0-loc @sqrt-%0-pred))
+(defruled @sqrt-%0-expand-rev-as-@sqrt-m0.1-rev
+  (equal (@sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sqrt-m0.1-rev
+            (@sqrt-%1-mem s0)
+            (@sqrt-%1-loc s0)
+            (@sqrt-%0-pred s0))))
+  :enable (@sqrt-%0-expand-rev-as-@sqrt-%1-rev @sqrt-%1-rev @sqrt-%1-mem @sqrt-%1-loc))
+(defruled @sqrt-%0-expand-rev-as-@sqrt-%2-rev
+  (equal (@sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sqrt-%2-rev
+            (@sqrt-m0.1-mem s0)
+            (@sqrt-%1-loc s0)
+            (@sqrt-%0-pred s0))))
+  :enable (@sqrt-%0-expand-rev-as-@sqrt-m0.1-rev @sqrt-m0.1-rev @sqrt-m0.1-mem))
+(defruled @sqrt-%0-expand-rev-as-@sqrt-%3-rev
+  (equal (@sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sqrt-%3-rev
+            (@sqrt-m0.1-mem s0)
+            (@sqrt-%2-loc s0)
+            (@sqrt-%0-pred s0))))
+  :enable (@sqrt-%0-expand-rev-as-@sqrt-%2-rev @sqrt-%2-rev @sqrt-%2-loc @sqrt-%2-val))
+(defruled @sqrt-%0-expand-rev-as-@sqrt-succ0-rev
+  (equal (@sqrt-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@sqrt-succ0-rev
+            (@sqrt-m0.1-mem s0)
+            (@sqrt-%3-loc s0)
+            (@sqrt-%0-pred s0))))
+  :enable (@sqrt-%0-expand-rev-as-@sqrt-%3-rev @sqrt-%3-rev @sqrt-%3-loc @sqrt-%3-val))
+(defruled @sqrt-%0-expand-rev-as-fwd
+  (equal (@sqrt-%0-rev mem loc pred)
+         (@sqrt-%0-fwd mem loc pred))
+  :enable (@sqrt-%0-expand-rev-as-@sqrt-succ0-rev @sqrt-succ0-rev @sqrt-succ0-lab @sqrt-%0-fwd))
+
 (defund @sqrt-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -56,17 +105,6 @@
     (loc (s '%3 (@__ieee754_sqrt (g '%2 loc)) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @sqrt-%0-expand-bb
-  (equal (@sqrt-%0-bb mem loc pred)
-         (@sqrt-%0-rev mem loc pred))
-  :enable (@sqrt-%0-bb @sqrt-%0-rev
-    @sqrt-%1-rev
-    @sqrt-m0.1-rev
-    @sqrt-%2-rev
-    @sqrt-%3-rev
-    @sqrt-succ0-rev)
-  :disable s-diff-s)
 
 (defund @sqrt-step (label mem loc pred)
   (case label

@@ -33,7 +33,6 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     private String lastLoc;
     private String lastPred;
     private String nextRev;
-    private Set allMems = new LinkedHashSet<>();
 
     DumpACL2Steps(PrintStream out) {
         this.out = out;
@@ -51,7 +50,177 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
         return "s" + curBb.label;
     }
 
-    private void dumpModule(Module module, String[] deps) {
+    private void genFwd() {
+        nl("");
+        nl("(defund @" + curFun.name + "-%" + curBb.label + "-mem (" + st() + ")");
+        nl("  (car " + st() + "))");
+        nl("(defund @" + curFun.name + "-%" + curBb.label + "-loc (" + st() + ")");
+        nl("  (cadr " + st() + "))");
+        nl("(defund @" + curFun.name + "-%" + curBb.label + "-pred (" + st() + ")");
+        nl("  (caddr " + st() + "))");
+        lastMem = "(@" + curFun.name + "-%" + curBb.label + "-mem " + st() + ")";
+        lastLoc = "(@" + curFun.name + "-%" + curBb.label + "-loc " + st() + ")";
+        lastPred = "(@" + curFun.name + "-%" + curBb.label + "-pred " + st() + ")";
+        smallFuns = true;
+        for (int j = 0; j < curBb.insts.size(); j++) {
+            Instruction inst = curBb.insts.get(j);
+            inst.accept(this, null);
+        }
+        smallFuns = false;
+        nl("");
+        nl("(defund @" + curFun.name + "-%" + curBb.label + "-fwd (mem loc pred)");
+        nl("  (let ((" + st() + " (list mem loc pred)))");
+        nl("    (mv (" + curBb.terminator.fn("lab") + " " + st() + ") "
+                + lastMem + " " + lastLoc + ")))");
+    }
+
+    private void genRev() {
+        nl("");
+        revFuns = true;
+        nextRev = null;
+        for (int j = curBb.insts.size() - 1; j >= 0; j--) {
+            Instruction inst = curBb.insts.get(j);
+            nl("(defund " + inst.fn("rev") + " (mem loc pred)");
+            indent += 2;
+            inst.accept(this, null);
+            out.print(")");
+            indent -= 2;
+            nextRev = inst.fn("rev");
+        }
+        nl("");
+        nl("(defund @" + curFun.name + "-%" + curBb.label + "-rev (mem loc pred)");
+        nl("  (" + nextRev + " mem loc pred))");
+        revFuns = false;
+    }
+
+    private void genExpandRevRules() {
+        nl("");
+        lastMem = "(@" + curFun.name + "-%" + curBb.label + "-mem " + st() + ")";
+        lastLoc = "(@" + curFun.name + "-%" + curBb.label + "-loc " + st() + ")";
+        lastPred = "(@" + curFun.name + "-%" + curBb.label + "-pred " + st() + ")";
+        String lastEnable = "@" + curFun.name + "-%" + curBb.label + "-rev"
+                + " @" + curFun.name + "-%" + curBb.label + "-mem"
+                + " @" + curFun.name + "-%" + curBb.label + "-loc"
+                + " @" + curFun.name + "-%" + curBb.label + "-pred";
+        for (int i = 0; i < curBb.insts.size(); i++) {
+            Instruction inst = curBb.insts.get(i);
+            nl("(defruled @" + curFun.name + "-%" + curBb.label + "-expand-rev-as-" + inst.fn("rev"));
+            nl("  (equal (@" + curFun.name + "-%" + curBb.label + "-rev mem loc pred)");
+            nl("         (let ((" + st() + " (list mem loc pred)))");
+            nl("           (" + curBb.insts.get(i).fn("rev"));
+            nl("            " + lastMem);
+            nl("            " + lastLoc);
+            nl("            " + lastPred + ")))");
+            nl("  :enable (" + lastEnable + "))");
+            lastEnable = "@" + curFun.name + "-%" + curBb.label + "-expand-rev-as-" + inst.fn("rev")
+                    + " " + inst.fn("rev");
+            if (inst instanceof Instruction.AllocaInst) {
+                lastMem = "(" + inst.fn("mem") + " " + st() + ")";
+                lastLoc = "(" + inst.fn("loc") + " " + st() + ")";
+                lastEnable += " " + inst.fn("mem") + " " + inst.fn("loc");
+            } else if (inst instanceof Instruction.StoreInst) {
+                lastMem = "(" + inst.fn("mem") + " " + st() + ")";
+                lastEnable += " " + inst.fn("mem");
+            } else if (inst instanceof TerminatorInst) {
+                lastEnable += " " + inst.fn("lab")
+                        + " @" + curFun.name + "-%" + curBb.label + "-fwd";
+            } else {
+                lastLoc = "(" + inst.fn("loc") + " " + st() + ")";
+                lastEnable += " " + inst.fn("loc") + " " + inst.fn("val");
+            }
+        }
+        nl("(defruled @" + curFun.name + "-%" + curBb.label + "-expand-rev-as-fwd");
+        nl("  (equal (@" + curFun.name + "-%" + curBb.label + "-rev mem loc pred)");
+        nl("         (@" + curFun.name + "-%" + curBb.label + "-fwd mem loc pred))");
+        nl("  :enable (" + lastEnable + "))");
+    }
+
+    private void genBb() {
+        nl("");
+        nl("(defund @" + curFun.name + "-%" + curBb.label + "-bb (mem loc pred)");
+        if (curBb.numPhi == 0) {
+            nl("  (declare (ignore pred))");
+        }
+        indent += 2;
+        nl("(b* (");
+        indent += 2;
+        for (int j = 0; j < curBb.insts.size(); j++) {
+            Instruction inst = curBb.insts.get(j);
+            inst.accept(this, null);
+        }
+        out.print(")");
+        indent -= 2;
+        nl("(mv succ mem loc)");
+        indent -= 2;
+        out.print("))");
+    }
+
+    private void genExpandBb() {
+        nl("");
+        nl("(defruled @" + curFun.name + "-%" + curBb.label + "-expand-bb");
+        nl("  (equal (@" + curFun.name + "-%" + curBb.label + "-bb mem loc pred)");
+        nl("         (@" + curFun.name + "-%" + curBb.label + "-rev mem loc pred))");
+        nl("  :enable (@" + curFun.name + "-%" + curBb.label + "-bb"
+                + " @" + curFun.name + "-%" + curBb.label + "-rev");
+        indent += 4;
+        for (Instruction inst : curBb.insts) {
+            nl(inst.fn("rev"));
+        }
+        out.print(")");
+        indent -= 4;
+        nl("  :disable s-diff-s)");
+    }
+
+    private void genBasicBlock(BasicBlock bb) {
+        curBb = bb;
+        genFwd();
+        genRev();
+        genExpandRevRules();
+        genBb();
+//        genExpandBb();
+    }
+
+    private void genFunction(Function fun) {
+        curFun = fun;
+        String args = "";
+        for (int i = 0; i < fun.args.size(); i++) {
+            Argument arg = fun.args.get(i);
+            if (i > 0) {
+                args += ' ';
+            }
+            args += '%' + arg.name;
+        }
+        for (int i = 0; i < fun.blocks.size(); i++) {
+            genBasicBlock(fun.blocks.get(i));
+        }
+        nl("");
+        nl("(defund @" + fun.name + "-step (label mem loc pred)");
+        nl("  (case label");
+        indent += 4;
+        for (int i = 0; i < fun.blocks.size(); i++) {
+            curBb = fun.blocks.get(i);
+            nl("(%" + curBb.label + " (@" + fun.name + "-%" + curBb.label + "-bb mem loc pred))");
+        }
+        nl("(otherwise (mv nil mem loc))))");
+        indent -= 4;
+        nl("");
+        nl("(defund @" + fun.name + "-steps (label mem loc pred n)");
+        nl("  (declare (xargs :measure (nfix n)))");
+        nl("  (if (equal label 'ret)");
+        ReturnInst retInst = (ReturnInst) fun.blocks.get(fun.blocks.size() - 1).terminator;
+        nl("      " + operandStr(retInst.operands[0]));
+        nl("    (if (zp n) nil");
+        nl("      (mv-let");
+        nl("        (new-label new-mem new-loc)");
+        nl("        (@" + fun.name + "-step label mem loc pred)");
+        nl("        (@" + fun.name + "-steps new-label new-mem new-loc label (1- n))))))");
+        nl("");
+        nl("(defund @" + fun.name + " (" + args + ")");
+        nl("  (declare (ignore " + args + "))");
+        nl("   nil)");
+    }
+
+    private void genModule(Module module, String[] deps) {
         out.print("(in-package \"ACL2\")");
         nl("(include-book \"std/util/defrule\" :dir :system)");
         nl("(include-book \"../llvm\")");
@@ -85,108 +254,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
             if (fun.blocks.isEmpty()) {
                 continue;
             }
-            curFun = fun;
-            allMems.clear();
-            String args = "";
-            for (int i = 0; i < fun.args.size(); i++) {
-                Argument arg = fun.args.get(i);
-                if (i > 0) {
-                    args += ' ';
-                }
-                args += '%' + arg.name;
-            }
-            for (int i = 0; i < fun.blocks.size(); i++) {
-                curBb = fun.blocks.get(i);
-                nl("");
-                nl("(defund @" + fun.name + "-%" + curBb.label + "-mem (" + st() + ")");
-                nl("  (car " + st() + "))");
-                nl("(defund @" + fun.name + "-%" + curBb.label + "-loc (" + st() + ")");
-                nl("  (cadr " + st() + "))");
-                nl("(defund @" + fun.name + "-%" + curBb.label + "-pred (" + st() + ")");
-                nl("  (caddr " + st() + "))");
-                allMems.add("%" + curBb.label);
-                lastMem = "(@" + fun.name + "-%" + curBb.label + "-mem " + st() + ")";
-                lastLoc = "(@" + fun.name + "-%" + curBb.label + "-loc " + st() + ")";
-                lastPred = "(@" + fun.name + "-%" + curBb.label + "-pred " + st() + ")";
-                smallFuns = true;
-                for (int j = 0; j < curBb.insts.size(); j++) {
-                    Instruction inst = curBb.insts.get(j);
-                    inst.accept(this, null);
-                }
-                smallFuns = false;
-                nl("");
-                revFuns = true;
-                nextRev = null;
-                for (int j = curBb.insts.size() - 1; j >= 0; j--) {
-                    Instruction inst = curBb.insts.get(j);
-                    nl("(defund " + inst.fn("rev") + " (mem loc pred)");
-                    indent += 2;
-                    inst.accept(this, null);
-                    out.print(")");
-                    indent -= 2;
-                    nextRev = inst.fn("rev");
-                }
-                nl("");
-                nl("(defund @" + fun.name + "-%" + curBb.label + "-rev (mem loc pred)");
-                nl("  (" + nextRev + " mem loc pred))");
-                revFuns = false;
-                nl("");
-                nl("(defund @" + fun.name + "-%" + curBb.label + "-bb (mem loc pred)");
-                if (curBb.numPhi == 0) {
-                    nl("  (declare (ignore pred))");
-                }
-                indent += 2;
-                nl("(b* (");
-                indent += 2;
-                for (int j = 0; j < curBb.insts.size(); j++) {
-                    Instruction inst = curBb.insts.get(j);
-                    inst.accept(this, null);
-                }
-                out.print(")");
-                indent -= 2;
-                nl("(mv succ mem loc)");
-                indent -= 2;
-                out.print("))");
-                nl("");
-                nl("(defruled @" + fun.name + "-%" + curBb.label + "-expand-bb");
-                nl("  (equal (@" + fun.name + "-%" + curBb.label + "-bb mem loc pred)");
-                nl("         (@" + fun.name + "-%" + curBb.label + "-rev mem loc pred))");
-                nl("  :enable (@" + fun.name + "-%" + curBb.label + "-bb" +
-                        " @" + fun.name + "-%" + curBb.label + "-rev");
-                indent += 4;
-                for (Instruction inst: curBb.insts) {
-                    nl(inst.fn("rev"));
-                }
-                out.print(")");
-                indent -= 4;
-                nl("  :disable s-diff-s)");
-            }
-            nl("");
-            nl("(defund @" + fun.name + "-step (label mem loc pred)");
-            nl("  (case label");
-            indent += 4;
-            for (int i = 0; i < fun.blocks.size(); i++) {
-                curBb = fun.blocks.get(i);
-                nl("(%" + curBb.label + " (@" + fun.name + "-%" + curBb.label + "-bb mem loc pred))");
-            }
-            nl("(otherwise (mv nil mem loc))))");
-            indent -= 4;
-            nl("");
-            nl("(defund @" + fun.name + "-steps (label mem loc pred n)");
-            nl("  (declare (xargs :measure (nfix n)))");
-            nl("  (if (equal label 'ret)");
-            ReturnInst retInst = (ReturnInst) fun.blocks.get(fun.blocks.size() - 1).terminator;
-            nl("      " + operandStr(retInst.operands[0]));
-            nl("    (if (zp n) nil");
-            nl("      (mv-let");
-            nl("        (new-label new-mem new-loc)");
-            nl("        (@" + fun.name + "-step label mem loc pred)");
-            nl("        (@" + fun.name + "-steps new-label new-mem new-loc label (1- n))))))");
-            nl("");
-            nl("(defund @" + fun.name + " (" + args + ")");
-            nl("  (declare (ignore " + args + "))");
-            nl("   nil)");
-//            nl("  (@" + fun.name + "-%0 *" + moduleName + "-globals* " + getUseArgs(fun.blocks.get(0), null) + "))");
+            genFunction(fun);
         }
         nl("");
     }
@@ -217,7 +285,7 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
                 Module module = new Module(Pointer.getPeer(moduleRef));
                 try (PrintStream out = new PrintStream(outDir + file.replace(".bc", ".lisp"))) {
                     DumpACL2Steps dump = new DumpACL2Steps(out);
-                    dump.dumpModule(module, deps);
+                    dump.genModule(module, deps);
                 }
                 LLVMDisposeModule(moduleRef);
             } else {
@@ -416,10 +484,8 @@ public class DumpACL2Steps implements Instruction.Visitor<Void, Void> {
     }
 
     private void setAlloca(Instruction inst, String type, String nm, String size) {
-        size = size != null ?  " " + size : "";
+        size = size != null ? " " + size : "";
         if (smallFuns) {
-            boolean ok = allMems.add(inst.refName);
-            assert ok;
             nl("(defund " + inst.fn("mem") + " (" + st() + ")");
             nl("  (alloca-" + type + " '" + nm + size + " " + lastMem + "))");
             lastMem = "(" + inst.fn("mem") + " " + st() + ")";

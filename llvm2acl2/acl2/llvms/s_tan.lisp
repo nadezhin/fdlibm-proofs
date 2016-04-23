@@ -77,6 +77,10 @@
 (defund @tan-succ0-lab (s0)
   (case (g '%9 (@tan-%9-loc s0)) (-1 '%10) (0 '%14)))
 
+(defund @tan-%0-fwd (mem loc pred)
+  (let ((s0 (list mem loc pred)))
+    (mv (@tan-succ0-lab s0) (@tan-m0.4-mem s0) (@tan-%9-loc s0))))
+
 (defund @tan-succ0-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%9 loc) (-1 '%10) (0 '%14)) mem loc))
@@ -118,6 +122,155 @@
 (defund @tan-%0-rev (mem loc pred)
   (@tan-%1-rev mem loc pred))
 
+(defruled @tan-%0-expand-rev-as-@tan-%1-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%1-rev
+            (@tan-%0-mem s0)
+            (@tan-%0-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-rev @tan-%0-mem @tan-%0-loc @tan-%0-pred))
+(defruled @tan-%0-expand-rev-as-@tan-%2-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%2-rev
+            (@tan-%1-mem s0)
+            (@tan-%1-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%1-rev @tan-%1-rev @tan-%1-mem @tan-%1-loc))
+(defruled @tan-%0-expand-rev-as-@tan-%y-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%y-rev
+            (@tan-%2-mem s0)
+            (@tan-%2-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%2-rev @tan-%2-rev @tan-%2-mem @tan-%2-loc))
+(defruled @tan-%0-expand-rev-as-@tan-%z-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%z-rev
+            (@tan-%y-mem s0)
+            (@tan-%y-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%y-rev @tan-%y-rev @tan-%y-mem @tan-%y-loc))
+(defruled @tan-%0-expand-rev-as-@tan-%n-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%n-rev
+            (@tan-%z-mem s0)
+            (@tan-%z-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%z-rev @tan-%z-rev @tan-%z-mem @tan-%z-loc))
+(defruled @tan-%0-expand-rev-as-@tan-%ix-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%ix-rev
+            (@tan-%n-mem s0)
+            (@tan-%n-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%n-rev @tan-%n-rev @tan-%n-mem @tan-%n-loc))
+(defruled @tan-%0-expand-rev-as-@tan-m0.1-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-m0.1-rev
+            (@tan-%ix-mem s0)
+            (@tan-%ix-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%ix-rev @tan-%ix-rev @tan-%ix-mem @tan-%ix-loc))
+(defruled @tan-%0-expand-rev-as-@tan-m0.2-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-m0.2-rev
+            (@tan-m0.1-mem s0)
+            (@tan-%ix-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-m0.1-rev @tan-m0.1-rev @tan-m0.1-mem))
+(defruled @tan-%0-expand-rev-as-@tan-%3-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%3-rev
+            (@tan-m0.2-mem s0)
+            (@tan-%ix-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-m0.2-rev @tan-m0.2-rev @tan-m0.2-mem))
+(defruled @tan-%0-expand-rev-as-@tan-%4-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%4-rev
+            (@tan-m0.2-mem s0)
+            (@tan-%3-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%3-rev @tan-%3-rev @tan-%3-loc @tan-%3-val))
+(defruled @tan-%0-expand-rev-as-@tan-%5-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%5-rev
+            (@tan-m0.2-mem s0)
+            (@tan-%4-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%4-rev @tan-%4-rev @tan-%4-loc @tan-%4-val))
+(defruled @tan-%0-expand-rev-as-@tan-m0.3-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-m0.3-rev
+            (@tan-m0.2-mem s0)
+            (@tan-%5-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%5-rev @tan-%5-rev @tan-%5-loc @tan-%5-val))
+(defruled @tan-%0-expand-rev-as-@tan-%6-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%6-rev
+            (@tan-m0.3-mem s0)
+            (@tan-%5-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-m0.3-rev @tan-m0.3-rev @tan-m0.3-mem))
+(defruled @tan-%0-expand-rev-as-@tan-%7-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%7-rev
+            (@tan-m0.3-mem s0)
+            (@tan-%6-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%6-rev @tan-%6-rev @tan-%6-loc @tan-%6-val))
+(defruled @tan-%0-expand-rev-as-@tan-m0.4-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-m0.4-rev
+            (@tan-m0.3-mem s0)
+            (@tan-%7-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%7-rev @tan-%7-rev @tan-%7-loc @tan-%7-val))
+(defruled @tan-%0-expand-rev-as-@tan-%8-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%8-rev
+            (@tan-m0.4-mem s0)
+            (@tan-%7-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-m0.4-rev @tan-m0.4-rev @tan-m0.4-mem))
+(defruled @tan-%0-expand-rev-as-@tan-%9-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-%9-rev
+            (@tan-m0.4-mem s0)
+            (@tan-%8-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%8-rev @tan-%8-rev @tan-%8-loc @tan-%8-val))
+(defruled @tan-%0-expand-rev-as-@tan-succ0-rev
+  (equal (@tan-%0-rev mem loc pred)
+         (let ((s0 (list mem loc pred)))
+           (@tan-succ0-rev
+            (@tan-m0.4-mem s0)
+            (@tan-%9-loc s0)
+            (@tan-%0-pred s0))))
+  :enable (@tan-%0-expand-rev-as-@tan-%9-rev @tan-%9-rev @tan-%9-loc @tan-%9-val))
+(defruled @tan-%0-expand-rev-as-fwd
+  (equal (@tan-%0-rev mem loc pred)
+         (@tan-%0-fwd mem loc pred))
+  :enable (@tan-%0-expand-rev-as-@tan-succ0-rev @tan-succ0-rev @tan-succ0-lab @tan-%0-fwd))
+
 (defund @tan-%0-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -147,30 +300,6 @@
     (succ (case (g '%9 loc) (-1 '%10) (0 '%14))))
   (mv succ mem loc)))
 
-(defruled @tan-%0-expand-bb
-  (equal (@tan-%0-bb mem loc pred)
-         (@tan-%0-rev mem loc pred))
-  :enable (@tan-%0-bb @tan-%0-rev
-    @tan-%1-rev
-    @tan-%2-rev
-    @tan-%y-rev
-    @tan-%z-rev
-    @tan-%n-rev
-    @tan-%ix-rev
-    @tan-m0.1-rev
-    @tan-m0.2-rev
-    @tan-%3-rev
-    @tan-%4-rev
-    @tan-%5-rev
-    @tan-m0.3-rev
-    @tan-%6-rev
-    @tan-%7-rev
-    @tan-m0.4-rev
-    @tan-%8-rev
-    @tan-%9-rev
-    @tan-succ0-rev)
-  :disable s-diff-s)
-
 (defund @tan-%10-mem (s10)
   (car s10))
 (defund @tan-%10-loc (s10)
@@ -195,6 +324,10 @@
   (declare (ignore s10))
   '%34)
 
+(defund @tan-%10-fwd (mem loc pred)
+  (let ((s10 (list mem loc pred)))
+    (mv (@tan-succ10-lab s10) (@tan-m10.1-mem s10) (@tan-%13-loc s10))))
+
 (defund @tan-succ10-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%34 mem loc))
@@ -210,6 +343,51 @@
 (defund @tan-%10-rev (mem loc pred)
   (@tan-%11-rev mem loc pred))
 
+(defruled @tan-%10-expand-rev-as-@tan-%11-rev
+  (equal (@tan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@tan-%11-rev
+            (@tan-%10-mem s10)
+            (@tan-%10-loc s10)
+            (@tan-%10-pred s10))))
+  :enable (@tan-%10-rev @tan-%10-mem @tan-%10-loc @tan-%10-pred))
+(defruled @tan-%10-expand-rev-as-@tan-%12-rev
+  (equal (@tan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@tan-%12-rev
+            (@tan-%10-mem s10)
+            (@tan-%11-loc s10)
+            (@tan-%10-pred s10))))
+  :enable (@tan-%10-expand-rev-as-@tan-%11-rev @tan-%11-rev @tan-%11-loc @tan-%11-val))
+(defruled @tan-%10-expand-rev-as-@tan-%13-rev
+  (equal (@tan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@tan-%13-rev
+            (@tan-%10-mem s10)
+            (@tan-%12-loc s10)
+            (@tan-%10-pred s10))))
+  :enable (@tan-%10-expand-rev-as-@tan-%12-rev @tan-%12-rev @tan-%12-loc @tan-%12-val))
+(defruled @tan-%10-expand-rev-as-@tan-m10.1-rev
+  (equal (@tan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@tan-m10.1-rev
+            (@tan-%10-mem s10)
+            (@tan-%13-loc s10)
+            (@tan-%10-pred s10))))
+  :enable (@tan-%10-expand-rev-as-@tan-%13-rev @tan-%13-rev @tan-%13-loc @tan-%13-val))
+(defruled @tan-%10-expand-rev-as-@tan-succ10-rev
+  (equal (@tan-%10-rev mem loc pred)
+         (let ((s10 (list mem loc pred)))
+           (@tan-succ10-rev
+            (@tan-m10.1-mem s10)
+            (@tan-%13-loc s10)
+            (@tan-%10-pred s10))))
+  :enable (@tan-%10-expand-rev-as-@tan-m10.1-rev @tan-m10.1-rev @tan-m10.1-mem))
+(defruled @tan-%10-expand-rev-as-fwd
+  (equal (@tan-%10-rev mem loc pred)
+         (@tan-%10-fwd mem loc pred))
+  :enable (@tan-%10-expand-rev-as-@tan-succ10-rev @tan-succ10-rev @tan-succ10-lab @tan-%10-fwd))
+
 (defund @tan-%10-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -219,17 +397,6 @@
     (mem (store-double (g '%13 loc) (g '%1 loc) mem))
     (succ '%34))
   (mv succ mem loc)))
-
-(defruled @tan-%10-expand-bb
-  (equal (@tan-%10-bb mem loc pred)
-         (@tan-%10-rev mem loc pred))
-  :enable (@tan-%10-bb @tan-%10-rev
-    @tan-%11-rev
-    @tan-%12-rev
-    @tan-%13-rev
-    @tan-m10.1-rev
-    @tan-succ10-rev)
-  :disable s-diff-s)
 
 (defund @tan-%14-mem (s14)
   (car s14))
@@ -248,6 +415,10 @@
 (defund @tan-succ14-lab (s14)
   (case (g '%16 (@tan-%16-loc s14)) (-1 '%17) (0 '%21)))
 
+(defund @tan-%14-fwd (mem loc pred)
+  (let ((s14 (list mem loc pred)))
+    (mv (@tan-succ14-lab s14) (@tan-%14-mem s14) (@tan-%16-loc s14))))
+
 (defund @tan-succ14-rev (mem loc pred)
   (declare (ignore pred))
   (mv (case (g '%16 loc) (-1 '%17) (0 '%21)) mem loc))
@@ -259,6 +430,35 @@
 (defund @tan-%14-rev (mem loc pred)
   (@tan-%15-rev mem loc pred))
 
+(defruled @tan-%14-expand-rev-as-@tan-%15-rev
+  (equal (@tan-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@tan-%15-rev
+            (@tan-%14-mem s14)
+            (@tan-%14-loc s14)
+            (@tan-%14-pred s14))))
+  :enable (@tan-%14-rev @tan-%14-mem @tan-%14-loc @tan-%14-pred))
+(defruled @tan-%14-expand-rev-as-@tan-%16-rev
+  (equal (@tan-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@tan-%16-rev
+            (@tan-%14-mem s14)
+            (@tan-%15-loc s14)
+            (@tan-%14-pred s14))))
+  :enable (@tan-%14-expand-rev-as-@tan-%15-rev @tan-%15-rev @tan-%15-loc @tan-%15-val))
+(defruled @tan-%14-expand-rev-as-@tan-succ14-rev
+  (equal (@tan-%14-rev mem loc pred)
+         (let ((s14 (list mem loc pred)))
+           (@tan-succ14-rev
+            (@tan-%14-mem s14)
+            (@tan-%16-loc s14)
+            (@tan-%14-pred s14))))
+  :enable (@tan-%14-expand-rev-as-@tan-%16-rev @tan-%16-rev @tan-%16-loc @tan-%16-val))
+(defruled @tan-%14-expand-rev-as-fwd
+  (equal (@tan-%14-rev mem loc pred)
+         (@tan-%14-fwd mem loc pred))
+  :enable (@tan-%14-expand-rev-as-@tan-succ14-rev @tan-succ14-rev @tan-succ14-lab @tan-%14-fwd))
+
 (defund @tan-%14-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -266,15 +466,6 @@
     (loc (s '%16 (icmp-sge-i32 (g '%15 loc) 2146435072) loc))
     (succ (case (g '%16 loc) (-1 '%17) (0 '%21))))
   (mv succ mem loc)))
-
-(defruled @tan-%14-expand-bb
-  (equal (@tan-%14-bb mem loc pred)
-         (@tan-%14-rev mem loc pred))
-  :enable (@tan-%14-bb @tan-%14-rev
-    @tan-%15-rev
-    @tan-%16-rev
-    @tan-succ14-rev)
-  :disable s-diff-s)
 
 (defund @tan-%17-mem (s17)
   (car s17))
@@ -300,6 +491,10 @@
   (declare (ignore s17))
   '%34)
 
+(defund @tan-%17-fwd (mem loc pred)
+  (let ((s17 (list mem loc pred)))
+    (mv (@tan-succ17-lab s17) (@tan-m17.1-mem s17) (@tan-%20-loc s17))))
+
 (defund @tan-succ17-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%34 mem loc))
@@ -315,6 +510,51 @@
 (defund @tan-%17-rev (mem loc pred)
   (@tan-%18-rev mem loc pred))
 
+(defruled @tan-%17-expand-rev-as-@tan-%18-rev
+  (equal (@tan-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@tan-%18-rev
+            (@tan-%17-mem s17)
+            (@tan-%17-loc s17)
+            (@tan-%17-pred s17))))
+  :enable (@tan-%17-rev @tan-%17-mem @tan-%17-loc @tan-%17-pred))
+(defruled @tan-%17-expand-rev-as-@tan-%19-rev
+  (equal (@tan-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@tan-%19-rev
+            (@tan-%17-mem s17)
+            (@tan-%18-loc s17)
+            (@tan-%17-pred s17))))
+  :enable (@tan-%17-expand-rev-as-@tan-%18-rev @tan-%18-rev @tan-%18-loc @tan-%18-val))
+(defruled @tan-%17-expand-rev-as-@tan-%20-rev
+  (equal (@tan-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@tan-%20-rev
+            (@tan-%17-mem s17)
+            (@tan-%19-loc s17)
+            (@tan-%17-pred s17))))
+  :enable (@tan-%17-expand-rev-as-@tan-%19-rev @tan-%19-rev @tan-%19-loc @tan-%19-val))
+(defruled @tan-%17-expand-rev-as-@tan-m17.1-rev
+  (equal (@tan-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@tan-m17.1-rev
+            (@tan-%17-mem s17)
+            (@tan-%20-loc s17)
+            (@tan-%17-pred s17))))
+  :enable (@tan-%17-expand-rev-as-@tan-%20-rev @tan-%20-rev @tan-%20-loc @tan-%20-val))
+(defruled @tan-%17-expand-rev-as-@tan-succ17-rev
+  (equal (@tan-%17-rev mem loc pred)
+         (let ((s17 (list mem loc pred)))
+           (@tan-succ17-rev
+            (@tan-m17.1-mem s17)
+            (@tan-%20-loc s17)
+            (@tan-%17-pred s17))))
+  :enable (@tan-%17-expand-rev-as-@tan-m17.1-rev @tan-m17.1-rev @tan-m17.1-mem))
+(defruled @tan-%17-expand-rev-as-fwd
+  (equal (@tan-%17-rev mem loc pred)
+         (@tan-%17-fwd mem loc pred))
+  :enable (@tan-%17-expand-rev-as-@tan-succ17-rev @tan-succ17-rev @tan-succ17-lab @tan-%17-fwd))
+
 (defund @tan-%17-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -324,17 +564,6 @@
     (mem (store-double (g '%20 loc) (g '%1 loc) mem))
     (succ '%34))
   (mv succ mem loc)))
-
-(defruled @tan-%17-expand-bb
-  (equal (@tan-%17-bb mem loc pred)
-         (@tan-%17-rev mem loc pred))
-  :enable (@tan-%17-bb @tan-%17-rev
-    @tan-%18-rev
-    @tan-%19-rev
-    @tan-%20-rev
-    @tan-m17.1-rev
-    @tan-succ17-rev)
-  :disable s-diff-s)
 
 (defund @tan-%21-mem (s21)
   (car s21))
@@ -398,6 +627,10 @@
   (declare (ignore s21))
   '%34)
 
+(defund @tan-%21-fwd (mem loc pred)
+  (let ((s21 (list mem loc pred)))
+    (mv (@tan-succ21-lab s21) (@tan-m21.2-mem s21) (@tan-%33-loc s21))))
+
 (defund @tan-succ21-rev (mem loc pred)
   (declare (ignore pred))
   (mv '%34 mem loc))
@@ -433,6 +666,131 @@
 (defund @tan-%21-rev (mem loc pred)
   (@tan-%22-rev mem loc pred))
 
+(defruled @tan-%21-expand-rev-as-@tan-%22-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%22-rev
+            (@tan-%21-mem s21)
+            (@tan-%21-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-rev @tan-%21-mem @tan-%21-loc @tan-%21-pred))
+(defruled @tan-%21-expand-rev-as-@tan-%23-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%23-rev
+            (@tan-%21-mem s21)
+            (@tan-%22-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%22-rev @tan-%22-rev @tan-%22-loc @tan-%22-val))
+(defruled @tan-%21-expand-rev-as-@tan-%24-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%24-rev
+            (@tan-%21-mem s21)
+            (@tan-%23-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%23-rev @tan-%23-rev @tan-%23-loc @tan-%23-val))
+(defruled @tan-%21-expand-rev-as-@tan-m21.1-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-m21.1-rev
+            (@tan-%21-mem s21)
+            (@tan-%24-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%24-rev @tan-%24-rev @tan-%24-loc @tan-%24-val))
+(defruled @tan-%21-expand-rev-as-@tan-%25-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%25-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%24-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-m21.1-rev @tan-m21.1-rev @tan-m21.1-mem))
+(defruled @tan-%21-expand-rev-as-@tan-%26-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%26-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%25-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%25-rev @tan-%25-rev @tan-%25-loc @tan-%25-val))
+(defruled @tan-%21-expand-rev-as-@tan-%27-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%27-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%26-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%26-rev @tan-%26-rev @tan-%26-loc @tan-%26-val))
+(defruled @tan-%21-expand-rev-as-@tan-%28-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%28-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%27-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%27-rev @tan-%27-rev @tan-%27-loc @tan-%27-val))
+(defruled @tan-%21-expand-rev-as-@tan-%29-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%29-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%28-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%28-rev @tan-%28-rev @tan-%28-loc @tan-%28-val))
+(defruled @tan-%21-expand-rev-as-@tan-%30-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%30-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%29-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%29-rev @tan-%29-rev @tan-%29-loc @tan-%29-val))
+(defruled @tan-%21-expand-rev-as-@tan-%31-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%31-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%30-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%30-rev @tan-%30-rev @tan-%30-loc @tan-%30-val))
+(defruled @tan-%21-expand-rev-as-@tan-%32-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%32-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%31-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%31-rev @tan-%31-rev @tan-%31-loc @tan-%31-val))
+(defruled @tan-%21-expand-rev-as-@tan-%33-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-%33-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%32-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%32-rev @tan-%32-rev @tan-%32-loc @tan-%32-val))
+(defruled @tan-%21-expand-rev-as-@tan-m21.2-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-m21.2-rev
+            (@tan-m21.1-mem s21)
+            (@tan-%33-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-%33-rev @tan-%33-rev @tan-%33-loc @tan-%33-val))
+(defruled @tan-%21-expand-rev-as-@tan-succ21-rev
+  (equal (@tan-%21-rev mem loc pred)
+         (let ((s21 (list mem loc pred)))
+           (@tan-succ21-rev
+            (@tan-m21.2-mem s21)
+            (@tan-%33-loc s21)
+            (@tan-%21-pred s21))))
+  :enable (@tan-%21-expand-rev-as-@tan-m21.2-rev @tan-m21.2-rev @tan-m21.2-mem))
+(defruled @tan-%21-expand-rev-as-fwd
+  (equal (@tan-%21-rev mem loc pred)
+         (@tan-%21-fwd mem loc pred))
+  :enable (@tan-%21-expand-rev-as-@tan-succ21-rev @tan-succ21-rev @tan-succ21-lab @tan-%21-fwd))
+
 (defund @tan-%21-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
@@ -453,27 +811,6 @@
     (succ '%34))
   (mv succ mem loc)))
 
-(defruled @tan-%21-expand-bb
-  (equal (@tan-%21-bb mem loc pred)
-         (@tan-%21-rev mem loc pred))
-  :enable (@tan-%21-bb @tan-%21-rev
-    @tan-%22-rev
-    @tan-%23-rev
-    @tan-%24-rev
-    @tan-m21.1-rev
-    @tan-%25-rev
-    @tan-%26-rev
-    @tan-%27-rev
-    @tan-%28-rev
-    @tan-%29-rev
-    @tan-%30-rev
-    @tan-%31-rev
-    @tan-%32-rev
-    @tan-%33-rev
-    @tan-m21.2-rev
-    @tan-succ21-rev)
-  :disable s-diff-s)
-
 (defund @tan-%34-mem (s34)
   (car s34))
 (defund @tan-%34-loc (s34)
@@ -488,6 +825,10 @@
   (declare (ignore s34))
   'ret)
 
+(defund @tan-%34-fwd (mem loc pred)
+  (let ((s34 (list mem loc pred)))
+    (mv (@tan-succ34-lab s34) (@tan-%34-mem s34) (@tan-%35-loc s34))))
+
 (defund @tan-succ34-rev (mem loc pred)
   (declare (ignore pred))
   (mv 'ret mem loc))
@@ -497,20 +838,33 @@
 (defund @tan-%34-rev (mem loc pred)
   (@tan-%35-rev mem loc pred))
 
+(defruled @tan-%34-expand-rev-as-@tan-%35-rev
+  (equal (@tan-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@tan-%35-rev
+            (@tan-%34-mem s34)
+            (@tan-%34-loc s34)
+            (@tan-%34-pred s34))))
+  :enable (@tan-%34-rev @tan-%34-mem @tan-%34-loc @tan-%34-pred))
+(defruled @tan-%34-expand-rev-as-@tan-succ34-rev
+  (equal (@tan-%34-rev mem loc pred)
+         (let ((s34 (list mem loc pred)))
+           (@tan-succ34-rev
+            (@tan-%34-mem s34)
+            (@tan-%35-loc s34)
+            (@tan-%34-pred s34))))
+  :enable (@tan-%34-expand-rev-as-@tan-%35-rev @tan-%35-rev @tan-%35-loc @tan-%35-val))
+(defruled @tan-%34-expand-rev-as-fwd
+  (equal (@tan-%34-rev mem loc pred)
+         (@tan-%34-fwd mem loc pred))
+  :enable (@tan-%34-expand-rev-as-@tan-succ34-rev @tan-succ34-rev @tan-succ34-lab @tan-%34-fwd))
+
 (defund @tan-%34-bb (mem loc pred)
   (declare (ignore pred))
   (b* (
     (loc (s '%35 (load-double (g '%1 loc) mem) loc))
     (succ 'ret))
   (mv succ mem loc)))
-
-(defruled @tan-%34-expand-bb
-  (equal (@tan-%34-bb mem loc pred)
-         (@tan-%34-rev mem loc pred))
-  :enable (@tan-%34-bb @tan-%34-rev
-    @tan-%35-rev
-    @tan-succ34-rev)
-  :disable s-diff-s)
 
 (defund @tan-step (label mem loc pred)
   (case label

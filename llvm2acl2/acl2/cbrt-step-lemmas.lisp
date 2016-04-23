@@ -3,59 +3,6 @@
 (include-book "llvms/s_cbrt")
 (include-book "cbrts")
 
-(defruled @cbrt-%13-expand-bb-as-%14
-  (equal (@cbrt-%13-bb mem loc pred)
-         (let ((s13 (list mem loc pred)))
-           (@cbrt-%14-rev
-            (@cbrt-%13-mem s13)
-            (@cbrt-%13-loc s13)
-            (@cbrt-%13-pred s13))))
-  :enable (@cbrt-%13-expand-bb @cbrt-%13-rev @cbrt-%13-mem @cbrt-%13-loc @cbrt-%13-pred))
-
-(defruled @cbrt-%13-expand-bb-as-%15
-  (equal (@cbrt-%13-bb mem loc pred)
-         (let ((s13 (list mem loc pred)))
-           (@cbrt-%15-rev
-            (@cbrt-%13-mem s13)
-            (@cbrt-%14-loc s13)
-            (@cbrt-%13-pred s13))))
-  :enable (@cbrt-%13-expand-bb-as-%14 @cbrt-%14-rev @cbrt-%14-loc @cbrt-%14-val))
-
-(defruled @cbrt-%13-expand-bb-as-%16
-  (equal (@cbrt-%13-bb mem loc pred)
-         (let ((s13 (list mem loc pred)))
-           (@cbrt-%16-rev
-            (@cbrt-%13-mem s13)
-            (@cbrt-%15-loc s13)
-            (@cbrt-%13-pred s13))))
-  :enable (@cbrt-%13-expand-bb-as-%15 @cbrt-%15-rev @cbrt-%15-loc  @cbrt-%15-val))
-
-(defruled @cbrt-%13-expand-bb-as-m13.1
-  (equal (@cbrt-%13-bb mem loc pred)
-         (let ((s13 (list mem loc pred)))
-           (@cbrt-m13.1-rev
-            (@cbrt-%13-mem s13)
-            (@cbrt-%16-loc s13)
-            (@cbrt-%13-pred s13))))
-  :enable (@cbrt-%13-expand-bb-as-%16 @cbrt-%16-rev @cbrt-%16-loc @cbrt-%16-val))
-
-(defruled @cbrt-%13-expand-bb-as-succ13
-  (equal (@cbrt-%13-bb mem loc pred)
-         (let ((s13 (list mem loc pred)))
-           (@cbrt-succ13-rev
-            (@cbrt-m13.1-mem s13)
-            (@cbrt-%16-loc s13)
-            (@cbrt-%13-pred s13))))
-  :enable (@cbrt-%13-expand-bb-as-m13.1 @cbrt-m13.1-rev @cbrt-m13.1-mem))
-
-(defruled @cbrt-%13-expand-bb-as-mv
-  (equal (@cbrt-%13-bb mem loc pred)
-         (let ((s13 (list mem loc pred)))
-           (mv
-            (@cbrt-succ13-lab s13)
-            (@cbrt-m13.1-mem s13)
-            (@cbrt-%16-loc s13))))
-  :enable (@cbrt-%13-expand-bb-as-succ13 @cbrt-succ13-rev @cbrt-succ13-lab))
 
 ; -------------------------
 
@@ -216,156 +163,6 @@
   :enable (@cbrt-%101-bb @cbrts-%101)
   :disable s-diff-s)
 
-(encapsulate ()
-;  (local (in-theory nil))
-
-  (defrule ttt_13_2
-    (equal
-     (@cbrt-%13-bb mem loc)
-     (@cbrt-%13-succ (cons mem loc)))
-  :enable (;g-diff-s g-same-s
-           car-cons cdr-cons
-                    @cbrt-%13-bb
-                    @cbrt-%13-loc
-                    @cbrt-%13-mem
-                    @cbrt-%14
-                    @cbrt-%14-loc
-                    @cbrt-%15
-                    @cbrt-%15-loc
-                    @cbrt-%16
-                    @cbrt-%16-loc
-                    @cbrt-%1.1-mem
-                    @cbrt-%13-succ
-                    )
-  :rule-classes ())
-  
- (defrule ttt_0_2
-    (equal
-     (@cbrt-%0-bb mem loc)
-     (@cbrt-%0-succ (cons mem loc)))
-  :disable ((tau-system))
-  :enable (;g-diff-s g-same-s
-           car-cons cdr-cons
-           @cbrt-%0-bb
-           @cbrt-%0-succ         
-           @cbrt-%hx.2-mem
-           @cbrt-%sign.1-mem
-           @cbrt-%hx.1-mem
-           @cbrt-%t.1-mem
-           @cbrt-%2.1-mem
-           @cbrt-%sign-mem
-           @cbrt-%sign-loc
-           @cbrt-%w-mem
-           @cbrt-%w-loc
-           @cbrt-%t-mem
-           @cbrt-%t-loc
-           @cbrt-%s-mem
-           @cbrt-%s-loc
-           @cbrt-%r-mem
-           @cbrt-%r-loc
-           @cbrt-%hx-mem
-           @cbrt-%hx-loc
-           @cbrt-%2-mem
-           @cbrt-%2-loc
-           @cbrt-%1-mem
-           @cbrt-%1-loc
-           @cbrt-%0-mem
-           @cbrt-%12-loc
-           @cbrt-%12
-           @cbrt-%11-loc
-           @cbrt-%11
-           @cbrt-%10-loc
-           @cbrt-%10
-           @cbrt-%9-loc
-           @cbrt-%9
-           @cbrt-%8-loc
-           @cbrt-%8
-           @cbrt-%7-loc
-           @cbrt-%7
-           @cbrt-%6-loc
-           @cbrt-%6
-           @cbrt-%5-loc
-           @cbrt-%5
-           @cbrt-%4-loc
-           @cbrt-%4
-           @cbrt-%3-loc
-           @cbrt-%3
-           @cbrt-%0-loc
-           )
-  :rule-classes ())
-
- (defrule ttt_5
-  (mv-let
-    (new-label new-mem new-loc)
-    (@cbrt-%0-bb mem loc)
-    (declare (ignore new-label))
-    (and
-     (equal new-mem (@cbrt-%hx.2-mem (cons mem loc)))
-     (equal new-loc (@cbrt-%12-loc (cons mem loc)))
-     
-     ))
-  :disable ((tau-system))
-  :enable (;g-diff-s g-same-s
-           car-cons cdr-cons
-           @cbrt-%0-bb
-           @cbrt-%hx.2-mem
-           @cbrt-%sign.1-mem
-           @cbrt-%hx.1-mem
-           @cbrt-%t.1-mem
-           @cbrt-%2.1-mem
-           @cbrt-%sign-mem
-           @cbrt-%sign-loc
-           @cbrt-%w-mem
-           @cbrt-%w-loc
-           @cbrt-%t-mem
-           @cbrt-%t-loc
-           @cbrt-%s-mem
-           @cbrt-%s-loc
-           @cbrt-%r-mem
-           @cbrt-%r-loc
-           @cbrt-%hx-mem
-           @cbrt-%hx-loc
-           @cbrt-%2-mem
-           @cbrt-%2-loc
-           @cbrt-%1-mem
-           @cbrt-%1-loc
-           @cbrt-%0-mem
-           @cbrt-%12-loc
-           @cbrt-%12
-           @cbrt-%11-loc
-           @cbrt-%11
-           @cbrt-%10-loc
-           @cbrt-%10
-           @cbrt-%9-loc
-           @cbrt-%9
-           @cbrt-%8-loc
-           @cbrt-%8
-           @cbrt-%7-loc
-           @cbrt-%7
-           @cbrt-%6-loc
-           @cbrt-%6
-           @cbrt-%5-loc
-           @cbrt-%5
-           @cbrt-%4-loc
-           @cbrt-%4
-           @cbrt-%3-loc
-           @cbrt-%3
-           @cbrt-%0-loc
-           )
-  :rule-classes ())
-
-)
-#|
-        (:DEFINITION MV-NTH)
-        (:EXECUTABLE-COUNTERPART BITCAST-DOUBLE*-TO-I32*)
-        (:EXECUTABLE-COUNTERPART GETELEMENTPTR-I32)
-        (:FAKE-RUNE-FOR-TYPE-SET NIL)
-        (:REWRITE CAR-CONS)
-        (:REWRITE CDR-CONS)
-        (:REWRITE G-DIFF-S)
-        (:REWRITE G-SAME-S)
-        (:REWRITE S-DIFF-S))
-|#
 (defconst *cbrt-states* (list* 'ret *cbrt-labels*))
 
 (defund cbrt-state-p (x)
@@ -378,7 +175,7 @@
 
 (local
  (defrule succ-bb-%0
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%0-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%0-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (or (equal s nil) (equal s '%13) (equal s '%17)))
    :enable (map-to-state @cbrt-%0-bb)
@@ -386,7 +183,7 @@
 
 (local
  (defrule succ-bb-%13
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%13-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%13-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (equal s '%101))
    :enable (map-to-state @cbrt-%13-bb)
@@ -394,7 +191,7 @@
 
 (local
  (defrule succ-bb-%17
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%17-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%17-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (or (equal s nil) (equal s '%23) (equal s '%25)))
    :enable (map-to-state @cbrt-%17-bb)
@@ -402,7 +199,7 @@
 
 (local
  (defrule succ-bb-%23
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%23-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%23-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (equal s '%101))
    :enable (map-to-state @cbrt-%23-bb)
@@ -410,7 +207,7 @@
 
 (local
  (defrule succ-bb-%25
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%25-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%25-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (or (equal s nil) (equal s '%31) (equal s '%44)))
    :enable (map-to-state @cbrt-%25-bb)
@@ -418,7 +215,7 @@
 
 (local
  (defrule succ-bb-%31
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%31-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%31-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (equal s '%50))
    :enable (map-to-state @cbrt-%31-bb)
@@ -426,15 +223,15 @@
 
 (local
  (defrule succ-bb-%44
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%44-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%44-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (equal s '%50))
    :enable (map-to-state @cbrt-%44-bb)
    :rule-classes ()))
-
+#|
 (local
  (defrule succ-bb-%50
-   (b* (((mv new-label new-mem new-loc) (@cbrt-%50-bb mem loc))
+   (b* (((mv new-label new-mem new-loc) (@cbrt-%50-bb mem loc pred))
         (s (map-to-state new-label new-mem new-loc)))
      (equal s '%101))
    :enable (map-to-state @cbrt-%50-bb)
@@ -442,7 +239,7 @@
 
 (local
  (defrule succ-bb-%50-old
-   (equal (mv-nth 0 (@cbrt-%50-bb mem loc)) '%101)
+   (equal (mv-nth 0 (@cbrt-%50-bb mem loc pred)) '%101)
    :enable @cbrt-%50-bb
    :rule-classes ()))
 
@@ -451,74 +248,6 @@
 (defund @cbrt-%51 (st) (load-double (g '%t (@cbrt-%50-loc st)) (@cbrt-%50-mem st)))
 (defund @cbrt-%51-loc (st) (s '%51 (@cbrt-%51 st) (@cbrt-50-loc st)))
 
-(defund @cbrt-%50-bb (mem loc)
-  (b* (
-    (loc (s '%51 (load-double (g '%t loc) mem) loc))
-    (loc (s '%52 (load-double (g '%t loc) mem) loc))
-    (loc (s '%53 (fmul-double (g '%51 loc) (g '%52 loc)) loc))
-    (loc (s '%54 (load-double (g '%2 loc) mem) loc))
-    (loc (s '%55 (fdiv-double (g '%53 loc) (g '%54 loc)) loc))
-    (mem (store-double (g '%55 loc) (g '%r loc) mem))
-    (loc (s '%56 (load-double (g '%r loc) mem) loc))
-    (loc (s '%57 (load-double (g '%t loc) mem) loc))
-    (loc (s '%58 (fmul-double (g '%56 loc) (g '%57 loc)) loc))
-    (loc (s '%59 (fadd-double #x3FE15F15F15F15F1 (g '%58 loc)) loc))
-    (mem (store-double (g '%59 loc) (g '%s loc) mem))
-    (loc (s '%60 (load-double (g '%s loc) mem) loc))
-    (loc (s '%61 (fadd-double (g '%60 loc) #x3FF6A0EA0EA0EA0F) loc))
-    (loc (s '%62 (load-double (g '%s loc) mem) loc))
-    (loc (s '%63 (fdiv-double #xBFE691DE2532C834 (g '%62 loc)) loc))
-    (loc (s '%64 (fadd-double (g '%61 loc) (g '%63 loc)) loc))
-    (loc (s '%65 (fdiv-double #x3FF9B6DB6DB6DB6E (g '%64 loc)) loc))
-    (loc (s '%66 (fadd-double #x3FD6DB6DB6DB6DB7 (g '%65 loc)) loc))
-    (loc (s '%67 (load-double (g '%t loc) mem) loc))
-    (loc (s '%68 (fmul-double (g '%67 loc) (g '%66 loc)) loc))
-    (mem (store-double (g '%68 loc) (g '%t loc) mem))
-    (loc (s '%69 (bitcast-double*-to-i32* (g '%t loc)) loc))
-    (mem (store-i32 0 (g '%69 loc) mem))
-    (loc (s '%70 (bitcast-double*-to-i32* (g '%t loc)) loc))
-    (loc (s '%71 (getelementptr-i32 (g '%70 loc) 1) loc))
-    (loc (s '%72 (load-i32 (g '%71 loc) mem) loc))
-    (loc (s '%73 (add-i32 (g '%72 loc) 1) loc))
-    (mem (store-i32 (g '%73 loc) (g '%71 loc) mem))
-    (loc (s '%74 (load-double (g '%t loc) mem) loc))
-    (loc (s '%75 (load-double (g '%t loc) mem) loc))
-    (loc (s '%76 (fmul-double (g '%74 loc) (g '%75 loc)) loc))
-    (mem (store-double (g '%76 loc) (g '%s loc) mem))
-    (loc (s '%77 (load-double (g '%2 loc) mem) loc))
-    (loc (s '%78 (load-double (g '%s loc) mem) loc))
-    (loc (s '%79 (fdiv-double (g '%77 loc) (g '%78 loc)) loc))
-    (mem (store-double (g '%79 loc) (g '%r loc) mem))
-    (loc (s '%80 (load-double (g '%t loc) mem) loc))
-    (loc (s '%81 (load-double (g '%t loc) mem) loc))
-    (loc (s '%82 (fadd-double (g '%80 loc) (g '%81 loc)) loc))
-    (mem (store-double (g '%82 loc) (g '%w loc) mem))
-    (loc (s '%83 (load-double (g '%r loc) mem) loc))
-    (loc (s '%84 (load-double (g '%t loc) mem) loc))
-    (loc (s '%85 (fsub-double (g '%83 loc) (g '%84 loc)) loc))
-    (loc (s '%86 (load-double (g '%w loc) mem) loc))
-    (loc (s '%87 (load-double (g '%r loc) mem) loc))
-    (loc (s '%88 (fadd-double (g '%86 loc) (g '%87 loc)) loc))
-    (loc (s '%89 (fdiv-double (g '%85 loc) (g '%88 loc)) loc))
-    (mem (store-double (g '%89 loc) (g '%r loc) mem))
-    (loc (s '%90 (load-double (g '%t loc) mem) loc))
-    (loc (s '%91 (load-double (g '%t loc) mem) loc))
-    (loc (s '%92 (load-double (g '%r loc) mem) loc))
-    (loc (s '%93 (fmul-double (g '%91 loc) (g '%92 loc)) loc))
-    (loc (s '%94 (fadd-double (g '%90 loc) (g '%93 loc)) loc))
-    (mem (store-double (g '%94 loc) (g '%t loc) mem))
-    (loc (s '%95 (load-i32 (g '%sign loc) mem) loc))
-    (loc (s '%96 (bitcast-double*-to-i32* (g '%t loc)) loc))
-    (loc (s '%97 (getelementptr-i32 (g '%96 loc) 1) loc))
-    (loc (s '%98 (load-i32 (g '%97 loc) mem) loc))
-    (loc (s '%99 (or-i32 (g '%98 loc) (g '%95 loc)) loc))
-    (mem (store-i32 (g '%99 loc) (g '%97 loc) mem))
-    (loc (s '%100 (load-double (g '%t loc) mem) loc))
-    (mem (store-double (g '%100 loc) (g '%1 loc) mem)))
-  (mv '%101 mem loc)))
-
-
-#|
 (local
  (defrule succ-bb-%0
    (member (car (@cbrt-%0-bb mem loc)) '(nil %13 %17))
@@ -713,3 +442,4 @@
 (@cbrt-steps_1 '%-0 '() (s '%x #x3ff0000000000000 ()) 2)
 
 (@cbrt__ #x3ff0000000000000)
+|#
