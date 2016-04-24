@@ -25,8 +25,6 @@ acl2/classes               Conversion of class/9/*.class and some classes from O
 acl2/llvm.lisp             Definition of LLVM primitives in ACL2 (uses some primitives from JVM M5 model
 acl2/utils.lisp            Some lemmas about JVM M5 types
 acl2/llvm-lemmas.lisp      Lemmas about LLVM primitives
-acl2/llvm-rec.lisp         Obsolte definition of LLVM primitives using misc/record 
-acl2/llvm-rec-lemmas.lisp  Lemmas about llvm-rec
 acl2/fdlibm-translit.lisp  Specification of auxilarry methods in FdlibmTranslit with proofs that
                            bytecode matches the specification
 acl2/fdlibm-translitN.lisp Specification of auxilarry methods in FdlibmTranslitN with proofs that
@@ -37,8 +35,9 @@ acl2/cbrt-opt-equ.lisp     Equivalence between acl2/cbrt.lisp and acl2/llvm/s_cb
 acl2/cbrt-opt-jvm          Equivalence between acl2/cbrt.lisp and acl2/classes/FdlibmTranslit$Cbrt.lisp
 acl2/cbrt-opt-jvmN         Equivalence between acl2/cbrt.lisp and acl2/classes/FdlibmTranslitN$Cbrt.lisp
 acl2/cbrts.lisp            Another style of cbrt definition (as a step function)
-acl2/cbrts-equ.lisp        Attemps to prove acl2/cbrts.lisp properties
-acl2/cbrt-rec.lisp         Obsolete definition of cbrt based on acl2/llvm-rec.lsip
+acl2/cbrts-equ.lisp        Attempts to prove acl2/cbrts.lisp properties
+acl2/cbrt-step-lemmas.lisp Attempts to prove properties of llvms/s-cbrts.lisp
+acl2/cbrt-step-jvmN.lisp   Attempts to prove equaivalence of llvms/s-cbrts.lisp and acl2/classes/FdlibmTranslit$Cbrt.lisp
 
 ******* Build and run
 

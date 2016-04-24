@@ -71,7 +71,7 @@
            (equal (load-double (cons lv 0) (store-i32 i (cons lv 1) mem))
                   (set-hi (load-double (cons lv 0) mem) i)))
   :enable (set-hi load-double store-i32)
-  :expand (update-nth 1 (get-lo-i32 i) (cdr (assoc-equal lv mem))))
+  :expand (update-nth 1 (get-lo-i32 i) (load-var lv mem)))
 
 (defruled logand-thm
   (implies (and (i32p x)
@@ -134,74 +134,6 @@
                 (not (member key '(%1 %2 %hx %r %s %t %w %sign))))
            (@cbrt-local-vars-p (s key val loc)))
   :enable @cbrt-local-vars-p)
-
-(defnd @cbrt-mem-p (mem)
-  (and (true-listp mem)
-       (equal (len mem) 8)
-       (true-listp (nth 0 mem))
-       (equal (len (nth 0 mem)) 3)
-       (equal (car (nth 0 mem)) 'ret)
-       (true-listp (nth 1 mem))
-       (equal (len (nth 1 mem)) 3)
-       (equal (car (nth 1 mem)) 'x)
-       (true-listp (nth 2 mem))
-       (equal (len (nth 2 mem)) 2)
-       (equal (car (nth 2 mem)) 'hx)
-       (true-listp (nth 3 mem))
-       (equal (len (nth 3 mem)) 3)
-       (equal (car (nth 3 mem)) 'r)
-       (true-listp (nth 4 mem))
-       (equal (len (nth 4 mem)) 3)
-       (equal (car (nth 4 mem)) 's)
-       (true-listp (nth 5 mem))
-       (equal (len (nth 5 mem)) 3)
-       (equal (car (nth 5 mem)) 't)
-       (true-listp (nth 6 mem))
-       (equal (len (nth 6 mem)) 3)
-       (equal (car (nth 6 mem)) 'w)
-       (true-listp (nth 7 mem))
-       (equal (len (nth 7 mem)) 2)
-       (equal (car (nth 7 mem)) 'sign)))
-
-(defrule @cbrt-mem-p-store-double-ret
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-double v '(ret . 0) mem)))
- :enable (@cbrt-mem-p store-double))
-
-(defrule @cbrt-mem-p-store-double-x
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-double v '(x . 0) mem)))
- :enable (@cbrt-mem-p store-double))
-
-(defrule @cbrt-mem-p-store-i32-hx
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-i32 v '(hx . 0) mem)))
- :enable (@cbrt-mem-p store-i32))
-
-(defrule @cbrt-mem-p-store-double-r
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-double v '(r . 0) mem)))
- :enable (@cbrt-mem-p store-double))
-
-(defrule @cbrt-mem-p-store-double-s
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-double v '(s . 0) mem)))
- :enable (@cbrt-mem-p store-double))
-
-(defrule @cbrt-mem-p-store-double-t
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-double v '(t . 0) mem)))
- :enable (@cbrt-mem-p store-double))
-
-(defrule @cbrt-mem-p-store-double-w
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-double v '(w . 0) mem)))
- :enable (@cbrt-mem-p store-double))
-
-(defrule @cbrt-mem-p-store-i32-sign
- (implies (@cbrt-mem-p mem)
-          (@cbrt-mem-p (store-i32 v '(sign . 0) mem)))
- :enable (@cbrt-mem-p store-i32))
 
 ;--------------------
 
@@ -284,7 +216,6 @@
                 (equal (m5::status th s) 'm5::scheduled)
                 (member (m5::pc (m5::top-frame th s)) '(31))
                 (cbrt-compute-program-p (m5::program (m5::top-frame th s)))
-;                (equal (m5::program (m5::top-frame th s)) *cbrt-compute-program*)
                 (equal (m5::cur-class (m5::top-frame th s)) "FdlibmTranslitN$Cbrt")
                 (doublep (m5::top (m5::pop (m5::stack (m5::top-frame th s))))))
            (poised-to-invoke-get-lo-p th s))
@@ -296,7 +227,6 @@
                 (equal (m5::status th s) 'm5::scheduled)
                 (member (m5::pc (m5::top-frame th s)) '(4 71 156 208))
                 (cbrt-compute-program-p (m5::program (m5::top-frame th s)))
-;                (equal (m5::program (m5::top-frame th s)) *cbrt-compute-program*)
                 (equal (m5::cur-class (m5::top-frame th s)) "FdlibmTranslitN$Cbrt")
                 (doublep (m5::top (m5::pop (m5::stack (m5::top-frame th s))))))
            (poised-to-invoke-get-hi-p th s))
@@ -308,7 +238,6 @@
                 (equal (m5::status th s) 'm5::scheduled)
                 (member (m5::pc (m5::top-frame th s)) '(147))
                 (cbrt-compute-program-p (m5::program (m5::top-frame th s)))
-;                (equal (m5::program (m5::top-frame th s)) *cbrt-compute-program*)
                 (equal (m5::cur-class (m5::top-frame th s)) "FdlibmTranslitN$Cbrt")
                 (doublep (m5::top (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))
                 (i32p (m5::top (m5::stack (m5::top-frame th s)))))
@@ -321,7 +250,6 @@
                 (equal (m5::status th s) 'm5::scheduled)
                 (member (m5::pc (m5::top-frame th s)) '(42 56 79 95 161 214))
                 (cbrt-compute-program-p (m5::program (m5::top-frame th s)))
-;                (equal (m5::program (m5::top-frame th s)) *cbrt-compute-program*)
                 (equal (m5::cur-class (m5::top-frame th s)) "FdlibmTranslitN$Cbrt")
                 (doublep (m5::top (m5::pop (m5::pop (m5::stack (m5::top-frame th s))))))
                 (i32p (m5::top (m5::stack (m5::top-frame th s)))))
@@ -584,7 +512,6 @@
 (defund alpha (mem loc sb th s pc)
   (let ((frame (m5::top-frame th s)))
     (and (@cbrt-local-vars-p loc)
-         (@cbrt-mem-p mem)
          (pair-p mem (m5::locals frame))
          (class-table-assumptions (m5::class-table s))
          (equal (m5::status th s) 'm5::scheduled)
@@ -636,7 +563,6 @@
            pair-double-p store-double load-double
            pair-i32-p load-i32
            @cbrt-local-vars-p
-           @cbrt-mem-p
            @cbrt-%0-mem
            @cbrt-%0-loc
            @cbrt-%1-mem

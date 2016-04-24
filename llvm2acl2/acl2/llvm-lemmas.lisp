@@ -201,6 +201,16 @@
 
 ;----------
 
+(defrule load-same-store
+  (equal (load-var var (store-var var val mem)) val)
+  :enable (load-var store-var))
+
+(defrule load-diff-store
+  (implies (not (equal vara varb))
+           (equal (load-var vara (store-var varb val mem))
+                  (load-var vara mem)))
+  :enable (load-var store-var))
+
 (defrule get-lo-i32-type
   (implies (i32p i)
            (wordp (get-lo-i32 i)))
@@ -228,18 +238,15 @@
   :enable (doublep make-double rtl::encodingp rtl::dp))
 
 (defrule load-double-type
-  (implies (and (wordp (nth ofs (m5::binding var mem)))
-                (wordp (nth (1+ ofs) (m5::binding var mem))))
-;  (implies (and (wordp (nth ofs (g var mem)))
-;                (wordp (nth (1+ ofs) (g var mem))))
+  (implies (and (wordp (nth ofs (load-var var mem)))
+                (wordp (nth (1+ ofs) (load-var var mem))))
            (doublep (load-double (cons var ofs) mem)))
   :enable (addressp load-double))
 
 (defruled store-double-type
   (implies (doublep d)
            (equal (store-double d (cons var ofs) mem)
-                  (m5::bind
-;                  (s
+                  (store-var
                    var
                    (update-nth
                     (1+ ofs)
@@ -247,8 +254,7 @@
                     (update-nth
                      ofs
                      (get-lo-double d)
-                     (m5::binding var mem)))
-;                     (g var mem)))
+                     (load-var var mem)))
                    mem)))
   :enable store-double)
 
