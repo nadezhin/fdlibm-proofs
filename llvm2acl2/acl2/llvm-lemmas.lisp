@@ -234,8 +234,8 @@
 ;                (wordp (nth (1+ ofs) (g var mem))))
            (doublep (load-double (cons var ofs) mem)))
   :enable (addressp load-double))
-#|
-(defrule store-double-type
+
+(defruled store-double-type
   (implies (doublep d)
            (equal (store-double d (cons var ofs) mem)
                   (m5::bind
@@ -251,7 +251,6 @@
 ;                     (g var mem)))
                    mem)))
   :enable store-double)
-|#
 
 (defrule getelementptr-i32-type
   (implies (and (addressp a)

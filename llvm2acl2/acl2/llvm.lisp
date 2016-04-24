@@ -51,8 +51,7 @@
   (m5::bind var (make-list n) mem))
 
 (defund alloca-pointer (var mem)
-  (declare (ignore var))
-  mem)
+  (m5::bind var '(nil) mem))
 
 (defund store-double (d a mem)
   (let* ((var (car a))
@@ -75,9 +74,15 @@
     (m5::bind var new mem)))
 ;    (s var new mem)))
 
-(defund store-pointer (i a mem)
-  (declare (ignore i a))
-  mem)
+(defund store-pointer (p a mem)
+  (let* ((var (car a))
+         (ofs (cdr a))
+         (old (m5::binding var mem))
+;         (old (g var mem))
+         (w0 (and (addressp p) p))
+         (new (update-nth ofs w0 old)))
+    (m5::bind var new mem)))
+;    (s var new mem)))
 
 (defund load-double (a mem)
   (let* ((var (car a))
@@ -97,8 +102,12 @@
     (and (wordp w0) (make-i32 w0))))
 
 (defund load-pointer (a mem)
-  (declare (ignore a))
-  mem)
+  (let* ((var (car a))
+         (ofs (cdr a))
+         (val (m5::binding var mem))
+;         (val (g var mem))
+         (w0 (nth ofs val)))
+    (and (addressp w0) w0)))
 
 (defund getelementptr-double (a i)
   (and (addressp a)

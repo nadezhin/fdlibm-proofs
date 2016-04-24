@@ -363,7 +363,7 @@
     ("subgoal 4" :use succ-bb-%44)
     ("subgoal 3" :use succ-bb-%50)
     ("subgoal 2" :use succ-bb-%101))))
-                              
+
 
 (defund meas (label mem loc)
   (declare (ignore mem loc))
