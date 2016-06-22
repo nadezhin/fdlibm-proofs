@@ -563,7 +563,7 @@
 
 #|
 (defund poised-inside-cbrt (th s)
-  (and (m5::poised-to-invokestatic th s "FdlibmTransliNt" "access$100:(D)I" 2)
+  (and (m5::poised-to-invokestatic th s "FdlibmTranslitN" "access$100:(D)I" 2)
        (doublep (m5::top (m5::pop (m5::stack (m5::top-frame th s)))))
        (equal (m5::class-decl-methods
                (m5::bound? "FdlibmTranslitN"

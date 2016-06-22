@@ -23,7 +23,7 @@
     (m5::link-class-table
      (list
       m5::*java.lang.Object*
-      m5::*java.lang.CLass*
+      m5::*java.lang.Class*
       m5::*java.lang.String*
       m5::*java.lang.StrictMath*
       m5::*java.lang.Math*
